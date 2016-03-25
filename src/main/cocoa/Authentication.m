@@ -22,7 +22,7 @@
 
 #import "Authentication.h"
 
-@implementation BananaAuthentication_ApplicationToken
+@implementation AromaAuthentication_ApplicationToken
 
 - (id) init
 {
@@ -32,7 +32,7 @@
   return self;
 }
 
-- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration applicationId: (BananaAuthentication_uuid) applicationId applicationName: (NSString *) applicationName
+- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration applicationId: (AromaAuthentication_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __tokenId = [tokenId retain_stub];
@@ -139,10 +139,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_ApplicationToken class]]) {
+  if (![anObject isKindOfClass:[AromaAuthentication_ApplicationToken class]]) {
     return NO;
   }
-  BananaAuthentication_ApplicationToken *other = (BananaAuthentication_ApplicationToken *)anObject;
+  AromaAuthentication_ApplicationToken *other = (AromaAuthentication_ApplicationToken *)anObject;
   if ((__tokenId_isset != other->__tokenId_isset) ||
       (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
     return NO;
@@ -384,7 +384,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_ApplicationToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaAuthentication_ApplicationToken("];
   [ms appendString: @"tokenId:"];
   [ms appendFormat: @"\"%@\"", __tokenId];
   [ms appendString: @",organization:"];
@@ -401,7 +401,7 @@
 
 @end
 
-@implementation BananaAuthentication_UserToken
+@implementation AromaAuthentication_UserToken
 
 - (id) init
 {
@@ -413,7 +413,7 @@
   return self;
 }
 
-- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (BananaAuthentication_uuid) userId
+- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (AromaAuthentication_uuid) userId
 {
   self = [super init];
   __tokenId = [tokenId retain_stub];
@@ -536,10 +536,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_UserToken class]]) {
+  if (![anObject isKindOfClass:[AromaAuthentication_UserToken class]]) {
     return NO;
   }
-  BananaAuthentication_UserToken *other = (BananaAuthentication_UserToken *)anObject;
+  AromaAuthentication_UserToken *other = (AromaAuthentication_UserToken *)anObject;
   if ((__tokenId_isset != other->__tokenId_isset) ||
       (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
     return NO;
@@ -815,7 +815,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_UserToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaAuthentication_UserToken("];
   [ms appendString: @"tokenId:"];
   [ms appendFormat: @"\"%@\"", __tokenId];
   [ms appendString: @",timeOfExpiration:"];
@@ -834,7 +834,7 @@
 
 @end
 
-@implementation BananaAuthentication_GithubToken
+@implementation AromaAuthentication_GithubToken
 
 - (id) init
 {
@@ -919,10 +919,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_GithubToken class]]) {
+  if (![anObject isKindOfClass:[AromaAuthentication_GithubToken class]]) {
     return NO;
   }
-  BananaAuthentication_GithubToken *other = (BananaAuthentication_GithubToken *)anObject;
+  AromaAuthentication_GithubToken *other = (AromaAuthentication_GithubToken *)anObject;
   if ((__username_isset != other->__username_isset) ||
       (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
     return NO;
@@ -1093,7 +1093,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_GithubToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaAuthentication_GithubToken("];
   [ms appendString: @"username:"];
   [ms appendFormat: @"\"%@\"", __username];
   [ms appendString: @",email:"];
@@ -1106,7 +1106,7 @@
 
 @end
 
-@implementation BananaAuthentication_Password
+@implementation AromaAuthentication_Password
 
 - (id) init
 {
@@ -1159,10 +1159,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_Password class]]) {
+  if (![anObject isKindOfClass:[AromaAuthentication_Password class]]) {
     return NO;
   }
-  BananaAuthentication_Password *other = (BananaAuthentication_Password *)anObject;
+  AromaAuthentication_Password *other = (AromaAuthentication_Password *)anObject;
   if ((__encryptedPassword_isset != other->__encryptedPassword_isset) ||
       (__encryptedPassword_isset && ((__encryptedPassword || other->__encryptedPassword) && ![__encryptedPassword isEqual:other->__encryptedPassword]))) {
     return NO;
@@ -1247,7 +1247,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Password("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaAuthentication_Password("];
   [ms appendString: @"encryptedPassword:"];
   [ms appendFormat: @"\"%@\"", __encryptedPassword];
   [ms appendString: @")"];
@@ -1256,7 +1256,7 @@
 
 @end
 
-@implementation BananaAuthentication_AromaAccount
+@implementation AromaAuthentication_AromaAccount
 
 - (id) init
 {
@@ -1266,7 +1266,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Aroma_Image *) profileImage role: (int) role
+- (id) initWithEmail: (NSString *) email password: (AromaAuthentication_Password *) password name: (NSString *) name profileImage: (Aroma_Image *) profileImage role: (int) role
 {
   self = [super init];
   __email = [email retain_stub];
@@ -1373,10 +1373,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_AromaAccount class]]) {
+  if (![anObject isKindOfClass:[AromaAuthentication_AromaAccount class]]) {
     return NO;
   }
-  BananaAuthentication_AromaAccount *other = (BananaAuthentication_AromaAccount *)anObject;
+  AromaAuthentication_AromaAccount *other = (AromaAuthentication_AromaAccount *)anObject;
   if ((__email_isset != other->__email_isset) ||
       (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
     return NO;
@@ -1430,11 +1430,11 @@
   __email_isset = NO;
 }
 
-- (BananaAuthentication_Password *) password {
+- (AromaAuthentication_Password *) password {
   return [[__password retain_stub] autorelease_stub];
 }
 
-- (void) setPassword: (BananaAuthentication_Password *) password {
+- (void) setPassword: (AromaAuthentication_Password *) password {
   [password retain_stub];
   [__password release_stub];
   __password = password;
@@ -1535,7 +1535,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Password *fieldValue = [[BananaAuthentication_Password alloc] init];
+          AromaAuthentication_Password *fieldValue = [[AromaAuthentication_Password alloc] init];
           [fieldValue read: inProtocol];
           [self setPassword: fieldValue];
           [fieldValue release_stub];
@@ -1622,7 +1622,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_AromaAccount("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaAuthentication_AromaAccount("];
   [ms appendString: @"email:"];
   [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @",password:"];
@@ -1639,7 +1639,7 @@
 
 @end
 
-@implementation BananaAuthentication_Credentials
+@implementation AromaAuthentication_Credentials
 
 - (id) init
 {
@@ -1649,7 +1649,7 @@
   return self;
 }
 
-- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaPassword: (BananaAuthentication_Password *) aromaPassword
+- (id) initWithGithubToken: (AromaAuthentication_GithubToken *) githubToken aromaPassword: (AromaAuthentication_Password *) aromaPassword
 {
   self = [super init];
   __githubToken = [githubToken retain_stub];
@@ -1708,10 +1708,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_Credentials class]]) {
+  if (![anObject isKindOfClass:[AromaAuthentication_Credentials class]]) {
     return NO;
   }
-  BananaAuthentication_Credentials *other = (BananaAuthentication_Credentials *)anObject;
+  AromaAuthentication_Credentials *other = (AromaAuthentication_Credentials *)anObject;
   if ((__githubToken_isset != other->__githubToken_isset) ||
       (__githubToken_isset && ((__githubToken || other->__githubToken) && ![__githubToken isEqual:other->__githubToken]))) {
     return NO;
@@ -1730,11 +1730,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_GithubToken *) githubToken {
+- (AromaAuthentication_GithubToken *) githubToken {
   return [[__githubToken retain_stub] autorelease_stub];
 }
 
-- (void) setGithubToken: (BananaAuthentication_GithubToken *) githubToken {
+- (void) setGithubToken: (AromaAuthentication_GithubToken *) githubToken {
   [githubToken retain_stub];
   [__githubToken release_stub];
   __githubToken = githubToken;
@@ -1751,11 +1751,11 @@
   __githubToken_isset = NO;
 }
 
-- (BananaAuthentication_Password *) aromaPassword {
+- (AromaAuthentication_Password *) aromaPassword {
   return [[__aromaPassword retain_stub] autorelease_stub];
 }
 
-- (void) setAromaPassword: (BananaAuthentication_Password *) aromaPassword {
+- (void) setAromaPassword: (AromaAuthentication_Password *) aromaPassword {
   [aromaPassword retain_stub];
   [__aromaPassword release_stub];
   __aromaPassword = aromaPassword;
@@ -1789,7 +1789,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_GithubToken *fieldValue = [[BananaAuthentication_GithubToken alloc] init];
+          AromaAuthentication_GithubToken *fieldValue = [[AromaAuthentication_GithubToken alloc] init];
           [fieldValue read: inProtocol];
           [self setGithubToken: fieldValue];
           [fieldValue release_stub];
@@ -1799,7 +1799,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Password *fieldValue = [[BananaAuthentication_Password alloc] init];
+          AromaAuthentication_Password *fieldValue = [[AromaAuthentication_Password alloc] init];
           [fieldValue read: inProtocol];
           [self setAromaPassword: fieldValue];
           [fieldValue release_stub];
@@ -1841,7 +1841,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Credentials("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaAuthentication_Credentials("];
   [ms appendString: @"githubToken:"];
   [ms appendFormat: @"%@", __githubToken];
   [ms appendString: @",aromaPassword:"];
@@ -1852,7 +1852,7 @@
 
 @end
 
-@implementation BananaAuthentication_AuthenticationToken
+@implementation AromaAuthentication_AuthenticationToken
 
 - (id) init
 {
@@ -1862,7 +1862,7 @@
   return self;
 }
 
-- (id) initWithTokenId: (NSString *) tokenId ownerId: (BananaAuthentication_uuid) ownerId timeOfCreation: (BananaAuthentication_timestamp) timeOfCreation timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (BananaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName
+- (id) initWithTokenId: (NSString *) tokenId ownerId: (AromaAuthentication_uuid) ownerId timeOfCreation: (AromaAuthentication_timestamp) timeOfCreation timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (AromaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName
 {
   self = [super init];
   __tokenId = [tokenId retain_stub];
@@ -2017,10 +2017,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_AuthenticationToken class]]) {
+  if (![anObject isKindOfClass:[AromaAuthentication_AuthenticationToken class]]) {
     return NO;
   }
-  BananaAuthentication_AuthenticationToken *other = (BananaAuthentication_AuthenticationToken *)anObject;
+  AromaAuthentication_AuthenticationToken *other = (AromaAuthentication_AuthenticationToken *)anObject;
   if ((__tokenId_isset != other->__tokenId_isset) ||
       (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
     return NO;
@@ -2371,7 +2371,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_AuthenticationToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaAuthentication_AuthenticationToken("];
   [ms appendString: @"tokenId:"];
   [ms appendFormat: @"\"%@\"", __tokenId];
   [ms appendString: @",ownerId:"];
@@ -2394,13 +2394,13 @@
 
 @end
 
-static NSString * BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = @"AR3W3O04OJ5I894k40s04163U408pnU47AicAO6X29593AbTwaWk60qu966M9j12O6873Z64822x4qG71vaEjOei159sr9QUT1DaK";
+static NSString * AromaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = @"AR3W3O04OJ5I894k40s04163U408pnU47AicAO6X29593AbTwaWk60qu966M9j12O6873Z64822x4qG71vaEjOei159sr9QUT1DaK";
 
-@implementation BananaAuthentication_AuthenticationConstants
+@implementation AromaAuthentication_AuthenticationConstants
 + (void) initialize {
 }
 + (NSString *) OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY{
-  return BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY;
+  return AromaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY;
 }
 @end
 

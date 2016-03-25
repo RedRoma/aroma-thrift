@@ -20,24 +20,24 @@
 
 #import "Aroma.h"
 
-enum BananaAuthentication_TokenType {
+enum AromaAuthentication_TokenType {
   TokenType_APPLICATION = 1,
   TokenType_USER = 2
 };
 
-typedef Aroma_int BananaAuthentication_int;
+typedef Aroma_int AromaAuthentication_int;
 
-typedef Aroma_long BananaAuthentication_long;
+typedef Aroma_long AromaAuthentication_long;
 
-typedef Aroma_timestamp BananaAuthentication_timestamp;
+typedef Aroma_timestamp AromaAuthentication_timestamp;
 
-typedef Aroma_uuid BananaAuthentication_uuid;
+typedef Aroma_uuid AromaAuthentication_uuid;
 
-@interface BananaAuthentication_ApplicationToken : NSObject <TBase, NSCoding> {
+@interface AromaAuthentication_ApplicationToken : NSObject <TBase, NSCoding> {
   NSString * __tokenId;
   NSString * __organization;
-  BananaAuthentication_timestamp __timeOfExpiration;
-  BananaAuthentication_uuid __applicationId;
+  AromaAuthentication_timestamp __timeOfExpiration;
+  AromaAuthentication_uuid __applicationId;
   NSString * __applicationName;
 
   BOOL __tokenId_isset;
@@ -50,13 +50,13 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
-@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) BananaAuthentication_timestamp timeOfExpiration;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaAuthentication_uuid applicationId;
+@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) AromaAuthentication_timestamp timeOfExpiration;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaAuthentication_uuid applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration applicationId: (BananaAuthentication_uuid) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration applicationId: (AromaAuthentication_uuid) applicationId applicationName: (NSString *) applicationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -76,14 +76,14 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 - (BOOL) organizationIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_timestamp) timeOfExpiration;
-- (void) setTimeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration;
+- (AromaAuthentication_timestamp) timeOfExpiration;
+- (void) setTimeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration;
 #endif
 - (BOOL) timeOfExpirationIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_uuid) applicationId;
-- (void) setApplicationId: (BananaAuthentication_uuid) applicationId;
+- (AromaAuthentication_uuid) applicationId;
+- (void) setApplicationId: (AromaAuthentication_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -95,13 +95,13 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 
 @end
 
-@interface BananaAuthentication_UserToken : NSObject <TBase, NSCoding> {
+@interface AromaAuthentication_UserToken : NSObject <TBase, NSCoding> {
   NSString * __tokenId;
-  BananaAuthentication_timestamp __timeOfExpiration;
+  AromaAuthentication_timestamp __timeOfExpiration;
   NSString * __organization;
   BOOL __isOauthToken;
   NSString * __oauthProvider;
-  BananaAuthentication_uuid __userId;
+  AromaAuthentication_uuid __userId;
 
   BOOL __tokenId_isset;
   BOOL __timeOfExpiration_isset;
@@ -113,15 +113,15 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
-@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) BananaAuthentication_timestamp timeOfExpiration;
+@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) AromaAuthentication_timestamp timeOfExpiration;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
 @property (nonatomic, getter=isOauthToken, setter=setIsOauthToken:) BOOL isOauthToken;
 @property (nonatomic, retain, getter=oauthProvider, setter=setOauthProvider:) NSString * oauthProvider;
-@property (nonatomic, retain, getter=userId, setter=setUserId:) BananaAuthentication_uuid userId;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaAuthentication_uuid userId;
 #endif
 
 - (id) init;
-- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (BananaAuthentication_uuid) userId;
+- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (AromaAuthentication_uuid) userId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -135,8 +135,8 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 - (BOOL) tokenIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_timestamp) timeOfExpiration;
-- (void) setTimeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration;
+- (AromaAuthentication_timestamp) timeOfExpiration;
+- (void) setTimeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration;
 #endif
 - (BOOL) timeOfExpirationIsSet;
 
@@ -159,14 +159,14 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 - (BOOL) oauthProviderIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_uuid) userId;
-- (void) setUserId: (BananaAuthentication_uuid) userId;
+- (AromaAuthentication_uuid) userId;
+- (void) setUserId: (AromaAuthentication_uuid) userId;
 #endif
 - (BOOL) userIdIsSet;
 
 @end
 
-@interface BananaAuthentication_GithubToken : NSObject <TBase, NSCoding> {
+@interface AromaAuthentication_GithubToken : NSObject <TBase, NSCoding> {
   NSString * __username;
   NSString * __email;
   NSString * __oauthToken;
@@ -210,7 +210,7 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 
 @end
 
-@interface BananaAuthentication_Password : NSObject <TBase, NSCoding> {
+@interface AromaAuthentication_Password : NSObject <TBase, NSCoding> {
   NSString * __encryptedPassword;
 
   BOOL __encryptedPassword_isset;
@@ -236,9 +236,9 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 
 @end
 
-@interface BananaAuthentication_AromaAccount : NSObject <TBase, NSCoding> {
+@interface AromaAuthentication_AromaAccount : NSObject <TBase, NSCoding> {
   NSString * __email;
-  BananaAuthentication_Password * __password;
+  AromaAuthentication_Password * __password;
   NSString * __name;
   Aroma_Image * __profileImage;
   int __role;
@@ -252,14 +252,14 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
-@property (nonatomic, retain, getter=password, setter=setPassword:) BananaAuthentication_Password * password;
+@property (nonatomic, retain, getter=password, setter=setPassword:) AromaAuthentication_Password * password;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Aroma_Image * profileImage;
 @property (nonatomic, getter=role, setter=setRole:) int role;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Aroma_Image *) profileImage role: (int) role;
+- (id) initWithEmail: (NSString *) email password: (AromaAuthentication_Password *) password name: (NSString *) name profileImage: (Aroma_Image *) profileImage role: (int) role;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -273,8 +273,8 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 - (BOOL) emailIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_Password *) password;
-- (void) setPassword: (BananaAuthentication_Password *) password;
+- (AromaAuthentication_Password *) password;
+- (void) setPassword: (AromaAuthentication_Password *) password;
 #endif
 - (BOOL) passwordIsSet;
 
@@ -298,21 +298,21 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 
 @end
 
-@interface BananaAuthentication_Credentials : NSObject <TBase, NSCoding> {
-  BananaAuthentication_GithubToken * __githubToken;
-  BananaAuthentication_Password * __aromaPassword;
+@interface AromaAuthentication_Credentials : NSObject <TBase, NSCoding> {
+  AromaAuthentication_GithubToken * __githubToken;
+  AromaAuthentication_Password * __aromaPassword;
 
   BOOL __githubToken_isset;
   BOOL __aromaPassword_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=githubToken, setter=setGithubToken:) BananaAuthentication_GithubToken * githubToken;
-@property (nonatomic, retain, getter=aromaPassword, setter=setAromaPassword:) BananaAuthentication_Password * aromaPassword;
+@property (nonatomic, retain, getter=githubToken, setter=setGithubToken:) AromaAuthentication_GithubToken * githubToken;
+@property (nonatomic, retain, getter=aromaPassword, setter=setAromaPassword:) AromaAuthentication_Password * aromaPassword;
 #endif
 
 - (id) init;
-- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaPassword: (BananaAuthentication_Password *) aromaPassword;
+- (id) initWithGithubToken: (AromaAuthentication_GithubToken *) githubToken aromaPassword: (AromaAuthentication_Password *) aromaPassword;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -320,26 +320,26 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_GithubToken *) githubToken;
-- (void) setGithubToken: (BananaAuthentication_GithubToken *) githubToken;
+- (AromaAuthentication_GithubToken *) githubToken;
+- (void) setGithubToken: (AromaAuthentication_GithubToken *) githubToken;
 #endif
 - (BOOL) githubTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_Password *) aromaPassword;
-- (void) setAromaPassword: (BananaAuthentication_Password *) aromaPassword;
+- (AromaAuthentication_Password *) aromaPassword;
+- (void) setAromaPassword: (AromaAuthentication_Password *) aromaPassword;
 #endif
 - (BOOL) aromaPasswordIsSet;
 
 @end
 
-@interface BananaAuthentication_AuthenticationToken : NSObject <TBase, NSCoding> {
+@interface AromaAuthentication_AuthenticationToken : NSObject <TBase, NSCoding> {
   NSString * __tokenId;
-  BananaAuthentication_uuid __ownerId;
-  BananaAuthentication_timestamp __timeOfCreation;
-  BananaAuthentication_timestamp __timeOfExpiration;
+  AromaAuthentication_uuid __ownerId;
+  AromaAuthentication_timestamp __timeOfCreation;
+  AromaAuthentication_timestamp __timeOfExpiration;
   int __tokenType;
-  BananaAuthentication_uuid __organizationId;
+  AromaAuthentication_uuid __organizationId;
   NSString * __ownerName;
   NSString * __organizationName;
 
@@ -355,17 +355,17 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
-@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) BananaAuthentication_uuid ownerId;
-@property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) BananaAuthentication_timestamp timeOfCreation;
-@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) BananaAuthentication_timestamp timeOfExpiration;
+@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) AromaAuthentication_uuid ownerId;
+@property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) AromaAuthentication_timestamp timeOfCreation;
+@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) AromaAuthentication_timestamp timeOfExpiration;
 @property (nonatomic, getter=tokenType, setter=setTokenType:) int tokenType;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) BananaAuthentication_uuid organizationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaAuthentication_uuid organizationId;
 @property (nonatomic, retain, getter=ownerName, setter=setOwnerName:) NSString * ownerName;
 @property (nonatomic, retain, getter=organizationName, setter=setOrganizationName:) NSString * organizationName;
 #endif
 
 - (id) init;
-- (id) initWithTokenId: (NSString *) tokenId ownerId: (BananaAuthentication_uuid) ownerId timeOfCreation: (BananaAuthentication_timestamp) timeOfCreation timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (BananaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName;
+- (id) initWithTokenId: (NSString *) tokenId ownerId: (AromaAuthentication_uuid) ownerId timeOfCreation: (AromaAuthentication_timestamp) timeOfCreation timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (AromaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -379,20 +379,20 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 - (BOOL) tokenIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_uuid) ownerId;
-- (void) setOwnerId: (BananaAuthentication_uuid) ownerId;
+- (AromaAuthentication_uuid) ownerId;
+- (void) setOwnerId: (AromaAuthentication_uuid) ownerId;
 #endif
 - (BOOL) ownerIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_timestamp) timeOfCreation;
-- (void) setTimeOfCreation: (BananaAuthentication_timestamp) timeOfCreation;
+- (AromaAuthentication_timestamp) timeOfCreation;
+- (void) setTimeOfCreation: (AromaAuthentication_timestamp) timeOfCreation;
 #endif
 - (BOOL) timeOfCreationIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_timestamp) timeOfExpiration;
-- (void) setTimeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration;
+- (AromaAuthentication_timestamp) timeOfExpiration;
+- (void) setTimeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration;
 #endif
 - (BOOL) timeOfExpirationIsSet;
 
@@ -403,8 +403,8 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 - (BOOL) tokenTypeIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_uuid) organizationId;
-- (void) setOrganizationId: (BananaAuthentication_uuid) organizationId;
+- (AromaAuthentication_uuid) organizationId;
+- (void) setOrganizationId: (AromaAuthentication_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
@@ -422,7 +422,7 @@ typedef Aroma_uuid BananaAuthentication_uuid;
 
 @end
 
-@interface BananaAuthentication_AuthenticationConstants : NSObject {
+@interface AromaAuthentication_AuthenticationConstants : NSObject {
 }
 + (NSString *) OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY;
 @end

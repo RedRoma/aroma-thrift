@@ -242,11 +242,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
+- (AromaAuthentication_ApplicationToken *) applicationToken {
   return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
   [applicationToken retain_stub];
   [__applicationToken release_stub];
   __applicationToken = applicationToken;
@@ -419,7 +419,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationToken: fieldValue];
           [fieldValue release_stub];

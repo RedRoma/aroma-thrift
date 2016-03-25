@@ -33,7 +33,7 @@ typedef Aroma_timestamp NotificationService_timestamp;
 
 typedef Aroma_uuid NotificationService_uuid;
 
-typedef BananaAuthentication_AuthenticationToken * NotificationService_AuthenticationToken;
+typedef AromaAuthentication_AuthenticationToken * NotificationService_AuthenticationToken;
 
 typedef Aroma_Application * NotificationService_Application;
 

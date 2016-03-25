@@ -513,11 +513,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -610,7 +610,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -957,11 +957,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -1016,7 +1016,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -1386,11 +1386,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -1504,7 +1504,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -1934,11 +1934,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -2052,7 +2052,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -2544,11 +2544,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -2721,7 +2721,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -2992,11 +2992,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
+- (AromaAuthentication_ApplicationToken *) applicationToken {
   return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
   [applicationToken retain_stub];
   [__applicationToken release_stub];
   __applicationToken = applicationToken;
@@ -3051,7 +3051,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationToken: fieldValue];
           [fieldValue release_stub];
@@ -3205,11 +3205,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -3264,7 +3264,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -3395,11 +3395,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
+- (AromaAuthentication_ApplicationToken *) applicationToken {
   return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
   [applicationToken retain_stub];
   [__applicationToken release_stub];
   __applicationToken = applicationToken;
@@ -3433,7 +3433,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationToken: fieldValue];
           [fieldValue release_stub];
@@ -3568,11 +3568,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -3627,7 +3627,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -3990,11 +3990,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -4049,7 +4049,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -4456,11 +4456,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -4477,11 +4477,11 @@
   __token_isset = NO;
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
+- (AromaAuthentication_ApplicationToken *) applicationToken {
   return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
   [applicationToken retain_stub];
   [__applicationToken release_stub];
   __applicationToken = applicationToken;
@@ -4557,7 +4557,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -4567,7 +4567,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationToken: fieldValue];
           [fieldValue release_stub];
@@ -4726,11 +4726,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) serviceToken {
+- (AromaAuthentication_ApplicationToken *) serviceToken {
   return [[__serviceToken retain_stub] autorelease_stub];
 }
 
-- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
+- (void) setServiceToken: (AromaAuthentication_ApplicationToken *) serviceToken {
   [serviceToken retain_stub];
   [__serviceToken release_stub];
   __serviceToken = serviceToken;
@@ -4764,7 +4764,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setServiceToken: fieldValue];
           [fieldValue release_stub];
@@ -4899,11 +4899,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -4958,7 +4958,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -5242,7 +5242,7 @@
   return self;
 }
 
-- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress
+- (id) initWithCredentials: (AromaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress
 {
   self = [super init];
   __credentials = [credentials retain_stub];
@@ -5323,11 +5323,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_Credentials *) credentials {
+- (AromaAuthentication_Credentials *) credentials {
   return [[__credentials retain_stub] autorelease_stub];
 }
 
-- (void) setCredentials: (BananaAuthentication_Credentials *) credentials {
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials {
   [credentials retain_stub];
   [__credentials release_stub];
   __credentials = credentials;
@@ -5382,7 +5382,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Credentials *fieldValue = [[BananaAuthentication_Credentials alloc] init];
+          AromaAuthentication_Credentials *fieldValue = [[AromaAuthentication_Credentials alloc] init];
           [fieldValue read: inProtocol];
           [self setCredentials: fieldValue];
           [fieldValue release_stub];
@@ -5513,11 +5513,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) userToken {
+- (AromaAuthentication_UserToken *) userToken {
   return [[__userToken retain_stub] autorelease_stub];
 }
 
-- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+- (void) setUserToken: (AromaAuthentication_UserToken *) userToken {
   [userToken retain_stub];
   [__userToken release_stub];
   __userToken = userToken;
@@ -5551,7 +5551,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setUserToken: fieldValue];
           [fieldValue release_stub];
@@ -5605,7 +5605,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (AromaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage
 {
   self = [super init];
   __email = [email retain_stub];
@@ -6041,11 +6041,11 @@
   __organizationId_isset = NO;
 }
 
-- (BananaAuthentication_Credentials *) credentials {
+- (AromaAuthentication_Credentials *) credentials {
   return [[__credentials retain_stub] autorelease_stub];
 }
 
-- (void) setCredentials: (BananaAuthentication_Credentials *) credentials {
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials {
   [credentials retain_stub];
   [__credentials release_stub];
   __credentials = credentials;
@@ -6211,7 +6211,7 @@
         break;
       case 8:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Credentials *fieldValue = [[BananaAuthentication_Credentials alloc] init];
+          AromaAuthentication_Credentials *fieldValue = [[AromaAuthentication_Credentials alloc] init];
           [fieldValue read: inProtocol];
           [self setCredentials: fieldValue];
           [fieldValue release_stub];
@@ -6394,7 +6394,7 @@
   return self;
 }
 
-- (id) initWithUserToken: (AromaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId
+- (id) initWithUserToken: (AromaService_UserToken) userToken account: (AromaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId
 {
   self = [super init];
   __userToken = [userToken retain_stub];
@@ -6496,11 +6496,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) userToken {
+- (AromaAuthentication_UserToken *) userToken {
   return [[__userToken retain_stub] autorelease_stub];
 }
 
-- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+- (void) setUserToken: (AromaAuthentication_UserToken *) userToken {
   [userToken retain_stub];
   [__userToken release_stub];
   __userToken = userToken;
@@ -6517,11 +6517,11 @@
   __userToken_isset = NO;
 }
 
-- (BananaAuthentication_AromaAccount *) account {
+- (AromaAuthentication_AromaAccount *) account {
   return [[__account retain_stub] autorelease_stub];
 }
 
-- (void) setAccount: (BananaAuthentication_AromaAccount *) account {
+- (void) setAccount: (AromaAuthentication_AromaAccount *) account {
   [account retain_stub];
   [__account release_stub];
   __account = account;
@@ -6576,7 +6576,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setUserToken: fieldValue];
           [fieldValue release_stub];
@@ -6586,7 +6586,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_AromaAccount *fieldValue = [[BananaAuthentication_AromaAccount alloc] init];
+          AromaAuthentication_AromaAccount *fieldValue = [[AromaAuthentication_AromaAccount alloc] init];
           [fieldValue read: inProtocol];
           [self setAccount: fieldValue];
           [fieldValue release_stub];
@@ -6793,11 +6793,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -6894,7 +6894,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -7255,11 +7255,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -7335,7 +7335,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -7677,11 +7677,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -7757,7 +7757,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -8078,11 +8078,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -8137,7 +8137,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -8465,11 +8465,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_AuthenticationToken *) token {
+- (AromaAuthentication_AuthenticationToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_AuthenticationToken *) token {
+- (void) setToken: (AromaAuthentication_AuthenticationToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -8541,7 +8541,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_AuthenticationToken *fieldValue = [[BananaAuthentication_AuthenticationToken alloc] init];
+          AromaAuthentication_AuthenticationToken *fieldValue = [[AromaAuthentication_AuthenticationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -8918,11 +8918,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -8956,7 +8956,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -9485,11 +9485,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -9523,7 +9523,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -10155,11 +10155,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -10210,7 +10210,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -10554,11 +10554,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -10630,7 +10630,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -11044,11 +11044,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -11124,7 +11124,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -11445,11 +11445,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -11504,7 +11504,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -11808,11 +11808,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -11867,7 +11867,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -12191,11 +12191,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -12250,7 +12250,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -12553,11 +12553,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -12591,7 +12591,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -12897,11 +12897,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -12952,7 +12952,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -13253,11 +13253,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -13291,7 +13291,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -13619,11 +13619,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -13699,7 +13699,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -14041,11 +14041,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -14121,7 +14121,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];

@@ -33,11 +33,11 @@ typedef Aroma_timestamp AromaService_timestamp;
 
 typedef Aroma_uuid AromaService_uuid;
 
-typedef BananaAuthentication_ApplicationToken * AromaService_ApplicationToken;
+typedef AromaAuthentication_ApplicationToken * AromaService_ApplicationToken;
 
-typedef BananaAuthentication_AuthenticationToken * AromaService_AuthenticationToken;
+typedef AromaAuthentication_AuthenticationToken * AromaService_AuthenticationToken;
 
-typedef BananaAuthentication_UserToken * AromaService_UserToken;
+typedef AromaAuthentication_UserToken * AromaService_UserToken;
 
 typedef Aroma_Application * AromaService_Application;
 
@@ -931,7 +931,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 @end
 
 @interface AromaService_SignInRequest : NSObject <TBase, NSCoding> {
-  BananaAuthentication_Credentials * __credentials;
+  AromaAuthentication_Credentials * __credentials;
   NSString * __emailAddress;
 
   BOOL __credentials_isset;
@@ -939,12 +939,12 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
+@property (nonatomic, retain, getter=credentials, setter=setCredentials:) AromaAuthentication_Credentials * credentials;
 @property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
 #endif
 
 - (id) init;
-- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress;
+- (id) initWithCredentials: (AromaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -952,8 +952,8 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_Credentials *) credentials;
-- (void) setCredentials: (BananaAuthentication_Credentials *) credentials;
+- (AromaAuthentication_Credentials *) credentials;
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials;
 #endif
 - (BOOL) credentialsIsSet;
 
@@ -999,7 +999,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
   NSString * __lastName;
   NSString * __username;
   AromaService_uuid __organizationId;
-  BananaAuthentication_Credentials * __credentials;
+  AromaAuthentication_Credentials * __credentials;
   int __mainRole;
   AromaService_timestamp __birthDate;
   NSString * __githubProfile;
@@ -1027,7 +1027,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 @property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
 @property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
 @property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
-@property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
+@property (nonatomic, retain, getter=credentials, setter=setCredentials:) AromaAuthentication_Credentials * credentials;
 @property (nonatomic, getter=mainRole, setter=setMainRole:) int mainRole;
 @property (nonatomic, getter=birthDate, setter=setBirthDate:) AromaService_timestamp birthDate;
 @property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
@@ -1035,7 +1035,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (AromaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1085,8 +1085,8 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (BOOL) organizationIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_Credentials *) credentials;
-- (void) setCredentials: (BananaAuthentication_Credentials *) credentials;
+- (AromaAuthentication_Credentials *) credentials;
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials;
 #endif
 - (BOOL) credentialsIsSet;
 
@@ -1118,7 +1118,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @interface AromaService_SignUpResponse : NSObject <TBase, NSCoding> {
   AromaService_UserToken __userToken;
-  BananaAuthentication_AromaAccount * __account;
+  AromaAuthentication_AromaAccount * __account;
   AromaService_uuid __userId;
 
   BOOL __userToken_isset;
@@ -1128,12 +1128,12 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=userToken, setter=setUserToken:) AromaService_UserToken userToken;
-@property (nonatomic, retain, getter=account, setter=setAccount:) BananaAuthentication_AromaAccount * account;
+@property (nonatomic, retain, getter=account, setter=setAccount:) AromaAuthentication_AromaAccount * account;
 @property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
 #endif
 
 - (id) init;
-- (id) initWithUserToken: (AromaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId;
+- (id) initWithUserToken: (AromaService_UserToken) userToken account: (AromaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1147,8 +1147,8 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (BOOL) userTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_AromaAccount *) account;
-- (void) setAccount: (BananaAuthentication_AromaAccount *) account;
+- (AromaAuthentication_AromaAccount *) account;
+- (void) setAccount: (AromaAuthentication_AromaAccount *) account;
 #endif
 - (BOOL) accountIsSet;
 

@@ -33,7 +33,7 @@ typedef Aroma_timestamp EmailService_timestamp;
 
 typedef Aroma_uuid EmailService_uuid;
 
-typedef BananaAuthentication_AuthenticationToken * EmailService_AuthenticationToken;
+typedef AromaAuthentication_AuthenticationToken * EmailService_AuthenticationToken;
 
 typedef Aroma_Application * EmailService_Application;
 

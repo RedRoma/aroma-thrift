@@ -21,7 +21,7 @@
 #import "Authentication.h"
 #import "Aroma.h"
 
-typedef BananaAuthentication_ApplicationToken * AromaEvents_ApplicationToken;
+typedef AromaAuthentication_ApplicationToken * AromaEvents_ApplicationToken;
 
 typedef Aroma_int AromaEvents_int;
 

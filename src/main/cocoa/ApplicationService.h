@@ -29,7 +29,7 @@ typedef Aroma_long ApplicationService_long;
 
 typedef Aroma_timestamp ApplicationService_timestamp;
 
-typedef BananaAuthentication_ApplicationToken * ApplicationService_ApplicationToken;
+typedef AromaAuthentication_ApplicationToken * ApplicationService_ApplicationToken;
 
 typedef Aroma_Application * ApplicationService_Application;
 

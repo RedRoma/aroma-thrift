@@ -31,7 +31,7 @@ typedef Aroma_Application * AromaEmail_Application;
 
 typedef Aroma_User * AromaEmail_User;
 
-typedef BananaAuthentication_ApplicationToken * AromaEmail_ApplicationToken;
+typedef AromaAuthentication_ApplicationToken * AromaEmail_ApplicationToken;
 
 @interface AromaEmail_EmailNewApplication : NSObject <TBase, NSCoding> {
   AromaEmail_User __creator;
