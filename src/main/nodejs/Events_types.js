@@ -12,27 +12,81 @@ var Aroma_ttypes = require('./Aroma_types')
 
 
 var ttypes = module.exports = {};
-ApplicationTokenRenewed = module.exports.ApplicationTokenRenewed = function(args) {
-  this.message = 'Application Token has been renewed';
-  this.user = null;
-  this.applicationToken = null;
-  this.applicationId = null;
-  this.applicationName = null;
+ApplicationMessagesDeleted = module.exports.ApplicationMessagesDeleted = function(args) {
+  this.totalMessagesDeleted = null;
+  this.message = 'Application\'s messages have been deleted';
   if (args) {
+    if (args.totalMessagesDeleted !== undefined && args.totalMessagesDeleted !== null) {
+      this.totalMessagesDeleted = args.totalMessagesDeleted;
+    }
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
     }
-    if (args.user !== undefined && args.user !== null) {
-      this.user = new Aroma_ttypes.User(args.user);
+  }
+};
+ApplicationMessagesDeleted.prototype = {};
+ApplicationMessagesDeleted.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
     }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.totalMessagesDeleted = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ApplicationMessagesDeleted.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationMessagesDeleted');
+  if (this.totalMessagesDeleted !== null && this.totalMessagesDeleted !== undefined) {
+    output.writeFieldBegin('totalMessagesDeleted', Thrift.Type.I32, 1);
+    output.writeI32(this.totalMessagesDeleted);
+    output.writeFieldEnd();
+  }
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 2);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ApplicationTokenRenewed = module.exports.ApplicationTokenRenewed = function(args) {
+  this.applicationToken = null;
+  this.message = 'Application Token has been renewed';
+  if (args) {
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
     }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
     }
   }
 };
@@ -51,21 +105,6 @@ ApplicationTokenRenewed.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.user = new Aroma_ttypes.User();
-        this.user.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationToken = new Authentication_ttypes.ApplicationToken();
         this.applicationToken.read(input);
@@ -73,16 +112,9 @@ ApplicationTokenRenewed.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 4:
+      case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 5:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
+        this.message = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -98,29 +130,14 @@ ApplicationTokenRenewed.prototype.read = function(input) {
 
 ApplicationTokenRenewed.prototype.write = function(output) {
   output.writeStructBegin('ApplicationTokenRenewed');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.user !== null && this.user !== undefined) {
-    output.writeFieldBegin('user', Thrift.Type.STRUCT, 2);
-    this.user.write(output);
-    output.writeFieldEnd();
-  }
   if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 3);
+    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
     this.applicationToken.write(output);
     output.writeFieldEnd();
   }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 5);
-    output.writeString(this.applicationName);
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 2);
+    output.writeString(this.message);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -129,26 +146,18 @@ ApplicationTokenRenewed.prototype.write = function(output) {
 };
 
 ApplicationTokenRegenerated = module.exports.ApplicationTokenRegenerated = function(args) {
-  this.message = 'Application Token has been re-created';
-  this.user = null;
   this.applicationToken = null;
-  this.applicationId = null;
-  this.applicationName = null;
+  this.actor = null;
+  this.message = 'Application Token has been re-created';
   if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-    if (args.user !== undefined && args.user !== null) {
-      this.user = new Aroma_ttypes.User(args.user);
-    }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
     }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
+    if (args.actor !== undefined && args.actor !== null) {
+      this.actor = new Aroma_ttypes.User(args.actor);
     }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
     }
   }
 };
@@ -167,21 +176,6 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.user = new Aroma_ttypes.User();
-        this.user.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationToken = new Authentication_ttypes.ApplicationToken();
         this.applicationToken.read(input);
@@ -189,16 +183,17 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.actor = new Aroma_ttypes.User();
+        this.actor.read(input);
       } else {
         input.skip(ftype);
       }
       break;
-      case 5:
+      case 3:
       if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
+        this.message = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -214,29 +209,19 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
 
 ApplicationTokenRegenerated.prototype.write = function(output) {
   output.writeStructBegin('ApplicationTokenRegenerated');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.user !== null && this.user !== undefined) {
-    output.writeFieldBegin('user', Thrift.Type.STRUCT, 2);
-    this.user.write(output);
-    output.writeFieldEnd();
-  }
   if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 3);
+    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
     this.applicationToken.write(output);
     output.writeFieldEnd();
   }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
-    output.writeString(this.applicationId);
+  if (this.actor !== null && this.actor !== undefined) {
+    output.writeFieldBegin('actor', Thrift.Type.STRUCT, 2);
+    this.actor.write(output);
     output.writeFieldEnd();
   }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 5);
-    output.writeString(this.applicationName);
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 3);
+    output.writeString(this.message);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -245,22 +230,18 @@ ApplicationTokenRegenerated.prototype.write = function(output) {
 };
 
 ApplicationSentMessage = module.exports.ApplicationSentMessage = function(args) {
-  this.message = 'Application has sent an Alert';
+  this.messageId = null;
   this.messageSentByApplication = null;
-  this.applicationId = null;
-  this.applicationName = null;
+  this.message = 'Application has sent an Alert';
   if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
     }
     if (args.messageSentByApplication !== undefined && args.messageSentByApplication !== null) {
       this.messageSentByApplication = new Aroma_ttypes.Message(args.messageSentByApplication);
     }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
     }
   }
 };
@@ -280,7 +261,7 @@ ApplicationSentMessage.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
+        this.messageId = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -295,14 +276,7 @@ ApplicationSentMessage.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
+        this.message = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -318,9 +292,9 @@ ApplicationSentMessage.prototype.read = function(input) {
 
 ApplicationSentMessage.prototype.write = function(output) {
   output.writeStructBegin('ApplicationSentMessage');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
+    output.writeString(this.messageId);
     output.writeFieldEnd();
   }
   if (this.messageSentByApplication !== null && this.messageSentByApplication !== undefined) {
@@ -328,14 +302,9 @@ ApplicationSentMessage.prototype.write = function(output) {
     this.messageSentByApplication.write(output);
     output.writeFieldEnd();
   }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 4);
-    output.writeString(this.applicationName);
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 3);
+    output.writeString(this.message);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -343,28 +312,16 @@ ApplicationSentMessage.prototype.write = function(output) {
   return;
 };
 
-HealthCheckFailed = module.exports.HealthCheckFailed = function(args) {
-  this.message = 'Application failed a Health Check';
-  this.hostname = null;
-  this.applicationId = null;
-  this.applicationName = null;
+ApplicationDeleted = module.exports.ApplicationDeleted = function(args) {
+  this.message = 'Application has been deleted';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
     }
-    if (args.hostname !== undefined && args.hostname !== null) {
-      this.hostname = args.hostname;
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
   }
 };
-HealthCheckFailed.prototype = {};
-HealthCheckFailed.prototype.read = function(input) {
+ApplicationDeleted.prototype = {};
+ApplicationDeleted.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -384,23 +341,172 @@ HealthCheckFailed.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 2:
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ApplicationDeleted.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationDeleted');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ApplicationFollowed = module.exports.ApplicationFollowed = function(args) {
+  this.message = 'Application Followed';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+ApplicationFollowed.prototype = {};
+ApplicationFollowed.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ApplicationFollowed.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationFollowed');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ApplicationUnfollowed = module.exports.ApplicationUnfollowed = function(args) {
+  this.message = 'Application Unfollowed';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+ApplicationUnfollowed.prototype = {};
+ApplicationUnfollowed.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ApplicationUnfollowed.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationUnfollowed');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+HealthCheckFailed = module.exports.HealthCheckFailed = function(args) {
+  this.hostname = null;
+  this.message = 'Application failed a Health Check';
+  if (args) {
+    if (args.hostname !== undefined && args.hostname !== null) {
+      this.hostname = args.hostname;
+    }
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+HealthCheckFailed.prototype = {};
+HealthCheckFailed.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
       if (ftype == Thrift.Type.STRING) {
         this.hostname = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
-      case 3:
+      case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
+        this.message = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -416,24 +522,14 @@ HealthCheckFailed.prototype.read = function(input) {
 
 HealthCheckFailed.prototype.write = function(output) {
   output.writeStructBegin('HealthCheckFailed');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
   if (this.hostname !== null && this.hostname !== undefined) {
-    output.writeFieldBegin('hostname', Thrift.Type.STRING, 2);
+    output.writeFieldBegin('hostname', Thrift.Type.STRING, 1);
     output.writeString(this.hostname);
     output.writeFieldEnd();
   }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 4);
-    output.writeString(this.applicationName);
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 2);
+    output.writeString(this.message);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -443,17 +539,9 @@ HealthCheckFailed.prototype.write = function(output) {
 
 HealthCheckBackToNormal = module.exports.HealthCheckBackToNormal = function(args) {
   this.message = 'Application\'s Health is back to normal';
-  this.applicationId = null;
-  this.applicationName = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
     }
   }
 };
@@ -478,20 +566,9 @@ HealthCheckBackToNormal.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
+      case 0:
         input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
+        break;
       default:
         input.skip(ftype);
     }
@@ -508,14 +585,87 @@ HealthCheckBackToNormal.prototype.write = function(output) {
     output.writeString(this.message);
     output.writeFieldEnd();
   }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+OwnerAdded = module.exports.OwnerAdded = function(args) {
+  this.userIdOfNewOwner = null;
+  this.newOwner = null;
+  this.message = 'New Owner Added';
+  if (args) {
+    if (args.userIdOfNewOwner !== undefined && args.userIdOfNewOwner !== null) {
+      this.userIdOfNewOwner = args.userIdOfNewOwner;
+    }
+    if (args.newOwner !== undefined && args.newOwner !== null) {
+      this.newOwner = new Aroma_ttypes.User(args.newOwner);
+    }
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+OwnerAdded.prototype = {};
+OwnerAdded.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.userIdOfNewOwner = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.newOwner = new Aroma_ttypes.User();
+        this.newOwner.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+OwnerAdded.prototype.write = function(output) {
+  output.writeStructBegin('OwnerAdded');
+  if (this.userIdOfNewOwner !== null && this.userIdOfNewOwner !== undefined) {
+    output.writeFieldBegin('userIdOfNewOwner', Thrift.Type.STRING, 1);
+    output.writeString(this.userIdOfNewOwner);
     output.writeFieldEnd();
   }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 3);
-    output.writeString(this.applicationName);
+  if (this.newOwner !== null && this.newOwner !== undefined) {
+    output.writeFieldBegin('newOwner', Thrift.Type.STRUCT, 2);
+    this.newOwner.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 3);
+    output.writeString(this.message);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -525,21 +675,9 @@ HealthCheckBackToNormal.prototype.write = function(output) {
 
 OwnerApprovedRequest = module.exports.OwnerApprovedRequest = function(args) {
   this.message = 'Application Owner approved your request';
-  this.applicationId = null;
-  this.applicationName = null;
-  this.owner = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
-    if (args.owner !== undefined && args.owner !== null) {
-      this.owner = new Aroma_ttypes.User(args.owner);
     }
   }
 };
@@ -564,28 +702,9 @@ OwnerApprovedRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
+      case 0:
         input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.owner = new Aroma_ttypes.User();
-        this.owner.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
+        break;
       default:
         input.skip(ftype);
     }
@@ -602,143 +721,16 @@ OwnerApprovedRequest.prototype.write = function(output) {
     output.writeString(this.message);
     output.writeFieldEnd();
   }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 3);
-    output.writeString(this.applicationName);
-    output.writeFieldEnd();
-  }
-  if (this.owner !== null && this.owner !== undefined) {
-    output.writeFieldBegin('owner', Thrift.Type.STRUCT, 4);
-    this.owner.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-UserFollowedApplication = module.exports.UserFollowedApplication = function(args) {
-  this.message = 'Someone followed your Application';
-  this.applicationId = null;
-  this.follower = null;
-  this.owner = null;
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.follower !== undefined && args.follower !== null) {
-      this.follower = new Aroma_ttypes.User(args.follower);
-    }
-    if (args.owner !== undefined && args.owner !== null) {
-      this.owner = new Aroma_ttypes.User(args.owner);
-    }
-  }
-};
-UserFollowedApplication.prototype = {};
-UserFollowedApplication.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.follower = new Aroma_ttypes.User();
-        this.follower.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.owner = new Aroma_ttypes.User();
-        this.owner.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-UserFollowedApplication.prototype.write = function(output) {
-  output.writeStructBegin('UserFollowedApplication');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.follower !== null && this.follower !== undefined) {
-    output.writeFieldBegin('follower', Thrift.Type.STRUCT, 3);
-    this.follower.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.owner !== null && this.owner !== undefined) {
-    output.writeFieldBegin('owner', Thrift.Type.STRUCT, 4);
-    this.owner.write(output);
-    output.writeFieldEnd();
-  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
 GeneralEvent = module.exports.GeneralEvent = function(args) {
-  this.applicationId = null;
-  this.applicationName = null;
   this.message = null;
-  this.timestamp = null;
   if (args) {
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
-    }
-    if (args.timestamp !== undefined && args.timestamp !== null) {
-      this.timestamp = args.timestamp;
     }
   }
 };
@@ -758,32 +750,14 @@ GeneralEvent.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
         this.message = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
-      case 4:
-      if (ftype == Thrift.Type.I64) {
-        this.timestamp = input.readI64();
-      } else {
+      case 0:
         input.skip(ftype);
-      }
-      break;
+        break;
       default:
         input.skip(ftype);
     }
@@ -795,24 +769,9 @@ GeneralEvent.prototype.read = function(input) {
 
 GeneralEvent.prototype.write = function(output) {
   output.writeStructBegin('GeneralEvent');
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 1);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationName);
-    output.writeFieldEnd();
-  }
   if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 3);
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.timestamp !== null && this.timestamp !== undefined) {
-    output.writeFieldBegin('timestamp', Thrift.Type.I64, 4);
-    output.writeI64(this.timestamp);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -821,20 +780,33 @@ GeneralEvent.prototype.write = function(output) {
 };
 
 EventType = module.exports.EventType = function(args) {
+  this.applicationMessageDeleted = null;
   this.healthCheckFailed = null;
   this.healthCheckBackToNormal = null;
+  this.applicationFollowed = null;
+  this.applicationDeleted = null;
   this.applicationTokenRenewed = null;
   this.applicationTokenRegenerated = null;
   this.applicationSentMessage = null;
+  this.applicationUnfollowed = null;
   this.ownerApprovedRequest = null;
+  this.ownerAdded = null;
   this.generalEvent = null;
-  this.userFollowedApplication = null;
   if (args) {
+    if (args.applicationMessageDeleted !== undefined && args.applicationMessageDeleted !== null) {
+      this.applicationMessageDeleted = new ttypes.ApplicationMessagesDeleted(args.applicationMessageDeleted);
+    }
     if (args.healthCheckFailed !== undefined && args.healthCheckFailed !== null) {
       this.healthCheckFailed = new ttypes.HealthCheckFailed(args.healthCheckFailed);
     }
     if (args.healthCheckBackToNormal !== undefined && args.healthCheckBackToNormal !== null) {
       this.healthCheckBackToNormal = new ttypes.HealthCheckBackToNormal(args.healthCheckBackToNormal);
+    }
+    if (args.applicationFollowed !== undefined && args.applicationFollowed !== null) {
+      this.applicationFollowed = new ttypes.ApplicationFollowed(args.applicationFollowed);
+    }
+    if (args.applicationDeleted !== undefined && args.applicationDeleted !== null) {
+      this.applicationDeleted = new ttypes.ApplicationDeleted(args.applicationDeleted);
     }
     if (args.applicationTokenRenewed !== undefined && args.applicationTokenRenewed !== null) {
       this.applicationTokenRenewed = new ttypes.ApplicationTokenRenewed(args.applicationTokenRenewed);
@@ -845,14 +817,17 @@ EventType = module.exports.EventType = function(args) {
     if (args.applicationSentMessage !== undefined && args.applicationSentMessage !== null) {
       this.applicationSentMessage = new ttypes.ApplicationSentMessage(args.applicationSentMessage);
     }
+    if (args.applicationUnfollowed !== undefined && args.applicationUnfollowed !== null) {
+      this.applicationUnfollowed = new ttypes.ApplicationUnfollowed(args.applicationUnfollowed);
+    }
     if (args.ownerApprovedRequest !== undefined && args.ownerApprovedRequest !== null) {
       this.ownerApprovedRequest = new ttypes.OwnerApprovedRequest(args.ownerApprovedRequest);
     }
+    if (args.ownerAdded !== undefined && args.ownerAdded !== null) {
+      this.ownerAdded = new ttypes.OwnerAdded(args.ownerAdded);
+    }
     if (args.generalEvent !== undefined && args.generalEvent !== null) {
       this.generalEvent = new ttypes.GeneralEvent(args.generalEvent);
-    }
-    if (args.userFollowedApplication !== undefined && args.userFollowedApplication !== null) {
-      this.userFollowedApplication = new ttypes.UserFollowedApplication(args.userFollowedApplication);
     }
   }
 };
@@ -872,13 +847,21 @@ EventType.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
+        this.applicationMessageDeleted = new ttypes.ApplicationMessagesDeleted();
+        this.applicationMessageDeleted.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
         this.healthCheckFailed = new ttypes.HealthCheckFailed();
         this.healthCheckFailed.read(input);
       } else {
         input.skip(ftype);
       }
       break;
-      case 2:
+      case 3:
       if (ftype == Thrift.Type.STRUCT) {
         this.healthCheckBackToNormal = new ttypes.HealthCheckBackToNormal();
         this.healthCheckBackToNormal.read(input);
@@ -886,7 +869,23 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 3:
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationFollowed = new ttypes.ApplicationFollowed();
+        this.applicationFollowed.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationDeleted = new ttypes.ApplicationDeleted();
+        this.applicationDeleted.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationTokenRenewed = new ttypes.ApplicationTokenRenewed();
         this.applicationTokenRenewed.read(input);
@@ -894,7 +893,7 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 4:
+      case 7:
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationTokenRegenerated = new ttypes.ApplicationTokenRegenerated();
         this.applicationTokenRegenerated.read(input);
@@ -902,7 +901,7 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 5:
+      case 8:
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationSentMessage = new ttypes.ApplicationSentMessage();
         this.applicationSentMessage.read(input);
@@ -910,7 +909,15 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 6:
+      case 12:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationUnfollowed = new ttypes.ApplicationUnfollowed();
+        this.applicationUnfollowed.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
       if (ftype == Thrift.Type.STRUCT) {
         this.ownerApprovedRequest = new ttypes.OwnerApprovedRequest();
         this.ownerApprovedRequest.read(input);
@@ -918,18 +925,18 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 7:
+      case 10:
       if (ftype == Thrift.Type.STRUCT) {
-        this.generalEvent = new ttypes.GeneralEvent();
-        this.generalEvent.read(input);
+        this.ownerAdded = new ttypes.OwnerAdded();
+        this.ownerAdded.read(input);
       } else {
         input.skip(ftype);
       }
       break;
-      case 8:
+      case 11:
       if (ftype == Thrift.Type.STRUCT) {
-        this.userFollowedApplication = new ttypes.UserFollowedApplication();
-        this.userFollowedApplication.read(input);
+        this.generalEvent = new ttypes.GeneralEvent();
+        this.generalEvent.read(input);
       } else {
         input.skip(ftype);
       }
@@ -945,44 +952,64 @@ EventType.prototype.read = function(input) {
 
 EventType.prototype.write = function(output) {
   output.writeStructBegin('EventType');
+  if (this.applicationMessageDeleted !== null && this.applicationMessageDeleted !== undefined) {
+    output.writeFieldBegin('applicationMessageDeleted', Thrift.Type.STRUCT, 1);
+    this.applicationMessageDeleted.write(output);
+    output.writeFieldEnd();
+  }
   if (this.healthCheckFailed !== null && this.healthCheckFailed !== undefined) {
-    output.writeFieldBegin('healthCheckFailed', Thrift.Type.STRUCT, 1);
+    output.writeFieldBegin('healthCheckFailed', Thrift.Type.STRUCT, 2);
     this.healthCheckFailed.write(output);
     output.writeFieldEnd();
   }
   if (this.healthCheckBackToNormal !== null && this.healthCheckBackToNormal !== undefined) {
-    output.writeFieldBegin('healthCheckBackToNormal', Thrift.Type.STRUCT, 2);
+    output.writeFieldBegin('healthCheckBackToNormal', Thrift.Type.STRUCT, 3);
     this.healthCheckBackToNormal.write(output);
     output.writeFieldEnd();
   }
+  if (this.applicationFollowed !== null && this.applicationFollowed !== undefined) {
+    output.writeFieldBegin('applicationFollowed', Thrift.Type.STRUCT, 4);
+    this.applicationFollowed.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationDeleted !== null && this.applicationDeleted !== undefined) {
+    output.writeFieldBegin('applicationDeleted', Thrift.Type.STRUCT, 5);
+    this.applicationDeleted.write(output);
+    output.writeFieldEnd();
+  }
   if (this.applicationTokenRenewed !== null && this.applicationTokenRenewed !== undefined) {
-    output.writeFieldBegin('applicationTokenRenewed', Thrift.Type.STRUCT, 3);
+    output.writeFieldBegin('applicationTokenRenewed', Thrift.Type.STRUCT, 6);
     this.applicationTokenRenewed.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationTokenRegenerated !== null && this.applicationTokenRegenerated !== undefined) {
-    output.writeFieldBegin('applicationTokenRegenerated', Thrift.Type.STRUCT, 4);
+    output.writeFieldBegin('applicationTokenRegenerated', Thrift.Type.STRUCT, 7);
     this.applicationTokenRegenerated.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationSentMessage !== null && this.applicationSentMessage !== undefined) {
-    output.writeFieldBegin('applicationSentMessage', Thrift.Type.STRUCT, 5);
+    output.writeFieldBegin('applicationSentMessage', Thrift.Type.STRUCT, 8);
     this.applicationSentMessage.write(output);
     output.writeFieldEnd();
   }
+  if (this.applicationUnfollowed !== null && this.applicationUnfollowed !== undefined) {
+    output.writeFieldBegin('applicationUnfollowed', Thrift.Type.STRUCT, 12);
+    this.applicationUnfollowed.write(output);
+    output.writeFieldEnd();
+  }
   if (this.ownerApprovedRequest !== null && this.ownerApprovedRequest !== undefined) {
-    output.writeFieldBegin('ownerApprovedRequest', Thrift.Type.STRUCT, 6);
+    output.writeFieldBegin('ownerApprovedRequest', Thrift.Type.STRUCT, 9);
     this.ownerApprovedRequest.write(output);
     output.writeFieldEnd();
   }
-  if (this.generalEvent !== null && this.generalEvent !== undefined) {
-    output.writeFieldBegin('generalEvent', Thrift.Type.STRUCT, 7);
-    this.generalEvent.write(output);
+  if (this.ownerAdded !== null && this.ownerAdded !== undefined) {
+    output.writeFieldBegin('ownerAdded', Thrift.Type.STRUCT, 10);
+    this.ownerAdded.write(output);
     output.writeFieldEnd();
   }
-  if (this.userFollowedApplication !== null && this.userFollowedApplication !== undefined) {
-    output.writeFieldBegin('userFollowedApplication', Thrift.Type.STRUCT, 8);
-    this.userFollowedApplication.write(output);
+  if (this.generalEvent !== null && this.generalEvent !== undefined) {
+    output.writeFieldBegin('generalEvent', Thrift.Type.STRUCT, 11);
+    this.generalEvent.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -991,18 +1018,34 @@ EventType.prototype.write = function(output) {
 };
 
 Event = module.exports.Event = function(args) {
+  this.eventId = null;
+  this.userIdOfActor = null;
+  this.actor = null;
+  this.applicationId = null;
+  this.application = null;
   this.eventType = null;
   this.timestamp = null;
-  this.eventId = null;
   if (args) {
+    if (args.eventId !== undefined && args.eventId !== null) {
+      this.eventId = args.eventId;
+    }
+    if (args.userIdOfActor !== undefined && args.userIdOfActor !== null) {
+      this.userIdOfActor = args.userIdOfActor;
+    }
+    if (args.actor !== undefined && args.actor !== null) {
+      this.actor = new Aroma_ttypes.User(args.actor);
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.application !== undefined && args.application !== null) {
+      this.application = new Aroma_ttypes.Application(args.application);
+    }
     if (args.eventType !== undefined && args.eventType !== null) {
       this.eventType = new ttypes.EventType(args.eventType);
     }
     if (args.timestamp !== undefined && args.timestamp !== null) {
       this.timestamp = args.timestamp;
-    }
-    if (args.eventId !== undefined && args.eventId !== null) {
-      this.eventId = args.eventId;
     }
   }
 };
@@ -1021,6 +1064,43 @@ Event.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.eventId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.userIdOfActor = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.actor = new Aroma_ttypes.User();
+        this.actor.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.application = new Aroma_ttypes.Application();
+        this.application.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
       if (ftype == Thrift.Type.STRUCT) {
         this.eventType = new ttypes.EventType();
         this.eventType.read(input);
@@ -1028,16 +1108,9 @@ Event.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 2:
+      case 7:
       if (ftype == Thrift.Type.I64) {
         this.timestamp = input.readI64();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.eventId = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -1053,19 +1126,39 @@ Event.prototype.read = function(input) {
 
 Event.prototype.write = function(output) {
   output.writeStructBegin('Event');
+  if (this.eventId !== null && this.eventId !== undefined) {
+    output.writeFieldBegin('eventId', Thrift.Type.STRING, 1);
+    output.writeString(this.eventId);
+    output.writeFieldEnd();
+  }
+  if (this.userIdOfActor !== null && this.userIdOfActor !== undefined) {
+    output.writeFieldBegin('userIdOfActor', Thrift.Type.STRING, 2);
+    output.writeString(this.userIdOfActor);
+    output.writeFieldEnd();
+  }
+  if (this.actor !== null && this.actor !== undefined) {
+    output.writeFieldBegin('actor', Thrift.Type.STRUCT, 3);
+    this.actor.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.application !== null && this.application !== undefined) {
+    output.writeFieldBegin('application', Thrift.Type.STRUCT, 5);
+    this.application.write(output);
+    output.writeFieldEnd();
+  }
   if (this.eventType !== null && this.eventType !== undefined) {
-    output.writeFieldBegin('eventType', Thrift.Type.STRUCT, 1);
+    output.writeFieldBegin('eventType', Thrift.Type.STRUCT, 6);
     this.eventType.write(output);
     output.writeFieldEnd();
   }
   if (this.timestamp !== null && this.timestamp !== undefined) {
-    output.writeFieldBegin('timestamp', Thrift.Type.I64, 2);
+    output.writeFieldBegin('timestamp', Thrift.Type.I64, 7);
     output.writeI64(this.timestamp);
-    output.writeFieldEnd();
-  }
-  if (this.eventId !== null && this.eventId !== undefined) {
-    output.writeFieldBegin('eventId', Thrift.Type.STRING, 3);
-    output.writeString(this.eventId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -17,7 +17,7 @@ SendNotificationRequest = function(args) {
       this.event = new Event(args.event);
     }
     if (args.channels !== undefined && args.channels !== null) {
-      this.channels = Thrift.copyList(args.channels, [null]);
+      this.channels = Thrift.copyMap(args.channels, [null]);
     }
   }
 };
@@ -52,22 +52,32 @@ SendNotificationRequest.prototype.read = function(input) {
       }
       break;
       case 3:
-      if (ftype == Thrift.Type.LIST) {
+      if (ftype == Thrift.Type.MAP) {
         var _size0 = 0;
         var _rtmp34;
-        this.channels = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
-        _etype3 = _rtmp34.etype;
+        this.channels = {};
+        var _ktype1 = 0;
+        var _vtype2 = 0;
+        _rtmp34 = input.readMapBegin();
+        _ktype1 = _rtmp34.ktype;
+        _vtype2 = _rtmp34.vtype;
         _size0 = _rtmp34.size;
         for (var _i5 = 0; _i5 < _size0; ++_i5)
         {
-          var elem6 = null;
-          elem6 = new AromaChannel();
-          elem6.read(input);
-          this.channels.push(elem6);
+          if (_i5 > 0 ) {
+            if (input.rstack.length > input.rpos[input.rpos.length -1] + 1) {
+              input.rstack.pop();
+            }
+          }
+          var key6 = null;
+          var val7 = null;
+          key6 = new AromaChannel();
+          key6.read(input);
+          val7 = new User();
+          val7.read(input);
+          this.channels[key6] = val7;
         }
-        input.readListEnd();
+        input.readMapEnd();
       } else {
         input.skip(ftype);
       }
@@ -94,17 +104,18 @@ SendNotificationRequest.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.channels !== null && this.channels !== undefined) {
-    output.writeFieldBegin('channels', Thrift.Type.LIST, 3);
-    output.writeListBegin(Thrift.Type.STRUCT, this.channels.length);
-    for (var iter7 in this.channels)
+    output.writeFieldBegin('channels', Thrift.Type.MAP, 3);
+    output.writeMapBegin(Thrift.Type.STRUCT, Thrift.Type.STRUCT, Thrift.objectLength(this.channels));
+    for (var kiter8 in this.channels)
     {
-      if (this.channels.hasOwnProperty(iter7))
+      if (this.channels.hasOwnProperty(kiter8))
       {
-        iter7 = this.channels[iter7];
-        iter7.write(output);
+        var viter9 = this.channels[kiter8];
+        kiter8.write(output);
+        viter9.write(output);
       }
     }
-    output.writeListEnd();
+    output.writeMapEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();

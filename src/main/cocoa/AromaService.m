@@ -379,6 +379,493 @@
 
 @end
 
+@implementation AromaService_DeleteActivityRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.deleteAll = NO;
+
+#endif
+  return self;
+}
+
+- (id) initWithToken: (AromaService_UserToken) token eventId: (AromaService_uuid) eventId deleteAll: (BOOL) deleteAll multipleEventIds: (NSMutableArray *) multipleEventIds
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __eventId = [eventId retain_stub];
+  __eventId_isset = YES;
+  __deleteAll = deleteAll;
+  __deleteAll_isset = YES;
+  __multipleEventIds = [multipleEventIds retain_stub];
+  __multipleEventIds_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"eventId"])
+  {
+    __eventId = [[decoder decodeObjectForKey: @"eventId"] retain_stub];
+    __eventId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"deleteAll"])
+  {
+    __deleteAll = [decoder decodeBoolForKey: @"deleteAll"];
+    __deleteAll_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"multipleEventIds"])
+  {
+    __multipleEventIds = [[decoder decodeObjectForKey: @"multipleEventIds"] retain_stub];
+    __multipleEventIds_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__eventId_isset)
+  {
+    [encoder encodeObject: __eventId forKey: @"eventId"];
+  }
+  if (__deleteAll_isset)
+  {
+    [encoder encodeBool: __deleteAll forKey: @"deleteAll"];
+  }
+  if (__multipleEventIds_isset)
+  {
+    [encoder encodeObject: __multipleEventIds forKey: @"multipleEventIds"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __eventId_isset ? 2654435761 : 0;
+  if (__eventId_isset)
+  {
+    hash = (hash * 31) ^ [__eventId hash];
+  }
+  hash = (hash * 31) ^ __deleteAll_isset ? 2654435761 : 0;
+  if (__deleteAll_isset)
+  {
+    hash = (hash * 31) ^ [@(__deleteAll) hash];
+  }
+  hash = (hash * 31) ^ __multipleEventIds_isset ? 2654435761 : 0;
+  if (__multipleEventIds_isset)
+  {
+    hash = (hash * 31) ^ [__multipleEventIds hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_DeleteActivityRequest class]]) {
+    return NO;
+  }
+  AromaService_DeleteActivityRequest *other = (AromaService_DeleteActivityRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__eventId_isset != other->__eventId_isset) ||
+      (__eventId_isset && ((__eventId || other->__eventId) && ![__eventId isEqual:other->__eventId]))) {
+    return NO;
+  }
+  if ((__deleteAll_isset != other->__deleteAll_isset) ||
+      (__deleteAll_isset && (__deleteAll != other->__deleteAll))) {
+    return NO;
+  }
+  if ((__multipleEventIds_isset != other->__multipleEventIds_isset) ||
+      (__multipleEventIds_isset && ((__multipleEventIds || other->__multipleEventIds) && ![__multipleEventIds isEqual:other->__multipleEventIds]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__eventId release_stub];
+  [__multipleEventIds release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (AromaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) eventId {
+  return [[__eventId retain_stub] autorelease_stub];
+}
+
+- (void) setEventId: (NSString *) eventId {
+  [eventId retain_stub];
+  [__eventId release_stub];
+  __eventId = eventId;
+  __eventId_isset = YES;
+}
+
+- (BOOL) eventIdIsSet {
+  return __eventId_isset;
+}
+
+- (void) unsetEventId {
+  [__eventId release_stub];
+  __eventId = nil;
+  __eventId_isset = NO;
+}
+
+- (BOOL) deleteAll {
+  return __deleteAll;
+}
+
+- (void) setDeleteAll: (BOOL) deleteAll {
+  __deleteAll = deleteAll;
+  __deleteAll_isset = YES;
+}
+
+- (BOOL) deleteAllIsSet {
+  return __deleteAll_isset;
+}
+
+- (void) unsetDeleteAll {
+  __deleteAll_isset = NO;
+}
+
+- (NSMutableArray *) multipleEventIds {
+  return [[__multipleEventIds retain_stub] autorelease_stub];
+}
+
+- (void) setMultipleEventIds: (NSMutableArray *) multipleEventIds {
+  [multipleEventIds retain_stub];
+  [__multipleEventIds release_stub];
+  __multipleEventIds = multipleEventIds;
+  __multipleEventIds_isset = YES;
+}
+
+- (BOOL) multipleEventIdsIsSet {
+  return __multipleEventIds_isset;
+}
+
+- (void) unsetMultipleEventIds {
+  [__multipleEventIds release_stub];
+  __multipleEventIds = nil;
+  __multipleEventIds_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEventId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setDeleteAll: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            NSString * _elem2 = [inProtocol readString];
+            [fieldValue addObject: _elem2];
+          }
+          [inProtocol readListEnd];
+          [self setMultipleEventIds: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeleteActivityRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__eventId_isset) {
+    if (__eventId != nil) {
+      [outProtocol writeFieldBeginWithName: @"eventId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __eventId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__deleteAll_isset) {
+    [outProtocol writeFieldBeginWithName: @"deleteAll" type: TType_BOOL fieldID: 3];
+    [outProtocol writeBool: __deleteAll];
+    [outProtocol writeFieldEnd];
+  }
+  if (__multipleEventIds_isset) {
+    if (__multipleEventIds != nil) {
+      [outProtocol writeFieldBeginWithName: @"multipleEventIds" type: TType_LIST fieldID: 4];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRING size: [__multipleEventIds count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__multipleEventIds count]; idx4++)
+        {
+          [outProtocol writeString: [__multipleEventIds objectAtIndex: idx4]];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteActivityRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",eventId:"];
+  [ms appendFormat: @"\"%@\"", __eventId];
+  [ms appendString: @",deleteAll:"];
+  [ms appendFormat: @"%i", __deleteAll];
+  [ms appendString: @",multipleEventIds:"];
+  [ms appendFormat: @"%@", __multipleEventIds];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaService_DeleteActivityResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.totalEventsDeleted = 0;
+
+#endif
+  return self;
+}
+
+- (id) initWithTotalEventsDeleted: (AromaService_int) totalEventsDeleted
+{
+  self = [super init];
+  __totalEventsDeleted = totalEventsDeleted;
+  __totalEventsDeleted_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"totalEventsDeleted"])
+  {
+    __totalEventsDeleted = [decoder decodeInt32ForKey: @"totalEventsDeleted"];
+    __totalEventsDeleted_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__totalEventsDeleted_isset)
+  {
+    [encoder encodeInt32: __totalEventsDeleted forKey: @"totalEventsDeleted"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __totalEventsDeleted_isset ? 2654435761 : 0;
+  if (__totalEventsDeleted_isset)
+  {
+    hash = (hash * 31) ^ [@(__totalEventsDeleted) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_DeleteActivityResponse class]]) {
+    return NO;
+  }
+  AromaService_DeleteActivityResponse *other = (AromaService_DeleteActivityResponse *)anObject;
+  if ((__totalEventsDeleted_isset != other->__totalEventsDeleted_isset) ||
+      (__totalEventsDeleted_isset && (__totalEventsDeleted != other->__totalEventsDeleted))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [super dealloc_stub];
+}
+
+- (int32_t) totalEventsDeleted {
+  return __totalEventsDeleted;
+}
+
+- (void) setTotalEventsDeleted: (int32_t) totalEventsDeleted {
+  __totalEventsDeleted = totalEventsDeleted;
+  __totalEventsDeleted_isset = YES;
+}
+
+- (BOOL) totalEventsDeletedIsSet {
+  return __totalEventsDeleted_isset;
+}
+
+- (void) unsetTotalEventsDeleted {
+  __totalEventsDeleted_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setTotalEventsDeleted: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeleteActivityResponse"];
+  if (__totalEventsDeleted_isset) {
+    [outProtocol writeFieldBeginWithName: @"totalEventsDeleted" type: TType_I32 fieldID: 1];
+    [outProtocol writeI32: __totalEventsDeleted];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteActivityResponse("];
+  [ms appendString: @"totalEventsDeleted:"];
+  [ms appendFormat: @"%i", __totalEventsDeleted];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaService_DeleteApplicationRequest
 
 - (id) init
@@ -470,11 +957,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -529,7 +1016,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -899,11 +1386,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -1017,7 +1504,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -1043,14 +1530,14 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
-          int _i1;
-          for (_i1 = 0; _i1 < _size0; ++_i1)
+          int _size5;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
+          int _i6;
+          for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            NSString * _elem2 = [inProtocol readString];
-            [fieldValue addObject: _elem2];
+            NSString * _elem7 = [inProtocol readString];
+            [fieldValue addObject: _elem7];
           }
           [inProtocol readListEnd];
           [self setMessageIds: fieldValue];
@@ -1104,10 +1591,10 @@
       [outProtocol writeFieldBeginWithName: @"messageIds" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRING size: [__messageIds count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__messageIds count]; idx4++)
+        int idx9;
+        for (idx9 = 0; idx9 < [__messageIds count]; idx9++)
         {
-          [outProtocol writeString: [__messageIds objectAtIndex: idx4]];
+          [outProtocol writeString: [__messageIds objectAtIndex: idx9]];
         }
         [outProtocol writeListEnd];
       }
@@ -1447,11 +1934,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -1565,7 +2052,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -1591,14 +2078,14 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size5;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
-          int _i6;
-          for (_i6 = 0; _i6 < _size5; ++_i6)
+          int _size10;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
+          int _i11;
+          for (_i11 = 0; _i11 < _size10; ++_i11)
           {
-            NSString * _elem7 = [inProtocol readString];
-            [fieldValue addObject: _elem7];
+            NSString * _elem12 = [inProtocol readString];
+            [fieldValue addObject: _elem12];
           }
           [inProtocol readListEnd];
           [self setMessageIds: fieldValue];
@@ -1652,10 +2139,10 @@
       [outProtocol writeFieldBeginWithName: @"messageIds" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRING size: [__messageIds count]];
-        int idx9;
-        for (idx9 = 0; idx9 < [__messageIds count]; idx9++)
+        int idx14;
+        for (idx14 = 0; idx14 < [__messageIds count]; idx14++)
         {
-          [outProtocol writeString: [__messageIds objectAtIndex: idx9]];
+          [outProtocol writeString: [__messageIds objectAtIndex: idx14]];
         }
         [outProtocol writeListEnd];
       }
@@ -2057,11 +2544,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -2234,7 +2721,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -2278,14 +2765,14 @@
         break;
       case 6:
         if (fieldType == TType_SET) {
-          int _size10;
-          [inProtocol readSetBeginReturningElementType: NULL size: &_size10];
-          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size10];
-          int _i11;
-          for (_i11 = 0; _i11 < _size10; ++_i11)
+          int _size15;
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size15];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size15];
+          int _i16;
+          for (_i16 = 0; _i16 < _size15; ++_i16)
           {
-            NSString * _elem12 = [inProtocol readString];
-            [fieldValue addObject: _elem12];
+            NSString * _elem17 = [inProtocol readString];
+            [fieldValue addObject: _elem17];
           }
           [inProtocol readSetEnd];
           [self setOwners: fieldValue];
@@ -2359,11 +2846,11 @@
       [outProtocol writeFieldBeginWithName: @"owners" type: TType_SET fieldID: 6];
       {
         [outProtocol writeSetBeginWithElementType: TType_STRING size: [__owners count]];
-        NSEnumerator * _iter13 = [__owners objectEnumerator];
-        id obj14;
-        while ((obj14 = [_iter13 nextObject]))
+        NSEnumerator * _iter18 = [__owners objectEnumerator];
+        id obj19;
+        while ((obj19 = [_iter18 nextObject]))
         {
-          [outProtocol writeString: obj14];
+          [outProtocol writeString: obj19];
         }
         [outProtocol writeSetEnd];
       }
@@ -2505,11 +2992,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
+- (AromaAuthentication_ApplicationToken *) applicationToken {
   return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
   [applicationToken retain_stub];
   [__applicationToken release_stub];
   __applicationToken = applicationToken;
@@ -2564,7 +3051,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationToken: fieldValue];
           [fieldValue release_stub];
@@ -2718,11 +3205,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -2777,7 +3264,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -2908,11 +3395,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
+- (AromaAuthentication_ApplicationToken *) applicationToken {
   return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
   [applicationToken retain_stub];
   [__applicationToken release_stub];
   __applicationToken = applicationToken;
@@ -2946,7 +3433,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationToken: fieldValue];
           [fieldValue release_stub];
@@ -3081,11 +3568,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -3140,7 +3627,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -3503,11 +3990,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -3562,7 +4049,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -3969,11 +4456,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -3990,11 +4477,11 @@
   __token_isset = NO;
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
+- (AromaAuthentication_ApplicationToken *) applicationToken {
   return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
   [applicationToken retain_stub];
   [__applicationToken release_stub];
   __applicationToken = applicationToken;
@@ -4070,7 +4557,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -4080,7 +4567,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationToken: fieldValue];
           [fieldValue release_stub];
@@ -4239,11 +4726,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) serviceToken {
+- (AromaAuthentication_ApplicationToken *) serviceToken {
   return [[__serviceToken retain_stub] autorelease_stub];
 }
 
-- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
+- (void) setServiceToken: (AromaAuthentication_ApplicationToken *) serviceToken {
   [serviceToken retain_stub];
   [__serviceToken release_stub];
   __serviceToken = serviceToken;
@@ -4277,7 +4764,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setServiceToken: fieldValue];
           [fieldValue release_stub];
@@ -4412,11 +4899,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -4471,7 +4958,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -4755,7 +5242,7 @@
   return self;
 }
 
-- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress
+- (id) initWithCredentials: (AromaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress
 {
   self = [super init];
   __credentials = [credentials retain_stub];
@@ -4836,11 +5323,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_Credentials *) credentials {
+- (AromaAuthentication_Credentials *) credentials {
   return [[__credentials retain_stub] autorelease_stub];
 }
 
-- (void) setCredentials: (BananaAuthentication_Credentials *) credentials {
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials {
   [credentials retain_stub];
   [__credentials release_stub];
   __credentials = credentials;
@@ -4895,7 +5382,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Credentials *fieldValue = [[BananaAuthentication_Credentials alloc] init];
+          AromaAuthentication_Credentials *fieldValue = [[AromaAuthentication_Credentials alloc] init];
           [fieldValue read: inProtocol];
           [self setCredentials: fieldValue];
           [fieldValue release_stub];
@@ -5026,11 +5513,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) userToken {
+- (AromaAuthentication_UserToken *) userToken {
   return [[__userToken retain_stub] autorelease_stub];
 }
 
-- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+- (void) setUserToken: (AromaAuthentication_UserToken *) userToken {
   [userToken retain_stub];
   [__userToken release_stub];
   __userToken = userToken;
@@ -5064,7 +5551,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setUserToken: fieldValue];
           [fieldValue release_stub];
@@ -5118,7 +5605,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (AromaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage
 {
   self = [super init];
   __email = [email retain_stub];
@@ -5554,11 +6041,11 @@
   __organizationId_isset = NO;
 }
 
-- (BananaAuthentication_Credentials *) credentials {
+- (AromaAuthentication_Credentials *) credentials {
   return [[__credentials retain_stub] autorelease_stub];
 }
 
-- (void) setCredentials: (BananaAuthentication_Credentials *) credentials {
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials {
   [credentials retain_stub];
   [__credentials release_stub];
   __credentials = credentials;
@@ -5724,7 +6211,7 @@
         break;
       case 8:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Credentials *fieldValue = [[BananaAuthentication_Credentials alloc] init];
+          AromaAuthentication_Credentials *fieldValue = [[AromaAuthentication_Credentials alloc] init];
           [fieldValue read: inProtocol];
           [self setCredentials: fieldValue];
           [fieldValue release_stub];
@@ -5907,7 +6394,7 @@
   return self;
 }
 
-- (id) initWithUserToken: (AromaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId
+- (id) initWithUserToken: (AromaService_UserToken) userToken account: (AromaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId
 {
   self = [super init];
   __userToken = [userToken retain_stub];
@@ -6009,11 +6496,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) userToken {
+- (AromaAuthentication_UserToken *) userToken {
   return [[__userToken retain_stub] autorelease_stub];
 }
 
-- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+- (void) setUserToken: (AromaAuthentication_UserToken *) userToken {
   [userToken retain_stub];
   [__userToken release_stub];
   __userToken = userToken;
@@ -6030,11 +6517,11 @@
   __userToken_isset = NO;
 }
 
-- (BananaAuthentication_AromaAccount *) account {
+- (AromaAuthentication_AromaAccount *) account {
   return [[__account retain_stub] autorelease_stub];
 }
 
-- (void) setAccount: (BananaAuthentication_AromaAccount *) account {
+- (void) setAccount: (AromaAuthentication_AromaAccount *) account {
   [account retain_stub];
   [__account release_stub];
   __account = account;
@@ -6089,7 +6576,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setUserToken: fieldValue];
           [fieldValue release_stub];
@@ -6099,7 +6586,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_AromaAccount *fieldValue = [[BananaAuthentication_AromaAccount alloc] init];
+          AromaAuthentication_AromaAccount *fieldValue = [[AromaAuthentication_AromaAccount alloc] init];
           [fieldValue read: inProtocol];
           [self setAccount: fieldValue];
           [fieldValue release_stub];
@@ -6306,11 +6793,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -6407,7 +6894,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -6768,11 +7255,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -6848,7 +7335,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -7190,11 +7677,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -7270,7 +7757,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -7591,11 +8078,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -7650,7 +8137,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -7978,11 +8465,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_AuthenticationToken *) token {
+- (AromaAuthentication_AuthenticationToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_AuthenticationToken *) token {
+- (void) setToken: (AromaAuthentication_AuthenticationToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -8054,7 +8541,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_AuthenticationToken *fieldValue = [[BananaAuthentication_AuthenticationToken alloc] init];
+          AromaAuthentication_AuthenticationToken *fieldValue = [[AromaAuthentication_AuthenticationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -8290,16 +8777,16 @@
         break;
       case 2:
         if (fieldType == TType_LIST) {
-          int _size15;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
-          int _i16;
-          for (_i16 = 0; _i16 < _size15; ++_i16)
+          int _size20;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
+          int _i21;
+          for (_i21 = 0; _i21 < _size20; ++_i21)
           {
-            AromaChannels_AromaChannel *_elem17 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem17 read: inProtocol];
-            [fieldValue addObject: _elem17];
-            [_elem17 release_stub];
+            AromaChannels_AromaChannel *_elem22 = [[AromaChannels_AromaChannel alloc] init];
+            [_elem22 read: inProtocol];
+            [fieldValue addObject: _elem22];
+            [_elem22 release_stub];
           }
           [inProtocol readListEnd];
           [self setRegisteredChannels: fieldValue];
@@ -8331,10 +8818,10 @@
       [outProtocol writeFieldBeginWithName: @"registeredChannels" type: TType_LIST fieldID: 2];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__registeredChannels count]];
-        int idx19;
-        for (idx19 = 0; idx19 < [__registeredChannels count]; idx19++)
+        int idx24;
+        for (idx24 = 0; idx24 < [__registeredChannels count]; idx24++)
         {
-          [[__registeredChannels objectAtIndex: idx19] write: outProtocol];
+          [[__registeredChannels objectAtIndex: idx24] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8431,11 +8918,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -8469,7 +8956,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -8755,16 +9242,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size20;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
-          int _i21;
-          for (_i21 = 0; _i21 < _size20; ++_i21)
+          int _size25;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
+          int _i26;
+          for (_i26 = 0; _i26 < _size25; ++_i26)
           {
-            Aroma_User *_elem22 = [[Aroma_User alloc] init];
-            [_elem22 read: inProtocol];
-            [fieldValue addObject: _elem22];
-            [_elem22 release_stub];
+            Aroma_User *_elem27 = [[Aroma_User alloc] init];
+            [_elem27 read: inProtocol];
+            [fieldValue addObject: _elem27];
+            [_elem27 release_stub];
           }
           [inProtocol readListEnd];
           [self setFreshUsers: fieldValue];
@@ -8775,16 +9262,16 @@
         break;
       case 2:
         if (fieldType == TType_LIST) {
-          int _size23;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size23];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size23];
-          int _i24;
-          for (_i24 = 0; _i24 < _size23; ++_i24)
+          int _size28;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size28];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size28];
+          int _i29;
+          for (_i29 = 0; _i29 < _size28; ++_i29)
           {
-            Aroma_Application *_elem25 = [[Aroma_Application alloc] init];
-            [_elem25 read: inProtocol];
-            [fieldValue addObject: _elem25];
-            [_elem25 release_stub];
+            Aroma_Application *_elem30 = [[Aroma_Application alloc] init];
+            [_elem30 read: inProtocol];
+            [fieldValue addObject: _elem30];
+            [_elem30 release_stub];
           }
           [inProtocol readListEnd];
           [self setFreshApplications: fieldValue];
@@ -8795,16 +9282,16 @@
         break;
       case 3:
         if (fieldType == TType_LIST) {
-          int _size26;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size26];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size26];
-          int _i27;
-          for (_i27 = 0; _i27 < _size26; ++_i27)
+          int _size31;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size31];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size31];
+          int _i32;
+          for (_i32 = 0; _i32 < _size31; ++_i32)
           {
-            AromaEvents_HealthCheckFailed *_elem28 = [[AromaEvents_HealthCheckFailed alloc] init];
-            [_elem28 read: inProtocol];
-            [fieldValue addObject: _elem28];
-            [_elem28 release_stub];
+            AromaEvents_HealthCheckFailed *_elem33 = [[AromaEvents_HealthCheckFailed alloc] init];
+            [_elem33 read: inProtocol];
+            [fieldValue addObject: _elem33];
+            [_elem33 release_stub];
           }
           [inProtocol readListEnd];
           [self setFailedHealthChecks: fieldValue];
@@ -8815,16 +9302,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size29;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size29];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size29];
-          int _i30;
-          for (_i30 = 0; _i30 < _size29; ++_i30)
+          int _size34;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size34];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size34];
+          int _i35;
+          for (_i35 = 0; _i35 < _size34; ++_i35)
           {
-            AromaEvents_GeneralEvent *_elem31 = [[AromaEvents_GeneralEvent alloc] init];
-            [_elem31 read: inProtocol];
-            [fieldValue addObject: _elem31];
-            [_elem31 release_stub];
+            AromaEvents_Event *_elem36 = [[AromaEvents_Event alloc] init];
+            [_elem36 read: inProtocol];
+            [fieldValue addObject: _elem36];
+            [_elem36 release_stub];
           }
           [inProtocol readListEnd];
           [self setGeneralEvents: fieldValue];
@@ -8849,10 +9336,10 @@
       [outProtocol writeFieldBeginWithName: @"freshUsers" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshUsers count]];
-        int idx33;
-        for (idx33 = 0; idx33 < [__freshUsers count]; idx33++)
+        int idx38;
+        for (idx38 = 0; idx38 < [__freshUsers count]; idx38++)
         {
-          [[__freshUsers objectAtIndex: idx33] write: outProtocol];
+          [[__freshUsers objectAtIndex: idx38] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8864,10 +9351,10 @@
       [outProtocol writeFieldBeginWithName: @"freshApplications" type: TType_LIST fieldID: 2];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshApplications count]];
-        int idx35;
-        for (idx35 = 0; idx35 < [__freshApplications count]; idx35++)
+        int idx40;
+        for (idx40 = 0; idx40 < [__freshApplications count]; idx40++)
         {
-          [[__freshApplications objectAtIndex: idx35] write: outProtocol];
+          [[__freshApplications objectAtIndex: idx40] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8879,10 +9366,10 @@
       [outProtocol writeFieldBeginWithName: @"failedHealthChecks" type: TType_LIST fieldID: 3];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__failedHealthChecks count]];
-        int idx37;
-        for (idx37 = 0; idx37 < [__failedHealthChecks count]; idx37++)
+        int idx42;
+        for (idx42 = 0; idx42 < [__failedHealthChecks count]; idx42++)
         {
-          [[__failedHealthChecks objectAtIndex: idx37] write: outProtocol];
+          [[__failedHealthChecks objectAtIndex: idx42] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8894,10 +9381,10 @@
       [outProtocol writeFieldBeginWithName: @"generalEvents" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__generalEvents count]];
-        int idx39;
-        for (idx39 = 0; idx39 < [__generalEvents count]; idx39++)
+        int idx44;
+        for (idx44 = 0; idx44 < [__generalEvents count]; idx44++)
         {
-          [[__generalEvents objectAtIndex: idx39] write: outProtocol];
+          [[__generalEvents objectAtIndex: idx44] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8998,11 +9485,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -9036,7 +9523,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -9448,16 +9935,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size40;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
-          int _i41;
-          for (_i41 = 0; _i41 < _size40; ++_i41)
+          int _size45;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
+          int _i46;
+          for (_i46 = 0; _i46 < _size45; ++_i46)
           {
-            Aroma_Message *_elem42 = [[Aroma_Message alloc] init];
-            [_elem42 read: inProtocol];
-            [fieldValue addObject: _elem42];
-            [_elem42 release_stub];
+            Aroma_Message *_elem47 = [[Aroma_Message alloc] init];
+            [_elem47 read: inProtocol];
+            [fieldValue addObject: _elem47];
+            [_elem47 release_stub];
           }
           [inProtocol readListEnd];
           [self setRecentMessages: fieldValue];
@@ -9521,10 +10008,10 @@
       [outProtocol writeFieldBeginWithName: @"recentMessages" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__recentMessages count]];
-        int idx44;
-        for (idx44 = 0; idx44 < [__recentMessages count]; idx44++)
+        int idx49;
+        for (idx49 = 0; idx49 < [__recentMessages count]; idx49++)
         {
-          [[__recentMessages objectAtIndex: idx44] write: outProtocol];
+          [[__recentMessages objectAtIndex: idx49] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9668,11 +10155,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -9723,7 +10210,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -9892,16 +10379,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size45;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
-          int _i46;
-          for (_i46 = 0; _i46 < _size45; ++_i46)
+          int _size50;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
+          int _i51;
+          for (_i51 = 0; _i51 < _size50; ++_i51)
           {
-            Aroma_Message *_elem47 = [[Aroma_Message alloc] init];
-            [_elem47 read: inProtocol];
-            [fieldValue addObject: _elem47];
-            [_elem47 release_stub];
+            Aroma_Message *_elem52 = [[Aroma_Message alloc] init];
+            [_elem52 read: inProtocol];
+            [fieldValue addObject: _elem52];
+            [_elem52 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -9926,10 +10413,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx49;
-        for (idx49 = 0; idx49 < [__messages count]; idx49++)
+        int idx54;
+        for (idx54 = 0; idx54 < [__messages count]; idx54++)
         {
-          [[__messages objectAtIndex: idx49] write: outProtocol];
+          [[__messages objectAtIndex: idx54] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10067,11 +10554,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -10143,7 +10630,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -10368,16 +10855,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size50;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
-          int _i51;
-          for (_i51 = 0; _i51 < _size50; ++_i51)
+          int _size55;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
+          int _i56;
+          for (_i56 = 0; _i56 < _size55; ++_i56)
           {
-            Aroma_Message *_elem52 = [[Aroma_Message alloc] init];
-            [_elem52 read: inProtocol];
-            [fieldValue addObject: _elem52];
-            [_elem52 release_stub];
+            Aroma_Message *_elem57 = [[Aroma_Message alloc] init];
+            [_elem57 read: inProtocol];
+            [fieldValue addObject: _elem57];
+            [_elem57 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -10410,10 +10897,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx54;
-        for (idx54 = 0; idx54 < [__messages count]; idx54++)
+        int idx59;
+        for (idx59 = 0; idx59 < [__messages count]; idx59++)
         {
-          [[__messages objectAtIndex: idx54] write: outProtocol];
+          [[__messages objectAtIndex: idx59] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10557,11 +11044,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -10637,7 +11124,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -10877,13 +11364,15 @@
   return self;
 }
 
-- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId
+- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId desiredThumbnailSize: (Aroma_Dimension *) desiredThumbnailSize
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __mediaId = [mediaId retain_stub];
   __mediaId_isset = YES;
+  __desiredThumbnailSize = [desiredThumbnailSize retain_stub];
+  __desiredThumbnailSize_isset = YES;
   return self;
 }
 
@@ -10900,6 +11389,11 @@
     __mediaId = [[decoder decodeObjectForKey: @"mediaId"] retain_stub];
     __mediaId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"desiredThumbnailSize"])
+  {
+    __desiredThumbnailSize = [[decoder decodeObjectForKey: @"desiredThumbnailSize"] retain_stub];
+    __desiredThumbnailSize_isset = YES;
+  }
   return self;
 }
 
@@ -10912,6 +11406,10 @@
   if (__mediaId_isset)
   {
     [encoder encodeObject: __mediaId forKey: @"mediaId"];
+  }
+  if (__desiredThumbnailSize_isset)
+  {
+    [encoder encodeObject: __desiredThumbnailSize forKey: @"desiredThumbnailSize"];
   }
 }
 
@@ -10927,6 +11425,11 @@
   if (__mediaId_isset)
   {
     hash = (hash * 31) ^ [__mediaId hash];
+  }
+  hash = (hash * 31) ^ __desiredThumbnailSize_isset ? 2654435761 : 0;
+  if (__desiredThumbnailSize_isset)
+  {
+    hash = (hash * 31) ^ [__desiredThumbnailSize hash];
   }
   return hash;
 }
@@ -10948,6 +11451,10 @@
       (__mediaId_isset && ((__mediaId || other->__mediaId) && ![__mediaId isEqual:other->__mediaId]))) {
     return NO;
   }
+  if ((__desiredThumbnailSize_isset != other->__desiredThumbnailSize_isset) ||
+      (__desiredThumbnailSize_isset && ((__desiredThumbnailSize || other->__desiredThumbnailSize) && ![__desiredThumbnailSize isEqual:other->__desiredThumbnailSize]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -10955,14 +11462,15 @@
 {
   [__token release_stub];
   [__mediaId release_stub];
+  [__desiredThumbnailSize release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -11000,6 +11508,27 @@
   __mediaId_isset = NO;
 }
 
+- (Aroma_Dimension *) desiredThumbnailSize {
+  return [[__desiredThumbnailSize retain_stub] autorelease_stub];
+}
+
+- (void) setDesiredThumbnailSize: (Aroma_Dimension *) desiredThumbnailSize {
+  [desiredThumbnailSize retain_stub];
+  [__desiredThumbnailSize release_stub];
+  __desiredThumbnailSize = desiredThumbnailSize;
+  __desiredThumbnailSize_isset = YES;
+}
+
+- (BOOL) desiredThumbnailSizeIsSet {
+  return __desiredThumbnailSize_isset;
+}
+
+- (void) unsetDesiredThumbnailSize {
+  [__desiredThumbnailSize release_stub];
+  __desiredThumbnailSize = nil;
+  __desiredThumbnailSize_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -11017,7 +11546,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -11029,6 +11558,16 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setMediaId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          Aroma_Dimension *fieldValue = [[Aroma_Dimension alloc] init];
+          [fieldValue read: inProtocol];
+          [self setDesiredThumbnailSize: fieldValue];
+          [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -11058,6 +11597,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__desiredThumbnailSize_isset) {
+    if (__desiredThumbnailSize != nil) {
+      [outProtocol writeFieldBeginWithName: @"desiredThumbnailSize" type: TType_STRUCT fieldID: 3];
+      [__desiredThumbnailSize write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -11072,6 +11618,8 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",mediaId:"];
   [ms appendFormat: @"\"%@\"", __mediaId];
+  [ms appendString: @",desiredThumbnailSize:"];
+  [ms appendFormat: @"%@", __desiredThumbnailSize];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -11321,11 +11869,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -11380,7 +11928,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -11551,16 +12099,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size55;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
-          int _i56;
-          for (_i56 = 0; _i56 < _size55; ++_i56)
+          int _size60;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
+          int _i61;
+          for (_i61 = 0; _i61 < _size60; ++_i61)
           {
-            Aroma_Application *_elem57 = [[Aroma_Application alloc] init];
-            [_elem57 read: inProtocol];
-            [fieldValue addObject: _elem57];
-            [_elem57 release_stub];
+            Aroma_Application *_elem62 = [[Aroma_Application alloc] init];
+            [_elem62 read: inProtocol];
+            [fieldValue addObject: _elem62];
+            [_elem62 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -11585,10 +12133,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx59;
-        for (idx59 = 0; idx59 < [__applications count]; idx59++)
+        int idx64;
+        for (idx64 = 0; idx64 < [__applications count]; idx64++)
         {
-          [[__applications objectAtIndex: idx59] write: outProtocol];
+          [[__applications objectAtIndex: idx64] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -11704,11 +12252,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -11763,7 +12311,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -11934,16 +12482,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size60;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
-          int _i61;
-          for (_i61 = 0; _i61 < _size60; ++_i61)
+          int _size65;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
+          int _i66;
+          for (_i66 = 0; _i66 < _size65; ++_i66)
           {
-            Aroma_Application *_elem62 = [[Aroma_Application alloc] init];
-            [_elem62 read: inProtocol];
-            [fieldValue addObject: _elem62];
-            [_elem62 release_stub];
+            Aroma_Application *_elem67 = [[Aroma_Application alloc] init];
+            [_elem67 read: inProtocol];
+            [fieldValue addObject: _elem67];
+            [_elem67 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -11968,10 +12516,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx64;
-        for (idx64 = 0; idx64 < [__applications count]; idx64++)
+        int idx69;
+        for (idx69 = 0; idx69 < [__applications count]; idx69++)
         {
-          [[__applications objectAtIndex: idx64] write: outProtocol];
+          [[__applications objectAtIndex: idx69] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12066,11 +12614,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -12104,7 +12652,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -12256,16 +12804,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size65;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
-          int _i66;
-          for (_i66 = 0; _i66 < _size65; ++_i66)
+          int _size70;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size70];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size70];
+          int _i71;
+          for (_i71 = 0; _i71 < _size70; ++_i71)
           {
-            AromaChannels_AromaChannel *_elem67 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem67 read: inProtocol];
-            [fieldValue addObject: _elem67];
-            [_elem67 release_stub];
+            AromaChannels_AromaChannel *_elem72 = [[AromaChannels_AromaChannel alloc] init];
+            [_elem72 read: inProtocol];
+            [fieldValue addObject: _elem72];
+            [_elem72 release_stub];
           }
           [inProtocol readListEnd];
           [self setChannels: fieldValue];
@@ -12290,10 +12838,10 @@
       [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx69;
-        for (idx69 = 0; idx69 < [__channels count]; idx69++)
+        int idx74;
+        for (idx74 = 0; idx74 < [__channels count]; idx74++)
         {
-          [[__channels objectAtIndex: idx69] write: outProtocol];
+          [[__channels objectAtIndex: idx74] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12410,11 +12958,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -12465,7 +13013,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -12634,16 +13182,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size70;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size70];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size70];
-          int _i71;
-          for (_i71 = 0; _i71 < _size70; ++_i71)
+          int _size75;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size75];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size75];
+          int _i76;
+          for (_i76 = 0; _i76 < _size75; ++_i76)
           {
-            AromaEvents_Event *_elem72 = [[AromaEvents_Event alloc] init];
-            [_elem72 read: inProtocol];
-            [fieldValue addObject: _elem72];
-            [_elem72 release_stub];
+            AromaEvents_Event *_elem77 = [[AromaEvents_Event alloc] init];
+            [_elem77 read: inProtocol];
+            [fieldValue addObject: _elem77];
+            [_elem77 release_stub];
           }
           [inProtocol readListEnd];
           [self setEvents: fieldValue];
@@ -12668,10 +13216,10 @@
       [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
-        int idx74;
-        for (idx74 = 0; idx74 < [__events count]; idx74++)
+        int idx79;
+        for (idx79 = 0; idx79 < [__events count]; idx79++)
         {
-          [[__events objectAtIndex: idx74] write: outProtocol];
+          [[__events objectAtIndex: idx79] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12766,11 +13314,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -12804,7 +13352,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -12958,16 +13506,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size75;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size75];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size75];
-          int _i76;
-          for (_i76 = 0; _i76 < _size75; ++_i76)
+          int _size80;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size80];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size80];
+          int _i81;
+          for (_i81 = 0; _i81 < _size80; ++_i81)
           {
-            Aroma_ServiceAnnouncement *_elem77 = [[Aroma_ServiceAnnouncement alloc] init];
-            [_elem77 read: inProtocol];
-            [fieldValue addObject: _elem77];
-            [_elem77 release_stub];
+            Aroma_ServiceAnnouncement *_elem82 = [[Aroma_ServiceAnnouncement alloc] init];
+            [_elem82 read: inProtocol];
+            [fieldValue addObject: _elem82];
+            [_elem82 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -12992,10 +13540,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx79;
-        for (idx79 = 0; idx79 < [__serviceAnnouncements count]; idx79++)
+        int idx84;
+        for (idx84 = 0; idx84 < [__serviceAnnouncements count]; idx84++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx79] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx84] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -13132,11 +13680,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -13212,7 +13760,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -13554,11 +14102,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AromaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AromaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -13634,7 +14182,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -13822,16 +14370,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size80;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size80];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size80];
-          int _i81;
-          for (_i81 = 0; _i81 < _size80; ++_i81)
+          int _size85;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size85];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size85];
+          int _i86;
+          for (_i86 = 0; _i86 < _size85; ++_i86)
           {
-            Aroma_Application *_elem82 = [[Aroma_Application alloc] init];
-            [_elem82 read: inProtocol];
-            [fieldValue addObject: _elem82];
-            [_elem82 release_stub];
+            Aroma_Application *_elem87 = [[Aroma_Application alloc] init];
+            [_elem87 read: inProtocol];
+            [fieldValue addObject: _elem87];
+            [_elem87 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -13856,10 +14404,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx84;
-        for (idx84 = 0; idx84 < [__applications count]; idx84++)
+        int idx89;
+        for (idx89 = 0; idx89 < [__applications count]; idx89++)
         {
-          [[__applications objectAtIndex: idx84] write: outProtocol];
+          [[__applications objectAtIndex: idx89] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -13884,7 +14432,7 @@
 
 @end
 
-static double AromaService_API_VERSION = 1.7;
+static double AromaService_API_VERSION = 1.8;
 static AromaService_int AromaService_SERVICE_PORT = 7010;
 static AromaEndpoint_TcpEndpoint * AromaService_PRODUCTION_ENDPOINT;
 static AromaEndpoint_TcpEndpoint * AromaService_BETA_ENDPOINT;
@@ -13894,6 +14442,7 @@ static AromaService_int AromaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 10
 static AromaService_int AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 static AromaService_int AromaService_MAX_MESSAGE_LENGTH = 5000;
 static Aroma_LengthOfTime * AromaService_DEFAULT_INBOX_LIFETIME;
+static Aroma_LengthOfTime * AromaService_DEFAULT_ACTIVITY_LIFETIME;
 static AromaService_int AromaService_APPLICATION_NAME_MAX_LENGTH = 20;
 static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
@@ -13922,6 +14471,11 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   AromaService_DEFAULT_INBOX_LIFETIME = [[Aroma_LengthOfTime alloc] init];
   [AromaService_DEFAULT_INBOX_LIFETIME setValue:3];
   [AromaService_DEFAULT_INBOX_LIFETIME setUnit:5];
+
+;
+  AromaService_DEFAULT_ACTIVITY_LIFETIME = [[Aroma_LengthOfTime alloc] init];
+  [AromaService_DEFAULT_ACTIVITY_LIFETIME setValue:4];
+  [AromaService_DEFAULT_ACTIVITY_LIFETIME setUnit:5];
 
 ;
 }
@@ -13954,6 +14508,9 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 }
 + (Aroma_LengthOfTime *) DEFAULT_INBOX_LIFETIME{
   return AromaService_DEFAULT_INBOX_LIFETIME;
+}
++ (Aroma_LengthOfTime *) DEFAULT_ACTIVITY_LIFETIME{
+  return AromaService_DEFAULT_ACTIVITY_LIFETIME;
 }
 + (AromaService_int) APPLICATION_NAME_MAX_LENGTH{
   return AromaService_APPLICATION_NAME_MAX_LENGTH;
@@ -14217,6 +14774,708 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApiVersion_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%f", __success];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface AromaService_deleteApplication_args : NSObject <TBase, NSCoding> {
+  AromaService_DeleteApplicationRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_DeleteApplicationRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (AromaService_DeleteApplicationRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_DeleteApplicationRequest *) request;
+- (void) setRequest: (AromaService_DeleteApplicationRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation AromaService_deleteApplication_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (AromaService_DeleteApplicationRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_deleteApplication_args class]]) {
+    return NO;
+  }
+  AromaService_deleteApplication_args *other = (AromaService_deleteApplication_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaService_DeleteApplicationRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (AromaService_DeleteApplicationRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaService_DeleteApplicationRequest *fieldValue = [[AromaService_DeleteApplicationRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"deleteApplication_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_deleteApplication_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface AromaService_DeleteApplication_result : NSObject <TBase, NSCoding> {
+  AromaService_DeleteApplicationResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_ApplicationDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+  BOOL __ex4_isset;
+  BOOL __ex5_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_DeleteApplicationResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (AromaService_DeleteApplicationResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_DeleteApplicationResponse *) success;
+- (void) setSuccess: (AromaService_DeleteApplicationResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_ApplicationDoesNotExistException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
+#endif
+- (BOOL) ex5IsSet;
+
+@end
+
+@implementation AromaService_DeleteApplication_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (AromaService_DeleteApplicationResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  __ex5 = [ex5 retain_stub];
+  __ex5_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex5"])
+  {
+    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
+    __ex5_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+  if (__ex5_isset)
+  {
+    [encoder encodeObject: __ex5 forKey: @"ex5"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
+  if (__ex5_isset)
+  {
+    hash = (hash * 31) ^ [__ex5 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_DeleteApplication_result class]]) {
+    return NO;
+  }
+  AromaService_DeleteApplication_result *other = (AromaService_DeleteApplication_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  if ((__ex5_isset != other->__ex5_isset) ||
+      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [__ex4 release_stub];
+  [__ex5 release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaService_DeleteApplicationResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (AromaService_DeleteApplicationResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (AromaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (AromaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (AromaException_InvalidTokenException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (AromaException_ApplicationDoesNotExistException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (AromaException_ApplicationDoesNotExistException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (AromaException_UnauthorizedException *) ex5 {
+  return [[__ex5 retain_stub] autorelease_stub];
+}
+
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
+  [ex5 retain_stub];
+  [__ex5 release_stub];
+  __ex5 = ex5;
+  __ex5_isset = YES;
+}
+
+- (BOOL) ex5IsSet {
+  return __ex5_isset;
+}
+
+- (void) unsetEx5 {
+  [__ex5 release_stub];
+  __ex5 = nil;
+  __ex5_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          AromaService_DeleteApplicationResponse *fieldValue = [[AromaService_DeleteApplicationResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx5: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeleteApplication_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex5_isset) {
+    if (__ex5 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
+      [__ex5 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteApplication_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @",ex5:"];
+  [ms appendFormat: @"%@", __ex5];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -31981,6 +33240,58 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   return [self recv_getApiVersion];
 }
 
+- (void) send_deleteApplication: (AromaService_DeleteApplicationRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"deleteApplication" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"deleteApplication_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (AromaService_DeleteApplicationResponse *) recv_deleteApplication
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  AromaService_DeleteApplication_result * result = [[[AromaService_DeleteApplication_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  if ([result ex5IsSet]) {
+    @throw [result ex5];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"deleteApplication failed: unknown result"];
+}
+
+- (AromaService_DeleteApplicationResponse *) deleteApplication: (AromaService_DeleteApplicationRequest *) request
+{
+  [self send_deleteApplication : request];
+  [[outProtocol transport] flush];
+  return [self recv_deleteApplication];
+}
+
 - (void) send_deleteMessage: (AromaService_DeleteMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"deleteMessage" type: TMessageType_CALL sequenceID: 0];
@@ -33352,6 +34663,14 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"getApiVersion"];
 }
 {
+  SEL s = @selector(process_deleteApplication_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"deleteApplication"];
+}
+{
   SEL s = @selector(process_deleteMessage_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
@@ -33616,6 +34935,23 @@ AromaService_getApiVersion_args * args = [[AromaService_getApiVersion_args alloc
 AromaService_GetApiVersion_result * result = [[AromaService_GetApiVersion_result alloc] init];
 [result setSuccess: [mService getApiVersion]];
 [outProtocol writeMessageBeginWithName: @"getApiVersion"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
+- (void) process_deleteApplication_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+AromaService_deleteApplication_args * args = [[AromaService_deleteApplication_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+AromaService_DeleteApplication_result * result = [[AromaService_DeleteApplication_result alloc] init];
+[result setSuccess: [mService deleteApplication: [args request]]];
+[outProtocol writeMessageBeginWithName: @"deleteApplication"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];

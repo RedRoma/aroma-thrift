@@ -33,11 +33,11 @@ typedef Aroma_timestamp AromaService_timestamp;
 
 typedef Aroma_uuid AromaService_uuid;
 
-typedef BananaAuthentication_ApplicationToken * AromaService_ApplicationToken;
+typedef AromaAuthentication_ApplicationToken * AromaService_ApplicationToken;
 
-typedef BananaAuthentication_AuthenticationToken * AromaService_AuthenticationToken;
+typedef AromaAuthentication_AuthenticationToken * AromaService_AuthenticationToken;
 
-typedef BananaAuthentication_UserToken * AromaService_UserToken;
+typedef AromaAuthentication_UserToken * AromaService_UserToken;
 
 typedef Aroma_Application * AromaService_Application;
 
@@ -137,6 +137,85 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) setMessage: (NSString *) message;
 #endif
 - (BOOL) messageIsSet;
+
+@end
+
+@interface AromaService_DeleteActivityRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __eventId;
+  BOOL __deleteAll;
+  NSMutableArray * __multipleEventIds;
+
+  BOOL __token_isset;
+  BOOL __eventId_isset;
+  BOOL __deleteAll_isset;
+  BOOL __multipleEventIds_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=eventId, setter=setEventId:) AromaService_uuid eventId;
+@property (nonatomic, getter=deleteAll, setter=setDeleteAll:) BOOL deleteAll;
+@property (nonatomic, retain, getter=multipleEventIds, setter=setMultipleEventIds:) NSMutableArray * multipleEventIds;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token eventId: (AromaService_uuid) eventId deleteAll: (BOOL) deleteAll multipleEventIds: (NSMutableArray *) multipleEventIds;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) eventId;
+- (void) setEventId: (AromaService_uuid) eventId;
+#endif
+- (BOOL) eventIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) deleteAll;
+- (void) setDeleteAll: (BOOL) deleteAll;
+#endif
+- (BOOL) deleteAllIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) multipleEventIds;
+- (void) setMultipleEventIds: (NSMutableArray *) multipleEventIds;
+#endif
+- (BOOL) multipleEventIdsIsSet;
+
+@end
+
+@interface AromaService_DeleteActivityResponse : NSObject <TBase, NSCoding> {
+  AromaService_int __totalEventsDeleted;
+
+  BOOL __totalEventsDeleted_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=totalEventsDeleted, setter=setTotalEventsDeleted:) AromaService_int totalEventsDeleted;
+#endif
+
+- (id) init;
+- (id) initWithTotalEventsDeleted: (AromaService_int) totalEventsDeleted;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_int) totalEventsDeleted;
+- (void) setTotalEventsDeleted: (AromaService_int) totalEventsDeleted;
+#endif
+- (BOOL) totalEventsDeletedIsSet;
 
 @end
 
@@ -852,7 +931,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 @end
 
 @interface AromaService_SignInRequest : NSObject <TBase, NSCoding> {
-  BananaAuthentication_Credentials * __credentials;
+  AromaAuthentication_Credentials * __credentials;
   NSString * __emailAddress;
 
   BOOL __credentials_isset;
@@ -860,12 +939,12 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
+@property (nonatomic, retain, getter=credentials, setter=setCredentials:) AromaAuthentication_Credentials * credentials;
 @property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
 #endif
 
 - (id) init;
-- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress;
+- (id) initWithCredentials: (AromaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -873,8 +952,8 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_Credentials *) credentials;
-- (void) setCredentials: (BananaAuthentication_Credentials *) credentials;
+- (AromaAuthentication_Credentials *) credentials;
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials;
 #endif
 - (BOOL) credentialsIsSet;
 
@@ -920,7 +999,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
   NSString * __lastName;
   NSString * __username;
   AromaService_uuid __organizationId;
-  BananaAuthentication_Credentials * __credentials;
+  AromaAuthentication_Credentials * __credentials;
   int __mainRole;
   AromaService_timestamp __birthDate;
   NSString * __githubProfile;
@@ -948,7 +1027,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 @property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
 @property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
 @property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
-@property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
+@property (nonatomic, retain, getter=credentials, setter=setCredentials:) AromaAuthentication_Credentials * credentials;
 @property (nonatomic, getter=mainRole, setter=setMainRole:) int mainRole;
 @property (nonatomic, getter=birthDate, setter=setBirthDate:) AromaService_timestamp birthDate;
 @property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
@@ -956,7 +1035,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (AromaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1006,8 +1085,8 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (BOOL) organizationIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_Credentials *) credentials;
-- (void) setCredentials: (BananaAuthentication_Credentials *) credentials;
+- (AromaAuthentication_Credentials *) credentials;
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials;
 #endif
 - (BOOL) credentialsIsSet;
 
@@ -1039,7 +1118,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @interface AromaService_SignUpResponse : NSObject <TBase, NSCoding> {
   AromaService_UserToken __userToken;
-  BananaAuthentication_AromaAccount * __account;
+  AromaAuthentication_AromaAccount * __account;
   AromaService_uuid __userId;
 
   BOOL __userToken_isset;
@@ -1049,12 +1128,12 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=userToken, setter=setUserToken:) AromaService_UserToken userToken;
-@property (nonatomic, retain, getter=account, setter=setAccount:) BananaAuthentication_AromaAccount * account;
+@property (nonatomic, retain, getter=account, setter=setAccount:) AromaAuthentication_AromaAccount * account;
 @property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
 #endif
 
 - (id) init;
-- (id) initWithUserToken: (AromaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId;
+- (id) initWithUserToken: (AromaService_UserToken) userToken account: (AromaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1068,8 +1147,8 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (BOOL) userTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_AromaAccount *) account;
-- (void) setAccount: (BananaAuthentication_AromaAccount *) account;
+- (AromaAuthentication_AromaAccount *) account;
+- (void) setAccount: (AromaAuthentication_AromaAccount *) account;
 #endif
 - (BOOL) accountIsSet;
 
@@ -1838,18 +1917,21 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 @interface AromaService_GetMediaRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
   AromaService_uuid __mediaId;
+  Aroma_Dimension * __desiredThumbnailSize;
 
   BOOL __token_isset;
   BOOL __mediaId_isset;
+  BOOL __desiredThumbnailSize_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 @property (nonatomic, retain, getter=mediaId, setter=setMediaId:) AromaService_uuid mediaId;
+@property (nonatomic, retain, getter=desiredThumbnailSize, setter=setDesiredThumbnailSize:) Aroma_Dimension * desiredThumbnailSize;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId;
+- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId desiredThumbnailSize: (Aroma_Dimension *) desiredThumbnailSize;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1867,6 +1949,12 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) setMediaId: (AromaService_uuid) mediaId;
 #endif
 - (BOOL) mediaIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (Aroma_Dimension *) desiredThumbnailSize;
+- (void) setDesiredThumbnailSize: (Aroma_Dimension *) desiredThumbnailSize;
+#endif
+- (BOOL) desiredThumbnailSizeIsSet;
 
 @end
 
@@ -2325,6 +2413,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @protocol AromaService_AromaService <NSObject>
 - (double) getApiVersion;  // throws TException
+- (AromaService_DeleteApplicationResponse *) deleteApplication: (AromaService_DeleteApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_DeleteMessageResponse *) deleteMessage: (AromaService_DeleteMessageRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_MessageDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_DismissMessageResponse *) dismissMessage: (AromaService_DismissMessageRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_MessageDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_ProvisionApplicationResponse *) provisionApplication: (AromaService_ProvisionApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
@@ -2378,6 +2467,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 + (AromaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
 + (AromaService_int) MAX_MESSAGE_LENGTH;
 + (Aroma_LengthOfTime *) DEFAULT_INBOX_LIFETIME;
++ (Aroma_LengthOfTime *) DEFAULT_ACTIVITY_LIFETIME;
 + (AromaService_int) APPLICATION_NAME_MAX_LENGTH;
 + (AromaService_int) APPLICATION_MAX_OWNERS;
 @end

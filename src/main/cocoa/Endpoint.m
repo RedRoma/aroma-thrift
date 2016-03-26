@@ -828,7 +828,7 @@
   return self;
 }
 
-- (id) initWithApplicationId: (AromaEndpoint_uuid) applicationId serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken
+- (id) initWithApplicationId: (AromaEndpoint_uuid) applicationId serviceToken: (AromaAuthentication_ApplicationToken *) serviceToken
 {
   self = [super init];
   __applicationId = [applicationId retain_stub];
@@ -930,11 +930,11 @@
   __applicationId_isset = NO;
 }
 
-- (BananaAuthentication_ApplicationToken *) serviceToken {
+- (AromaAuthentication_ApplicationToken *) serviceToken {
   return [[__serviceToken retain_stub] autorelease_stub];
 }
 
-- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
+- (void) setServiceToken: (AromaAuthentication_ApplicationToken *) serviceToken {
   [serviceToken retain_stub];
   [__serviceToken release_stub];
   __serviceToken = serviceToken;
@@ -976,7 +976,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setServiceToken: fieldValue];
           [fieldValue release_stub];

@@ -83,6 +83,10 @@ class CheckExistsRequest;
 
 class CheckExistsResponse;
 
+class DeleteActivityRequest;
+
+class DeleteActivityResponse;
+
 class DeleteApplicationRequest;
 
 class DeleteApplicationResponse;
@@ -294,6 +298,122 @@ class CheckExistsResponse {
 void swap(CheckExistsResponse &a, CheckExistsResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const CheckExistsResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DeleteActivityRequest__isset {
+  _DeleteActivityRequest__isset() : token(false), eventId(false), deleteAll(true), multipleEventIds(false) {}
+  bool token :1;
+  bool eventId :1;
+  bool deleteAll :1;
+  bool multipleEventIds :1;
+} _DeleteActivityRequest__isset;
+
+class DeleteActivityRequest {
+ public:
+
+  DeleteActivityRequest(const DeleteActivityRequest&);
+  DeleteActivityRequest& operator=(const DeleteActivityRequest&);
+  DeleteActivityRequest() : eventId(), deleteAll(false) {
+  }
+
+  virtual ~DeleteActivityRequest() throw();
+  UserToken token;
+  uuid eventId;
+  bool deleteAll;
+  std::vector<uuid>  multipleEventIds;
+
+  _DeleteActivityRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_eventId(const uuid& val);
+
+  void __set_deleteAll(const bool val);
+
+  void __set_multipleEventIds(const std::vector<uuid> & val);
+
+  bool operator == (const DeleteActivityRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(eventId == rhs.eventId))
+      return false;
+    if (__isset.deleteAll != rhs.__isset.deleteAll)
+      return false;
+    else if (__isset.deleteAll && !(deleteAll == rhs.deleteAll))
+      return false;
+    if (__isset.multipleEventIds != rhs.__isset.multipleEventIds)
+      return false;
+    else if (__isset.multipleEventIds && !(multipleEventIds == rhs.multipleEventIds))
+      return false;
+    return true;
+  }
+  bool operator != (const DeleteActivityRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteActivityRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteActivityRequest &a, DeleteActivityRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteActivityRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DeleteActivityResponse__isset {
+  _DeleteActivityResponse__isset() : totalEventsDeleted(true) {}
+  bool totalEventsDeleted :1;
+} _DeleteActivityResponse__isset;
+
+class DeleteActivityResponse {
+ public:
+
+  DeleteActivityResponse(const DeleteActivityResponse&);
+  DeleteActivityResponse& operator=(const DeleteActivityResponse&);
+  DeleteActivityResponse() : totalEventsDeleted(0) {
+  }
+
+  virtual ~DeleteActivityResponse() throw();
+  int totalEventsDeleted;
+
+  _DeleteActivityResponse__isset __isset;
+
+  void __set_totalEventsDeleted(const int val);
+
+  bool operator == (const DeleteActivityResponse & rhs) const
+  {
+    if (__isset.totalEventsDeleted != rhs.__isset.totalEventsDeleted)
+      return false;
+    else if (__isset.totalEventsDeleted && !(totalEventsDeleted == rhs.totalEventsDeleted))
+      return false;
+    return true;
+  }
+  bool operator != (const DeleteActivityResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteActivityResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteActivityResponse &a, DeleteActivityResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteActivityResponse& obj)
 {
   obj.printTo(out);
   return out;
@@ -1613,10 +1733,10 @@ class SnoozeChannelRequest {
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
   SnoozeChannelRequest() : applicationId() {
-     ::tech::aroma::thrift::long tmp70;
-    tmp70 = 4LL;
+     ::tech::aroma::thrift::long tmp80;
+    tmp80 = 4LL;
 
-    lengthOfTime.value = tmp70;
+    lengthOfTime.value = tmp80;
     lengthOfTime.unit = ( ::tech::aroma::thrift::TimeUnit::type)4;
 
   }
@@ -2215,7 +2335,7 @@ class GetBuzzResponse {
   std::vector<User>  freshUsers;
   std::vector<Application>  freshApplications;
   std::vector<HealthCheckFailed>  failedHealthChecks;
-  std::vector< ::aroma::thrift::events::GeneralEvent>  generalEvents;
+  std::vector< ::aroma::thrift::events::Event>  generalEvents;
 
   _GetBuzzResponse__isset __isset;
 
@@ -2225,7 +2345,7 @@ class GetBuzzResponse {
 
   void __set_failedHealthChecks(const std::vector<HealthCheckFailed> & val);
 
-  void __set_generalEvents(const std::vector< ::aroma::thrift::events::GeneralEvent> & val);
+  void __set_generalEvents(const std::vector< ::aroma::thrift::events::Event> & val);
 
   bool operator == (const GetBuzzResponse & rhs) const
   {
@@ -2709,9 +2829,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetFullMessageResponse&
 }
 
 typedef struct _GetMediaRequest__isset {
-  _GetMediaRequest__isset() : token(false), mediaId(false) {}
+  _GetMediaRequest__isset() : token(false), mediaId(false), desiredThumbnailSize(false) {}
   bool token :1;
   bool mediaId :1;
+  bool desiredThumbnailSize :1;
 } _GetMediaRequest__isset;
 
 class GetMediaRequest {
@@ -2725,6 +2846,7 @@ class GetMediaRequest {
   virtual ~GetMediaRequest() throw();
   UserToken token;
   uuid mediaId;
+   ::tech::aroma::thrift::Dimension desiredThumbnailSize;
 
   _GetMediaRequest__isset __isset;
 
@@ -2732,11 +2854,17 @@ class GetMediaRequest {
 
   void __set_mediaId(const uuid& val);
 
+  void __set_desiredThumbnailSize(const  ::tech::aroma::thrift::Dimension& val);
+
   bool operator == (const GetMediaRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     if (!(mediaId == rhs.mediaId))
+      return false;
+    if (__isset.desiredThumbnailSize != rhs.__isset.desiredThumbnailSize)
+      return false;
+    else if (__isset.desiredThumbnailSize && !(desiredThumbnailSize == rhs.desiredThumbnailSize))
       return false;
     return true;
   }

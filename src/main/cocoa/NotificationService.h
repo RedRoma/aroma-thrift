@@ -33,11 +33,13 @@ typedef Aroma_timestamp NotificationService_timestamp;
 
 typedef Aroma_uuid NotificationService_uuid;
 
-typedef BananaAuthentication_AuthenticationToken * NotificationService_AuthenticationToken;
+typedef AromaAuthentication_AuthenticationToken * NotificationService_AuthenticationToken;
 
 typedef Aroma_Application * NotificationService_Application;
 
 typedef int NotificationService_Urgency;
+
+typedef Aroma_User * NotificationService_User;
 
 typedef AromaChannels_AromaChannel * NotificationService_AromaChannel;
 
@@ -66,7 +68,7 @@ typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedE
 @interface NotificationService_SendNotificationRequest : NSObject <TBase, NSCoding> {
   NotificationService_AuthenticationToken __token;
   NotificationService_Event __event;
-  NSMutableArray * __channels;
+  NSMutableDictionary * __channels;
 
   BOOL __token_isset;
   BOOL __event_isset;
@@ -76,11 +78,11 @@ typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedE
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) NotificationService_AuthenticationToken token;
 @property (nonatomic, retain, getter=event, setter=setEvent:) NotificationService_Event event;
-@property (nonatomic, retain, getter=channels, setter=setChannels:) NSMutableArray * channels;
+@property (nonatomic, retain, getter=channels, setter=setChannels:) NSMutableDictionary * channels;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableArray *) channels;
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableDictionary *) channels;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -100,8 +102,8 @@ typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedE
 - (BOOL) eventIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) channels;
-- (void) setChannels: (NSMutableArray *) channels;
+- (NSMutableDictionary *) channels;
+- (void) setChannels: (NSMutableDictionary *) channels;
 #endif
 - (BOOL) channelsIsSet;
 

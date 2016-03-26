@@ -196,6 +196,7 @@ code { line-height: 20px; }
 <tr>
 <td>AromaService</td><td><a href="#Svc_AromaService">AromaService</a><br/>
 <ul>
+<li><a href="#Fn_AromaService_deleteApplication">deleteApplication</a></li>
 <li><a href="#Fn_AromaService_deleteMessage">deleteMessage</a></li>
 <li><a href="#Fn_AromaService_dismissMessage">dismissMessage</a></li>
 <li><a href="#Fn_AromaService_followApplication">followApplication</a></li>
@@ -237,6 +238,8 @@ code { line-height: 20px; }
 <a href="#Struct_CheckExistsRequest">CheckExistsRequest</a><br/>
 <a href="#Struct_CheckExistsResponse">CheckExistsResponse</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
+<a href="#Struct_DeleteActivityRequest">DeleteActivityRequest</a><br/>
+<a href="#Struct_DeleteActivityResponse">DeleteActivityResponse</a><br/>
 <a href="#Struct_DeleteApplicationRequest">DeleteApplicationRequest</a><br/>
 <a href="#Struct_DeleteApplicationResponse">DeleteApplicationResponse</a><br/>
 <a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
@@ -318,6 +321,7 @@ code { line-height: 20px; }
 <code><a href="#Const_APPLICATION_MAX_OWNERS">APPLICATION_MAX_OWNERS</a></code><br/>
 <code><a href="#Const_APPLICATION_NAME_MAX_LENGTH">APPLICATION_NAME_MAX_LENGTH</a></code><br/>
 <code><a href="#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
+<code><a href="#Const_DEFAULT_ACTIVITY_LIFETIME">DEFAULT_ACTIVITY_LIFETIME</a></code><br/>
 <code><a href="#Const_DEFAULT_INBOX_LIFETIME">DEFAULT_INBOX_LIFETIME</a></code><br/>
 <code><a href="#Const_MAX_APPLICATION_ICON_DIMENSION">MAX_APPLICATION_ICON_DIMENSION</a></code><br/>
 <code><a href="#Const_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES">MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES</a></code><br/>
@@ -330,7 +334,7 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.7</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of Aroma API of this specification.
+<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.8</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of Aroma API of this specification.
 <br/></blockquote></td></tr><tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7010</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "aroma-srv.aroma.tech", port = 7010 }</code></td></tr><tr><td colspan="3"><blockquote>This is Aroma Production Endpoint
 <br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "aroma-srv.beta.aroma.tech", port = 7010 }</code></td></tr><tr><td colspan="3"><blockquote>This is Aroma Beta Endpoint
 <br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_DIMENSION"><td><code>MAX_APPLICATION_ICON_DIMENSION</code></td><td><code><a href="Aroma.html#Struct_Dimension">Aroma.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with an Application.
@@ -341,6 +345,7 @@ code { line-height: 20px; }
 If truncated, the full message can be loaded using the
 getFullMessage() operation.
 <br/></blockquote></td></tr><tr id="Const_DEFAULT_INBOX_LIFETIME"><td><code>DEFAULT_INBOX_LIFETIME</code></td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td><code>{ value = 3, unit = <code><a href="#Const_Aroma.TimeUnit.DAYS">Aroma.TimeUnit.DAYS</a></code> }</code></td></tr><tr><td colspan="3"><blockquote>The default amount of time to save messages in a User's Inbox.
+<br/></blockquote></td></tr><tr id="Const_DEFAULT_ACTIVITY_LIFETIME"><td><code>DEFAULT_ACTIVITY_LIFETIME</code></td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td><code>{ value = 4, unit = <code><a href="#Const_Aroma.TimeUnit.DAYS">Aroma.TimeUnit.DAYS</a></code> }</code></td></tr><tr><td colspan="3"><blockquote>The default amount of time to save events in a User's Activity Feed.
 <br/></blockquote></td></tr><tr id="Const_APPLICATION_NAME_MAX_LENGTH"><td><code>APPLICATION_NAME_MAX_LENGTH</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>20</code></td></tr><tr><td colspan="3"><blockquote>The Maximum number of characters that can be in the Application Name.
 <br/></blockquote></td></tr><tr id="Const_APPLICATION_MAX_OWNERS"><td><code>APPLICATION_MAX_OWNERS</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>10</code></td></tr><tr><td colspan="3"><blockquote>The Maximum number of owners that an Application can have.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
@@ -433,6 +438,15 @@ getFullMessage() operation.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>exists</td><td><code>bool</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteActivityRequest">Struct: DeleteActivityRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>eventId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>deleteAll</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
+<tr><td>4</td><td>multipleEventIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteActivityResponse">Struct: DeleteActivityResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>totalEventsDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_DeleteApplicationRequest">Struct: DeleteApplicationRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -634,7 +648,7 @@ Aroma.
 <tr><td>1</td><td>freshUsers</td><td><code>list&lt;<code><a href="#Typedef_User">User</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 <tr><td>2</td><td>freshApplications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 <tr><td>3</td><td>failedHealthChecks</td><td><code>list&lt;<code><a href="#Typedef_HealthCheckFailed">HealthCheckFailed</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
-<tr><td>4</td><td>generalEvents</td><td><code>list&lt;<code><a href="Events.html#Struct_GeneralEvent">Events.GeneralEvent</a></code>&gt;</code></td><td>General events happening lately
+<tr><td>4</td><td>generalEvents</td><td><code>list&lt;<code><a href="Events.html#Struct_Event">Events.Event</a></code>&gt;</code></td><td>General events happening lately
 </td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetDashboardRequest">Struct: GetDashboardRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -681,6 +695,7 @@ or by a specific Application.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>mediaId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>desiredThumbnailSize</td><td><code><a href="Aroma.html#Struct_Dimension">Aroma.Dimension</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMediaResponse">Struct: GetMediaResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>image</td><td><code><a href="Aroma.html#Struct_Image">Aroma.Image</a></code></td><td></td><td>default</td><td></td></tr>
@@ -749,6 +764,9 @@ The Aroma Service is designed to be used by People, and not Applications.
 They provide query interfaces and Authentication/Authorization over Data.
 <br/><div class="definition"><h4 id="Fn_AromaService_getApiVersion">Function: AromaService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
+</pre></div><div class="definition"><h4 id="Fn_AromaService_deleteApplication">Function: AromaService.deleteApplication</h4>
+<pre><code><a href="#Struct_DeleteApplicationResponse">DeleteApplicationResponse</a></code> deleteApplication(<code><a href="#Struct_DeleteApplicationRequest">DeleteApplicationRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_deleteMessage">Function: AromaService.deleteMessage</h4>
 <pre><code><a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a></code> deleteMessage(<code><a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>

@@ -61,6 +61,16 @@ struct CustomChannel
     1: Endpoint.Endpoint endpoint;
 }
 
+struct IOSDevice
+{
+    1: string deviceToken;
+}
+
+struct AndroidDevice
+{
+    1: string deviceId;
+}
+
 /**
  * This Union represents the Abstract concept of an AromaChannel
  */
@@ -70,6 +80,8 @@ union AromaChannel
     2: SlackUsername slackUsername;
     3: Email email;
     4: CustomChannel customChannel;
+    5: IOSDevice iosDevice;
+    6: AndroidDevice androidDevice;
 }
 
 struct ChannelInfo

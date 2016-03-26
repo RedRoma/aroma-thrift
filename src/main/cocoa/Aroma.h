@@ -32,7 +32,9 @@ enum Aroma_Industry {
   Industry_GOVERMENT = 5,
   Industry_MARKETING = 6,
   Industry_RETAIL = 7,
-  Industry_TECH = 8
+  Industry_TECH = 8,
+  Industry_AEROSPACE = 9,
+  Industry_ROBOTICS = 10
 };
 
 enum Aroma_Tier {
@@ -776,4 +778,5 @@ typedef NSString * Aroma_uuid;
 
 @interface Aroma_AromaConstants : NSObject {
 }
++ (double) API_VERSION;
 @end

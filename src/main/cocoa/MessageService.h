@@ -33,11 +33,11 @@ typedef Aroma_long MessageService_long;
 
 typedef Aroma_timestamp MessageService_timestamp;
 
-typedef BananaAuthentication_ApplicationToken * MessageService_ApplicationToken;
+typedef AromaAuthentication_ApplicationToken * MessageService_ApplicationToken;
 
-typedef BananaAuthentication_AuthenticationToken * MessageService_AuthenticationToken;
+typedef AromaAuthentication_AuthenticationToken * MessageService_AuthenticationToken;
 
-typedef BananaAuthentication_UserToken * MessageService_UserToken;
+typedef AromaAuthentication_UserToken * MessageService_UserToken;
 
 typedef Aroma_Application * MessageService_Application;
 

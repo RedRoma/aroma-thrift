@@ -37,7 +37,7 @@
   return self;
 }
 
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableArray *) channels
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableDictionary *) channels
 {
   self = [super init];
   __token = [token retain_stub];
@@ -139,11 +139,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_AuthenticationToken *) token {
+- (AromaAuthentication_AuthenticationToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_AuthenticationToken *) token {
+- (void) setToken: (AromaAuthentication_AuthenticationToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -181,11 +181,11 @@
   __event_isset = NO;
 }
 
-- (NSMutableArray *) channels {
+- (NSMutableDictionary *) channels {
   return [[__channels retain_stub] autorelease_stub];
 }
 
-- (void) setChannels: (NSMutableArray *) channels {
+- (void) setChannels: (NSMutableDictionary *) channels {
   [channels retain_stub];
   [__channels release_stub];
   __channels = channels;
@@ -219,7 +219,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_AuthenticationToken *fieldValue = [[BananaAuthentication_AuthenticationToken alloc] init];
+          AromaAuthentication_AuthenticationToken *fieldValue = [[AromaAuthentication_AuthenticationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -238,19 +238,22 @@
         }
         break;
       case 3:
-        if (fieldType == TType_LIST) {
+        if (fieldType == TType_MAP) {
           int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          [inProtocol readMapBeginReturningKeyType: NULL valueType: NULL size: &_size0];
+          NSMutableDictionary * fieldValue = [[NSMutableDictionary alloc] initWithCapacity: _size0];
           int _i1;
           for (_i1 = 0; _i1 < _size0; ++_i1)
           {
-            AromaChannels_AromaChannel *_elem2 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem2 read: inProtocol];
-            [fieldValue addObject: _elem2];
-            [_elem2 release_stub];
+            AromaChannels_AromaChannel *_key2 = [[AromaChannels_AromaChannel alloc] init];
+            [_key2 read: inProtocol];
+            Aroma_User *_val3 = [[Aroma_User alloc] init];
+            [_val3 read: inProtocol];
+            [fieldValue setObject: _val3 forKey: _key2];
+            [_key2 release_stub];
+            [_val3 release_stub];
           }
-          [inProtocol readListEnd];
+          [inProtocol readMapEnd];
           [self setChannels: fieldValue];
           [fieldValue release_stub];
         } else { 
@@ -284,15 +287,17 @@
   }
   if (__channels_isset) {
     if (__channels != nil) {
-      [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 3];
+      [outProtocol writeFieldBeginWithName: @"channels" type: TType_MAP fieldID: 3];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__channels count]; idx4++)
+        [outProtocol writeMapBeginWithKeyType: TType_STRUCT valueType: TType_STRUCT size: [__channels count]];
+        NSEnumerator * _iter4 = [__channels keyEnumerator];
+        id key5;
+        while ((key5 = [_iter4 nextObject]))
         {
-          [[__channels objectAtIndex: idx4] write: outProtocol];
+          [key5 write: outProtocol];
+          [[__channels objectForKey: key5] write: outProtocol];
         }
-        [outProtocol writeListEnd];
+        [outProtocol writeMapEnd];
       }
       [outProtocol writeFieldEnd];
     }

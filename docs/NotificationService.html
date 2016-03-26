@@ -217,6 +217,7 @@ code { line-height: 20px; }
 <a href="#Struct_SendNotificationResponse">SendNotificationResponse</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
+<a href="#Typedef_User">User</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
@@ -250,6 +251,9 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Enum_Urgency">Aroma.Urgency</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_User">Typedef: User</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_User">Aroma.User</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_AromaChannel">Typedef: AromaChannel</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_AromaChannel">Channels.AromaChannel</a></code></p>
@@ -292,7 +296,7 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>event</td><td><code><a href="#Typedef_Event">Event</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>channels</td><td><code>list&lt;<code><a href="#Typedef_AromaChannel">AromaChannel</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>channels</td><td><code>map&lt;<code><a href="#Typedef_AromaChannel">AromaChannel</a></code>, <code><a href="#Typedef_User">User</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SendNotificationResponse">Struct: SendNotificationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>notificationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>

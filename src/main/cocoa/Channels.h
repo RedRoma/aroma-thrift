@@ -177,16 +177,72 @@ typedef Aroma_timestamp AromaChannels_timestamp;
 
 @end
 
+@interface AromaChannels_IOSDevice : NSObject <TBase, NSCoding> {
+  NSString * __deviceToken;
+
+  BOOL __deviceToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=deviceToken, setter=setDeviceToken:) NSString * deviceToken;
+#endif
+
+- (id) init;
+- (id) initWithDeviceToken: (NSString *) deviceToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) deviceToken;
+- (void) setDeviceToken: (NSString *) deviceToken;
+#endif
+- (BOOL) deviceTokenIsSet;
+
+@end
+
+@interface AromaChannels_AndroidDevice : NSObject <TBase, NSCoding> {
+  NSString * __deviceId;
+
+  BOOL __deviceId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=deviceId, setter=setDeviceId:) NSString * deviceId;
+#endif
+
+- (id) init;
+- (id) initWithDeviceId: (NSString *) deviceId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) deviceId;
+- (void) setDeviceId: (NSString *) deviceId;
+#endif
+- (BOOL) deviceIdIsSet;
+
+@end
+
 @interface AromaChannels_AromaChannel : NSObject <TBase, NSCoding> {
   AromaChannels_SlackChannel * __slackChannel;
   AromaChannels_SlackUsername * __slackUsername;
   AromaChannels_Email * __email;
   AromaChannels_CustomChannel * __customChannel;
+  AromaChannels_IOSDevice * __iosDevice;
+  AromaChannels_AndroidDevice * __androidDevice;
 
   BOOL __slackChannel_isset;
   BOOL __slackUsername_isset;
   BOOL __email_isset;
   BOOL __customChannel_isset;
+  BOOL __iosDevice_isset;
+  BOOL __androidDevice_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -194,10 +250,12 @@ typedef Aroma_timestamp AromaChannels_timestamp;
 @property (nonatomic, retain, getter=slackUsername, setter=setSlackUsername:) AromaChannels_SlackUsername * slackUsername;
 @property (nonatomic, retain, getter=email, setter=setEmail:) AromaChannels_Email * email;
 @property (nonatomic, retain, getter=customChannel, setter=setCustomChannel:) AromaChannels_CustomChannel * customChannel;
+@property (nonatomic, retain, getter=iosDevice, setter=setIosDevice:) AromaChannels_IOSDevice * iosDevice;
+@property (nonatomic, retain, getter=androidDevice, setter=setAndroidDevice:) AromaChannels_AndroidDevice * androidDevice;
 #endif
 
 - (id) init;
-- (id) initWithSlackChannel: (AromaChannels_SlackChannel *) slackChannel slackUsername: (AromaChannels_SlackUsername *) slackUsername email: (AromaChannels_Email *) email customChannel: (AromaChannels_CustomChannel *) customChannel;
+- (id) initWithSlackChannel: (AromaChannels_SlackChannel *) slackChannel slackUsername: (AromaChannels_SlackUsername *) slackUsername email: (AromaChannels_Email *) email customChannel: (AromaChannels_CustomChannel *) customChannel iosDevice: (AromaChannels_IOSDevice *) iosDevice androidDevice: (AromaChannels_AndroidDevice *) androidDevice;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -227,6 +285,18 @@ typedef Aroma_timestamp AromaChannels_timestamp;
 - (void) setCustomChannel: (AromaChannels_CustomChannel *) customChannel;
 #endif
 - (BOOL) customChannelIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaChannels_IOSDevice *) iosDevice;
+- (void) setIosDevice: (AromaChannels_IOSDevice *) iosDevice;
+#endif
+- (BOOL) iosDeviceIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaChannels_AndroidDevice *) androidDevice;
+- (void) setAndroidDevice: (AromaChannels_AndroidDevice *) androidDevice;
+#endif
+- (BOOL) androidDeviceIsSet;
 
 @end
 

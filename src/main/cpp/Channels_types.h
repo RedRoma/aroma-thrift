@@ -36,6 +36,10 @@ class Email;
 
 class CustomChannel;
 
+class IOSDevice;
+
+class AndroidDevice;
+
 class AromaChannel;
 
 class ChannelInfo;
@@ -258,12 +262,106 @@ inline std::ostream& operator<<(std::ostream& out, const CustomChannel& obj)
   return out;
 }
 
+typedef struct _IOSDevice__isset {
+  _IOSDevice__isset() : deviceToken(false) {}
+  bool deviceToken :1;
+} _IOSDevice__isset;
+
+class IOSDevice {
+ public:
+
+  IOSDevice(const IOSDevice&);
+  IOSDevice& operator=(const IOSDevice&);
+  IOSDevice() : deviceToken() {
+  }
+
+  virtual ~IOSDevice() throw();
+  std::string deviceToken;
+
+  _IOSDevice__isset __isset;
+
+  void __set_deviceToken(const std::string& val);
+
+  bool operator == (const IOSDevice & rhs) const
+  {
+    if (!(deviceToken == rhs.deviceToken))
+      return false;
+    return true;
+  }
+  bool operator != (const IOSDevice &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const IOSDevice & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(IOSDevice &a, IOSDevice &b);
+
+inline std::ostream& operator<<(std::ostream& out, const IOSDevice& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _AndroidDevice__isset {
+  _AndroidDevice__isset() : deviceId(false) {}
+  bool deviceId :1;
+} _AndroidDevice__isset;
+
+class AndroidDevice {
+ public:
+
+  AndroidDevice(const AndroidDevice&);
+  AndroidDevice& operator=(const AndroidDevice&);
+  AndroidDevice() : deviceId() {
+  }
+
+  virtual ~AndroidDevice() throw();
+  std::string deviceId;
+
+  _AndroidDevice__isset __isset;
+
+  void __set_deviceId(const std::string& val);
+
+  bool operator == (const AndroidDevice & rhs) const
+  {
+    if (!(deviceId == rhs.deviceId))
+      return false;
+    return true;
+  }
+  bool operator != (const AndroidDevice &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AndroidDevice & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(AndroidDevice &a, AndroidDevice &b);
+
+inline std::ostream& operator<<(std::ostream& out, const AndroidDevice& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _AromaChannel__isset {
-  _AromaChannel__isset() : slackChannel(false), slackUsername(false), email(false), customChannel(false) {}
+  _AromaChannel__isset() : slackChannel(false), slackUsername(false), email(false), customChannel(false), iosDevice(false), androidDevice(false) {}
   bool slackChannel :1;
   bool slackUsername :1;
   bool email :1;
   bool customChannel :1;
+  bool iosDevice :1;
+  bool androidDevice :1;
 } _AromaChannel__isset;
 
 class AromaChannel {
@@ -279,6 +377,8 @@ class AromaChannel {
   SlackUsername slackUsername;
   Email email;
   CustomChannel customChannel;
+  IOSDevice iosDevice;
+  AndroidDevice androidDevice;
 
   _AromaChannel__isset __isset;
 
@@ -290,6 +390,10 @@ class AromaChannel {
 
   void __set_customChannel(const CustomChannel& val);
 
+  void __set_iosDevice(const IOSDevice& val);
+
+  void __set_androidDevice(const AndroidDevice& val);
+
   bool operator == (const AromaChannel & rhs) const
   {
     if (!(slackChannel == rhs.slackChannel))
@@ -299,6 +403,10 @@ class AromaChannel {
     if (!(email == rhs.email))
       return false;
     if (!(customChannel == rhs.customChannel))
+      return false;
+    if (!(iosDevice == rhs.iosDevice))
+      return false;
+    if (!(androidDevice == rhs.androidDevice))
       return false;
     return true;
   }

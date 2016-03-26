@@ -14,16 +14,16 @@ NotificationServiceConstants::NotificationServiceConstants() {
   SERVICE_PORT = 7009;
 
   PRODUCTION_ENDPOINT.hostname = "notification-srv.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp10;
-  tmp10 = 7009;
+   ::aroma::thrift::endpoint::int tmp12;
+  tmp12 = 7009;
 
-  PRODUCTION_ENDPOINT.port = tmp10;
+  PRODUCTION_ENDPOINT.port = tmp12;
 
   BETA_ENDPOINT.hostname = "notification-srv.beta.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp11;
-  tmp11 = 7009;
+   ::aroma::thrift::endpoint::int tmp13;
+  tmp13 = 7009;
 
-  BETA_ENDPOINT.port = tmp11;
+  BETA_ENDPOINT.port = tmp13;
 
 }
 

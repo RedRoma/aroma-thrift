@@ -27,8 +27,11 @@ typedef Aroma.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.AuthenticationToken AuthenticationToken
+
 typedef Aroma.Application Application
 typedef Aroma.Urgency Urgency
+typedef Aroma.User User
+
 typedef Channels.AromaChannel AromaChannel
 typedef Events.Event Event
 
@@ -58,14 +61,13 @@ struct SendNotificationRequest
 {
     1: AuthenticationToken token;
     2: Event event;
-    3: list<AromaChannel> channels;
+    3: map<AromaChannel, User> channels;
 }
 
 struct SendNotificationResponse
 {
     1: optional uuid notificationId;
 }
-
 
 //==========================================================
 // SERVICE DEFINITION

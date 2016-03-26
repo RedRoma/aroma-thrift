@@ -16,22 +16,24 @@ typedef Aroma.int int;
 typedef Aroma.long long;
 typedef Aroma.timestamp timestamp;
 typedef Aroma.uuid uuid;
+
 typedef Aroma.User User
 typedef Aroma.Application Application
 
+struct ApplicationMessagesDeleted
+{
+    1: optional int totalMessagesDeleted;
+    2: optional string message = "Application's messages have been deleted"
+}
 
 /**
  * An Application's Token has been renewed.
  */
 struct ApplicationTokenRenewed
 {
-    1: optional string message = "Application Token has been renewed";
-    /** The user who performed the action. */
-    2: User user;
     /** We may or may not include the new Application Token, for security reasons. */
-    3: optional ApplicationToken applicationToken;
-    4: uuid applicationId;
-    5: string applicationName;
+    1: optional ApplicationToken applicationToken;
+    2: optional string message = "Application Token has been renewed";
 }
 
 /**
@@ -40,12 +42,9 @@ struct ApplicationTokenRenewed
  */
 struct ApplicationTokenRegenerated
 {
-    1: optional string message = "Application Token has been re-created"
-    /** The person who performed the action. */
-    2: User user;
-    3: optional ApplicationToken applicationToken;
-    4: uuid applicationId;
-    5: string applicationName;
+    1: optional ApplicationToken applicationToken;
+    2: optional User actor;
+    3: optional string message = "Application Token has been re-created"
 }
 
 /**
@@ -53,12 +52,24 @@ struct ApplicationTokenRegenerated
  */
 struct ApplicationSentMessage
 {
-    1: optional string message = "Application has sent an Alert"
-    /** The Message that the Application Sent. */
+    1: uuid messageId;
     2: optional Aroma.Message messageSentByApplication;
-    /** The Application that sent the message. */
-    3: uuid applicationId;
-    4: string applicationName;
+    3: optional string message = "Application has sent an Alert"
+}
+
+struct ApplicationDeleted
+{
+    1: optional string message = "Application has been deleted"
+}
+
+struct ApplicationFollowed
+{
+    1: optional string message = "Application Followed"
+}
+
+struct ApplicationUnfollowed
+{
+    1: optional string message = "Application Unfollowed"
 }
 
 /**
@@ -66,13 +77,10 @@ struct ApplicationSentMessage
  */
 struct HealthCheckFailed
 {
-    1: optional string message = "Application failed a Health Check";
     /** May include the name of the host that went down. */
-    2: optional string hostname;
-    /** The application that failed the health check. */
-    3: uuid applicationId;
+    1: optional string hostname;
     /** The Human-Friendly name of the Application. */
-    4: string applicationName;
+    2: optional string message = "Application failed a Health Check";
 }
 
 /**
@@ -82,8 +90,13 @@ struct HealthCheckFailed
 struct HealthCheckBackToNormal
 {
     1: optional string message = "Application's Health is back to normal";
-    2: uuid applicationId;
-    3: string applicationName;
+}
+
+struct OwnerAdded
+{
+    1: uuid userIdOfNewOwner;
+    2: optional User newOwner;
+    3: optional string message = "New Owner Added"
 }
 
 /**
@@ -92,19 +105,7 @@ struct HealthCheckBackToNormal
  */
 struct OwnerApprovedRequest
 {
-    1: optional string message = "Application Owner approved your request";
-    2: uuid applicationId;
-    3: string applicationName;
-    /** The Owner who approved. */
-    4: User owner;
-}
-
-struct UserFollowedApplication
-{
-    1: optional string message = "Someone followed your Application";
-    2: uuid applicationId;
-    3: User follower;
-    4: User owner;
+    1 : optional string message = "Application Owner approved your request";
 }
 
 /**
@@ -112,10 +113,7 @@ struct UserFollowedApplication
  */
 struct GeneralEvent
 {
-    1: uuid applicationId;
-    2: string applicationName;
-    3: string message;
-    4: timestamp timestamp;
+    1: optional string message;
 }
 
 /**
@@ -124,14 +122,18 @@ struct GeneralEvent
  */
 union EventType
 {
-    1: HealthCheckFailed healthCheckFailed;
-    2: HealthCheckBackToNormal healthCheckBackToNormal;
-    3: ApplicationTokenRenewed applicationTokenRenewed;
-    4: ApplicationTokenRegenerated applicationTokenRegenerated;
-    5: ApplicationSentMessage applicationSentMessage;
-    6: OwnerApprovedRequest ownerApprovedRequest;
-    7: GeneralEvent generalEvent;
-    8: UserFollowedApplication userFollowedApplication;
+    1 : ApplicationMessagesDeleted applicationMessageDeleted;
+    2 : HealthCheckFailed healthCheckFailed;
+    3 : HealthCheckBackToNormal healthCheckBackToNormal;
+    4 : ApplicationFollowed applicationFollowed;
+    5 : ApplicationDeleted applicationDeleted;
+    6 : ApplicationTokenRenewed applicationTokenRenewed;
+    7 : ApplicationTokenRegenerated applicationTokenRegenerated;
+    8 : ApplicationSentMessage applicationSentMessage;
+    12: ApplicationUnfollowed applicationUnfollowed;
+    9 : OwnerApprovedRequest ownerApprovedRequest;
+    10: OwnerAdded ownerAdded;
+    11: GeneralEvent generalEvent;
 }
 
 /**
@@ -139,7 +141,11 @@ union EventType
  */
 struct Event
 {
-    1: EventType eventType;
-    2: timestamp timestamp;
-    3: uuid eventId;
+    1: uuid eventId;
+    2: uuid userIdOfActor;
+    3: optional User actor;
+    4: uuid applicationId;
+    5: optional Application application;
+    6: EventType eventType;
+    7: timestamp timestamp;
 }

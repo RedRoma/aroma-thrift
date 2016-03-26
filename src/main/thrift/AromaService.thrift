@@ -67,7 +67,7 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
 /** Defines the Version of Aroma API of this specification. */
-const double API_VERSION = 1.7;
+const double API_VERSION = 1.8;
 
 const int SERVICE_PORT = 7010;
 
@@ -104,6 +104,9 @@ const int MAX_MESSAGE_LENGTH = 5000;
 /** The default amount of time to save messages in a User's Inbox. */
 const Aroma.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Aroma.TimeUnit.DAYS };
 
+/** The default amount of time to save events in a User's Activity Feed. */
+const Aroma.LengthOfTime DEFAULT_ACTIVITY_LIFETIME = { "value" : 4, "unit" : Aroma.TimeUnit.DAYS };
+
 
 //==========================================================
 // Actions
@@ -118,6 +121,19 @@ struct CheckExistsResponse
 {
     1: bool exists;
     2: optional string message;
+}
+
+struct DeleteActivityRequest
+{
+    1: UserToken token;
+    2: uuid eventId;
+    3: optional bool deleteAll = false;
+    4: optional list<uuid> multipleEventIds;
+}
+
+struct DeleteActivityResponse
+{
+    1: optional int totalEventsDeleted = 0;
 }
 
 struct DeleteApplicationRequest
@@ -432,7 +448,7 @@ struct GetBuzzResponse
     2: list<Application> freshApplications = [];
     3: list<HealthCheckFailed> failedHealthChecks = [];
     /** General events happening lately */
-    4: list<Events.GeneralEvent> generalEvents = [];
+    4: list<Events.Event> generalEvents = [];
 }
 
 struct GetDashboardRequest
@@ -499,6 +515,7 @@ struct GetMediaRequest
 {
     1: UserToken token;
     2: uuid mediaId;
+    3: optional Aroma.Dimension desiredThumbnailSize;
 }
 
 struct GetMediaResponse
@@ -613,6 +630,12 @@ service AromaService
     //==========================================================
     // Action Operations
     //==========================================================
+
+    DeleteApplicationResponse deleteApplication(1 : DeleteApplicationRequest request) throws(1 : OperationFailedException ex1,
+                                                                                             2 : InvalidArgumentException ex2,
+                                                                                             3 : InvalidTokenException ex3,
+                                                                                             4 : ApplicationDoesNotExistException ex4,
+                                                                                             5 : UnauthorizedException ex5);
     
     DeleteMessageResponse deleteMessage(1 : DeleteMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                  2 : InvalidArgumentException ex2,

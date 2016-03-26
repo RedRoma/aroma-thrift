@@ -1,5 +1,5 @@
 namespace java  tech.aroma.thrift.authentication
-namespace cocoa BananaAuthentication_
+namespace cocoa AromaAuthentication_
 namespace cpp   aroma.thrift.authentication
 
 /*

@@ -161,7 +161,7 @@ typedef AromaException_OperationFailedException * AromaEndpoint_OperationFailedE
 
 @interface AromaEndpoint_HealthPokeRequest : NSObject <TBase, NSCoding> {
   AromaEndpoint_uuid __applicationId;
-  BananaAuthentication_ApplicationToken * __serviceToken;
+  AromaAuthentication_ApplicationToken * __serviceToken;
 
   BOOL __applicationId_isset;
   BOOL __serviceToken_isset;
@@ -169,11 +169,11 @@ typedef AromaException_OperationFailedException * AromaEndpoint_OperationFailedE
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEndpoint_uuid applicationId;
-@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaAuthentication_ApplicationToken * serviceToken;
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) AromaAuthentication_ApplicationToken * serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithApplicationId: (AromaEndpoint_uuid) applicationId serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
+- (id) initWithApplicationId: (AromaEndpoint_uuid) applicationId serviceToken: (AromaAuthentication_ApplicationToken *) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -187,8 +187,8 @@ typedef AromaException_OperationFailedException * AromaEndpoint_OperationFailedE
 - (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_ApplicationToken *) serviceToken;
-- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
+- (AromaAuthentication_ApplicationToken *) serviceToken;
+- (void) setServiceToken: (AromaAuthentication_ApplicationToken *) serviceToken;
 #endif
 - (BOOL) serviceTokenIsSet;
 

@@ -19,6 +19,8 @@ package tech.aroma.thrift.services;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import tech.aroma.thrift.authentication.AuthenticationToken;
+import tech.aroma.thrift.events.Event;
 import tech.aroma.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.thrift.notification.service.SendNotificationRequest;
 import tech.aroma.thrift.notification.service.SendNotificationResponse;
@@ -41,6 +43,11 @@ public class NoOpNotificationServiceTest
 {
     
     @GeneratePojo
+    private AuthenticationToken token;
+    
+    @GeneratePojo
+    private Event event;
+    
     private SendNotificationRequest request;
     
     private NoOpNotificationService instance;
@@ -49,8 +56,17 @@ public class NoOpNotificationServiceTest
     public void setUp()
     {
         instance = new NoOpNotificationService();
+        
+        setupData();
     }
 
+    private void setupData()
+    {
+        request = new SendNotificationRequest()
+            .setToken(token)
+            .setEvent(event);
+    }
+    
     @Test
     public void testGetApiVersion() throws Exception
     {

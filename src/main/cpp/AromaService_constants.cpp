@@ -11,39 +11,39 @@ namespace aroma { namespace thrift { namespace service {
 const AromaServiceConstants g_AromaService_constants;
 
 AromaServiceConstants::AromaServiceConstants() {
-  API_VERSION = 1.7;
+  API_VERSION = 1.8;
 
   SERVICE_PORT = 7010;
 
   PRODUCTION_ENDPOINT.hostname = "aroma-srv.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp227;
-  tmp227 = 7010;
+   ::aroma::thrift::endpoint::int tmp237;
+  tmp237 = 7010;
 
-  PRODUCTION_ENDPOINT.port = tmp227;
+  PRODUCTION_ENDPOINT.port = tmp237;
 
   BETA_ENDPOINT.hostname = "aroma-srv.beta.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp228;
-  tmp228 = 7010;
+   ::aroma::thrift::endpoint::int tmp238;
+  tmp238 = 7010;
 
-  BETA_ENDPOINT.port = tmp228;
+  BETA_ENDPOINT.port = tmp238;
 
-   ::tech::aroma::thrift::int tmp229;
-  tmp229 = 1024;
+   ::tech::aroma::thrift::int tmp239;
+  tmp239 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.width = tmp229;
-   ::tech::aroma::thrift::int tmp230;
-  tmp230 = 1024;
+  MAX_APPLICATION_ICON_DIMENSION.width = tmp239;
+   ::tech::aroma::thrift::int tmp240;
+  tmp240 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.height = tmp230;
+  MAX_APPLICATION_ICON_DIMENSION.height = tmp240;
 
-   ::tech::aroma::thrift::int tmp231;
-  tmp231 = 1024;
+   ::tech::aroma::thrift::int tmp241;
+  tmp241 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.width = tmp231;
-   ::tech::aroma::thrift::int tmp232;
-  tmp232 = 1024;
+  MAX_PROFILE_IMAGE_DIMENSION.width = tmp241;
+   ::tech::aroma::thrift::int tmp242;
+  tmp242 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.height = tmp232;
+  MAX_PROFILE_IMAGE_DIMENSION.height = tmp242;
 
   MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 
@@ -51,11 +51,17 @@ AromaServiceConstants::AromaServiceConstants() {
 
   MAX_MESSAGE_LENGTH = 5000;
 
-   ::tech::aroma::thrift::long tmp233;
-  tmp233 = 3LL;
+   ::tech::aroma::thrift::long tmp243;
+  tmp243 = 3LL;
 
-  DEFAULT_INBOX_LIFETIME.value = tmp233;
+  DEFAULT_INBOX_LIFETIME.value = tmp243;
   DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
+
+   ::tech::aroma::thrift::long tmp244;
+  tmp244 = 4LL;
+
+  DEFAULT_ACTIVITY_LIFETIME.value = tmp244;
+  DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
   APPLICATION_NAME_MAX_LENGTH = 20;
 

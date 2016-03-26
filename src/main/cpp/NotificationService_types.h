@@ -39,6 +39,8 @@ typedef class  ::tech::aroma::thrift::Application Application;
 
 typedef  ::tech::aroma::thrift::Urgency::type Urgency;
 
+typedef class  ::tech::aroma::thrift::User User;
+
 typedef class  ::aroma::thrift::channels::AromaChannel AromaChannel;
 
 typedef class  ::aroma::thrift::events::Event Event;
@@ -85,7 +87,7 @@ class SendNotificationRequest {
   virtual ~SendNotificationRequest() throw();
   AuthenticationToken token;
   Event event;
-  std::vector<AromaChannel>  channels;
+  std::map<AromaChannel, User>  channels;
 
   _SendNotificationRequest__isset __isset;
 
@@ -93,7 +95,7 @@ class SendNotificationRequest {
 
   void __set_event(const Event& val);
 
-  void __set_channels(const std::vector<AromaChannel> & val);
+  void __set_channels(const std::map<AromaChannel, User> & val);
 
   bool operator == (const SendNotificationRequest & rhs) const
   {

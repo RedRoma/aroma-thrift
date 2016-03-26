@@ -33,13 +33,13 @@ typedef Aroma_LengthOfTime * AuthenticationService_LengthOfTime;
 
 typedef Aroma_uuid AuthenticationService_uuid;
 
-typedef BananaAuthentication_ApplicationToken * AuthenticationService_ApplicationToken;
+typedef AromaAuthentication_ApplicationToken * AuthenticationService_ApplicationToken;
 
-typedef BananaAuthentication_AuthenticationToken * AuthenticationService_AuthenticationToken;
+typedef AromaAuthentication_AuthenticationToken * AuthenticationService_AuthenticationToken;
 
 typedef int AuthenticationService_TokenType;
 
-typedef BananaAuthentication_UserToken * AuthenticationService_UserToken;
+typedef AromaAuthentication_UserToken * AuthenticationService_UserToken;
 
 typedef AromaException_AccountAlreadyExistsException * AuthenticationService_AccountAlreadyExistsException;
 
