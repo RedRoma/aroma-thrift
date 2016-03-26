@@ -1917,18 +1917,21 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 @interface AromaService_GetMediaRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
   AromaService_uuid __mediaId;
+  Aroma_Dimension * __desiredThumbnailSize;
 
   BOOL __token_isset;
   BOOL __mediaId_isset;
+  BOOL __desiredThumbnailSize_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 @property (nonatomic, retain, getter=mediaId, setter=setMediaId:) AromaService_uuid mediaId;
+@property (nonatomic, retain, getter=desiredThumbnailSize, setter=setDesiredThumbnailSize:) Aroma_Dimension * desiredThumbnailSize;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId;
+- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId desiredThumbnailSize: (Aroma_Dimension *) desiredThumbnailSize;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1946,6 +1949,12 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) setMediaId: (AromaService_uuid) mediaId;
 #endif
 - (BOOL) mediaIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (Aroma_Dimension *) desiredThumbnailSize;
+- (void) setDesiredThumbnailSize: (Aroma_Dimension *) desiredThumbnailSize;
+#endif
+- (BOOL) desiredThumbnailSizeIsSet;
 
 @end
 

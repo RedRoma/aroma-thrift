@@ -2829,9 +2829,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetFullMessageResponse&
 }
 
 typedef struct _GetMediaRequest__isset {
-  _GetMediaRequest__isset() : token(false), mediaId(false) {}
+  _GetMediaRequest__isset() : token(false), mediaId(false), desiredThumbnailSize(false) {}
   bool token :1;
   bool mediaId :1;
+  bool desiredThumbnailSize :1;
 } _GetMediaRequest__isset;
 
 class GetMediaRequest {
@@ -2845,6 +2846,7 @@ class GetMediaRequest {
   virtual ~GetMediaRequest() throw();
   UserToken token;
   uuid mediaId;
+   ::tech::aroma::thrift::Dimension desiredThumbnailSize;
 
   _GetMediaRequest__isset __isset;
 
@@ -2852,11 +2854,17 @@ class GetMediaRequest {
 
   void __set_mediaId(const uuid& val);
 
+  void __set_desiredThumbnailSize(const  ::tech::aroma::thrift::Dimension& val);
+
   bool operator == (const GetMediaRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     if (!(mediaId == rhs.mediaId))
+      return false;
+    if (__isset.desiredThumbnailSize != rhs.__isset.desiredThumbnailSize)
+      return false;
+    else if (__isset.desiredThumbnailSize && !(desiredThumbnailSize == rhs.desiredThumbnailSize))
       return false;
     return true;
   }

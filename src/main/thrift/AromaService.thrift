@@ -515,6 +515,7 @@ struct GetMediaRequest
 {
     1: UserToken token;
     2: uuid mediaId;
+    3: optional Aroma.Dimension desiredThumbnailSize;
 }
 
 struct GetMediaResponse

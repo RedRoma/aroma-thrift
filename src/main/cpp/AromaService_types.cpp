@@ -5715,6 +5715,11 @@ void GetMediaRequest::__set_mediaId(const uuid& val) {
   this->mediaId = val;
 }
 
+void GetMediaRequest::__set_desiredThumbnailSize(const  ::tech::aroma::thrift::Dimension& val) {
+  this->desiredThumbnailSize = val;
+__isset.desiredThumbnailSize = true;
+}
+
 uint32_t GetMediaRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -5752,6 +5757,14 @@ uint32_t GetMediaRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->desiredThumbnailSize.read(iprot);
+          this->__isset.desiredThumbnailSize = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -5777,6 +5790,11 @@ uint32_t GetMediaRequest::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeString(this->mediaId);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.desiredThumbnailSize) {
+    xfer += oprot->writeFieldBegin("desiredThumbnailSize", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->desiredThumbnailSize.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -5786,17 +5804,20 @@ void swap(GetMediaRequest &a, GetMediaRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.mediaId, b.mediaId);
+  swap(a.desiredThumbnailSize, b.desiredThumbnailSize);
   swap(a.__isset, b.__isset);
 }
 
 GetMediaRequest::GetMediaRequest(const GetMediaRequest& other169) {
   token = other169.token;
   mediaId = other169.mediaId;
+  desiredThumbnailSize = other169.desiredThumbnailSize;
   __isset = other169.__isset;
 }
 GetMediaRequest& GetMediaRequest::operator=(const GetMediaRequest& other170) {
   token = other170.token;
   mediaId = other170.mediaId;
+  desiredThumbnailSize = other170.desiredThumbnailSize;
   __isset = other170.__isset;
   return *this;
 }
@@ -5805,6 +5826,7 @@ void GetMediaRequest::printTo(std::ostream& out) const {
   out << "GetMediaRequest(";
   out << "token=" << to_string(token);
   out << ", " << "mediaId=" << to_string(mediaId);
+  out << ", " << "desiredThumbnailSize="; (__isset.desiredThumbnailSize ? (out << to_string(desiredThumbnailSize)) : (out << "<null>"));
   out << ")";
 }
 

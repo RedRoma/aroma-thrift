@@ -3821,12 +3821,16 @@ GetFullMessageResponse.prototype.write = function(output) {
 GetMediaRequest = module.exports.GetMediaRequest = function(args) {
     this.token = null;
     this.mediaId = null;
+    this.desiredThumbnailSize = null;
     if (args) {
         if (args.token !== undefined && args.token !== null) {
             this.token = new Authentication_ttypes.UserToken(args.token);
         }
         if (args.mediaId !== undefined && args.mediaId !== null) {
             this.mediaId = args.mediaId;
+        }
+        if (args.desiredThumbnailSize !== undefined && args.desiredThumbnailSize !== null) {
+            this.desiredThumbnailSize = new Aroma_ttypes.Dimension(args.desiredThumbnailSize);
         }
     }
 };
@@ -3859,6 +3863,14 @@ GetMediaRequest.prototype.read = function(input) {
           input.skip(ftype);
         }
         break;
+        case 3:
+        if (ftype == Thrift.Type.STRUCT) {
+          this.desiredThumbnailSize = new Aroma_ttypes.Dimension();
+          this.desiredThumbnailSize.read(input);
+        } else {
+          input.skip(ftype);
+        }
+        break;
         default:
           input.skip(ftype);
       }
@@ -3878,6 +3890,11 @@ GetMediaRequest.prototype.write = function(output) {
     if (this.mediaId !== null && this.mediaId !== undefined) {
       output.writeFieldBegin('mediaId', Thrift.Type.STRING, 2);
       output.writeString(this.mediaId);
+      output.writeFieldEnd();
+    }
+    if (this.desiredThumbnailSize !== null && this.desiredThumbnailSize !== undefined) {
+      output.writeFieldBegin('desiredThumbnailSize', Thrift.Type.STRUCT, 3);
+      this.desiredThumbnailSize.write(output);
       output.writeFieldEnd();
     }
     output.writeFieldStop();

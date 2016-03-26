@@ -11364,13 +11364,15 @@
   return self;
 }
 
-- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId
+- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId desiredThumbnailSize: (Aroma_Dimension *) desiredThumbnailSize
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __mediaId = [mediaId retain_stub];
   __mediaId_isset = YES;
+  __desiredThumbnailSize = [desiredThumbnailSize retain_stub];
+  __desiredThumbnailSize_isset = YES;
   return self;
 }
 
@@ -11387,6 +11389,11 @@
     __mediaId = [[decoder decodeObjectForKey: @"mediaId"] retain_stub];
     __mediaId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"desiredThumbnailSize"])
+  {
+    __desiredThumbnailSize = [[decoder decodeObjectForKey: @"desiredThumbnailSize"] retain_stub];
+    __desiredThumbnailSize_isset = YES;
+  }
   return self;
 }
 
@@ -11399,6 +11406,10 @@
   if (__mediaId_isset)
   {
     [encoder encodeObject: __mediaId forKey: @"mediaId"];
+  }
+  if (__desiredThumbnailSize_isset)
+  {
+    [encoder encodeObject: __desiredThumbnailSize forKey: @"desiredThumbnailSize"];
   }
 }
 
@@ -11414,6 +11425,11 @@
   if (__mediaId_isset)
   {
     hash = (hash * 31) ^ [__mediaId hash];
+  }
+  hash = (hash * 31) ^ __desiredThumbnailSize_isset ? 2654435761 : 0;
+  if (__desiredThumbnailSize_isset)
+  {
+    hash = (hash * 31) ^ [__desiredThumbnailSize hash];
   }
   return hash;
 }
@@ -11435,6 +11451,10 @@
       (__mediaId_isset && ((__mediaId || other->__mediaId) && ![__mediaId isEqual:other->__mediaId]))) {
     return NO;
   }
+  if ((__desiredThumbnailSize_isset != other->__desiredThumbnailSize_isset) ||
+      (__desiredThumbnailSize_isset && ((__desiredThumbnailSize || other->__desiredThumbnailSize) && ![__desiredThumbnailSize isEqual:other->__desiredThumbnailSize]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -11442,6 +11462,7 @@
 {
   [__token release_stub];
   [__mediaId release_stub];
+  [__desiredThumbnailSize release_stub];
   [super dealloc_stub];
 }
 
@@ -11487,6 +11508,27 @@
   __mediaId_isset = NO;
 }
 
+- (Aroma_Dimension *) desiredThumbnailSize {
+  return [[__desiredThumbnailSize retain_stub] autorelease_stub];
+}
+
+- (void) setDesiredThumbnailSize: (Aroma_Dimension *) desiredThumbnailSize {
+  [desiredThumbnailSize retain_stub];
+  [__desiredThumbnailSize release_stub];
+  __desiredThumbnailSize = desiredThumbnailSize;
+  __desiredThumbnailSize_isset = YES;
+}
+
+- (BOOL) desiredThumbnailSizeIsSet {
+  return __desiredThumbnailSize_isset;
+}
+
+- (void) unsetDesiredThumbnailSize {
+  [__desiredThumbnailSize release_stub];
+  __desiredThumbnailSize = nil;
+  __desiredThumbnailSize_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -11520,6 +11562,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          Aroma_Dimension *fieldValue = [[Aroma_Dimension alloc] init];
+          [fieldValue read: inProtocol];
+          [self setDesiredThumbnailSize: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -11545,6 +11597,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__desiredThumbnailSize_isset) {
+    if (__desiredThumbnailSize != nil) {
+      [outProtocol writeFieldBeginWithName: @"desiredThumbnailSize" type: TType_STRUCT fieldID: 3];
+      [__desiredThumbnailSize write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -11559,6 +11618,8 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",mediaId:"];
   [ms appendFormat: @"\"%@\"", __mediaId];
+  [ms appendString: @",desiredThumbnailSize:"];
+  [ms appendFormat: @"%@", __desiredThumbnailSize];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
