@@ -14432,7 +14432,7 @@
 
 @end
 
-static double AromaService_API_VERSION = 1.7;
+static double AromaService_API_VERSION = 1.8;
 static AromaService_int AromaService_SERVICE_PORT = 7010;
 static AromaEndpoint_TcpEndpoint * AromaService_PRODUCTION_ENDPOINT;
 static AromaEndpoint_TcpEndpoint * AromaService_BETA_ENDPOINT;

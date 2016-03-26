@@ -11,7 +11,7 @@ namespace aroma { namespace thrift { namespace service {
 const AromaServiceConstants g_AromaService_constants;
 
 AromaServiceConstants::AromaServiceConstants() {
-  API_VERSION = 1.7;
+  API_VERSION = 1.8;
 
   SERVICE_PORT = 7010;
 

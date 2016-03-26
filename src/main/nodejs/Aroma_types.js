@@ -21,7 +21,9 @@ ttypes.Industry = {
   'GOVERMENT' : 5,
   'MARKETING' : 6,
   'RETAIL' : 7,
-  'TECH' : 8
+  'TECH' : 8,
+  'AEROSPACE' : 9,
+  'ROBOTICS' : 10
 };
 ttypes.Tier = {
   'FREE' : 1,
@@ -1412,3 +1414,4 @@ ServiceAnnouncement.prototype.write = function(output) {
   return;
 };
 
+ttypes.API_VERSION = 1.8;

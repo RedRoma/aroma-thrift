@@ -31,7 +31,9 @@ int _kIndustryValues[] = {
   Industry::GOVERMENT,
   Industry::MARKETING,
   Industry::RETAIL,
-  Industry::TECH
+  Industry::TECH,
+  Industry::AEROSPACE,
+  Industry::ROBOTICS
 };
 const char* _kIndustryNames[] = {
   "BANKING",
@@ -41,9 +43,11 @@ const char* _kIndustryNames[] = {
   "GOVERMENT",
   "MARKETING",
   "RETAIL",
-  "TECH"
+  "TECH",
+  "AEROSPACE",
+  "ROBOTICS"
 };
-const std::map<int, const char*> _Industry_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(8, _kIndustryValues, _kIndustryNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+const std::map<int, const char*> _Industry_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(10, _kIndustryValues, _kIndustryNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
 int _kTierValues[] = {
   Tier::FREE,
