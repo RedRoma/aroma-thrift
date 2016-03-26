@@ -15,6 +15,7 @@ class AromaConstants {
  public:
   AromaConstants();
 
+  double API_VERSION;
 };
 
 extern const AromaConstants g_Aroma_constants;

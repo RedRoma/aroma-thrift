@@ -1412,3 +1412,4 @@ ServiceAnnouncement.prototype.write = function(output) {
   return;
 };
 
+ttypes.API_VERSION = 1.8;

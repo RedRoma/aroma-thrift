@@ -5,9 +5,11 @@ namespace cpp   tech.aroma.thrift
 
 /*
  * Defined in this file are the basic structures and types used by Aroma.
- * 
- * Note that Human, User, and Person are used interchangeably.
  */
+
+
+/** Defines the Version of Aroma API of this specification. */
+const double API_VERSION = 1.8;
 
 typedef i32 int
 typedef i64 long

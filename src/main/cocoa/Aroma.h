@@ -776,4 +776,5 @@ typedef NSString * Aroma_uuid;
 
 @interface Aroma_AromaConstants : NSObject {
 }
++ (double) API_VERSION;
 @end

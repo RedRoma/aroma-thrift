@@ -1408,3 +1408,4 @@ ServiceAnnouncement.prototype.write = function(output) {
   return;
 };
 
+API_VERSION = 1.8;

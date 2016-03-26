@@ -4941,7 +4941,7 @@ SearchForApplicationsResponse.prototype.write = function(output) {
     return;
   };
 
-ttypes.API_VERSION = 1.7;
+ttypes.API_VERSION = 1.8;
 ttypes.SERVICE_PORT = 7010;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'aroma-srv.aroma.tech','port' : 7010});
