@@ -66,9 +66,6 @@ typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
-/** Defines the Version of Aroma API of this specification. */
-const double API_VERSION = 1.8;
-
 const int SERVICE_PORT = 7010;
 
 /**

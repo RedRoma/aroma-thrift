@@ -14432,7 +14432,6 @@
 
 @end
 
-static double AromaService_API_VERSION = 1.8;
 static AromaService_int AromaService_SERVICE_PORT = 7010;
 static AromaEndpoint_TcpEndpoint * AromaService_PRODUCTION_ENDPOINT;
 static AromaEndpoint_TcpEndpoint * AromaService_BETA_ENDPOINT;
@@ -14478,9 +14477,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [AromaService_DEFAULT_ACTIVITY_LIFETIME setUnit:5];
 
 ;
-}
-+ (double) API_VERSION{
-  return AromaService_API_VERSION;
 }
 + (AromaService_int) SERVICE_PORT{
   return AromaService_SERVICE_PORT;

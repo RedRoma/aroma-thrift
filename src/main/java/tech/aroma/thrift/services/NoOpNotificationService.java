@@ -19,13 +19,13 @@ package tech.aroma.thrift.services;
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tech.aroma.thrift.AromaConstants;
 import tech.aroma.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.thrift.exceptions.InvalidTokenException;
 import tech.aroma.thrift.exceptions.OperationFailedException;
 import tech.aroma.thrift.notification.service.NotificationService;
 import tech.aroma.thrift.notification.service.SendNotificationRequest;
 import tech.aroma.thrift.notification.service.SendNotificationResponse;
-import tech.aroma.thrift.service.AromaServiceConstants;
 
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
@@ -42,7 +42,7 @@ public final class NoOpNotificationService implements NotificationService.Iface
     @Override
     public double getApiVersion() throws TException
     {
-        return AromaServiceConstants.API_VERSION;
+        return AromaConstants.API_VERSION;
     }
 
     @Override

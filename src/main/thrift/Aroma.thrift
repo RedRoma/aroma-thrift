@@ -9,7 +9,7 @@ namespace cpp   tech.aroma.thrift
  
 
 /** Defines the Version of Aroma API of this specification. */
-const double API_VERSION = 1.8;
+const double API_VERSION = 1.9;
 
 typedef i32 int
 typedef i64 long

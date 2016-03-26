@@ -4930,7 +4930,6 @@ SearchForApplicationsResponse.prototype.write = function(output) {
     return;
   };
 
-API_VERSION = 1.8;
 SERVICE_PORT = 7010;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'aroma-srv.aroma.tech','port' : 7010});

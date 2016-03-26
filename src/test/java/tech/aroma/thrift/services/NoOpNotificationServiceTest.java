@@ -19,12 +19,12 @@ package tech.aroma.thrift.services;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import tech.aroma.thrift.AromaConstants;
 import tech.aroma.thrift.authentication.AuthenticationToken;
 import tech.aroma.thrift.events.Event;
 import tech.aroma.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.thrift.notification.service.SendNotificationRequest;
 import tech.aroma.thrift.notification.service.SendNotificationResponse;
-import tech.aroma.thrift.service.AromaServiceConstants;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
@@ -71,7 +71,7 @@ public class NoOpNotificationServiceTest
     public void testGetApiVersion() throws Exception
     {
         double apiVersion = instance.getApiVersion();
-        assertThat(apiVersion, is(AromaServiceConstants.API_VERSION));
+        assertThat(apiVersion, is(AromaConstants.API_VERSION));
     }
 
     @Test

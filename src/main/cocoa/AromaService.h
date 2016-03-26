@@ -2457,7 +2457,6 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @interface AromaService_AromaServiceConstants : NSObject {
 }
-+ (double) API_VERSION;
 + (AromaService_int) SERVICE_PORT;
 + (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;

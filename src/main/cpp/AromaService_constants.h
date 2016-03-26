@@ -15,7 +15,6 @@ class AromaServiceConstants {
  public:
   AromaServiceConstants();
 
-  double API_VERSION;
   int SERVICE_PORT;
    ::aroma::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
    ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
