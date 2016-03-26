@@ -6,7 +6,7 @@ namespace cpp   tech.aroma.thrift
 /*
  * Defined in this file are the basic structures and types used by Aroma.
  */
-
+ 
 
 /** Defines the Version of Aroma API of this specification. */
 const double API_VERSION = 1.8;
@@ -42,7 +42,9 @@ enum Industry
     GOVERMENT = 5,
     MARKETING = 6,
     RETAIL = 7,
-    TECH = 8
+    TECH = 8,
+    AEROSPACE = 9,
+    ROBOTICS = 10
 }
 
 
