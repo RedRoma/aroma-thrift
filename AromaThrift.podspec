@@ -6,6 +6,10 @@ Pod::Spec.new do |aroma|
   aroma.homepage         = "https://github.com/RedRoma/aroma-thrift"
   aroma.license          = "Code is Licensed under Apache 2.0"
   aroma.author           = { "SirWellington" => "wellington@redroma.tech" }
+  aroma.source           =
+  {
+       :path => "src/main/cocoa/"
+  }
   aroma.source_files = "src/main/cocoa/*.{h,m}"
   # aroma.resources = 'Pod/Assets/*'
 
