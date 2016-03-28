@@ -7,7 +7,7 @@ Aroma Thrift
 [<p align="center"><img src="https://raw.githubusercontent.com/RedRoma/aroma/develop/Graphics/Logo.png" width="300"></p>](https://github.com/RedRoma/aroma)
 -->
 
-[![Build Status](http://jenkins.sirwellington.tech/job/Aroma%20Thrift/badge/icon)](http://jenkins.sirwellington.tech/job/Aroma%20Thrift/)
+[![Build Status](http://jenkins.redroma.tech/job/Aroma%20Thrift/badge/icon)](http://jenkins.redroma.tech/job/Aroma%20Thrift/)
 
 The Model and Service Definitions for Aroma defined in Thrift
 
