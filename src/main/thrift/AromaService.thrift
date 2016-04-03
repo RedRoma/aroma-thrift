@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.service
 namespace cocoa AromaService_
 namespace cpp   aroma.thrift.service
+namespace php   RedRoma.Aroma.AromaService
 
 /*
  * Defined in this File is Aroma API and all of the operations

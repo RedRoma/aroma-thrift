@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.events
 namespace cocoa AromaEvents_
 namespace cpp   aroma.thrift.events
+namespace php   RedRoma.Aroma.Events
 
 /*
  * Defined in this File are the Aroma Events

@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.notification.service
 namespace cocoa NotificationService_
 namespace cpp   aroma.thrift.notification.service
+namespace php   RedRoma.Aroma.NotificationService
 
 /*
  * Defined in this File is the Notification Service API.

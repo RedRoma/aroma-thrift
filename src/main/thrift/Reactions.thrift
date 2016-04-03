@@ -2,6 +2,7 @@
 namespace java  tech.aroma.thrift.reactions
 namespace cocoa AromaReactions_
 namespace cpp   tech.aroma.thrift.reactions
+namespace php   RedRoma.Aroma.Reactions
 
 /*
  * Defined in this File are the Reactions that can occur when an Application sends a Messages.

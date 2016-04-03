@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.channels
 namespace cocoa AromaChannels_
 namespace cpp   aroma.thrift.channels
+namespace php   RedRoma.Aroma.Channels
 
 /*
  * Defined in this File are the various Channels that

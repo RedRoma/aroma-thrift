@@ -2,6 +2,7 @@
 namespace java  tech.aroma.thrift
 namespace cocoa Aroma_
 namespace cpp   tech.aroma.thrift
+namespace php   RedRoma.Aroma
 
 /*
  * Defined in this file are the basic structures and types used by Aroma.

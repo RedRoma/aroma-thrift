@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.email.service
 namespace cocoa EmailService_
 namespace cpp   aroma.thrift.email.service
+namespace php   RedRoma.Aroma.EmailService
 
 /*
  * Defined in this File is the Email Service API.

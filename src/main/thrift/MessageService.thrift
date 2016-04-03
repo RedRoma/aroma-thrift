@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.message.service
 namespace cocoa MessageService_
 namespace cpp   aroma.thrift.message.service
+namespace php   RedRoma.Aroma.MessageService
 
 /*
  * Defined in this File is the Message Service API.

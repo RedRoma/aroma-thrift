@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.exceptions
 namespace cocoa AromaException_
 namespace cpp   aroma.thrift.exceptions
+namespace php   RedRoma.Aroma.Exceptions
 
 /*
  * Defined in this File are the Aroma Exceptions

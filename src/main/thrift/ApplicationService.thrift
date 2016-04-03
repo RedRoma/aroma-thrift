@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.application.service
 namespace cocoa ApplicationService_
 namespace cpp   aroma.thrift.application.service
+namespace php   RedRoma.Aroma.ApplicationService
 
 /*
  * Defined in this File is the Application Service API.
