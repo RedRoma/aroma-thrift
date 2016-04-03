@@ -52,6 +52,7 @@
         <thrift.dest.dir.node>${project.basedir}/src/main/nodejs</thrift.dest.dir.node>
         <thrift.dest.dir.cpp>${project.basedir}/src/main/cpp</thrift.dest.dir.cpp>
         <thrift.dest.dir.cocoa>${project.basedir}/src/main/cocoa</thrift.dest.dir.cocoa>
+        <thrift.dest.dir.php>${project.basedir}/src/main/php</thrift.dest.dir.php>
 
     </properties>
 
@@ -152,6 +153,7 @@
                                 <mkdir dir="${thrift.dest.dir.node}" />
                                 <mkdir dir="${thrift.dest.dir.cpp}" />
                                 <mkdir dir="${thrift.dest.dir.cocoa}" />
+                                <mkdir dir="${thrift.dest.dir.php}" />
 
                                 <delete includeemptydirs="true">
                                     <fileset dir="${thrift.dest.dir.doc}" includes="**/*"/>
@@ -159,6 +161,7 @@
                                     <fileset dir="${thrift.dest.dir.node}" includes="**/*"/>
                                     <fileset dir="${thrift.dest.dir.cpp}" includes="**/*"/>
                                     <fileset dir="${thrift.dest.dir.cocoa}" includes="**/*"/>
+                                    <fileset dir="${thrift.dest.dir.php}" includes="**/*"/>
                                 </delete>
 
 
@@ -181,6 +184,8 @@
                                     <arg value="cpp"/>
                                     <arg value="--gen"/>
                                     <arg value="cocoa"/>
+                                    <arg value="--gen"/>
+                                    <arg value="php"/>
                                     <srcfile/>
                                     <fileset refid="thrift.src.files"/>
                                 </apply>
@@ -207,6 +212,10 @@
 
                                 <move todir="${thrift.dest.dir.cocoa}">
                                     <fileset dir="${thrift.dest.dir}/gen-cocoa" />
+                                </move>
+
+                                <move todir="${thrift.dest.dir.php}">
+                                    <fileset dir="${thrift.dest.dir}/gen-php" />
                                 </move>
 
                             </target>
