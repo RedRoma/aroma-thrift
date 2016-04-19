@@ -45,12 +45,12 @@ struct MatcherBodyContains
     1: string substring;
 }
 
-struct MatcherUrgencyEquals
+struct MatcherUrgencyIs
 {
     1: Aroma.Urgency urgency;
 }
 
-struct MatcherHostnameEquals
+struct MatcherHostnameIs
 {
     1: string expectedHostname;
 }
@@ -62,8 +62,8 @@ union AromaMatcher
     3: MatcherTitleContains titleContains;
     4: MatcherBodyIs bodyIs;
     5: MatcherBodyContains bodyContains;
-    6: MatcherUrgencyEquals urgencyEquals;
-    7: MatcherHostnameEquals hostnameEquals;
+    6: MatcherUrgencyIs urgencyEquals;
+    7: MatcherHostnameIs hostnameEquals;
 }
 
 

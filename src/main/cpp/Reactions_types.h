@@ -39,9 +39,9 @@ class MatcherBodyIs;
 
 class MatcherBodyContains;
 
-class MatcherUrgencyEquals;
+class MatcherUrgencyIs;
 
-class MatcherHostnameEquals;
+class MatcherHostnameIs;
 
 class AromaMatcher;
 
@@ -282,37 +282,37 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherBodyContains& ob
   return out;
 }
 
-typedef struct _MatcherUrgencyEquals__isset {
-  _MatcherUrgencyEquals__isset() : urgency(false) {}
+typedef struct _MatcherUrgencyIs__isset {
+  _MatcherUrgencyIs__isset() : urgency(false) {}
   bool urgency :1;
-} _MatcherUrgencyEquals__isset;
+} _MatcherUrgencyIs__isset;
 
-class MatcherUrgencyEquals {
+class MatcherUrgencyIs {
  public:
 
-  MatcherUrgencyEquals(const MatcherUrgencyEquals&);
-  MatcherUrgencyEquals& operator=(const MatcherUrgencyEquals&);
-  MatcherUrgencyEquals() : urgency(( ::tech::aroma::thrift::Urgency::type)0) {
+  MatcherUrgencyIs(const MatcherUrgencyIs&);
+  MatcherUrgencyIs& operator=(const MatcherUrgencyIs&);
+  MatcherUrgencyIs() : urgency(( ::tech::aroma::thrift::Urgency::type)0) {
   }
 
-  virtual ~MatcherUrgencyEquals() throw();
+  virtual ~MatcherUrgencyIs() throw();
    ::tech::aroma::thrift::Urgency::type urgency;
 
-  _MatcherUrgencyEquals__isset __isset;
+  _MatcherUrgencyIs__isset __isset;
 
   void __set_urgency(const  ::tech::aroma::thrift::Urgency::type val);
 
-  bool operator == (const MatcherUrgencyEquals & rhs) const
+  bool operator == (const MatcherUrgencyIs & rhs) const
   {
     if (!(urgency == rhs.urgency))
       return false;
     return true;
   }
-  bool operator != (const MatcherUrgencyEquals &rhs) const {
+  bool operator != (const MatcherUrgencyIs &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const MatcherUrgencyEquals & ) const;
+  bool operator < (const MatcherUrgencyIs & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -320,45 +320,45 @@ class MatcherUrgencyEquals {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(MatcherUrgencyEquals &a, MatcherUrgencyEquals &b);
+void swap(MatcherUrgencyIs &a, MatcherUrgencyIs &b);
 
-inline std::ostream& operator<<(std::ostream& out, const MatcherUrgencyEquals& obj)
+inline std::ostream& operator<<(std::ostream& out, const MatcherUrgencyIs& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _MatcherHostnameEquals__isset {
-  _MatcherHostnameEquals__isset() : expectedHostname(false) {}
+typedef struct _MatcherHostnameIs__isset {
+  _MatcherHostnameIs__isset() : expectedHostname(false) {}
   bool expectedHostname :1;
-} _MatcherHostnameEquals__isset;
+} _MatcherHostnameIs__isset;
 
-class MatcherHostnameEquals {
+class MatcherHostnameIs {
  public:
 
-  MatcherHostnameEquals(const MatcherHostnameEquals&);
-  MatcherHostnameEquals& operator=(const MatcherHostnameEquals&);
-  MatcherHostnameEquals() : expectedHostname() {
+  MatcherHostnameIs(const MatcherHostnameIs&);
+  MatcherHostnameIs& operator=(const MatcherHostnameIs&);
+  MatcherHostnameIs() : expectedHostname() {
   }
 
-  virtual ~MatcherHostnameEquals() throw();
+  virtual ~MatcherHostnameIs() throw();
   std::string expectedHostname;
 
-  _MatcherHostnameEquals__isset __isset;
+  _MatcherHostnameIs__isset __isset;
 
   void __set_expectedHostname(const std::string& val);
 
-  bool operator == (const MatcherHostnameEquals & rhs) const
+  bool operator == (const MatcherHostnameIs & rhs) const
   {
     if (!(expectedHostname == rhs.expectedHostname))
       return false;
     return true;
   }
-  bool operator != (const MatcherHostnameEquals &rhs) const {
+  bool operator != (const MatcherHostnameIs &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const MatcherHostnameEquals & ) const;
+  bool operator < (const MatcherHostnameIs & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -366,9 +366,9 @@ class MatcherHostnameEquals {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(MatcherHostnameEquals &a, MatcherHostnameEquals &b);
+void swap(MatcherHostnameIs &a, MatcherHostnameIs &b);
 
-inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameEquals& obj)
+inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameIs& obj)
 {
   obj.printTo(out);
   return out;
@@ -399,8 +399,8 @@ class AromaMatcher {
   MatcherTitleContains titleContains;
   MatcherBodyIs bodyIs;
   MatcherBodyContains bodyContains;
-  MatcherUrgencyEquals urgencyEquals;
-  MatcherHostnameEquals hostnameEquals;
+  MatcherUrgencyIs urgencyEquals;
+  MatcherHostnameIs hostnameEquals;
 
   _AromaMatcher__isset __isset;
 
@@ -414,9 +414,9 @@ class AromaMatcher {
 
   void __set_bodyContains(const MatcherBodyContains& val);
 
-  void __set_urgencyEquals(const MatcherUrgencyEquals& val);
+  void __set_urgencyEquals(const MatcherUrgencyIs& val);
 
-  void __set_hostnameEquals(const MatcherHostnameEquals& val);
+  void __set_hostnameEquals(const MatcherHostnameIs& val);
 
   bool operator == (const AromaMatcher & rhs) const
   {

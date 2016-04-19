@@ -252,7 +252,7 @@ MatcherBodyContains.prototype.write = function(output) {
   return;
 };
 
-MatcherUrgencyEquals = module.exports.MatcherUrgencyEquals = function(args) {
+MatcherUrgencyIs = module.exports.MatcherUrgencyIs = function(args) {
   this.urgency = null;
   if (args) {
     if (args.urgency !== undefined && args.urgency !== null) {
@@ -260,8 +260,8 @@ MatcherUrgencyEquals = module.exports.MatcherUrgencyEquals = function(args) {
     }
   }
 };
-MatcherUrgencyEquals.prototype = {};
-MatcherUrgencyEquals.prototype.read = function(input) {
+MatcherUrgencyIs.prototype = {};
+MatcherUrgencyIs.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -293,8 +293,8 @@ MatcherUrgencyEquals.prototype.read = function(input) {
   return;
 };
 
-MatcherUrgencyEquals.prototype.write = function(output) {
-  output.writeStructBegin('MatcherUrgencyEquals');
+MatcherUrgencyIs.prototype.write = function(output) {
+  output.writeStructBegin('MatcherUrgencyIs');
   if (this.urgency !== null && this.urgency !== undefined) {
     output.writeFieldBegin('urgency', Thrift.Type.I32, 1);
     output.writeI32(this.urgency);
@@ -305,7 +305,7 @@ MatcherUrgencyEquals.prototype.write = function(output) {
   return;
 };
 
-MatcherHostnameEquals = module.exports.MatcherHostnameEquals = function(args) {
+MatcherHostnameIs = module.exports.MatcherHostnameIs = function(args) {
   this.expectedHostname = null;
   if (args) {
     if (args.expectedHostname !== undefined && args.expectedHostname !== null) {
@@ -313,8 +313,8 @@ MatcherHostnameEquals = module.exports.MatcherHostnameEquals = function(args) {
     }
   }
 };
-MatcherHostnameEquals.prototype = {};
-MatcherHostnameEquals.prototype.read = function(input) {
+MatcherHostnameIs.prototype = {};
+MatcherHostnameIs.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -346,8 +346,8 @@ MatcherHostnameEquals.prototype.read = function(input) {
   return;
 };
 
-MatcherHostnameEquals.prototype.write = function(output) {
-  output.writeStructBegin('MatcherHostnameEquals');
+MatcherHostnameIs.prototype.write = function(output) {
+  output.writeStructBegin('MatcherHostnameIs');
   if (this.expectedHostname !== null && this.expectedHostname !== undefined) {
     output.writeFieldBegin('expectedHostname', Thrift.Type.STRING, 1);
     output.writeString(this.expectedHostname);
@@ -383,10 +383,10 @@ AromaMatcher = module.exports.AromaMatcher = function(args) {
       this.bodyContains = new ttypes.MatcherBodyContains(args.bodyContains);
     }
     if (args.urgencyEquals !== undefined && args.urgencyEquals !== null) {
-      this.urgencyEquals = new ttypes.MatcherUrgencyEquals(args.urgencyEquals);
+      this.urgencyEquals = new ttypes.MatcherUrgencyIs(args.urgencyEquals);
     }
     if (args.hostnameEquals !== undefined && args.hostnameEquals !== null) {
-      this.hostnameEquals = new ttypes.MatcherHostnameEquals(args.hostnameEquals);
+      this.hostnameEquals = new ttypes.MatcherHostnameIs(args.hostnameEquals);
     }
   }
 };
@@ -446,7 +446,7 @@ AromaMatcher.prototype.read = function(input) {
       break;
       case 6:
       if (ftype == Thrift.Type.STRUCT) {
-        this.urgencyEquals = new ttypes.MatcherUrgencyEquals();
+        this.urgencyEquals = new ttypes.MatcherUrgencyIs();
         this.urgencyEquals.read(input);
       } else {
         input.skip(ftype);
@@ -454,7 +454,7 @@ AromaMatcher.prototype.read = function(input) {
       break;
       case 7:
       if (ftype == Thrift.Type.STRUCT) {
-        this.hostnameEquals = new ttypes.MatcherHostnameEquals();
+        this.hostnameEquals = new ttypes.MatcherHostnameIs();
         this.hostnameEquals.read(input);
       } else {
         input.skip(ftype);

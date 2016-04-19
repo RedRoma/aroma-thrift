@@ -370,7 +370,7 @@ class MatcherBodyContains {
 
 }
 
-class MatcherUrgencyEquals {
+class MatcherUrgencyIs {
   static $_TSPEC;
 
   /**
@@ -395,7 +395,7 @@ class MatcherUrgencyEquals {
   }
 
   public function getName() {
-    return 'MatcherUrgencyEquals';
+    return 'MatcherUrgencyIs';
   }
 
   public function read($input)
@@ -432,7 +432,7 @@ class MatcherUrgencyEquals {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('MatcherUrgencyEquals');
+    $xfer += $output->writeStructBegin('MatcherUrgencyIs');
     if ($this->urgency !== null) {
       $xfer += $output->writeFieldBegin('urgency', TType::I32, 1);
       $xfer += $output->writeI32($this->urgency);
@@ -445,7 +445,7 @@ class MatcherUrgencyEquals {
 
 }
 
-class MatcherHostnameEquals {
+class MatcherHostnameIs {
   static $_TSPEC;
 
   /**
@@ -470,7 +470,7 @@ class MatcherHostnameEquals {
   }
 
   public function getName() {
-    return 'MatcherHostnameEquals';
+    return 'MatcherHostnameIs';
   }
 
   public function read($input)
@@ -507,7 +507,7 @@ class MatcherHostnameEquals {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('MatcherHostnameEquals');
+    $xfer += $output->writeStructBegin('MatcherHostnameIs');
     if ($this->expectedHostname !== null) {
       $xfer += $output->writeFieldBegin('expectedHostname', TType::STRING, 1);
       $xfer += $output->writeString($this->expectedHostname);
@@ -544,11 +544,11 @@ class AromaMatcher {
    */
   public $bodyContains = null;
   /**
-   * @var \RedRoma\Aroma\Reactions\MatcherUrgencyEquals
+   * @var \RedRoma\Aroma\Reactions\MatcherUrgencyIs
    */
   public $urgencyEquals = null;
   /**
-   * @var \RedRoma\Aroma\Reactions\MatcherHostnameEquals
+   * @var \RedRoma\Aroma\Reactions\MatcherHostnameIs
    */
   public $hostnameEquals = null;
 
@@ -583,12 +583,12 @@ class AromaMatcher {
         6 => array(
           'var' => 'urgencyEquals',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\MatcherUrgencyEquals',
+          'class' => '\RedRoma\Aroma\Reactions\MatcherUrgencyIs',
           ),
         7 => array(
           'var' => 'hostnameEquals',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\MatcherHostnameEquals',
+          'class' => '\RedRoma\Aroma\Reactions\MatcherHostnameIs',
           ),
         );
     }
@@ -678,7 +678,7 @@ class AromaMatcher {
           break;
         case 6:
           if ($ftype == TType::STRUCT) {
-            $this->urgencyEquals = new \RedRoma\Aroma\Reactions\MatcherUrgencyEquals();
+            $this->urgencyEquals = new \RedRoma\Aroma\Reactions\MatcherUrgencyIs();
             $xfer += $this->urgencyEquals->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -686,7 +686,7 @@ class AromaMatcher {
           break;
         case 7:
           if ($ftype == TType::STRUCT) {
-            $this->hostnameEquals = new \RedRoma\Aroma\Reactions\MatcherHostnameEquals();
+            $this->hostnameEquals = new \RedRoma\Aroma\Reactions\MatcherHostnameIs();
             $xfer += $this->hostnameEquals->read($input);
           } else {
             $xfer += $input->skip($ftype);

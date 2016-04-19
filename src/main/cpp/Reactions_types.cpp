@@ -420,15 +420,15 @@ void MatcherBodyContains::printTo(std::ostream& out) const {
 }
 
 
-MatcherUrgencyEquals::~MatcherUrgencyEquals() throw() {
+MatcherUrgencyIs::~MatcherUrgencyIs() throw() {
 }
 
 
-void MatcherUrgencyEquals::__set_urgency(const  ::tech::aroma::thrift::Urgency::type val) {
+void MatcherUrgencyIs::__set_urgency(const  ::tech::aroma::thrift::Urgency::type val) {
   this->urgency = val;
 }
 
-uint32_t MatcherUrgencyEquals::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MatcherUrgencyIs::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -471,10 +471,10 @@ uint32_t MatcherUrgencyEquals::read(::apache::thrift::protocol::TProtocol* iprot
   return xfer;
 }
 
-uint32_t MatcherUrgencyEquals::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MatcherUrgencyIs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MatcherUrgencyEquals");
+  xfer += oprot->writeStructBegin("MatcherUrgencyIs");
 
   xfer += oprot->writeFieldBegin("urgency", ::apache::thrift::protocol::T_I32, 1);
   xfer += oprot->writeI32((int32_t)this->urgency);
@@ -485,38 +485,38 @@ uint32_t MatcherUrgencyEquals::write(::apache::thrift::protocol::TProtocol* opro
   return xfer;
 }
 
-void swap(MatcherUrgencyEquals &a, MatcherUrgencyEquals &b) {
+void swap(MatcherUrgencyIs &a, MatcherUrgencyIs &b) {
   using ::std::swap;
   swap(a.urgency, b.urgency);
   swap(a.__isset, b.__isset);
 }
 
-MatcherUrgencyEquals::MatcherUrgencyEquals(const MatcherUrgencyEquals& other11) {
+MatcherUrgencyIs::MatcherUrgencyIs(const MatcherUrgencyIs& other11) {
   urgency = other11.urgency;
   __isset = other11.__isset;
 }
-MatcherUrgencyEquals& MatcherUrgencyEquals::operator=(const MatcherUrgencyEquals& other12) {
+MatcherUrgencyIs& MatcherUrgencyIs::operator=(const MatcherUrgencyIs& other12) {
   urgency = other12.urgency;
   __isset = other12.__isset;
   return *this;
 }
-void MatcherUrgencyEquals::printTo(std::ostream& out) const {
+void MatcherUrgencyIs::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "MatcherUrgencyEquals(";
+  out << "MatcherUrgencyIs(";
   out << "urgency=" << to_string(urgency);
   out << ")";
 }
 
 
-MatcherHostnameEquals::~MatcherHostnameEquals() throw() {
+MatcherHostnameIs::~MatcherHostnameIs() throw() {
 }
 
 
-void MatcherHostnameEquals::__set_expectedHostname(const std::string& val) {
+void MatcherHostnameIs::__set_expectedHostname(const std::string& val) {
   this->expectedHostname = val;
 }
 
-uint32_t MatcherHostnameEquals::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MatcherHostnameIs::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -557,10 +557,10 @@ uint32_t MatcherHostnameEquals::read(::apache::thrift::protocol::TProtocol* ipro
   return xfer;
 }
 
-uint32_t MatcherHostnameEquals::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MatcherHostnameIs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MatcherHostnameEquals");
+  xfer += oprot->writeStructBegin("MatcherHostnameIs");
 
   xfer += oprot->writeFieldBegin("expectedHostname", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->expectedHostname);
@@ -571,24 +571,24 @@ uint32_t MatcherHostnameEquals::write(::apache::thrift::protocol::TProtocol* opr
   return xfer;
 }
 
-void swap(MatcherHostnameEquals &a, MatcherHostnameEquals &b) {
+void swap(MatcherHostnameIs &a, MatcherHostnameIs &b) {
   using ::std::swap;
   swap(a.expectedHostname, b.expectedHostname);
   swap(a.__isset, b.__isset);
 }
 
-MatcherHostnameEquals::MatcherHostnameEquals(const MatcherHostnameEquals& other13) {
+MatcherHostnameIs::MatcherHostnameIs(const MatcherHostnameIs& other13) {
   expectedHostname = other13.expectedHostname;
   __isset = other13.__isset;
 }
-MatcherHostnameEquals& MatcherHostnameEquals::operator=(const MatcherHostnameEquals& other14) {
+MatcherHostnameIs& MatcherHostnameIs::operator=(const MatcherHostnameIs& other14) {
   expectedHostname = other14.expectedHostname;
   __isset = other14.__isset;
   return *this;
 }
-void MatcherHostnameEquals::printTo(std::ostream& out) const {
+void MatcherHostnameIs::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "MatcherHostnameEquals(";
+  out << "MatcherHostnameIs(";
   out << "expectedHostname=" << to_string(expectedHostname);
   out << ")";
 }
@@ -618,11 +618,11 @@ void AromaMatcher::__set_bodyContains(const MatcherBodyContains& val) {
   this->bodyContains = val;
 }
 
-void AromaMatcher::__set_urgencyEquals(const MatcherUrgencyEquals& val) {
+void AromaMatcher::__set_urgencyEquals(const MatcherUrgencyIs& val) {
   this->urgencyEquals = val;
 }
 
-void AromaMatcher::__set_hostnameEquals(const MatcherHostnameEquals& val) {
+void AromaMatcher::__set_hostnameEquals(const MatcherHostnameIs& val) {
   this->hostnameEquals = val;
 }
 

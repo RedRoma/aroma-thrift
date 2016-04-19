@@ -701,7 +701,7 @@
 
 @end
 
-@implementation AromaReactions_MatcherUrgencyEquals
+@implementation AromaReactions_MatcherUrgencyIs
 
 - (id) init
 {
@@ -754,10 +754,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_MatcherUrgencyEquals class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_MatcherUrgencyIs class]]) {
     return NO;
   }
-  AromaReactions_MatcherUrgencyEquals *other = (AromaReactions_MatcherUrgencyEquals *)anObject;
+  AromaReactions_MatcherUrgencyIs *other = (AromaReactions_MatcherUrgencyIs *)anObject;
   if ((__urgency_isset != other->__urgency_isset) ||
       (__urgency_isset && (__urgency != other->__urgency))) {
     return NO;
@@ -820,7 +820,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"MatcherUrgencyEquals"];
+  [outProtocol writeStructBeginWithName: @"MatcherUrgencyIs"];
   if (__urgency_isset) {
     [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 1];
     [outProtocol writeI32: __urgency];
@@ -835,7 +835,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherUrgencyEquals("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherUrgencyIs("];
   [ms appendString: @"urgency:"];
   [ms appendFormat: @"%i", __urgency];
   [ms appendString: @")"];
@@ -844,7 +844,7 @@
 
 @end
 
-@implementation AromaReactions_MatcherHostnameEquals
+@implementation AromaReactions_MatcherHostnameIs
 
 - (id) init
 {
@@ -897,10 +897,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_MatcherHostnameEquals class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_MatcherHostnameIs class]]) {
     return NO;
   }
-  AromaReactions_MatcherHostnameEquals *other = (AromaReactions_MatcherHostnameEquals *)anObject;
+  AromaReactions_MatcherHostnameIs *other = (AromaReactions_MatcherHostnameIs *)anObject;
   if ((__expectedHostname_isset != other->__expectedHostname_isset) ||
       (__expectedHostname_isset && ((__expectedHostname || other->__expectedHostname) && ![__expectedHostname isEqual:other->__expectedHostname]))) {
     return NO;
@@ -968,7 +968,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"MatcherHostnameEquals"];
+  [outProtocol writeStructBeginWithName: @"MatcherHostnameIs"];
   if (__expectedHostname_isset) {
     if (__expectedHostname != nil) {
       [outProtocol writeFieldBeginWithName: @"expectedHostname" type: TType_STRING fieldID: 1];
@@ -985,7 +985,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherHostnameEquals("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherHostnameIs("];
   [ms appendString: @"expectedHostname:"];
   [ms appendFormat: @"\"%@\"", __expectedHostname];
   [ms appendString: @")"];
@@ -1004,7 +1004,7 @@
   return self;
 }
 
-- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleContains: (AromaReactions_MatcherTitleContains *) titleContains bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains urgencyEquals: (AromaReactions_MatcherUrgencyEquals *) urgencyEquals hostnameEquals: (AromaReactions_MatcherHostnameEquals *) hostnameEquals
+- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleContains: (AromaReactions_MatcherTitleContains *) titleContains bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameEquals: (AromaReactions_MatcherHostnameIs *) hostnameEquals
 {
   self = [super init];
   __all = [all retain_stub];
@@ -1295,11 +1295,11 @@
   __bodyContains_isset = NO;
 }
 
-- (AromaReactions_MatcherUrgencyEquals *) urgencyEquals {
+- (AromaReactions_MatcherUrgencyIs *) urgencyEquals {
   return [[__urgencyEquals retain_stub] autorelease_stub];
 }
 
-- (void) setUrgencyEquals: (AromaReactions_MatcherUrgencyEquals *) urgencyEquals {
+- (void) setUrgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals {
   [urgencyEquals retain_stub];
   [__urgencyEquals release_stub];
   __urgencyEquals = urgencyEquals;
@@ -1316,11 +1316,11 @@
   __urgencyEquals_isset = NO;
 }
 
-- (AromaReactions_MatcherHostnameEquals *) hostnameEquals {
+- (AromaReactions_MatcherHostnameIs *) hostnameEquals {
   return [[__hostnameEquals retain_stub] autorelease_stub];
 }
 
-- (void) setHostnameEquals: (AromaReactions_MatcherHostnameEquals *) hostnameEquals {
+- (void) setHostnameEquals: (AromaReactions_MatcherHostnameIs *) hostnameEquals {
   [hostnameEquals retain_stub];
   [__hostnameEquals release_stub];
   __hostnameEquals = hostnameEquals;
@@ -1404,7 +1404,7 @@
         break;
       case 6:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_MatcherUrgencyEquals *fieldValue = [[AromaReactions_MatcherUrgencyEquals alloc] init];
+          AromaReactions_MatcherUrgencyIs *fieldValue = [[AromaReactions_MatcherUrgencyIs alloc] init];
           [fieldValue read: inProtocol];
           [self setUrgencyEquals: fieldValue];
           [fieldValue release_stub];
@@ -1414,7 +1414,7 @@
         break;
       case 7:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_MatcherHostnameEquals *fieldValue = [[AromaReactions_MatcherHostnameEquals alloc] init];
+          AromaReactions_MatcherHostnameIs *fieldValue = [[AromaReactions_MatcherHostnameIs alloc] init];
           [fieldValue read: inProtocol];
           [self setHostnameEquals: fieldValue];
           [fieldValue release_stub];

@@ -245,7 +245,7 @@ MatcherBodyContains.prototype.write = function(output) {
   return;
 };
 
-MatcherUrgencyEquals = function(args) {
+MatcherUrgencyIs = function(args) {
   this.urgency = null;
   if (args) {
     if (args.urgency !== undefined && args.urgency !== null) {
@@ -253,8 +253,8 @@ MatcherUrgencyEquals = function(args) {
     }
   }
 };
-MatcherUrgencyEquals.prototype = {};
-MatcherUrgencyEquals.prototype.read = function(input) {
+MatcherUrgencyIs.prototype = {};
+MatcherUrgencyIs.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -286,8 +286,8 @@ MatcherUrgencyEquals.prototype.read = function(input) {
   return;
 };
 
-MatcherUrgencyEquals.prototype.write = function(output) {
-  output.writeStructBegin('MatcherUrgencyEquals');
+MatcherUrgencyIs.prototype.write = function(output) {
+  output.writeStructBegin('MatcherUrgencyIs');
   if (this.urgency !== null && this.urgency !== undefined) {
     output.writeFieldBegin('urgency', Thrift.Type.I32, 1);
     output.writeI32(this.urgency);
@@ -298,7 +298,7 @@ MatcherUrgencyEquals.prototype.write = function(output) {
   return;
 };
 
-MatcherHostnameEquals = function(args) {
+MatcherHostnameIs = function(args) {
   this.expectedHostname = null;
   if (args) {
     if (args.expectedHostname !== undefined && args.expectedHostname !== null) {
@@ -306,8 +306,8 @@ MatcherHostnameEquals = function(args) {
     }
   }
 };
-MatcherHostnameEquals.prototype = {};
-MatcherHostnameEquals.prototype.read = function(input) {
+MatcherHostnameIs.prototype = {};
+MatcherHostnameIs.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -339,8 +339,8 @@ MatcherHostnameEquals.prototype.read = function(input) {
   return;
 };
 
-MatcherHostnameEquals.prototype.write = function(output) {
-  output.writeStructBegin('MatcherHostnameEquals');
+MatcherHostnameIs.prototype.write = function(output) {
+  output.writeStructBegin('MatcherHostnameIs');
   if (this.expectedHostname !== null && this.expectedHostname !== undefined) {
     output.writeFieldBegin('expectedHostname', Thrift.Type.STRING, 1);
     output.writeString(this.expectedHostname);
@@ -376,10 +376,10 @@ AromaMatcher = function(args) {
       this.bodyContains = new MatcherBodyContains(args.bodyContains);
     }
     if (args.urgencyEquals !== undefined && args.urgencyEquals !== null) {
-      this.urgencyEquals = new MatcherUrgencyEquals(args.urgencyEquals);
+      this.urgencyEquals = new MatcherUrgencyIs(args.urgencyEquals);
     }
     if (args.hostnameEquals !== undefined && args.hostnameEquals !== null) {
-      this.hostnameEquals = new MatcherHostnameEquals(args.hostnameEquals);
+      this.hostnameEquals = new MatcherHostnameIs(args.hostnameEquals);
     }
   }
 };
@@ -439,7 +439,7 @@ AromaMatcher.prototype.read = function(input) {
       break;
       case 6:
       if (ftype == Thrift.Type.STRUCT) {
-        this.urgencyEquals = new MatcherUrgencyEquals();
+        this.urgencyEquals = new MatcherUrgencyIs();
         this.urgencyEquals.read(input);
       } else {
         input.skip(ftype);
@@ -447,7 +447,7 @@ AromaMatcher.prototype.read = function(input) {
       break;
       case 7:
       if (ftype == Thrift.Type.STRUCT) {
-        this.hostnameEquals = new MatcherHostnameEquals();
+        this.hostnameEquals = new MatcherHostnameIs();
         this.hostnameEquals.read(input);
       } else {
         input.skip(ftype);

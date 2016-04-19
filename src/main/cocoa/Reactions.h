@@ -145,7 +145,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_MatcherUrgencyEquals : NSObject <TBase, NSCoding> {
+@interface AromaReactions_MatcherUrgencyIs : NSObject <TBase, NSCoding> {
   int __urgency;
 
   BOOL __urgency_isset;
@@ -171,7 +171,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_MatcherHostnameEquals : NSObject <TBase, NSCoding> {
+@interface AromaReactions_MatcherHostnameIs : NSObject <TBase, NSCoding> {
   NSString * __expectedHostname;
 
   BOOL __expectedHostname_isset;
@@ -203,8 +203,8 @@ typedef Aroma_uuid AromaReactions_uuid;
   AromaReactions_MatcherTitleContains * __titleContains;
   AromaReactions_MatcherBodyIs * __bodyIs;
   AromaReactions_MatcherBodyContains * __bodyContains;
-  AromaReactions_MatcherUrgencyEquals * __urgencyEquals;
-  AromaReactions_MatcherHostnameEquals * __hostnameEquals;
+  AromaReactions_MatcherUrgencyIs * __urgencyEquals;
+  AromaReactions_MatcherHostnameIs * __hostnameEquals;
 
   BOOL __all_isset;
   BOOL __titleIs_isset;
@@ -221,12 +221,12 @@ typedef Aroma_uuid AromaReactions_uuid;
 @property (nonatomic, retain, getter=titleContains, setter=setTitleContains:) AromaReactions_MatcherTitleContains * titleContains;
 @property (nonatomic, retain, getter=bodyIs, setter=setBodyIs:) AromaReactions_MatcherBodyIs * bodyIs;
 @property (nonatomic, retain, getter=bodyContains, setter=setBodyContains:) AromaReactions_MatcherBodyContains * bodyContains;
-@property (nonatomic, retain, getter=urgencyEquals, setter=setUrgencyEquals:) AromaReactions_MatcherUrgencyEquals * urgencyEquals;
-@property (nonatomic, retain, getter=hostnameEquals, setter=setHostnameEquals:) AromaReactions_MatcherHostnameEquals * hostnameEquals;
+@property (nonatomic, retain, getter=urgencyEquals, setter=setUrgencyEquals:) AromaReactions_MatcherUrgencyIs * urgencyEquals;
+@property (nonatomic, retain, getter=hostnameEquals, setter=setHostnameEquals:) AromaReactions_MatcherHostnameIs * hostnameEquals;
 #endif
 
 - (id) init;
-- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleContains: (AromaReactions_MatcherTitleContains *) titleContains bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains urgencyEquals: (AromaReactions_MatcherUrgencyEquals *) urgencyEquals hostnameEquals: (AromaReactions_MatcherHostnameEquals *) hostnameEquals;
+- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleContains: (AromaReactions_MatcherTitleContains *) titleContains bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameEquals: (AromaReactions_MatcherHostnameIs *) hostnameEquals;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -264,14 +264,14 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) bodyContainsIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_MatcherUrgencyEquals *) urgencyEquals;
-- (void) setUrgencyEquals: (AromaReactions_MatcherUrgencyEquals *) urgencyEquals;
+- (AromaReactions_MatcherUrgencyIs *) urgencyEquals;
+- (void) setUrgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals;
 #endif
 - (BOOL) urgencyEqualsIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_MatcherHostnameEquals *) hostnameEquals;
-- (void) setHostnameEquals: (AromaReactions_MatcherHostnameEquals *) hostnameEquals;
+- (AromaReactions_MatcherHostnameIs *) hostnameEquals;
+- (void) setHostnameEquals: (AromaReactions_MatcherHostnameIs *) hostnameEquals;
 #endif
 - (BOOL) hostnameEqualsIsSet;
 

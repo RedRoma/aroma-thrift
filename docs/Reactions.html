@@ -207,10 +207,10 @@ code { line-height: 20px; }
 <a href="#Struct_MatcherAll">MatcherAll</a><br/>
 <a href="#Struct_MatcherBodyContains">MatcherBodyContains</a><br/>
 <a href="#Struct_MatcherBodyIs">MatcherBodyIs</a><br/>
-<a href="#Struct_MatcherHostnameEquals">MatcherHostnameEquals</a><br/>
+<a href="#Struct_MatcherHostnameIs">MatcherHostnameIs</a><br/>
 <a href="#Struct_MatcherTitleContains">MatcherTitleContains</a><br/>
 <a href="#Struct_MatcherTitleIs">MatcherTitleIs</a><br/>
-<a href="#Struct_MatcherUrgencyEquals">MatcherUrgencyEquals</a><br/>
+<a href="#Struct_MatcherUrgencyIs">MatcherUrgencyIs</a><br/>
 <a href="#Struct_Reaction">Reaction</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
@@ -248,10 +248,10 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_MatcherBodyContains">Struct: MatcherBodyContains</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>substring</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_MatcherUrgencyEquals">Struct: MatcherUrgencyEquals</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_MatcherUrgencyIs">Struct: MatcherUrgencyIs</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>urgency</td><td><code><a href="Aroma.html#Enum_Urgency">Aroma.Urgency</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_MatcherHostnameEquals">Struct: MatcherHostnameEquals</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_MatcherHostnameIs">Struct: MatcherHostnameIs</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>expectedHostname</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_AromaMatcher">Union: AromaMatcher</h3>
@@ -261,8 +261,8 @@ code { line-height: 20px; }
 <tr><td>3</td><td>titleContains</td><td><code><a href="#Struct_MatcherTitleContains">MatcherTitleContains</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>bodyIs</td><td><code><a href="#Struct_MatcherBodyIs">MatcherBodyIs</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>5</td><td>bodyContains</td><td><code><a href="#Struct_MatcherBodyContains">MatcherBodyContains</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>6</td><td>urgencyEquals</td><td><code><a href="#Struct_MatcherUrgencyEquals">MatcherUrgencyEquals</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>7</td><td>hostnameEquals</td><td><code><a href="#Struct_MatcherHostnameEquals">MatcherHostnameEquals</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>6</td><td>urgencyEquals</td><td><code><a href="#Struct_MatcherUrgencyIs">MatcherUrgencyIs</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>7</td><td>hostnameEquals</td><td><code><a href="#Struct_MatcherHostnameIs">MatcherHostnameIs</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ActionPostToSlackChannel">Struct: ActionPostToSlackChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>slackChannel</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
