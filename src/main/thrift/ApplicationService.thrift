@@ -45,6 +45,12 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
+/** 
+ * The maximum number of characters allowed in the body of a message. 
+ * The rest will be truncated.
+ */
+const int MAX_CHARACTERS_IN_BODY = 15000
+
 //==========================================================
 // QUERY OPERATIONS
 

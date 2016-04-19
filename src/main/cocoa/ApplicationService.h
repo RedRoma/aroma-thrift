@@ -191,4 +191,5 @@ typedef AromaException_UnauthorizedException * ApplicationService_UnauthorizedEx
 + (ApplicationService_int) SERVICE_PORT;
 + (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (ApplicationService_int) MAX_CHARACTERS_IN_BODY;
 @end

@@ -226,3 +226,4 @@ PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'application-srv.aroma.tech','port' : 7002});
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'application-srv.beta.aroma.tech','port' : 7002});
+MAX_CHARACTERS_IN_BODY = 15000;

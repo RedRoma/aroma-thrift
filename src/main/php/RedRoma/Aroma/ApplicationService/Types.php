@@ -342,6 +342,7 @@ final class Constant extends \Thrift\Type\TConstant {
   static protected $SERVICE_PORT;
   static protected $PRODUCTION_ENDPOINT;
   static protected $BETA_ENDPOINT;
+  static protected $MAX_CHARACTERS_IN_BODY;
 
   static protected function init_SERVICE_PORT() {
     return 7002;
@@ -359,6 +360,14 @@ final class Constant extends \Thrift\Type\TConstant {
       "hostname" => "application-srv.beta.aroma.tech",
       "port" => 7002,
     ));
+  }
+
+  static protected function init_MAX_CHARACTERS_IN_BODY() {
+    return     /**
+     * The maximum number of characters allowed in the body of a message.
+     * The rest will be truncated.
+     */
+15000;
   }
 }
 

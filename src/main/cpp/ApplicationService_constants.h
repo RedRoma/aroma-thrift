@@ -18,6 +18,7 @@ class ApplicationServiceConstants {
   int SERVICE_PORT;
    ::aroma::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
    ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
+  int MAX_CHARACTERS_IN_BODY;
 };
 
 extern const ApplicationServiceConstants g_ApplicationService_constants;
