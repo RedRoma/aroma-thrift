@@ -1571,15 +1571,15 @@ AromaAction.prototype.write = function(output) {
 };
 
 Reaction = module.exports.Reaction = function(args) {
-  this.matcher = null;
-  this.action = null;
+  this.matchers = [];
+  this.actions = null;
   this.name = null;
   if (args) {
-    if (args.matcher !== undefined && args.matcher !== null) {
-      this.matcher = new ttypes.AromaMatcher(args.matcher);
+    if (args.matchers !== undefined && args.matchers !== null) {
+      this.matchers = Thrift.copyList(args.matchers, [ttypes.AromaMatcher]);
     }
-    if (args.action !== undefined && args.action !== null) {
-      this.action = new ttypes.AromaAction(args.action);
+    if (args.actions !== undefined && args.actions !== null) {
+      this.actions = Thrift.copyList(args.actions, [ttypes.AromaAction]);
     }
     if (args.name !== undefined && args.name !== null) {
       this.name = args.name;
@@ -1601,17 +1601,43 @@ Reaction.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.matcher = new ttypes.AromaMatcher();
-        this.matcher.read(input);
+      if (ftype == Thrift.Type.LIST) {
+        var _size16 = 0;
+        var _rtmp320;
+        this.matchers = [];
+        var _etype19 = 0;
+        _rtmp320 = input.readListBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
+        {
+          var elem22 = null;
+          elem22 = new ttypes.AromaMatcher();
+          elem22.read(input);
+          this.matchers.push(elem22);
+        }
+        input.readListEnd();
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.action = new ttypes.AromaAction();
-        this.action.read(input);
+      if (ftype == Thrift.Type.LIST) {
+        var _size23 = 0;
+        var _rtmp327;
+        this.actions = [];
+        var _etype26 = 0;
+        _rtmp327 = input.readListBegin();
+        _etype26 = _rtmp327.etype;
+        _size23 = _rtmp327.size;
+        for (var _i28 = 0; _i28 < _size23; ++_i28)
+        {
+          var elem29 = null;
+          elem29 = new ttypes.AromaAction();
+          elem29.read(input);
+          this.actions.push(elem29);
+        }
+        input.readListEnd();
       } else {
         input.skip(ftype);
       }
@@ -1634,14 +1660,32 @@ Reaction.prototype.read = function(input) {
 
 Reaction.prototype.write = function(output) {
   output.writeStructBegin('Reaction');
-  if (this.matcher !== null && this.matcher !== undefined) {
-    output.writeFieldBegin('matcher', Thrift.Type.STRUCT, 1);
-    this.matcher.write(output);
+  if (this.matchers !== null && this.matchers !== undefined) {
+    output.writeFieldBegin('matchers', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.matchers.length);
+    for (var iter30 in this.matchers)
+    {
+      if (this.matchers.hasOwnProperty(iter30))
+      {
+        iter30 = this.matchers[iter30];
+        iter30.write(output);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
-  if (this.action !== null && this.action !== undefined) {
-    output.writeFieldBegin('action', Thrift.Type.STRUCT, 2);
-    this.action.write(output);
+  if (this.actions !== null && this.actions !== undefined) {
+    output.writeFieldBegin('actions', Thrift.Type.LIST, 2);
+    output.writeListBegin(Thrift.Type.STRUCT, this.actions.length);
+    for (var iter31 in this.actions)
+    {
+      if (this.actions.hasOwnProperty(iter31))
+      {
+        iter31 = this.actions[iter31];
+        iter31.write(output);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
   if (this.name !== null && this.name !== undefined) {

@@ -2436,12 +2436,12 @@ Reaction::~Reaction() throw() {
 }
 
 
-void Reaction::__set_matcher(const AromaMatcher& val) {
-  this->matcher = val;
+void Reaction::__set_matchers(const std::vector<AromaMatcher> & val) {
+  this->matchers = val;
 }
 
-void Reaction::__set_action(const AromaAction& val) {
-  this->action = val;
+void Reaction::__set_actions(const std::vector<AromaAction> & val) {
+  this->actions = val;
 }
 
 void Reaction::__set_name(const std::string& val) {
@@ -2470,17 +2470,41 @@ uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
     switch (fid)
     {
       case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->matcher.read(iprot);
-          this->__isset.matcher = true;
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->matchers.clear();
+            uint32_t _size60;
+            ::apache::thrift::protocol::TType _etype63;
+            xfer += iprot->readListBegin(_etype63, _size60);
+            this->matchers.resize(_size60);
+            uint32_t _i64;
+            for (_i64 = 0; _i64 < _size60; ++_i64)
+            {
+              xfer += this->matchers[_i64].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.matchers = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
       case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->action.read(iprot);
-          this->__isset.action = true;
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->actions.clear();
+            uint32_t _size65;
+            ::apache::thrift::protocol::TType _etype68;
+            xfer += iprot->readListBegin(_etype68, _size65);
+            this->actions.resize(_size65);
+            uint32_t _i69;
+            for (_i69 = 0; _i69 < _size65; ++_i69)
+            {
+              xfer += this->actions[_i69].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.actions = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2510,12 +2534,28 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Reaction");
 
-  xfer += oprot->writeFieldBegin("matcher", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->matcher.write(oprot);
+  xfer += oprot->writeFieldBegin("matchers", ::apache::thrift::protocol::T_LIST, 1);
+  {
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->matchers.size()));
+    std::vector<AromaMatcher> ::const_iterator _iter70;
+    for (_iter70 = this->matchers.begin(); _iter70 != this->matchers.end(); ++_iter70)
+    {
+      xfer += (*_iter70).write(oprot);
+    }
+    xfer += oprot->writeListEnd();
+  }
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("action", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->action.write(oprot);
+  xfer += oprot->writeFieldBegin("actions", ::apache::thrift::protocol::T_LIST, 2);
+  {
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->actions.size()));
+    std::vector<AromaAction> ::const_iterator _iter71;
+    for (_iter71 = this->actions.begin(); _iter71 != this->actions.end(); ++_iter71)
+    {
+      xfer += (*_iter71).write(oprot);
+    }
+    xfer += oprot->writeListEnd();
+  }
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
@@ -2529,30 +2569,30 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
 void swap(Reaction &a, Reaction &b) {
   using ::std::swap;
-  swap(a.matcher, b.matcher);
-  swap(a.action, b.action);
+  swap(a.matchers, b.matchers);
+  swap(a.actions, b.actions);
   swap(a.name, b.name);
   swap(a.__isset, b.__isset);
 }
 
-Reaction::Reaction(const Reaction& other60) {
-  matcher = other60.matcher;
-  action = other60.action;
-  name = other60.name;
-  __isset = other60.__isset;
+Reaction::Reaction(const Reaction& other72) {
+  matchers = other72.matchers;
+  actions = other72.actions;
+  name = other72.name;
+  __isset = other72.__isset;
 }
-Reaction& Reaction::operator=(const Reaction& other61) {
-  matcher = other61.matcher;
-  action = other61.action;
-  name = other61.name;
-  __isset = other61.__isset;
+Reaction& Reaction::operator=(const Reaction& other73) {
+  matchers = other73.matchers;
+  actions = other73.actions;
+  name = other73.name;
+  __isset = other73.__isset;
   return *this;
 }
 void Reaction::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Reaction(";
-  out << "matcher=" << to_string(matcher);
-  out << ", " << "action=" << to_string(action);
+  out << "matchers=" << to_string(matchers);
+  out << ", " << "actions=" << to_string(actions);
   out << ", " << "name=" << to_string(name);
   out << ")";
 }

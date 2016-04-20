@@ -161,7 +161,7 @@ union AromaAction
 
 struct Reaction
 {
-    1: AromaMatcher matcher;
-    2: AromaAction action;
+    1: list<AromaMatcher> matchers = [];
+    2: list<AromaAction> actions;
     3: string name;
 }

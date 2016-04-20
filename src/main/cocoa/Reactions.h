@@ -792,23 +792,23 @@ typedef Aroma_uuid AromaReactions_uuid;
 @end
 
 @interface AromaReactions_Reaction : NSObject <TBase, NSCoding> {
-  AromaReactions_AromaMatcher * __matcher;
-  AromaReactions_AromaAction * __action;
+  NSMutableArray * __matchers;
+  NSMutableArray * __actions;
   NSString * __name;
 
-  BOOL __matcher_isset;
-  BOOL __action_isset;
+  BOOL __matchers_isset;
+  BOOL __actions_isset;
   BOOL __name_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=matcher, setter=setMatcher:) AromaReactions_AromaMatcher * matcher;
-@property (nonatomic, retain, getter=action, setter=setAction:) AromaReactions_AromaAction * action;
+@property (nonatomic, retain, getter=matchers, setter=setMatchers:) NSMutableArray * matchers;
+@property (nonatomic, retain, getter=actions, setter=setActions:) NSMutableArray * actions;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 #endif
 
 - (id) init;
-- (id) initWithMatcher: (AromaReactions_AromaMatcher *) matcher action: (AromaReactions_AromaAction *) action name: (NSString *) name;
+- (id) initWithMatchers: (NSMutableArray *) matchers actions: (NSMutableArray *) actions name: (NSString *) name;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -816,16 +816,16 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_AromaMatcher *) matcher;
-- (void) setMatcher: (AromaReactions_AromaMatcher *) matcher;
+- (NSMutableArray *) matchers;
+- (void) setMatchers: (NSMutableArray *) matchers;
 #endif
-- (BOOL) matcherIsSet;
+- (BOOL) matchersIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_AromaAction *) action;
-- (void) setAction: (AromaReactions_AromaAction *) action;
+- (NSMutableArray *) actions;
+- (void) setActions: (NSMutableArray *) actions;
 #endif
-- (BOOL) actionIsSet;
+- (BOOL) actionsIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) name;

@@ -2361,13 +2361,14 @@ class Reaction {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\Reactions\AromaMatcher
+   * @var \RedRoma\Aroma\Reactions\AromaMatcher[]
    */
-  public $matcher = null;
+  public $matchers = array(
+  );
   /**
-   * @var \RedRoma\Aroma\Reactions\AromaAction
+   * @var \RedRoma\Aroma\Reactions\AromaAction[]
    */
-  public $action = null;
+  public $actions = null;
   /**
    * @var string
    */
@@ -2377,14 +2378,22 @@ class Reaction {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
         1 => array(
-          'var' => 'matcher',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\AromaMatcher',
+          'var' => 'matchers',
+          'type' => TType::LST,
+          'etype' => TType::STRUCT,
+          'elem' => array(
+            'type' => TType::STRUCT,
+            'class' => '\RedRoma\Aroma\Reactions\AromaMatcher',
+            ),
           ),
         2 => array(
-          'var' => 'action',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\AromaAction',
+          'var' => 'actions',
+          'type' => TType::LST,
+          'etype' => TType::STRUCT,
+          'elem' => array(
+            'type' => TType::STRUCT,
+            'class' => '\RedRoma\Aroma\Reactions\AromaAction',
+            ),
           ),
         3 => array(
           'var' => 'name',
@@ -2393,11 +2402,11 @@ class Reaction {
         );
     }
     if (is_array($vals)) {
-      if (isset($vals['matcher'])) {
-        $this->matcher = $vals['matcher'];
+      if (isset($vals['matchers'])) {
+        $this->matchers = $vals['matchers'];
       }
-      if (isset($vals['action'])) {
-        $this->action = $vals['action'];
+      if (isset($vals['actions'])) {
+        $this->actions = $vals['actions'];
       }
       if (isset($vals['name'])) {
         $this->name = $vals['name'];
@@ -2425,17 +2434,37 @@ class Reaction {
       switch ($fid)
       {
         case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->matcher = new \RedRoma\Aroma\Reactions\AromaMatcher();
-            $xfer += $this->matcher->read($input);
+          if ($ftype == TType::LST) {
+            $this->matchers = array();
+            $_size14 = 0;
+            $_etype17 = 0;
+            $xfer += $input->readListBegin($_etype17, $_size14);
+            for ($_i18 = 0; $_i18 < $_size14; ++$_i18)
+            {
+              $elem19 = null;
+              $elem19 = new \RedRoma\Aroma\Reactions\AromaMatcher();
+              $xfer += $elem19->read($input);
+              $this->matchers []= $elem19;
+            }
+            $xfer += $input->readListEnd();
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->action = new \RedRoma\Aroma\Reactions\AromaAction();
-            $xfer += $this->action->read($input);
+          if ($ftype == TType::LST) {
+            $this->actions = array();
+            $_size20 = 0;
+            $_etype23 = 0;
+            $xfer += $input->readListBegin($_etype23, $_size20);
+            for ($_i24 = 0; $_i24 < $_size20; ++$_i24)
+            {
+              $elem25 = null;
+              $elem25 = new \RedRoma\Aroma\Reactions\AromaAction();
+              $xfer += $elem25->read($input);
+              $this->actions []= $elem25;
+            }
+            $xfer += $input->readListEnd();
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -2460,20 +2489,38 @@ class Reaction {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('Reaction');
-    if ($this->matcher !== null) {
-      if (!is_object($this->matcher)) {
+    if ($this->matchers !== null) {
+      if (!is_array($this->matchers)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('matcher', TType::STRUCT, 1);
-      $xfer += $this->matcher->write($output);
+      $xfer += $output->writeFieldBegin('matchers', TType::LST, 1);
+      {
+        $output->writeListBegin(TType::STRUCT, count($this->matchers));
+        {
+          foreach ($this->matchers as $iter26)
+          {
+            $xfer += $iter26->write($output);
+          }
+        }
+        $output->writeListEnd();
+      }
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->action !== null) {
-      if (!is_object($this->action)) {
+    if ($this->actions !== null) {
+      if (!is_array($this->actions)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('action', TType::STRUCT, 2);
-      $xfer += $this->action->write($output);
+      $xfer += $output->writeFieldBegin('actions', TType::LST, 2);
+      {
+        $output->writeListBegin(TType::STRUCT, count($this->actions));
+        {
+          foreach ($this->actions as $iter27)
+          {
+            $xfer += $iter27->write($output);
+          }
+        }
+        $output->writeListEnd();
+      }
       $xfer += $output->writeFieldEnd();
     }
     if ($this->name !== null) {

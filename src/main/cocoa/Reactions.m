@@ -4677,17 +4677,19 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.matchers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
 #endif
   return self;
 }
 
-- (id) initWithMatcher: (AromaReactions_AromaMatcher *) matcher action: (AromaReactions_AromaAction *) action name: (NSString *) name
+- (id) initWithMatchers: (NSMutableArray *) matchers actions: (NSMutableArray *) actions name: (NSString *) name
 {
   self = [super init];
-  __matcher = [matcher retain_stub];
-  __matcher_isset = YES;
-  __action = [action retain_stub];
-  __action_isset = YES;
+  __matchers = [matchers retain_stub];
+  __matchers_isset = YES;
+  __actions = [actions retain_stub];
+  __actions_isset = YES;
   __name = [name retain_stub];
   __name_isset = YES;
   return self;
@@ -4696,15 +4698,15 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"matcher"])
+  if ([decoder containsValueForKey: @"matchers"])
   {
-    __matcher = [[decoder decodeObjectForKey: @"matcher"] retain_stub];
-    __matcher_isset = YES;
+    __matchers = [[decoder decodeObjectForKey: @"matchers"] retain_stub];
+    __matchers_isset = YES;
   }
-  if ([decoder containsValueForKey: @"action"])
+  if ([decoder containsValueForKey: @"actions"])
   {
-    __action = [[decoder decodeObjectForKey: @"action"] retain_stub];
-    __action_isset = YES;
+    __actions = [[decoder decodeObjectForKey: @"actions"] retain_stub];
+    __actions_isset = YES;
   }
   if ([decoder containsValueForKey: @"name"])
   {
@@ -4716,13 +4718,13 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__matcher_isset)
+  if (__matchers_isset)
   {
-    [encoder encodeObject: __matcher forKey: @"matcher"];
+    [encoder encodeObject: __matchers forKey: @"matchers"];
   }
-  if (__action_isset)
+  if (__actions_isset)
   {
-    [encoder encodeObject: __action forKey: @"action"];
+    [encoder encodeObject: __actions forKey: @"actions"];
   }
   if (__name_isset)
   {
@@ -4733,15 +4735,15 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __matcher_isset ? 2654435761 : 0;
-  if (__matcher_isset)
+  hash = (hash * 31) ^ __matchers_isset ? 2654435761 : 0;
+  if (__matchers_isset)
   {
-    hash = (hash * 31) ^ [__matcher hash];
+    hash = (hash * 31) ^ [__matchers hash];
   }
-  hash = (hash * 31) ^ __action_isset ? 2654435761 : 0;
-  if (__action_isset)
+  hash = (hash * 31) ^ __actions_isset ? 2654435761 : 0;
+  if (__actions_isset)
   {
-    hash = (hash * 31) ^ [__action hash];
+    hash = (hash * 31) ^ [__actions hash];
   }
   hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
   if (__name_isset)
@@ -4760,12 +4762,12 @@
     return NO;
   }
   AromaReactions_Reaction *other = (AromaReactions_Reaction *)anObject;
-  if ((__matcher_isset != other->__matcher_isset) ||
-      (__matcher_isset && ((__matcher || other->__matcher) && ![__matcher isEqual:other->__matcher]))) {
+  if ((__matchers_isset != other->__matchers_isset) ||
+      (__matchers_isset && ((__matchers || other->__matchers) && ![__matchers isEqual:other->__matchers]))) {
     return NO;
   }
-  if ((__action_isset != other->__action_isset) ||
-      (__action_isset && ((__action || other->__action) && ![__action isEqual:other->__action]))) {
+  if ((__actions_isset != other->__actions_isset) ||
+      (__actions_isset && ((__actions || other->__actions) && ![__actions isEqual:other->__actions]))) {
     return NO;
   }
   if ((__name_isset != other->__name_isset) ||
@@ -4777,52 +4779,52 @@
 
 - (void) dealloc
 {
-  [__matcher release_stub];
-  [__action release_stub];
+  [__matchers release_stub];
+  [__actions release_stub];
   [__name release_stub];
   [super dealloc_stub];
 }
 
-- (AromaReactions_AromaMatcher *) matcher {
-  return [[__matcher retain_stub] autorelease_stub];
+- (NSMutableArray *) matchers {
+  return [[__matchers retain_stub] autorelease_stub];
 }
 
-- (void) setMatcher: (AromaReactions_AromaMatcher *) matcher {
-  [matcher retain_stub];
-  [__matcher release_stub];
-  __matcher = matcher;
-  __matcher_isset = YES;
+- (void) setMatchers: (NSMutableArray *) matchers {
+  [matchers retain_stub];
+  [__matchers release_stub];
+  __matchers = matchers;
+  __matchers_isset = YES;
 }
 
-- (BOOL) matcherIsSet {
-  return __matcher_isset;
+- (BOOL) matchersIsSet {
+  return __matchers_isset;
 }
 
-- (void) unsetMatcher {
-  [__matcher release_stub];
-  __matcher = nil;
-  __matcher_isset = NO;
+- (void) unsetMatchers {
+  [__matchers release_stub];
+  __matchers = nil;
+  __matchers_isset = NO;
 }
 
-- (AromaReactions_AromaAction *) action {
-  return [[__action retain_stub] autorelease_stub];
+- (NSMutableArray *) actions {
+  return [[__actions retain_stub] autorelease_stub];
 }
 
-- (void) setAction: (AromaReactions_AromaAction *) action {
-  [action retain_stub];
-  [__action release_stub];
-  __action = action;
-  __action_isset = YES;
+- (void) setActions: (NSMutableArray *) actions {
+  [actions retain_stub];
+  [__actions release_stub];
+  __actions = actions;
+  __actions_isset = YES;
 }
 
-- (BOOL) actionIsSet {
-  return __action_isset;
+- (BOOL) actionsIsSet {
+  return __actions_isset;
 }
 
-- (void) unsetAction {
-  [__action release_stub];
-  __action = nil;
-  __action_isset = NO;
+- (void) unsetActions {
+  [__actions release_stub];
+  __actions = nil;
+  __actions_isset = NO;
 }
 
 - (NSString *) name {
@@ -4862,20 +4864,40 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaReactions_AromaMatcher *fieldValue = [[AromaReactions_AromaMatcher alloc] init];
-          [fieldValue read: inProtocol];
-          [self setMatcher: fieldValue];
+        if (fieldType == TType_LIST) {
+          int _size10;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
+          int _i11;
+          for (_i11 = 0; _i11 < _size10; ++_i11)
+          {
+            AromaReactions_AromaMatcher *_elem12 = [[AromaReactions_AromaMatcher alloc] init];
+            [_elem12 read: inProtocol];
+            [fieldValue addObject: _elem12];
+            [_elem12 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setMatchers: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
       case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaReactions_AromaAction *fieldValue = [[AromaReactions_AromaAction alloc] init];
-          [fieldValue read: inProtocol];
-          [self setAction: fieldValue];
+        if (fieldType == TType_LIST) {
+          int _size13;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size13];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size13];
+          int _i14;
+          for (_i14 = 0; _i14 < _size13; ++_i14)
+          {
+            AromaReactions_AromaAction *_elem15 = [[AromaReactions_AromaAction alloc] init];
+            [_elem15 read: inProtocol];
+            [fieldValue addObject: _elem15];
+            [_elem15 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setActions: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -4900,17 +4922,33 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"Reaction"];
-  if (__matcher_isset) {
-    if (__matcher != nil) {
-      [outProtocol writeFieldBeginWithName: @"matcher" type: TType_STRUCT fieldID: 1];
-      [__matcher write: outProtocol];
+  if (__matchers_isset) {
+    if (__matchers != nil) {
+      [outProtocol writeFieldBeginWithName: @"matchers" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__matchers count]];
+        int idx17;
+        for (idx17 = 0; idx17 < [__matchers count]; idx17++)
+        {
+          [[__matchers objectAtIndex: idx17] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
       [outProtocol writeFieldEnd];
     }
   }
-  if (__action_isset) {
-    if (__action != nil) {
-      [outProtocol writeFieldBeginWithName: @"action" type: TType_STRUCT fieldID: 2];
-      [__action write: outProtocol];
+  if (__actions_isset) {
+    if (__actions != nil) {
+      [outProtocol writeFieldBeginWithName: @"actions" type: TType_LIST fieldID: 2];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__actions count]];
+        int idx19;
+        for (idx19 = 0; idx19 < [__actions count]; idx19++)
+        {
+          [[__actions objectAtIndex: idx19] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
       [outProtocol writeFieldEnd];
     }
   }
@@ -4931,10 +4969,10 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_Reaction("];
-  [ms appendString: @"matcher:"];
-  [ms appendFormat: @"%@", __matcher];
-  [ms appendString: @",action:"];
-  [ms appendFormat: @"%@", __action];
+  [ms appendString: @"matchers:"];
+  [ms appendFormat: @"%@", __matchers];
+  [ms appendString: @",actions:"];
+  [ms appendFormat: @"%@", __actions];
   [ms appendString: @",name:"];
   [ms appendFormat: @"\"%@\"", __name];
   [ms appendString: @")"];

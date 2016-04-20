@@ -1249,9 +1249,9 @@ inline std::ostream& operator<<(std::ostream& out, const AromaAction& obj)
 }
 
 typedef struct _Reaction__isset {
-  _Reaction__isset() : matcher(false), action(false), name(false) {}
-  bool matcher :1;
-  bool action :1;
+  _Reaction__isset() : matchers(true), actions(false), name(false) {}
+  bool matchers :1;
+  bool actions :1;
   bool name :1;
 } _Reaction__isset;
 
@@ -1261,26 +1261,27 @@ class Reaction {
   Reaction(const Reaction&);
   Reaction& operator=(const Reaction&);
   Reaction() : name() {
+
   }
 
   virtual ~Reaction() throw();
-  AromaMatcher matcher;
-  AromaAction action;
+  std::vector<AromaMatcher>  matchers;
+  std::vector<AromaAction>  actions;
   std::string name;
 
   _Reaction__isset __isset;
 
-  void __set_matcher(const AromaMatcher& val);
+  void __set_matchers(const std::vector<AromaMatcher> & val);
 
-  void __set_action(const AromaAction& val);
+  void __set_actions(const std::vector<AromaAction> & val);
 
   void __set_name(const std::string& val);
 
   bool operator == (const Reaction & rhs) const
   {
-    if (!(matcher == rhs.matcher))
+    if (!(matchers == rhs.matchers))
       return false;
-    if (!(action == rhs.action))
+    if (!(actions == rhs.actions))
       return false;
     if (!(name == rhs.name))
       return false;
