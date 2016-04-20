@@ -197,11 +197,11 @@ code { line-height: 20px; }
 <td>Reactions</td><td></td>
 <td><a href="#Struct_ActionDeleteMessage">ActionDeleteMessage</a><br/>
 <a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a><br/>
-<a href="#Struct_ActionIgnore">ActionIgnore</a><br/>
 <a href="#Struct_ActionPostToSlackChannel">ActionPostToSlackChannel</a><br/>
 <a href="#Struct_ActionPostToSlackUser">ActionPostToSlackUser</a><br/>
 <a href="#Struct_ActionRespondToCode">ActionRespondToCode</a><br/>
 <a href="#Struct_ActionSendEmail">ActionSendEmail</a><br/>
+<a href="#Struct_ActionSkipInbox">ActionSkipInbox</a><br/>
 <a href="#Struct_AromaAction">AromaAction</a><br/>
 <a href="#Struct_AromaMatcher">AromaMatcher</a><br/>
 <a href="#Struct_MatcherAll">MatcherAll</a><br/>
@@ -275,7 +275,7 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>emailAddress</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>includeBody</td><td><code>bool</code></td><td></td><td>optional</td><td><code>true</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_ActionIgnore">Struct: ActionIgnore</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionSkipInbox">Struct: ActionSkipInbox</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_ActionDeleteMessage">Struct: ActionDeleteMessage</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -290,7 +290,7 @@ code { line-height: 20px; }
 <tr><td>1</td><td>postToSlackChannel</td><td><code><a href="#Struct_ActionPostToSlackChannel">ActionPostToSlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>postToSlackUser</td><td><code><a href="#Struct_ActionPostToSlackUser">ActionPostToSlackUser</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>sendEmail</td><td><code><a href="#Struct_ActionSendEmail">ActionSendEmail</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>ignore</td><td><code><a href="#Struct_ActionIgnore">ActionIgnore</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>skipInbox</td><td><code><a href="#Struct_ActionSkipInbox">ActionSkipInbox</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>5</td><td>deleteMessage</td><td><code><a href="#Struct_ActionDeleteMessage">ActionDeleteMessage</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>6</td><td>respondToCode</td><td><code><a href="#Struct_ActionRespondToCode">ActionRespondToCode</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>7</td><td>forwardToUsers</td><td><code><a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a></code></td><td></td><td>default</td><td></td></tr>
@@ -298,4 +298,5 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>matcher</td><td><code><a href="#Struct_AromaMatcher">AromaMatcher</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>action</td><td><code><a href="#Struct_AromaAction">AromaAction</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div></div></body></html>

@@ -6,14 +6,13 @@ namespace php   RedRoma.Aroma.Reactions
 
 /*
  * Defined in this File are the Reactions that can occur when an Application sends a Messages.
- * 
+ *
  * A Reaction is composed into two parts, a Matcher and an Action.
  * When a Message matches a given matcher, the Action is performed.
- * 
+ *
  */
 
 include "Aroma.thrift"
-include "Exceptions.thrift"
 
 typedef Aroma.int int
 typedef Aroma.long long
@@ -85,14 +84,14 @@ struct ActionSendEmail
     2: optional bool includeBody = true;
 }
 
-struct ActionIgnore
+struct ActionSkipInbox
 {
-   
+
 }
 
 struct ActionDeleteMessage
 {
-    
+
 }
 
 struct ActionRespondToCode
@@ -110,7 +109,7 @@ union AromaAction
     1: ActionPostToSlackChannel postToSlackChannel;
     2: ActionPostToSlackUser postToSlackUser;
     3: ActionSendEmail sendEmail;
-    4: ActionIgnore ignore;
+    4: ActionSkipInbox skipInbox;
     5: ActionDeleteMessage deleteMessage;
     6: ActionRespondToCode respondToCode;
     7: ActionForwardToUsers forwardToUsers;
@@ -121,4 +120,5 @@ struct Reaction
 {
     1: AromaMatcher matcher;
     2: AromaAction action;
+    3: string name;
 }

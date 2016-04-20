@@ -702,10 +702,10 @@ ActionSendEmail.prototype.write = function(output) {
   return;
 };
 
-ActionIgnore = function(args) {
+ActionSkipInbox = function(args) {
 };
-ActionIgnore.prototype = {};
-ActionIgnore.prototype.read = function(input) {
+ActionSkipInbox.prototype = {};
+ActionSkipInbox.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -723,8 +723,8 @@ ActionIgnore.prototype.read = function(input) {
   return;
 };
 
-ActionIgnore.prototype.write = function(output) {
-  output.writeStructBegin('ActionIgnore');
+ActionSkipInbox.prototype.write = function(output) {
+  output.writeStructBegin('ActionSkipInbox');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -890,7 +890,7 @@ AromaAction = function(args) {
   this.postToSlackChannel = null;
   this.postToSlackUser = null;
   this.sendEmail = null;
-  this.ignore = null;
+  this.skipInbox = null;
   this.deleteMessage = null;
   this.respondToCode = null;
   this.forwardToUsers = null;
@@ -904,8 +904,8 @@ AromaAction = function(args) {
     if (args.sendEmail !== undefined && args.sendEmail !== null) {
       this.sendEmail = new ActionSendEmail(args.sendEmail);
     }
-    if (args.ignore !== undefined && args.ignore !== null) {
-      this.ignore = new ActionIgnore(args.ignore);
+    if (args.skipInbox !== undefined && args.skipInbox !== null) {
+      this.skipInbox = new ActionSkipInbox(args.skipInbox);
     }
     if (args.deleteMessage !== undefined && args.deleteMessage !== null) {
       this.deleteMessage = new ActionDeleteMessage(args.deleteMessage);
@@ -958,8 +958,8 @@ AromaAction.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.STRUCT) {
-        this.ignore = new ActionIgnore();
-        this.ignore.read(input);
+        this.skipInbox = new ActionSkipInbox();
+        this.skipInbox.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1014,9 +1014,9 @@ AromaAction.prototype.write = function(output) {
     this.sendEmail.write(output);
     output.writeFieldEnd();
   }
-  if (this.ignore !== null && this.ignore !== undefined) {
-    output.writeFieldBegin('ignore', Thrift.Type.STRUCT, 4);
-    this.ignore.write(output);
+  if (this.skipInbox !== null && this.skipInbox !== undefined) {
+    output.writeFieldBegin('skipInbox', Thrift.Type.STRUCT, 4);
+    this.skipInbox.write(output);
     output.writeFieldEnd();
   }
   if (this.deleteMessage !== null && this.deleteMessage !== undefined) {
@@ -1042,12 +1042,16 @@ AromaAction.prototype.write = function(output) {
 Reaction = function(args) {
   this.matcher = null;
   this.action = null;
+  this.name = null;
   if (args) {
     if (args.matcher !== undefined && args.matcher !== null) {
       this.matcher = new AromaMatcher(args.matcher);
     }
     if (args.action !== undefined && args.action !== null) {
       this.action = new AromaAction(args.action);
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
     }
   }
 };
@@ -1081,6 +1085,13 @@ Reaction.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1100,6 +1111,11 @@ Reaction.prototype.write = function(output) {
   if (this.action !== null && this.action !== undefined) {
     output.writeFieldBegin('action', Thrift.Type.STRUCT, 2);
     this.action.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
+    output.writeString(this.name);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

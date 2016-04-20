@@ -1062,7 +1062,7 @@ class ActionSendEmail {
 
 }
 
-class ActionIgnore {
+class ActionSkipInbox {
   static $_TSPEC;
 
 
@@ -1074,7 +1074,7 @@ class ActionIgnore {
   }
 
   public function getName() {
-    return 'ActionIgnore';
+    return 'ActionSkipInbox';
   }
 
   public function read($input)
@@ -1104,7 +1104,7 @@ class ActionIgnore {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('ActionIgnore');
+    $xfer += $output->writeStructBegin('ActionSkipInbox');
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -1355,9 +1355,9 @@ class AromaAction {
    */
   public $sendEmail = null;
   /**
-   * @var \RedRoma\Aroma\Reactions\ActionIgnore
+   * @var \RedRoma\Aroma\Reactions\ActionSkipInbox
    */
-  public $ignore = null;
+  public $skipInbox = null;
   /**
    * @var \RedRoma\Aroma\Reactions\ActionDeleteMessage
    */
@@ -1390,9 +1390,9 @@ class AromaAction {
           'class' => '\RedRoma\Aroma\Reactions\ActionSendEmail',
           ),
         4 => array(
-          'var' => 'ignore',
+          'var' => 'skipInbox',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\ActionIgnore',
+          'class' => '\RedRoma\Aroma\Reactions\ActionSkipInbox',
           ),
         5 => array(
           'var' => 'deleteMessage',
@@ -1421,8 +1421,8 @@ class AromaAction {
       if (isset($vals['sendEmail'])) {
         $this->sendEmail = $vals['sendEmail'];
       }
-      if (isset($vals['ignore'])) {
-        $this->ignore = $vals['ignore'];
+      if (isset($vals['skipInbox'])) {
+        $this->skipInbox = $vals['skipInbox'];
       }
       if (isset($vals['deleteMessage'])) {
         $this->deleteMessage = $vals['deleteMessage'];
@@ -1481,8 +1481,8 @@ class AromaAction {
           break;
         case 4:
           if ($ftype == TType::STRUCT) {
-            $this->ignore = new \RedRoma\Aroma\Reactions\ActionIgnore();
-            $xfer += $this->ignore->read($input);
+            $this->skipInbox = new \RedRoma\Aroma\Reactions\ActionSkipInbox();
+            $xfer += $this->skipInbox->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -1548,12 +1548,12 @@ class AromaAction {
       $xfer += $this->sendEmail->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->ignore !== null) {
-      if (!is_object($this->ignore)) {
+    if ($this->skipInbox !== null) {
+      if (!is_object($this->skipInbox)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('ignore', TType::STRUCT, 4);
-      $xfer += $this->ignore->write($output);
+      $xfer += $output->writeFieldBegin('skipInbox', TType::STRUCT, 4);
+      $xfer += $this->skipInbox->write($output);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->deleteMessage !== null) {
@@ -1598,6 +1598,10 @@ class Reaction {
    * @var \RedRoma\Aroma\Reactions\AromaAction
    */
   public $action = null;
+  /**
+   * @var string
+   */
+  public $name = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -1612,6 +1616,10 @@ class Reaction {
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\AromaAction',
           ),
+        3 => array(
+          'var' => 'name',
+          'type' => TType::STRING,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -1620,6 +1628,9 @@ class Reaction {
       }
       if (isset($vals['action'])) {
         $this->action = $vals['action'];
+      }
+      if (isset($vals['name'])) {
+        $this->name = $vals['name'];
       }
     }
   }
@@ -1659,6 +1670,13 @@ class Reaction {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->name);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -1686,6 +1704,11 @@ class Reaction {
       }
       $xfer += $output->writeFieldBegin('action', TType::STRUCT, 2);
       $xfer += $this->action->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->name !== null) {
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 3);
+      $xfer += $output->writeString($this->name);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

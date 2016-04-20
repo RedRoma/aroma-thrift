@@ -1124,11 +1124,11 @@ void ActionSendEmail::printTo(std::ostream& out) const {
 }
 
 
-ActionIgnore::~ActionIgnore() throw() {
+ActionSkipInbox::~ActionSkipInbox() throw() {
 }
 
 
-uint32_t ActionIgnore::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ActionSkipInbox::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1156,32 +1156,32 @@ uint32_t ActionIgnore::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t ActionIgnore::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ActionSkipInbox::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ActionIgnore");
+  xfer += oprot->writeStructBegin("ActionSkipInbox");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
 }
 
-void swap(ActionIgnore &a, ActionIgnore &b) {
+void swap(ActionSkipInbox &a, ActionSkipInbox &b) {
   using ::std::swap;
   (void) a;
   (void) b;
 }
 
-ActionIgnore::ActionIgnore(const ActionIgnore& other23) {
+ActionSkipInbox::ActionSkipInbox(const ActionSkipInbox& other23) {
   (void) other23;
 }
-ActionIgnore& ActionIgnore::operator=(const ActionIgnore& other24) {
+ActionSkipInbox& ActionSkipInbox::operator=(const ActionSkipInbox& other24) {
   (void) other24;
   return *this;
 }
-void ActionIgnore::printTo(std::ostream& out) const {
+void ActionSkipInbox::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ActionIgnore(";
+  out << "ActionSkipInbox(";
   out << ")";
 }
 
@@ -1456,8 +1456,8 @@ void AromaAction::__set_sendEmail(const ActionSendEmail& val) {
   this->sendEmail = val;
 }
 
-void AromaAction::__set_ignore(const ActionIgnore& val) {
-  this->ignore = val;
+void AromaAction::__set_skipInbox(const ActionSkipInbox& val) {
+  this->skipInbox = val;
 }
 
 void AromaAction::__set_deleteMessage(const ActionDeleteMessage& val) {
@@ -1519,8 +1519,8 @@ uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 4:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ignore.read(iprot);
-          this->__isset.ignore = true;
+          xfer += this->skipInbox.read(iprot);
+          this->__isset.skipInbox = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1578,8 +1578,8 @@ uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += this->sendEmail.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("ignore", ::apache::thrift::protocol::T_STRUCT, 4);
-  xfer += this->ignore.write(oprot);
+  xfer += oprot->writeFieldBegin("skipInbox", ::apache::thrift::protocol::T_STRUCT, 4);
+  xfer += this->skipInbox.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("deleteMessage", ::apache::thrift::protocol::T_STRUCT, 5);
@@ -1604,7 +1604,7 @@ void swap(AromaAction &a, AromaAction &b) {
   swap(a.postToSlackChannel, b.postToSlackChannel);
   swap(a.postToSlackUser, b.postToSlackUser);
   swap(a.sendEmail, b.sendEmail);
-  swap(a.ignore, b.ignore);
+  swap(a.skipInbox, b.skipInbox);
   swap(a.deleteMessage, b.deleteMessage);
   swap(a.respondToCode, b.respondToCode);
   swap(a.forwardToUsers, b.forwardToUsers);
@@ -1615,7 +1615,7 @@ AromaAction::AromaAction(const AromaAction& other37) {
   postToSlackChannel = other37.postToSlackChannel;
   postToSlackUser = other37.postToSlackUser;
   sendEmail = other37.sendEmail;
-  ignore = other37.ignore;
+  skipInbox = other37.skipInbox;
   deleteMessage = other37.deleteMessage;
   respondToCode = other37.respondToCode;
   forwardToUsers = other37.forwardToUsers;
@@ -1625,7 +1625,7 @@ AromaAction& AromaAction::operator=(const AromaAction& other38) {
   postToSlackChannel = other38.postToSlackChannel;
   postToSlackUser = other38.postToSlackUser;
   sendEmail = other38.sendEmail;
-  ignore = other38.ignore;
+  skipInbox = other38.skipInbox;
   deleteMessage = other38.deleteMessage;
   respondToCode = other38.respondToCode;
   forwardToUsers = other38.forwardToUsers;
@@ -1638,7 +1638,7 @@ void AromaAction::printTo(std::ostream& out) const {
   out << "postToSlackChannel=" << to_string(postToSlackChannel);
   out << ", " << "postToSlackUser=" << to_string(postToSlackUser);
   out << ", " << "sendEmail=" << to_string(sendEmail);
-  out << ", " << "ignore=" << to_string(ignore);
+  out << ", " << "skipInbox=" << to_string(skipInbox);
   out << ", " << "deleteMessage=" << to_string(deleteMessage);
   out << ", " << "respondToCode=" << to_string(respondToCode);
   out << ", " << "forwardToUsers=" << to_string(forwardToUsers);
@@ -1656,6 +1656,10 @@ void Reaction::__set_matcher(const AromaMatcher& val) {
 
 void Reaction::__set_action(const AromaAction& val) {
   this->action = val;
+}
+
+void Reaction::__set_name(const std::string& val) {
+  this->name = val;
 }
 
 uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1695,6 +1699,14 @@ uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1720,6 +1732,10 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += this->action.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1729,17 +1745,20 @@ void swap(Reaction &a, Reaction &b) {
   using ::std::swap;
   swap(a.matcher, b.matcher);
   swap(a.action, b.action);
+  swap(a.name, b.name);
   swap(a.__isset, b.__isset);
 }
 
 Reaction::Reaction(const Reaction& other39) {
   matcher = other39.matcher;
   action = other39.action;
+  name = other39.name;
   __isset = other39.__isset;
 }
 Reaction& Reaction::operator=(const Reaction& other40) {
   matcher = other40.matcher;
   action = other40.action;
+  name = other40.name;
   __isset = other40.__isset;
   return *this;
 }
@@ -1748,6 +1767,7 @@ void Reaction::printTo(std::ostream& out) const {
   out << "Reaction(";
   out << "matcher=" << to_string(matcher);
   out << ", " << "action=" << to_string(action);
+  out << ", " << "name=" << to_string(name);
   out << ")";
 }
 

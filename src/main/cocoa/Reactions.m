@@ -19,7 +19,6 @@
 #import "TBaseClient.h"
 
 #import "Aroma.h"
-#import "Exceptions.h"
 
 #import "Reactions.h"
 
@@ -2124,7 +2123,7 @@
 
 @end
 
-@implementation AromaReactions_ActionIgnore
+@implementation AromaReactions_ActionSkipInbox
 
 - (id) init
 {
@@ -2153,10 +2152,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_ActionIgnore class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_ActionSkipInbox class]]) {
     return NO;
   }
-  AromaReactions_ActionIgnore *other = (AromaReactions_ActionIgnore *)anObject;
+  AromaReactions_ActionSkipInbox *other = (AromaReactions_ActionSkipInbox *)anObject;
   return YES;
 }
 
@@ -2185,7 +2184,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ActionIgnore"];
+  [outProtocol writeStructBeginWithName: @"ActionSkipInbox"];
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2195,7 +2194,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionIgnore("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionSkipInbox("];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -2610,7 +2609,7 @@
   return self;
 }
 
-- (id) initWithPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel postToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail ignore: (AromaReactions_ActionIgnore *) ignore deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
+- (id) initWithPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel postToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
 {
   self = [super init];
   __postToSlackChannel = [postToSlackChannel retain_stub];
@@ -2619,8 +2618,8 @@
   __postToSlackUser_isset = YES;
   __sendEmail = [sendEmail retain_stub];
   __sendEmail_isset = YES;
-  __ignore = [ignore retain_stub];
-  __ignore_isset = YES;
+  __skipInbox = [skipInbox retain_stub];
+  __skipInbox_isset = YES;
   __deleteMessage = [deleteMessage retain_stub];
   __deleteMessage_isset = YES;
   __respondToCode = [respondToCode retain_stub];
@@ -2648,10 +2647,10 @@
     __sendEmail = [[decoder decodeObjectForKey: @"sendEmail"] retain_stub];
     __sendEmail_isset = YES;
   }
-  if ([decoder containsValueForKey: @"ignore"])
+  if ([decoder containsValueForKey: @"skipInbox"])
   {
-    __ignore = [[decoder decodeObjectForKey: @"ignore"] retain_stub];
-    __ignore_isset = YES;
+    __skipInbox = [[decoder decodeObjectForKey: @"skipInbox"] retain_stub];
+    __skipInbox_isset = YES;
   }
   if ([decoder containsValueForKey: @"deleteMessage"])
   {
@@ -2685,9 +2684,9 @@
   {
     [encoder encodeObject: __sendEmail forKey: @"sendEmail"];
   }
-  if (__ignore_isset)
+  if (__skipInbox_isset)
   {
-    [encoder encodeObject: __ignore forKey: @"ignore"];
+    [encoder encodeObject: __skipInbox forKey: @"skipInbox"];
   }
   if (__deleteMessage_isset)
   {
@@ -2721,10 +2720,10 @@
   {
     hash = (hash * 31) ^ [__sendEmail hash];
   }
-  hash = (hash * 31) ^ __ignore_isset ? 2654435761 : 0;
-  if (__ignore_isset)
+  hash = (hash * 31) ^ __skipInbox_isset ? 2654435761 : 0;
+  if (__skipInbox_isset)
   {
-    hash = (hash * 31) ^ [__ignore hash];
+    hash = (hash * 31) ^ [__skipInbox hash];
   }
   hash = (hash * 31) ^ __deleteMessage_isset ? 2654435761 : 0;
   if (__deleteMessage_isset)
@@ -2765,8 +2764,8 @@
       (__sendEmail_isset && ((__sendEmail || other->__sendEmail) && ![__sendEmail isEqual:other->__sendEmail]))) {
     return NO;
   }
-  if ((__ignore_isset != other->__ignore_isset) ||
-      (__ignore_isset && ((__ignore || other->__ignore) && ![__ignore isEqual:other->__ignore]))) {
+  if ((__skipInbox_isset != other->__skipInbox_isset) ||
+      (__skipInbox_isset && ((__skipInbox || other->__skipInbox) && ![__skipInbox isEqual:other->__skipInbox]))) {
     return NO;
   }
   if ((__deleteMessage_isset != other->__deleteMessage_isset) ||
@@ -2789,7 +2788,7 @@
   [__postToSlackChannel release_stub];
   [__postToSlackUser release_stub];
   [__sendEmail release_stub];
-  [__ignore release_stub];
+  [__skipInbox release_stub];
   [__deleteMessage release_stub];
   [__respondToCode release_stub];
   [__forwardToUsers release_stub];
@@ -2859,25 +2858,25 @@
   __sendEmail_isset = NO;
 }
 
-- (AromaReactions_ActionIgnore *) ignore {
-  return [[__ignore retain_stub] autorelease_stub];
+- (AromaReactions_ActionSkipInbox *) skipInbox {
+  return [[__skipInbox retain_stub] autorelease_stub];
 }
 
-- (void) setIgnore: (AromaReactions_ActionIgnore *) ignore {
-  [ignore retain_stub];
-  [__ignore release_stub];
-  __ignore = ignore;
-  __ignore_isset = YES;
+- (void) setSkipInbox: (AromaReactions_ActionSkipInbox *) skipInbox {
+  [skipInbox retain_stub];
+  [__skipInbox release_stub];
+  __skipInbox = skipInbox;
+  __skipInbox_isset = YES;
 }
 
-- (BOOL) ignoreIsSet {
-  return __ignore_isset;
+- (BOOL) skipInboxIsSet {
+  return __skipInbox_isset;
 }
 
-- (void) unsetIgnore {
-  [__ignore release_stub];
-  __ignore = nil;
-  __ignore_isset = NO;
+- (void) unsetSkipInbox {
+  [__skipInbox release_stub];
+  __skipInbox = nil;
+  __skipInbox_isset = NO;
 }
 
 - (AromaReactions_ActionDeleteMessage *) deleteMessage {
@@ -2990,9 +2989,9 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_ActionIgnore *fieldValue = [[AromaReactions_ActionIgnore alloc] init];
+          AromaReactions_ActionSkipInbox *fieldValue = [[AromaReactions_ActionSkipInbox alloc] init];
           [fieldValue read: inProtocol];
-          [self setIgnore: fieldValue];
+          [self setSkipInbox: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -3060,10 +3059,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__ignore_isset) {
-    if (__ignore != nil) {
-      [outProtocol writeFieldBeginWithName: @"ignore" type: TType_STRUCT fieldID: 4];
-      [__ignore write: outProtocol];
+  if (__skipInbox_isset) {
+    if (__skipInbox != nil) {
+      [outProtocol writeFieldBeginWithName: @"skipInbox" type: TType_STRUCT fieldID: 4];
+      [__skipInbox write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -3104,8 +3103,8 @@
   [ms appendFormat: @"%@", __postToSlackUser];
   [ms appendString: @",sendEmail:"];
   [ms appendFormat: @"%@", __sendEmail];
-  [ms appendString: @",ignore:"];
-  [ms appendFormat: @"%@", __ignore];
+  [ms appendString: @",skipInbox:"];
+  [ms appendFormat: @"%@", __skipInbox];
   [ms appendString: @",deleteMessage:"];
   [ms appendFormat: @"%@", __deleteMessage];
   [ms appendString: @",respondToCode:"];
@@ -3128,13 +3127,15 @@
   return self;
 }
 
-- (id) initWithMatcher: (AromaReactions_AromaMatcher *) matcher action: (AromaReactions_AromaAction *) action
+- (id) initWithMatcher: (AromaReactions_AromaMatcher *) matcher action: (AromaReactions_AromaAction *) action name: (NSString *) name
 {
   self = [super init];
   __matcher = [matcher retain_stub];
   __matcher_isset = YES;
   __action = [action retain_stub];
   __action_isset = YES;
+  __name = [name retain_stub];
+  __name_isset = YES;
   return self;
 }
 
@@ -3151,6 +3152,11 @@
     __action = [[decoder decodeObjectForKey: @"action"] retain_stub];
     __action_isset = YES;
   }
+  if ([decoder containsValueForKey: @"name"])
+  {
+    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
+    __name_isset = YES;
+  }
   return self;
 }
 
@@ -3163,6 +3169,10 @@
   if (__action_isset)
   {
     [encoder encodeObject: __action forKey: @"action"];
+  }
+  if (__name_isset)
+  {
+    [encoder encodeObject: __name forKey: @"name"];
   }
 }
 
@@ -3178,6 +3188,11 @@
   if (__action_isset)
   {
     hash = (hash * 31) ^ [__action hash];
+  }
+  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
+  if (__name_isset)
+  {
+    hash = (hash * 31) ^ [__name hash];
   }
   return hash;
 }
@@ -3199,6 +3214,10 @@
       (__action_isset && ((__action || other->__action) && ![__action isEqual:other->__action]))) {
     return NO;
   }
+  if ((__name_isset != other->__name_isset) ||
+      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -3206,6 +3225,7 @@
 {
   [__matcher release_stub];
   [__action release_stub];
+  [__name release_stub];
   [super dealloc_stub];
 }
 
@@ -3251,6 +3271,27 @@
   __action_isset = NO;
 }
 
+- (NSString *) name {
+  return [[__name retain_stub] autorelease_stub];
+}
+
+- (void) setName: (NSString *) name {
+  [name retain_stub];
+  [__name release_stub];
+  __name = name;
+  __name_isset = YES;
+}
+
+- (BOOL) nameIsSet {
+  return __name_isset;
+}
+
+- (void) unsetName {
+  [__name release_stub];
+  __name = nil;
+  __name_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3286,6 +3327,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3311,6 +3360,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__name_isset) {
+    if (__name != nil) {
+      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __name];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3325,6 +3381,8 @@
   [ms appendFormat: @"%@", __matcher];
   [ms appendString: @",action:"];
   [ms appendFormat: @"%@", __action];
+  [ms appendString: @",name:"];
+  [ms appendFormat: @"\"%@\"", __name];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

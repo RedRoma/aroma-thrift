@@ -16,7 +16,6 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Aroma_types.h"
-#include "Exceptions_types.h"
 
 
 namespace tech { namespace aroma { namespace thrift { namespace reactions {
@@ -51,7 +50,7 @@ class ActionPostToSlackUser;
 
 class ActionSendEmail;
 
-class ActionIgnore;
+class ActionSkipInbox;
 
 class ActionDeleteMessage;
 
@@ -619,25 +618,25 @@ inline std::ostream& operator<<(std::ostream& out, const ActionSendEmail& obj)
 }
 
 
-class ActionIgnore {
+class ActionSkipInbox {
  public:
 
-  ActionIgnore(const ActionIgnore&);
-  ActionIgnore& operator=(const ActionIgnore&);
-  ActionIgnore() {
+  ActionSkipInbox(const ActionSkipInbox&);
+  ActionSkipInbox& operator=(const ActionSkipInbox&);
+  ActionSkipInbox() {
   }
 
-  virtual ~ActionIgnore() throw();
+  virtual ~ActionSkipInbox() throw();
 
-  bool operator == (const ActionIgnore & /* rhs */) const
+  bool operator == (const ActionSkipInbox & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const ActionIgnore &rhs) const {
+  bool operator != (const ActionSkipInbox &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionIgnore & ) const;
+  bool operator < (const ActionSkipInbox & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -645,9 +644,9 @@ class ActionIgnore {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionIgnore &a, ActionIgnore &b);
+void swap(ActionSkipInbox &a, ActionSkipInbox &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionIgnore& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionSkipInbox& obj)
 {
   obj.printTo(out);
   return out;
@@ -782,11 +781,11 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
 }
 
 typedef struct _AromaAction__isset {
-  _AromaAction__isset() : postToSlackChannel(false), postToSlackUser(false), sendEmail(false), ignore(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
+  _AromaAction__isset() : postToSlackChannel(false), postToSlackUser(false), sendEmail(false), skipInbox(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
   bool postToSlackChannel :1;
   bool postToSlackUser :1;
   bool sendEmail :1;
-  bool ignore :1;
+  bool skipInbox :1;
   bool deleteMessage :1;
   bool respondToCode :1;
   bool forwardToUsers :1;
@@ -804,7 +803,7 @@ class AromaAction {
   ActionPostToSlackChannel postToSlackChannel;
   ActionPostToSlackUser postToSlackUser;
   ActionSendEmail sendEmail;
-  ActionIgnore ignore;
+  ActionSkipInbox skipInbox;
   ActionDeleteMessage deleteMessage;
   ActionRespondToCode respondToCode;
   ActionForwardToUsers forwardToUsers;
@@ -817,7 +816,7 @@ class AromaAction {
 
   void __set_sendEmail(const ActionSendEmail& val);
 
-  void __set_ignore(const ActionIgnore& val);
+  void __set_skipInbox(const ActionSkipInbox& val);
 
   void __set_deleteMessage(const ActionDeleteMessage& val);
 
@@ -833,7 +832,7 @@ class AromaAction {
       return false;
     if (!(sendEmail == rhs.sendEmail))
       return false;
-    if (!(ignore == rhs.ignore))
+    if (!(skipInbox == rhs.skipInbox))
       return false;
     if (!(deleteMessage == rhs.deleteMessage))
       return false;
@@ -864,9 +863,10 @@ inline std::ostream& operator<<(std::ostream& out, const AromaAction& obj)
 }
 
 typedef struct _Reaction__isset {
-  _Reaction__isset() : matcher(false), action(false) {}
+  _Reaction__isset() : matcher(false), action(false), name(false) {}
   bool matcher :1;
   bool action :1;
+  bool name :1;
 } _Reaction__isset;
 
 class Reaction {
@@ -874,12 +874,13 @@ class Reaction {
 
   Reaction(const Reaction&);
   Reaction& operator=(const Reaction&);
-  Reaction() {
+  Reaction() : name() {
   }
 
   virtual ~Reaction() throw();
   AromaMatcher matcher;
   AromaAction action;
+  std::string name;
 
   _Reaction__isset __isset;
 
@@ -887,11 +888,15 @@ class Reaction {
 
   void __set_action(const AromaAction& val);
 
+  void __set_name(const std::string& val);
+
   bool operator == (const Reaction & rhs) const
   {
     if (!(matcher == rhs.matcher))
       return false;
     if (!(action == rhs.action))
+      return false;
+    if (!(name == rhs.name))
       return false;
     return true;
   }
