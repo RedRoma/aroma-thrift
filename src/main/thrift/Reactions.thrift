@@ -66,13 +66,13 @@ union AromaMatcher
 }
 
 
-struct ActionPostToSlackChannel
+struct ActionForwardToSlackChannel
 {
     1: string slackChannel;
     2: optional bool includeBody = true;
 }
 
-struct ActionPostToSlackUser
+struct ActionForwardToSlackUser
 {
     1: string slackUsername;
     2: optional bool includeBody = true;
@@ -106,8 +106,8 @@ struct ActionForwardToUsers
 
 union AromaAction
 {
-    1: ActionPostToSlackChannel postToSlackChannel;
-    2: ActionPostToSlackUser postToSlackUser;
+    1: ActionForwardToSlackChannel forwardToSlackChannel;
+    2: ActionForwardToSlackUser forwardToSlackUser;
     3: ActionSendEmail sendEmail;
     4: ActionSkipInbox skipInbox;
     5: ActionDeleteMessage deleteMessage;

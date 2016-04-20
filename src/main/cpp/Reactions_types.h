@@ -44,9 +44,9 @@ class MatcherHostnameIs;
 
 class AromaMatcher;
 
-class ActionPostToSlackChannel;
+class ActionForwardToSlackChannel;
 
-class ActionPostToSlackUser;
+class ActionForwardToSlackUser;
 
 class ActionSendEmail;
 
@@ -455,31 +455,31 @@ inline std::ostream& operator<<(std::ostream& out, const AromaMatcher& obj)
   return out;
 }
 
-typedef struct _ActionPostToSlackChannel__isset {
-  _ActionPostToSlackChannel__isset() : slackChannel(false), includeBody(true) {}
+typedef struct _ActionForwardToSlackChannel__isset {
+  _ActionForwardToSlackChannel__isset() : slackChannel(false), includeBody(true) {}
   bool slackChannel :1;
   bool includeBody :1;
-} _ActionPostToSlackChannel__isset;
+} _ActionForwardToSlackChannel__isset;
 
-class ActionPostToSlackChannel {
+class ActionForwardToSlackChannel {
  public:
 
-  ActionPostToSlackChannel(const ActionPostToSlackChannel&);
-  ActionPostToSlackChannel& operator=(const ActionPostToSlackChannel&);
-  ActionPostToSlackChannel() : slackChannel(), includeBody(true) {
+  ActionForwardToSlackChannel(const ActionForwardToSlackChannel&);
+  ActionForwardToSlackChannel& operator=(const ActionForwardToSlackChannel&);
+  ActionForwardToSlackChannel() : slackChannel(), includeBody(true) {
   }
 
-  virtual ~ActionPostToSlackChannel() throw();
+  virtual ~ActionForwardToSlackChannel() throw();
   std::string slackChannel;
   bool includeBody;
 
-  _ActionPostToSlackChannel__isset __isset;
+  _ActionForwardToSlackChannel__isset __isset;
 
   void __set_slackChannel(const std::string& val);
 
   void __set_includeBody(const bool val);
 
-  bool operator == (const ActionPostToSlackChannel & rhs) const
+  bool operator == (const ActionForwardToSlackChannel & rhs) const
   {
     if (!(slackChannel == rhs.slackChannel))
       return false;
@@ -489,11 +489,11 @@ class ActionPostToSlackChannel {
       return false;
     return true;
   }
-  bool operator != (const ActionPostToSlackChannel &rhs) const {
+  bool operator != (const ActionForwardToSlackChannel &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionPostToSlackChannel & ) const;
+  bool operator < (const ActionForwardToSlackChannel & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -501,39 +501,39 @@ class ActionPostToSlackChannel {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionPostToSlackChannel &a, ActionPostToSlackChannel &b);
+void swap(ActionForwardToSlackChannel &a, ActionForwardToSlackChannel &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionPostToSlackChannel& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionForwardToSlackChannel& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _ActionPostToSlackUser__isset {
-  _ActionPostToSlackUser__isset() : slackUsername(false), includeBody(true) {}
+typedef struct _ActionForwardToSlackUser__isset {
+  _ActionForwardToSlackUser__isset() : slackUsername(false), includeBody(true) {}
   bool slackUsername :1;
   bool includeBody :1;
-} _ActionPostToSlackUser__isset;
+} _ActionForwardToSlackUser__isset;
 
-class ActionPostToSlackUser {
+class ActionForwardToSlackUser {
  public:
 
-  ActionPostToSlackUser(const ActionPostToSlackUser&);
-  ActionPostToSlackUser& operator=(const ActionPostToSlackUser&);
-  ActionPostToSlackUser() : slackUsername(), includeBody(true) {
+  ActionForwardToSlackUser(const ActionForwardToSlackUser&);
+  ActionForwardToSlackUser& operator=(const ActionForwardToSlackUser&);
+  ActionForwardToSlackUser() : slackUsername(), includeBody(true) {
   }
 
-  virtual ~ActionPostToSlackUser() throw();
+  virtual ~ActionForwardToSlackUser() throw();
   std::string slackUsername;
   bool includeBody;
 
-  _ActionPostToSlackUser__isset __isset;
+  _ActionForwardToSlackUser__isset __isset;
 
   void __set_slackUsername(const std::string& val);
 
   void __set_includeBody(const bool val);
 
-  bool operator == (const ActionPostToSlackUser & rhs) const
+  bool operator == (const ActionForwardToSlackUser & rhs) const
   {
     if (!(slackUsername == rhs.slackUsername))
       return false;
@@ -543,11 +543,11 @@ class ActionPostToSlackUser {
       return false;
     return true;
   }
-  bool operator != (const ActionPostToSlackUser &rhs) const {
+  bool operator != (const ActionForwardToSlackUser &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionPostToSlackUser & ) const;
+  bool operator < (const ActionForwardToSlackUser & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -555,9 +555,9 @@ class ActionPostToSlackUser {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionPostToSlackUser &a, ActionPostToSlackUser &b);
+void swap(ActionForwardToSlackUser &a, ActionForwardToSlackUser &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionPostToSlackUser& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionForwardToSlackUser& obj)
 {
   obj.printTo(out);
   return out;
@@ -781,9 +781,9 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
 }
 
 typedef struct _AromaAction__isset {
-  _AromaAction__isset() : postToSlackChannel(false), postToSlackUser(false), sendEmail(false), skipInbox(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
-  bool postToSlackChannel :1;
-  bool postToSlackUser :1;
+  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), sendEmail(false), skipInbox(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
+  bool forwardToSlackChannel :1;
+  bool forwardToSlackUser :1;
   bool sendEmail :1;
   bool skipInbox :1;
   bool deleteMessage :1;
@@ -800,8 +800,8 @@ class AromaAction {
   }
 
   virtual ~AromaAction() throw();
-  ActionPostToSlackChannel postToSlackChannel;
-  ActionPostToSlackUser postToSlackUser;
+  ActionForwardToSlackChannel forwardToSlackChannel;
+  ActionForwardToSlackUser forwardToSlackUser;
   ActionSendEmail sendEmail;
   ActionSkipInbox skipInbox;
   ActionDeleteMessage deleteMessage;
@@ -810,9 +810,9 @@ class AromaAction {
 
   _AromaAction__isset __isset;
 
-  void __set_postToSlackChannel(const ActionPostToSlackChannel& val);
+  void __set_forwardToSlackChannel(const ActionForwardToSlackChannel& val);
 
-  void __set_postToSlackUser(const ActionPostToSlackUser& val);
+  void __set_forwardToSlackUser(const ActionForwardToSlackUser& val);
 
   void __set_sendEmail(const ActionSendEmail& val);
 
@@ -826,9 +826,9 @@ class AromaAction {
 
   bool operator == (const AromaAction & rhs) const
   {
-    if (!(postToSlackChannel == rhs.postToSlackChannel))
+    if (!(forwardToSlackChannel == rhs.forwardToSlackChannel))
       return false;
-    if (!(postToSlackUser == rhs.postToSlackUser))
+    if (!(forwardToSlackUser == rhs.forwardToSlackUser))
       return false;
     if (!(sendEmail == rhs.sendEmail))
       return false;

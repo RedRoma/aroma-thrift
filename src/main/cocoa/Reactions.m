@@ -1511,7 +1511,7 @@
 
 @end
 
-@implementation AromaReactions_ActionPostToSlackChannel
+@implementation AromaReactions_ActionForwardToSlackChannel
 
 - (id) init
 {
@@ -1582,10 +1582,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_ActionPostToSlackChannel class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_ActionForwardToSlackChannel class]]) {
     return NO;
   }
-  AromaReactions_ActionPostToSlackChannel *other = (AromaReactions_ActionPostToSlackChannel *)anObject;
+  AromaReactions_ActionForwardToSlackChannel *other = (AromaReactions_ActionForwardToSlackChannel *)anObject;
   if ((__slackChannel_isset != other->__slackChannel_isset) ||
       (__slackChannel_isset && ((__slackChannel || other->__slackChannel) && ![__slackChannel isEqual:other->__slackChannel]))) {
     return NO;
@@ -1682,7 +1682,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ActionPostToSlackChannel"];
+  [outProtocol writeStructBeginWithName: @"ActionForwardToSlackChannel"];
   if (__slackChannel_isset) {
     if (__slackChannel != nil) {
       [outProtocol writeFieldBeginWithName: @"slackChannel" type: TType_STRING fieldID: 1];
@@ -1704,7 +1704,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionPostToSlackChannel("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionForwardToSlackChannel("];
   [ms appendString: @"slackChannel:"];
   [ms appendFormat: @"\"%@\"", __slackChannel];
   [ms appendString: @",includeBody:"];
@@ -1715,7 +1715,7 @@
 
 @end
 
-@implementation AromaReactions_ActionPostToSlackUser
+@implementation AromaReactions_ActionForwardToSlackUser
 
 - (id) init
 {
@@ -1786,10 +1786,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_ActionPostToSlackUser class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_ActionForwardToSlackUser class]]) {
     return NO;
   }
-  AromaReactions_ActionPostToSlackUser *other = (AromaReactions_ActionPostToSlackUser *)anObject;
+  AromaReactions_ActionForwardToSlackUser *other = (AromaReactions_ActionForwardToSlackUser *)anObject;
   if ((__slackUsername_isset != other->__slackUsername_isset) ||
       (__slackUsername_isset && ((__slackUsername || other->__slackUsername) && ![__slackUsername isEqual:other->__slackUsername]))) {
     return NO;
@@ -1886,7 +1886,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ActionPostToSlackUser"];
+  [outProtocol writeStructBeginWithName: @"ActionForwardToSlackUser"];
   if (__slackUsername_isset) {
     if (__slackUsername != nil) {
       [outProtocol writeFieldBeginWithName: @"slackUsername" type: TType_STRING fieldID: 1];
@@ -1908,7 +1908,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionPostToSlackUser("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionForwardToSlackUser("];
   [ms appendString: @"slackUsername:"];
   [ms appendFormat: @"\"%@\"", __slackUsername];
   [ms appendString: @",includeBody:"];
@@ -2609,13 +2609,13 @@
   return self;
 }
 
-- (id) initWithPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel postToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
 {
   self = [super init];
-  __postToSlackChannel = [postToSlackChannel retain_stub];
-  __postToSlackChannel_isset = YES;
-  __postToSlackUser = [postToSlackUser retain_stub];
-  __postToSlackUser_isset = YES;
+  __forwardToSlackChannel = [forwardToSlackChannel retain_stub];
+  __forwardToSlackChannel_isset = YES;
+  __forwardToSlackUser = [forwardToSlackUser retain_stub];
+  __forwardToSlackUser_isset = YES;
   __sendEmail = [sendEmail retain_stub];
   __sendEmail_isset = YES;
   __skipInbox = [skipInbox retain_stub];
@@ -2632,15 +2632,15 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"postToSlackChannel"])
+  if ([decoder containsValueForKey: @"forwardToSlackChannel"])
   {
-    __postToSlackChannel = [[decoder decodeObjectForKey: @"postToSlackChannel"] retain_stub];
-    __postToSlackChannel_isset = YES;
+    __forwardToSlackChannel = [[decoder decodeObjectForKey: @"forwardToSlackChannel"] retain_stub];
+    __forwardToSlackChannel_isset = YES;
   }
-  if ([decoder containsValueForKey: @"postToSlackUser"])
+  if ([decoder containsValueForKey: @"forwardToSlackUser"])
   {
-    __postToSlackUser = [[decoder decodeObjectForKey: @"postToSlackUser"] retain_stub];
-    __postToSlackUser_isset = YES;
+    __forwardToSlackUser = [[decoder decodeObjectForKey: @"forwardToSlackUser"] retain_stub];
+    __forwardToSlackUser_isset = YES;
   }
   if ([decoder containsValueForKey: @"sendEmail"])
   {
@@ -2672,13 +2672,13 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__postToSlackChannel_isset)
+  if (__forwardToSlackChannel_isset)
   {
-    [encoder encodeObject: __postToSlackChannel forKey: @"postToSlackChannel"];
+    [encoder encodeObject: __forwardToSlackChannel forKey: @"forwardToSlackChannel"];
   }
-  if (__postToSlackUser_isset)
+  if (__forwardToSlackUser_isset)
   {
-    [encoder encodeObject: __postToSlackUser forKey: @"postToSlackUser"];
+    [encoder encodeObject: __forwardToSlackUser forKey: @"forwardToSlackUser"];
   }
   if (__sendEmail_isset)
   {
@@ -2705,15 +2705,15 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __postToSlackChannel_isset ? 2654435761 : 0;
-  if (__postToSlackChannel_isset)
+  hash = (hash * 31) ^ __forwardToSlackChannel_isset ? 2654435761 : 0;
+  if (__forwardToSlackChannel_isset)
   {
-    hash = (hash * 31) ^ [__postToSlackChannel hash];
+    hash = (hash * 31) ^ [__forwardToSlackChannel hash];
   }
-  hash = (hash * 31) ^ __postToSlackUser_isset ? 2654435761 : 0;
-  if (__postToSlackUser_isset)
+  hash = (hash * 31) ^ __forwardToSlackUser_isset ? 2654435761 : 0;
+  if (__forwardToSlackUser_isset)
   {
-    hash = (hash * 31) ^ [__postToSlackUser hash];
+    hash = (hash * 31) ^ [__forwardToSlackUser hash];
   }
   hash = (hash * 31) ^ __sendEmail_isset ? 2654435761 : 0;
   if (__sendEmail_isset)
@@ -2752,12 +2752,12 @@
     return NO;
   }
   AromaReactions_AromaAction *other = (AromaReactions_AromaAction *)anObject;
-  if ((__postToSlackChannel_isset != other->__postToSlackChannel_isset) ||
-      (__postToSlackChannel_isset && ((__postToSlackChannel || other->__postToSlackChannel) && ![__postToSlackChannel isEqual:other->__postToSlackChannel]))) {
+  if ((__forwardToSlackChannel_isset != other->__forwardToSlackChannel_isset) ||
+      (__forwardToSlackChannel_isset && ((__forwardToSlackChannel || other->__forwardToSlackChannel) && ![__forwardToSlackChannel isEqual:other->__forwardToSlackChannel]))) {
     return NO;
   }
-  if ((__postToSlackUser_isset != other->__postToSlackUser_isset) ||
-      (__postToSlackUser_isset && ((__postToSlackUser || other->__postToSlackUser) && ![__postToSlackUser isEqual:other->__postToSlackUser]))) {
+  if ((__forwardToSlackUser_isset != other->__forwardToSlackUser_isset) ||
+      (__forwardToSlackUser_isset && ((__forwardToSlackUser || other->__forwardToSlackUser) && ![__forwardToSlackUser isEqual:other->__forwardToSlackUser]))) {
     return NO;
   }
   if ((__sendEmail_isset != other->__sendEmail_isset) ||
@@ -2785,8 +2785,8 @@
 
 - (void) dealloc
 {
-  [__postToSlackChannel release_stub];
-  [__postToSlackUser release_stub];
+  [__forwardToSlackChannel release_stub];
+  [__forwardToSlackUser release_stub];
   [__sendEmail release_stub];
   [__skipInbox release_stub];
   [__deleteMessage release_stub];
@@ -2795,46 +2795,46 @@
   [super dealloc_stub];
 }
 
-- (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel {
-  return [[__postToSlackChannel retain_stub] autorelease_stub];
+- (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel {
+  return [[__forwardToSlackChannel retain_stub] autorelease_stub];
 }
 
-- (void) setPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel {
-  [postToSlackChannel retain_stub];
-  [__postToSlackChannel release_stub];
-  __postToSlackChannel = postToSlackChannel;
-  __postToSlackChannel_isset = YES;
+- (void) setForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel {
+  [forwardToSlackChannel retain_stub];
+  [__forwardToSlackChannel release_stub];
+  __forwardToSlackChannel = forwardToSlackChannel;
+  __forwardToSlackChannel_isset = YES;
 }
 
-- (BOOL) postToSlackChannelIsSet {
-  return __postToSlackChannel_isset;
+- (BOOL) forwardToSlackChannelIsSet {
+  return __forwardToSlackChannel_isset;
 }
 
-- (void) unsetPostToSlackChannel {
-  [__postToSlackChannel release_stub];
-  __postToSlackChannel = nil;
-  __postToSlackChannel_isset = NO;
+- (void) unsetForwardToSlackChannel {
+  [__forwardToSlackChannel release_stub];
+  __forwardToSlackChannel = nil;
+  __forwardToSlackChannel_isset = NO;
 }
 
-- (AromaReactions_ActionPostToSlackUser *) postToSlackUser {
-  return [[__postToSlackUser retain_stub] autorelease_stub];
+- (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser {
+  return [[__forwardToSlackUser retain_stub] autorelease_stub];
 }
 
-- (void) setPostToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser {
-  [postToSlackUser retain_stub];
-  [__postToSlackUser release_stub];
-  __postToSlackUser = postToSlackUser;
-  __postToSlackUser_isset = YES;
+- (void) setForwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser {
+  [forwardToSlackUser retain_stub];
+  [__forwardToSlackUser release_stub];
+  __forwardToSlackUser = forwardToSlackUser;
+  __forwardToSlackUser_isset = YES;
 }
 
-- (BOOL) postToSlackUserIsSet {
-  return __postToSlackUser_isset;
+- (BOOL) forwardToSlackUserIsSet {
+  return __forwardToSlackUser_isset;
 }
 
-- (void) unsetPostToSlackUser {
-  [__postToSlackUser release_stub];
-  __postToSlackUser = nil;
-  __postToSlackUser_isset = NO;
+- (void) unsetForwardToSlackUser {
+  [__forwardToSlackUser release_stub];
+  __forwardToSlackUser = nil;
+  __forwardToSlackUser_isset = NO;
 }
 
 - (AromaReactions_ActionSendEmail *) sendEmail {
@@ -2959,9 +2959,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_ActionPostToSlackChannel *fieldValue = [[AromaReactions_ActionPostToSlackChannel alloc] init];
+          AromaReactions_ActionForwardToSlackChannel *fieldValue = [[AromaReactions_ActionForwardToSlackChannel alloc] init];
           [fieldValue read: inProtocol];
-          [self setPostToSlackChannel: fieldValue];
+          [self setForwardToSlackChannel: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -2969,9 +2969,9 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_ActionPostToSlackUser *fieldValue = [[AromaReactions_ActionPostToSlackUser alloc] init];
+          AromaReactions_ActionForwardToSlackUser *fieldValue = [[AromaReactions_ActionForwardToSlackUser alloc] init];
           [fieldValue read: inProtocol];
-          [self setPostToSlackUser: fieldValue];
+          [self setForwardToSlackUser: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -3038,17 +3038,17 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"AromaAction"];
-  if (__postToSlackChannel_isset) {
-    if (__postToSlackChannel != nil) {
-      [outProtocol writeFieldBeginWithName: @"postToSlackChannel" type: TType_STRUCT fieldID: 1];
-      [__postToSlackChannel write: outProtocol];
+  if (__forwardToSlackChannel_isset) {
+    if (__forwardToSlackChannel != nil) {
+      [outProtocol writeFieldBeginWithName: @"forwardToSlackChannel" type: TType_STRUCT fieldID: 1];
+      [__forwardToSlackChannel write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__postToSlackUser_isset) {
-    if (__postToSlackUser != nil) {
-      [outProtocol writeFieldBeginWithName: @"postToSlackUser" type: TType_STRUCT fieldID: 2];
-      [__postToSlackUser write: outProtocol];
+  if (__forwardToSlackUser_isset) {
+    if (__forwardToSlackUser != nil) {
+      [outProtocol writeFieldBeginWithName: @"forwardToSlackUser" type: TType_STRUCT fieldID: 2];
+      [__forwardToSlackUser write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -3097,10 +3097,10 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_AromaAction("];
-  [ms appendString: @"postToSlackChannel:"];
-  [ms appendFormat: @"%@", __postToSlackChannel];
-  [ms appendString: @",postToSlackUser:"];
-  [ms appendFormat: @"%@", __postToSlackUser];
+  [ms appendString: @"forwardToSlackChannel:"];
+  [ms appendFormat: @"%@", __forwardToSlackChannel];
+  [ms appendString: @",forwardToSlackUser:"];
+  [ms appendFormat: @"%@", __forwardToSlackUser];
   [ms appendString: @",sendEmail:"];
   [ms appendFormat: @"%@", __sendEmail];
   [ms appendString: @",skipInbox:"];

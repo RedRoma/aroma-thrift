@@ -800,20 +800,20 @@ void AromaMatcher::printTo(std::ostream& out) const {
 }
 
 
-ActionPostToSlackChannel::~ActionPostToSlackChannel() throw() {
+ActionForwardToSlackChannel::~ActionForwardToSlackChannel() throw() {
 }
 
 
-void ActionPostToSlackChannel::__set_slackChannel(const std::string& val) {
+void ActionForwardToSlackChannel::__set_slackChannel(const std::string& val) {
   this->slackChannel = val;
 }
 
-void ActionPostToSlackChannel::__set_includeBody(const bool val) {
+void ActionForwardToSlackChannel::__set_includeBody(const bool val) {
   this->includeBody = val;
 __isset.includeBody = true;
 }
 
-uint32_t ActionPostToSlackChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ActionForwardToSlackChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -862,10 +862,10 @@ uint32_t ActionPostToSlackChannel::read(::apache::thrift::protocol::TProtocol* i
   return xfer;
 }
 
-uint32_t ActionPostToSlackChannel::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ActionForwardToSlackChannel::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ActionPostToSlackChannel");
+  xfer += oprot->writeStructBegin("ActionForwardToSlackChannel");
 
   xfer += oprot->writeFieldBegin("slackChannel", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->slackChannel);
@@ -881,47 +881,47 @@ uint32_t ActionPostToSlackChannel::write(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-void swap(ActionPostToSlackChannel &a, ActionPostToSlackChannel &b) {
+void swap(ActionForwardToSlackChannel &a, ActionForwardToSlackChannel &b) {
   using ::std::swap;
   swap(a.slackChannel, b.slackChannel);
   swap(a.includeBody, b.includeBody);
   swap(a.__isset, b.__isset);
 }
 
-ActionPostToSlackChannel::ActionPostToSlackChannel(const ActionPostToSlackChannel& other17) {
+ActionForwardToSlackChannel::ActionForwardToSlackChannel(const ActionForwardToSlackChannel& other17) {
   slackChannel = other17.slackChannel;
   includeBody = other17.includeBody;
   __isset = other17.__isset;
 }
-ActionPostToSlackChannel& ActionPostToSlackChannel::operator=(const ActionPostToSlackChannel& other18) {
+ActionForwardToSlackChannel& ActionForwardToSlackChannel::operator=(const ActionForwardToSlackChannel& other18) {
   slackChannel = other18.slackChannel;
   includeBody = other18.includeBody;
   __isset = other18.__isset;
   return *this;
 }
-void ActionPostToSlackChannel::printTo(std::ostream& out) const {
+void ActionForwardToSlackChannel::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ActionPostToSlackChannel(";
+  out << "ActionForwardToSlackChannel(";
   out << "slackChannel=" << to_string(slackChannel);
   out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
   out << ")";
 }
 
 
-ActionPostToSlackUser::~ActionPostToSlackUser() throw() {
+ActionForwardToSlackUser::~ActionForwardToSlackUser() throw() {
 }
 
 
-void ActionPostToSlackUser::__set_slackUsername(const std::string& val) {
+void ActionForwardToSlackUser::__set_slackUsername(const std::string& val) {
   this->slackUsername = val;
 }
 
-void ActionPostToSlackUser::__set_includeBody(const bool val) {
+void ActionForwardToSlackUser::__set_includeBody(const bool val) {
   this->includeBody = val;
 __isset.includeBody = true;
 }
 
-uint32_t ActionPostToSlackUser::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ActionForwardToSlackUser::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -970,10 +970,10 @@ uint32_t ActionPostToSlackUser::read(::apache::thrift::protocol::TProtocol* ipro
   return xfer;
 }
 
-uint32_t ActionPostToSlackUser::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ActionForwardToSlackUser::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ActionPostToSlackUser");
+  xfer += oprot->writeStructBegin("ActionForwardToSlackUser");
 
   xfer += oprot->writeFieldBegin("slackUsername", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->slackUsername);
@@ -989,27 +989,27 @@ uint32_t ActionPostToSlackUser::write(::apache::thrift::protocol::TProtocol* opr
   return xfer;
 }
 
-void swap(ActionPostToSlackUser &a, ActionPostToSlackUser &b) {
+void swap(ActionForwardToSlackUser &a, ActionForwardToSlackUser &b) {
   using ::std::swap;
   swap(a.slackUsername, b.slackUsername);
   swap(a.includeBody, b.includeBody);
   swap(a.__isset, b.__isset);
 }
 
-ActionPostToSlackUser::ActionPostToSlackUser(const ActionPostToSlackUser& other19) {
+ActionForwardToSlackUser::ActionForwardToSlackUser(const ActionForwardToSlackUser& other19) {
   slackUsername = other19.slackUsername;
   includeBody = other19.includeBody;
   __isset = other19.__isset;
 }
-ActionPostToSlackUser& ActionPostToSlackUser::operator=(const ActionPostToSlackUser& other20) {
+ActionForwardToSlackUser& ActionForwardToSlackUser::operator=(const ActionForwardToSlackUser& other20) {
   slackUsername = other20.slackUsername;
   includeBody = other20.includeBody;
   __isset = other20.__isset;
   return *this;
 }
-void ActionPostToSlackUser::printTo(std::ostream& out) const {
+void ActionForwardToSlackUser::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ActionPostToSlackUser(";
+  out << "ActionForwardToSlackUser(";
   out << "slackUsername=" << to_string(slackUsername);
   out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
   out << ")";
@@ -1444,12 +1444,12 @@ AromaAction::~AromaAction() throw() {
 }
 
 
-void AromaAction::__set_postToSlackChannel(const ActionPostToSlackChannel& val) {
-  this->postToSlackChannel = val;
+void AromaAction::__set_forwardToSlackChannel(const ActionForwardToSlackChannel& val) {
+  this->forwardToSlackChannel = val;
 }
 
-void AromaAction::__set_postToSlackUser(const ActionPostToSlackUser& val) {
-  this->postToSlackUser = val;
+void AromaAction::__set_forwardToSlackUser(const ActionForwardToSlackUser& val) {
+  this->forwardToSlackUser = val;
 }
 
 void AromaAction::__set_sendEmail(const ActionSendEmail& val) {
@@ -1495,16 +1495,16 @@ uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->postToSlackChannel.read(iprot);
-          this->__isset.postToSlackChannel = true;
+          xfer += this->forwardToSlackChannel.read(iprot);
+          this->__isset.forwardToSlackChannel = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->postToSlackUser.read(iprot);
-          this->__isset.postToSlackUser = true;
+          xfer += this->forwardToSlackUser.read(iprot);
+          this->__isset.forwardToSlackUser = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1566,12 +1566,12 @@ uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const 
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("AromaAction");
 
-  xfer += oprot->writeFieldBegin("postToSlackChannel", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->postToSlackChannel.write(oprot);
+  xfer += oprot->writeFieldBegin("forwardToSlackChannel", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->forwardToSlackChannel.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("postToSlackUser", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->postToSlackUser.write(oprot);
+  xfer += oprot->writeFieldBegin("forwardToSlackUser", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->forwardToSlackUser.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("sendEmail", ::apache::thrift::protocol::T_STRUCT, 3);
@@ -1601,8 +1601,8 @@ uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const 
 
 void swap(AromaAction &a, AromaAction &b) {
   using ::std::swap;
-  swap(a.postToSlackChannel, b.postToSlackChannel);
-  swap(a.postToSlackUser, b.postToSlackUser);
+  swap(a.forwardToSlackChannel, b.forwardToSlackChannel);
+  swap(a.forwardToSlackUser, b.forwardToSlackUser);
   swap(a.sendEmail, b.sendEmail);
   swap(a.skipInbox, b.skipInbox);
   swap(a.deleteMessage, b.deleteMessage);
@@ -1612,8 +1612,8 @@ void swap(AromaAction &a, AromaAction &b) {
 }
 
 AromaAction::AromaAction(const AromaAction& other37) {
-  postToSlackChannel = other37.postToSlackChannel;
-  postToSlackUser = other37.postToSlackUser;
+  forwardToSlackChannel = other37.forwardToSlackChannel;
+  forwardToSlackUser = other37.forwardToSlackUser;
   sendEmail = other37.sendEmail;
   skipInbox = other37.skipInbox;
   deleteMessage = other37.deleteMessage;
@@ -1622,8 +1622,8 @@ AromaAction::AromaAction(const AromaAction& other37) {
   __isset = other37.__isset;
 }
 AromaAction& AromaAction::operator=(const AromaAction& other38) {
-  postToSlackChannel = other38.postToSlackChannel;
-  postToSlackUser = other38.postToSlackUser;
+  forwardToSlackChannel = other38.forwardToSlackChannel;
+  forwardToSlackUser = other38.forwardToSlackUser;
   sendEmail = other38.sendEmail;
   skipInbox = other38.skipInbox;
   deleteMessage = other38.deleteMessage;
@@ -1635,8 +1635,8 @@ AromaAction& AromaAction::operator=(const AromaAction& other38) {
 void AromaAction::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "AromaAction(";
-  out << "postToSlackChannel=" << to_string(postToSlackChannel);
-  out << ", " << "postToSlackUser=" << to_string(postToSlackUser);
+  out << "forwardToSlackChannel=" << to_string(forwardToSlackChannel);
+  out << ", " << "forwardToSlackUser=" << to_string(forwardToSlackUser);
   out << ", " << "sendEmail=" << to_string(sendEmail);
   out << ", " << "skipInbox=" << to_string(skipInbox);
   out << ", " << "deleteMessage=" << to_string(deleteMessage);

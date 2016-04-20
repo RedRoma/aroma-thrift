@@ -768,7 +768,7 @@ class AromaMatcher {
 
 }
 
-class ActionPostToSlackChannel {
+class ActionForwardToSlackChannel {
   static $_TSPEC;
 
   /**
@@ -804,7 +804,7 @@ class ActionPostToSlackChannel {
   }
 
   public function getName() {
-    return 'ActionPostToSlackChannel';
+    return 'ActionForwardToSlackChannel';
   }
 
   public function read($input)
@@ -848,7 +848,7 @@ class ActionPostToSlackChannel {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('ActionPostToSlackChannel');
+    $xfer += $output->writeStructBegin('ActionForwardToSlackChannel');
     if ($this->slackChannel !== null) {
       $xfer += $output->writeFieldBegin('slackChannel', TType::STRING, 1);
       $xfer += $output->writeString($this->slackChannel);
@@ -866,7 +866,7 @@ class ActionPostToSlackChannel {
 
 }
 
-class ActionPostToSlackUser {
+class ActionForwardToSlackUser {
   static $_TSPEC;
 
   /**
@@ -902,7 +902,7 @@ class ActionPostToSlackUser {
   }
 
   public function getName() {
-    return 'ActionPostToSlackUser';
+    return 'ActionForwardToSlackUser';
   }
 
   public function read($input)
@@ -946,7 +946,7 @@ class ActionPostToSlackUser {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('ActionPostToSlackUser');
+    $xfer += $output->writeStructBegin('ActionForwardToSlackUser');
     if ($this->slackUsername !== null) {
       $xfer += $output->writeFieldBegin('slackUsername', TType::STRING, 1);
       $xfer += $output->writeString($this->slackUsername);
@@ -1343,13 +1343,13 @@ class AromaAction {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\Reactions\ActionPostToSlackChannel
+   * @var \RedRoma\Aroma\Reactions\ActionForwardToSlackChannel
    */
-  public $postToSlackChannel = null;
+  public $forwardToSlackChannel = null;
   /**
-   * @var \RedRoma\Aroma\Reactions\ActionPostToSlackUser
+   * @var \RedRoma\Aroma\Reactions\ActionForwardToSlackUser
    */
-  public $postToSlackUser = null;
+  public $forwardToSlackUser = null;
   /**
    * @var \RedRoma\Aroma\Reactions\ActionSendEmail
    */
@@ -1375,14 +1375,14 @@ class AromaAction {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
         1 => array(
-          'var' => 'postToSlackChannel',
+          'var' => 'forwardToSlackChannel',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\ActionPostToSlackChannel',
+          'class' => '\RedRoma\Aroma\Reactions\ActionForwardToSlackChannel',
           ),
         2 => array(
-          'var' => 'postToSlackUser',
+          'var' => 'forwardToSlackUser',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\ActionPostToSlackUser',
+          'class' => '\RedRoma\Aroma\Reactions\ActionForwardToSlackUser',
           ),
         3 => array(
           'var' => 'sendEmail',
@@ -1412,11 +1412,11 @@ class AromaAction {
         );
     }
     if (is_array($vals)) {
-      if (isset($vals['postToSlackChannel'])) {
-        $this->postToSlackChannel = $vals['postToSlackChannel'];
+      if (isset($vals['forwardToSlackChannel'])) {
+        $this->forwardToSlackChannel = $vals['forwardToSlackChannel'];
       }
-      if (isset($vals['postToSlackUser'])) {
-        $this->postToSlackUser = $vals['postToSlackUser'];
+      if (isset($vals['forwardToSlackUser'])) {
+        $this->forwardToSlackUser = $vals['forwardToSlackUser'];
       }
       if (isset($vals['sendEmail'])) {
         $this->sendEmail = $vals['sendEmail'];
@@ -1457,16 +1457,16 @@ class AromaAction {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->postToSlackChannel = new \RedRoma\Aroma\Reactions\ActionPostToSlackChannel();
-            $xfer += $this->postToSlackChannel->read($input);
+            $this->forwardToSlackChannel = new \RedRoma\Aroma\Reactions\ActionForwardToSlackChannel();
+            $xfer += $this->forwardToSlackChannel->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 2:
           if ($ftype == TType::STRUCT) {
-            $this->postToSlackUser = new \RedRoma\Aroma\Reactions\ActionPostToSlackUser();
-            $xfer += $this->postToSlackUser->read($input);
+            $this->forwardToSlackUser = new \RedRoma\Aroma\Reactions\ActionForwardToSlackUser();
+            $xfer += $this->forwardToSlackUser->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -1524,20 +1524,20 @@ class AromaAction {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('AromaAction');
-    if ($this->postToSlackChannel !== null) {
-      if (!is_object($this->postToSlackChannel)) {
+    if ($this->forwardToSlackChannel !== null) {
+      if (!is_object($this->forwardToSlackChannel)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('postToSlackChannel', TType::STRUCT, 1);
-      $xfer += $this->postToSlackChannel->write($output);
+      $xfer += $output->writeFieldBegin('forwardToSlackChannel', TType::STRUCT, 1);
+      $xfer += $this->forwardToSlackChannel->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->postToSlackUser !== null) {
-      if (!is_object($this->postToSlackUser)) {
+    if ($this->forwardToSlackUser !== null) {
+      if (!is_object($this->forwardToSlackUser)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('postToSlackUser', TType::STRUCT, 2);
-      $xfer += $this->postToSlackUser->write($output);
+      $xfer += $output->writeFieldBegin('forwardToSlackUser', TType::STRUCT, 2);
+      $xfer += $this->forwardToSlackUser->write($output);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->sendEmail !== null) {

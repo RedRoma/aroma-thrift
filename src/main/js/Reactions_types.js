@@ -504,7 +504,7 @@ AromaMatcher.prototype.write = function(output) {
   return;
 };
 
-ActionPostToSlackChannel = function(args) {
+ActionForwardToSlackChannel = function(args) {
   this.slackChannel = null;
   this.includeBody = true;
   if (args) {
@@ -516,8 +516,8 @@ ActionPostToSlackChannel = function(args) {
     }
   }
 };
-ActionPostToSlackChannel.prototype = {};
-ActionPostToSlackChannel.prototype.read = function(input) {
+ActionForwardToSlackChannel.prototype = {};
+ActionForwardToSlackChannel.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -553,8 +553,8 @@ ActionPostToSlackChannel.prototype.read = function(input) {
   return;
 };
 
-ActionPostToSlackChannel.prototype.write = function(output) {
-  output.writeStructBegin('ActionPostToSlackChannel');
+ActionForwardToSlackChannel.prototype.write = function(output) {
+  output.writeStructBegin('ActionForwardToSlackChannel');
   if (this.slackChannel !== null && this.slackChannel !== undefined) {
     output.writeFieldBegin('slackChannel', Thrift.Type.STRING, 1);
     output.writeString(this.slackChannel);
@@ -570,7 +570,7 @@ ActionPostToSlackChannel.prototype.write = function(output) {
   return;
 };
 
-ActionPostToSlackUser = function(args) {
+ActionForwardToSlackUser = function(args) {
   this.slackUsername = null;
   this.includeBody = true;
   if (args) {
@@ -582,8 +582,8 @@ ActionPostToSlackUser = function(args) {
     }
   }
 };
-ActionPostToSlackUser.prototype = {};
-ActionPostToSlackUser.prototype.read = function(input) {
+ActionForwardToSlackUser.prototype = {};
+ActionForwardToSlackUser.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -619,8 +619,8 @@ ActionPostToSlackUser.prototype.read = function(input) {
   return;
 };
 
-ActionPostToSlackUser.prototype.write = function(output) {
-  output.writeStructBegin('ActionPostToSlackUser');
+ActionForwardToSlackUser.prototype.write = function(output) {
+  output.writeStructBegin('ActionForwardToSlackUser');
   if (this.slackUsername !== null && this.slackUsername !== undefined) {
     output.writeFieldBegin('slackUsername', Thrift.Type.STRING, 1);
     output.writeString(this.slackUsername);
@@ -887,19 +887,19 @@ ActionForwardToUsers.prototype.write = function(output) {
 };
 
 AromaAction = function(args) {
-  this.postToSlackChannel = null;
-  this.postToSlackUser = null;
+  this.forwardToSlackChannel = null;
+  this.forwardToSlackUser = null;
   this.sendEmail = null;
   this.skipInbox = null;
   this.deleteMessage = null;
   this.respondToCode = null;
   this.forwardToUsers = null;
   if (args) {
-    if (args.postToSlackChannel !== undefined && args.postToSlackChannel !== null) {
-      this.postToSlackChannel = new ActionPostToSlackChannel(args.postToSlackChannel);
+    if (args.forwardToSlackChannel !== undefined && args.forwardToSlackChannel !== null) {
+      this.forwardToSlackChannel = new ActionForwardToSlackChannel(args.forwardToSlackChannel);
     }
-    if (args.postToSlackUser !== undefined && args.postToSlackUser !== null) {
-      this.postToSlackUser = new ActionPostToSlackUser(args.postToSlackUser);
+    if (args.forwardToSlackUser !== undefined && args.forwardToSlackUser !== null) {
+      this.forwardToSlackUser = new ActionForwardToSlackUser(args.forwardToSlackUser);
     }
     if (args.sendEmail !== undefined && args.sendEmail !== null) {
       this.sendEmail = new ActionSendEmail(args.sendEmail);
@@ -934,16 +934,16 @@ AromaAction.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.postToSlackChannel = new ActionPostToSlackChannel();
-        this.postToSlackChannel.read(input);
+        this.forwardToSlackChannel = new ActionForwardToSlackChannel();
+        this.forwardToSlackChannel.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.postToSlackUser = new ActionPostToSlackUser();
-        this.postToSlackUser.read(input);
+        this.forwardToSlackUser = new ActionForwardToSlackUser();
+        this.forwardToSlackUser.read(input);
       } else {
         input.skip(ftype);
       }
@@ -999,14 +999,14 @@ AromaAction.prototype.read = function(input) {
 
 AromaAction.prototype.write = function(output) {
   output.writeStructBegin('AromaAction');
-  if (this.postToSlackChannel !== null && this.postToSlackChannel !== undefined) {
-    output.writeFieldBegin('postToSlackChannel', Thrift.Type.STRUCT, 1);
-    this.postToSlackChannel.write(output);
+  if (this.forwardToSlackChannel !== null && this.forwardToSlackChannel !== undefined) {
+    output.writeFieldBegin('forwardToSlackChannel', Thrift.Type.STRUCT, 1);
+    this.forwardToSlackChannel.write(output);
     output.writeFieldEnd();
   }
-  if (this.postToSlackUser !== null && this.postToSlackUser !== undefined) {
-    output.writeFieldBegin('postToSlackUser', Thrift.Type.STRUCT, 2);
-    this.postToSlackUser.write(output);
+  if (this.forwardToSlackUser !== null && this.forwardToSlackUser !== undefined) {
+    output.writeFieldBegin('forwardToSlackUser', Thrift.Type.STRUCT, 2);
+    this.forwardToSlackUser.write(output);
     output.writeFieldEnd();
   }
   if (this.sendEmail !== null && this.sendEmail !== undefined) {
