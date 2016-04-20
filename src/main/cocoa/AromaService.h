@@ -2292,6 +2292,67 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
+@interface AromaService_GetReactionsRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __forAppId;
+
+  BOOL __token_isset;
+  BOOL __forAppId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=forAppId, setter=setForAppId:) AromaService_uuid forAppId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token forAppId: (AromaService_uuid) forAppId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) forAppId;
+- (void) setForAppId: (AromaService_uuid) forAppId;
+#endif
+- (BOOL) forAppIdIsSet;
+
+@end
+
+@interface AromaService_GetReactionsResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __reactions;
+
+  BOOL __reactions_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=reactions, setter=setReactions:) NSMutableArray * reactions;
+#endif
+
+- (id) init;
+- (id) initWithReactions: (NSMutableArray *) reactions;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) reactions;
+- (void) setReactions: (NSMutableArray *) reactions;
+#endif
+- (BOOL) reactionsIsSet;
+
+@end
+
 @interface AromaService_GetServiceAnnouncementsRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
 

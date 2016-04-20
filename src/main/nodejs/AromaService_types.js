@@ -4698,6 +4698,149 @@ GetActivityResponse.prototype.write = function(output) {
     return;
   };
 
+GetReactionsRequest = module.exports.GetReactionsRequest = function(args) {
+    this.token = null;
+    this.forAppId = null;
+    if (args) {
+        if (args.token !== undefined && args.token !== null) {
+            this.token = new Authentication_ttypes.UserToken(args.token);
+        }
+        if (args.forAppId !== undefined && args.forAppId !== null) {
+            this.forAppId = args.forAppId;
+        }
+    }
+};
+GetReactionsRequest.prototype = {};
+GetReactionsRequest.prototype.read = function(input) {
+    input.readStructBegin();
+    while (true)
+    {
+      var ret = input.readFieldBegin();
+      var fname = ret.fname;
+      var ftype = ret.ftype;
+      var fid = ret.fid;
+      if (ftype == Thrift.Type.STOP) {
+        break;
+      }
+      switch (fid)
+      {
+        case 1:
+        if (ftype == Thrift.Type.STRUCT) {
+          this.token = new Authentication_ttypes.UserToken();
+          this.token.read(input);
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 2:
+        if (ftype == Thrift.Type.STRING) {
+          this.forAppId = input.readString();
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        default:
+          input.skip(ftype);
+      }
+      input.readFieldEnd();
+    }
+    input.readStructEnd();
+    return;
+  };
+
+GetReactionsRequest.prototype.write = function(output) {
+    output.writeStructBegin('GetReactionsRequest');
+    if (this.token !== null && this.token !== undefined) {
+      output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+      this.token.write(output);
+      output.writeFieldEnd();
+    }
+    if (this.forAppId !== null && this.forAppId !== undefined) {
+      output.writeFieldBegin('forAppId', Thrift.Type.STRING, 2);
+      output.writeString(this.forAppId);
+      output.writeFieldEnd();
+    }
+    output.writeFieldStop();
+    output.writeStructEnd();
+    return;
+  };
+
+GetReactionsResponse = module.exports.GetReactionsResponse = function(args) {
+    this.reactions = [];
+    if (args) {
+        if (args.reactions !== undefined && args.reactions !== null) {
+            this.reactions = Thrift.copyList(args.reactions, [null]);
+        }
+    }
+};
+GetReactionsResponse.prototype = {};
+GetReactionsResponse.prototype.read = function(input) {
+    input.readStructBegin();
+    while (true)
+    {
+      var ret = input.readFieldBegin();
+      var fname = ret.fname;
+      var ftype = ret.ftype;
+      var fid = ret.fid;
+      if (ftype == Thrift.Type.STOP) {
+        break;
+      }
+      switch (fid)
+      {
+        case 1:
+        if (ftype == Thrift.Type.LIST) {
+          var _size144 = 0;
+          var _rtmp3148;
+          this.reactions = [];
+          var _etype147 = 0;
+          _rtmp3148 = input.readListBegin();
+          _etype147 = _rtmp3148.etype;
+          _size144 = _rtmp3148.size;
+          for (var _i149 = 0; _i149 < _size144; ++_i149)
+          {
+            var elem150 = null;
+            elem150 = new Reactions_ttypes.Reaction();
+            elem150.read(input);
+            this.reactions.push(elem150);
+          }
+          input.readListEnd();
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 0:
+          input.skip(ftype);
+          break;
+        default:
+          input.skip(ftype);
+      }
+      input.readFieldEnd();
+    }
+    input.readStructEnd();
+    return;
+  };
+
+GetReactionsResponse.prototype.write = function(output) {
+    output.writeStructBegin('GetReactionsResponse');
+    if (this.reactions !== null && this.reactions !== undefined) {
+      output.writeFieldBegin('reactions', Thrift.Type.LIST, 1);
+      output.writeListBegin(Thrift.Type.STRUCT, this.reactions.length);
+      for (var iter151 in this.reactions)
+      {
+        if (this.reactions.hasOwnProperty(iter151))
+        {
+          iter151 = this.reactions[iter151];
+          iter151.write(output);
+        }
+      }
+      output.writeListEnd();
+      output.writeFieldEnd();
+    }
+    output.writeFieldStop();
+    output.writeStructEnd();
+    return;
+  };
+
 GetServiceAnnouncementsRequest = module.exports.GetServiceAnnouncementsRequest = function(args) {
     this.token = null;
     if (args) {
@@ -4776,19 +4919,19 @@ GetServiceAnnouncementsResponse.prototype.read = function(input) {
       {
         case 1:
         if (ftype == Thrift.Type.LIST) {
-          var _size144 = 0;
-          var _rtmp3148;
+          var _size152 = 0;
+          var _rtmp3156;
           this.serviceAnnouncements = [];
-          var _etype147 = 0;
-          _rtmp3148 = input.readListBegin();
-          _etype147 = _rtmp3148.etype;
-          _size144 = _rtmp3148.size;
-          for (var _i149 = 0; _i149 < _size144; ++_i149)
+          var _etype155 = 0;
+          _rtmp3156 = input.readListBegin();
+          _etype155 = _rtmp3156.etype;
+          _size152 = _rtmp3156.size;
+          for (var _i157 = 0; _i157 < _size152; ++_i157)
           {
-            var elem150 = null;
-            elem150 = new Aroma_ttypes.ServiceAnnouncement();
-            elem150.read(input);
-            this.serviceAnnouncements.push(elem150);
+            var elem158 = null;
+            elem158 = new Aroma_ttypes.ServiceAnnouncement();
+            elem158.read(input);
+            this.serviceAnnouncements.push(elem158);
           }
           input.readListEnd();
         } else {
@@ -4812,12 +4955,12 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
     if (this.serviceAnnouncements !== null && this.serviceAnnouncements !== undefined) {
       output.writeFieldBegin('serviceAnnouncements', Thrift.Type.LIST, 1);
       output.writeListBegin(Thrift.Type.STRUCT, this.serviceAnnouncements.length);
-      for (var iter151 in this.serviceAnnouncements)
+      for (var iter159 in this.serviceAnnouncements)
       {
-        if (this.serviceAnnouncements.hasOwnProperty(iter151))
+        if (this.serviceAnnouncements.hasOwnProperty(iter159))
         {
-          iter151 = this.serviceAnnouncements[iter151];
-          iter151.write(output);
+          iter159 = this.serviceAnnouncements[iter159];
+          iter159.write(output);
         }
       }
       output.writeListEnd();
@@ -5072,19 +5215,19 @@ SearchForApplicationsResponse.prototype.read = function(input) {
       {
         case 1:
         if (ftype == Thrift.Type.LIST) {
-          var _size152 = 0;
-          var _rtmp3156;
+          var _size160 = 0;
+          var _rtmp3164;
           this.applications = [];
-          var _etype155 = 0;
-          _rtmp3156 = input.readListBegin();
-          _etype155 = _rtmp3156.etype;
-          _size152 = _rtmp3156.size;
-          for (var _i157 = 0; _i157 < _size152; ++_i157)
+          var _etype163 = 0;
+          _rtmp3164 = input.readListBegin();
+          _etype163 = _rtmp3164.etype;
+          _size160 = _rtmp3164.size;
+          for (var _i165 = 0; _i165 < _size160; ++_i165)
           {
-            var elem158 = null;
-            elem158 = new Aroma_ttypes.Application();
-            elem158.read(input);
-            this.applications.push(elem158);
+            var elem166 = null;
+            elem166 = new Aroma_ttypes.Application();
+            elem166.read(input);
+            this.applications.push(elem166);
           }
           input.readListEnd();
         } else {
@@ -5108,12 +5251,12 @@ SearchForApplicationsResponse.prototype.write = function(output) {
     if (this.applications !== null && this.applications !== undefined) {
       output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
       output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
-      for (var iter159 in this.applications)
+      for (var iter167 in this.applications)
       {
-        if (this.applications.hasOwnProperty(iter159))
+        if (this.applications.hasOwnProperty(iter167))
         {
-          iter159 = this.applications[iter159];
-          iter159.write(output);
+          iter167 = this.applications[iter167];
+          iter167.write(output);
         }
       }
       output.writeListEnd();

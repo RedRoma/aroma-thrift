@@ -433,7 +433,7 @@ struct UpdateReactionsRequest
 
 struct UpdateReactionsResponse
 {
-    /** 
+    /**
      * Returns the complete list of Reactions after the operations is complete.
      * If it's successful, this list will be the same as the list included in
      * the request.
@@ -599,6 +599,18 @@ struct GetActivityRequest
 struct GetActivityResponse
 {
     1: list<Events.Event> events = [];
+}
+
+/** Get the reactions saved for either the calling user's Inbox, or an Application.  */
+struct GetReactionsRequest
+{
+    1: UserToken token;
+    2: optional uuid forAppId;
+}
+
+struct GetReactionsResponse
+{
+    1: list<Reaction> reactions = [];
 }
 
 /**

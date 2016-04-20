@@ -198,6 +198,10 @@ class GetActivityRequest;
 
 class GetActivityResponse;
 
+class GetReactionsRequest;
+
+class GetReactionsResponse;
+
 class GetServiceAnnouncementsRequest;
 
 class GetServiceAnnouncementsResponse;
@@ -3441,6 +3445,107 @@ class GetActivityResponse {
 void swap(GetActivityResponse &a, GetActivityResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetActivityResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetReactionsRequest__isset {
+  _GetReactionsRequest__isset() : token(false), forAppId(false) {}
+  bool token :1;
+  bool forAppId :1;
+} _GetReactionsRequest__isset;
+
+class GetReactionsRequest {
+ public:
+
+  GetReactionsRequest(const GetReactionsRequest&);
+  GetReactionsRequest& operator=(const GetReactionsRequest&);
+  GetReactionsRequest() : forAppId() {
+  }
+
+  virtual ~GetReactionsRequest() throw();
+  UserToken token;
+  uuid forAppId;
+
+  _GetReactionsRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_forAppId(const uuid& val);
+
+  bool operator == (const GetReactionsRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (__isset.forAppId != rhs.__isset.forAppId)
+      return false;
+    else if (__isset.forAppId && !(forAppId == rhs.forAppId))
+      return false;
+    return true;
+  }
+  bool operator != (const GetReactionsRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetReactionsRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetReactionsRequest &a, GetReactionsRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetReactionsRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetReactionsResponse__isset {
+  _GetReactionsResponse__isset() : reactions(true) {}
+  bool reactions :1;
+} _GetReactionsResponse__isset;
+
+class GetReactionsResponse {
+ public:
+
+  GetReactionsResponse(const GetReactionsResponse&);
+  GetReactionsResponse& operator=(const GetReactionsResponse&);
+  GetReactionsResponse() {
+
+  }
+
+  virtual ~GetReactionsResponse() throw();
+  std::vector<Reaction>  reactions;
+
+  _GetReactionsResponse__isset __isset;
+
+  void __set_reactions(const std::vector<Reaction> & val);
+
+  bool operator == (const GetReactionsResponse & rhs) const
+  {
+    if (!(reactions == rhs.reactions))
+      return false;
+    return true;
+  }
+  bool operator != (const GetReactionsResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetReactionsResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetReactionsResponse &a, GetReactionsResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetReactionsResponse& obj)
 {
   obj.printTo(out);
   return out;
