@@ -29,7 +29,17 @@ struct MatcherTitleIs
     1: string expectedTitle;
 }
 
+struct MatcherTitleIsNot
+{
+    1: string title;
+}
+
 struct MatcherTitleContains
+{
+    1: string substring;
+}
+
+struct MatcherTitleDoesNotContain
 {
     1: string substring;
 }
@@ -44,9 +54,15 @@ struct MatcherBodyContains
     1: string substring;
 }
 
+struct MatcherBodyDoesNotContain
+{
+    1: string substring;
+}
+
 struct MatcherUrgencyIs
 {
     1: Aroma.Urgency urgency;
+    2: optional list<Aroma.Urgency> urgencies;
 }
 
 struct MatcherHostnameIs
@@ -54,15 +70,30 @@ struct MatcherHostnameIs
     1: string expectedHostname;
 }
 
+struct MatcherHostnameContains
+{
+    1: string substring;
+}
+
+struct MatcherHostnameDoesNotContain
+{
+    1: string substring;
+}
+
 union AromaMatcher
 {
     1: MatcherAll all;
     2: MatcherTitleIs titleIs;
-    3: MatcherTitleContains titleContains;
-    4: MatcherBodyIs bodyIs;
-    5: MatcherBodyContains bodyContains;
-    6: MatcherUrgencyIs urgencyEquals;
-    7: MatcherHostnameIs hostnameEquals;
+    3: MatcherTitleIsNot titleIsNot;
+    4: MatcherTitleContains titleContains;
+    5: MatcherTitleDoesNotContain titleDoesNotContain;
+    6: MatcherBodyIs bodyIs;
+    7: MatcherBodyContains bodyContains;
+    8: MatcherBodyDoesNotContain bodyDoesNotContain;
+    9: MatcherUrgencyIs urgencyEquals;
+    10: MatcherHostnameIs hostnameIs;
+    11: MatcherHostnameContains hostnameContains;
+    12: MatcherHostnameDoesNotContain hostnameDoesNotContain;
 }
 
 

@@ -145,6 +145,81 @@ class MatcherTitleIs {
 
 }
 
+class MatcherTitleIsNot {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $title = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'title',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['title'])) {
+        $this->title = $vals['title'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'MatcherTitleIsNot';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->title);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('MatcherTitleIsNot');
+    if ($this->title !== null) {
+      $xfer += $output->writeFieldBegin('title', TType::STRING, 1);
+      $xfer += $output->writeString($this->title);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class MatcherTitleContains {
   static $_TSPEC;
 
@@ -208,6 +283,81 @@ class MatcherTitleContains {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('MatcherTitleContains');
+    if ($this->substring !== null) {
+      $xfer += $output->writeFieldBegin('substring', TType::STRING, 1);
+      $xfer += $output->writeString($this->substring);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class MatcherTitleDoesNotContain {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $substring = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'substring',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['substring'])) {
+        $this->substring = $vals['substring'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'MatcherTitleDoesNotContain';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->substring);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('MatcherTitleDoesNotContain');
     if ($this->substring !== null) {
       $xfer += $output->writeFieldBegin('substring', TType::STRING, 1);
       $xfer += $output->writeString($this->substring);
@@ -370,6 +520,81 @@ class MatcherBodyContains {
 
 }
 
+class MatcherBodyDoesNotContain {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $substring = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'substring',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['substring'])) {
+        $this->substring = $vals['substring'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'MatcherBodyDoesNotContain';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->substring);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('MatcherBodyDoesNotContain');
+    if ($this->substring !== null) {
+      $xfer += $output->writeFieldBegin('substring', TType::STRING, 1);
+      $xfer += $output->writeString($this->substring);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class MatcherUrgencyIs {
   static $_TSPEC;
 
@@ -377,6 +602,10 @@ class MatcherUrgencyIs {
    * @var int
    */
   public $urgency = null;
+  /**
+   * @var int[]
+   */
+  public $urgencies = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -385,11 +614,22 @@ class MatcherUrgencyIs {
           'var' => 'urgency',
           'type' => TType::I32,
           ),
+        2 => array(
+          'var' => 'urgencies',
+          'type' => TType::LST,
+          'etype' => TType::I32,
+          'elem' => array(
+            'type' => TType::I32,
+            ),
+          ),
         );
     }
     if (is_array($vals)) {
       if (isset($vals['urgency'])) {
         $this->urgency = $vals['urgency'];
+      }
+      if (isset($vals['urgencies'])) {
+        $this->urgencies = $vals['urgencies'];
       }
     }
   }
@@ -420,6 +660,23 @@ class MatcherUrgencyIs {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 2:
+          if ($ftype == TType::LST) {
+            $this->urgencies = array();
+            $_size0 = 0;
+            $_etype3 = 0;
+            $xfer += $input->readListBegin($_etype3, $_size0);
+            for ($_i4 = 0; $_i4 < $_size0; ++$_i4)
+            {
+              $elem5 = null;
+              $xfer += $input->readI32($elem5);
+              $this->urgencies []= $elem5;
+            }
+            $xfer += $input->readListEnd();
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -436,6 +693,23 @@ class MatcherUrgencyIs {
     if ($this->urgency !== null) {
       $xfer += $output->writeFieldBegin('urgency', TType::I32, 1);
       $xfer += $output->writeI32($this->urgency);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->urgencies !== null) {
+      if (!is_array($this->urgencies)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('urgencies', TType::LST, 2);
+      {
+        $output->writeListBegin(TType::I32, count($this->urgencies));
+        {
+          foreach ($this->urgencies as $iter6)
+          {
+            $xfer += $output->writeI32($iter6);
+          }
+        }
+        $output->writeListEnd();
+      }
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -520,6 +794,156 @@ class MatcherHostnameIs {
 
 }
 
+class MatcherHostnameContains {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $substring = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'substring',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['substring'])) {
+        $this->substring = $vals['substring'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'MatcherHostnameContains';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->substring);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('MatcherHostnameContains');
+    if ($this->substring !== null) {
+      $xfer += $output->writeFieldBegin('substring', TType::STRING, 1);
+      $xfer += $output->writeString($this->substring);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class MatcherHostnameDoesNotContain {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $substring = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'substring',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['substring'])) {
+        $this->substring = $vals['substring'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'MatcherHostnameDoesNotContain';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->substring);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('MatcherHostnameDoesNotContain');
+    if ($this->substring !== null) {
+      $xfer += $output->writeFieldBegin('substring', TType::STRING, 1);
+      $xfer += $output->writeString($this->substring);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class AromaMatcher {
   static $_TSPEC;
 
@@ -532,9 +956,17 @@ class AromaMatcher {
    */
   public $titleIs = null;
   /**
+   * @var \RedRoma\Aroma\Reactions\MatcherTitleIsNot
+   */
+  public $titleIsNot = null;
+  /**
    * @var \RedRoma\Aroma\Reactions\MatcherTitleContains
    */
   public $titleContains = null;
+  /**
+   * @var \RedRoma\Aroma\Reactions\MatcherTitleDoesNotContain
+   */
+  public $titleDoesNotContain = null;
   /**
    * @var \RedRoma\Aroma\Reactions\MatcherBodyIs
    */
@@ -544,13 +976,25 @@ class AromaMatcher {
    */
   public $bodyContains = null;
   /**
+   * @var \RedRoma\Aroma\Reactions\MatcherBodyDoesNotContain
+   */
+  public $bodyDoesNotContain = null;
+  /**
    * @var \RedRoma\Aroma\Reactions\MatcherUrgencyIs
    */
   public $urgencyEquals = null;
   /**
    * @var \RedRoma\Aroma\Reactions\MatcherHostnameIs
    */
-  public $hostnameEquals = null;
+  public $hostnameIs = null;
+  /**
+   * @var \RedRoma\Aroma\Reactions\MatcherHostnameContains
+   */
+  public $hostnameContains = null;
+  /**
+   * @var \RedRoma\Aroma\Reactions\MatcherHostnameDoesNotContain
+   */
+  public $hostnameDoesNotContain = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -566,29 +1010,54 @@ class AromaMatcher {
           'class' => '\RedRoma\Aroma\Reactions\MatcherTitleIs',
           ),
         3 => array(
+          'var' => 'titleIsNot',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\MatcherTitleIsNot',
+          ),
+        4 => array(
           'var' => 'titleContains',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\MatcherTitleContains',
           ),
-        4 => array(
+        5 => array(
+          'var' => 'titleDoesNotContain',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\MatcherTitleDoesNotContain',
+          ),
+        6 => array(
           'var' => 'bodyIs',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\MatcherBodyIs',
           ),
-        5 => array(
+        7 => array(
           'var' => 'bodyContains',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\MatcherBodyContains',
           ),
-        6 => array(
+        8 => array(
+          'var' => 'bodyDoesNotContain',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\MatcherBodyDoesNotContain',
+          ),
+        9 => array(
           'var' => 'urgencyEquals',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\MatcherUrgencyIs',
           ),
-        7 => array(
-          'var' => 'hostnameEquals',
+        10 => array(
+          'var' => 'hostnameIs',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\MatcherHostnameIs',
+          ),
+        11 => array(
+          'var' => 'hostnameContains',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\MatcherHostnameContains',
+          ),
+        12 => array(
+          'var' => 'hostnameDoesNotContain',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\MatcherHostnameDoesNotContain',
           ),
         );
     }
@@ -599,8 +1068,14 @@ class AromaMatcher {
       if (isset($vals['titleIs'])) {
         $this->titleIs = $vals['titleIs'];
       }
+      if (isset($vals['titleIsNot'])) {
+        $this->titleIsNot = $vals['titleIsNot'];
+      }
       if (isset($vals['titleContains'])) {
         $this->titleContains = $vals['titleContains'];
+      }
+      if (isset($vals['titleDoesNotContain'])) {
+        $this->titleDoesNotContain = $vals['titleDoesNotContain'];
       }
       if (isset($vals['bodyIs'])) {
         $this->bodyIs = $vals['bodyIs'];
@@ -608,11 +1083,20 @@ class AromaMatcher {
       if (isset($vals['bodyContains'])) {
         $this->bodyContains = $vals['bodyContains'];
       }
+      if (isset($vals['bodyDoesNotContain'])) {
+        $this->bodyDoesNotContain = $vals['bodyDoesNotContain'];
+      }
       if (isset($vals['urgencyEquals'])) {
         $this->urgencyEquals = $vals['urgencyEquals'];
       }
-      if (isset($vals['hostnameEquals'])) {
-        $this->hostnameEquals = $vals['hostnameEquals'];
+      if (isset($vals['hostnameIs'])) {
+        $this->hostnameIs = $vals['hostnameIs'];
+      }
+      if (isset($vals['hostnameContains'])) {
+        $this->hostnameContains = $vals['hostnameContains'];
+      }
+      if (isset($vals['hostnameDoesNotContain'])) {
+        $this->hostnameDoesNotContain = $vals['hostnameDoesNotContain'];
       }
     }
   }
@@ -654,13 +1138,29 @@ class AromaMatcher {
           break;
         case 3:
           if ($ftype == TType::STRUCT) {
+            $this->titleIsNot = new \RedRoma\Aroma\Reactions\MatcherTitleIsNot();
+            $xfer += $this->titleIsNot->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
             $this->titleContains = new \RedRoma\Aroma\Reactions\MatcherTitleContains();
             $xfer += $this->titleContains->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 4:
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->titleDoesNotContain = new \RedRoma\Aroma\Reactions\MatcherTitleDoesNotContain();
+            $xfer += $this->titleDoesNotContain->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
           if ($ftype == TType::STRUCT) {
             $this->bodyIs = new \RedRoma\Aroma\Reactions\MatcherBodyIs();
             $xfer += $this->bodyIs->read($input);
@@ -668,7 +1168,7 @@ class AromaMatcher {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 5:
+        case 7:
           if ($ftype == TType::STRUCT) {
             $this->bodyContains = new \RedRoma\Aroma\Reactions\MatcherBodyContains();
             $xfer += $this->bodyContains->read($input);
@@ -676,7 +1176,15 @@ class AromaMatcher {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 6:
+        case 8:
+          if ($ftype == TType::STRUCT) {
+            $this->bodyDoesNotContain = new \RedRoma\Aroma\Reactions\MatcherBodyDoesNotContain();
+            $xfer += $this->bodyDoesNotContain->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 9:
           if ($ftype == TType::STRUCT) {
             $this->urgencyEquals = new \RedRoma\Aroma\Reactions\MatcherUrgencyIs();
             $xfer += $this->urgencyEquals->read($input);
@@ -684,10 +1192,26 @@ class AromaMatcher {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 7:
+        case 10:
           if ($ftype == TType::STRUCT) {
-            $this->hostnameEquals = new \RedRoma\Aroma\Reactions\MatcherHostnameIs();
-            $xfer += $this->hostnameEquals->read($input);
+            $this->hostnameIs = new \RedRoma\Aroma\Reactions\MatcherHostnameIs();
+            $xfer += $this->hostnameIs->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 11:
+          if ($ftype == TType::STRUCT) {
+            $this->hostnameContains = new \RedRoma\Aroma\Reactions\MatcherHostnameContains();
+            $xfer += $this->hostnameContains->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 12:
+          if ($ftype == TType::STRUCT) {
+            $this->hostnameDoesNotContain = new \RedRoma\Aroma\Reactions\MatcherHostnameDoesNotContain();
+            $xfer += $this->hostnameDoesNotContain->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -721,19 +1245,35 @@ class AromaMatcher {
       $xfer += $this->titleIs->write($output);
       $xfer += $output->writeFieldEnd();
     }
+    if ($this->titleIsNot !== null) {
+      if (!is_object($this->titleIsNot)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('titleIsNot', TType::STRUCT, 3);
+      $xfer += $this->titleIsNot->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
     if ($this->titleContains !== null) {
       if (!is_object($this->titleContains)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('titleContains', TType::STRUCT, 3);
+      $xfer += $output->writeFieldBegin('titleContains', TType::STRUCT, 4);
       $xfer += $this->titleContains->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->titleDoesNotContain !== null) {
+      if (!is_object($this->titleDoesNotContain)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('titleDoesNotContain', TType::STRUCT, 5);
+      $xfer += $this->titleDoesNotContain->write($output);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->bodyIs !== null) {
       if (!is_object($this->bodyIs)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('bodyIs', TType::STRUCT, 4);
+      $xfer += $output->writeFieldBegin('bodyIs', TType::STRUCT, 6);
       $xfer += $this->bodyIs->write($output);
       $xfer += $output->writeFieldEnd();
     }
@@ -741,24 +1281,48 @@ class AromaMatcher {
       if (!is_object($this->bodyContains)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('bodyContains', TType::STRUCT, 5);
+      $xfer += $output->writeFieldBegin('bodyContains', TType::STRUCT, 7);
       $xfer += $this->bodyContains->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->bodyDoesNotContain !== null) {
+      if (!is_object($this->bodyDoesNotContain)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('bodyDoesNotContain', TType::STRUCT, 8);
+      $xfer += $this->bodyDoesNotContain->write($output);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->urgencyEquals !== null) {
       if (!is_object($this->urgencyEquals)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('urgencyEquals', TType::STRUCT, 6);
+      $xfer += $output->writeFieldBegin('urgencyEquals', TType::STRUCT, 9);
       $xfer += $this->urgencyEquals->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->hostnameEquals !== null) {
-      if (!is_object($this->hostnameEquals)) {
+    if ($this->hostnameIs !== null) {
+      if (!is_object($this->hostnameIs)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('hostnameEquals', TType::STRUCT, 7);
-      $xfer += $this->hostnameEquals->write($output);
+      $xfer += $output->writeFieldBegin('hostnameIs', TType::STRUCT, 10);
+      $xfer += $this->hostnameIs->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->hostnameContains !== null) {
+      if (!is_object($this->hostnameContains)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('hostnameContains', TType::STRUCT, 11);
+      $xfer += $this->hostnameContains->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->hostnameDoesNotContain !== null) {
+      if (!is_object($this->hostnameDoesNotContain)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('hostnameDoesNotContain', TType::STRUCT, 12);
+      $xfer += $this->hostnameDoesNotContain->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -1288,14 +1852,14 @@ class ActionForwardToUsers {
         case 1:
           if ($ftype == TType::LST) {
             $this->userIds = array();
-            $_size0 = 0;
-            $_etype3 = 0;
-            $xfer += $input->readListBegin($_etype3, $_size0);
-            for ($_i4 = 0; $_i4 < $_size0; ++$_i4)
+            $_size7 = 0;
+            $_etype10 = 0;
+            $xfer += $input->readListBegin($_etype10, $_size7);
+            for ($_i11 = 0; $_i11 < $_size7; ++$_i11)
             {
-              $elem5 = null;
-              $xfer += $input->readString($elem5);
-              $this->userIds []= $elem5;
+              $elem12 = null;
+              $xfer += $input->readString($elem12);
+              $this->userIds []= $elem12;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -1323,9 +1887,9 @@ class ActionForwardToUsers {
       {
         $output->writeListBegin(TType::STRING, count($this->userIds));
         {
-          foreach ($this->userIds as $iter6)
+          foreach ($this->userIds as $iter13)
           {
-            $xfer += $output->writeString($iter6);
+            $xfer += $output->writeString($iter13);
           }
         }
         $output->writeListEnd();

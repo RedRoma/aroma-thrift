@@ -162,6 +162,92 @@ void MatcherTitleIs::printTo(std::ostream& out) const {
 }
 
 
+MatcherTitleIsNot::~MatcherTitleIsNot() throw() {
+}
+
+
+void MatcherTitleIsNot::__set_title(const std::string& val) {
+  this->title = val;
+}
+
+uint32_t MatcherTitleIsNot::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->title);
+          this->__isset.title = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t MatcherTitleIsNot::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("MatcherTitleIsNot");
+
+  xfer += oprot->writeFieldBegin("title", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->title);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(MatcherTitleIsNot &a, MatcherTitleIsNot &b) {
+  using ::std::swap;
+  swap(a.title, b.title);
+  swap(a.__isset, b.__isset);
+}
+
+MatcherTitleIsNot::MatcherTitleIsNot(const MatcherTitleIsNot& other4) {
+  title = other4.title;
+  __isset = other4.__isset;
+}
+MatcherTitleIsNot& MatcherTitleIsNot::operator=(const MatcherTitleIsNot& other5) {
+  title = other5.title;
+  __isset = other5.__isset;
+  return *this;
+}
+void MatcherTitleIsNot::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "MatcherTitleIsNot(";
+  out << "title=" << to_string(title);
+  out << ")";
+}
+
+
 MatcherTitleContains::~MatcherTitleContains() throw() {
 }
 
@@ -231,18 +317,104 @@ void swap(MatcherTitleContains &a, MatcherTitleContains &b) {
   swap(a.__isset, b.__isset);
 }
 
-MatcherTitleContains::MatcherTitleContains(const MatcherTitleContains& other4) {
-  substring = other4.substring;
-  __isset = other4.__isset;
+MatcherTitleContains::MatcherTitleContains(const MatcherTitleContains& other6) {
+  substring = other6.substring;
+  __isset = other6.__isset;
 }
-MatcherTitleContains& MatcherTitleContains::operator=(const MatcherTitleContains& other5) {
-  substring = other5.substring;
-  __isset = other5.__isset;
+MatcherTitleContains& MatcherTitleContains::operator=(const MatcherTitleContains& other7) {
+  substring = other7.substring;
+  __isset = other7.__isset;
   return *this;
 }
 void MatcherTitleContains::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "MatcherTitleContains(";
+  out << "substring=" << to_string(substring);
+  out << ")";
+}
+
+
+MatcherTitleDoesNotContain::~MatcherTitleDoesNotContain() throw() {
+}
+
+
+void MatcherTitleDoesNotContain::__set_substring(const std::string& val) {
+  this->substring = val;
+}
+
+uint32_t MatcherTitleDoesNotContain::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->substring);
+          this->__isset.substring = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t MatcherTitleDoesNotContain::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("MatcherTitleDoesNotContain");
+
+  xfer += oprot->writeFieldBegin("substring", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->substring);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(MatcherTitleDoesNotContain &a, MatcherTitleDoesNotContain &b) {
+  using ::std::swap;
+  swap(a.substring, b.substring);
+  swap(a.__isset, b.__isset);
+}
+
+MatcherTitleDoesNotContain::MatcherTitleDoesNotContain(const MatcherTitleDoesNotContain& other8) {
+  substring = other8.substring;
+  __isset = other8.__isset;
+}
+MatcherTitleDoesNotContain& MatcherTitleDoesNotContain::operator=(const MatcherTitleDoesNotContain& other9) {
+  substring = other9.substring;
+  __isset = other9.__isset;
+  return *this;
+}
+void MatcherTitleDoesNotContain::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "MatcherTitleDoesNotContain(";
   out << "substring=" << to_string(substring);
   out << ")";
 }
@@ -317,13 +489,13 @@ void swap(MatcherBodyIs &a, MatcherBodyIs &b) {
   swap(a.__isset, b.__isset);
 }
 
-MatcherBodyIs::MatcherBodyIs(const MatcherBodyIs& other6) {
-  expectedBody = other6.expectedBody;
-  __isset = other6.__isset;
+MatcherBodyIs::MatcherBodyIs(const MatcherBodyIs& other10) {
+  expectedBody = other10.expectedBody;
+  __isset = other10.__isset;
 }
-MatcherBodyIs& MatcherBodyIs::operator=(const MatcherBodyIs& other7) {
-  expectedBody = other7.expectedBody;
-  __isset = other7.__isset;
+MatcherBodyIs& MatcherBodyIs::operator=(const MatcherBodyIs& other11) {
+  expectedBody = other11.expectedBody;
+  __isset = other11.__isset;
   return *this;
 }
 void MatcherBodyIs::printTo(std::ostream& out) const {
@@ -403,18 +575,104 @@ void swap(MatcherBodyContains &a, MatcherBodyContains &b) {
   swap(a.__isset, b.__isset);
 }
 
-MatcherBodyContains::MatcherBodyContains(const MatcherBodyContains& other8) {
-  substring = other8.substring;
-  __isset = other8.__isset;
+MatcherBodyContains::MatcherBodyContains(const MatcherBodyContains& other12) {
+  substring = other12.substring;
+  __isset = other12.__isset;
 }
-MatcherBodyContains& MatcherBodyContains::operator=(const MatcherBodyContains& other9) {
-  substring = other9.substring;
-  __isset = other9.__isset;
+MatcherBodyContains& MatcherBodyContains::operator=(const MatcherBodyContains& other13) {
+  substring = other13.substring;
+  __isset = other13.__isset;
   return *this;
 }
 void MatcherBodyContains::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "MatcherBodyContains(";
+  out << "substring=" << to_string(substring);
+  out << ")";
+}
+
+
+MatcherBodyDoesNotContain::~MatcherBodyDoesNotContain() throw() {
+}
+
+
+void MatcherBodyDoesNotContain::__set_substring(const std::string& val) {
+  this->substring = val;
+}
+
+uint32_t MatcherBodyDoesNotContain::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->substring);
+          this->__isset.substring = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t MatcherBodyDoesNotContain::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("MatcherBodyDoesNotContain");
+
+  xfer += oprot->writeFieldBegin("substring", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->substring);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(MatcherBodyDoesNotContain &a, MatcherBodyDoesNotContain &b) {
+  using ::std::swap;
+  swap(a.substring, b.substring);
+  swap(a.__isset, b.__isset);
+}
+
+MatcherBodyDoesNotContain::MatcherBodyDoesNotContain(const MatcherBodyDoesNotContain& other14) {
+  substring = other14.substring;
+  __isset = other14.__isset;
+}
+MatcherBodyDoesNotContain& MatcherBodyDoesNotContain::operator=(const MatcherBodyDoesNotContain& other15) {
+  substring = other15.substring;
+  __isset = other15.__isset;
+  return *this;
+}
+void MatcherBodyDoesNotContain::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "MatcherBodyDoesNotContain(";
   out << "substring=" << to_string(substring);
   out << ")";
 }
@@ -426,6 +684,11 @@ MatcherUrgencyIs::~MatcherUrgencyIs() throw() {
 
 void MatcherUrgencyIs::__set_urgency(const  ::tech::aroma::thrift::Urgency::type val) {
   this->urgency = val;
+}
+
+void MatcherUrgencyIs::__set_urgencies(const std::vector< ::tech::aroma::thrift::Urgency::type> & val) {
+  this->urgencies = val;
+__isset.urgencies = true;
 }
 
 uint32_t MatcherUrgencyIs::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -451,10 +714,32 @@ uint32_t MatcherUrgencyIs::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast10;
-          xfer += iprot->readI32(ecast10);
-          this->urgency = ( ::tech::aroma::thrift::Urgency::type)ecast10;
+          int32_t ecast16;
+          xfer += iprot->readI32(ecast16);
+          this->urgency = ( ::tech::aroma::thrift::Urgency::type)ecast16;
           this->__isset.urgency = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->urgencies.clear();
+            uint32_t _size17;
+            ::apache::thrift::protocol::TType _etype20;
+            xfer += iprot->readListBegin(_etype20, _size17);
+            this->urgencies.resize(_size17);
+            uint32_t _i21;
+            for (_i21 = 0; _i21 < _size17; ++_i21)
+            {
+              int32_t ecast22;
+              xfer += iprot->readI32(ecast22);
+              this->urgencies[_i21] = ( ::tech::aroma::thrift::Urgency::type)ecast22;
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.urgencies = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -480,6 +765,19 @@ uint32_t MatcherUrgencyIs::write(::apache::thrift::protocol::TProtocol* oprot) c
   xfer += oprot->writeI32((int32_t)this->urgency);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.urgencies) {
+    xfer += oprot->writeFieldBegin("urgencies", ::apache::thrift::protocol::T_LIST, 2);
+    {
+      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_I32, static_cast<uint32_t>(this->urgencies.size()));
+      std::vector< ::tech::aroma::thrift::Urgency::type> ::const_iterator _iter23;
+      for (_iter23 = this->urgencies.begin(); _iter23 != this->urgencies.end(); ++_iter23)
+      {
+        xfer += oprot->writeI32((int32_t)(*_iter23));
+      }
+      xfer += oprot->writeListEnd();
+    }
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -488,22 +786,26 @@ uint32_t MatcherUrgencyIs::write(::apache::thrift::protocol::TProtocol* oprot) c
 void swap(MatcherUrgencyIs &a, MatcherUrgencyIs &b) {
   using ::std::swap;
   swap(a.urgency, b.urgency);
+  swap(a.urgencies, b.urgencies);
   swap(a.__isset, b.__isset);
 }
 
-MatcherUrgencyIs::MatcherUrgencyIs(const MatcherUrgencyIs& other11) {
-  urgency = other11.urgency;
-  __isset = other11.__isset;
+MatcherUrgencyIs::MatcherUrgencyIs(const MatcherUrgencyIs& other24) {
+  urgency = other24.urgency;
+  urgencies = other24.urgencies;
+  __isset = other24.__isset;
 }
-MatcherUrgencyIs& MatcherUrgencyIs::operator=(const MatcherUrgencyIs& other12) {
-  urgency = other12.urgency;
-  __isset = other12.__isset;
+MatcherUrgencyIs& MatcherUrgencyIs::operator=(const MatcherUrgencyIs& other25) {
+  urgency = other25.urgency;
+  urgencies = other25.urgencies;
+  __isset = other25.__isset;
   return *this;
 }
 void MatcherUrgencyIs::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "MatcherUrgencyIs(";
   out << "urgency=" << to_string(urgency);
+  out << ", " << "urgencies="; (__isset.urgencies ? (out << to_string(urgencies)) : (out << "<null>"));
   out << ")";
 }
 
@@ -577,19 +879,191 @@ void swap(MatcherHostnameIs &a, MatcherHostnameIs &b) {
   swap(a.__isset, b.__isset);
 }
 
-MatcherHostnameIs::MatcherHostnameIs(const MatcherHostnameIs& other13) {
-  expectedHostname = other13.expectedHostname;
-  __isset = other13.__isset;
+MatcherHostnameIs::MatcherHostnameIs(const MatcherHostnameIs& other26) {
+  expectedHostname = other26.expectedHostname;
+  __isset = other26.__isset;
 }
-MatcherHostnameIs& MatcherHostnameIs::operator=(const MatcherHostnameIs& other14) {
-  expectedHostname = other14.expectedHostname;
-  __isset = other14.__isset;
+MatcherHostnameIs& MatcherHostnameIs::operator=(const MatcherHostnameIs& other27) {
+  expectedHostname = other27.expectedHostname;
+  __isset = other27.__isset;
   return *this;
 }
 void MatcherHostnameIs::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "MatcherHostnameIs(";
   out << "expectedHostname=" << to_string(expectedHostname);
+  out << ")";
+}
+
+
+MatcherHostnameContains::~MatcherHostnameContains() throw() {
+}
+
+
+void MatcherHostnameContains::__set_substring(const std::string& val) {
+  this->substring = val;
+}
+
+uint32_t MatcherHostnameContains::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->substring);
+          this->__isset.substring = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t MatcherHostnameContains::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("MatcherHostnameContains");
+
+  xfer += oprot->writeFieldBegin("substring", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->substring);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(MatcherHostnameContains &a, MatcherHostnameContains &b) {
+  using ::std::swap;
+  swap(a.substring, b.substring);
+  swap(a.__isset, b.__isset);
+}
+
+MatcherHostnameContains::MatcherHostnameContains(const MatcherHostnameContains& other28) {
+  substring = other28.substring;
+  __isset = other28.__isset;
+}
+MatcherHostnameContains& MatcherHostnameContains::operator=(const MatcherHostnameContains& other29) {
+  substring = other29.substring;
+  __isset = other29.__isset;
+  return *this;
+}
+void MatcherHostnameContains::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "MatcherHostnameContains(";
+  out << "substring=" << to_string(substring);
+  out << ")";
+}
+
+
+MatcherHostnameDoesNotContain::~MatcherHostnameDoesNotContain() throw() {
+}
+
+
+void MatcherHostnameDoesNotContain::__set_substring(const std::string& val) {
+  this->substring = val;
+}
+
+uint32_t MatcherHostnameDoesNotContain::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->substring);
+          this->__isset.substring = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t MatcherHostnameDoesNotContain::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("MatcherHostnameDoesNotContain");
+
+  xfer += oprot->writeFieldBegin("substring", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->substring);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(MatcherHostnameDoesNotContain &a, MatcherHostnameDoesNotContain &b) {
+  using ::std::swap;
+  swap(a.substring, b.substring);
+  swap(a.__isset, b.__isset);
+}
+
+MatcherHostnameDoesNotContain::MatcherHostnameDoesNotContain(const MatcherHostnameDoesNotContain& other30) {
+  substring = other30.substring;
+  __isset = other30.__isset;
+}
+MatcherHostnameDoesNotContain& MatcherHostnameDoesNotContain::operator=(const MatcherHostnameDoesNotContain& other31) {
+  substring = other31.substring;
+  __isset = other31.__isset;
+  return *this;
+}
+void MatcherHostnameDoesNotContain::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "MatcherHostnameDoesNotContain(";
+  out << "substring=" << to_string(substring);
   out << ")";
 }
 
@@ -606,8 +1080,16 @@ void AromaMatcher::__set_titleIs(const MatcherTitleIs& val) {
   this->titleIs = val;
 }
 
+void AromaMatcher::__set_titleIsNot(const MatcherTitleIsNot& val) {
+  this->titleIsNot = val;
+}
+
 void AromaMatcher::__set_titleContains(const MatcherTitleContains& val) {
   this->titleContains = val;
+}
+
+void AromaMatcher::__set_titleDoesNotContain(const MatcherTitleDoesNotContain& val) {
+  this->titleDoesNotContain = val;
 }
 
 void AromaMatcher::__set_bodyIs(const MatcherBodyIs& val) {
@@ -618,12 +1100,24 @@ void AromaMatcher::__set_bodyContains(const MatcherBodyContains& val) {
   this->bodyContains = val;
 }
 
+void AromaMatcher::__set_bodyDoesNotContain(const MatcherBodyDoesNotContain& val) {
+  this->bodyDoesNotContain = val;
+}
+
 void AromaMatcher::__set_urgencyEquals(const MatcherUrgencyIs& val) {
   this->urgencyEquals = val;
 }
 
-void AromaMatcher::__set_hostnameEquals(const MatcherHostnameIs& val) {
-  this->hostnameEquals = val;
+void AromaMatcher::__set_hostnameIs(const MatcherHostnameIs& val) {
+  this->hostnameIs = val;
+}
+
+void AromaMatcher::__set_hostnameContains(const MatcherHostnameContains& val) {
+  this->hostnameContains = val;
+}
+
+void AromaMatcher::__set_hostnameDoesNotContain(const MatcherHostnameDoesNotContain& val) {
+  this->hostnameDoesNotContain = val;
 }
 
 uint32_t AromaMatcher::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -665,13 +1159,29 @@ uint32_t AromaMatcher::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->titleIsNot.read(iprot);
+          this->__isset.titleIsNot = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->titleContains.read(iprot);
           this->__isset.titleContains = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 4:
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->titleDoesNotContain.read(iprot);
+          this->__isset.titleDoesNotContain = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->bodyIs.read(iprot);
           this->__isset.bodyIs = true;
@@ -679,7 +1189,7 @@ uint32_t AromaMatcher::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
+      case 7:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->bodyContains.read(iprot);
           this->__isset.bodyContains = true;
@@ -687,7 +1197,15 @@ uint32_t AromaMatcher::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 6:
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->bodyDoesNotContain.read(iprot);
+          this->__isset.bodyDoesNotContain = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 9:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->urgencyEquals.read(iprot);
           this->__isset.urgencyEquals = true;
@@ -695,10 +1213,26 @@ uint32_t AromaMatcher::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 7:
+      case 10:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->hostnameEquals.read(iprot);
-          this->__isset.hostnameEquals = true;
+          xfer += this->hostnameIs.read(iprot);
+          this->__isset.hostnameIs = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->hostnameContains.read(iprot);
+          this->__isset.hostnameContains = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 12:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->hostnameDoesNotContain.read(iprot);
+          this->__isset.hostnameDoesNotContain = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -728,24 +1262,44 @@ uint32_t AromaMatcher::write(::apache::thrift::protocol::TProtocol* oprot) const
   xfer += this->titleIs.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("titleContains", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += oprot->writeFieldBegin("titleIsNot", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->titleIsNot.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("titleContains", ::apache::thrift::protocol::T_STRUCT, 4);
   xfer += this->titleContains.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("bodyIs", ::apache::thrift::protocol::T_STRUCT, 4);
+  xfer += oprot->writeFieldBegin("titleDoesNotContain", ::apache::thrift::protocol::T_STRUCT, 5);
+  xfer += this->titleDoesNotContain.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("bodyIs", ::apache::thrift::protocol::T_STRUCT, 6);
   xfer += this->bodyIs.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("bodyContains", ::apache::thrift::protocol::T_STRUCT, 5);
+  xfer += oprot->writeFieldBegin("bodyContains", ::apache::thrift::protocol::T_STRUCT, 7);
   xfer += this->bodyContains.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("urgencyEquals", ::apache::thrift::protocol::T_STRUCT, 6);
+  xfer += oprot->writeFieldBegin("bodyDoesNotContain", ::apache::thrift::protocol::T_STRUCT, 8);
+  xfer += this->bodyDoesNotContain.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("urgencyEquals", ::apache::thrift::protocol::T_STRUCT, 9);
   xfer += this->urgencyEquals.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("hostnameEquals", ::apache::thrift::protocol::T_STRUCT, 7);
-  xfer += this->hostnameEquals.write(oprot);
+  xfer += oprot->writeFieldBegin("hostnameIs", ::apache::thrift::protocol::T_STRUCT, 10);
+  xfer += this->hostnameIs.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("hostnameContains", ::apache::thrift::protocol::T_STRUCT, 11);
+  xfer += this->hostnameContains.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("hostnameDoesNotContain", ::apache::thrift::protocol::T_STRUCT, 12);
+  xfer += this->hostnameDoesNotContain.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -757,33 +1311,48 @@ void swap(AromaMatcher &a, AromaMatcher &b) {
   using ::std::swap;
   swap(a.all, b.all);
   swap(a.titleIs, b.titleIs);
+  swap(a.titleIsNot, b.titleIsNot);
   swap(a.titleContains, b.titleContains);
+  swap(a.titleDoesNotContain, b.titleDoesNotContain);
   swap(a.bodyIs, b.bodyIs);
   swap(a.bodyContains, b.bodyContains);
+  swap(a.bodyDoesNotContain, b.bodyDoesNotContain);
   swap(a.urgencyEquals, b.urgencyEquals);
-  swap(a.hostnameEquals, b.hostnameEquals);
+  swap(a.hostnameIs, b.hostnameIs);
+  swap(a.hostnameContains, b.hostnameContains);
+  swap(a.hostnameDoesNotContain, b.hostnameDoesNotContain);
   swap(a.__isset, b.__isset);
 }
 
-AromaMatcher::AromaMatcher(const AromaMatcher& other15) {
-  all = other15.all;
-  titleIs = other15.titleIs;
-  titleContains = other15.titleContains;
-  bodyIs = other15.bodyIs;
-  bodyContains = other15.bodyContains;
-  urgencyEquals = other15.urgencyEquals;
-  hostnameEquals = other15.hostnameEquals;
-  __isset = other15.__isset;
+AromaMatcher::AromaMatcher(const AromaMatcher& other32) {
+  all = other32.all;
+  titleIs = other32.titleIs;
+  titleIsNot = other32.titleIsNot;
+  titleContains = other32.titleContains;
+  titleDoesNotContain = other32.titleDoesNotContain;
+  bodyIs = other32.bodyIs;
+  bodyContains = other32.bodyContains;
+  bodyDoesNotContain = other32.bodyDoesNotContain;
+  urgencyEquals = other32.urgencyEquals;
+  hostnameIs = other32.hostnameIs;
+  hostnameContains = other32.hostnameContains;
+  hostnameDoesNotContain = other32.hostnameDoesNotContain;
+  __isset = other32.__isset;
 }
-AromaMatcher& AromaMatcher::operator=(const AromaMatcher& other16) {
-  all = other16.all;
-  titleIs = other16.titleIs;
-  titleContains = other16.titleContains;
-  bodyIs = other16.bodyIs;
-  bodyContains = other16.bodyContains;
-  urgencyEquals = other16.urgencyEquals;
-  hostnameEquals = other16.hostnameEquals;
-  __isset = other16.__isset;
+AromaMatcher& AromaMatcher::operator=(const AromaMatcher& other33) {
+  all = other33.all;
+  titleIs = other33.titleIs;
+  titleIsNot = other33.titleIsNot;
+  titleContains = other33.titleContains;
+  titleDoesNotContain = other33.titleDoesNotContain;
+  bodyIs = other33.bodyIs;
+  bodyContains = other33.bodyContains;
+  bodyDoesNotContain = other33.bodyDoesNotContain;
+  urgencyEquals = other33.urgencyEquals;
+  hostnameIs = other33.hostnameIs;
+  hostnameContains = other33.hostnameContains;
+  hostnameDoesNotContain = other33.hostnameDoesNotContain;
+  __isset = other33.__isset;
   return *this;
 }
 void AromaMatcher::printTo(std::ostream& out) const {
@@ -791,11 +1360,16 @@ void AromaMatcher::printTo(std::ostream& out) const {
   out << "AromaMatcher(";
   out << "all=" << to_string(all);
   out << ", " << "titleIs=" << to_string(titleIs);
+  out << ", " << "titleIsNot=" << to_string(titleIsNot);
   out << ", " << "titleContains=" << to_string(titleContains);
+  out << ", " << "titleDoesNotContain=" << to_string(titleDoesNotContain);
   out << ", " << "bodyIs=" << to_string(bodyIs);
   out << ", " << "bodyContains=" << to_string(bodyContains);
+  out << ", " << "bodyDoesNotContain=" << to_string(bodyDoesNotContain);
   out << ", " << "urgencyEquals=" << to_string(urgencyEquals);
-  out << ", " << "hostnameEquals=" << to_string(hostnameEquals);
+  out << ", " << "hostnameIs=" << to_string(hostnameIs);
+  out << ", " << "hostnameContains=" << to_string(hostnameContains);
+  out << ", " << "hostnameDoesNotContain=" << to_string(hostnameDoesNotContain);
   out << ")";
 }
 
@@ -888,15 +1462,15 @@ void swap(ActionForwardToSlackChannel &a, ActionForwardToSlackChannel &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionForwardToSlackChannel::ActionForwardToSlackChannel(const ActionForwardToSlackChannel& other17) {
-  slackChannel = other17.slackChannel;
-  includeBody = other17.includeBody;
-  __isset = other17.__isset;
+ActionForwardToSlackChannel::ActionForwardToSlackChannel(const ActionForwardToSlackChannel& other34) {
+  slackChannel = other34.slackChannel;
+  includeBody = other34.includeBody;
+  __isset = other34.__isset;
 }
-ActionForwardToSlackChannel& ActionForwardToSlackChannel::operator=(const ActionForwardToSlackChannel& other18) {
-  slackChannel = other18.slackChannel;
-  includeBody = other18.includeBody;
-  __isset = other18.__isset;
+ActionForwardToSlackChannel& ActionForwardToSlackChannel::operator=(const ActionForwardToSlackChannel& other35) {
+  slackChannel = other35.slackChannel;
+  includeBody = other35.includeBody;
+  __isset = other35.__isset;
   return *this;
 }
 void ActionForwardToSlackChannel::printTo(std::ostream& out) const {
@@ -996,15 +1570,15 @@ void swap(ActionForwardToSlackUser &a, ActionForwardToSlackUser &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionForwardToSlackUser::ActionForwardToSlackUser(const ActionForwardToSlackUser& other19) {
-  slackUsername = other19.slackUsername;
-  includeBody = other19.includeBody;
-  __isset = other19.__isset;
+ActionForwardToSlackUser::ActionForwardToSlackUser(const ActionForwardToSlackUser& other36) {
+  slackUsername = other36.slackUsername;
+  includeBody = other36.includeBody;
+  __isset = other36.__isset;
 }
-ActionForwardToSlackUser& ActionForwardToSlackUser::operator=(const ActionForwardToSlackUser& other20) {
-  slackUsername = other20.slackUsername;
-  includeBody = other20.includeBody;
-  __isset = other20.__isset;
+ActionForwardToSlackUser& ActionForwardToSlackUser::operator=(const ActionForwardToSlackUser& other37) {
+  slackUsername = other37.slackUsername;
+  includeBody = other37.includeBody;
+  __isset = other37.__isset;
   return *this;
 }
 void ActionForwardToSlackUser::printTo(std::ostream& out) const {
@@ -1104,15 +1678,15 @@ void swap(ActionSendEmail &a, ActionSendEmail &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionSendEmail::ActionSendEmail(const ActionSendEmail& other21) {
-  emailAddress = other21.emailAddress;
-  includeBody = other21.includeBody;
-  __isset = other21.__isset;
+ActionSendEmail::ActionSendEmail(const ActionSendEmail& other38) {
+  emailAddress = other38.emailAddress;
+  includeBody = other38.includeBody;
+  __isset = other38.__isset;
 }
-ActionSendEmail& ActionSendEmail::operator=(const ActionSendEmail& other22) {
-  emailAddress = other22.emailAddress;
-  includeBody = other22.includeBody;
-  __isset = other22.__isset;
+ActionSendEmail& ActionSendEmail::operator=(const ActionSendEmail& other39) {
+  emailAddress = other39.emailAddress;
+  includeBody = other39.includeBody;
+  __isset = other39.__isset;
   return *this;
 }
 void ActionSendEmail::printTo(std::ostream& out) const {
@@ -1172,11 +1746,11 @@ void swap(ActionSkipInbox &a, ActionSkipInbox &b) {
   (void) b;
 }
 
-ActionSkipInbox::ActionSkipInbox(const ActionSkipInbox& other23) {
-  (void) other23;
+ActionSkipInbox::ActionSkipInbox(const ActionSkipInbox& other40) {
+  (void) other40;
 }
-ActionSkipInbox& ActionSkipInbox::operator=(const ActionSkipInbox& other24) {
-  (void) other24;
+ActionSkipInbox& ActionSkipInbox::operator=(const ActionSkipInbox& other41) {
+  (void) other41;
   return *this;
 }
 void ActionSkipInbox::printTo(std::ostream& out) const {
@@ -1234,11 +1808,11 @@ void swap(ActionDeleteMessage &a, ActionDeleteMessage &b) {
   (void) b;
 }
 
-ActionDeleteMessage::ActionDeleteMessage(const ActionDeleteMessage& other25) {
-  (void) other25;
+ActionDeleteMessage::ActionDeleteMessage(const ActionDeleteMessage& other42) {
+  (void) other42;
 }
-ActionDeleteMessage& ActionDeleteMessage::operator=(const ActionDeleteMessage& other26) {
-  (void) other26;
+ActionDeleteMessage& ActionDeleteMessage::operator=(const ActionDeleteMessage& other43) {
+  (void) other43;
   return *this;
 }
 void ActionDeleteMessage::printTo(std::ostream& out) const {
@@ -1317,13 +1891,13 @@ void swap(ActionRespondToCode &a, ActionRespondToCode &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionRespondToCode::ActionRespondToCode(const ActionRespondToCode& other27) {
-  messageToSend = other27.messageToSend;
-  __isset = other27.__isset;
+ActionRespondToCode::ActionRespondToCode(const ActionRespondToCode& other44) {
+  messageToSend = other44.messageToSend;
+  __isset = other44.__isset;
 }
-ActionRespondToCode& ActionRespondToCode::operator=(const ActionRespondToCode& other28) {
-  messageToSend = other28.messageToSend;
-  __isset = other28.__isset;
+ActionRespondToCode& ActionRespondToCode::operator=(const ActionRespondToCode& other45) {
+  messageToSend = other45.messageToSend;
+  __isset = other45.__isset;
   return *this;
 }
 void ActionRespondToCode::printTo(std::ostream& out) const {
@@ -1367,14 +1941,14 @@ uint32_t ActionForwardToUsers::read(::apache::thrift::protocol::TProtocol* iprot
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->userIds.clear();
-            uint32_t _size29;
-            ::apache::thrift::protocol::TType _etype32;
-            xfer += iprot->readListBegin(_etype32, _size29);
-            this->userIds.resize(_size29);
-            uint32_t _i33;
-            for (_i33 = 0; _i33 < _size29; ++_i33)
+            uint32_t _size46;
+            ::apache::thrift::protocol::TType _etype49;
+            xfer += iprot->readListBegin(_etype49, _size46);
+            this->userIds.resize(_size46);
+            uint32_t _i50;
+            for (_i50 = 0; _i50 < _size46; ++_i50)
             {
-              xfer += iprot->readString(this->userIds[_i33]);
+              xfer += iprot->readString(this->userIds[_i50]);
             }
             xfer += iprot->readListEnd();
           }
@@ -1403,10 +1977,10 @@ uint32_t ActionForwardToUsers::write(::apache::thrift::protocol::TProtocol* opro
   xfer += oprot->writeFieldBegin("userIds", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->userIds.size()));
-    std::vector<uuid> ::const_iterator _iter34;
-    for (_iter34 = this->userIds.begin(); _iter34 != this->userIds.end(); ++_iter34)
+    std::vector<uuid> ::const_iterator _iter51;
+    for (_iter51 = this->userIds.begin(); _iter51 != this->userIds.end(); ++_iter51)
     {
-      xfer += oprot->writeString((*_iter34));
+      xfer += oprot->writeString((*_iter51));
     }
     xfer += oprot->writeListEnd();
   }
@@ -1423,13 +1997,13 @@ void swap(ActionForwardToUsers &a, ActionForwardToUsers &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionForwardToUsers::ActionForwardToUsers(const ActionForwardToUsers& other35) {
-  userIds = other35.userIds;
-  __isset = other35.__isset;
+ActionForwardToUsers::ActionForwardToUsers(const ActionForwardToUsers& other52) {
+  userIds = other52.userIds;
+  __isset = other52.__isset;
 }
-ActionForwardToUsers& ActionForwardToUsers::operator=(const ActionForwardToUsers& other36) {
-  userIds = other36.userIds;
-  __isset = other36.__isset;
+ActionForwardToUsers& ActionForwardToUsers::operator=(const ActionForwardToUsers& other53) {
+  userIds = other53.userIds;
+  __isset = other53.__isset;
   return *this;
 }
 void ActionForwardToUsers::printTo(std::ostream& out) const {
@@ -1611,25 +2185,25 @@ void swap(AromaAction &a, AromaAction &b) {
   swap(a.__isset, b.__isset);
 }
 
-AromaAction::AromaAction(const AromaAction& other37) {
-  forwardToSlackChannel = other37.forwardToSlackChannel;
-  forwardToSlackUser = other37.forwardToSlackUser;
-  sendEmail = other37.sendEmail;
-  skipInbox = other37.skipInbox;
-  deleteMessage = other37.deleteMessage;
-  respondToCode = other37.respondToCode;
-  forwardToUsers = other37.forwardToUsers;
-  __isset = other37.__isset;
+AromaAction::AromaAction(const AromaAction& other54) {
+  forwardToSlackChannel = other54.forwardToSlackChannel;
+  forwardToSlackUser = other54.forwardToSlackUser;
+  sendEmail = other54.sendEmail;
+  skipInbox = other54.skipInbox;
+  deleteMessage = other54.deleteMessage;
+  respondToCode = other54.respondToCode;
+  forwardToUsers = other54.forwardToUsers;
+  __isset = other54.__isset;
 }
-AromaAction& AromaAction::operator=(const AromaAction& other38) {
-  forwardToSlackChannel = other38.forwardToSlackChannel;
-  forwardToSlackUser = other38.forwardToSlackUser;
-  sendEmail = other38.sendEmail;
-  skipInbox = other38.skipInbox;
-  deleteMessage = other38.deleteMessage;
-  respondToCode = other38.respondToCode;
-  forwardToUsers = other38.forwardToUsers;
-  __isset = other38.__isset;
+AromaAction& AromaAction::operator=(const AromaAction& other55) {
+  forwardToSlackChannel = other55.forwardToSlackChannel;
+  forwardToSlackUser = other55.forwardToSlackUser;
+  sendEmail = other55.sendEmail;
+  skipInbox = other55.skipInbox;
+  deleteMessage = other55.deleteMessage;
+  respondToCode = other55.respondToCode;
+  forwardToUsers = other55.forwardToUsers;
+  __isset = other55.__isset;
   return *this;
 }
 void AromaAction::printTo(std::ostream& out) const {
@@ -1749,17 +2323,17 @@ void swap(Reaction &a, Reaction &b) {
   swap(a.__isset, b.__isset);
 }
 
-Reaction::Reaction(const Reaction& other39) {
-  matcher = other39.matcher;
-  action = other39.action;
-  name = other39.name;
-  __isset = other39.__isset;
+Reaction::Reaction(const Reaction& other56) {
+  matcher = other56.matcher;
+  action = other56.action;
+  name = other56.name;
+  __isset = other56.__isset;
 }
-Reaction& Reaction::operator=(const Reaction& other40) {
-  matcher = other40.matcher;
-  action = other40.action;
-  name = other40.name;
-  __isset = other40.__isset;
+Reaction& Reaction::operator=(const Reaction& other57) {
+  matcher = other57.matcher;
+  action = other57.action;
+  name = other57.name;
+  __isset = other57.__isset;
   return *this;
 }
 void Reaction::printTo(std::ostream& out) const {

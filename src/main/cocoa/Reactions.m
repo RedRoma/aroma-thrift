@@ -250,6 +250,156 @@
 
 @end
 
+@implementation AromaReactions_MatcherTitleIsNot
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithTitle: (NSString *) title
+{
+  self = [super init];
+  __title = [title retain_stub];
+  __title_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"title"])
+  {
+    __title = [[decoder decodeObjectForKey: @"title"] retain_stub];
+    __title_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__title_isset)
+  {
+    [encoder encodeObject: __title forKey: @"title"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __title_isset ? 2654435761 : 0;
+  if (__title_isset)
+  {
+    hash = (hash * 31) ^ [__title hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_MatcherTitleIsNot class]]) {
+    return NO;
+  }
+  AromaReactions_MatcherTitleIsNot *other = (AromaReactions_MatcherTitleIsNot *)anObject;
+  if ((__title_isset != other->__title_isset) ||
+      (__title_isset && ((__title || other->__title) && ![__title isEqual:other->__title]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__title release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) title {
+  return [[__title retain_stub] autorelease_stub];
+}
+
+- (void) setTitle: (NSString *) title {
+  [title retain_stub];
+  [__title release_stub];
+  __title = title;
+  __title_isset = YES;
+}
+
+- (BOOL) titleIsSet {
+  return __title_isset;
+}
+
+- (void) unsetTitle {
+  [__title release_stub];
+  __title = nil;
+  __title_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setTitle: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"MatcherTitleIsNot"];
+  if (__title_isset) {
+    if (__title != nil) {
+      [outProtocol writeFieldBeginWithName: @"title" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __title];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherTitleIsNot("];
+  [ms appendString: @"title:"];
+  [ms appendFormat: @"\"%@\"", __title];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaReactions_MatcherTitleContains
 
 - (id) init
@@ -392,6 +542,156 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherTitleContains("];
+  [ms appendString: @"substring:"];
+  [ms appendFormat: @"\"%@\"", __substring];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_MatcherTitleDoesNotContain
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSubstring: (NSString *) substring
+{
+  self = [super init];
+  __substring = [substring retain_stub];
+  __substring_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"substring"])
+  {
+    __substring = [[decoder decodeObjectForKey: @"substring"] retain_stub];
+    __substring_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__substring_isset)
+  {
+    [encoder encodeObject: __substring forKey: @"substring"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __substring_isset ? 2654435761 : 0;
+  if (__substring_isset)
+  {
+    hash = (hash * 31) ^ [__substring hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_MatcherTitleDoesNotContain class]]) {
+    return NO;
+  }
+  AromaReactions_MatcherTitleDoesNotContain *other = (AromaReactions_MatcherTitleDoesNotContain *)anObject;
+  if ((__substring_isset != other->__substring_isset) ||
+      (__substring_isset && ((__substring || other->__substring) && ![__substring isEqual:other->__substring]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__substring release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) substring {
+  return [[__substring retain_stub] autorelease_stub];
+}
+
+- (void) setSubstring: (NSString *) substring {
+  [substring retain_stub];
+  [__substring release_stub];
+  __substring = substring;
+  __substring_isset = YES;
+}
+
+- (BOOL) substringIsSet {
+  return __substring_isset;
+}
+
+- (void) unsetSubstring {
+  [__substring release_stub];
+  __substring = nil;
+  __substring_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setSubstring: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"MatcherTitleDoesNotContain"];
+  if (__substring_isset) {
+    if (__substring != nil) {
+      [outProtocol writeFieldBeginWithName: @"substring" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __substring];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherTitleDoesNotContain("];
   [ms appendString: @"substring:"];
   [ms appendFormat: @"\"%@\"", __substring];
   [ms appendString: @")"];
@@ -700,6 +1000,156 @@
 
 @end
 
+@implementation AromaReactions_MatcherBodyDoesNotContain
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSubstring: (NSString *) substring
+{
+  self = [super init];
+  __substring = [substring retain_stub];
+  __substring_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"substring"])
+  {
+    __substring = [[decoder decodeObjectForKey: @"substring"] retain_stub];
+    __substring_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__substring_isset)
+  {
+    [encoder encodeObject: __substring forKey: @"substring"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __substring_isset ? 2654435761 : 0;
+  if (__substring_isset)
+  {
+    hash = (hash * 31) ^ [__substring hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_MatcherBodyDoesNotContain class]]) {
+    return NO;
+  }
+  AromaReactions_MatcherBodyDoesNotContain *other = (AromaReactions_MatcherBodyDoesNotContain *)anObject;
+  if ((__substring_isset != other->__substring_isset) ||
+      (__substring_isset && ((__substring || other->__substring) && ![__substring isEqual:other->__substring]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__substring release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) substring {
+  return [[__substring retain_stub] autorelease_stub];
+}
+
+- (void) setSubstring: (NSString *) substring {
+  [substring retain_stub];
+  [__substring release_stub];
+  __substring = substring;
+  __substring_isset = YES;
+}
+
+- (BOOL) substringIsSet {
+  return __substring_isset;
+}
+
+- (void) unsetSubstring {
+  [__substring release_stub];
+  __substring = nil;
+  __substring_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setSubstring: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"MatcherBodyDoesNotContain"];
+  if (__substring_isset) {
+    if (__substring != nil) {
+      [outProtocol writeFieldBeginWithName: @"substring" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __substring];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherBodyDoesNotContain("];
+  [ms appendString: @"substring:"];
+  [ms appendFormat: @"\"%@\"", __substring];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaReactions_MatcherUrgencyIs
 
 - (id) init
@@ -710,11 +1160,13 @@
   return self;
 }
 
-- (id) initWithUrgency: (int) urgency
+- (id) initWithUrgency: (int) urgency urgencies: (NSMutableArray *) urgencies
 {
   self = [super init];
   __urgency = urgency;
   __urgency_isset = YES;
+  __urgencies = [urgencies retain_stub];
+  __urgencies_isset = YES;
   return self;
 }
 
@@ -726,6 +1178,11 @@
     __urgency = [decoder decodeIntForKey: @"urgency"];
     __urgency_isset = YES;
   }
+  if ([decoder containsValueForKey: @"urgencies"])
+  {
+    __urgencies = [[decoder decodeObjectForKey: @"urgencies"] retain_stub];
+    __urgencies_isset = YES;
+  }
   return self;
 }
 
@@ -734,6 +1191,10 @@
   if (__urgency_isset)
   {
     [encoder encodeInt: __urgency forKey: @"urgency"];
+  }
+  if (__urgencies_isset)
+  {
+    [encoder encodeObject: __urgencies forKey: @"urgencies"];
   }
 }
 
@@ -744,6 +1205,11 @@
   if (__urgency_isset)
   {
     hash = (hash * 31) ^ [@(__urgency) hash];
+  }
+  hash = (hash * 31) ^ __urgencies_isset ? 2654435761 : 0;
+  if (__urgencies_isset)
+  {
+    hash = (hash * 31) ^ [__urgencies hash];
   }
   return hash;
 }
@@ -761,11 +1227,16 @@
       (__urgency_isset && (__urgency != other->__urgency))) {
     return NO;
   }
+  if ((__urgencies_isset != other->__urgencies_isset) ||
+      (__urgencies_isset && ((__urgencies || other->__urgencies) && ![__urgencies isEqual:other->__urgencies]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
+  [__urgencies release_stub];
   [super dealloc_stub];
 }
 
@@ -784,6 +1255,27 @@
 
 - (void) unsetUrgency {
   __urgency_isset = NO;
+}
+
+- (NSMutableArray *) urgencies {
+  return [[__urgencies retain_stub] autorelease_stub];
+}
+
+- (void) setUrgencies: (NSMutableArray *) urgencies {
+  [urgencies retain_stub];
+  [__urgencies release_stub];
+  __urgencies = urgencies;
+  __urgencies_isset = YES;
+}
+
+- (BOOL) urgenciesIsSet {
+  return __urgencies_isset;
+}
+
+- (void) unsetUrgencies {
+  [__urgencies release_stub];
+  __urgencies = nil;
+  __urgencies_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -809,6 +1301,24 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            int _elem2 = [inProtocol readI32];
+            [fieldValue addObject: [NSNumber numberWithInt: _elem2]];
+          }
+          [inProtocol readListEnd];
+          [self setUrgencies: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -825,6 +1335,21 @@
     [outProtocol writeI32: __urgency];
     [outProtocol writeFieldEnd];
   }
+  if (__urgencies_isset) {
+    if (__urgencies != nil) {
+      [outProtocol writeFieldBeginWithName: @"urgencies" type: TType_LIST fieldID: 2];
+      {
+        [outProtocol writeListBeginWithElementType: TType_I32 size: [__urgencies count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__urgencies count]; idx4++)
+        {
+          [outProtocol writeI32: [[__urgencies objectAtIndex: idx4] intValue]];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -837,6 +1362,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherUrgencyIs("];
   [ms appendString: @"urgency:"];
   [ms appendFormat: @"%i", __urgency];
+  [ms appendString: @",urgencies:"];
+  [ms appendFormat: @"%@", __urgencies];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -993,6 +1520,306 @@
 
 @end
 
+@implementation AromaReactions_MatcherHostnameContains
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSubstring: (NSString *) substring
+{
+  self = [super init];
+  __substring = [substring retain_stub];
+  __substring_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"substring"])
+  {
+    __substring = [[decoder decodeObjectForKey: @"substring"] retain_stub];
+    __substring_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__substring_isset)
+  {
+    [encoder encodeObject: __substring forKey: @"substring"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __substring_isset ? 2654435761 : 0;
+  if (__substring_isset)
+  {
+    hash = (hash * 31) ^ [__substring hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_MatcherHostnameContains class]]) {
+    return NO;
+  }
+  AromaReactions_MatcherHostnameContains *other = (AromaReactions_MatcherHostnameContains *)anObject;
+  if ((__substring_isset != other->__substring_isset) ||
+      (__substring_isset && ((__substring || other->__substring) && ![__substring isEqual:other->__substring]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__substring release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) substring {
+  return [[__substring retain_stub] autorelease_stub];
+}
+
+- (void) setSubstring: (NSString *) substring {
+  [substring retain_stub];
+  [__substring release_stub];
+  __substring = substring;
+  __substring_isset = YES;
+}
+
+- (BOOL) substringIsSet {
+  return __substring_isset;
+}
+
+- (void) unsetSubstring {
+  [__substring release_stub];
+  __substring = nil;
+  __substring_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setSubstring: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"MatcherHostnameContains"];
+  if (__substring_isset) {
+    if (__substring != nil) {
+      [outProtocol writeFieldBeginWithName: @"substring" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __substring];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherHostnameContains("];
+  [ms appendString: @"substring:"];
+  [ms appendFormat: @"\"%@\"", __substring];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_MatcherHostnameDoesNotContain
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSubstring: (NSString *) substring
+{
+  self = [super init];
+  __substring = [substring retain_stub];
+  __substring_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"substring"])
+  {
+    __substring = [[decoder decodeObjectForKey: @"substring"] retain_stub];
+    __substring_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__substring_isset)
+  {
+    [encoder encodeObject: __substring forKey: @"substring"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __substring_isset ? 2654435761 : 0;
+  if (__substring_isset)
+  {
+    hash = (hash * 31) ^ [__substring hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_MatcherHostnameDoesNotContain class]]) {
+    return NO;
+  }
+  AromaReactions_MatcherHostnameDoesNotContain *other = (AromaReactions_MatcherHostnameDoesNotContain *)anObject;
+  if ((__substring_isset != other->__substring_isset) ||
+      (__substring_isset && ((__substring || other->__substring) && ![__substring isEqual:other->__substring]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__substring release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) substring {
+  return [[__substring retain_stub] autorelease_stub];
+}
+
+- (void) setSubstring: (NSString *) substring {
+  [substring retain_stub];
+  [__substring release_stub];
+  __substring = substring;
+  __substring_isset = YES;
+}
+
+- (BOOL) substringIsSet {
+  return __substring_isset;
+}
+
+- (void) unsetSubstring {
+  [__substring release_stub];
+  __substring = nil;
+  __substring_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setSubstring: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"MatcherHostnameDoesNotContain"];
+  if (__substring_isset) {
+    if (__substring != nil) {
+      [outProtocol writeFieldBeginWithName: @"substring" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __substring];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherHostnameDoesNotContain("];
+  [ms appendString: @"substring:"];
+  [ms appendFormat: @"\"%@\"", __substring];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaReactions_AromaMatcher
 
 - (id) init
@@ -1003,23 +1830,33 @@
   return self;
 }
 
-- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleContains: (AromaReactions_MatcherTitleContains *) titleContains bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameEquals: (AromaReactions_MatcherHostnameIs *) hostnameEquals
+- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot titleContains: (AromaReactions_MatcherTitleContains *) titleContains titleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains bodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs hostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains hostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain
 {
   self = [super init];
   __all = [all retain_stub];
   __all_isset = YES;
   __titleIs = [titleIs retain_stub];
   __titleIs_isset = YES;
+  __titleIsNot = [titleIsNot retain_stub];
+  __titleIsNot_isset = YES;
   __titleContains = [titleContains retain_stub];
   __titleContains_isset = YES;
+  __titleDoesNotContain = [titleDoesNotContain retain_stub];
+  __titleDoesNotContain_isset = YES;
   __bodyIs = [bodyIs retain_stub];
   __bodyIs_isset = YES;
   __bodyContains = [bodyContains retain_stub];
   __bodyContains_isset = YES;
+  __bodyDoesNotContain = [bodyDoesNotContain retain_stub];
+  __bodyDoesNotContain_isset = YES;
   __urgencyEquals = [urgencyEquals retain_stub];
   __urgencyEquals_isset = YES;
-  __hostnameEquals = [hostnameEquals retain_stub];
-  __hostnameEquals_isset = YES;
+  __hostnameIs = [hostnameIs retain_stub];
+  __hostnameIs_isset = YES;
+  __hostnameContains = [hostnameContains retain_stub];
+  __hostnameContains_isset = YES;
+  __hostnameDoesNotContain = [hostnameDoesNotContain retain_stub];
+  __hostnameDoesNotContain_isset = YES;
   return self;
 }
 
@@ -1036,10 +1873,20 @@
     __titleIs = [[decoder decodeObjectForKey: @"titleIs"] retain_stub];
     __titleIs_isset = YES;
   }
+  if ([decoder containsValueForKey: @"titleIsNot"])
+  {
+    __titleIsNot = [[decoder decodeObjectForKey: @"titleIsNot"] retain_stub];
+    __titleIsNot_isset = YES;
+  }
   if ([decoder containsValueForKey: @"titleContains"])
   {
     __titleContains = [[decoder decodeObjectForKey: @"titleContains"] retain_stub];
     __titleContains_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"titleDoesNotContain"])
+  {
+    __titleDoesNotContain = [[decoder decodeObjectForKey: @"titleDoesNotContain"] retain_stub];
+    __titleDoesNotContain_isset = YES;
   }
   if ([decoder containsValueForKey: @"bodyIs"])
   {
@@ -1051,15 +1898,30 @@
     __bodyContains = [[decoder decodeObjectForKey: @"bodyContains"] retain_stub];
     __bodyContains_isset = YES;
   }
+  if ([decoder containsValueForKey: @"bodyDoesNotContain"])
+  {
+    __bodyDoesNotContain = [[decoder decodeObjectForKey: @"bodyDoesNotContain"] retain_stub];
+    __bodyDoesNotContain_isset = YES;
+  }
   if ([decoder containsValueForKey: @"urgencyEquals"])
   {
     __urgencyEquals = [[decoder decodeObjectForKey: @"urgencyEquals"] retain_stub];
     __urgencyEquals_isset = YES;
   }
-  if ([decoder containsValueForKey: @"hostnameEquals"])
+  if ([decoder containsValueForKey: @"hostnameIs"])
   {
-    __hostnameEquals = [[decoder decodeObjectForKey: @"hostnameEquals"] retain_stub];
-    __hostnameEquals_isset = YES;
+    __hostnameIs = [[decoder decodeObjectForKey: @"hostnameIs"] retain_stub];
+    __hostnameIs_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"hostnameContains"])
+  {
+    __hostnameContains = [[decoder decodeObjectForKey: @"hostnameContains"] retain_stub];
+    __hostnameContains_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"hostnameDoesNotContain"])
+  {
+    __hostnameDoesNotContain = [[decoder decodeObjectForKey: @"hostnameDoesNotContain"] retain_stub];
+    __hostnameDoesNotContain_isset = YES;
   }
   return self;
 }
@@ -1074,9 +1936,17 @@
   {
     [encoder encodeObject: __titleIs forKey: @"titleIs"];
   }
+  if (__titleIsNot_isset)
+  {
+    [encoder encodeObject: __titleIsNot forKey: @"titleIsNot"];
+  }
   if (__titleContains_isset)
   {
     [encoder encodeObject: __titleContains forKey: @"titleContains"];
+  }
+  if (__titleDoesNotContain_isset)
+  {
+    [encoder encodeObject: __titleDoesNotContain forKey: @"titleDoesNotContain"];
   }
   if (__bodyIs_isset)
   {
@@ -1086,13 +1956,25 @@
   {
     [encoder encodeObject: __bodyContains forKey: @"bodyContains"];
   }
+  if (__bodyDoesNotContain_isset)
+  {
+    [encoder encodeObject: __bodyDoesNotContain forKey: @"bodyDoesNotContain"];
+  }
   if (__urgencyEquals_isset)
   {
     [encoder encodeObject: __urgencyEquals forKey: @"urgencyEquals"];
   }
-  if (__hostnameEquals_isset)
+  if (__hostnameIs_isset)
   {
-    [encoder encodeObject: __hostnameEquals forKey: @"hostnameEquals"];
+    [encoder encodeObject: __hostnameIs forKey: @"hostnameIs"];
+  }
+  if (__hostnameContains_isset)
+  {
+    [encoder encodeObject: __hostnameContains forKey: @"hostnameContains"];
+  }
+  if (__hostnameDoesNotContain_isset)
+  {
+    [encoder encodeObject: __hostnameDoesNotContain forKey: @"hostnameDoesNotContain"];
   }
 }
 
@@ -1109,10 +1991,20 @@
   {
     hash = (hash * 31) ^ [__titleIs hash];
   }
+  hash = (hash * 31) ^ __titleIsNot_isset ? 2654435761 : 0;
+  if (__titleIsNot_isset)
+  {
+    hash = (hash * 31) ^ [__titleIsNot hash];
+  }
   hash = (hash * 31) ^ __titleContains_isset ? 2654435761 : 0;
   if (__titleContains_isset)
   {
     hash = (hash * 31) ^ [__titleContains hash];
+  }
+  hash = (hash * 31) ^ __titleDoesNotContain_isset ? 2654435761 : 0;
+  if (__titleDoesNotContain_isset)
+  {
+    hash = (hash * 31) ^ [__titleDoesNotContain hash];
   }
   hash = (hash * 31) ^ __bodyIs_isset ? 2654435761 : 0;
   if (__bodyIs_isset)
@@ -1124,15 +2016,30 @@
   {
     hash = (hash * 31) ^ [__bodyContains hash];
   }
+  hash = (hash * 31) ^ __bodyDoesNotContain_isset ? 2654435761 : 0;
+  if (__bodyDoesNotContain_isset)
+  {
+    hash = (hash * 31) ^ [__bodyDoesNotContain hash];
+  }
   hash = (hash * 31) ^ __urgencyEquals_isset ? 2654435761 : 0;
   if (__urgencyEquals_isset)
   {
     hash = (hash * 31) ^ [__urgencyEquals hash];
   }
-  hash = (hash * 31) ^ __hostnameEquals_isset ? 2654435761 : 0;
-  if (__hostnameEquals_isset)
+  hash = (hash * 31) ^ __hostnameIs_isset ? 2654435761 : 0;
+  if (__hostnameIs_isset)
   {
-    hash = (hash * 31) ^ [__hostnameEquals hash];
+    hash = (hash * 31) ^ [__hostnameIs hash];
+  }
+  hash = (hash * 31) ^ __hostnameContains_isset ? 2654435761 : 0;
+  if (__hostnameContains_isset)
+  {
+    hash = (hash * 31) ^ [__hostnameContains hash];
+  }
+  hash = (hash * 31) ^ __hostnameDoesNotContain_isset ? 2654435761 : 0;
+  if (__hostnameDoesNotContain_isset)
+  {
+    hash = (hash * 31) ^ [__hostnameDoesNotContain hash];
   }
   return hash;
 }
@@ -1154,8 +2061,16 @@
       (__titleIs_isset && ((__titleIs || other->__titleIs) && ![__titleIs isEqual:other->__titleIs]))) {
     return NO;
   }
+  if ((__titleIsNot_isset != other->__titleIsNot_isset) ||
+      (__titleIsNot_isset && ((__titleIsNot || other->__titleIsNot) && ![__titleIsNot isEqual:other->__titleIsNot]))) {
+    return NO;
+  }
   if ((__titleContains_isset != other->__titleContains_isset) ||
       (__titleContains_isset && ((__titleContains || other->__titleContains) && ![__titleContains isEqual:other->__titleContains]))) {
+    return NO;
+  }
+  if ((__titleDoesNotContain_isset != other->__titleDoesNotContain_isset) ||
+      (__titleDoesNotContain_isset && ((__titleDoesNotContain || other->__titleDoesNotContain) && ![__titleDoesNotContain isEqual:other->__titleDoesNotContain]))) {
     return NO;
   }
   if ((__bodyIs_isset != other->__bodyIs_isset) ||
@@ -1166,12 +2081,24 @@
       (__bodyContains_isset && ((__bodyContains || other->__bodyContains) && ![__bodyContains isEqual:other->__bodyContains]))) {
     return NO;
   }
+  if ((__bodyDoesNotContain_isset != other->__bodyDoesNotContain_isset) ||
+      (__bodyDoesNotContain_isset && ((__bodyDoesNotContain || other->__bodyDoesNotContain) && ![__bodyDoesNotContain isEqual:other->__bodyDoesNotContain]))) {
+    return NO;
+  }
   if ((__urgencyEquals_isset != other->__urgencyEquals_isset) ||
       (__urgencyEquals_isset && ((__urgencyEquals || other->__urgencyEquals) && ![__urgencyEquals isEqual:other->__urgencyEquals]))) {
     return NO;
   }
-  if ((__hostnameEquals_isset != other->__hostnameEquals_isset) ||
-      (__hostnameEquals_isset && ((__hostnameEquals || other->__hostnameEquals) && ![__hostnameEquals isEqual:other->__hostnameEquals]))) {
+  if ((__hostnameIs_isset != other->__hostnameIs_isset) ||
+      (__hostnameIs_isset && ((__hostnameIs || other->__hostnameIs) && ![__hostnameIs isEqual:other->__hostnameIs]))) {
+    return NO;
+  }
+  if ((__hostnameContains_isset != other->__hostnameContains_isset) ||
+      (__hostnameContains_isset && ((__hostnameContains || other->__hostnameContains) && ![__hostnameContains isEqual:other->__hostnameContains]))) {
+    return NO;
+  }
+  if ((__hostnameDoesNotContain_isset != other->__hostnameDoesNotContain_isset) ||
+      (__hostnameDoesNotContain_isset && ((__hostnameDoesNotContain || other->__hostnameDoesNotContain) && ![__hostnameDoesNotContain isEqual:other->__hostnameDoesNotContain]))) {
     return NO;
   }
   return YES;
@@ -1181,11 +2108,16 @@
 {
   [__all release_stub];
   [__titleIs release_stub];
+  [__titleIsNot release_stub];
   [__titleContains release_stub];
+  [__titleDoesNotContain release_stub];
   [__bodyIs release_stub];
   [__bodyContains release_stub];
+  [__bodyDoesNotContain release_stub];
   [__urgencyEquals release_stub];
-  [__hostnameEquals release_stub];
+  [__hostnameIs release_stub];
+  [__hostnameContains release_stub];
+  [__hostnameDoesNotContain release_stub];
   [super dealloc_stub];
 }
 
@@ -1231,6 +2163,27 @@
   __titleIs_isset = NO;
 }
 
+- (AromaReactions_MatcherTitleIsNot *) titleIsNot {
+  return [[__titleIsNot retain_stub] autorelease_stub];
+}
+
+- (void) setTitleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot {
+  [titleIsNot retain_stub];
+  [__titleIsNot release_stub];
+  __titleIsNot = titleIsNot;
+  __titleIsNot_isset = YES;
+}
+
+- (BOOL) titleIsNotIsSet {
+  return __titleIsNot_isset;
+}
+
+- (void) unsetTitleIsNot {
+  [__titleIsNot release_stub];
+  __titleIsNot = nil;
+  __titleIsNot_isset = NO;
+}
+
 - (AromaReactions_MatcherTitleContains *) titleContains {
   return [[__titleContains retain_stub] autorelease_stub];
 }
@@ -1250,6 +2203,27 @@
   [__titleContains release_stub];
   __titleContains = nil;
   __titleContains_isset = NO;
+}
+
+- (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain {
+  return [[__titleDoesNotContain retain_stub] autorelease_stub];
+}
+
+- (void) setTitleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain {
+  [titleDoesNotContain retain_stub];
+  [__titleDoesNotContain release_stub];
+  __titleDoesNotContain = titleDoesNotContain;
+  __titleDoesNotContain_isset = YES;
+}
+
+- (BOOL) titleDoesNotContainIsSet {
+  return __titleDoesNotContain_isset;
+}
+
+- (void) unsetTitleDoesNotContain {
+  [__titleDoesNotContain release_stub];
+  __titleDoesNotContain = nil;
+  __titleDoesNotContain_isset = NO;
 }
 
 - (AromaReactions_MatcherBodyIs *) bodyIs {
@@ -1294,6 +2268,27 @@
   __bodyContains_isset = NO;
 }
 
+- (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain {
+  return [[__bodyDoesNotContain retain_stub] autorelease_stub];
+}
+
+- (void) setBodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain {
+  [bodyDoesNotContain retain_stub];
+  [__bodyDoesNotContain release_stub];
+  __bodyDoesNotContain = bodyDoesNotContain;
+  __bodyDoesNotContain_isset = YES;
+}
+
+- (BOOL) bodyDoesNotContainIsSet {
+  return __bodyDoesNotContain_isset;
+}
+
+- (void) unsetBodyDoesNotContain {
+  [__bodyDoesNotContain release_stub];
+  __bodyDoesNotContain = nil;
+  __bodyDoesNotContain_isset = NO;
+}
+
 - (AromaReactions_MatcherUrgencyIs *) urgencyEquals {
   return [[__urgencyEquals retain_stub] autorelease_stub];
 }
@@ -1315,25 +2310,67 @@
   __urgencyEquals_isset = NO;
 }
 
-- (AromaReactions_MatcherHostnameIs *) hostnameEquals {
-  return [[__hostnameEquals retain_stub] autorelease_stub];
+- (AromaReactions_MatcherHostnameIs *) hostnameIs {
+  return [[__hostnameIs retain_stub] autorelease_stub];
 }
 
-- (void) setHostnameEquals: (AromaReactions_MatcherHostnameIs *) hostnameEquals {
-  [hostnameEquals retain_stub];
-  [__hostnameEquals release_stub];
-  __hostnameEquals = hostnameEquals;
-  __hostnameEquals_isset = YES;
+- (void) setHostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs {
+  [hostnameIs retain_stub];
+  [__hostnameIs release_stub];
+  __hostnameIs = hostnameIs;
+  __hostnameIs_isset = YES;
 }
 
-- (BOOL) hostnameEqualsIsSet {
-  return __hostnameEquals_isset;
+- (BOOL) hostnameIsIsSet {
+  return __hostnameIs_isset;
 }
 
-- (void) unsetHostnameEquals {
-  [__hostnameEquals release_stub];
-  __hostnameEquals = nil;
-  __hostnameEquals_isset = NO;
+- (void) unsetHostnameIs {
+  [__hostnameIs release_stub];
+  __hostnameIs = nil;
+  __hostnameIs_isset = NO;
+}
+
+- (AromaReactions_MatcherHostnameContains *) hostnameContains {
+  return [[__hostnameContains retain_stub] autorelease_stub];
+}
+
+- (void) setHostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains {
+  [hostnameContains retain_stub];
+  [__hostnameContains release_stub];
+  __hostnameContains = hostnameContains;
+  __hostnameContains_isset = YES;
+}
+
+- (BOOL) hostnameContainsIsSet {
+  return __hostnameContains_isset;
+}
+
+- (void) unsetHostnameContains {
+  [__hostnameContains release_stub];
+  __hostnameContains = nil;
+  __hostnameContains_isset = NO;
+}
+
+- (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain {
+  return [[__hostnameDoesNotContain retain_stub] autorelease_stub];
+}
+
+- (void) setHostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain {
+  [hostnameDoesNotContain retain_stub];
+  [__hostnameDoesNotContain release_stub];
+  __hostnameDoesNotContain = hostnameDoesNotContain;
+  __hostnameDoesNotContain_isset = YES;
+}
+
+- (BOOL) hostnameDoesNotContainIsSet {
+  return __hostnameDoesNotContain_isset;
+}
+
+- (void) unsetHostnameDoesNotContain {
+  [__hostnameDoesNotContain release_stub];
+  __hostnameDoesNotContain = nil;
+  __hostnameDoesNotContain_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1373,6 +2410,16 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
+          AromaReactions_MatcherTitleIsNot *fieldValue = [[AromaReactions_MatcherTitleIsNot alloc] init];
+          [fieldValue read: inProtocol];
+          [self setTitleIsNot: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
           AromaReactions_MatcherTitleContains *fieldValue = [[AromaReactions_MatcherTitleContains alloc] init];
           [fieldValue read: inProtocol];
           [self setTitleContains: fieldValue];
@@ -1381,7 +2428,17 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 4:
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_MatcherTitleDoesNotContain *fieldValue = [[AromaReactions_MatcherTitleDoesNotContain alloc] init];
+          [fieldValue read: inProtocol];
+          [self setTitleDoesNotContain: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
         if (fieldType == TType_STRUCT) {
           AromaReactions_MatcherBodyIs *fieldValue = [[AromaReactions_MatcherBodyIs alloc] init];
           [fieldValue read: inProtocol];
@@ -1391,7 +2448,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 5:
+      case 7:
         if (fieldType == TType_STRUCT) {
           AromaReactions_MatcherBodyContains *fieldValue = [[AromaReactions_MatcherBodyContains alloc] init];
           [fieldValue read: inProtocol];
@@ -1401,7 +2458,17 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 6:
+      case 8:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_MatcherBodyDoesNotContain *fieldValue = [[AromaReactions_MatcherBodyDoesNotContain alloc] init];
+          [fieldValue read: inProtocol];
+          [self setBodyDoesNotContain: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 9:
         if (fieldType == TType_STRUCT) {
           AromaReactions_MatcherUrgencyIs *fieldValue = [[AromaReactions_MatcherUrgencyIs alloc] init];
           [fieldValue read: inProtocol];
@@ -1411,11 +2478,31 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 7:
+      case 10:
         if (fieldType == TType_STRUCT) {
           AromaReactions_MatcherHostnameIs *fieldValue = [[AromaReactions_MatcherHostnameIs alloc] init];
           [fieldValue read: inProtocol];
-          [self setHostnameEquals: fieldValue];
+          [self setHostnameIs: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 11:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_MatcherHostnameContains *fieldValue = [[AromaReactions_MatcherHostnameContains alloc] init];
+          [fieldValue read: inProtocol];
+          [self setHostnameContains: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 12:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_MatcherHostnameDoesNotContain *fieldValue = [[AromaReactions_MatcherHostnameDoesNotContain alloc] init];
+          [fieldValue read: inProtocol];
+          [self setHostnameDoesNotContain: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -1446,38 +2533,73 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__titleIsNot_isset) {
+    if (__titleIsNot != nil) {
+      [outProtocol writeFieldBeginWithName: @"titleIsNot" type: TType_STRUCT fieldID: 3];
+      [__titleIsNot write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   if (__titleContains_isset) {
     if (__titleContains != nil) {
-      [outProtocol writeFieldBeginWithName: @"titleContains" type: TType_STRUCT fieldID: 3];
+      [outProtocol writeFieldBeginWithName: @"titleContains" type: TType_STRUCT fieldID: 4];
       [__titleContains write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__titleDoesNotContain_isset) {
+    if (__titleDoesNotContain != nil) {
+      [outProtocol writeFieldBeginWithName: @"titleDoesNotContain" type: TType_STRUCT fieldID: 5];
+      [__titleDoesNotContain write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__bodyIs_isset) {
     if (__bodyIs != nil) {
-      [outProtocol writeFieldBeginWithName: @"bodyIs" type: TType_STRUCT fieldID: 4];
+      [outProtocol writeFieldBeginWithName: @"bodyIs" type: TType_STRUCT fieldID: 6];
       [__bodyIs write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__bodyContains_isset) {
     if (__bodyContains != nil) {
-      [outProtocol writeFieldBeginWithName: @"bodyContains" type: TType_STRUCT fieldID: 5];
+      [outProtocol writeFieldBeginWithName: @"bodyContains" type: TType_STRUCT fieldID: 7];
       [__bodyContains write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__bodyDoesNotContain_isset) {
+    if (__bodyDoesNotContain != nil) {
+      [outProtocol writeFieldBeginWithName: @"bodyDoesNotContain" type: TType_STRUCT fieldID: 8];
+      [__bodyDoesNotContain write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__urgencyEquals_isset) {
     if (__urgencyEquals != nil) {
-      [outProtocol writeFieldBeginWithName: @"urgencyEquals" type: TType_STRUCT fieldID: 6];
+      [outProtocol writeFieldBeginWithName: @"urgencyEquals" type: TType_STRUCT fieldID: 9];
       [__urgencyEquals write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__hostnameEquals_isset) {
-    if (__hostnameEquals != nil) {
-      [outProtocol writeFieldBeginWithName: @"hostnameEquals" type: TType_STRUCT fieldID: 7];
-      [__hostnameEquals write: outProtocol];
+  if (__hostnameIs_isset) {
+    if (__hostnameIs != nil) {
+      [outProtocol writeFieldBeginWithName: @"hostnameIs" type: TType_STRUCT fieldID: 10];
+      [__hostnameIs write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__hostnameContains_isset) {
+    if (__hostnameContains != nil) {
+      [outProtocol writeFieldBeginWithName: @"hostnameContains" type: TType_STRUCT fieldID: 11];
+      [__hostnameContains write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__hostnameDoesNotContain_isset) {
+    if (__hostnameDoesNotContain != nil) {
+      [outProtocol writeFieldBeginWithName: @"hostnameDoesNotContain" type: TType_STRUCT fieldID: 12];
+      [__hostnameDoesNotContain write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1495,16 +2617,26 @@
   [ms appendFormat: @"%@", __all];
   [ms appendString: @",titleIs:"];
   [ms appendFormat: @"%@", __titleIs];
+  [ms appendString: @",titleIsNot:"];
+  [ms appendFormat: @"%@", __titleIsNot];
   [ms appendString: @",titleContains:"];
   [ms appendFormat: @"%@", __titleContains];
+  [ms appendString: @",titleDoesNotContain:"];
+  [ms appendFormat: @"%@", __titleDoesNotContain];
   [ms appendString: @",bodyIs:"];
   [ms appendFormat: @"%@", __bodyIs];
   [ms appendString: @",bodyContains:"];
   [ms appendFormat: @"%@", __bodyContains];
+  [ms appendString: @",bodyDoesNotContain:"];
+  [ms appendFormat: @"%@", __bodyDoesNotContain];
   [ms appendString: @",urgencyEquals:"];
   [ms appendFormat: @"%@", __urgencyEquals];
-  [ms appendString: @",hostnameEquals:"];
-  [ms appendFormat: @"%@", __hostnameEquals];
+  [ms appendString: @",hostnameIs:"];
+  [ms appendFormat: @"%@", __hostnameIs];
+  [ms appendString: @",hostnameContains:"];
+  [ms appendFormat: @"%@", __hostnameContains];
+  [ms appendString: @",hostnameDoesNotContain:"];
+  [ms appendFormat: @"%@", __hostnameDoesNotContain];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -2539,14 +3671,14 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
-          int _i1;
-          for (_i1 = 0; _i1 < _size0; ++_i1)
+          int _size5;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
+          int _i6;
+          for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            NSString * _elem2 = [inProtocol readString];
-            [fieldValue addObject: _elem2];
+            NSString * _elem7 = [inProtocol readString];
+            [fieldValue addObject: _elem7];
           }
           [inProtocol readListEnd];
           [self setUserIds: fieldValue];
@@ -2571,10 +3703,10 @@
       [outProtocol writeFieldBeginWithName: @"userIds" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRING size: [__userIds count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__userIds count]; idx4++)
+        int idx9;
+        for (idx9 = 0; idx9 < [__userIds count]; idx9++)
         {
-          [outProtocol writeString: [__userIds objectAtIndex: idx4]];
+          [outProtocol writeString: [__userIds objectAtIndex: idx9]];
         }
         [outProtocol writeListEnd];
       }

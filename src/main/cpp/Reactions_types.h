@@ -32,15 +32,25 @@ class MatcherAll;
 
 class MatcherTitleIs;
 
+class MatcherTitleIsNot;
+
 class MatcherTitleContains;
+
+class MatcherTitleDoesNotContain;
 
 class MatcherBodyIs;
 
 class MatcherBodyContains;
 
+class MatcherBodyDoesNotContain;
+
 class MatcherUrgencyIs;
 
 class MatcherHostnameIs;
+
+class MatcherHostnameContains;
+
+class MatcherHostnameDoesNotContain;
 
 class AromaMatcher;
 
@@ -143,6 +153,52 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherTitleIs& obj)
   return out;
 }
 
+typedef struct _MatcherTitleIsNot__isset {
+  _MatcherTitleIsNot__isset() : title(false) {}
+  bool title :1;
+} _MatcherTitleIsNot__isset;
+
+class MatcherTitleIsNot {
+ public:
+
+  MatcherTitleIsNot(const MatcherTitleIsNot&);
+  MatcherTitleIsNot& operator=(const MatcherTitleIsNot&);
+  MatcherTitleIsNot() : title() {
+  }
+
+  virtual ~MatcherTitleIsNot() throw();
+  std::string title;
+
+  _MatcherTitleIsNot__isset __isset;
+
+  void __set_title(const std::string& val);
+
+  bool operator == (const MatcherTitleIsNot & rhs) const
+  {
+    if (!(title == rhs.title))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherTitleIsNot &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherTitleIsNot & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherTitleIsNot &a, MatcherTitleIsNot &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherTitleIsNot& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _MatcherTitleContains__isset {
   _MatcherTitleContains__isset() : substring(false) {}
   bool substring :1;
@@ -184,6 +240,52 @@ class MatcherTitleContains {
 void swap(MatcherTitleContains &a, MatcherTitleContains &b);
 
 inline std::ostream& operator<<(std::ostream& out, const MatcherTitleContains& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherTitleDoesNotContain__isset {
+  _MatcherTitleDoesNotContain__isset() : substring(false) {}
+  bool substring :1;
+} _MatcherTitleDoesNotContain__isset;
+
+class MatcherTitleDoesNotContain {
+ public:
+
+  MatcherTitleDoesNotContain(const MatcherTitleDoesNotContain&);
+  MatcherTitleDoesNotContain& operator=(const MatcherTitleDoesNotContain&);
+  MatcherTitleDoesNotContain() : substring() {
+  }
+
+  virtual ~MatcherTitleDoesNotContain() throw();
+  std::string substring;
+
+  _MatcherTitleDoesNotContain__isset __isset;
+
+  void __set_substring(const std::string& val);
+
+  bool operator == (const MatcherTitleDoesNotContain & rhs) const
+  {
+    if (!(substring == rhs.substring))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherTitleDoesNotContain &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherTitleDoesNotContain & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherTitleDoesNotContain &a, MatcherTitleDoesNotContain &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherTitleDoesNotContain& obj)
 {
   obj.printTo(out);
   return out;
@@ -281,9 +383,56 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherBodyContains& ob
   return out;
 }
 
+typedef struct _MatcherBodyDoesNotContain__isset {
+  _MatcherBodyDoesNotContain__isset() : substring(false) {}
+  bool substring :1;
+} _MatcherBodyDoesNotContain__isset;
+
+class MatcherBodyDoesNotContain {
+ public:
+
+  MatcherBodyDoesNotContain(const MatcherBodyDoesNotContain&);
+  MatcherBodyDoesNotContain& operator=(const MatcherBodyDoesNotContain&);
+  MatcherBodyDoesNotContain() : substring() {
+  }
+
+  virtual ~MatcherBodyDoesNotContain() throw();
+  std::string substring;
+
+  _MatcherBodyDoesNotContain__isset __isset;
+
+  void __set_substring(const std::string& val);
+
+  bool operator == (const MatcherBodyDoesNotContain & rhs) const
+  {
+    if (!(substring == rhs.substring))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherBodyDoesNotContain &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherBodyDoesNotContain & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherBodyDoesNotContain &a, MatcherBodyDoesNotContain &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherBodyDoesNotContain& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _MatcherUrgencyIs__isset {
-  _MatcherUrgencyIs__isset() : urgency(false) {}
+  _MatcherUrgencyIs__isset() : urgency(false), urgencies(false) {}
   bool urgency :1;
+  bool urgencies :1;
 } _MatcherUrgencyIs__isset;
 
 class MatcherUrgencyIs {
@@ -296,14 +445,21 @@ class MatcherUrgencyIs {
 
   virtual ~MatcherUrgencyIs() throw();
    ::tech::aroma::thrift::Urgency::type urgency;
+  std::vector< ::tech::aroma::thrift::Urgency::type>  urgencies;
 
   _MatcherUrgencyIs__isset __isset;
 
   void __set_urgency(const  ::tech::aroma::thrift::Urgency::type val);
 
+  void __set_urgencies(const std::vector< ::tech::aroma::thrift::Urgency::type> & val);
+
   bool operator == (const MatcherUrgencyIs & rhs) const
   {
     if (!(urgency == rhs.urgency))
+      return false;
+    if (__isset.urgencies != rhs.__isset.urgencies)
+      return false;
+    else if (__isset.urgencies && !(urgencies == rhs.urgencies))
       return false;
     return true;
   }
@@ -373,15 +529,112 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameIs& obj)
   return out;
 }
 
+typedef struct _MatcherHostnameContains__isset {
+  _MatcherHostnameContains__isset() : substring(false) {}
+  bool substring :1;
+} _MatcherHostnameContains__isset;
+
+class MatcherHostnameContains {
+ public:
+
+  MatcherHostnameContains(const MatcherHostnameContains&);
+  MatcherHostnameContains& operator=(const MatcherHostnameContains&);
+  MatcherHostnameContains() : substring() {
+  }
+
+  virtual ~MatcherHostnameContains() throw();
+  std::string substring;
+
+  _MatcherHostnameContains__isset __isset;
+
+  void __set_substring(const std::string& val);
+
+  bool operator == (const MatcherHostnameContains & rhs) const
+  {
+    if (!(substring == rhs.substring))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherHostnameContains &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherHostnameContains & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherHostnameContains &a, MatcherHostnameContains &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameContains& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherHostnameDoesNotContain__isset {
+  _MatcherHostnameDoesNotContain__isset() : substring(false) {}
+  bool substring :1;
+} _MatcherHostnameDoesNotContain__isset;
+
+class MatcherHostnameDoesNotContain {
+ public:
+
+  MatcherHostnameDoesNotContain(const MatcherHostnameDoesNotContain&);
+  MatcherHostnameDoesNotContain& operator=(const MatcherHostnameDoesNotContain&);
+  MatcherHostnameDoesNotContain() : substring() {
+  }
+
+  virtual ~MatcherHostnameDoesNotContain() throw();
+  std::string substring;
+
+  _MatcherHostnameDoesNotContain__isset __isset;
+
+  void __set_substring(const std::string& val);
+
+  bool operator == (const MatcherHostnameDoesNotContain & rhs) const
+  {
+    if (!(substring == rhs.substring))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherHostnameDoesNotContain &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherHostnameDoesNotContain & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherHostnameDoesNotContain &a, MatcherHostnameDoesNotContain &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameDoesNotContain& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _AromaMatcher__isset {
-  _AromaMatcher__isset() : all(false), titleIs(false), titleContains(false), bodyIs(false), bodyContains(false), urgencyEquals(false), hostnameEquals(false) {}
+  _AromaMatcher__isset() : all(false), titleIs(false), titleIsNot(false), titleContains(false), titleDoesNotContain(false), bodyIs(false), bodyContains(false), bodyDoesNotContain(false), urgencyEquals(false), hostnameIs(false), hostnameContains(false), hostnameDoesNotContain(false) {}
   bool all :1;
   bool titleIs :1;
+  bool titleIsNot :1;
   bool titleContains :1;
+  bool titleDoesNotContain :1;
   bool bodyIs :1;
   bool bodyContains :1;
+  bool bodyDoesNotContain :1;
   bool urgencyEquals :1;
-  bool hostnameEquals :1;
+  bool hostnameIs :1;
+  bool hostnameContains :1;
+  bool hostnameDoesNotContain :1;
 } _AromaMatcher__isset;
 
 class AromaMatcher {
@@ -395,11 +648,16 @@ class AromaMatcher {
   virtual ~AromaMatcher() throw();
   MatcherAll all;
   MatcherTitleIs titleIs;
+  MatcherTitleIsNot titleIsNot;
   MatcherTitleContains titleContains;
+  MatcherTitleDoesNotContain titleDoesNotContain;
   MatcherBodyIs bodyIs;
   MatcherBodyContains bodyContains;
+  MatcherBodyDoesNotContain bodyDoesNotContain;
   MatcherUrgencyIs urgencyEquals;
-  MatcherHostnameIs hostnameEquals;
+  MatcherHostnameIs hostnameIs;
+  MatcherHostnameContains hostnameContains;
+  MatcherHostnameDoesNotContain hostnameDoesNotContain;
 
   _AromaMatcher__isset __isset;
 
@@ -407,15 +665,25 @@ class AromaMatcher {
 
   void __set_titleIs(const MatcherTitleIs& val);
 
+  void __set_titleIsNot(const MatcherTitleIsNot& val);
+
   void __set_titleContains(const MatcherTitleContains& val);
+
+  void __set_titleDoesNotContain(const MatcherTitleDoesNotContain& val);
 
   void __set_bodyIs(const MatcherBodyIs& val);
 
   void __set_bodyContains(const MatcherBodyContains& val);
 
+  void __set_bodyDoesNotContain(const MatcherBodyDoesNotContain& val);
+
   void __set_urgencyEquals(const MatcherUrgencyIs& val);
 
-  void __set_hostnameEquals(const MatcherHostnameIs& val);
+  void __set_hostnameIs(const MatcherHostnameIs& val);
+
+  void __set_hostnameContains(const MatcherHostnameContains& val);
+
+  void __set_hostnameDoesNotContain(const MatcherHostnameDoesNotContain& val);
 
   bool operator == (const AromaMatcher & rhs) const
   {
@@ -423,15 +691,25 @@ class AromaMatcher {
       return false;
     if (!(titleIs == rhs.titleIs))
       return false;
+    if (!(titleIsNot == rhs.titleIsNot))
+      return false;
     if (!(titleContains == rhs.titleContains))
+      return false;
+    if (!(titleDoesNotContain == rhs.titleDoesNotContain))
       return false;
     if (!(bodyIs == rhs.bodyIs))
       return false;
     if (!(bodyContains == rhs.bodyContains))
       return false;
+    if (!(bodyDoesNotContain == rhs.bodyDoesNotContain))
+      return false;
     if (!(urgencyEquals == rhs.urgencyEquals))
       return false;
-    if (!(hostnameEquals == rhs.hostnameEquals))
+    if (!(hostnameIs == rhs.hostnameIs))
+      return false;
+    if (!(hostnameContains == rhs.hostnameContains))
+      return false;
+    if (!(hostnameDoesNotContain == rhs.hostnameDoesNotContain))
       return false;
     return true;
   }

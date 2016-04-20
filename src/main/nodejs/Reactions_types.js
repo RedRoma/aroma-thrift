@@ -92,6 +92,59 @@ MatcherTitleIs.prototype.write = function(output) {
   return;
 };
 
+MatcherTitleIsNot = module.exports.MatcherTitleIsNot = function(args) {
+  this.title = null;
+  if (args) {
+    if (args.title !== undefined && args.title !== null) {
+      this.title = args.title;
+    }
+  }
+};
+MatcherTitleIsNot.prototype = {};
+MatcherTitleIsNot.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.title = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherTitleIsNot.prototype.write = function(output) {
+  output.writeStructBegin('MatcherTitleIsNot');
+  if (this.title !== null && this.title !== undefined) {
+    output.writeFieldBegin('title', Thrift.Type.STRING, 1);
+    output.writeString(this.title);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 MatcherTitleContains = module.exports.MatcherTitleContains = function(args) {
   this.substring = null;
   if (args) {
@@ -135,6 +188,59 @@ MatcherTitleContains.prototype.read = function(input) {
 
 MatcherTitleContains.prototype.write = function(output) {
   output.writeStructBegin('MatcherTitleContains');
+  if (this.substring !== null && this.substring !== undefined) {
+    output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
+    output.writeString(this.substring);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MatcherTitleDoesNotContain = module.exports.MatcherTitleDoesNotContain = function(args) {
+  this.substring = null;
+  if (args) {
+    if (args.substring !== undefined && args.substring !== null) {
+      this.substring = args.substring;
+    }
+  }
+};
+MatcherTitleDoesNotContain.prototype = {};
+MatcherTitleDoesNotContain.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.substring = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherTitleDoesNotContain.prototype.write = function(output) {
+  output.writeStructBegin('MatcherTitleDoesNotContain');
   if (this.substring !== null && this.substring !== undefined) {
     output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
     output.writeString(this.substring);
@@ -251,11 +357,68 @@ MatcherBodyContains.prototype.write = function(output) {
   return;
 };
 
+MatcherBodyDoesNotContain = module.exports.MatcherBodyDoesNotContain = function(args) {
+  this.substring = null;
+  if (args) {
+    if (args.substring !== undefined && args.substring !== null) {
+      this.substring = args.substring;
+    }
+  }
+};
+MatcherBodyDoesNotContain.prototype = {};
+MatcherBodyDoesNotContain.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.substring = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherBodyDoesNotContain.prototype.write = function(output) {
+  output.writeStructBegin('MatcherBodyDoesNotContain');
+  if (this.substring !== null && this.substring !== undefined) {
+    output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
+    output.writeString(this.substring);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 MatcherUrgencyIs = module.exports.MatcherUrgencyIs = function(args) {
   this.urgency = null;
+  this.urgencies = null;
   if (args) {
     if (args.urgency !== undefined && args.urgency !== null) {
       this.urgency = args.urgency;
+    }
+    if (args.urgencies !== undefined && args.urgencies !== null) {
+      this.urgencies = Thrift.copyList(args.urgencies, [null]);
     }
   }
 };
@@ -280,9 +443,26 @@ MatcherUrgencyIs.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.urgencies = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readI32();
+          this.urgencies.push(elem6);
+        }
+        input.readListEnd();
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -297,6 +477,20 @@ MatcherUrgencyIs.prototype.write = function(output) {
   if (this.urgency !== null && this.urgency !== undefined) {
     output.writeFieldBegin('urgency', Thrift.Type.I32, 1);
     output.writeI32(this.urgency);
+    output.writeFieldEnd();
+  }
+  if (this.urgencies !== null && this.urgencies !== undefined) {
+    output.writeFieldBegin('urgencies', Thrift.Type.LIST, 2);
+    output.writeListBegin(Thrift.Type.I32, this.urgencies.length);
+    for (var iter7 in this.urgencies)
+    {
+      if (this.urgencies.hasOwnProperty(iter7))
+      {
+        iter7 = this.urgencies[iter7];
+        output.writeI32(iter7);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -357,14 +551,125 @@ MatcherHostnameIs.prototype.write = function(output) {
   return;
 };
 
+MatcherHostnameContains = module.exports.MatcherHostnameContains = function(args) {
+  this.substring = null;
+  if (args) {
+    if (args.substring !== undefined && args.substring !== null) {
+      this.substring = args.substring;
+    }
+  }
+};
+MatcherHostnameContains.prototype = {};
+MatcherHostnameContains.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.substring = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherHostnameContains.prototype.write = function(output) {
+  output.writeStructBegin('MatcherHostnameContains');
+  if (this.substring !== null && this.substring !== undefined) {
+    output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
+    output.writeString(this.substring);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MatcherHostnameDoesNotContain = module.exports.MatcherHostnameDoesNotContain = function(args) {
+  this.substring = null;
+  if (args) {
+    if (args.substring !== undefined && args.substring !== null) {
+      this.substring = args.substring;
+    }
+  }
+};
+MatcherHostnameDoesNotContain.prototype = {};
+MatcherHostnameDoesNotContain.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.substring = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherHostnameDoesNotContain.prototype.write = function(output) {
+  output.writeStructBegin('MatcherHostnameDoesNotContain');
+  if (this.substring !== null && this.substring !== undefined) {
+    output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
+    output.writeString(this.substring);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 AromaMatcher = module.exports.AromaMatcher = function(args) {
   this.all = null;
   this.titleIs = null;
+  this.titleIsNot = null;
   this.titleContains = null;
+  this.titleDoesNotContain = null;
   this.bodyIs = null;
   this.bodyContains = null;
+  this.bodyDoesNotContain = null;
   this.urgencyEquals = null;
-  this.hostnameEquals = null;
+  this.hostnameIs = null;
+  this.hostnameContains = null;
+  this.hostnameDoesNotContain = null;
   if (args) {
     if (args.all !== undefined && args.all !== null) {
       this.all = new ttypes.MatcherAll(args.all);
@@ -372,8 +677,14 @@ AromaMatcher = module.exports.AromaMatcher = function(args) {
     if (args.titleIs !== undefined && args.titleIs !== null) {
       this.titleIs = new ttypes.MatcherTitleIs(args.titleIs);
     }
+    if (args.titleIsNot !== undefined && args.titleIsNot !== null) {
+      this.titleIsNot = new ttypes.MatcherTitleIsNot(args.titleIsNot);
+    }
     if (args.titleContains !== undefined && args.titleContains !== null) {
       this.titleContains = new ttypes.MatcherTitleContains(args.titleContains);
+    }
+    if (args.titleDoesNotContain !== undefined && args.titleDoesNotContain !== null) {
+      this.titleDoesNotContain = new ttypes.MatcherTitleDoesNotContain(args.titleDoesNotContain);
     }
     if (args.bodyIs !== undefined && args.bodyIs !== null) {
       this.bodyIs = new ttypes.MatcherBodyIs(args.bodyIs);
@@ -381,11 +692,20 @@ AromaMatcher = module.exports.AromaMatcher = function(args) {
     if (args.bodyContains !== undefined && args.bodyContains !== null) {
       this.bodyContains = new ttypes.MatcherBodyContains(args.bodyContains);
     }
+    if (args.bodyDoesNotContain !== undefined && args.bodyDoesNotContain !== null) {
+      this.bodyDoesNotContain = new ttypes.MatcherBodyDoesNotContain(args.bodyDoesNotContain);
+    }
     if (args.urgencyEquals !== undefined && args.urgencyEquals !== null) {
       this.urgencyEquals = new ttypes.MatcherUrgencyIs(args.urgencyEquals);
     }
-    if (args.hostnameEquals !== undefined && args.hostnameEquals !== null) {
-      this.hostnameEquals = new ttypes.MatcherHostnameIs(args.hostnameEquals);
+    if (args.hostnameIs !== undefined && args.hostnameIs !== null) {
+      this.hostnameIs = new ttypes.MatcherHostnameIs(args.hostnameIs);
+    }
+    if (args.hostnameContains !== undefined && args.hostnameContains !== null) {
+      this.hostnameContains = new ttypes.MatcherHostnameContains(args.hostnameContains);
+    }
+    if (args.hostnameDoesNotContain !== undefined && args.hostnameDoesNotContain !== null) {
+      this.hostnameDoesNotContain = new ttypes.MatcherHostnameDoesNotContain(args.hostnameDoesNotContain);
     }
   }
 };
@@ -421,13 +741,29 @@ AromaMatcher.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.STRUCT) {
+        this.titleIsNot = new ttypes.MatcherTitleIsNot();
+        this.titleIsNot.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
         this.titleContains = new ttypes.MatcherTitleContains();
         this.titleContains.read(input);
       } else {
         input.skip(ftype);
       }
       break;
-      case 4:
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.titleDoesNotContain = new ttypes.MatcherTitleDoesNotContain();
+        this.titleDoesNotContain.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
       if (ftype == Thrift.Type.STRUCT) {
         this.bodyIs = new ttypes.MatcherBodyIs();
         this.bodyIs.read(input);
@@ -435,7 +771,7 @@ AromaMatcher.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 5:
+      case 7:
       if (ftype == Thrift.Type.STRUCT) {
         this.bodyContains = new ttypes.MatcherBodyContains();
         this.bodyContains.read(input);
@@ -443,7 +779,15 @@ AromaMatcher.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 6:
+      case 8:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.bodyDoesNotContain = new ttypes.MatcherBodyDoesNotContain();
+        this.bodyDoesNotContain.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
       if (ftype == Thrift.Type.STRUCT) {
         this.urgencyEquals = new ttypes.MatcherUrgencyIs();
         this.urgencyEquals.read(input);
@@ -451,10 +795,26 @@ AromaMatcher.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 7:
+      case 10:
       if (ftype == Thrift.Type.STRUCT) {
-        this.hostnameEquals = new ttypes.MatcherHostnameIs();
-        this.hostnameEquals.read(input);
+        this.hostnameIs = new ttypes.MatcherHostnameIs();
+        this.hostnameIs.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.hostnameContains = new ttypes.MatcherHostnameContains();
+        this.hostnameContains.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 12:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.hostnameDoesNotContain = new ttypes.MatcherHostnameDoesNotContain();
+        this.hostnameDoesNotContain.read(input);
       } else {
         input.skip(ftype);
       }
@@ -480,29 +840,54 @@ AromaMatcher.prototype.write = function(output) {
     this.titleIs.write(output);
     output.writeFieldEnd();
   }
+  if (this.titleIsNot !== null && this.titleIsNot !== undefined) {
+    output.writeFieldBegin('titleIsNot', Thrift.Type.STRUCT, 3);
+    this.titleIsNot.write(output);
+    output.writeFieldEnd();
+  }
   if (this.titleContains !== null && this.titleContains !== undefined) {
-    output.writeFieldBegin('titleContains', Thrift.Type.STRUCT, 3);
+    output.writeFieldBegin('titleContains', Thrift.Type.STRUCT, 4);
     this.titleContains.write(output);
     output.writeFieldEnd();
   }
+  if (this.titleDoesNotContain !== null && this.titleDoesNotContain !== undefined) {
+    output.writeFieldBegin('titleDoesNotContain', Thrift.Type.STRUCT, 5);
+    this.titleDoesNotContain.write(output);
+    output.writeFieldEnd();
+  }
   if (this.bodyIs !== null && this.bodyIs !== undefined) {
-    output.writeFieldBegin('bodyIs', Thrift.Type.STRUCT, 4);
+    output.writeFieldBegin('bodyIs', Thrift.Type.STRUCT, 6);
     this.bodyIs.write(output);
     output.writeFieldEnd();
   }
   if (this.bodyContains !== null && this.bodyContains !== undefined) {
-    output.writeFieldBegin('bodyContains', Thrift.Type.STRUCT, 5);
+    output.writeFieldBegin('bodyContains', Thrift.Type.STRUCT, 7);
     this.bodyContains.write(output);
     output.writeFieldEnd();
   }
+  if (this.bodyDoesNotContain !== null && this.bodyDoesNotContain !== undefined) {
+    output.writeFieldBegin('bodyDoesNotContain', Thrift.Type.STRUCT, 8);
+    this.bodyDoesNotContain.write(output);
+    output.writeFieldEnd();
+  }
   if (this.urgencyEquals !== null && this.urgencyEquals !== undefined) {
-    output.writeFieldBegin('urgencyEquals', Thrift.Type.STRUCT, 6);
+    output.writeFieldBegin('urgencyEquals', Thrift.Type.STRUCT, 9);
     this.urgencyEquals.write(output);
     output.writeFieldEnd();
   }
-  if (this.hostnameEquals !== null && this.hostnameEquals !== undefined) {
-    output.writeFieldBegin('hostnameEquals', Thrift.Type.STRUCT, 7);
-    this.hostnameEquals.write(output);
+  if (this.hostnameIs !== null && this.hostnameIs !== undefined) {
+    output.writeFieldBegin('hostnameIs', Thrift.Type.STRUCT, 10);
+    this.hostnameIs.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.hostnameContains !== null && this.hostnameContains !== undefined) {
+    output.writeFieldBegin('hostnameContains', Thrift.Type.STRUCT, 11);
+    this.hostnameContains.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.hostnameDoesNotContain !== null && this.hostnameDoesNotContain !== undefined) {
+    output.writeFieldBegin('hostnameDoesNotContain', Thrift.Type.STRUCT, 12);
+    this.hostnameDoesNotContain.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -841,18 +1226,18 @@ ActionForwardToUsers.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size0 = 0;
-        var _rtmp34;
+        var _size8 = 0;
+        var _rtmp312;
         this.userIds = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        var _etype11 = 0;
+        _rtmp312 = input.readListBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
         {
-          var elem6 = null;
-          elem6 = input.readString();
-          this.userIds.push(elem6);
+          var elem14 = null;
+          elem14 = input.readString();
+          this.userIds.push(elem14);
         }
         input.readListEnd();
       } else {
@@ -876,12 +1261,12 @@ ActionForwardToUsers.prototype.write = function(output) {
   if (this.userIds !== null && this.userIds !== undefined) {
     output.writeFieldBegin('userIds', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRING, this.userIds.length);
-    for (var iter7 in this.userIds)
+    for (var iter15 in this.userIds)
     {
-      if (this.userIds.hasOwnProperty(iter7))
+      if (this.userIds.hasOwnProperty(iter15))
       {
-        iter7 = this.userIds[iter7];
-        output.writeString(iter7);
+        iter15 = this.userIds[iter15];
+        output.writeString(iter15);
       }
     }
     output.writeListEnd();

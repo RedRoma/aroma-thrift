@@ -66,7 +66,59 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
+@interface AromaReactions_MatcherTitleIsNot : NSObject <TBase, NSCoding> {
+  NSString * __title;
+
+  BOOL __title_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
+#endif
+
+- (id) init;
+- (id) initWithTitle: (NSString *) title;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) title;
+- (void) setTitle: (NSString *) title;
+#endif
+- (BOOL) titleIsSet;
+
+@end
+
 @interface AromaReactions_MatcherTitleContains : NSObject <TBase, NSCoding> {
+  NSString * __substring;
+
+  BOOL __substring_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=substring, setter=setSubstring:) NSString * substring;
+#endif
+
+- (id) init;
+- (id) initWithSubstring: (NSString *) substring;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) substring;
+- (void) setSubstring: (NSString *) substring;
+#endif
+- (BOOL) substringIsSet;
+
+@end
+
+@interface AromaReactions_MatcherTitleDoesNotContain : NSObject <TBase, NSCoding> {
   NSString * __substring;
 
   BOOL __substring_isset;
@@ -144,18 +196,47 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
+@interface AromaReactions_MatcherBodyDoesNotContain : NSObject <TBase, NSCoding> {
+  NSString * __substring;
+
+  BOOL __substring_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=substring, setter=setSubstring:) NSString * substring;
+#endif
+
+- (id) init;
+- (id) initWithSubstring: (NSString *) substring;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) substring;
+- (void) setSubstring: (NSString *) substring;
+#endif
+- (BOOL) substringIsSet;
+
+@end
+
 @interface AromaReactions_MatcherUrgencyIs : NSObject <TBase, NSCoding> {
   int __urgency;
+  NSMutableArray * __urgencies;
 
   BOOL __urgency_isset;
+  BOOL __urgencies_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
+@property (nonatomic, retain, getter=urgencies, setter=setUrgencies:) NSMutableArray * urgencies;
 #endif
 
 - (id) init;
-- (id) initWithUrgency: (int) urgency;
+- (id) initWithUrgency: (int) urgency urgencies: (NSMutableArray *) urgencies;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -167,6 +248,12 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) setUrgency: (int) urgency;
 #endif
 - (BOOL) urgencyIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) urgencies;
+- (void) setUrgencies: (NSMutableArray *) urgencies;
+#endif
+- (BOOL) urgenciesIsSet;
 
 @end
 
@@ -196,36 +283,103 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
+@interface AromaReactions_MatcherHostnameContains : NSObject <TBase, NSCoding> {
+  NSString * __substring;
+
+  BOOL __substring_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=substring, setter=setSubstring:) NSString * substring;
+#endif
+
+- (id) init;
+- (id) initWithSubstring: (NSString *) substring;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) substring;
+- (void) setSubstring: (NSString *) substring;
+#endif
+- (BOOL) substringIsSet;
+
+@end
+
+@interface AromaReactions_MatcherHostnameDoesNotContain : NSObject <TBase, NSCoding> {
+  NSString * __substring;
+
+  BOOL __substring_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=substring, setter=setSubstring:) NSString * substring;
+#endif
+
+- (id) init;
+- (id) initWithSubstring: (NSString *) substring;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) substring;
+- (void) setSubstring: (NSString *) substring;
+#endif
+- (BOOL) substringIsSet;
+
+@end
+
 @interface AromaReactions_AromaMatcher : NSObject <TBase, NSCoding> {
   AromaReactions_MatcherAll * __all;
   AromaReactions_MatcherTitleIs * __titleIs;
+  AromaReactions_MatcherTitleIsNot * __titleIsNot;
   AromaReactions_MatcherTitleContains * __titleContains;
+  AromaReactions_MatcherTitleDoesNotContain * __titleDoesNotContain;
   AromaReactions_MatcherBodyIs * __bodyIs;
   AromaReactions_MatcherBodyContains * __bodyContains;
+  AromaReactions_MatcherBodyDoesNotContain * __bodyDoesNotContain;
   AromaReactions_MatcherUrgencyIs * __urgencyEquals;
-  AromaReactions_MatcherHostnameIs * __hostnameEquals;
+  AromaReactions_MatcherHostnameIs * __hostnameIs;
+  AromaReactions_MatcherHostnameContains * __hostnameContains;
+  AromaReactions_MatcherHostnameDoesNotContain * __hostnameDoesNotContain;
 
   BOOL __all_isset;
   BOOL __titleIs_isset;
+  BOOL __titleIsNot_isset;
   BOOL __titleContains_isset;
+  BOOL __titleDoesNotContain_isset;
   BOOL __bodyIs_isset;
   BOOL __bodyContains_isset;
+  BOOL __bodyDoesNotContain_isset;
   BOOL __urgencyEquals_isset;
-  BOOL __hostnameEquals_isset;
+  BOOL __hostnameIs_isset;
+  BOOL __hostnameContains_isset;
+  BOOL __hostnameDoesNotContain_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=all, setter=setAll:) AromaReactions_MatcherAll * all;
 @property (nonatomic, retain, getter=titleIs, setter=setTitleIs:) AromaReactions_MatcherTitleIs * titleIs;
+@property (nonatomic, retain, getter=titleIsNot, setter=setTitleIsNot:) AromaReactions_MatcherTitleIsNot * titleIsNot;
 @property (nonatomic, retain, getter=titleContains, setter=setTitleContains:) AromaReactions_MatcherTitleContains * titleContains;
+@property (nonatomic, retain, getter=titleDoesNotContain, setter=setTitleDoesNotContain:) AromaReactions_MatcherTitleDoesNotContain * titleDoesNotContain;
 @property (nonatomic, retain, getter=bodyIs, setter=setBodyIs:) AromaReactions_MatcherBodyIs * bodyIs;
 @property (nonatomic, retain, getter=bodyContains, setter=setBodyContains:) AromaReactions_MatcherBodyContains * bodyContains;
+@property (nonatomic, retain, getter=bodyDoesNotContain, setter=setBodyDoesNotContain:) AromaReactions_MatcherBodyDoesNotContain * bodyDoesNotContain;
 @property (nonatomic, retain, getter=urgencyEquals, setter=setUrgencyEquals:) AromaReactions_MatcherUrgencyIs * urgencyEquals;
-@property (nonatomic, retain, getter=hostnameEquals, setter=setHostnameEquals:) AromaReactions_MatcherHostnameIs * hostnameEquals;
+@property (nonatomic, retain, getter=hostnameIs, setter=setHostnameIs:) AromaReactions_MatcherHostnameIs * hostnameIs;
+@property (nonatomic, retain, getter=hostnameContains, setter=setHostnameContains:) AromaReactions_MatcherHostnameContains * hostnameContains;
+@property (nonatomic, retain, getter=hostnameDoesNotContain, setter=setHostnameDoesNotContain:) AromaReactions_MatcherHostnameDoesNotContain * hostnameDoesNotContain;
 #endif
 
 - (id) init;
-- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleContains: (AromaReactions_MatcherTitleContains *) titleContains bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameEquals: (AromaReactions_MatcherHostnameIs *) hostnameEquals;
+- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot titleContains: (AromaReactions_MatcherTitleContains *) titleContains titleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains bodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs hostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains hostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -245,10 +399,22 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) titleIsIsSet;
 
 #if !__has_feature(objc_arc)
+- (AromaReactions_MatcherTitleIsNot *) titleIsNot;
+- (void) setTitleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot;
+#endif
+- (BOOL) titleIsNotIsSet;
+
+#if !__has_feature(objc_arc)
 - (AromaReactions_MatcherTitleContains *) titleContains;
 - (void) setTitleContains: (AromaReactions_MatcherTitleContains *) titleContains;
 #endif
 - (BOOL) titleContainsIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain;
+- (void) setTitleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain;
+#endif
+- (BOOL) titleDoesNotContainIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaReactions_MatcherBodyIs *) bodyIs;
@@ -263,16 +429,34 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) bodyContainsIsSet;
 
 #if !__has_feature(objc_arc)
+- (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain;
+- (void) setBodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain;
+#endif
+- (BOOL) bodyDoesNotContainIsSet;
+
+#if !__has_feature(objc_arc)
 - (AromaReactions_MatcherUrgencyIs *) urgencyEquals;
 - (void) setUrgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals;
 #endif
 - (BOOL) urgencyEqualsIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_MatcherHostnameIs *) hostnameEquals;
-- (void) setHostnameEquals: (AromaReactions_MatcherHostnameIs *) hostnameEquals;
+- (AromaReactions_MatcherHostnameIs *) hostnameIs;
+- (void) setHostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs;
 #endif
-- (BOOL) hostnameEqualsIsSet;
+- (BOOL) hostnameIsIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherHostnameContains *) hostnameContains;
+- (void) setHostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains;
+#endif
+- (BOOL) hostnameContainsIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain;
+- (void) setHostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain;
+#endif
+- (BOOL) hostnameDoesNotContainIsSet;
 
 @end
 
