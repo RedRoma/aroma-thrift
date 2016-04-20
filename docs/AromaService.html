@@ -212,6 +212,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_getInbox">getInbox</a></li>
 <li><a href="#Fn_AromaService_getMedia">getMedia</a></li>
 <li><a href="#Fn_AromaService_getMySavedChannels">getMySavedChannels</a></li>
+<li><a href="#Fn_AromaService_getReactions">getReactions</a></li>
 <li><a href="#Fn_AromaService_getUserInfo">getUserInfo</a></li>
 <li><a href="#Fn_AromaService_provisionApplication">provisionApplication</a></li>
 <li><a href="#Fn_AromaService_regenerateToken">regenerateToken</a></li>
@@ -225,6 +226,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_snoozeChannel">snoozeChannel</a></li>
 <li><a href="#Fn_AromaService_unfollowApplication">unfollowApplication</a></li>
 <li><a href="#Fn_AromaService_updateApplication">updateApplication</a></li>
+<li><a href="#Fn_AromaService_updateReactions">updateReactions</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
@@ -867,7 +869,10 @@ Only an "owner" can perform this operation.
 <pre><code><a href="#Struct_UpdateApplicationResponse">UpdateApplicationResponse</a></code> updateApplication(<code><a href="#Struct_UpdateApplicationRequest">UpdateApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>#owner
-<br/></div><div class="definition"><h4 id="Fn_AromaService_getActivity">Function: AromaService.getActivity</h4>
+<br/></div><div class="definition"><h4 id="Fn_AromaService_updateReactions">Function: AromaService.updateReactions</h4>
+<pre><code><a href="#Struct_UpdateReactionsResponse">UpdateReactionsResponse</a></code> updateReactions(<code><a href="#Struct_UpdateReactionsRequest">UpdateReactionsRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getActivity">Function: AromaService.getActivity</h4>
 <pre><code><a href="#Struct_GetActivityResponse">GetActivityResponse</a></code> getActivity(<code><a href="#Struct_GetActivityRequest">GetActivityRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre>Get all of the User-Related activities that have happened recently.
@@ -911,6 +916,9 @@ to load the full message.
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getMySavedChannels">Function: AromaService.getMySavedChannels</h4>
 <pre><code><a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a></code> getMySavedChannels(<code><a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getReactions">Function: AromaService.getReactions</h4>
+<pre><code><a href="#Struct_GetReactionsResponse">GetReactionsResponse</a></code> getReactions(<code><a href="#Struct_GetReactionsRequest">GetReactionsRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getUserInfo">Function: AromaService.getUserInfo</h4>
 <pre><code><a href="#Struct_GetUserInfoResponse">GetUserInfoResponse</a></code> getUserInfo(<code><a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a></code>

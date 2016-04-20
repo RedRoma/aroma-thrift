@@ -676,18 +676,23 @@ service AromaService
                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                              5 : UnauthorizedException ex5);
 
+    
+    
     DeleteMessageResponse deleteMessage(1 : DeleteMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                  2 : InvalidArgumentException ex2,
                                                                                  3 : InvalidTokenException ex3,
                                                                                  4 : MessageDoesNotExistException ex4,
                                                                                  5 : UnauthorizedException ex5);
 
+    
+    
     DismissMessageResponse dismissMessage(1 : DismissMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                     2 : InvalidArgumentException ex2,
                                                                                     3 : InvalidTokenException ex3,
                                                                                     4 : MessageDoesNotExistException ex4,
                                                                                     5 : UnauthorizedException ex5);
 
+    
     /**
      * Provision a New Application to keep tabs on.
      *
@@ -714,6 +719,7 @@ service AromaService
                                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                                              5 : UnauthorizedException ex5);
 
+    
     /**
      * Register an existing Application for Health Pokes. The Aroma Service
      * will then periodically poke the Application for health status.
@@ -761,6 +767,7 @@ service AromaService
                                                                            4 : UnauthorizedException ex4);
 
 
+    
     /**
      * Sign in to the App and get a User Token in return.
      *
@@ -772,6 +779,7 @@ service AromaService
                                                             4 : UserDoesNotExistException ex4);
 
 
+    
     /**
      * Sign Up for an Aroma Account.
      */
@@ -792,6 +800,7 @@ service AromaService
                                                                                  5 : ChannelDoesNotExistException ex5);
 
 
+    
     /**
      * Subscribe to an existing application to get notifications.
      *
@@ -803,6 +812,7 @@ service AromaService
                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                              5 : UnauthorizedException ex5);
 
+    
 
     UnfollowApplicationResponse unfollowApplication(1 : UnfollowApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                    2 : InvalidArgumentException ex2,
@@ -819,6 +829,12 @@ service AromaService
                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                              5 : UnauthorizedException ex5);
 
+    
+    UpdateReactionsResponse updateReactions(1 : UpdateReactionsRequest request) throws(1 : OperationFailedException ex1,
+                                                                                       2 : InvalidArgumentException ex2,
+                                                                                       3 : InvalidTokenException ex3,
+                                                                                       4 : ApplicationDoesNotExistException ex4,
+                                                                                       5 : UnauthorizedException ex5);
 
 
     //==========================================================
@@ -846,6 +862,8 @@ service AromaService
                                                                                                 4 : ApplicationDoesNotExistException ex4,
                                                                                                 5 : UnauthorizedException ex5);
 
+    
+    
     GetBuzzResponse getBuzz(1 : GetBuzzRequest request) throws(1 : OperationFailedException ex1,
                                                                2 : InvalidArgumentException ex2,
                                                                3 : InvalidTokenException ex3,
@@ -853,10 +871,12 @@ service AromaService
                                                                5 : UnauthorizedException ex5);
 
 
+    
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
                                                                               3 : InvalidTokenException ex3);
 
+    
     /**
      * Get an Application's Messages.
      */
@@ -866,6 +886,7 @@ service AromaService
                                                                                                             4 : UnauthorizedException ex4,
                                                                                                             5: ApplicationDoesNotExistException ex5);
 
+     
     /**
      * Get Messages in a User's Inbox
      */
@@ -873,6 +894,7 @@ service AromaService
                                                                  2 : InvalidArgumentException ex2,
                                                                  3 : InvalidTokenException ex3);
 
+    
     /**
      * In case the Message body has been truncated, use this operation
      * to load the full message.
@@ -881,6 +903,7 @@ service AromaService
                                                                                     2 : InvalidArgumentException ex2,
                                                                                     3 : InvalidTokenException ex3);
 
+    
 
     /** Request to get Media stored by the Aroma Service. */
     GetMediaResponse getMedia(1 : GetMediaRequest request) throws(1 : OperationFailedException ex1,
@@ -890,26 +913,38 @@ service AromaService
                                                                   5 : UnauthorizedException ex5);
 
 
+    
     GetApplicationsOwnedByResponse getApplicationsOwnedBy(1 : GetApplicationsOwnedByRequest request) throws(1 : OperationFailedException ex1,
                                                                                                             2 : InvalidArgumentException ex2,
                                                                                                             3 : InvalidTokenException ex3);
 
 
+    
     GetApplicationsFollowedByResponse getApplicationsFollowedBy(1 : GetApplicationsFollowedByRequest request) throws(1 : OperationFailedException ex1,
                                                                                                                      2 : InvalidArgumentException ex2,
                                                                                                                      3 : InvalidTokenException ex3);
 
+    
 
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
                                                                                                 3 : InvalidTokenException ex3);
 
+    
+    GetReactionsResponse getReactions(1 : GetReactionsRequest request) throws(1 : OperationFailedException ex1,
+                                                                              2 : InvalidArgumentException ex2,
+                                                                              3 : InvalidTokenException ex3,
+                                                                              4 : ApplicationDoesNotExistException ex4,
+                                                                              5 : UnauthorizedException ex5);
+
+    
     GetUserInfoResponse getUserInfo(1 : GetUserInfoRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
                                                                            3 : InvalidTokenException ex3,
                                                                            4 : UnauthorizedException ex4,
                                                                            5 : UserDoesNotExistException ex5);
 
+    
     /**
      * Perform a Search on all the applications registered to Aroma by searching for its title.
      *
