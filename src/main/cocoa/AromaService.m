@@ -8353,6 +8353,470 @@
 
 @end
 
+@implementation AromaService_UpdateReactionsRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.reactions = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithToken: (AromaService_UserToken) token forApp: (AromaService_uuid) forApp reactions: (NSMutableArray *) reactions
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __forApp = [forApp retain_stub];
+  __forApp_isset = YES;
+  __reactions = [reactions retain_stub];
+  __reactions_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"forApp"])
+  {
+    __forApp = [[decoder decodeObjectForKey: @"forApp"] retain_stub];
+    __forApp_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"reactions"])
+  {
+    __reactions = [[decoder decodeObjectForKey: @"reactions"] retain_stub];
+    __reactions_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__forApp_isset)
+  {
+    [encoder encodeObject: __forApp forKey: @"forApp"];
+  }
+  if (__reactions_isset)
+  {
+    [encoder encodeObject: __reactions forKey: @"reactions"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __forApp_isset ? 2654435761 : 0;
+  if (__forApp_isset)
+  {
+    hash = (hash * 31) ^ [__forApp hash];
+  }
+  hash = (hash * 31) ^ __reactions_isset ? 2654435761 : 0;
+  if (__reactions_isset)
+  {
+    hash = (hash * 31) ^ [__reactions hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_UpdateReactionsRequest class]]) {
+    return NO;
+  }
+  AromaService_UpdateReactionsRequest *other = (AromaService_UpdateReactionsRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__forApp_isset != other->__forApp_isset) ||
+      (__forApp_isset && ((__forApp || other->__forApp) && ![__forApp isEqual:other->__forApp]))) {
+    return NO;
+  }
+  if ((__reactions_isset != other->__reactions_isset) ||
+      (__reactions_isset && ((__reactions || other->__reactions) && ![__reactions isEqual:other->__reactions]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__forApp release_stub];
+  [__reactions release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (AromaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) forApp {
+  return [[__forApp retain_stub] autorelease_stub];
+}
+
+- (void) setForApp: (NSString *) forApp {
+  [forApp retain_stub];
+  [__forApp release_stub];
+  __forApp = forApp;
+  __forApp_isset = YES;
+}
+
+- (BOOL) forAppIsSet {
+  return __forApp_isset;
+}
+
+- (void) unsetForApp {
+  [__forApp release_stub];
+  __forApp = nil;
+  __forApp_isset = NO;
+}
+
+- (NSMutableArray *) reactions {
+  return [[__reactions retain_stub] autorelease_stub];
+}
+
+- (void) setReactions: (NSMutableArray *) reactions {
+  [reactions retain_stub];
+  [__reactions release_stub];
+  __reactions = reactions;
+  __reactions_isset = YES;
+}
+
+- (BOOL) reactionsIsSet {
+  return __reactions_isset;
+}
+
+- (void) unsetReactions {
+  [__reactions release_stub];
+  __reactions = nil;
+  __reactions_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setForApp: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_LIST) {
+          int _size20;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
+          int _i21;
+          for (_i21 = 0; _i21 < _size20; ++_i21)
+          {
+            AromaReactions_Reaction *_elem22 = [[AromaReactions_Reaction alloc] init];
+            [_elem22 read: inProtocol];
+            [fieldValue addObject: _elem22];
+            [_elem22 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setReactions: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"UpdateReactionsRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__forApp_isset) {
+    if (__forApp != nil) {
+      [outProtocol writeFieldBeginWithName: @"forApp" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __forApp];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__reactions_isset) {
+    if (__reactions != nil) {
+      [outProtocol writeFieldBeginWithName: @"reactions" type: TType_LIST fieldID: 3];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__reactions count]];
+        int idx24;
+        for (idx24 = 0; idx24 < [__reactions count]; idx24++)
+        {
+          [[__reactions objectAtIndex: idx24] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_UpdateReactionsRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",forApp:"];
+  [ms appendFormat: @"\"%@\"", __forApp];
+  [ms appendString: @",reactions:"];
+  [ms appendFormat: @"%@", __reactions];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaService_UpdateReactionsResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.reactions = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithReactions: (NSMutableArray *) reactions
+{
+  self = [super init];
+  __reactions = [reactions retain_stub];
+  __reactions_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"reactions"])
+  {
+    __reactions = [[decoder decodeObjectForKey: @"reactions"] retain_stub];
+    __reactions_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__reactions_isset)
+  {
+    [encoder encodeObject: __reactions forKey: @"reactions"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __reactions_isset ? 2654435761 : 0;
+  if (__reactions_isset)
+  {
+    hash = (hash * 31) ^ [__reactions hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_UpdateReactionsResponse class]]) {
+    return NO;
+  }
+  AromaService_UpdateReactionsResponse *other = (AromaService_UpdateReactionsResponse *)anObject;
+  if ((__reactions_isset != other->__reactions_isset) ||
+      (__reactions_isset && ((__reactions || other->__reactions) && ![__reactions isEqual:other->__reactions]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__reactions release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) reactions {
+  return [[__reactions retain_stub] autorelease_stub];
+}
+
+- (void) setReactions: (NSMutableArray *) reactions {
+  [reactions retain_stub];
+  [__reactions release_stub];
+  __reactions = reactions;
+  __reactions_isset = YES;
+}
+
+- (BOOL) reactionsIsSet {
+  return __reactions_isset;
+}
+
+- (void) unsetReactions {
+  [__reactions release_stub];
+  __reactions = nil;
+  __reactions_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size25;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
+          int _i26;
+          for (_i26 = 0; _i26 < _size25; ++_i26)
+          {
+            AromaReactions_Reaction *_elem27 = [[AromaReactions_Reaction alloc] init];
+            [_elem27 read: inProtocol];
+            [fieldValue addObject: _elem27];
+            [_elem27 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setReactions: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"UpdateReactionsResponse"];
+  if (__reactions_isset) {
+    if (__reactions != nil) {
+      [outProtocol writeFieldBeginWithName: @"reactions" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__reactions count]];
+        int idx29;
+        for (idx29 = 0; idx29 < [__reactions count]; idx29++)
+        {
+          [[__reactions objectAtIndex: idx29] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_UpdateReactionsResponse("];
+  [ms appendString: @"reactions:"];
+  [ms appendFormat: @"%@", __reactions];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaService_GetApplicationInfoRequest
 
 - (id) init
@@ -8778,16 +9242,16 @@
         break;
       case 2:
         if (fieldType == TType_LIST) {
-          int _size20;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
-          int _i21;
-          for (_i21 = 0; _i21 < _size20; ++_i21)
+          int _size30;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
+          int _i31;
+          for (_i31 = 0; _i31 < _size30; ++_i31)
           {
-            AromaChannels_AromaChannel *_elem22 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem22 read: inProtocol];
-            [fieldValue addObject: _elem22];
-            [_elem22 release_stub];
+            AromaChannels_AromaChannel *_elem32 = [[AromaChannels_AromaChannel alloc] init];
+            [_elem32 read: inProtocol];
+            [fieldValue addObject: _elem32];
+            [_elem32 release_stub];
           }
           [inProtocol readListEnd];
           [self setRegisteredChannels: fieldValue];
@@ -8819,10 +9283,10 @@
       [outProtocol writeFieldBeginWithName: @"registeredChannels" type: TType_LIST fieldID: 2];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__registeredChannels count]];
-        int idx24;
-        for (idx24 = 0; idx24 < [__registeredChannels count]; idx24++)
+        int idx34;
+        for (idx34 = 0; idx34 < [__registeredChannels count]; idx34++)
         {
-          [[__registeredChannels objectAtIndex: idx24] write: outProtocol];
+          [[__registeredChannels objectAtIndex: idx34] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9243,16 +9707,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size25;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
-          int _i26;
-          for (_i26 = 0; _i26 < _size25; ++_i26)
+          int _size35;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
+          int _i36;
+          for (_i36 = 0; _i36 < _size35; ++_i36)
           {
-            Aroma_User *_elem27 = [[Aroma_User alloc] init];
-            [_elem27 read: inProtocol];
-            [fieldValue addObject: _elem27];
-            [_elem27 release_stub];
+            Aroma_User *_elem37 = [[Aroma_User alloc] init];
+            [_elem37 read: inProtocol];
+            [fieldValue addObject: _elem37];
+            [_elem37 release_stub];
           }
           [inProtocol readListEnd];
           [self setFreshUsers: fieldValue];
@@ -9263,16 +9727,16 @@
         break;
       case 2:
         if (fieldType == TType_LIST) {
-          int _size28;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size28];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size28];
-          int _i29;
-          for (_i29 = 0; _i29 < _size28; ++_i29)
+          int _size38;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size38];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size38];
+          int _i39;
+          for (_i39 = 0; _i39 < _size38; ++_i39)
           {
-            Aroma_Application *_elem30 = [[Aroma_Application alloc] init];
-            [_elem30 read: inProtocol];
-            [fieldValue addObject: _elem30];
-            [_elem30 release_stub];
+            Aroma_Application *_elem40 = [[Aroma_Application alloc] init];
+            [_elem40 read: inProtocol];
+            [fieldValue addObject: _elem40];
+            [_elem40 release_stub];
           }
           [inProtocol readListEnd];
           [self setFreshApplications: fieldValue];
@@ -9283,16 +9747,16 @@
         break;
       case 3:
         if (fieldType == TType_LIST) {
-          int _size31;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size31];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size31];
-          int _i32;
-          for (_i32 = 0; _i32 < _size31; ++_i32)
+          int _size41;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size41];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size41];
+          int _i42;
+          for (_i42 = 0; _i42 < _size41; ++_i42)
           {
-            AromaEvents_HealthCheckFailed *_elem33 = [[AromaEvents_HealthCheckFailed alloc] init];
-            [_elem33 read: inProtocol];
-            [fieldValue addObject: _elem33];
-            [_elem33 release_stub];
+            AromaEvents_HealthCheckFailed *_elem43 = [[AromaEvents_HealthCheckFailed alloc] init];
+            [_elem43 read: inProtocol];
+            [fieldValue addObject: _elem43];
+            [_elem43 release_stub];
           }
           [inProtocol readListEnd];
           [self setFailedHealthChecks: fieldValue];
@@ -9303,16 +9767,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size34;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size34];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size34];
-          int _i35;
-          for (_i35 = 0; _i35 < _size34; ++_i35)
+          int _size44;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size44];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size44];
+          int _i45;
+          for (_i45 = 0; _i45 < _size44; ++_i45)
           {
-            AromaEvents_Event *_elem36 = [[AromaEvents_Event alloc] init];
-            [_elem36 read: inProtocol];
-            [fieldValue addObject: _elem36];
-            [_elem36 release_stub];
+            AromaEvents_Event *_elem46 = [[AromaEvents_Event alloc] init];
+            [_elem46 read: inProtocol];
+            [fieldValue addObject: _elem46];
+            [_elem46 release_stub];
           }
           [inProtocol readListEnd];
           [self setGeneralEvents: fieldValue];
@@ -9337,10 +9801,10 @@
       [outProtocol writeFieldBeginWithName: @"freshUsers" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshUsers count]];
-        int idx38;
-        for (idx38 = 0; idx38 < [__freshUsers count]; idx38++)
+        int idx48;
+        for (idx48 = 0; idx48 < [__freshUsers count]; idx48++)
         {
-          [[__freshUsers objectAtIndex: idx38] write: outProtocol];
+          [[__freshUsers objectAtIndex: idx48] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9352,10 +9816,10 @@
       [outProtocol writeFieldBeginWithName: @"freshApplications" type: TType_LIST fieldID: 2];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshApplications count]];
-        int idx40;
-        for (idx40 = 0; idx40 < [__freshApplications count]; idx40++)
+        int idx50;
+        for (idx50 = 0; idx50 < [__freshApplications count]; idx50++)
         {
-          [[__freshApplications objectAtIndex: idx40] write: outProtocol];
+          [[__freshApplications objectAtIndex: idx50] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9367,10 +9831,10 @@
       [outProtocol writeFieldBeginWithName: @"failedHealthChecks" type: TType_LIST fieldID: 3];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__failedHealthChecks count]];
-        int idx42;
-        for (idx42 = 0; idx42 < [__failedHealthChecks count]; idx42++)
+        int idx52;
+        for (idx52 = 0; idx52 < [__failedHealthChecks count]; idx52++)
         {
-          [[__failedHealthChecks objectAtIndex: idx42] write: outProtocol];
+          [[__failedHealthChecks objectAtIndex: idx52] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9382,10 +9846,10 @@
       [outProtocol writeFieldBeginWithName: @"generalEvents" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__generalEvents count]];
-        int idx44;
-        for (idx44 = 0; idx44 < [__generalEvents count]; idx44++)
+        int idx54;
+        for (idx54 = 0; idx54 < [__generalEvents count]; idx54++)
         {
-          [[__generalEvents objectAtIndex: idx44] write: outProtocol];
+          [[__generalEvents objectAtIndex: idx54] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9936,16 +10400,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size45;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
-          int _i46;
-          for (_i46 = 0; _i46 < _size45; ++_i46)
+          int _size55;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
+          int _i56;
+          for (_i56 = 0; _i56 < _size55; ++_i56)
           {
-            Aroma_Message *_elem47 = [[Aroma_Message alloc] init];
-            [_elem47 read: inProtocol];
-            [fieldValue addObject: _elem47];
-            [_elem47 release_stub];
+            Aroma_Message *_elem57 = [[Aroma_Message alloc] init];
+            [_elem57 read: inProtocol];
+            [fieldValue addObject: _elem57];
+            [_elem57 release_stub];
           }
           [inProtocol readListEnd];
           [self setRecentMessages: fieldValue];
@@ -10009,10 +10473,10 @@
       [outProtocol writeFieldBeginWithName: @"recentMessages" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__recentMessages count]];
-        int idx49;
-        for (idx49 = 0; idx49 < [__recentMessages count]; idx49++)
+        int idx59;
+        for (idx59 = 0; idx59 < [__recentMessages count]; idx59++)
         {
-          [[__recentMessages objectAtIndex: idx49] write: outProtocol];
+          [[__recentMessages objectAtIndex: idx59] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10380,16 +10844,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size50;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
-          int _i51;
-          for (_i51 = 0; _i51 < _size50; ++_i51)
+          int _size60;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
+          int _i61;
+          for (_i61 = 0; _i61 < _size60; ++_i61)
           {
-            Aroma_Message *_elem52 = [[Aroma_Message alloc] init];
-            [_elem52 read: inProtocol];
-            [fieldValue addObject: _elem52];
-            [_elem52 release_stub];
+            Aroma_Message *_elem62 = [[Aroma_Message alloc] init];
+            [_elem62 read: inProtocol];
+            [fieldValue addObject: _elem62];
+            [_elem62 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -10414,10 +10878,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx54;
-        for (idx54 = 0; idx54 < [__messages count]; idx54++)
+        int idx64;
+        for (idx64 = 0; idx64 < [__messages count]; idx64++)
         {
-          [[__messages objectAtIndex: idx54] write: outProtocol];
+          [[__messages objectAtIndex: idx64] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10856,16 +11320,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size55;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
-          int _i56;
-          for (_i56 = 0; _i56 < _size55; ++_i56)
+          int _size65;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
+          int _i66;
+          for (_i66 = 0; _i66 < _size65; ++_i66)
           {
-            Aroma_Message *_elem57 = [[Aroma_Message alloc] init];
-            [_elem57 read: inProtocol];
-            [fieldValue addObject: _elem57];
-            [_elem57 release_stub];
+            Aroma_Message *_elem67 = [[Aroma_Message alloc] init];
+            [_elem67 read: inProtocol];
+            [fieldValue addObject: _elem67];
+            [_elem67 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -10898,10 +11362,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx59;
-        for (idx59 = 0; idx59 < [__messages count]; idx59++)
+        int idx69;
+        for (idx69 = 0; idx69 < [__messages count]; idx69++)
         {
-          [[__messages objectAtIndex: idx59] write: outProtocol];
+          [[__messages objectAtIndex: idx69] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12100,16 +12564,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size60;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
-          int _i61;
-          for (_i61 = 0; _i61 < _size60; ++_i61)
+          int _size70;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size70];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size70];
+          int _i71;
+          for (_i71 = 0; _i71 < _size70; ++_i71)
           {
-            Aroma_Application *_elem62 = [[Aroma_Application alloc] init];
-            [_elem62 read: inProtocol];
-            [fieldValue addObject: _elem62];
-            [_elem62 release_stub];
+            Aroma_Application *_elem72 = [[Aroma_Application alloc] init];
+            [_elem72 read: inProtocol];
+            [fieldValue addObject: _elem72];
+            [_elem72 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -12134,10 +12598,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx64;
-        for (idx64 = 0; idx64 < [__applications count]; idx64++)
+        int idx74;
+        for (idx74 = 0; idx74 < [__applications count]; idx74++)
         {
-          [[__applications objectAtIndex: idx64] write: outProtocol];
+          [[__applications objectAtIndex: idx74] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12483,16 +12947,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size65;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
-          int _i66;
-          for (_i66 = 0; _i66 < _size65; ++_i66)
+          int _size75;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size75];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size75];
+          int _i76;
+          for (_i76 = 0; _i76 < _size75; ++_i76)
           {
-            Aroma_Application *_elem67 = [[Aroma_Application alloc] init];
-            [_elem67 read: inProtocol];
-            [fieldValue addObject: _elem67];
-            [_elem67 release_stub];
+            Aroma_Application *_elem77 = [[Aroma_Application alloc] init];
+            [_elem77 read: inProtocol];
+            [fieldValue addObject: _elem77];
+            [_elem77 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -12517,10 +12981,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx69;
-        for (idx69 = 0; idx69 < [__applications count]; idx69++)
+        int idx79;
+        for (idx79 = 0; idx79 < [__applications count]; idx79++)
         {
-          [[__applications objectAtIndex: idx69] write: outProtocol];
+          [[__applications objectAtIndex: idx79] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12805,16 +13269,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size70;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size70];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size70];
-          int _i71;
-          for (_i71 = 0; _i71 < _size70; ++_i71)
+          int _size80;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size80];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size80];
+          int _i81;
+          for (_i81 = 0; _i81 < _size80; ++_i81)
           {
-            AromaChannels_AromaChannel *_elem72 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem72 read: inProtocol];
-            [fieldValue addObject: _elem72];
-            [_elem72 release_stub];
+            AromaChannels_AromaChannel *_elem82 = [[AromaChannels_AromaChannel alloc] init];
+            [_elem82 read: inProtocol];
+            [fieldValue addObject: _elem82];
+            [_elem82 release_stub];
           }
           [inProtocol readListEnd];
           [self setChannels: fieldValue];
@@ -12839,10 +13303,10 @@
       [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx74;
-        for (idx74 = 0; idx74 < [__channels count]; idx74++)
+        int idx84;
+        for (idx84 = 0; idx84 < [__channels count]; idx84++)
         {
-          [[__channels objectAtIndex: idx74] write: outProtocol];
+          [[__channels objectAtIndex: idx84] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -13183,16 +13647,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size75;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size75];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size75];
-          int _i76;
-          for (_i76 = 0; _i76 < _size75; ++_i76)
+          int _size85;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size85];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size85];
+          int _i86;
+          for (_i86 = 0; _i86 < _size85; ++_i86)
           {
-            AromaEvents_Event *_elem77 = [[AromaEvents_Event alloc] init];
-            [_elem77 read: inProtocol];
-            [fieldValue addObject: _elem77];
-            [_elem77 release_stub];
+            AromaEvents_Event *_elem87 = [[AromaEvents_Event alloc] init];
+            [_elem87 read: inProtocol];
+            [fieldValue addObject: _elem87];
+            [_elem87 release_stub];
           }
           [inProtocol readListEnd];
           [self setEvents: fieldValue];
@@ -13217,10 +13681,10 @@
       [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
-        int idx79;
-        for (idx79 = 0; idx79 < [__events count]; idx79++)
+        int idx89;
+        for (idx89 = 0; idx89 < [__events count]; idx89++)
         {
-          [[__events objectAtIndex: idx79] write: outProtocol];
+          [[__events objectAtIndex: idx89] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -13507,16 +13971,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size80;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size80];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size80];
-          int _i81;
-          for (_i81 = 0; _i81 < _size80; ++_i81)
+          int _size90;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size90];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size90];
+          int _i91;
+          for (_i91 = 0; _i91 < _size90; ++_i91)
           {
-            Aroma_ServiceAnnouncement *_elem82 = [[Aroma_ServiceAnnouncement alloc] init];
-            [_elem82 read: inProtocol];
-            [fieldValue addObject: _elem82];
-            [_elem82 release_stub];
+            Aroma_ServiceAnnouncement *_elem92 = [[Aroma_ServiceAnnouncement alloc] init];
+            [_elem92 read: inProtocol];
+            [fieldValue addObject: _elem92];
+            [_elem92 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -13541,10 +14005,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx84;
-        for (idx84 = 0; idx84 < [__serviceAnnouncements count]; idx84++)
+        int idx94;
+        for (idx94 = 0; idx94 < [__serviceAnnouncements count]; idx94++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx84] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx94] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -14371,16 +14835,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size85;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size85];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size85];
-          int _i86;
-          for (_i86 = 0; _i86 < _size85; ++_i86)
+          int _size95;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size95];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size95];
+          int _i96;
+          for (_i96 = 0; _i96 < _size95; ++_i96)
           {
-            Aroma_Application *_elem87 = [[Aroma_Application alloc] init];
-            [_elem87 read: inProtocol];
-            [fieldValue addObject: _elem87];
-            [_elem87 release_stub];
+            Aroma_Application *_elem97 = [[Aroma_Application alloc] init];
+            [_elem97 read: inProtocol];
+            [fieldValue addObject: _elem97];
+            [_elem97 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -14405,10 +14869,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx89;
-        for (idx89 = 0; idx89 < [__applications count]; idx89++)
+        int idx99;
+        for (idx99 = 0; idx99 < [__applications count]; idx99++)
         {
-          [[__applications objectAtIndex: idx89] write: outProtocol];
+          [[__applications objectAtIndex: idx99] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }

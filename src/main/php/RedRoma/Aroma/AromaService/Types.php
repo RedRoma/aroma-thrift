@@ -4159,6 +4159,279 @@ class UpdateApplicationResponse {
 
 }
 
+/**
+ * Sets the Reactions for either the calling user's Inbox, or an Application owned
+ * by the calling user.
+ */
+class UpdateReactionsRequest {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
+  /**
+   * By default, this request updates the caller's Inbox Reactions. If an AppID
+   * is specified, it's Reactions will be updated instead. Note than only an owner can
+   * change an App's Rections.
+   * 
+   * @var string
+   */
+  public $forApp = null;
+  /**
+   * Completely wipes out any existing reactions and sets them to this supplied list.
+   * 
+   * @var \RedRoma\Aroma\Reactions\Reaction[]
+   */
+  public $reactions = array(
+  );
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'forApp',
+          'type' => TType::STRING,
+          ),
+        3 => array(
+          'var' => 'reactions',
+          'type' => TType::LST,
+          'etype' => TType::STRUCT,
+          'elem' => array(
+            'type' => TType::STRUCT,
+            'class' => '\RedRoma\Aroma\Reactions\Reaction',
+            ),
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['forApp'])) {
+        $this->forApp = $vals['forApp'];
+      }
+      if (isset($vals['reactions'])) {
+        $this->reactions = $vals['reactions'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'UpdateReactionsRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->forApp);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::LST) {
+            $this->reactions = array();
+            $_size29 = 0;
+            $_etype32 = 0;
+            $xfer += $input->readListBegin($_etype32, $_size29);
+            for ($_i33 = 0; $_i33 < $_size29; ++$_i33)
+            {
+              $elem34 = null;
+              $elem34 = new \RedRoma\Aroma\Reactions\Reaction();
+              $xfer += $elem34->read($input);
+              $this->reactions []= $elem34;
+            }
+            $xfer += $input->readListEnd();
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('UpdateReactionsRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->forApp !== null) {
+      $xfer += $output->writeFieldBegin('forApp', TType::STRING, 2);
+      $xfer += $output->writeString($this->forApp);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->reactions !== null) {
+      if (!is_array($this->reactions)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('reactions', TType::LST, 3);
+      {
+        $output->writeListBegin(TType::STRUCT, count($this->reactions));
+        {
+          foreach ($this->reactions as $iter35)
+          {
+            $xfer += $iter35->write($output);
+          }
+        }
+        $output->writeListEnd();
+      }
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class UpdateReactionsResponse {
+  static $_TSPEC;
+
+  /**
+   * Returns the complete list of Reactions after the operations is complete.
+   * If it's successful, this list will be the same as the list included in
+   * the request.
+   * 
+   * @var \RedRoma\Aroma\Reactions\Reaction[]
+   */
+  public $reactions = array(
+  );
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'reactions',
+          'type' => TType::LST,
+          'etype' => TType::STRUCT,
+          'elem' => array(
+            'type' => TType::STRUCT,
+            'class' => '\RedRoma\Aroma\Reactions\Reaction',
+            ),
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['reactions'])) {
+        $this->reactions = $vals['reactions'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'UpdateReactionsResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::LST) {
+            $this->reactions = array();
+            $_size36 = 0;
+            $_etype39 = 0;
+            $xfer += $input->readListBegin($_etype39, $_size36);
+            for ($_i40 = 0; $_i40 < $_size36; ++$_i40)
+            {
+              $elem41 = null;
+              $elem41 = new \RedRoma\Aroma\Reactions\Reaction();
+              $xfer += $elem41->read($input);
+              $this->reactions []= $elem41;
+            }
+            $xfer += $input->readListEnd();
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('UpdateReactionsResponse');
+    if ($this->reactions !== null) {
+      if (!is_array($this->reactions)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('reactions', TType::LST, 1);
+      {
+        $output->writeListBegin(TType::STRUCT, count($this->reactions));
+        {
+          foreach ($this->reactions as $iter42)
+          {
+            $xfer += $iter42->write($output);
+          }
+        }
+        $output->writeListEnd();
+      }
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class GetApplicationInfoRequest {
   static $_TSPEC;
 
@@ -4360,15 +4633,15 @@ class GetApplicationInfoResponse {
         case 2:
           if ($ftype == TType::LST) {
             $this->registeredChannels = array();
-            $_size29 = 0;
-            $_etype32 = 0;
-            $xfer += $input->readListBegin($_etype32, $_size29);
-            for ($_i33 = 0; $_i33 < $_size29; ++$_i33)
+            $_size43 = 0;
+            $_etype46 = 0;
+            $xfer += $input->readListBegin($_etype46, $_size43);
+            for ($_i47 = 0; $_i47 < $_size43; ++$_i47)
             {
-              $elem34 = null;
-              $elem34 = new \RedRoma\Aroma\Channels\AromaChannel();
-              $xfer += $elem34->read($input);
-              $this->registeredChannels []= $elem34;
+              $elem48 = null;
+              $elem48 = new \RedRoma\Aroma\Channels\AromaChannel();
+              $xfer += $elem48->read($input);
+              $this->registeredChannels []= $elem48;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4404,9 +4677,9 @@ class GetApplicationInfoResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->registeredChannels));
         {
-          foreach ($this->registeredChannels as $iter35)
+          foreach ($this->registeredChannels as $iter49)
           {
-            $xfer += $iter35->write($output);
+            $xfer += $iter49->write($output);
           }
         }
         $output->writeListEnd();
@@ -4609,15 +4882,15 @@ class GetBuzzResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->freshUsers = array();
-            $_size36 = 0;
-            $_etype39 = 0;
-            $xfer += $input->readListBegin($_etype39, $_size36);
-            for ($_i40 = 0; $_i40 < $_size36; ++$_i40)
+            $_size50 = 0;
+            $_etype53 = 0;
+            $xfer += $input->readListBegin($_etype53, $_size50);
+            for ($_i54 = 0; $_i54 < $_size50; ++$_i54)
             {
-              $elem41 = null;
-              $elem41 = new \RedRoma\Aroma\User();
-              $xfer += $elem41->read($input);
-              $this->freshUsers []= $elem41;
+              $elem55 = null;
+              $elem55 = new \RedRoma\Aroma\User();
+              $xfer += $elem55->read($input);
+              $this->freshUsers []= $elem55;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4627,15 +4900,15 @@ class GetBuzzResponse {
         case 2:
           if ($ftype == TType::LST) {
             $this->freshApplications = array();
-            $_size42 = 0;
-            $_etype45 = 0;
-            $xfer += $input->readListBegin($_etype45, $_size42);
-            for ($_i46 = 0; $_i46 < $_size42; ++$_i46)
+            $_size56 = 0;
+            $_etype59 = 0;
+            $xfer += $input->readListBegin($_etype59, $_size56);
+            for ($_i60 = 0; $_i60 < $_size56; ++$_i60)
             {
-              $elem47 = null;
-              $elem47 = new \RedRoma\Aroma\Application();
-              $xfer += $elem47->read($input);
-              $this->freshApplications []= $elem47;
+              $elem61 = null;
+              $elem61 = new \RedRoma\Aroma\Application();
+              $xfer += $elem61->read($input);
+              $this->freshApplications []= $elem61;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4645,15 +4918,15 @@ class GetBuzzResponse {
         case 3:
           if ($ftype == TType::LST) {
             $this->failedHealthChecks = array();
-            $_size48 = 0;
-            $_etype51 = 0;
-            $xfer += $input->readListBegin($_etype51, $_size48);
-            for ($_i52 = 0; $_i52 < $_size48; ++$_i52)
+            $_size62 = 0;
+            $_etype65 = 0;
+            $xfer += $input->readListBegin($_etype65, $_size62);
+            for ($_i66 = 0; $_i66 < $_size62; ++$_i66)
             {
-              $elem53 = null;
-              $elem53 = new \RedRoma\Aroma\Events\HealthCheckFailed();
-              $xfer += $elem53->read($input);
-              $this->failedHealthChecks []= $elem53;
+              $elem67 = null;
+              $elem67 = new \RedRoma\Aroma\Events\HealthCheckFailed();
+              $xfer += $elem67->read($input);
+              $this->failedHealthChecks []= $elem67;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4663,15 +4936,15 @@ class GetBuzzResponse {
         case 4:
           if ($ftype == TType::LST) {
             $this->generalEvents = array();
-            $_size54 = 0;
-            $_etype57 = 0;
-            $xfer += $input->readListBegin($_etype57, $_size54);
-            for ($_i58 = 0; $_i58 < $_size54; ++$_i58)
+            $_size68 = 0;
+            $_etype71 = 0;
+            $xfer += $input->readListBegin($_etype71, $_size68);
+            for ($_i72 = 0; $_i72 < $_size68; ++$_i72)
             {
-              $elem59 = null;
-              $elem59 = new \RedRoma\Aroma\Events\Event();
-              $xfer += $elem59->read($input);
-              $this->generalEvents []= $elem59;
+              $elem73 = null;
+              $elem73 = new \RedRoma\Aroma\Events\Event();
+              $xfer += $elem73->read($input);
+              $this->generalEvents []= $elem73;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4699,9 +4972,9 @@ class GetBuzzResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->freshUsers));
         {
-          foreach ($this->freshUsers as $iter60)
+          foreach ($this->freshUsers as $iter74)
           {
-            $xfer += $iter60->write($output);
+            $xfer += $iter74->write($output);
           }
         }
         $output->writeListEnd();
@@ -4716,9 +4989,9 @@ class GetBuzzResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->freshApplications));
         {
-          foreach ($this->freshApplications as $iter61)
+          foreach ($this->freshApplications as $iter75)
           {
-            $xfer += $iter61->write($output);
+            $xfer += $iter75->write($output);
           }
         }
         $output->writeListEnd();
@@ -4733,9 +5006,9 @@ class GetBuzzResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->failedHealthChecks));
         {
-          foreach ($this->failedHealthChecks as $iter62)
+          foreach ($this->failedHealthChecks as $iter76)
           {
-            $xfer += $iter62->write($output);
+            $xfer += $iter76->write($output);
           }
         }
         $output->writeListEnd();
@@ -4750,9 +5023,9 @@ class GetBuzzResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->generalEvents));
         {
-          foreach ($this->generalEvents as $iter63)
+          foreach ($this->generalEvents as $iter77)
           {
-            $xfer += $iter63->write($output);
+            $xfer += $iter77->write($output);
           }
         }
         $output->writeListEnd();
@@ -4985,15 +5258,15 @@ class GetDashboardResponse {
         case 4:
           if ($ftype == TType::LST) {
             $this->recentMessages = array();
-            $_size64 = 0;
-            $_etype67 = 0;
-            $xfer += $input->readListBegin($_etype67, $_size64);
-            for ($_i68 = 0; $_i68 < $_size64; ++$_i68)
+            $_size78 = 0;
+            $_etype81 = 0;
+            $xfer += $input->readListBegin($_etype81, $_size78);
+            for ($_i82 = 0; $_i82 < $_size78; ++$_i82)
             {
-              $elem69 = null;
-              $elem69 = new \RedRoma\Aroma\Message();
-              $xfer += $elem69->read($input);
-              $this->recentMessages []= $elem69;
+              $elem83 = null;
+              $elem83 = new \RedRoma\Aroma\Message();
+              $xfer += $elem83->read($input);
+              $this->recentMessages []= $elem83;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -5057,9 +5330,9 @@ class GetDashboardResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->recentMessages));
         {
-          foreach ($this->recentMessages as $iter70)
+          foreach ($this->recentMessages as $iter84)
           {
-            $xfer += $iter70->write($output);
+            $xfer += $iter84->write($output);
           }
         }
         $output->writeListEnd();
@@ -5245,15 +5518,15 @@ class GetInboxResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->messages = array();
-            $_size71 = 0;
-            $_etype74 = 0;
-            $xfer += $input->readListBegin($_etype74, $_size71);
-            for ($_i75 = 0; $_i75 < $_size71; ++$_i75)
+            $_size85 = 0;
+            $_etype88 = 0;
+            $xfer += $input->readListBegin($_etype88, $_size85);
+            for ($_i89 = 0; $_i89 < $_size85; ++$_i89)
             {
-              $elem76 = null;
-              $elem76 = new \RedRoma\Aroma\Message();
-              $xfer += $elem76->read($input);
-              $this->messages []= $elem76;
+              $elem90 = null;
+              $elem90 = new \RedRoma\Aroma\Message();
+              $xfer += $elem90->read($input);
+              $this->messages []= $elem90;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -5281,9 +5554,9 @@ class GetInboxResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->messages));
         {
-          foreach ($this->messages as $iter77)
+          foreach ($this->messages as $iter91)
           {
-            $xfer += $iter77->write($output);
+            $xfer += $iter91->write($output);
           }
         }
         $output->writeListEnd();
@@ -5494,15 +5767,15 @@ class GetApplicationMessagesResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->messages = array();
-            $_size78 = 0;
-            $_etype81 = 0;
-            $xfer += $input->readListBegin($_etype81, $_size78);
-            for ($_i82 = 0; $_i82 < $_size78; ++$_i82)
+            $_size92 = 0;
+            $_etype95 = 0;
+            $xfer += $input->readListBegin($_etype95, $_size92);
+            for ($_i96 = 0; $_i96 < $_size92; ++$_i96)
             {
-              $elem83 = null;
-              $elem83 = new \RedRoma\Aroma\Message();
-              $xfer += $elem83->read($input);
-              $this->messages []= $elem83;
+              $elem97 = null;
+              $elem97 = new \RedRoma\Aroma\Message();
+              $xfer += $elem97->read($input);
+              $this->messages []= $elem97;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -5537,9 +5810,9 @@ class GetApplicationMessagesResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->messages));
         {
-          foreach ($this->messages as $iter84)
+          foreach ($this->messages as $iter98)
           {
-            $xfer += $iter84->write($output);
+            $xfer += $iter98->write($output);
           }
         }
         $output->writeListEnd();
@@ -6132,15 +6405,15 @@ class GetApplicationsFollowedByResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->applications = array();
-            $_size85 = 0;
-            $_etype88 = 0;
-            $xfer += $input->readListBegin($_etype88, $_size85);
-            for ($_i89 = 0; $_i89 < $_size85; ++$_i89)
+            $_size99 = 0;
+            $_etype102 = 0;
+            $xfer += $input->readListBegin($_etype102, $_size99);
+            for ($_i103 = 0; $_i103 < $_size99; ++$_i103)
             {
-              $elem90 = null;
-              $elem90 = new \RedRoma\Aroma\Application();
-              $xfer += $elem90->read($input);
-              $this->applications []= $elem90;
+              $elem104 = null;
+              $elem104 = new \RedRoma\Aroma\Application();
+              $xfer += $elem104->read($input);
+              $this->applications []= $elem104;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -6168,9 +6441,9 @@ class GetApplicationsFollowedByResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->applications));
         {
-          foreach ($this->applications as $iter91)
+          foreach ($this->applications as $iter105)
           {
-            $xfer += $iter91->write($output);
+            $xfer += $iter105->write($output);
           }
         }
         $output->writeListEnd();
@@ -6341,15 +6614,15 @@ class GetApplicationsOwnedByResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->applications = array();
-            $_size92 = 0;
-            $_etype95 = 0;
-            $xfer += $input->readListBegin($_etype95, $_size92);
-            for ($_i96 = 0; $_i96 < $_size92; ++$_i96)
+            $_size106 = 0;
+            $_etype109 = 0;
+            $xfer += $input->readListBegin($_etype109, $_size106);
+            for ($_i110 = 0; $_i110 < $_size106; ++$_i110)
             {
-              $elem97 = null;
-              $elem97 = new \RedRoma\Aroma\Application();
-              $xfer += $elem97->read($input);
-              $this->applications []= $elem97;
+              $elem111 = null;
+              $elem111 = new \RedRoma\Aroma\Application();
+              $xfer += $elem111->read($input);
+              $this->applications []= $elem111;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -6377,9 +6650,9 @@ class GetApplicationsOwnedByResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->applications));
         {
-          foreach ($this->applications as $iter98)
+          foreach ($this->applications as $iter112)
           {
-            $xfer += $iter98->write($output);
+            $xfer += $iter112->write($output);
           }
         }
         $output->writeListEnd();
@@ -6524,15 +6797,15 @@ class GetMySavedChannelsResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->channels = array();
-            $_size99 = 0;
-            $_etype102 = 0;
-            $xfer += $input->readListBegin($_etype102, $_size99);
-            for ($_i103 = 0; $_i103 < $_size99; ++$_i103)
+            $_size113 = 0;
+            $_etype116 = 0;
+            $xfer += $input->readListBegin($_etype116, $_size113);
+            for ($_i117 = 0; $_i117 < $_size113; ++$_i117)
             {
-              $elem104 = null;
-              $elem104 = new \RedRoma\Aroma\Channels\AromaChannel();
-              $xfer += $elem104->read($input);
-              $this->channels []= $elem104;
+              $elem118 = null;
+              $elem118 = new \RedRoma\Aroma\Channels\AromaChannel();
+              $xfer += $elem118->read($input);
+              $this->channels []= $elem118;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -6560,9 +6833,9 @@ class GetMySavedChannelsResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->channels));
         {
-          foreach ($this->channels as $iter105)
+          foreach ($this->channels as $iter119)
           {
-            $xfer += $iter105->write($output);
+            $xfer += $iter119->write($output);
           }
         }
         $output->writeListEnd();
@@ -6736,15 +7009,15 @@ class GetActivityResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->events = array();
-            $_size106 = 0;
-            $_etype109 = 0;
-            $xfer += $input->readListBegin($_etype109, $_size106);
-            for ($_i110 = 0; $_i110 < $_size106; ++$_i110)
+            $_size120 = 0;
+            $_etype123 = 0;
+            $xfer += $input->readListBegin($_etype123, $_size120);
+            for ($_i124 = 0; $_i124 < $_size120; ++$_i124)
             {
-              $elem111 = null;
-              $elem111 = new \RedRoma\Aroma\Events\Event();
-              $xfer += $elem111->read($input);
-              $this->events []= $elem111;
+              $elem125 = null;
+              $elem125 = new \RedRoma\Aroma\Events\Event();
+              $xfer += $elem125->read($input);
+              $this->events []= $elem125;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -6772,9 +7045,9 @@ class GetActivityResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->events));
         {
-          foreach ($this->events as $iter112)
+          foreach ($this->events as $iter126)
           {
-            $xfer += $iter112->write($output);
+            $xfer += $iter126->write($output);
           }
         }
         $output->writeListEnd();
@@ -6924,15 +7197,15 @@ class GetServiceAnnouncementsResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->serviceAnnouncements = array();
-            $_size113 = 0;
-            $_etype116 = 0;
-            $xfer += $input->readListBegin($_etype116, $_size113);
-            for ($_i117 = 0; $_i117 < $_size113; ++$_i117)
+            $_size127 = 0;
+            $_etype130 = 0;
+            $xfer += $input->readListBegin($_etype130, $_size127);
+            for ($_i131 = 0; $_i131 < $_size127; ++$_i131)
             {
-              $elem118 = null;
-              $elem118 = new \RedRoma\Aroma\ServiceAnnouncement();
-              $xfer += $elem118->read($input);
-              $this->serviceAnnouncements []= $elem118;
+              $elem132 = null;
+              $elem132 = new \RedRoma\Aroma\ServiceAnnouncement();
+              $xfer += $elem132->read($input);
+              $this->serviceAnnouncements []= $elem132;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -6960,9 +7233,9 @@ class GetServiceAnnouncementsResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->serviceAnnouncements));
         {
-          foreach ($this->serviceAnnouncements as $iter119)
+          foreach ($this->serviceAnnouncements as $iter133)
           {
-            $xfer += $iter119->write($output);
+            $xfer += $iter133->write($output);
           }
         }
         $output->writeListEnd();
@@ -7367,15 +7640,15 @@ class SearchForApplicationsResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->applications = array();
-            $_size120 = 0;
-            $_etype123 = 0;
-            $xfer += $input->readListBegin($_etype123, $_size120);
-            for ($_i124 = 0; $_i124 < $_size120; ++$_i124)
+            $_size134 = 0;
+            $_etype137 = 0;
+            $xfer += $input->readListBegin($_etype137, $_size134);
+            for ($_i138 = 0; $_i138 < $_size134; ++$_i138)
             {
-              $elem125 = null;
-              $elem125 = new \RedRoma\Aroma\Application();
-              $xfer += $elem125->read($input);
-              $this->applications []= $elem125;
+              $elem139 = null;
+              $elem139 = new \RedRoma\Aroma\Application();
+              $xfer += $elem139->read($input);
+              $this->applications []= $elem139;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -7403,9 +7676,9 @@ class SearchForApplicationsResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->applications));
         {
-          foreach ($this->applications as $iter126)
+          foreach ($this->applications as $iter140)
           {
-            $xfer += $iter126->write($output);
+            $xfer += $iter140->write($output);
           }
         }
         $output->writeListEnd();

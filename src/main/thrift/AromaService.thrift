@@ -414,6 +414,33 @@ struct UpdateApplicationResponse
     1: Application application;
 }
 
+/**
+ * Sets the Reactions for either the calling user's Inbox, or an Application owned
+ * by the calling user.
+ */
+struct UpdateReactionsRequest
+{
+    1: UserToken token;
+    /**
+    * By default, this request updates the caller's Inbox Reactions. If an AppID
+    * is specified, it's Reactions will be updated instead. Note than only an owner can
+    * change an App's Rections.
+    */
+    2: optional uuid forApp;
+    /** Completely wipes out any existing reactions and sets them to this supplied list. */
+    3: list<Reaction> reactions = [];
+}
+
+struct UpdateReactionsResponse
+{
+    /** 
+     * Returns the complete list of Reactions after the operations is complete.
+     * If it's successful, this list will be the same as the list included in
+     * the request.
+     */
+    1: optional list<Reaction> reactions = [];
+}
+
 //==========================================================
 // Query Operations
 //==========================================================
