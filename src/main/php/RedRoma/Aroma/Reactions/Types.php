@@ -944,6 +944,156 @@ class MatcherHostnameDoesNotContain {
 
 }
 
+class MatcherApplicationIs {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $appId = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'appId',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['appId'])) {
+        $this->appId = $vals['appId'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'MatcherApplicationIs';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->appId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('MatcherApplicationIs');
+    if ($this->appId !== null) {
+      $xfer += $output->writeFieldBegin('appId', TType::STRING, 1);
+      $xfer += $output->writeString($this->appId);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class MatcherApplicationIsNot {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $appId = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'appId',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['appId'])) {
+        $this->appId = $vals['appId'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'MatcherApplicationIsNot';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->appId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('MatcherApplicationIsNot');
+    if ($this->appId !== null) {
+      $xfer += $output->writeFieldBegin('appId', TType::STRING, 1);
+      $xfer += $output->writeString($this->appId);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class AromaMatcher {
   static $_TSPEC;
 
@@ -995,6 +1145,14 @@ class AromaMatcher {
    * @var \RedRoma\Aroma\Reactions\MatcherHostnameDoesNotContain
    */
   public $hostnameDoesNotContain = null;
+  /**
+   * @var \RedRoma\Aroma\Reactions\MatcherApplicationIs
+   */
+  public $applicationIs = null;
+  /**
+   * @var \RedRoma\Aroma\Reactions\MatcherApplicationIsNot
+   */
+  public $applicationIsNot = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -1059,6 +1217,16 @@ class AromaMatcher {
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\MatcherHostnameDoesNotContain',
           ),
+        13 => array(
+          'var' => 'applicationIs',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\MatcherApplicationIs',
+          ),
+        14 => array(
+          'var' => 'applicationIsNot',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\MatcherApplicationIsNot',
+          ),
         );
     }
     if (is_array($vals)) {
@@ -1097,6 +1265,12 @@ class AromaMatcher {
       }
       if (isset($vals['hostnameDoesNotContain'])) {
         $this->hostnameDoesNotContain = $vals['hostnameDoesNotContain'];
+      }
+      if (isset($vals['applicationIs'])) {
+        $this->applicationIs = $vals['applicationIs'];
+      }
+      if (isset($vals['applicationIsNot'])) {
+        $this->applicationIsNot = $vals['applicationIsNot'];
       }
     }
   }
@@ -1216,6 +1390,22 @@ class AromaMatcher {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 13:
+          if ($ftype == TType::STRUCT) {
+            $this->applicationIs = new \RedRoma\Aroma\Reactions\MatcherApplicationIs();
+            $xfer += $this->applicationIs->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 14:
+          if ($ftype == TType::STRUCT) {
+            $this->applicationIsNot = new \RedRoma\Aroma\Reactions\MatcherApplicationIsNot();
+            $xfer += $this->applicationIsNot->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -1323,6 +1513,22 @@ class AromaMatcher {
       }
       $xfer += $output->writeFieldBegin('hostnameDoesNotContain', TType::STRUCT, 12);
       $xfer += $this->hostnameDoesNotContain->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationIs !== null) {
+      if (!is_object($this->applicationIs)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('applicationIs', TType::STRUCT, 13);
+      $xfer += $this->applicationIs->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationIsNot !== null) {
+      if (!is_object($this->applicationIsNot)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('applicationIsNot', TType::STRUCT, 14);
+      $xfer += $this->applicationIsNot->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

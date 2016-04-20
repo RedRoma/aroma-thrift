@@ -1068,6 +1068,178 @@ void MatcherHostnameDoesNotContain::printTo(std::ostream& out) const {
 }
 
 
+MatcherApplicationIs::~MatcherApplicationIs() throw() {
+}
+
+
+void MatcherApplicationIs::__set_appId(const uuid& val) {
+  this->appId = val;
+}
+
+uint32_t MatcherApplicationIs::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->appId);
+          this->__isset.appId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t MatcherApplicationIs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("MatcherApplicationIs");
+
+  xfer += oprot->writeFieldBegin("appId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->appId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(MatcherApplicationIs &a, MatcherApplicationIs &b) {
+  using ::std::swap;
+  swap(a.appId, b.appId);
+  swap(a.__isset, b.__isset);
+}
+
+MatcherApplicationIs::MatcherApplicationIs(const MatcherApplicationIs& other32) {
+  appId = other32.appId;
+  __isset = other32.__isset;
+}
+MatcherApplicationIs& MatcherApplicationIs::operator=(const MatcherApplicationIs& other33) {
+  appId = other33.appId;
+  __isset = other33.__isset;
+  return *this;
+}
+void MatcherApplicationIs::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "MatcherApplicationIs(";
+  out << "appId=" << to_string(appId);
+  out << ")";
+}
+
+
+MatcherApplicationIsNot::~MatcherApplicationIsNot() throw() {
+}
+
+
+void MatcherApplicationIsNot::__set_appId(const uuid& val) {
+  this->appId = val;
+}
+
+uint32_t MatcherApplicationIsNot::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->appId);
+          this->__isset.appId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t MatcherApplicationIsNot::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("MatcherApplicationIsNot");
+
+  xfer += oprot->writeFieldBegin("appId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->appId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(MatcherApplicationIsNot &a, MatcherApplicationIsNot &b) {
+  using ::std::swap;
+  swap(a.appId, b.appId);
+  swap(a.__isset, b.__isset);
+}
+
+MatcherApplicationIsNot::MatcherApplicationIsNot(const MatcherApplicationIsNot& other34) {
+  appId = other34.appId;
+  __isset = other34.__isset;
+}
+MatcherApplicationIsNot& MatcherApplicationIsNot::operator=(const MatcherApplicationIsNot& other35) {
+  appId = other35.appId;
+  __isset = other35.__isset;
+  return *this;
+}
+void MatcherApplicationIsNot::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "MatcherApplicationIsNot(";
+  out << "appId=" << to_string(appId);
+  out << ")";
+}
+
+
 AromaMatcher::~AromaMatcher() throw() {
 }
 
@@ -1118,6 +1290,14 @@ void AromaMatcher::__set_hostnameContains(const MatcherHostnameContains& val) {
 
 void AromaMatcher::__set_hostnameDoesNotContain(const MatcherHostnameDoesNotContain& val) {
   this->hostnameDoesNotContain = val;
+}
+
+void AromaMatcher::__set_applicationIs(const MatcherApplicationIs& val) {
+  this->applicationIs = val;
+}
+
+void AromaMatcher::__set_applicationIsNot(const MatcherApplicationIsNot& val) {
+  this->applicationIsNot = val;
 }
 
 uint32_t AromaMatcher::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1237,6 +1417,22 @@ uint32_t AromaMatcher::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 13:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->applicationIs.read(iprot);
+          this->__isset.applicationIs = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 14:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->applicationIsNot.read(iprot);
+          this->__isset.applicationIsNot = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1302,6 +1498,14 @@ uint32_t AromaMatcher::write(::apache::thrift::protocol::TProtocol* oprot) const
   xfer += this->hostnameDoesNotContain.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("applicationIs", ::apache::thrift::protocol::T_STRUCT, 13);
+  xfer += this->applicationIs.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("applicationIsNot", ::apache::thrift::protocol::T_STRUCT, 14);
+  xfer += this->applicationIsNot.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1321,38 +1525,44 @@ void swap(AromaMatcher &a, AromaMatcher &b) {
   swap(a.hostnameIs, b.hostnameIs);
   swap(a.hostnameContains, b.hostnameContains);
   swap(a.hostnameDoesNotContain, b.hostnameDoesNotContain);
+  swap(a.applicationIs, b.applicationIs);
+  swap(a.applicationIsNot, b.applicationIsNot);
   swap(a.__isset, b.__isset);
 }
 
-AromaMatcher::AromaMatcher(const AromaMatcher& other32) {
-  all = other32.all;
-  titleIs = other32.titleIs;
-  titleIsNot = other32.titleIsNot;
-  titleContains = other32.titleContains;
-  titleDoesNotContain = other32.titleDoesNotContain;
-  bodyIs = other32.bodyIs;
-  bodyContains = other32.bodyContains;
-  bodyDoesNotContain = other32.bodyDoesNotContain;
-  urgencyEquals = other32.urgencyEquals;
-  hostnameIs = other32.hostnameIs;
-  hostnameContains = other32.hostnameContains;
-  hostnameDoesNotContain = other32.hostnameDoesNotContain;
-  __isset = other32.__isset;
+AromaMatcher::AromaMatcher(const AromaMatcher& other36) {
+  all = other36.all;
+  titleIs = other36.titleIs;
+  titleIsNot = other36.titleIsNot;
+  titleContains = other36.titleContains;
+  titleDoesNotContain = other36.titleDoesNotContain;
+  bodyIs = other36.bodyIs;
+  bodyContains = other36.bodyContains;
+  bodyDoesNotContain = other36.bodyDoesNotContain;
+  urgencyEquals = other36.urgencyEquals;
+  hostnameIs = other36.hostnameIs;
+  hostnameContains = other36.hostnameContains;
+  hostnameDoesNotContain = other36.hostnameDoesNotContain;
+  applicationIs = other36.applicationIs;
+  applicationIsNot = other36.applicationIsNot;
+  __isset = other36.__isset;
 }
-AromaMatcher& AromaMatcher::operator=(const AromaMatcher& other33) {
-  all = other33.all;
-  titleIs = other33.titleIs;
-  titleIsNot = other33.titleIsNot;
-  titleContains = other33.titleContains;
-  titleDoesNotContain = other33.titleDoesNotContain;
-  bodyIs = other33.bodyIs;
-  bodyContains = other33.bodyContains;
-  bodyDoesNotContain = other33.bodyDoesNotContain;
-  urgencyEquals = other33.urgencyEquals;
-  hostnameIs = other33.hostnameIs;
-  hostnameContains = other33.hostnameContains;
-  hostnameDoesNotContain = other33.hostnameDoesNotContain;
-  __isset = other33.__isset;
+AromaMatcher& AromaMatcher::operator=(const AromaMatcher& other37) {
+  all = other37.all;
+  titleIs = other37.titleIs;
+  titleIsNot = other37.titleIsNot;
+  titleContains = other37.titleContains;
+  titleDoesNotContain = other37.titleDoesNotContain;
+  bodyIs = other37.bodyIs;
+  bodyContains = other37.bodyContains;
+  bodyDoesNotContain = other37.bodyDoesNotContain;
+  urgencyEquals = other37.urgencyEquals;
+  hostnameIs = other37.hostnameIs;
+  hostnameContains = other37.hostnameContains;
+  hostnameDoesNotContain = other37.hostnameDoesNotContain;
+  applicationIs = other37.applicationIs;
+  applicationIsNot = other37.applicationIsNot;
+  __isset = other37.__isset;
   return *this;
 }
 void AromaMatcher::printTo(std::ostream& out) const {
@@ -1370,6 +1580,8 @@ void AromaMatcher::printTo(std::ostream& out) const {
   out << ", " << "hostnameIs=" << to_string(hostnameIs);
   out << ", " << "hostnameContains=" << to_string(hostnameContains);
   out << ", " << "hostnameDoesNotContain=" << to_string(hostnameDoesNotContain);
+  out << ", " << "applicationIs=" << to_string(applicationIs);
+  out << ", " << "applicationIsNot=" << to_string(applicationIsNot);
   out << ")";
 }
 
@@ -1462,15 +1674,15 @@ void swap(ActionForwardToSlackChannel &a, ActionForwardToSlackChannel &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionForwardToSlackChannel::ActionForwardToSlackChannel(const ActionForwardToSlackChannel& other34) {
-  slackChannel = other34.slackChannel;
-  includeBody = other34.includeBody;
-  __isset = other34.__isset;
+ActionForwardToSlackChannel::ActionForwardToSlackChannel(const ActionForwardToSlackChannel& other38) {
+  slackChannel = other38.slackChannel;
+  includeBody = other38.includeBody;
+  __isset = other38.__isset;
 }
-ActionForwardToSlackChannel& ActionForwardToSlackChannel::operator=(const ActionForwardToSlackChannel& other35) {
-  slackChannel = other35.slackChannel;
-  includeBody = other35.includeBody;
-  __isset = other35.__isset;
+ActionForwardToSlackChannel& ActionForwardToSlackChannel::operator=(const ActionForwardToSlackChannel& other39) {
+  slackChannel = other39.slackChannel;
+  includeBody = other39.includeBody;
+  __isset = other39.__isset;
   return *this;
 }
 void ActionForwardToSlackChannel::printTo(std::ostream& out) const {
@@ -1570,15 +1782,15 @@ void swap(ActionForwardToSlackUser &a, ActionForwardToSlackUser &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionForwardToSlackUser::ActionForwardToSlackUser(const ActionForwardToSlackUser& other36) {
-  slackUsername = other36.slackUsername;
-  includeBody = other36.includeBody;
-  __isset = other36.__isset;
+ActionForwardToSlackUser::ActionForwardToSlackUser(const ActionForwardToSlackUser& other40) {
+  slackUsername = other40.slackUsername;
+  includeBody = other40.includeBody;
+  __isset = other40.__isset;
 }
-ActionForwardToSlackUser& ActionForwardToSlackUser::operator=(const ActionForwardToSlackUser& other37) {
-  slackUsername = other37.slackUsername;
-  includeBody = other37.includeBody;
-  __isset = other37.__isset;
+ActionForwardToSlackUser& ActionForwardToSlackUser::operator=(const ActionForwardToSlackUser& other41) {
+  slackUsername = other41.slackUsername;
+  includeBody = other41.includeBody;
+  __isset = other41.__isset;
   return *this;
 }
 void ActionForwardToSlackUser::printTo(std::ostream& out) const {
@@ -1678,15 +1890,15 @@ void swap(ActionSendEmail &a, ActionSendEmail &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionSendEmail::ActionSendEmail(const ActionSendEmail& other38) {
-  emailAddress = other38.emailAddress;
-  includeBody = other38.includeBody;
-  __isset = other38.__isset;
+ActionSendEmail::ActionSendEmail(const ActionSendEmail& other42) {
+  emailAddress = other42.emailAddress;
+  includeBody = other42.includeBody;
+  __isset = other42.__isset;
 }
-ActionSendEmail& ActionSendEmail::operator=(const ActionSendEmail& other39) {
-  emailAddress = other39.emailAddress;
-  includeBody = other39.includeBody;
-  __isset = other39.__isset;
+ActionSendEmail& ActionSendEmail::operator=(const ActionSendEmail& other43) {
+  emailAddress = other43.emailAddress;
+  includeBody = other43.includeBody;
+  __isset = other43.__isset;
   return *this;
 }
 void ActionSendEmail::printTo(std::ostream& out) const {
@@ -1746,11 +1958,11 @@ void swap(ActionSkipInbox &a, ActionSkipInbox &b) {
   (void) b;
 }
 
-ActionSkipInbox::ActionSkipInbox(const ActionSkipInbox& other40) {
-  (void) other40;
+ActionSkipInbox::ActionSkipInbox(const ActionSkipInbox& other44) {
+  (void) other44;
 }
-ActionSkipInbox& ActionSkipInbox::operator=(const ActionSkipInbox& other41) {
-  (void) other41;
+ActionSkipInbox& ActionSkipInbox::operator=(const ActionSkipInbox& other45) {
+  (void) other45;
   return *this;
 }
 void ActionSkipInbox::printTo(std::ostream& out) const {
@@ -1808,11 +2020,11 @@ void swap(ActionDeleteMessage &a, ActionDeleteMessage &b) {
   (void) b;
 }
 
-ActionDeleteMessage::ActionDeleteMessage(const ActionDeleteMessage& other42) {
-  (void) other42;
+ActionDeleteMessage::ActionDeleteMessage(const ActionDeleteMessage& other46) {
+  (void) other46;
 }
-ActionDeleteMessage& ActionDeleteMessage::operator=(const ActionDeleteMessage& other43) {
-  (void) other43;
+ActionDeleteMessage& ActionDeleteMessage::operator=(const ActionDeleteMessage& other47) {
+  (void) other47;
   return *this;
 }
 void ActionDeleteMessage::printTo(std::ostream& out) const {
@@ -1891,13 +2103,13 @@ void swap(ActionRespondToCode &a, ActionRespondToCode &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionRespondToCode::ActionRespondToCode(const ActionRespondToCode& other44) {
-  messageToSend = other44.messageToSend;
-  __isset = other44.__isset;
+ActionRespondToCode::ActionRespondToCode(const ActionRespondToCode& other48) {
+  messageToSend = other48.messageToSend;
+  __isset = other48.__isset;
 }
-ActionRespondToCode& ActionRespondToCode::operator=(const ActionRespondToCode& other45) {
-  messageToSend = other45.messageToSend;
-  __isset = other45.__isset;
+ActionRespondToCode& ActionRespondToCode::operator=(const ActionRespondToCode& other49) {
+  messageToSend = other49.messageToSend;
+  __isset = other49.__isset;
   return *this;
 }
 void ActionRespondToCode::printTo(std::ostream& out) const {
@@ -1941,14 +2153,14 @@ uint32_t ActionForwardToUsers::read(::apache::thrift::protocol::TProtocol* iprot
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->userIds.clear();
-            uint32_t _size46;
-            ::apache::thrift::protocol::TType _etype49;
-            xfer += iprot->readListBegin(_etype49, _size46);
-            this->userIds.resize(_size46);
-            uint32_t _i50;
-            for (_i50 = 0; _i50 < _size46; ++_i50)
+            uint32_t _size50;
+            ::apache::thrift::protocol::TType _etype53;
+            xfer += iprot->readListBegin(_etype53, _size50);
+            this->userIds.resize(_size50);
+            uint32_t _i54;
+            for (_i54 = 0; _i54 < _size50; ++_i54)
             {
-              xfer += iprot->readString(this->userIds[_i50]);
+              xfer += iprot->readString(this->userIds[_i54]);
             }
             xfer += iprot->readListEnd();
           }
@@ -1977,10 +2189,10 @@ uint32_t ActionForwardToUsers::write(::apache::thrift::protocol::TProtocol* opro
   xfer += oprot->writeFieldBegin("userIds", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->userIds.size()));
-    std::vector<uuid> ::const_iterator _iter51;
-    for (_iter51 = this->userIds.begin(); _iter51 != this->userIds.end(); ++_iter51)
+    std::vector<uuid> ::const_iterator _iter55;
+    for (_iter55 = this->userIds.begin(); _iter55 != this->userIds.end(); ++_iter55)
     {
-      xfer += oprot->writeString((*_iter51));
+      xfer += oprot->writeString((*_iter55));
     }
     xfer += oprot->writeListEnd();
   }
@@ -1997,13 +2209,13 @@ void swap(ActionForwardToUsers &a, ActionForwardToUsers &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionForwardToUsers::ActionForwardToUsers(const ActionForwardToUsers& other52) {
-  userIds = other52.userIds;
-  __isset = other52.__isset;
+ActionForwardToUsers::ActionForwardToUsers(const ActionForwardToUsers& other56) {
+  userIds = other56.userIds;
+  __isset = other56.__isset;
 }
-ActionForwardToUsers& ActionForwardToUsers::operator=(const ActionForwardToUsers& other53) {
-  userIds = other53.userIds;
-  __isset = other53.__isset;
+ActionForwardToUsers& ActionForwardToUsers::operator=(const ActionForwardToUsers& other57) {
+  userIds = other57.userIds;
+  __isset = other57.__isset;
   return *this;
 }
 void ActionForwardToUsers::printTo(std::ostream& out) const {
@@ -2185,25 +2397,25 @@ void swap(AromaAction &a, AromaAction &b) {
   swap(a.__isset, b.__isset);
 }
 
-AromaAction::AromaAction(const AromaAction& other54) {
-  forwardToSlackChannel = other54.forwardToSlackChannel;
-  forwardToSlackUser = other54.forwardToSlackUser;
-  sendEmail = other54.sendEmail;
-  skipInbox = other54.skipInbox;
-  deleteMessage = other54.deleteMessage;
-  respondToCode = other54.respondToCode;
-  forwardToUsers = other54.forwardToUsers;
-  __isset = other54.__isset;
+AromaAction::AromaAction(const AromaAction& other58) {
+  forwardToSlackChannel = other58.forwardToSlackChannel;
+  forwardToSlackUser = other58.forwardToSlackUser;
+  sendEmail = other58.sendEmail;
+  skipInbox = other58.skipInbox;
+  deleteMessage = other58.deleteMessage;
+  respondToCode = other58.respondToCode;
+  forwardToUsers = other58.forwardToUsers;
+  __isset = other58.__isset;
 }
-AromaAction& AromaAction::operator=(const AromaAction& other55) {
-  forwardToSlackChannel = other55.forwardToSlackChannel;
-  forwardToSlackUser = other55.forwardToSlackUser;
-  sendEmail = other55.sendEmail;
-  skipInbox = other55.skipInbox;
-  deleteMessage = other55.deleteMessage;
-  respondToCode = other55.respondToCode;
-  forwardToUsers = other55.forwardToUsers;
-  __isset = other55.__isset;
+AromaAction& AromaAction::operator=(const AromaAction& other59) {
+  forwardToSlackChannel = other59.forwardToSlackChannel;
+  forwardToSlackUser = other59.forwardToSlackUser;
+  sendEmail = other59.sendEmail;
+  skipInbox = other59.skipInbox;
+  deleteMessage = other59.deleteMessage;
+  respondToCode = other59.respondToCode;
+  forwardToUsers = other59.forwardToUsers;
+  __isset = other59.__isset;
   return *this;
 }
 void AromaAction::printTo(std::ostream& out) const {
@@ -2323,17 +2535,17 @@ void swap(Reaction &a, Reaction &b) {
   swap(a.__isset, b.__isset);
 }
 
-Reaction::Reaction(const Reaction& other56) {
-  matcher = other56.matcher;
-  action = other56.action;
-  name = other56.name;
-  __isset = other56.__isset;
+Reaction::Reaction(const Reaction& other60) {
+  matcher = other60.matcher;
+  action = other60.action;
+  name = other60.name;
+  __isset = other60.__isset;
 }
-Reaction& Reaction::operator=(const Reaction& other57) {
-  matcher = other57.matcher;
-  action = other57.action;
-  name = other57.name;
-  __isset = other57.__isset;
+Reaction& Reaction::operator=(const Reaction& other61) {
+  matcher = other61.matcher;
+  action = other61.action;
+  name = other61.name;
+  __isset = other61.__isset;
   return *this;
 }
 void Reaction::printTo(std::ostream& out) const {

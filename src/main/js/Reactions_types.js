@@ -651,6 +651,112 @@ MatcherHostnameDoesNotContain.prototype.write = function(output) {
   return;
 };
 
+MatcherApplicationIs = function(args) {
+  this.appId = null;
+  if (args) {
+    if (args.appId !== undefined && args.appId !== null) {
+      this.appId = args.appId;
+    }
+  }
+};
+MatcherApplicationIs.prototype = {};
+MatcherApplicationIs.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.appId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherApplicationIs.prototype.write = function(output) {
+  output.writeStructBegin('MatcherApplicationIs');
+  if (this.appId !== null && this.appId !== undefined) {
+    output.writeFieldBegin('appId', Thrift.Type.STRING, 1);
+    output.writeString(this.appId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MatcherApplicationIsNot = function(args) {
+  this.appId = null;
+  if (args) {
+    if (args.appId !== undefined && args.appId !== null) {
+      this.appId = args.appId;
+    }
+  }
+};
+MatcherApplicationIsNot.prototype = {};
+MatcherApplicationIsNot.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.appId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherApplicationIsNot.prototype.write = function(output) {
+  output.writeStructBegin('MatcherApplicationIsNot');
+  if (this.appId !== null && this.appId !== undefined) {
+    output.writeFieldBegin('appId', Thrift.Type.STRING, 1);
+    output.writeString(this.appId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 AromaMatcher = function(args) {
   this.all = null;
   this.titleIs = null;
@@ -664,6 +770,8 @@ AromaMatcher = function(args) {
   this.hostnameIs = null;
   this.hostnameContains = null;
   this.hostnameDoesNotContain = null;
+  this.applicationIs = null;
+  this.applicationIsNot = null;
   if (args) {
     if (args.all !== undefined && args.all !== null) {
       this.all = new MatcherAll(args.all);
@@ -700,6 +808,12 @@ AromaMatcher = function(args) {
     }
     if (args.hostnameDoesNotContain !== undefined && args.hostnameDoesNotContain !== null) {
       this.hostnameDoesNotContain = new MatcherHostnameDoesNotContain(args.hostnameDoesNotContain);
+    }
+    if (args.applicationIs !== undefined && args.applicationIs !== null) {
+      this.applicationIs = new MatcherApplicationIs(args.applicationIs);
+    }
+    if (args.applicationIsNot !== undefined && args.applicationIsNot !== null) {
+      this.applicationIsNot = new MatcherApplicationIsNot(args.applicationIsNot);
     }
   }
 };
@@ -813,6 +927,22 @@ AromaMatcher.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 13:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationIs = new MatcherApplicationIs();
+        this.applicationIs.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 14:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationIsNot = new MatcherApplicationIsNot();
+        this.applicationIsNot.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -882,6 +1012,16 @@ AromaMatcher.prototype.write = function(output) {
   if (this.hostnameDoesNotContain !== null && this.hostnameDoesNotContain !== undefined) {
     output.writeFieldBegin('hostnameDoesNotContain', Thrift.Type.STRUCT, 12);
     this.hostnameDoesNotContain.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationIs !== null && this.applicationIs !== undefined) {
+    output.writeFieldBegin('applicationIs', Thrift.Type.STRUCT, 13);
+    this.applicationIs.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationIsNot !== null && this.applicationIsNot !== undefined) {
+    output.writeFieldBegin('applicationIsNot', Thrift.Type.STRUCT, 14);
+    this.applicationIsNot.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -52,6 +52,10 @@ class MatcherHostnameContains;
 
 class MatcherHostnameDoesNotContain;
 
+class MatcherApplicationIs;
+
+class MatcherApplicationIsNot;
+
 class AromaMatcher;
 
 class ActionForwardToSlackChannel;
@@ -621,8 +625,100 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameDoesNotC
   return out;
 }
 
+typedef struct _MatcherApplicationIs__isset {
+  _MatcherApplicationIs__isset() : appId(false) {}
+  bool appId :1;
+} _MatcherApplicationIs__isset;
+
+class MatcherApplicationIs {
+ public:
+
+  MatcherApplicationIs(const MatcherApplicationIs&);
+  MatcherApplicationIs& operator=(const MatcherApplicationIs&);
+  MatcherApplicationIs() : appId() {
+  }
+
+  virtual ~MatcherApplicationIs() throw();
+  uuid appId;
+
+  _MatcherApplicationIs__isset __isset;
+
+  void __set_appId(const uuid& val);
+
+  bool operator == (const MatcherApplicationIs & rhs) const
+  {
+    if (!(appId == rhs.appId))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherApplicationIs &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherApplicationIs & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherApplicationIs &a, MatcherApplicationIs &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherApplicationIs& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherApplicationIsNot__isset {
+  _MatcherApplicationIsNot__isset() : appId(false) {}
+  bool appId :1;
+} _MatcherApplicationIsNot__isset;
+
+class MatcherApplicationIsNot {
+ public:
+
+  MatcherApplicationIsNot(const MatcherApplicationIsNot&);
+  MatcherApplicationIsNot& operator=(const MatcherApplicationIsNot&);
+  MatcherApplicationIsNot() : appId() {
+  }
+
+  virtual ~MatcherApplicationIsNot() throw();
+  uuid appId;
+
+  _MatcherApplicationIsNot__isset __isset;
+
+  void __set_appId(const uuid& val);
+
+  bool operator == (const MatcherApplicationIsNot & rhs) const
+  {
+    if (!(appId == rhs.appId))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherApplicationIsNot &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherApplicationIsNot & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherApplicationIsNot &a, MatcherApplicationIsNot &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherApplicationIsNot& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _AromaMatcher__isset {
-  _AromaMatcher__isset() : all(false), titleIs(false), titleIsNot(false), titleContains(false), titleDoesNotContain(false), bodyIs(false), bodyContains(false), bodyDoesNotContain(false), urgencyEquals(false), hostnameIs(false), hostnameContains(false), hostnameDoesNotContain(false) {}
+  _AromaMatcher__isset() : all(false), titleIs(false), titleIsNot(false), titleContains(false), titleDoesNotContain(false), bodyIs(false), bodyContains(false), bodyDoesNotContain(false), urgencyEquals(false), hostnameIs(false), hostnameContains(false), hostnameDoesNotContain(false), applicationIs(false), applicationIsNot(false) {}
   bool all :1;
   bool titleIs :1;
   bool titleIsNot :1;
@@ -635,6 +731,8 @@ typedef struct _AromaMatcher__isset {
   bool hostnameIs :1;
   bool hostnameContains :1;
   bool hostnameDoesNotContain :1;
+  bool applicationIs :1;
+  bool applicationIsNot :1;
 } _AromaMatcher__isset;
 
 class AromaMatcher {
@@ -658,6 +756,8 @@ class AromaMatcher {
   MatcherHostnameIs hostnameIs;
   MatcherHostnameContains hostnameContains;
   MatcherHostnameDoesNotContain hostnameDoesNotContain;
+  MatcherApplicationIs applicationIs;
+  MatcherApplicationIsNot applicationIsNot;
 
   _AromaMatcher__isset __isset;
 
@@ -685,6 +785,10 @@ class AromaMatcher {
 
   void __set_hostnameDoesNotContain(const MatcherHostnameDoesNotContain& val);
 
+  void __set_applicationIs(const MatcherApplicationIs& val);
+
+  void __set_applicationIsNot(const MatcherApplicationIsNot& val);
+
   bool operator == (const AromaMatcher & rhs) const
   {
     if (!(all == rhs.all))
@@ -710,6 +814,10 @@ class AromaMatcher {
     if (!(hostnameContains == rhs.hostnameContains))
       return false;
     if (!(hostnameDoesNotContain == rhs.hostnameDoesNotContain))
+      return false;
+    if (!(applicationIs == rhs.applicationIs))
+      return false;
+    if (!(applicationIsNot == rhs.applicationIsNot))
       return false;
     return true;
   }

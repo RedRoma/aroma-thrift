@@ -13,6 +13,7 @@ var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Events_ttypes = require('./Events_types')
 var Exceptions_ttypes = require('./Exceptions_types')
+var Reactions_ttypes = require('./Reactions_types')
 
 
 var ttypes = module.exports = {};

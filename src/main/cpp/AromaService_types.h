@@ -21,6 +21,7 @@
 #include "Endpoint_types.h"
 #include "Events_types.h"
 #include "Exceptions_types.h"
+#include "Reactions_types.h"
 
 
 namespace aroma { namespace thrift { namespace service {
@@ -52,6 +53,8 @@ typedef class  ::aroma::thrift::channels::AromaChannel AromaChannel;
 typedef class  ::aroma::thrift::endpoint::Endpoint Endpoint;
 
 typedef class  ::aroma::thrift::events::HealthCheckFailed HealthCheckFailed;
+
+typedef class  ::tech::aroma::thrift::reactions::Reaction Reaction;
 
 typedef class  ::aroma::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 

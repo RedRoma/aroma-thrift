@@ -1820,6 +1820,306 @@
 
 @end
 
+@implementation AromaReactions_MatcherApplicationIs
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithAppId: (AromaReactions_uuid) appId
+{
+  self = [super init];
+  __appId = [appId retain_stub];
+  __appId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"appId"])
+  {
+    __appId = [[decoder decodeObjectForKey: @"appId"] retain_stub];
+    __appId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__appId_isset)
+  {
+    [encoder encodeObject: __appId forKey: @"appId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __appId_isset ? 2654435761 : 0;
+  if (__appId_isset)
+  {
+    hash = (hash * 31) ^ [__appId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_MatcherApplicationIs class]]) {
+    return NO;
+  }
+  AromaReactions_MatcherApplicationIs *other = (AromaReactions_MatcherApplicationIs *)anObject;
+  if ((__appId_isset != other->__appId_isset) ||
+      (__appId_isset && ((__appId || other->__appId) && ![__appId isEqual:other->__appId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__appId release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) appId {
+  return [[__appId retain_stub] autorelease_stub];
+}
+
+- (void) setAppId: (NSString *) appId {
+  [appId retain_stub];
+  [__appId release_stub];
+  __appId = appId;
+  __appId_isset = YES;
+}
+
+- (BOOL) appIdIsSet {
+  return __appId_isset;
+}
+
+- (void) unsetAppId {
+  [__appId release_stub];
+  __appId = nil;
+  __appId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setAppId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"MatcherApplicationIs"];
+  if (__appId_isset) {
+    if (__appId != nil) {
+      [outProtocol writeFieldBeginWithName: @"appId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __appId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherApplicationIs("];
+  [ms appendString: @"appId:"];
+  [ms appendFormat: @"\"%@\"", __appId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_MatcherApplicationIsNot
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithAppId: (AromaReactions_uuid) appId
+{
+  self = [super init];
+  __appId = [appId retain_stub];
+  __appId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"appId"])
+  {
+    __appId = [[decoder decodeObjectForKey: @"appId"] retain_stub];
+    __appId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__appId_isset)
+  {
+    [encoder encodeObject: __appId forKey: @"appId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __appId_isset ? 2654435761 : 0;
+  if (__appId_isset)
+  {
+    hash = (hash * 31) ^ [__appId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_MatcherApplicationIsNot class]]) {
+    return NO;
+  }
+  AromaReactions_MatcherApplicationIsNot *other = (AromaReactions_MatcherApplicationIsNot *)anObject;
+  if ((__appId_isset != other->__appId_isset) ||
+      (__appId_isset && ((__appId || other->__appId) && ![__appId isEqual:other->__appId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__appId release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) appId {
+  return [[__appId retain_stub] autorelease_stub];
+}
+
+- (void) setAppId: (NSString *) appId {
+  [appId retain_stub];
+  [__appId release_stub];
+  __appId = appId;
+  __appId_isset = YES;
+}
+
+- (BOOL) appIdIsSet {
+  return __appId_isset;
+}
+
+- (void) unsetAppId {
+  [__appId release_stub];
+  __appId = nil;
+  __appId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setAppId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"MatcherApplicationIsNot"];
+  if (__appId_isset) {
+    if (__appId != nil) {
+      [outProtocol writeFieldBeginWithName: @"appId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __appId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherApplicationIsNot("];
+  [ms appendString: @"appId:"];
+  [ms appendFormat: @"\"%@\"", __appId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaReactions_AromaMatcher
 
 - (id) init
@@ -1830,7 +2130,7 @@
   return self;
 }
 
-- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot titleContains: (AromaReactions_MatcherTitleContains *) titleContains titleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains bodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs hostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains hostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain
+- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot titleContains: (AromaReactions_MatcherTitleContains *) titleContains titleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains bodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs hostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains hostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain applicationIs: (AromaReactions_MatcherApplicationIs *) applicationIs applicationIsNot: (AromaReactions_MatcherApplicationIsNot *) applicationIsNot
 {
   self = [super init];
   __all = [all retain_stub];
@@ -1857,6 +2157,10 @@
   __hostnameContains_isset = YES;
   __hostnameDoesNotContain = [hostnameDoesNotContain retain_stub];
   __hostnameDoesNotContain_isset = YES;
+  __applicationIs = [applicationIs retain_stub];
+  __applicationIs_isset = YES;
+  __applicationIsNot = [applicationIsNot retain_stub];
+  __applicationIsNot_isset = YES;
   return self;
 }
 
@@ -1923,6 +2227,16 @@
     __hostnameDoesNotContain = [[decoder decodeObjectForKey: @"hostnameDoesNotContain"] retain_stub];
     __hostnameDoesNotContain_isset = YES;
   }
+  if ([decoder containsValueForKey: @"applicationIs"])
+  {
+    __applicationIs = [[decoder decodeObjectForKey: @"applicationIs"] retain_stub];
+    __applicationIs_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationIsNot"])
+  {
+    __applicationIsNot = [[decoder decodeObjectForKey: @"applicationIsNot"] retain_stub];
+    __applicationIsNot_isset = YES;
+  }
   return self;
 }
 
@@ -1975,6 +2289,14 @@
   if (__hostnameDoesNotContain_isset)
   {
     [encoder encodeObject: __hostnameDoesNotContain forKey: @"hostnameDoesNotContain"];
+  }
+  if (__applicationIs_isset)
+  {
+    [encoder encodeObject: __applicationIs forKey: @"applicationIs"];
+  }
+  if (__applicationIsNot_isset)
+  {
+    [encoder encodeObject: __applicationIsNot forKey: @"applicationIsNot"];
   }
 }
 
@@ -2041,6 +2363,16 @@
   {
     hash = (hash * 31) ^ [__hostnameDoesNotContain hash];
   }
+  hash = (hash * 31) ^ __applicationIs_isset ? 2654435761 : 0;
+  if (__applicationIs_isset)
+  {
+    hash = (hash * 31) ^ [__applicationIs hash];
+  }
+  hash = (hash * 31) ^ __applicationIsNot_isset ? 2654435761 : 0;
+  if (__applicationIsNot_isset)
+  {
+    hash = (hash * 31) ^ [__applicationIsNot hash];
+  }
   return hash;
 }
 
@@ -2101,6 +2433,14 @@
       (__hostnameDoesNotContain_isset && ((__hostnameDoesNotContain || other->__hostnameDoesNotContain) && ![__hostnameDoesNotContain isEqual:other->__hostnameDoesNotContain]))) {
     return NO;
   }
+  if ((__applicationIs_isset != other->__applicationIs_isset) ||
+      (__applicationIs_isset && ((__applicationIs || other->__applicationIs) && ![__applicationIs isEqual:other->__applicationIs]))) {
+    return NO;
+  }
+  if ((__applicationIsNot_isset != other->__applicationIsNot_isset) ||
+      (__applicationIsNot_isset && ((__applicationIsNot || other->__applicationIsNot) && ![__applicationIsNot isEqual:other->__applicationIsNot]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -2118,6 +2458,8 @@
   [__hostnameIs release_stub];
   [__hostnameContains release_stub];
   [__hostnameDoesNotContain release_stub];
+  [__applicationIs release_stub];
+  [__applicationIsNot release_stub];
   [super dealloc_stub];
 }
 
@@ -2373,6 +2715,48 @@
   __hostnameDoesNotContain_isset = NO;
 }
 
+- (AromaReactions_MatcherApplicationIs *) applicationIs {
+  return [[__applicationIs retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationIs: (AromaReactions_MatcherApplicationIs *) applicationIs {
+  [applicationIs retain_stub];
+  [__applicationIs release_stub];
+  __applicationIs = applicationIs;
+  __applicationIs_isset = YES;
+}
+
+- (BOOL) applicationIsIsSet {
+  return __applicationIs_isset;
+}
+
+- (void) unsetApplicationIs {
+  [__applicationIs release_stub];
+  __applicationIs = nil;
+  __applicationIs_isset = NO;
+}
+
+- (AromaReactions_MatcherApplicationIsNot *) applicationIsNot {
+  return [[__applicationIsNot retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationIsNot: (AromaReactions_MatcherApplicationIsNot *) applicationIsNot {
+  [applicationIsNot retain_stub];
+  [__applicationIsNot release_stub];
+  __applicationIsNot = applicationIsNot;
+  __applicationIsNot_isset = YES;
+}
+
+- (BOOL) applicationIsNotIsSet {
+  return __applicationIsNot_isset;
+}
+
+- (void) unsetApplicationIsNot {
+  [__applicationIsNot release_stub];
+  __applicationIsNot = nil;
+  __applicationIsNot_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2508,6 +2892,26 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 13:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_MatcherApplicationIs *fieldValue = [[AromaReactions_MatcherApplicationIs alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationIs: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 14:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_MatcherApplicationIsNot *fieldValue = [[AromaReactions_MatcherApplicationIsNot alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationIsNot: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2603,6 +3007,20 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__applicationIs_isset) {
+    if (__applicationIs != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationIs" type: TType_STRUCT fieldID: 13];
+      [__applicationIs write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationIsNot_isset) {
+    if (__applicationIsNot != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationIsNot" type: TType_STRUCT fieldID: 14];
+      [__applicationIsNot write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2637,6 +3055,10 @@
   [ms appendFormat: @"%@", __hostnameContains];
   [ms appendString: @",hostnameDoesNotContain:"];
   [ms appendFormat: @"%@", __hostnameDoesNotContain];
+  [ms appendString: @",applicationIs:"];
+  [ms appendFormat: @"%@", __applicationIs];
+  [ms appendString: @",applicationIsNot:"];
+  [ms appendFormat: @"%@", __applicationIsNot];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

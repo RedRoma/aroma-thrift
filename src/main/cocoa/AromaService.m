@@ -24,6 +24,7 @@
 #import "Endpoint.h"
 #import "Events.h"
 #import "Exceptions.h"
+#import "Reactions.h"
 
 #import "AromaService.h"
 

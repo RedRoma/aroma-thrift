@@ -6,15 +6,15 @@ namespace php   RedRoma.Aroma.AromaService
 /*
  * Defined in this File is Aroma API and all of the operations
  * that can be performed primarily by People.
- * 
+ *
  * The Aroma Service can be decomposed into multiple services:
- * 
+ *
  * + User Service
  * + Query Service
  * + iOS Service
- * 
+ *
  * but for the moment they are rolled up into one, for simplicity.
- * 
+ *
  * NOTE: An attempt has been made to order the Operations alphabetically.
  */
 
@@ -24,6 +24,7 @@ include "Channels.thrift"
 include "Endpoint.thrift"
 include "Events.thrift"
 include "Exceptions.thrift"
+include "Reactions.thrift"
 
 /*
  * These Typedefs are like import statements
@@ -51,6 +52,7 @@ typedef Aroma.User User
 typedef Channels.AromaChannel AromaChannel
 typedef Endpoint.Endpoint Endpoint
 typedef Events.HealthCheckFailed HealthCheckFailed
+typedef Reactions.Reaction Reaction
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
@@ -92,7 +94,7 @@ const int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 /** The Maximum Filesize for a Profile Picture submitted. */
 const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
-/** 
+/**
  * The Maximum number of messages included in a Message Object.
  * If truncated, the full message can be loaded using the
  * getFullMessage() operation.
@@ -147,7 +149,7 @@ struct DeleteApplicationResponse
 
 /**
  * Deletes a Message.
- * 
+ *
  * #owner
  */
 struct DeleteMessageRequest
@@ -182,7 +184,7 @@ struct DismissMessageRequest
     3: uuid applicationId;
     /** Use for Dismissing multiple Messages. */
     4: optional list<uuid> messageIds = [];
-    /** 
+    /**
      * Use for clearing the entire Inbox.
      * Note that this overrides other options.
      */
@@ -194,7 +196,7 @@ struct DismissMessageResponse
     1: optional int messagesDismissed = 0;
 }
 
- 
+
 /**
  * Defines the required information to provision
  * an Application with Aroma.
@@ -228,10 +230,10 @@ struct ProvisionApplicationResponse
  * 1: Lost or Misplaced
  * 2: Compromised (someone else has accessed it)
  * 3: Just for security reasons.
- * 
+ *
  * NOTE: This will invalidate any existing Tokens for this Application.
  * NOTE: Only an owner can perform this operation.
- * 
+ *
  * #owner
  */
 struct RegenerateApplicationTokenRequest
@@ -262,8 +264,8 @@ struct RegisterHealthCheckResponse
 }
 
 /**
- *  Removes a User's Saved Channel. 
- * It will no longer be remembered or suggested. 
+ *  Removes a User's Saved Channel.
+ * It will no longer be remembered or suggested.
  */
 struct RemoveSavedChannelRequest
 {
@@ -573,7 +575,7 @@ struct GetActivityResponse
 }
 
 /**
- * Request to get any upcoming Service Announcements 
+ * Request to get any upcoming Service Announcements
  * from the Team @ Aroma Tech.
  */
 struct GetServiceAnnouncementsRequest
@@ -622,9 +624,9 @@ struct SearchForApplicationsResponse
  */
 service AromaService
 {
-    
+
     double getApiVersion()
-    
+
     //==========================================================
     // Action Operations
     //==========================================================
@@ -634,13 +636,13 @@ service AromaService
                                                                                              3 : InvalidTokenException ex3,
                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                              5 : UnauthorizedException ex5);
-    
+
     DeleteMessageResponse deleteMessage(1 : DeleteMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                  2 : InvalidArgumentException ex2,
                                                                                  3 : InvalidTokenException ex3,
                                                                                  4 : MessageDoesNotExistException ex4,
                                                                                  5 : UnauthorizedException ex5);
-    
+
     DismissMessageResponse dismissMessage(1 : DismissMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                     2 : InvalidArgumentException ex2,
                                                                                     3 : InvalidTokenException ex3,
@@ -657,9 +659,9 @@ service AromaService
                                                                                                       3 : InvalidTokenException ex3,
                                                                                                       4 : ApplicationDoesNotExistException ex4,
                                                                                                       5 : UnauthorizedException ex5);
-                                                                                                        
 
-    
+
+
     /**
      * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
      * Keep in mind that this will invalidate any prior existing Application Tokens.
@@ -672,7 +674,7 @@ service AromaService
                                                                                                              3 : InvalidTokenException ex3,
                                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                                              5 : UnauthorizedException ex5);
-    
+
     /**
      * Register an existing Application for Health Pokes. The Aroma Service
      * will then periodically poke the Application for health status.
@@ -684,8 +686,8 @@ service AromaService
                                                                                                    3 : InvalidTokenException ex3,
                                                                                                    4 : ApplicationDoesNotExistException ex4,
                                                                                                    5 : UnauthorizedException ex5);
-    
-    
+
+
     /**
      * Removes a previously saved channel.
      */
@@ -694,9 +696,9 @@ service AromaService
                                                                                                 3 : InvalidTokenException ex3,
                                                                                                 4 : UnauthorizedException ex4,
                                                                                                 5 : ChannelDoesNotExistException ex5);
-    
-    
-    
+
+
+
     /**
      * Renew an Application Token that is close to being expired.
      * Only an "owner" can perform this operation.
@@ -708,18 +710,18 @@ service AromaService
                                                                                                          3 : InvalidTokenException ex3
                                                                                                          4 : ApplicationDoesNotExistException ex4,
                                                                                                          5 : UnauthorizedException ex5);
-                                                                                                         
-        
-                                                                                                         
+
+
+
     /**
      * Saves a user's channel for future reference.
      */
     SaveChannelResponse saveChannel(1 : SaveChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
                                                                            3 : InvalidTokenException ex3,
-                                                                           4 : UnauthorizedException ex4);                                                                                        
-   
-    
+                                                                           4 : UnauthorizedException ex4);
+
+
     /**
      * Sign in to the App and get a User Token in return.
      *
@@ -729,7 +731,7 @@ service AromaService
                                                             2 : InvalidArgumentException ex2,
                                                             3 : InvalidCredentialsException ex3,
                                                             4 : UserDoesNotExistException ex4);
-    
+
 
     /**
      * Sign Up for an Aroma Account.
@@ -739,8 +741,8 @@ service AromaService
                                                             3 : InvalidCredentialsException ex3,
                                                             4 : AccountAlreadyExistsException ex4);
 
-   
-    
+
+
     /**
      * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
      */
@@ -749,8 +751,8 @@ service AromaService
                                                                                  3 : InvalidTokenException ex3,
                                                                                  4 : UnauthorizedException ex4,
                                                                                  5 : ChannelDoesNotExistException ex5);
-    
-    
+
+
     /**
      * Subscribe to an existing application to get notifications.
      *
@@ -762,13 +764,13 @@ service AromaService
                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                              5 : UnauthorizedException ex5);
 
-    
+
     UnfollowApplicationResponse unfollowApplication(1 : UnfollowApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                    2 : InvalidArgumentException ex2,
                                                                                                    3 : InvalidTokenException ex3,
                                                                                                    4 : ApplicationDoesNotExistException ex4,
                                                                                                    5 : UnauthorizedException ex5);
-    
+
     /**
      * #owner
      */
@@ -777,23 +779,23 @@ service AromaService
                                                                                              3 : InvalidTokenException ex3,
                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                              5 : UnauthorizedException ex5);
-   
-    
-    
+
+
+
     //==========================================================
     // Query Operations
     //==========================================================
-    
+
     /**
      * Get all of the User-Related activities that have happened recently.
-     * 
+     *
      * #user
      */
     GetActivityResponse getActivity(1 : GetActivityRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
                                                                            3 : InvalidTokenException ex3);
-    
-   
+
+
     /**
      * Get details about an Application from it's unique ID
      *
@@ -804,14 +806,14 @@ service AromaService
                                                                                                 3 : InvalidTokenException ex3,
                                                                                                 4 : ApplicationDoesNotExistException ex4,
                                                                                                 5 : UnauthorizedException ex5);
-    
+
     GetBuzzResponse getBuzz(1 : GetBuzzRequest request) throws(1 : OperationFailedException ex1,
                                                                2 : InvalidArgumentException ex2,
                                                                3 : InvalidTokenException ex3,
                                                                4 : ApplicationDoesNotExistException ex4,
                                                                5 : UnauthorizedException ex5);
- 
- 
+
+
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
                                                                               3 : InvalidTokenException ex3);
@@ -848,16 +850,16 @@ service AromaService
                                                                   4 : DoesNotExistException ex4,
                                                                   5 : UnauthorizedException ex5);
 
-    
+
     GetApplicationsOwnedByResponse getApplicationsOwnedBy(1 : GetApplicationsOwnedByRequest request) throws(1 : OperationFailedException ex1,
                                                                                                             2 : InvalidArgumentException ex2,
                                                                                                             3 : InvalidTokenException ex3);
 
-    
+
     GetApplicationsFollowedByResponse getApplicationsFollowedBy(1 : GetApplicationsFollowedByRequest request) throws(1 : OperationFailedException ex1,
                                                                                                                      2 : InvalidArgumentException ex2,
                                                                                                                      3 : InvalidTokenException ex3);
- 
+
 
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
@@ -868,7 +870,7 @@ service AromaService
                                                                            3 : InvalidTokenException ex3,
                                                                            4 : UnauthorizedException ex4,
                                                                            5 : UserDoesNotExistException ex5);
-    
+
     /**
      * Perform a Search on all the applications registered to Aroma by searching for its title.
      *

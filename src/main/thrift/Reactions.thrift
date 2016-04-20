@@ -80,6 +80,16 @@ struct MatcherHostnameDoesNotContain
     1: string substring;
 }
 
+struct MatcherApplicationIs
+{
+    1: uuid appId;
+}
+
+struct MatcherApplicationIsNot
+{
+    1: uuid appId;
+}
+
 union AromaMatcher
 {
     1: MatcherAll all;
@@ -94,6 +104,8 @@ union AromaMatcher
     10: MatcherHostnameIs hostnameIs;
     11: MatcherHostnameContains hostnameContains;
     12: MatcherHostnameDoesNotContain hostnameDoesNotContain;
+    13: MatcherApplicationIs applicationIs;
+    14: MatcherApplicationIsNot applicationIsNot;
 }
 
 

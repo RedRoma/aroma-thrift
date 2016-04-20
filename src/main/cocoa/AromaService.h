@@ -24,6 +24,7 @@
 #import "Endpoint.h"
 #import "Events.h"
 #import "Exceptions.h"
+#import "Reactions.h"
 
 typedef Aroma_int AromaService_int;
 
@@ -52,6 +53,8 @@ typedef AromaChannels_AromaChannel * AromaService_AromaChannel;
 typedef AromaEndpoint_Endpoint * AromaService_Endpoint;
 
 typedef AromaEvents_HealthCheckFailed * AromaService_HealthCheckFailed;
+
+typedef AromaReactions_Reaction * AromaService_Reaction;
 
 typedef AromaException_AccountAlreadyExistsException * AromaService_AccountAlreadyExistsException;
 

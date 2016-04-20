@@ -335,6 +335,58 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
+@interface AromaReactions_MatcherApplicationIs : NSObject <TBase, NSCoding> {
+  AromaReactions_uuid __appId;
+
+  BOOL __appId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=appId, setter=setAppId:) AromaReactions_uuid appId;
+#endif
+
+- (id) init;
+- (id) initWithAppId: (AromaReactions_uuid) appId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_uuid) appId;
+- (void) setAppId: (AromaReactions_uuid) appId;
+#endif
+- (BOOL) appIdIsSet;
+
+@end
+
+@interface AromaReactions_MatcherApplicationIsNot : NSObject <TBase, NSCoding> {
+  AromaReactions_uuid __appId;
+
+  BOOL __appId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=appId, setter=setAppId:) AromaReactions_uuid appId;
+#endif
+
+- (id) init;
+- (id) initWithAppId: (AromaReactions_uuid) appId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_uuid) appId;
+- (void) setAppId: (AromaReactions_uuid) appId;
+#endif
+- (BOOL) appIdIsSet;
+
+@end
+
 @interface AromaReactions_AromaMatcher : NSObject <TBase, NSCoding> {
   AromaReactions_MatcherAll * __all;
   AromaReactions_MatcherTitleIs * __titleIs;
@@ -348,6 +400,8 @@ typedef Aroma_uuid AromaReactions_uuid;
   AromaReactions_MatcherHostnameIs * __hostnameIs;
   AromaReactions_MatcherHostnameContains * __hostnameContains;
   AromaReactions_MatcherHostnameDoesNotContain * __hostnameDoesNotContain;
+  AromaReactions_MatcherApplicationIs * __applicationIs;
+  AromaReactions_MatcherApplicationIsNot * __applicationIsNot;
 
   BOOL __all_isset;
   BOOL __titleIs_isset;
@@ -361,6 +415,8 @@ typedef Aroma_uuid AromaReactions_uuid;
   BOOL __hostnameIs_isset;
   BOOL __hostnameContains_isset;
   BOOL __hostnameDoesNotContain_isset;
+  BOOL __applicationIs_isset;
+  BOOL __applicationIsNot_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -376,10 +432,12 @@ typedef Aroma_uuid AromaReactions_uuid;
 @property (nonatomic, retain, getter=hostnameIs, setter=setHostnameIs:) AromaReactions_MatcherHostnameIs * hostnameIs;
 @property (nonatomic, retain, getter=hostnameContains, setter=setHostnameContains:) AromaReactions_MatcherHostnameContains * hostnameContains;
 @property (nonatomic, retain, getter=hostnameDoesNotContain, setter=setHostnameDoesNotContain:) AromaReactions_MatcherHostnameDoesNotContain * hostnameDoesNotContain;
+@property (nonatomic, retain, getter=applicationIs, setter=setApplicationIs:) AromaReactions_MatcherApplicationIs * applicationIs;
+@property (nonatomic, retain, getter=applicationIsNot, setter=setApplicationIsNot:) AromaReactions_MatcherApplicationIsNot * applicationIsNot;
 #endif
 
 - (id) init;
-- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot titleContains: (AromaReactions_MatcherTitleContains *) titleContains titleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains bodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs hostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains hostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain;
+- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot titleContains: (AromaReactions_MatcherTitleContains *) titleContains titleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains bodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs hostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains hostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain applicationIs: (AromaReactions_MatcherApplicationIs *) applicationIs applicationIsNot: (AromaReactions_MatcherApplicationIsNot *) applicationIsNot;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -457,6 +515,18 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) setHostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain;
 #endif
 - (BOOL) hostnameDoesNotContainIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherApplicationIs *) applicationIs;
+- (void) setApplicationIs: (AromaReactions_MatcherApplicationIs *) applicationIs;
+#endif
+- (BOOL) applicationIsIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherApplicationIsNot *) applicationIsNot;
+- (void) setApplicationIsNot: (AromaReactions_MatcherApplicationIsNot *) applicationIsNot;
+#endif
+- (BOOL) applicationIsNotIsSet;
 
 @end
 
