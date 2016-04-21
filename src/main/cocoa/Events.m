@@ -1442,6 +1442,158 @@
 
 @end
 
+@implementation AromaEvents_ApplicationUpdated
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.message = @"Application Updated";
+
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaEvents_ApplicationUpdated class]]) {
+    return NO;
+  }
+  AromaEvents_ApplicationUpdated *other = (AromaEvents_ApplicationUpdated *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ApplicationUpdated"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_ApplicationUpdated("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaEvents_HealthCheckFailed
 
 - (id) init
@@ -2389,7 +2541,7 @@
   return self;
 }
 
-- (id) initWithApplicationMessageDeleted: (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted healthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationFollowed: (AromaEvents_ApplicationFollowed *) applicationFollowed applicationDeleted: (AromaEvents_ApplicationDeleted *) applicationDeleted applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage applicationUnfollowed: (AromaEvents_ApplicationUnfollowed *) applicationUnfollowed ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest ownerAdded: (AromaEvents_OwnerAdded *) ownerAdded generalEvent: (AromaEvents_GeneralEvent *) generalEvent
+- (id) initWithApplicationMessageDeleted: (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted healthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationFollowed: (AromaEvents_ApplicationFollowed *) applicationFollowed applicationDeleted: (AromaEvents_ApplicationDeleted *) applicationDeleted applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage applicationUnfollowed: (AromaEvents_ApplicationUnfollowed *) applicationUnfollowed applicationUpdated: (AromaEvents_ApplicationUpdated *) applicationUpdated ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest ownerAdded: (AromaEvents_OwnerAdded *) ownerAdded generalEvent: (AromaEvents_GeneralEvent *) generalEvent
 {
   self = [super init];
   __applicationMessageDeleted = [applicationMessageDeleted retain_stub];
@@ -2410,6 +2562,8 @@
   __applicationSentMessage_isset = YES;
   __applicationUnfollowed = [applicationUnfollowed retain_stub];
   __applicationUnfollowed_isset = YES;
+  __applicationUpdated = [applicationUpdated retain_stub];
+  __applicationUpdated_isset = YES;
   __ownerApprovedRequest = [ownerApprovedRequest retain_stub];
   __ownerApprovedRequest_isset = YES;
   __ownerAdded = [ownerAdded retain_stub];
@@ -2467,6 +2621,11 @@
     __applicationUnfollowed = [[decoder decodeObjectForKey: @"applicationUnfollowed"] retain_stub];
     __applicationUnfollowed_isset = YES;
   }
+  if ([decoder containsValueForKey: @"applicationUpdated"])
+  {
+    __applicationUpdated = [[decoder decodeObjectForKey: @"applicationUpdated"] retain_stub];
+    __applicationUpdated_isset = YES;
+  }
   if ([decoder containsValueForKey: @"ownerApprovedRequest"])
   {
     __ownerApprovedRequest = [[decoder decodeObjectForKey: @"ownerApprovedRequest"] retain_stub];
@@ -2522,6 +2681,10 @@
   if (__applicationUnfollowed_isset)
   {
     [encoder encodeObject: __applicationUnfollowed forKey: @"applicationUnfollowed"];
+  }
+  if (__applicationUpdated_isset)
+  {
+    [encoder encodeObject: __applicationUpdated forKey: @"applicationUpdated"];
   }
   if (__ownerApprovedRequest_isset)
   {
@@ -2584,6 +2747,11 @@
   if (__applicationUnfollowed_isset)
   {
     hash = (hash * 31) ^ [__applicationUnfollowed hash];
+  }
+  hash = (hash * 31) ^ __applicationUpdated_isset ? 2654435761 : 0;
+  if (__applicationUpdated_isset)
+  {
+    hash = (hash * 31) ^ [__applicationUpdated hash];
   }
   hash = (hash * 31) ^ __ownerApprovedRequest_isset ? 2654435761 : 0;
   if (__ownerApprovedRequest_isset)
@@ -2648,6 +2816,10 @@
       (__applicationUnfollowed_isset && ((__applicationUnfollowed || other->__applicationUnfollowed) && ![__applicationUnfollowed isEqual:other->__applicationUnfollowed]))) {
     return NO;
   }
+  if ((__applicationUpdated_isset != other->__applicationUpdated_isset) ||
+      (__applicationUpdated_isset && ((__applicationUpdated || other->__applicationUpdated) && ![__applicationUpdated isEqual:other->__applicationUpdated]))) {
+    return NO;
+  }
   if ((__ownerApprovedRequest_isset != other->__ownerApprovedRequest_isset) ||
       (__ownerApprovedRequest_isset && ((__ownerApprovedRequest || other->__ownerApprovedRequest) && ![__ownerApprovedRequest isEqual:other->__ownerApprovedRequest]))) {
     return NO;
@@ -2674,6 +2846,7 @@
   [__applicationTokenRegenerated release_stub];
   [__applicationSentMessage release_stub];
   [__applicationUnfollowed release_stub];
+  [__applicationUpdated release_stub];
   [__ownerApprovedRequest release_stub];
   [__ownerAdded release_stub];
   [__generalEvent release_stub];
@@ -2869,6 +3042,27 @@
   __applicationUnfollowed_isset = NO;
 }
 
+- (AromaEvents_ApplicationUpdated *) applicationUpdated {
+  return [[__applicationUpdated retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationUpdated: (AromaEvents_ApplicationUpdated *) applicationUpdated {
+  [applicationUpdated retain_stub];
+  [__applicationUpdated release_stub];
+  __applicationUpdated = applicationUpdated;
+  __applicationUpdated_isset = YES;
+}
+
+- (BOOL) applicationUpdatedIsSet {
+  return __applicationUpdated_isset;
+}
+
+- (void) unsetApplicationUpdated {
+  [__applicationUpdated release_stub];
+  __applicationUpdated = nil;
+  __applicationUpdated_isset = NO;
+}
+
 - (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest {
   return [[__ownerApprovedRequest retain_stub] autorelease_stub];
 }
@@ -3037,6 +3231,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 13:
+        if (fieldType == TType_STRUCT) {
+          AromaEvents_ApplicationUpdated *fieldValue = [[AromaEvents_ApplicationUpdated alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationUpdated: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       case 9:
         if (fieldType == TType_STRUCT) {
           AromaEvents_OwnerApprovedRequest *fieldValue = [[AromaEvents_OwnerApprovedRequest alloc] init];
@@ -3141,6 +3345,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__applicationUpdated_isset) {
+    if (__applicationUpdated != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationUpdated" type: TType_STRUCT fieldID: 13];
+      [__applicationUpdated write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   if (__ownerApprovedRequest_isset) {
     if (__ownerApprovedRequest != nil) {
       [outProtocol writeFieldBeginWithName: @"ownerApprovedRequest" type: TType_STRUCT fieldID: 9];
@@ -3190,6 +3401,8 @@
   [ms appendFormat: @"%@", __applicationSentMessage];
   [ms appendString: @",applicationUnfollowed:"];
   [ms appendFormat: @"%@", __applicationUnfollowed];
+  [ms appendString: @",applicationUpdated:"];
+  [ms appendFormat: @"%@", __applicationUpdated];
   [ms appendString: @",ownerApprovedRequest:"];
   [ms appendFormat: @"%@", __ownerApprovedRequest];
   [ms appendString: @",ownerAdded:"];
