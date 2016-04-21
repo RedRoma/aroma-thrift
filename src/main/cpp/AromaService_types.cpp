@@ -4151,9 +4151,9 @@ void UpdateReactionsRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void UpdateReactionsRequest::__set_forApp(const uuid& val) {
-  this->forApp = val;
-__isset.forApp = true;
+void UpdateReactionsRequest::__set_forAppId(const uuid& val) {
+  this->forAppId = val;
+__isset.forAppId = true;
 }
 
 void UpdateReactionsRequest::__set_reactions(const std::vector<Reaction> & val) {
@@ -4191,8 +4191,8 @@ uint32_t UpdateReactionsRequest::read(::apache::thrift::protocol::TProtocol* ipr
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->forApp);
-          this->__isset.forApp = true;
+          xfer += iprot->readString(this->forAppId);
+          this->__isset.forAppId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -4238,9 +4238,9 @@ uint32_t UpdateReactionsRequest::write(::apache::thrift::protocol::TProtocol* op
   xfer += this->token.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.forApp) {
-    xfer += oprot->writeFieldBegin("forApp", ::apache::thrift::protocol::T_STRING, 2);
-    xfer += oprot->writeString(this->forApp);
+  if (this->__isset.forAppId) {
+    xfer += oprot->writeFieldBegin("forAppId", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->forAppId);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldBegin("reactions", ::apache::thrift::protocol::T_LIST, 3);
@@ -4263,20 +4263,20 @@ uint32_t UpdateReactionsRequest::write(::apache::thrift::protocol::TProtocol* op
 void swap(UpdateReactionsRequest &a, UpdateReactionsRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
-  swap(a.forApp, b.forApp);
+  swap(a.forAppId, b.forAppId);
   swap(a.reactions, b.reactions);
   swap(a.__isset, b.__isset);
 }
 
 UpdateReactionsRequest::UpdateReactionsRequest(const UpdateReactionsRequest& other103) {
   token = other103.token;
-  forApp = other103.forApp;
+  forAppId = other103.forAppId;
   reactions = other103.reactions;
   __isset = other103.__isset;
 }
 UpdateReactionsRequest& UpdateReactionsRequest::operator=(const UpdateReactionsRequest& other104) {
   token = other104.token;
-  forApp = other104.forApp;
+  forAppId = other104.forAppId;
   reactions = other104.reactions;
   __isset = other104.__isset;
   return *this;
@@ -4285,7 +4285,7 @@ void UpdateReactionsRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "UpdateReactionsRequest(";
   out << "token=" << to_string(token);
-  out << ", " << "forApp="; (__isset.forApp ? (out << to_string(forApp)) : (out << "<null>"));
+  out << ", " << "forAppId="; (__isset.forAppId ? (out << to_string(forAppId)) : (out << "<null>"));
   out << ", " << "reactions=" << to_string(reactions);
   out << ")";
 }

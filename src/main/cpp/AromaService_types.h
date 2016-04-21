@@ -2165,9 +2165,9 @@ inline std::ostream& operator<<(std::ostream& out, const UpdateApplicationRespon
 }
 
 typedef struct _UpdateReactionsRequest__isset {
-  _UpdateReactionsRequest__isset() : token(false), forApp(false), reactions(true) {}
+  _UpdateReactionsRequest__isset() : token(false), forAppId(false), reactions(true) {}
   bool token :1;
-  bool forApp :1;
+  bool forAppId :1;
   bool reactions :1;
 } _UpdateReactionsRequest__isset;
 
@@ -2176,20 +2176,20 @@ class UpdateReactionsRequest {
 
   UpdateReactionsRequest(const UpdateReactionsRequest&);
   UpdateReactionsRequest& operator=(const UpdateReactionsRequest&);
-  UpdateReactionsRequest() : forApp() {
+  UpdateReactionsRequest() : forAppId() {
 
   }
 
   virtual ~UpdateReactionsRequest() throw();
   UserToken token;
-  uuid forApp;
+  uuid forAppId;
   std::vector<Reaction>  reactions;
 
   _UpdateReactionsRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_forApp(const uuid& val);
+  void __set_forAppId(const uuid& val);
 
   void __set_reactions(const std::vector<Reaction> & val);
 
@@ -2197,9 +2197,9 @@ class UpdateReactionsRequest {
   {
     if (!(token == rhs.token))
       return false;
-    if (__isset.forApp != rhs.__isset.forApp)
+    if (__isset.forAppId != rhs.__isset.forAppId)
       return false;
-    else if (__isset.forApp && !(forApp == rhs.forApp))
+    else if (__isset.forAppId && !(forAppId == rhs.forAppId))
       return false;
     if (!(reactions == rhs.reactions))
       return false;

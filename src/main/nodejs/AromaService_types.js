@@ -2729,14 +2729,14 @@ UpdateApplicationResponse.prototype.write = function(output) {
 
 UpdateReactionsRequest = module.exports.UpdateReactionsRequest = function(args) {
     this.token = null;
-    this.forApp = null;
+    this.forAppId = null;
     this.reactions = [];
     if (args) {
         if (args.token !== undefined && args.token !== null) {
             this.token = new Authentication_ttypes.UserToken(args.token);
         }
-        if (args.forApp !== undefined && args.forApp !== null) {
-            this.forApp = args.forApp;
+        if (args.forAppId !== undefined && args.forAppId !== null) {
+            this.forAppId = args.forAppId;
         }
         if (args.reactions !== undefined && args.reactions !== null) {
             this.reactions = Thrift.copyList(args.reactions, [null]);
@@ -2767,7 +2767,7 @@ UpdateReactionsRequest.prototype.read = function(input) {
         break;
         case 2:
         if (ftype == Thrift.Type.STRING) {
-          this.forApp = input.readString();
+          this.forAppId = input.readString();
         } else {
           input.skip(ftype);
         }
@@ -2809,9 +2809,9 @@ UpdateReactionsRequest.prototype.write = function(output) {
       this.token.write(output);
       output.writeFieldEnd();
     }
-    if (this.forApp !== null && this.forApp !== undefined) {
-      output.writeFieldBegin('forApp', Thrift.Type.STRING, 2);
-      output.writeString(this.forApp);
+    if (this.forAppId !== null && this.forAppId !== undefined) {
+      output.writeFieldBegin('forAppId', Thrift.Type.STRING, 2);
+      output.writeString(this.forAppId);
       output.writeFieldEnd();
     }
     if (this.reactions !== null && this.reactions !== undefined) {

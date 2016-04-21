@@ -4177,7 +4177,7 @@ class UpdateReactionsRequest {
    * 
    * @var string
    */
-  public $forApp = null;
+  public $forAppId = null;
   /**
    * Completely wipes out any existing reactions and sets them to this supplied list.
    * 
@@ -4195,7 +4195,7 @@ class UpdateReactionsRequest {
           'class' => '\RedRoma\Aroma\Authentication\UserToken',
           ),
         2 => array(
-          'var' => 'forApp',
+          'var' => 'forAppId',
           'type' => TType::STRING,
           ),
         3 => array(
@@ -4213,8 +4213,8 @@ class UpdateReactionsRequest {
       if (isset($vals['token'])) {
         $this->token = $vals['token'];
       }
-      if (isset($vals['forApp'])) {
-        $this->forApp = $vals['forApp'];
+      if (isset($vals['forAppId'])) {
+        $this->forAppId = $vals['forAppId'];
       }
       if (isset($vals['reactions'])) {
         $this->reactions = $vals['reactions'];
@@ -4251,7 +4251,7 @@ class UpdateReactionsRequest {
           break;
         case 2:
           if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->forApp);
+            $xfer += $input->readString($this->forAppId);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -4295,9 +4295,9 @@ class UpdateReactionsRequest {
       $xfer += $this->token->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->forApp !== null) {
-      $xfer += $output->writeFieldBegin('forApp', TType::STRING, 2);
-      $xfer += $output->writeString($this->forApp);
+    if ($this->forAppId !== null) {
+      $xfer += $output->writeFieldBegin('forAppId', TType::STRING, 2);
+      $xfer += $output->writeString($this->forAppId);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->reactions !== null) {

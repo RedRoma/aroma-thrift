@@ -8365,13 +8365,13 @@
   return self;
 }
 
-- (id) initWithToken: (AromaService_UserToken) token forApp: (AromaService_uuid) forApp reactions: (NSMutableArray *) reactions
+- (id) initWithToken: (AromaService_UserToken) token forAppId: (AromaService_uuid) forAppId reactions: (NSMutableArray *) reactions
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
-  __forApp = [forApp retain_stub];
-  __forApp_isset = YES;
+  __forAppId = [forAppId retain_stub];
+  __forAppId_isset = YES;
   __reactions = [reactions retain_stub];
   __reactions_isset = YES;
   return self;
@@ -8385,10 +8385,10 @@
     __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
     __token_isset = YES;
   }
-  if ([decoder containsValueForKey: @"forApp"])
+  if ([decoder containsValueForKey: @"forAppId"])
   {
-    __forApp = [[decoder decodeObjectForKey: @"forApp"] retain_stub];
-    __forApp_isset = YES;
+    __forAppId = [[decoder decodeObjectForKey: @"forAppId"] retain_stub];
+    __forAppId_isset = YES;
   }
   if ([decoder containsValueForKey: @"reactions"])
   {
@@ -8404,9 +8404,9 @@
   {
     [encoder encodeObject: __token forKey: @"token"];
   }
-  if (__forApp_isset)
+  if (__forAppId_isset)
   {
-    [encoder encodeObject: __forApp forKey: @"forApp"];
+    [encoder encodeObject: __forAppId forKey: @"forAppId"];
   }
   if (__reactions_isset)
   {
@@ -8422,10 +8422,10 @@
   {
     hash = (hash * 31) ^ [__token hash];
   }
-  hash = (hash * 31) ^ __forApp_isset ? 2654435761 : 0;
-  if (__forApp_isset)
+  hash = (hash * 31) ^ __forAppId_isset ? 2654435761 : 0;
+  if (__forAppId_isset)
   {
-    hash = (hash * 31) ^ [__forApp hash];
+    hash = (hash * 31) ^ [__forAppId hash];
   }
   hash = (hash * 31) ^ __reactions_isset ? 2654435761 : 0;
   if (__reactions_isset)
@@ -8448,8 +8448,8 @@
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
-  if ((__forApp_isset != other->__forApp_isset) ||
-      (__forApp_isset && ((__forApp || other->__forApp) && ![__forApp isEqual:other->__forApp]))) {
+  if ((__forAppId_isset != other->__forAppId_isset) ||
+      (__forAppId_isset && ((__forAppId || other->__forAppId) && ![__forAppId isEqual:other->__forAppId]))) {
     return NO;
   }
   if ((__reactions_isset != other->__reactions_isset) ||
@@ -8462,7 +8462,7 @@
 - (void) dealloc
 {
   [__token release_stub];
-  [__forApp release_stub];
+  [__forAppId release_stub];
   [__reactions release_stub];
   [super dealloc_stub];
 }
@@ -8488,25 +8488,25 @@
   __token_isset = NO;
 }
 
-- (NSString *) forApp {
-  return [[__forApp retain_stub] autorelease_stub];
+- (NSString *) forAppId {
+  return [[__forAppId retain_stub] autorelease_stub];
 }
 
-- (void) setForApp: (NSString *) forApp {
-  [forApp retain_stub];
-  [__forApp release_stub];
-  __forApp = forApp;
-  __forApp_isset = YES;
+- (void) setForAppId: (NSString *) forAppId {
+  [forAppId retain_stub];
+  [__forAppId release_stub];
+  __forAppId = forAppId;
+  __forAppId_isset = YES;
 }
 
-- (BOOL) forAppIsSet {
-  return __forApp_isset;
+- (BOOL) forAppIdIsSet {
+  return __forAppId_isset;
 }
 
-- (void) unsetForApp {
-  [__forApp release_stub];
-  __forApp = nil;
-  __forApp_isset = NO;
+- (void) unsetForAppId {
+  [__forAppId release_stub];
+  __forAppId = nil;
+  __forAppId_isset = NO;
 }
 
 - (NSMutableArray *) reactions {
@@ -8558,7 +8558,7 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setForApp: fieldValue];
+          [self setForAppId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -8601,10 +8601,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__forApp_isset) {
-    if (__forApp != nil) {
-      [outProtocol writeFieldBeginWithName: @"forApp" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __forApp];
+  if (__forAppId_isset) {
+    if (__forAppId != nil) {
+      [outProtocol writeFieldBeginWithName: @"forAppId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __forAppId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -8635,8 +8635,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_UpdateReactionsRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
-  [ms appendString: @",forApp:"];
-  [ms appendFormat: @"\"%@\"", __forApp];
+  [ms appendString: @",forAppId:"];
+  [ms appendFormat: @"\"%@\"", __forAppId];
   [ms appendString: @",reactions:"];
   [ms appendFormat: @"%@", __reactions];
   [ms appendString: @")"];
