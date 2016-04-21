@@ -1599,6 +1599,14 @@ void ActionForwardToSlackChannel::__set_includeBody(const bool val) {
 __isset.includeBody = true;
 }
 
+void ActionForwardToSlackChannel::__set_slackToken(const std::string& val) {
+  this->slackToken = val;
+}
+
+void ActionForwardToSlackChannel::__set_domainName(const std::string& val) {
+  this->domainName = val;
+}
+
 uint32_t ActionForwardToSlackChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1636,6 +1644,22 @@ uint32_t ActionForwardToSlackChannel::read(::apache::thrift::protocol::TProtocol
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->slackToken);
+          this->__isset.slackToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->domainName);
+          this->__isset.domainName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1662,6 +1686,14 @@ uint32_t ActionForwardToSlackChannel::write(::apache::thrift::protocol::TProtoco
     xfer += oprot->writeBool(this->includeBody);
     xfer += oprot->writeFieldEnd();
   }
+  xfer += oprot->writeFieldBegin("slackToken", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->slackToken);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("domainName", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->domainName);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1671,17 +1703,23 @@ void swap(ActionForwardToSlackChannel &a, ActionForwardToSlackChannel &b) {
   using ::std::swap;
   swap(a.slackChannel, b.slackChannel);
   swap(a.includeBody, b.includeBody);
+  swap(a.slackToken, b.slackToken);
+  swap(a.domainName, b.domainName);
   swap(a.__isset, b.__isset);
 }
 
 ActionForwardToSlackChannel::ActionForwardToSlackChannel(const ActionForwardToSlackChannel& other38) {
   slackChannel = other38.slackChannel;
   includeBody = other38.includeBody;
+  slackToken = other38.slackToken;
+  domainName = other38.domainName;
   __isset = other38.__isset;
 }
 ActionForwardToSlackChannel& ActionForwardToSlackChannel::operator=(const ActionForwardToSlackChannel& other39) {
   slackChannel = other39.slackChannel;
   includeBody = other39.includeBody;
+  slackToken = other39.slackToken;
+  domainName = other39.domainName;
   __isset = other39.__isset;
   return *this;
 }
@@ -1690,6 +1728,8 @@ void ActionForwardToSlackChannel::printTo(std::ostream& out) const {
   out << "ActionForwardToSlackChannel(";
   out << "slackChannel=" << to_string(slackChannel);
   out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
+  out << ", " << "slackToken=" << to_string(slackToken);
+  out << ", " << "domainName=" << to_string(domainName);
   out << ")";
 }
 
@@ -1705,6 +1745,14 @@ void ActionForwardToSlackUser::__set_slackUsername(const std::string& val) {
 void ActionForwardToSlackUser::__set_includeBody(const bool val) {
   this->includeBody = val;
 __isset.includeBody = true;
+}
+
+void ActionForwardToSlackUser::__set_slackToken(const std::string& val) {
+  this->slackToken = val;
+}
+
+void ActionForwardToSlackUser::__set_domainName(const std::string& val) {
+  this->domainName = val;
 }
 
 uint32_t ActionForwardToSlackUser::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1744,6 +1792,22 @@ uint32_t ActionForwardToSlackUser::read(::apache::thrift::protocol::TProtocol* i
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->slackToken);
+          this->__isset.slackToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->domainName);
+          this->__isset.domainName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1770,6 +1834,14 @@ uint32_t ActionForwardToSlackUser::write(::apache::thrift::protocol::TProtocol* 
     xfer += oprot->writeBool(this->includeBody);
     xfer += oprot->writeFieldEnd();
   }
+  xfer += oprot->writeFieldBegin("slackToken", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->slackToken);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("domainName", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->domainName);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1779,17 +1851,23 @@ void swap(ActionForwardToSlackUser &a, ActionForwardToSlackUser &b) {
   using ::std::swap;
   swap(a.slackUsername, b.slackUsername);
   swap(a.includeBody, b.includeBody);
+  swap(a.slackToken, b.slackToken);
+  swap(a.domainName, b.domainName);
   swap(a.__isset, b.__isset);
 }
 
 ActionForwardToSlackUser::ActionForwardToSlackUser(const ActionForwardToSlackUser& other40) {
   slackUsername = other40.slackUsername;
   includeBody = other40.includeBody;
+  slackToken = other40.slackToken;
+  domainName = other40.domainName;
   __isset = other40.__isset;
 }
 ActionForwardToSlackUser& ActionForwardToSlackUser::operator=(const ActionForwardToSlackUser& other41) {
   slackUsername = other41.slackUsername;
   includeBody = other41.includeBody;
+  slackToken = other41.slackToken;
+  domainName = other41.domainName;
   __isset = other41.__isset;
   return *this;
 }
@@ -1798,6 +1876,8 @@ void ActionForwardToSlackUser::printTo(std::ostream& out) const {
   out << "ActionForwardToSlackUser(";
   out << "slackUsername=" << to_string(slackUsername);
   out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
+  out << ", " << "slackToken=" << to_string(slackToken);
+  out << ", " << "domainName=" << to_string(domainName);
   out << ")";
 }
 

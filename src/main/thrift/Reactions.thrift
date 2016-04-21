@@ -113,12 +113,16 @@ struct ActionForwardToSlackChannel
 {
     1: string slackChannel;
     2: optional bool includeBody = true;
+    3: string slackToken;
+    4: string domainName;
 }
 
 struct ActionForwardToSlackUser
 {
     1: string slackUsername;
     2: optional bool includeBody = true;
+    3: string slackToken;
+    4: string domainName;
 }
 
 struct ActionSendEmail
@@ -157,7 +161,6 @@ union AromaAction
     6: ActionRespondToCode respondToCode;
     7: ActionForwardToUsers forwardToUsers;
 }
-
 
 struct Reaction
 {

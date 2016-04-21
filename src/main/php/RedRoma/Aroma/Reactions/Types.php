@@ -1549,6 +1549,14 @@ class ActionForwardToSlackChannel {
    * @var bool
    */
   public $includeBody = true;
+  /**
+   * @var string
+   */
+  public $slackToken = null;
+  /**
+   * @var string
+   */
+  public $domainName = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -1561,6 +1569,14 @@ class ActionForwardToSlackChannel {
           'var' => 'includeBody',
           'type' => TType::BOOL,
           ),
+        3 => array(
+          'var' => 'slackToken',
+          'type' => TType::STRING,
+          ),
+        4 => array(
+          'var' => 'domainName',
+          'type' => TType::STRING,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -1569,6 +1585,12 @@ class ActionForwardToSlackChannel {
       }
       if (isset($vals['includeBody'])) {
         $this->includeBody = $vals['includeBody'];
+      }
+      if (isset($vals['slackToken'])) {
+        $this->slackToken = $vals['slackToken'];
+      }
+      if (isset($vals['domainName'])) {
+        $this->domainName = $vals['domainName'];
       }
     }
   }
@@ -1606,6 +1628,20 @@ class ActionForwardToSlackChannel {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->slackToken);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->domainName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -1629,6 +1665,16 @@ class ActionForwardToSlackChannel {
       $xfer += $output->writeBool($this->includeBody);
       $xfer += $output->writeFieldEnd();
     }
+    if ($this->slackToken !== null) {
+      $xfer += $output->writeFieldBegin('slackToken', TType::STRING, 3);
+      $xfer += $output->writeString($this->slackToken);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->domainName !== null) {
+      $xfer += $output->writeFieldBegin('domainName', TType::STRING, 4);
+      $xfer += $output->writeString($this->domainName);
+      $xfer += $output->writeFieldEnd();
+    }
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -1647,6 +1693,14 @@ class ActionForwardToSlackUser {
    * @var bool
    */
   public $includeBody = true;
+  /**
+   * @var string
+   */
+  public $slackToken = null;
+  /**
+   * @var string
+   */
+  public $domainName = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -1659,6 +1713,14 @@ class ActionForwardToSlackUser {
           'var' => 'includeBody',
           'type' => TType::BOOL,
           ),
+        3 => array(
+          'var' => 'slackToken',
+          'type' => TType::STRING,
+          ),
+        4 => array(
+          'var' => 'domainName',
+          'type' => TType::STRING,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -1667,6 +1729,12 @@ class ActionForwardToSlackUser {
       }
       if (isset($vals['includeBody'])) {
         $this->includeBody = $vals['includeBody'];
+      }
+      if (isset($vals['slackToken'])) {
+        $this->slackToken = $vals['slackToken'];
+      }
+      if (isset($vals['domainName'])) {
+        $this->domainName = $vals['domainName'];
       }
     }
   }
@@ -1704,6 +1772,20 @@ class ActionForwardToSlackUser {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->slackToken);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->domainName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -1725,6 +1807,16 @@ class ActionForwardToSlackUser {
     if ($this->includeBody !== null) {
       $xfer += $output->writeFieldBegin('includeBody', TType::BOOL, 2);
       $xfer += $output->writeBool($this->includeBody);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->slackToken !== null) {
+      $xfer += $output->writeFieldBegin('slackToken', TType::STRING, 3);
+      $xfer += $output->writeString($this->slackToken);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->domainName !== null) {
+      $xfer += $output->writeFieldBegin('domainName', TType::STRING, 4);
+      $xfer += $output->writeString($this->domainName);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

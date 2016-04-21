@@ -533,18 +533,24 @@ typedef Aroma_uuid AromaReactions_uuid;
 @interface AromaReactions_ActionForwardToSlackChannel : NSObject <TBase, NSCoding> {
   NSString * __slackChannel;
   BOOL __includeBody;
+  NSString * __slackToken;
+  NSString * __domainName;
 
   BOOL __slackChannel_isset;
   BOOL __includeBody_isset;
+  BOOL __slackToken_isset;
+  BOOL __domainName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=slackChannel, setter=setSlackChannel:) NSString * slackChannel;
 @property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
+@property (nonatomic, retain, getter=slackToken, setter=setSlackToken:) NSString * slackToken;
+@property (nonatomic, retain, getter=domainName, setter=setDomainName:) NSString * domainName;
 #endif
 
 - (id) init;
-- (id) initWithSlackChannel: (NSString *) slackChannel includeBody: (BOOL) includeBody;
+- (id) initWithSlackChannel: (NSString *) slackChannel includeBody: (BOOL) includeBody slackToken: (NSString *) slackToken domainName: (NSString *) domainName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -563,23 +569,41 @@ typedef Aroma_uuid AromaReactions_uuid;
 #endif
 - (BOOL) includeBodyIsSet;
 
+#if !__has_feature(objc_arc)
+- (NSString *) slackToken;
+- (void) setSlackToken: (NSString *) slackToken;
+#endif
+- (BOOL) slackTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) domainName;
+- (void) setDomainName: (NSString *) domainName;
+#endif
+- (BOOL) domainNameIsSet;
+
 @end
 
 @interface AromaReactions_ActionForwardToSlackUser : NSObject <TBase, NSCoding> {
   NSString * __slackUsername;
   BOOL __includeBody;
+  NSString * __slackToken;
+  NSString * __domainName;
 
   BOOL __slackUsername_isset;
   BOOL __includeBody_isset;
+  BOOL __slackToken_isset;
+  BOOL __domainName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=slackUsername, setter=setSlackUsername:) NSString * slackUsername;
 @property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
+@property (nonatomic, retain, getter=slackToken, setter=setSlackToken:) NSString * slackToken;
+@property (nonatomic, retain, getter=domainName, setter=setDomainName:) NSString * domainName;
 #endif
 
 - (id) init;
-- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody;
+- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody slackToken: (NSString *) slackToken domainName: (NSString *) domainName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -597,6 +621,18 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) setIncludeBody: (BOOL) includeBody;
 #endif
 - (BOOL) includeBodyIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) slackToken;
+- (void) setSlackToken: (NSString *) slackToken;
+#endif
+- (BOOL) slackTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) domainName;
+- (void) setDomainName: (NSString *) domainName;
+#endif
+- (BOOL) domainNameIsSet;
 
 @end
 

@@ -1038,12 +1038,20 @@ AromaMatcher.prototype.write = function(output) {
 ActionForwardToSlackChannel = module.exports.ActionForwardToSlackChannel = function(args) {
   this.slackChannel = null;
   this.includeBody = true;
+  this.slackToken = null;
+  this.domainName = null;
   if (args) {
     if (args.slackChannel !== undefined && args.slackChannel !== null) {
       this.slackChannel = args.slackChannel;
     }
     if (args.includeBody !== undefined && args.includeBody !== null) {
       this.includeBody = args.includeBody;
+    }
+    if (args.slackToken !== undefined && args.slackToken !== null) {
+      this.slackToken = args.slackToken;
+    }
+    if (args.domainName !== undefined && args.domainName !== null) {
+      this.domainName = args.domainName;
     }
   }
 };
@@ -1075,6 +1083,20 @@ ActionForwardToSlackChannel.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.slackToken = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.domainName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1096,6 +1118,16 @@ ActionForwardToSlackChannel.prototype.write = function(output) {
     output.writeBool(this.includeBody);
     output.writeFieldEnd();
   }
+  if (this.slackToken !== null && this.slackToken !== undefined) {
+    output.writeFieldBegin('slackToken', Thrift.Type.STRING, 3);
+    output.writeString(this.slackToken);
+    output.writeFieldEnd();
+  }
+  if (this.domainName !== null && this.domainName !== undefined) {
+    output.writeFieldBegin('domainName', Thrift.Type.STRING, 4);
+    output.writeString(this.domainName);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -1104,12 +1136,20 @@ ActionForwardToSlackChannel.prototype.write = function(output) {
 ActionForwardToSlackUser = module.exports.ActionForwardToSlackUser = function(args) {
   this.slackUsername = null;
   this.includeBody = true;
+  this.slackToken = null;
+  this.domainName = null;
   if (args) {
     if (args.slackUsername !== undefined && args.slackUsername !== null) {
       this.slackUsername = args.slackUsername;
     }
     if (args.includeBody !== undefined && args.includeBody !== null) {
       this.includeBody = args.includeBody;
+    }
+    if (args.slackToken !== undefined && args.slackToken !== null) {
+      this.slackToken = args.slackToken;
+    }
+    if (args.domainName !== undefined && args.domainName !== null) {
+      this.domainName = args.domainName;
     }
   }
 };
@@ -1141,6 +1181,20 @@ ActionForwardToSlackUser.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.slackToken = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.domainName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1160,6 +1214,16 @@ ActionForwardToSlackUser.prototype.write = function(output) {
   if (this.includeBody !== null && this.includeBody !== undefined) {
     output.writeFieldBegin('includeBody', Thrift.Type.BOOL, 2);
     output.writeBool(this.includeBody);
+    output.writeFieldEnd();
+  }
+  if (this.slackToken !== null && this.slackToken !== undefined) {
+    output.writeFieldBegin('slackToken', Thrift.Type.STRING, 3);
+    output.writeString(this.slackToken);
+    output.writeFieldEnd();
+  }
+  if (this.domainName !== null && this.domainName !== undefined) {
+    output.writeFieldBegin('domainName', Thrift.Type.STRING, 4);
+    output.writeString(this.domainName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

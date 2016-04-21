@@ -3077,13 +3077,17 @@
   return self;
 }
 
-- (id) initWithSlackChannel: (NSString *) slackChannel includeBody: (BOOL) includeBody
+- (id) initWithSlackChannel: (NSString *) slackChannel includeBody: (BOOL) includeBody slackToken: (NSString *) slackToken domainName: (NSString *) domainName
 {
   self = [super init];
   __slackChannel = [slackChannel retain_stub];
   __slackChannel_isset = YES;
   __includeBody = includeBody;
   __includeBody_isset = YES;
+  __slackToken = [slackToken retain_stub];
+  __slackToken_isset = YES;
+  __domainName = [domainName retain_stub];
+  __domainName_isset = YES;
   return self;
 }
 
@@ -3100,6 +3104,16 @@
     __includeBody = [decoder decodeBoolForKey: @"includeBody"];
     __includeBody_isset = YES;
   }
+  if ([decoder containsValueForKey: @"slackToken"])
+  {
+    __slackToken = [[decoder decodeObjectForKey: @"slackToken"] retain_stub];
+    __slackToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"domainName"])
+  {
+    __domainName = [[decoder decodeObjectForKey: @"domainName"] retain_stub];
+    __domainName_isset = YES;
+  }
   return self;
 }
 
@@ -3112,6 +3126,14 @@
   if (__includeBody_isset)
   {
     [encoder encodeBool: __includeBody forKey: @"includeBody"];
+  }
+  if (__slackToken_isset)
+  {
+    [encoder encodeObject: __slackToken forKey: @"slackToken"];
+  }
+  if (__domainName_isset)
+  {
+    [encoder encodeObject: __domainName forKey: @"domainName"];
   }
 }
 
@@ -3127,6 +3149,16 @@
   if (__includeBody_isset)
   {
     hash = (hash * 31) ^ [@(__includeBody) hash];
+  }
+  hash = (hash * 31) ^ __slackToken_isset ? 2654435761 : 0;
+  if (__slackToken_isset)
+  {
+    hash = (hash * 31) ^ [__slackToken hash];
+  }
+  hash = (hash * 31) ^ __domainName_isset ? 2654435761 : 0;
+  if (__domainName_isset)
+  {
+    hash = (hash * 31) ^ [__domainName hash];
   }
   return hash;
 }
@@ -3148,12 +3180,22 @@
       (__includeBody_isset && (__includeBody != other->__includeBody))) {
     return NO;
   }
+  if ((__slackToken_isset != other->__slackToken_isset) ||
+      (__slackToken_isset && ((__slackToken || other->__slackToken) && ![__slackToken isEqual:other->__slackToken]))) {
+    return NO;
+  }
+  if ((__domainName_isset != other->__domainName_isset) ||
+      (__domainName_isset && ((__domainName || other->__domainName) && ![__domainName isEqual:other->__domainName]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__slackChannel release_stub];
+  [__slackToken release_stub];
+  [__domainName release_stub];
   [super dealloc_stub];
 }
 
@@ -3195,6 +3237,48 @@
   __includeBody_isset = NO;
 }
 
+- (NSString *) slackToken {
+  return [[__slackToken retain_stub] autorelease_stub];
+}
+
+- (void) setSlackToken: (NSString *) slackToken {
+  [slackToken retain_stub];
+  [__slackToken release_stub];
+  __slackToken = slackToken;
+  __slackToken_isset = YES;
+}
+
+- (BOOL) slackTokenIsSet {
+  return __slackToken_isset;
+}
+
+- (void) unsetSlackToken {
+  [__slackToken release_stub];
+  __slackToken = nil;
+  __slackToken_isset = NO;
+}
+
+- (NSString *) domainName {
+  return [[__domainName retain_stub] autorelease_stub];
+}
+
+- (void) setDomainName: (NSString *) domainName {
+  [domainName retain_stub];
+  [__domainName release_stub];
+  __domainName = domainName;
+  __domainName_isset = YES;
+}
+
+- (BOOL) domainNameIsSet {
+  return __domainName_isset;
+}
+
+- (void) unsetDomainName {
+  [__domainName release_stub];
+  __domainName = nil;
+  __domainName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3226,6 +3310,22 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setSlackToken: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setDomainName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3249,6 +3349,20 @@
     [outProtocol writeBool: __includeBody];
     [outProtocol writeFieldEnd];
   }
+  if (__slackToken_isset) {
+    if (__slackToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"slackToken" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __slackToken];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__domainName_isset) {
+    if (__domainName != nil) {
+      [outProtocol writeFieldBeginWithName: @"domainName" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __domainName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3263,6 +3377,10 @@
   [ms appendFormat: @"\"%@\"", __slackChannel];
   [ms appendString: @",includeBody:"];
   [ms appendFormat: @"%i", __includeBody];
+  [ms appendString: @",slackToken:"];
+  [ms appendFormat: @"\"%@\"", __slackToken];
+  [ms appendString: @",domainName:"];
+  [ms appendFormat: @"\"%@\"", __domainName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -3281,13 +3399,17 @@
   return self;
 }
 
-- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody
+- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody slackToken: (NSString *) slackToken domainName: (NSString *) domainName
 {
   self = [super init];
   __slackUsername = [slackUsername retain_stub];
   __slackUsername_isset = YES;
   __includeBody = includeBody;
   __includeBody_isset = YES;
+  __slackToken = [slackToken retain_stub];
+  __slackToken_isset = YES;
+  __domainName = [domainName retain_stub];
+  __domainName_isset = YES;
   return self;
 }
 
@@ -3304,6 +3426,16 @@
     __includeBody = [decoder decodeBoolForKey: @"includeBody"];
     __includeBody_isset = YES;
   }
+  if ([decoder containsValueForKey: @"slackToken"])
+  {
+    __slackToken = [[decoder decodeObjectForKey: @"slackToken"] retain_stub];
+    __slackToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"domainName"])
+  {
+    __domainName = [[decoder decodeObjectForKey: @"domainName"] retain_stub];
+    __domainName_isset = YES;
+  }
   return self;
 }
 
@@ -3316,6 +3448,14 @@
   if (__includeBody_isset)
   {
     [encoder encodeBool: __includeBody forKey: @"includeBody"];
+  }
+  if (__slackToken_isset)
+  {
+    [encoder encodeObject: __slackToken forKey: @"slackToken"];
+  }
+  if (__domainName_isset)
+  {
+    [encoder encodeObject: __domainName forKey: @"domainName"];
   }
 }
 
@@ -3331,6 +3471,16 @@
   if (__includeBody_isset)
   {
     hash = (hash * 31) ^ [@(__includeBody) hash];
+  }
+  hash = (hash * 31) ^ __slackToken_isset ? 2654435761 : 0;
+  if (__slackToken_isset)
+  {
+    hash = (hash * 31) ^ [__slackToken hash];
+  }
+  hash = (hash * 31) ^ __domainName_isset ? 2654435761 : 0;
+  if (__domainName_isset)
+  {
+    hash = (hash * 31) ^ [__domainName hash];
   }
   return hash;
 }
@@ -3352,12 +3502,22 @@
       (__includeBody_isset && (__includeBody != other->__includeBody))) {
     return NO;
   }
+  if ((__slackToken_isset != other->__slackToken_isset) ||
+      (__slackToken_isset && ((__slackToken || other->__slackToken) && ![__slackToken isEqual:other->__slackToken]))) {
+    return NO;
+  }
+  if ((__domainName_isset != other->__domainName_isset) ||
+      (__domainName_isset && ((__domainName || other->__domainName) && ![__domainName isEqual:other->__domainName]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__slackUsername release_stub];
+  [__slackToken release_stub];
+  [__domainName release_stub];
   [super dealloc_stub];
 }
 
@@ -3399,6 +3559,48 @@
   __includeBody_isset = NO;
 }
 
+- (NSString *) slackToken {
+  return [[__slackToken retain_stub] autorelease_stub];
+}
+
+- (void) setSlackToken: (NSString *) slackToken {
+  [slackToken retain_stub];
+  [__slackToken release_stub];
+  __slackToken = slackToken;
+  __slackToken_isset = YES;
+}
+
+- (BOOL) slackTokenIsSet {
+  return __slackToken_isset;
+}
+
+- (void) unsetSlackToken {
+  [__slackToken release_stub];
+  __slackToken = nil;
+  __slackToken_isset = NO;
+}
+
+- (NSString *) domainName {
+  return [[__domainName retain_stub] autorelease_stub];
+}
+
+- (void) setDomainName: (NSString *) domainName {
+  [domainName retain_stub];
+  [__domainName release_stub];
+  __domainName = domainName;
+  __domainName_isset = YES;
+}
+
+- (BOOL) domainNameIsSet {
+  return __domainName_isset;
+}
+
+- (void) unsetDomainName {
+  [__domainName release_stub];
+  __domainName = nil;
+  __domainName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3430,6 +3632,22 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setSlackToken: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setDomainName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3453,6 +3671,20 @@
     [outProtocol writeBool: __includeBody];
     [outProtocol writeFieldEnd];
   }
+  if (__slackToken_isset) {
+    if (__slackToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"slackToken" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __slackToken];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__domainName_isset) {
+    if (__domainName != nil) {
+      [outProtocol writeFieldBeginWithName: @"domainName" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __domainName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3467,6 +3699,10 @@
   [ms appendFormat: @"\"%@\"", __slackUsername];
   [ms appendString: @",includeBody:"];
   [ms appendFormat: @"%i", __includeBody];
+  [ms appendString: @",slackToken:"];
+  [ms appendFormat: @"\"%@\"", __slackToken];
+  [ms appendString: @",domainName:"];
+  [ms appendFormat: @"\"%@\"", __domainName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
