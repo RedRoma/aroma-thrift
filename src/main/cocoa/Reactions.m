@@ -4915,6 +4915,8 @@
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
   self.matchers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
+  self.actions = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
 #endif
   return self;
 }

@@ -1273,7 +1273,7 @@ inline std::ostream& operator<<(std::ostream& out, const AromaAction& obj)
 }
 
 typedef struct _Reaction__isset {
-  _Reaction__isset() : matchers(true), actions(false), name(false) {}
+  _Reaction__isset() : matchers(true), actions(true), name(false) {}
   bool matchers :1;
   bool actions :1;
   bool name :1;
@@ -1285,6 +1285,7 @@ class Reaction {
   Reaction(const Reaction&);
   Reaction& operator=(const Reaction&);
   Reaction() : name() {
+
 
   }
 

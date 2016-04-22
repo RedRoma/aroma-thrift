@@ -1630,7 +1630,7 @@ AromaAction.prototype.write = function(output) {
 
 Reaction = function(args) {
   this.matchers = [];
-  this.actions = null;
+  this.actions = [];
   this.name = null;
   if (args) {
     if (args.matchers !== undefined && args.matchers !== null) {

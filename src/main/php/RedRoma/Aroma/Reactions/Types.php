@@ -2460,7 +2460,8 @@ class Reaction {
   /**
    * @var \RedRoma\Aroma\Reactions\AromaAction[]
    */
-  public $actions = null;
+  public $actions = array(
+  );
   /**
    * @var string
    */
