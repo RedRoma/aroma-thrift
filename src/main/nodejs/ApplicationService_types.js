@@ -235,4 +235,5 @@ ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'application-srv.aroma.tech','port' : 7002});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'application-srv.beta.aroma.tech','port' : 7002});
+ttypes.MAX_TITLE_LENGTH = 40;
 ttypes.MAX_CHARACTERS_IN_BODY = 15000;

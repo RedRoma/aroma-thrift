@@ -731,6 +731,7 @@
 static ApplicationService_int ApplicationService_SERVICE_PORT = 7002;
 static AromaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
 static AromaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
+static ApplicationService_int ApplicationService_MAX_TITLE_LENGTH = 40;
 static ApplicationService_int ApplicationService_MAX_CHARACTERS_IN_BODY = 15000;
 
 @implementation ApplicationService_ApplicationServiceConstants
@@ -754,6 +755,9 @@ static ApplicationService_int ApplicationService_MAX_CHARACTERS_IN_BODY = 15000;
 }
 + (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return ApplicationService_BETA_ENDPOINT;
+}
++ (ApplicationService_int) MAX_TITLE_LENGTH{
+  return ApplicationService_MAX_TITLE_LENGTH;
 }
 + (ApplicationService_int) MAX_CHARACTERS_IN_BODY{
   return ApplicationService_MAX_CHARACTERS_IN_BODY;

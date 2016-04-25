@@ -18,6 +18,7 @@ class ApplicationServiceConstants {
   int SERVICE_PORT;
    ::aroma::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
    ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
+  int MAX_TITLE_LENGTH;
   int MAX_CHARACTERS_IN_BODY;
 };
 
