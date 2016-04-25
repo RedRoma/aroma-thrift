@@ -434,9 +434,8 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherBodyDoesNotConta
 }
 
 typedef struct _MatcherUrgencyIs__isset {
-  _MatcherUrgencyIs__isset() : urgency(false), urgencies(false) {}
-  bool urgency :1;
-  bool urgencies :1;
+  _MatcherUrgencyIs__isset() : possibleUrgencies(true) {}
+  bool possibleUrgencies :1;
 } _MatcherUrgencyIs__isset;
 
 class MatcherUrgencyIs {
@@ -444,26 +443,20 @@ class MatcherUrgencyIs {
 
   MatcherUrgencyIs(const MatcherUrgencyIs&);
   MatcherUrgencyIs& operator=(const MatcherUrgencyIs&);
-  MatcherUrgencyIs() : urgency(( ::tech::aroma::thrift::Urgency::type)0) {
+  MatcherUrgencyIs() {
+
   }
 
   virtual ~MatcherUrgencyIs() throw();
-   ::tech::aroma::thrift::Urgency::type urgency;
-  std::vector< ::tech::aroma::thrift::Urgency::type>  urgencies;
+  std::set< ::tech::aroma::thrift::Urgency::type>  possibleUrgencies;
 
   _MatcherUrgencyIs__isset __isset;
 
-  void __set_urgency(const  ::tech::aroma::thrift::Urgency::type val);
-
-  void __set_urgencies(const std::vector< ::tech::aroma::thrift::Urgency::type> & val);
+  void __set_possibleUrgencies(const std::set< ::tech::aroma::thrift::Urgency::type> & val);
 
   bool operator == (const MatcherUrgencyIs & rhs) const
   {
-    if (!(urgency == rhs.urgency))
-      return false;
-    if (__isset.urgencies != rhs.__isset.urgencies)
-      return false;
-    else if (__isset.urgencies && !(urgencies == rhs.urgencies))
+    if (!(possibleUrgencies == rhs.possibleUrgencies))
       return false;
     return true;
   }

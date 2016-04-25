@@ -223,20 +223,17 @@ typedef Aroma_uuid AromaReactions_uuid;
 @end
 
 @interface AromaReactions_MatcherUrgencyIs : NSObject <TBase, NSCoding> {
-  int __urgency;
-  NSMutableArray * __urgencies;
+  NSMutableSet * __possibleUrgencies;
 
-  BOOL __urgency_isset;
-  BOOL __urgencies_isset;
+  BOOL __possibleUrgencies_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
-@property (nonatomic, retain, getter=urgencies, setter=setUrgencies:) NSMutableArray * urgencies;
+@property (nonatomic, retain, getter=possibleUrgencies, setter=setPossibleUrgencies:) NSMutableSet * possibleUrgencies;
 #endif
 
 - (id) init;
-- (id) initWithUrgency: (int) urgency urgencies: (NSMutableArray *) urgencies;
+- (id) initWithPossibleUrgencies: (NSMutableSet *) possibleUrgencies;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -244,16 +241,10 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (int) urgency;
-- (void) setUrgency: (int) urgency;
+- (NSMutableSet *) possibleUrgencies;
+- (void) setPossibleUrgencies: (NSMutableSet *) possibleUrgencies;
 #endif
-- (BOOL) urgencyIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) urgencies;
-- (void) setUrgencies: (NSMutableArray *) urgencies;
-#endif
-- (BOOL) urgenciesIsSet;
+- (BOOL) possibleUrgenciesIsSet;
 
 @end
 

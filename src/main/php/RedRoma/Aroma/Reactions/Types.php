@@ -599,24 +599,17 @@ class MatcherUrgencyIs {
   static $_TSPEC;
 
   /**
-   * @var int
-   */
-  public $urgency = null;
-  /**
    * @var int[]
    */
-  public $urgencies = null;
+  public $possibleUrgencies = array(
+  );
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
         1 => array(
-          'var' => 'urgency',
-          'type' => TType::I32,
-          ),
-        2 => array(
-          'var' => 'urgencies',
-          'type' => TType::LST,
+          'var' => 'possibleUrgencies',
+          'type' => TType::SET,
           'etype' => TType::I32,
           'elem' => array(
             'type' => TType::I32,
@@ -625,11 +618,8 @@ class MatcherUrgencyIs {
         );
     }
     if (is_array($vals)) {
-      if (isset($vals['urgency'])) {
-        $this->urgency = $vals['urgency'];
-      }
-      if (isset($vals['urgencies'])) {
-        $this->urgencies = $vals['urgencies'];
+      if (isset($vals['possibleUrgencies'])) {
+        $this->possibleUrgencies = $vals['possibleUrgencies'];
       }
     }
   }
@@ -654,25 +644,22 @@ class MatcherUrgencyIs {
       switch ($fid)
       {
         case 1:
-          if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->urgency);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::LST) {
-            $this->urgencies = array();
+          if ($ftype == TType::SET) {
+            $this->possibleUrgencies = array();
             $_size0 = 0;
             $_etype3 = 0;
-            $xfer += $input->readListBegin($_etype3, $_size0);
+            $xfer += $input->readSetBegin($_etype3, $_size0);
             for ($_i4 = 0; $_i4 < $_size0; ++$_i4)
             {
               $elem5 = null;
               $xfer += $input->readI32($elem5);
-              $this->urgencies []= $elem5;
+              if (is_scalar($elem5)) {
+                $this->possibleUrgencies[$elem5] = true;
+              } else {
+                $this->possibleUrgencies []= $elem5;
+              }
             }
-            $xfer += $input->readListEnd();
+            $xfer += $input->readSetEnd();
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -690,25 +677,24 @@ class MatcherUrgencyIs {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('MatcherUrgencyIs');
-    if ($this->urgency !== null) {
-      $xfer += $output->writeFieldBegin('urgency', TType::I32, 1);
-      $xfer += $output->writeI32($this->urgency);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->urgencies !== null) {
-      if (!is_array($this->urgencies)) {
+    if ($this->possibleUrgencies !== null) {
+      if (!is_array($this->possibleUrgencies)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('urgencies', TType::LST, 2);
+      $xfer += $output->writeFieldBegin('possibleUrgencies', TType::SET, 1);
       {
-        $output->writeListBegin(TType::I32, count($this->urgencies));
+        $output->writeSetBegin(TType::I32, count($this->possibleUrgencies));
         {
-          foreach ($this->urgencies as $iter6)
+          foreach ($this->possibleUrgencies as $iter6 => $iter7)
           {
+            if (is_scalar($iter7)) {
             $xfer += $output->writeI32($iter6);
+            } else {
+            $xfer += $output->writeI32($iter7);
+            }
           }
         }
-        $output->writeListEnd();
+        $output->writeSetEnd();
       }
       $xfer += $output->writeFieldEnd();
     }
@@ -2150,14 +2136,14 @@ class ActionForwardToUsers {
         case 1:
           if ($ftype == TType::LST) {
             $this->userIds = array();
-            $_size7 = 0;
-            $_etype10 = 0;
-            $xfer += $input->readListBegin($_etype10, $_size7);
-            for ($_i11 = 0; $_i11 < $_size7; ++$_i11)
+            $_size8 = 0;
+            $_etype11 = 0;
+            $xfer += $input->readListBegin($_etype11, $_size8);
+            for ($_i12 = 0; $_i12 < $_size8; ++$_i12)
             {
-              $elem12 = null;
-              $xfer += $input->readString($elem12);
-              $this->userIds []= $elem12;
+              $elem13 = null;
+              $xfer += $input->readString($elem13);
+              $this->userIds []= $elem13;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -2185,9 +2171,9 @@ class ActionForwardToUsers {
       {
         $output->writeListBegin(TType::STRING, count($this->userIds));
         {
-          foreach ($this->userIds as $iter13)
+          foreach ($this->userIds as $iter14)
           {
-            $xfer += $output->writeString($iter13);
+            $xfer += $output->writeString($iter14);
           }
         }
         $output->writeListEnd();
@@ -2529,15 +2515,15 @@ class Reaction {
         case 1:
           if ($ftype == TType::LST) {
             $this->matchers = array();
-            $_size14 = 0;
-            $_etype17 = 0;
-            $xfer += $input->readListBegin($_etype17, $_size14);
-            for ($_i18 = 0; $_i18 < $_size14; ++$_i18)
+            $_size15 = 0;
+            $_etype18 = 0;
+            $xfer += $input->readListBegin($_etype18, $_size15);
+            for ($_i19 = 0; $_i19 < $_size15; ++$_i19)
             {
-              $elem19 = null;
-              $elem19 = new \RedRoma\Aroma\Reactions\AromaMatcher();
-              $xfer += $elem19->read($input);
-              $this->matchers []= $elem19;
+              $elem20 = null;
+              $elem20 = new \RedRoma\Aroma\Reactions\AromaMatcher();
+              $xfer += $elem20->read($input);
+              $this->matchers []= $elem20;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -2547,15 +2533,15 @@ class Reaction {
         case 2:
           if ($ftype == TType::LST) {
             $this->actions = array();
-            $_size20 = 0;
-            $_etype23 = 0;
-            $xfer += $input->readListBegin($_etype23, $_size20);
-            for ($_i24 = 0; $_i24 < $_size20; ++$_i24)
+            $_size21 = 0;
+            $_etype24 = 0;
+            $xfer += $input->readListBegin($_etype24, $_size21);
+            for ($_i25 = 0; $_i25 < $_size21; ++$_i25)
             {
-              $elem25 = null;
-              $elem25 = new \RedRoma\Aroma\Reactions\AromaAction();
-              $xfer += $elem25->read($input);
-              $this->actions []= $elem25;
+              $elem26 = null;
+              $elem26 = new \RedRoma\Aroma\Reactions\AromaAction();
+              $xfer += $elem26->read($input);
+              $this->actions []= $elem26;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -2590,9 +2576,9 @@ class Reaction {
       {
         $output->writeListBegin(TType::STRUCT, count($this->matchers));
         {
-          foreach ($this->matchers as $iter26)
+          foreach ($this->matchers as $iter27)
           {
-            $xfer += $iter26->write($output);
+            $xfer += $iter27->write($output);
           }
         }
         $output->writeListEnd();
@@ -2607,9 +2593,9 @@ class Reaction {
       {
         $output->writeListBegin(TType::STRUCT, count($this->actions));
         {
-          foreach ($this->actions as $iter27)
+          foreach ($this->actions as $iter28)
           {
-            $xfer += $iter27->write($output);
+            $xfer += $iter28->write($output);
           }
         }
         $output->writeListEnd();

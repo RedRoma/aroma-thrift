@@ -411,14 +411,10 @@ MatcherBodyDoesNotContain.prototype.write = function(output) {
 };
 
 MatcherUrgencyIs = module.exports.MatcherUrgencyIs = function(args) {
-  this.urgency = null;
-  this.urgencies = null;
+  this.possibleUrgencies = [];
   if (args) {
-    if (args.urgency !== undefined && args.urgency !== null) {
-      this.urgency = args.urgency;
-    }
-    if (args.urgencies !== undefined && args.urgencies !== null) {
-      this.urgencies = Thrift.copyList(args.urgencies, [null]);
+    if (args.possibleUrgencies !== undefined && args.possibleUrgencies !== null) {
+      this.possibleUrgencies = Thrift.copyList(args.possibleUrgencies, [null]);
     }
   }
 };
@@ -437,32 +433,28 @@ MatcherUrgencyIs.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.I32) {
-        this.urgency = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.LIST) {
+      if (ftype == Thrift.Type.SET) {
         var _size0 = 0;
         var _rtmp34;
-        this.urgencies = [];
+        this.possibleUrgencies = [];
         var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
+        _rtmp34 = input.readSetBegin();
         _etype3 = _rtmp34.etype;
         _size0 = _rtmp34.size;
         for (var _i5 = 0; _i5 < _size0; ++_i5)
         {
           var elem6 = null;
           elem6 = input.readI32();
-          this.urgencies.push(elem6);
+          this.possibleUrgencies.push(elem6);
         }
-        input.readListEnd();
+        input.readSetEnd();
       } else {
         input.skip(ftype);
       }
       break;
+      case 0:
+        input.skip(ftype);
+        break;
       default:
         input.skip(ftype);
     }
@@ -474,23 +466,18 @@ MatcherUrgencyIs.prototype.read = function(input) {
 
 MatcherUrgencyIs.prototype.write = function(output) {
   output.writeStructBegin('MatcherUrgencyIs');
-  if (this.urgency !== null && this.urgency !== undefined) {
-    output.writeFieldBegin('urgency', Thrift.Type.I32, 1);
-    output.writeI32(this.urgency);
-    output.writeFieldEnd();
-  }
-  if (this.urgencies !== null && this.urgencies !== undefined) {
-    output.writeFieldBegin('urgencies', Thrift.Type.LIST, 2);
-    output.writeListBegin(Thrift.Type.I32, this.urgencies.length);
-    for (var iter7 in this.urgencies)
+  if (this.possibleUrgencies !== null && this.possibleUrgencies !== undefined) {
+    output.writeFieldBegin('possibleUrgencies', Thrift.Type.SET, 1);
+    output.writeSetBegin(Thrift.Type.I32, this.possibleUrgencies.length);
+    for (var iter7 in this.possibleUrgencies)
     {
-      if (this.urgencies.hasOwnProperty(iter7))
+      if (this.possibleUrgencies.hasOwnProperty(iter7))
       {
-        iter7 = this.urgencies[iter7];
+        iter7 = this.possibleUrgencies[iter7];
         output.writeI32(iter7);
       }
     }
-    output.writeListEnd();
+    output.writeSetEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();

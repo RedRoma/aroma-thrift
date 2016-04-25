@@ -64,8 +64,7 @@ struct MatcherBodyDoesNotContain
 
 struct MatcherUrgencyIs
 {
-    1: Aroma.Urgency urgency;
-    2: optional list<Aroma.Urgency> urgencies;
+    1: set<Aroma.Urgency> possibleUrgencies = [];
 }
 
 struct MatcherHostnameIs

@@ -682,13 +682,8 @@ MatcherUrgencyIs::~MatcherUrgencyIs() throw() {
 }
 
 
-void MatcherUrgencyIs::__set_urgency(const  ::tech::aroma::thrift::Urgency::type val) {
-  this->urgency = val;
-}
-
-void MatcherUrgencyIs::__set_urgencies(const std::vector< ::tech::aroma::thrift::Urgency::type> & val) {
-  this->urgencies = val;
-__isset.urgencies = true;
+void MatcherUrgencyIs::__set_possibleUrgencies(const std::set< ::tech::aroma::thrift::Urgency::type> & val) {
+  this->possibleUrgencies = val;
 }
 
 uint32_t MatcherUrgencyIs::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -713,33 +708,24 @@ uint32_t MatcherUrgencyIs::read(::apache::thrift::protocol::TProtocol* iprot) {
     switch (fid)
     {
       case 1:
-        if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast16;
-          xfer += iprot->readI32(ecast16);
-          this->urgency = ( ::tech::aroma::thrift::Urgency::type)ecast16;
-          this->__isset.urgency = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_LIST) {
+        if (ftype == ::apache::thrift::protocol::T_SET) {
           {
-            this->urgencies.clear();
-            uint32_t _size17;
-            ::apache::thrift::protocol::TType _etype20;
-            xfer += iprot->readListBegin(_etype20, _size17);
-            this->urgencies.resize(_size17);
-            uint32_t _i21;
-            for (_i21 = 0; _i21 < _size17; ++_i21)
+            this->possibleUrgencies.clear();
+            uint32_t _size16;
+            ::apache::thrift::protocol::TType _etype19;
+            xfer += iprot->readSetBegin(_etype19, _size16);
+            uint32_t _i20;
+            for (_i20 = 0; _i20 < _size16; ++_i20)
             {
+               ::tech::aroma::thrift::Urgency::type _elem21;
               int32_t ecast22;
               xfer += iprot->readI32(ecast22);
-              this->urgencies[_i21] = ( ::tech::aroma::thrift::Urgency::type)ecast22;
+              _elem21 = ( ::tech::aroma::thrift::Urgency::type)ecast22;
+              this->possibleUrgencies.insert(_elem21);
             }
-            xfer += iprot->readListEnd();
+            xfer += iprot->readSetEnd();
           }
-          this->__isset.urgencies = true;
+          this->__isset.possibleUrgencies = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -761,23 +747,18 @@ uint32_t MatcherUrgencyIs::write(::apache::thrift::protocol::TProtocol* oprot) c
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("MatcherUrgencyIs");
 
-  xfer += oprot->writeFieldBegin("urgency", ::apache::thrift::protocol::T_I32, 1);
-  xfer += oprot->writeI32((int32_t)this->urgency);
+  xfer += oprot->writeFieldBegin("possibleUrgencies", ::apache::thrift::protocol::T_SET, 1);
+  {
+    xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_I32, static_cast<uint32_t>(this->possibleUrgencies.size()));
+    std::set< ::tech::aroma::thrift::Urgency::type> ::const_iterator _iter23;
+    for (_iter23 = this->possibleUrgencies.begin(); _iter23 != this->possibleUrgencies.end(); ++_iter23)
+    {
+      xfer += oprot->writeI32((int32_t)(*_iter23));
+    }
+    xfer += oprot->writeSetEnd();
+  }
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.urgencies) {
-    xfer += oprot->writeFieldBegin("urgencies", ::apache::thrift::protocol::T_LIST, 2);
-    {
-      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_I32, static_cast<uint32_t>(this->urgencies.size()));
-      std::vector< ::tech::aroma::thrift::Urgency::type> ::const_iterator _iter23;
-      for (_iter23 = this->urgencies.begin(); _iter23 != this->urgencies.end(); ++_iter23)
-      {
-        xfer += oprot->writeI32((int32_t)(*_iter23));
-      }
-      xfer += oprot->writeListEnd();
-    }
-    xfer += oprot->writeFieldEnd();
-  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -785,27 +766,23 @@ uint32_t MatcherUrgencyIs::write(::apache::thrift::protocol::TProtocol* oprot) c
 
 void swap(MatcherUrgencyIs &a, MatcherUrgencyIs &b) {
   using ::std::swap;
-  swap(a.urgency, b.urgency);
-  swap(a.urgencies, b.urgencies);
+  swap(a.possibleUrgencies, b.possibleUrgencies);
   swap(a.__isset, b.__isset);
 }
 
 MatcherUrgencyIs::MatcherUrgencyIs(const MatcherUrgencyIs& other24) {
-  urgency = other24.urgency;
-  urgencies = other24.urgencies;
+  possibleUrgencies = other24.possibleUrgencies;
   __isset = other24.__isset;
 }
 MatcherUrgencyIs& MatcherUrgencyIs::operator=(const MatcherUrgencyIs& other25) {
-  urgency = other25.urgency;
-  urgencies = other25.urgencies;
+  possibleUrgencies = other25.possibleUrgencies;
   __isset = other25.__isset;
   return *this;
 }
 void MatcherUrgencyIs::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "MatcherUrgencyIs(";
-  out << "urgency=" << to_string(urgency);
-  out << ", " << "urgencies="; (__isset.urgencies ? (out << to_string(urgencies)) : (out << "<null>"));
+  out << "possibleUrgencies=" << to_string(possibleUrgencies);
   out << ")";
 }
 

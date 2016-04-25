@@ -1156,60 +1156,46 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.possibleUrgencies = [[[NSMutableSet alloc] initWithCapacity:0] autorelease_stub];
+
 #endif
   return self;
 }
 
-- (id) initWithUrgency: (int) urgency urgencies: (NSMutableArray *) urgencies
+- (id) initWithPossibleUrgencies: (NSMutableSet *) possibleUrgencies
 {
   self = [super init];
-  __urgency = urgency;
-  __urgency_isset = YES;
-  __urgencies = [urgencies retain_stub];
-  __urgencies_isset = YES;
+  __possibleUrgencies = [possibleUrgencies retain_stub];
+  __possibleUrgencies_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"urgency"])
+  if ([decoder containsValueForKey: @"possibleUrgencies"])
   {
-    __urgency = [decoder decodeIntForKey: @"urgency"];
-    __urgency_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"urgencies"])
-  {
-    __urgencies = [[decoder decodeObjectForKey: @"urgencies"] retain_stub];
-    __urgencies_isset = YES;
+    __possibleUrgencies = [[decoder decodeObjectForKey: @"possibleUrgencies"] retain_stub];
+    __possibleUrgencies_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__urgency_isset)
+  if (__possibleUrgencies_isset)
   {
-    [encoder encodeInt: __urgency forKey: @"urgency"];
-  }
-  if (__urgencies_isset)
-  {
-    [encoder encodeObject: __urgencies forKey: @"urgencies"];
+    [encoder encodeObject: __possibleUrgencies forKey: @"possibleUrgencies"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __urgency_isset ? 2654435761 : 0;
-  if (__urgency_isset)
+  hash = (hash * 31) ^ __possibleUrgencies_isset ? 2654435761 : 0;
+  if (__possibleUrgencies_isset)
   {
-    hash = (hash * 31) ^ [@(__urgency) hash];
-  }
-  hash = (hash * 31) ^ __urgencies_isset ? 2654435761 : 0;
-  if (__urgencies_isset)
-  {
-    hash = (hash * 31) ^ [__urgencies hash];
+    hash = (hash * 31) ^ [__possibleUrgencies hash];
   }
   return hash;
 }
@@ -1223,12 +1209,8 @@
     return NO;
   }
   AromaReactions_MatcherUrgencyIs *other = (AromaReactions_MatcherUrgencyIs *)anObject;
-  if ((__urgency_isset != other->__urgency_isset) ||
-      (__urgency_isset && (__urgency != other->__urgency))) {
-    return NO;
-  }
-  if ((__urgencies_isset != other->__urgencies_isset) ||
-      (__urgencies_isset && ((__urgencies || other->__urgencies) && ![__urgencies isEqual:other->__urgencies]))) {
+  if ((__possibleUrgencies_isset != other->__possibleUrgencies_isset) ||
+      (__possibleUrgencies_isset && ((__possibleUrgencies || other->__possibleUrgencies) && ![__possibleUrgencies isEqual:other->__possibleUrgencies]))) {
     return NO;
   }
   return YES;
@@ -1236,46 +1218,29 @@
 
 - (void) dealloc
 {
-  [__urgencies release_stub];
+  [__possibleUrgencies release_stub];
   [super dealloc_stub];
 }
 
-- (int) urgency {
-  return __urgency;
+- (NSMutableSet *) possibleUrgencies {
+  return [[__possibleUrgencies retain_stub] autorelease_stub];
 }
 
-- (void) setUrgency: (int) urgency {
-  __urgency = urgency;
-  __urgency_isset = YES;
+- (void) setPossibleUrgencies: (NSMutableSet *) possibleUrgencies {
+  [possibleUrgencies retain_stub];
+  [__possibleUrgencies release_stub];
+  __possibleUrgencies = possibleUrgencies;
+  __possibleUrgencies_isset = YES;
 }
 
-- (BOOL) urgencyIsSet {
-  return __urgency_isset;
+- (BOOL) possibleUrgenciesIsSet {
+  return __possibleUrgencies_isset;
 }
 
-- (void) unsetUrgency {
-  __urgency_isset = NO;
-}
-
-- (NSMutableArray *) urgencies {
-  return [[__urgencies retain_stub] autorelease_stub];
-}
-
-- (void) setUrgencies: (NSMutableArray *) urgencies {
-  [urgencies retain_stub];
-  [__urgencies release_stub];
-  __urgencies = urgencies;
-  __urgencies_isset = YES;
-}
-
-- (BOOL) urgenciesIsSet {
-  return __urgencies_isset;
-}
-
-- (void) unsetUrgencies {
-  [__urgencies release_stub];
-  __urgencies = nil;
-  __urgencies_isset = NO;
+- (void) unsetPossibleUrgencies {
+  [__possibleUrgencies release_stub];
+  __possibleUrgencies = nil;
+  __possibleUrgencies_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1294,26 +1259,18 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_I32) {
-          int fieldValue = [inProtocol readI32];
-          [self setUrgency: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_LIST) {
+        if (fieldType == TType_SET) {
           int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size0];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size0];
           int _i1;
           for (_i1 = 0; _i1 < _size0; ++_i1)
           {
             int _elem2 = [inProtocol readI32];
             [fieldValue addObject: [NSNumber numberWithInt: _elem2]];
           }
-          [inProtocol readListEnd];
-          [self setUrgencies: fieldValue];
+          [inProtocol readSetEnd];
+          [self setPossibleUrgencies: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -1330,22 +1287,18 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"MatcherUrgencyIs"];
-  if (__urgency_isset) {
-    [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 1];
-    [outProtocol writeI32: __urgency];
-    [outProtocol writeFieldEnd];
-  }
-  if (__urgencies_isset) {
-    if (__urgencies != nil) {
-      [outProtocol writeFieldBeginWithName: @"urgencies" type: TType_LIST fieldID: 2];
+  if (__possibleUrgencies_isset) {
+    if (__possibleUrgencies != nil) {
+      [outProtocol writeFieldBeginWithName: @"possibleUrgencies" type: TType_SET fieldID: 1];
       {
-        [outProtocol writeListBeginWithElementType: TType_I32 size: [__urgencies count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__urgencies count]; idx4++)
+        [outProtocol writeSetBeginWithElementType: TType_I32 size: [__possibleUrgencies count]];
+        NSEnumerator * _iter3 = [__possibleUrgencies objectEnumerator];
+        id obj4;
+        while ((obj4 = [_iter3 nextObject]))
         {
-          [outProtocol writeI32: [[__urgencies objectAtIndex: idx4] intValue]];
+          [outProtocol writeI32: [obj4 intValue]];
         }
-        [outProtocol writeListEnd];
+        [outProtocol writeSetEnd];
       }
       [outProtocol writeFieldEnd];
     }
@@ -1360,10 +1313,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_MatcherUrgencyIs("];
-  [ms appendString: @"urgency:"];
-  [ms appendFormat: @"%i", __urgency];
-  [ms appendString: @",urgencies:"];
-  [ms appendFormat: @"%@", __urgencies];
+  [ms appendString: @"possibleUrgencies:"];
+  [ms appendFormat: @"%@", __possibleUrgencies];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
