@@ -4069,7 +4069,7 @@
 
 @end
 
-@implementation AromaReactions_ActionRespondToCode
+@implementation AromaReactions_ActionRespondWithMessage
 
 - (id) init
 {
@@ -4079,40 +4079,40 @@
   return self;
 }
 
-- (id) initWithMessageToSend: (NSString *) messageToSend
+- (id) initWithMessageToRespondWith: (NSString *) messageToRespondWith
 {
   self = [super init];
-  __messageToSend = [messageToSend retain_stub];
-  __messageToSend_isset = YES;
+  __messageToRespondWith = [messageToRespondWith retain_stub];
+  __messageToRespondWith_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"messageToSend"])
+  if ([decoder containsValueForKey: @"messageToRespondWith"])
   {
-    __messageToSend = [[decoder decodeObjectForKey: @"messageToSend"] retain_stub];
-    __messageToSend_isset = YES;
+    __messageToRespondWith = [[decoder decodeObjectForKey: @"messageToRespondWith"] retain_stub];
+    __messageToRespondWith_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__messageToSend_isset)
+  if (__messageToRespondWith_isset)
   {
-    [encoder encodeObject: __messageToSend forKey: @"messageToSend"];
+    [encoder encodeObject: __messageToRespondWith forKey: @"messageToRespondWith"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __messageToSend_isset ? 2654435761 : 0;
-  if (__messageToSend_isset)
+  hash = (hash * 31) ^ __messageToRespondWith_isset ? 2654435761 : 0;
+  if (__messageToRespondWith_isset)
   {
-    hash = (hash * 31) ^ [__messageToSend hash];
+    hash = (hash * 31) ^ [__messageToRespondWith hash];
   }
   return hash;
 }
@@ -4122,12 +4122,12 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_ActionRespondToCode class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_ActionRespondWithMessage class]]) {
     return NO;
   }
-  AromaReactions_ActionRespondToCode *other = (AromaReactions_ActionRespondToCode *)anObject;
-  if ((__messageToSend_isset != other->__messageToSend_isset) ||
-      (__messageToSend_isset && ((__messageToSend || other->__messageToSend) && ![__messageToSend isEqual:other->__messageToSend]))) {
+  AromaReactions_ActionRespondWithMessage *other = (AromaReactions_ActionRespondWithMessage *)anObject;
+  if ((__messageToRespondWith_isset != other->__messageToRespondWith_isset) ||
+      (__messageToRespondWith_isset && ((__messageToRespondWith || other->__messageToRespondWith) && ![__messageToRespondWith isEqual:other->__messageToRespondWith]))) {
     return NO;
   }
   return YES;
@@ -4135,29 +4135,29 @@
 
 - (void) dealloc
 {
-  [__messageToSend release_stub];
+  [__messageToRespondWith release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) messageToSend {
-  return [[__messageToSend retain_stub] autorelease_stub];
+- (NSString *) messageToRespondWith {
+  return [[__messageToRespondWith retain_stub] autorelease_stub];
 }
 
-- (void) setMessageToSend: (NSString *) messageToSend {
-  [messageToSend retain_stub];
-  [__messageToSend release_stub];
-  __messageToSend = messageToSend;
-  __messageToSend_isset = YES;
+- (void) setMessageToRespondWith: (NSString *) messageToRespondWith {
+  [messageToRespondWith retain_stub];
+  [__messageToRespondWith release_stub];
+  __messageToRespondWith = messageToRespondWith;
+  __messageToRespondWith_isset = YES;
 }
 
-- (BOOL) messageToSendIsSet {
-  return __messageToSend_isset;
+- (BOOL) messageToRespondWithIsSet {
+  return __messageToRespondWith_isset;
 }
 
-- (void) unsetMessageToSend {
-  [__messageToSend release_stub];
-  __messageToSend = nil;
-  __messageToSend_isset = NO;
+- (void) unsetMessageToRespondWith {
+  [__messageToRespondWith release_stub];
+  __messageToRespondWith = nil;
+  __messageToRespondWith_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -4178,7 +4178,7 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setMessageToSend: fieldValue];
+          [self setMessageToRespondWith: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -4193,11 +4193,11 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ActionRespondToCode"];
-  if (__messageToSend_isset) {
-    if (__messageToSend != nil) {
-      [outProtocol writeFieldBeginWithName: @"messageToSend" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __messageToSend];
+  [outProtocol writeStructBeginWithName: @"ActionRespondWithMessage"];
+  if (__messageToRespondWith_isset) {
+    if (__messageToRespondWith != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageToRespondWith" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __messageToRespondWith];
       [outProtocol writeFieldEnd];
     }
   }
@@ -4210,9 +4210,9 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionRespondToCode("];
-  [ms appendString: @"messageToSend:"];
-  [ms appendFormat: @"\"%@\"", __messageToSend];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionRespondWithMessage("];
+  [ms appendString: @"messageToRespondWith:"];
+  [ms appendFormat: @"\"%@\"", __messageToRespondWith];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -4399,7 +4399,7 @@
   return self;
 }
 
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
 {
   self = [super init];
   __forwardToSlackChannel = [forwardToSlackChannel retain_stub];
@@ -4412,8 +4412,8 @@
   __skipInbox_isset = YES;
   __dontStoreMessage = [dontStoreMessage retain_stub];
   __dontStoreMessage_isset = YES;
-  __respondToCode = [respondToCode retain_stub];
-  __respondToCode_isset = YES;
+  __responseWithMessage = [responseWithMessage retain_stub];
+  __responseWithMessage_isset = YES;
   __forwardToUsers = [forwardToUsers retain_stub];
   __forwardToUsers_isset = YES;
   return self;
@@ -4447,10 +4447,10 @@
     __dontStoreMessage = [[decoder decodeObjectForKey: @"dontStoreMessage"] retain_stub];
     __dontStoreMessage_isset = YES;
   }
-  if ([decoder containsValueForKey: @"respondToCode"])
+  if ([decoder containsValueForKey: @"responseWithMessage"])
   {
-    __respondToCode = [[decoder decodeObjectForKey: @"respondToCode"] retain_stub];
-    __respondToCode_isset = YES;
+    __responseWithMessage = [[decoder decodeObjectForKey: @"responseWithMessage"] retain_stub];
+    __responseWithMessage_isset = YES;
   }
   if ([decoder containsValueForKey: @"forwardToUsers"])
   {
@@ -4482,9 +4482,9 @@
   {
     [encoder encodeObject: __dontStoreMessage forKey: @"dontStoreMessage"];
   }
-  if (__respondToCode_isset)
+  if (__responseWithMessage_isset)
   {
-    [encoder encodeObject: __respondToCode forKey: @"respondToCode"];
+    [encoder encodeObject: __responseWithMessage forKey: @"responseWithMessage"];
   }
   if (__forwardToUsers_isset)
   {
@@ -4520,10 +4520,10 @@
   {
     hash = (hash * 31) ^ [__dontStoreMessage hash];
   }
-  hash = (hash * 31) ^ __respondToCode_isset ? 2654435761 : 0;
-  if (__respondToCode_isset)
+  hash = (hash * 31) ^ __responseWithMessage_isset ? 2654435761 : 0;
+  if (__responseWithMessage_isset)
   {
-    hash = (hash * 31) ^ [__respondToCode hash];
+    hash = (hash * 31) ^ [__responseWithMessage hash];
   }
   hash = (hash * 31) ^ __forwardToUsers_isset ? 2654435761 : 0;
   if (__forwardToUsers_isset)
@@ -4562,8 +4562,8 @@
       (__dontStoreMessage_isset && ((__dontStoreMessage || other->__dontStoreMessage) && ![__dontStoreMessage isEqual:other->__dontStoreMessage]))) {
     return NO;
   }
-  if ((__respondToCode_isset != other->__respondToCode_isset) ||
-      (__respondToCode_isset && ((__respondToCode || other->__respondToCode) && ![__respondToCode isEqual:other->__respondToCode]))) {
+  if ((__responseWithMessage_isset != other->__responseWithMessage_isset) ||
+      (__responseWithMessage_isset && ((__responseWithMessage || other->__responseWithMessage) && ![__responseWithMessage isEqual:other->__responseWithMessage]))) {
     return NO;
   }
   if ((__forwardToUsers_isset != other->__forwardToUsers_isset) ||
@@ -4580,7 +4580,7 @@
   [__sendEmail release_stub];
   [__skipInbox release_stub];
   [__dontStoreMessage release_stub];
-  [__respondToCode release_stub];
+  [__responseWithMessage release_stub];
   [__forwardToUsers release_stub];
   [super dealloc_stub];
 }
@@ -4690,25 +4690,25 @@
   __dontStoreMessage_isset = NO;
 }
 
-- (AromaReactions_ActionRespondToCode *) respondToCode {
-  return [[__respondToCode retain_stub] autorelease_stub];
+- (AromaReactions_ActionRespondWithMessage *) responseWithMessage {
+  return [[__responseWithMessage retain_stub] autorelease_stub];
 }
 
-- (void) setRespondToCode: (AromaReactions_ActionRespondToCode *) respondToCode {
-  [respondToCode retain_stub];
-  [__respondToCode release_stub];
-  __respondToCode = respondToCode;
-  __respondToCode_isset = YES;
+- (void) setResponseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage {
+  [responseWithMessage retain_stub];
+  [__responseWithMessage release_stub];
+  __responseWithMessage = responseWithMessage;
+  __responseWithMessage_isset = YES;
 }
 
-- (BOOL) respondToCodeIsSet {
-  return __respondToCode_isset;
+- (BOOL) responseWithMessageIsSet {
+  return __responseWithMessage_isset;
 }
 
-- (void) unsetRespondToCode {
-  [__respondToCode release_stub];
-  __respondToCode = nil;
-  __respondToCode_isset = NO;
+- (void) unsetResponseWithMessage {
+  [__responseWithMessage release_stub];
+  __responseWithMessage = nil;
+  __responseWithMessage_isset = NO;
 }
 
 - (AromaReactions_ActionForwardToUsers *) forwardToUsers {
@@ -4799,9 +4799,9 @@
         break;
       case 6:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_ActionRespondToCode *fieldValue = [[AromaReactions_ActionRespondToCode alloc] init];
+          AromaReactions_ActionRespondWithMessage *fieldValue = [[AromaReactions_ActionRespondWithMessage alloc] init];
           [fieldValue read: inProtocol];
-          [self setRespondToCode: fieldValue];
+          [self setResponseWithMessage: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -4863,10 +4863,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__respondToCode_isset) {
-    if (__respondToCode != nil) {
-      [outProtocol writeFieldBeginWithName: @"respondToCode" type: TType_STRUCT fieldID: 6];
-      [__respondToCode write: outProtocol];
+  if (__responseWithMessage_isset) {
+    if (__responseWithMessage != nil) {
+      [outProtocol writeFieldBeginWithName: @"responseWithMessage" type: TType_STRUCT fieldID: 6];
+      [__responseWithMessage write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -4897,8 +4897,8 @@
   [ms appendFormat: @"%@", __skipInbox];
   [ms appendString: @",dontStoreMessage:"];
   [ms appendFormat: @"%@", __dontStoreMessage];
-  [ms appendString: @",respondToCode:"];
-  [ms appendFormat: @"%@", __respondToCode];
+  [ms appendString: @",responseWithMessage:"];
+  [ms appendFormat: @"%@", __responseWithMessage];
   [ms appendString: @",forwardToUsers:"];
   [ms appendFormat: @"%@", __forwardToUsers];
   [ms appendString: @")"];

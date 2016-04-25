@@ -145,9 +145,9 @@ struct ActionDontStoreMessage
 
 }
 
-struct ActionRespondToCode
+struct ActionRespondWithMessage
 {
-    1: string messageToSend;
+    1: string messageToRespondWith;
 }
 
 struct ActionForwardToUsers
@@ -162,7 +162,7 @@ union AromaAction
     3: ActionSendEmail sendEmail;
     4: ActionSkipInbox skipInbox;
     5: ActionDontStoreMessage dontStoreMessage;
-    6: ActionRespondToCode respondToCode;
+    6: ActionRespondWithMessage responseWithMessage;
     7: ActionForwardToUsers forwardToUsers;
 }
 

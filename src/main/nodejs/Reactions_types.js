@@ -1353,16 +1353,16 @@ ActionDontStoreMessage.prototype.write = function(output) {
   return;
 };
 
-ActionRespondToCode = module.exports.ActionRespondToCode = function(args) {
-  this.messageToSend = null;
+ActionRespondWithMessage = module.exports.ActionRespondWithMessage = function(args) {
+  this.messageToRespondWith = null;
   if (args) {
-    if (args.messageToSend !== undefined && args.messageToSend !== null) {
-      this.messageToSend = args.messageToSend;
+    if (args.messageToRespondWith !== undefined && args.messageToRespondWith !== null) {
+      this.messageToRespondWith = args.messageToRespondWith;
     }
   }
 };
-ActionRespondToCode.prototype = {};
-ActionRespondToCode.prototype.read = function(input) {
+ActionRespondWithMessage.prototype = {};
+ActionRespondWithMessage.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -1377,7 +1377,7 @@ ActionRespondToCode.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.messageToSend = input.readString();
+        this.messageToRespondWith = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -1394,11 +1394,11 @@ ActionRespondToCode.prototype.read = function(input) {
   return;
 };
 
-ActionRespondToCode.prototype.write = function(output) {
-  output.writeStructBegin('ActionRespondToCode');
-  if (this.messageToSend !== null && this.messageToSend !== undefined) {
-    output.writeFieldBegin('messageToSend', Thrift.Type.STRING, 1);
-    output.writeString(this.messageToSend);
+ActionRespondWithMessage.prototype.write = function(output) {
+  output.writeStructBegin('ActionRespondWithMessage');
+  if (this.messageToRespondWith !== null && this.messageToRespondWith !== undefined) {
+    output.writeFieldBegin('messageToRespondWith', Thrift.Type.STRING, 1);
+    output.writeString(this.messageToRespondWith);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -1487,7 +1487,7 @@ AromaAction = module.exports.AromaAction = function(args) {
   this.sendEmail = null;
   this.skipInbox = null;
   this.dontStoreMessage = null;
-  this.respondToCode = null;
+  this.responseWithMessage = null;
   this.forwardToUsers = null;
   if (args) {
     if (args.forwardToSlackChannel !== undefined && args.forwardToSlackChannel !== null) {
@@ -1505,8 +1505,8 @@ AromaAction = module.exports.AromaAction = function(args) {
     if (args.dontStoreMessage !== undefined && args.dontStoreMessage !== null) {
       this.dontStoreMessage = new ttypes.ActionDontStoreMessage(args.dontStoreMessage);
     }
-    if (args.respondToCode !== undefined && args.respondToCode !== null) {
-      this.respondToCode = new ttypes.ActionRespondToCode(args.respondToCode);
+    if (args.responseWithMessage !== undefined && args.responseWithMessage !== null) {
+      this.responseWithMessage = new ttypes.ActionRespondWithMessage(args.responseWithMessage);
     }
     if (args.forwardToUsers !== undefined && args.forwardToUsers !== null) {
       this.forwardToUsers = new ttypes.ActionForwardToUsers(args.forwardToUsers);
@@ -1569,8 +1569,8 @@ AromaAction.prototype.read = function(input) {
       break;
       case 6:
       if (ftype == Thrift.Type.STRUCT) {
-        this.respondToCode = new ttypes.ActionRespondToCode();
-        this.respondToCode.read(input);
+        this.responseWithMessage = new ttypes.ActionRespondWithMessage();
+        this.responseWithMessage.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1619,9 +1619,9 @@ AromaAction.prototype.write = function(output) {
     this.dontStoreMessage.write(output);
     output.writeFieldEnd();
   }
-  if (this.respondToCode !== null && this.respondToCode !== undefined) {
-    output.writeFieldBegin('respondToCode', Thrift.Type.STRUCT, 6);
-    this.respondToCode.write(output);
+  if (this.responseWithMessage !== null && this.responseWithMessage !== undefined) {
+    output.writeFieldBegin('responseWithMessage', Thrift.Type.STRUCT, 6);
+    this.responseWithMessage.write(output);
     output.writeFieldEnd();
   }
   if (this.forwardToUsers !== null && this.forwardToUsers !== undefined) {

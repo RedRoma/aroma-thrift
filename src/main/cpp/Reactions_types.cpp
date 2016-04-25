@@ -2114,15 +2114,15 @@ void ActionDontStoreMessage::printTo(std::ostream& out) const {
 }
 
 
-ActionRespondToCode::~ActionRespondToCode() throw() {
+ActionRespondWithMessage::~ActionRespondWithMessage() throw() {
 }
 
 
-void ActionRespondToCode::__set_messageToSend(const std::string& val) {
-  this->messageToSend = val;
+void ActionRespondWithMessage::__set_messageToRespondWith(const std::string& val) {
+  this->messageToRespondWith = val;
 }
 
-uint32_t ActionRespondToCode::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ActionRespondWithMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2145,8 +2145,8 @@ uint32_t ActionRespondToCode::read(::apache::thrift::protocol::TProtocol* iprot)
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->messageToSend);
-          this->__isset.messageToSend = true;
+          xfer += iprot->readString(this->messageToRespondWith);
+          this->__isset.messageToRespondWith = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2163,13 +2163,13 @@ uint32_t ActionRespondToCode::read(::apache::thrift::protocol::TProtocol* iprot)
   return xfer;
 }
 
-uint32_t ActionRespondToCode::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ActionRespondWithMessage::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ActionRespondToCode");
+  xfer += oprot->writeStructBegin("ActionRespondWithMessage");
 
-  xfer += oprot->writeFieldBegin("messageToSend", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->messageToSend);
+  xfer += oprot->writeFieldBegin("messageToRespondWith", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->messageToRespondWith);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -2177,25 +2177,25 @@ uint32_t ActionRespondToCode::write(::apache::thrift::protocol::TProtocol* oprot
   return xfer;
 }
 
-void swap(ActionRespondToCode &a, ActionRespondToCode &b) {
+void swap(ActionRespondWithMessage &a, ActionRespondWithMessage &b) {
   using ::std::swap;
-  swap(a.messageToSend, b.messageToSend);
+  swap(a.messageToRespondWith, b.messageToRespondWith);
   swap(a.__isset, b.__isset);
 }
 
-ActionRespondToCode::ActionRespondToCode(const ActionRespondToCode& other48) {
-  messageToSend = other48.messageToSend;
+ActionRespondWithMessage::ActionRespondWithMessage(const ActionRespondWithMessage& other48) {
+  messageToRespondWith = other48.messageToRespondWith;
   __isset = other48.__isset;
 }
-ActionRespondToCode& ActionRespondToCode::operator=(const ActionRespondToCode& other49) {
-  messageToSend = other49.messageToSend;
+ActionRespondWithMessage& ActionRespondWithMessage::operator=(const ActionRespondWithMessage& other49) {
+  messageToRespondWith = other49.messageToRespondWith;
   __isset = other49.__isset;
   return *this;
 }
-void ActionRespondToCode::printTo(std::ostream& out) const {
+void ActionRespondWithMessage::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ActionRespondToCode(";
-  out << "messageToSend=" << to_string(messageToSend);
+  out << "ActionRespondWithMessage(";
+  out << "messageToRespondWith=" << to_string(messageToRespondWith);
   out << ")";
 }
 
@@ -2330,8 +2330,8 @@ void AromaAction::__set_dontStoreMessage(const ActionDontStoreMessage& val) {
   this->dontStoreMessage = val;
 }
 
-void AromaAction::__set_respondToCode(const ActionRespondToCode& val) {
-  this->respondToCode = val;
+void AromaAction::__set_responseWithMessage(const ActionRespondWithMessage& val) {
+  this->responseWithMessage = val;
 }
 
 void AromaAction::__set_forwardToUsers(const ActionForwardToUsers& val) {
@@ -2401,8 +2401,8 @@ uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 6:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->respondToCode.read(iprot);
-          this->__isset.respondToCode = true;
+          xfer += this->responseWithMessage.read(iprot);
+          this->__isset.responseWithMessage = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2452,8 +2452,8 @@ uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += this->dontStoreMessage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("respondToCode", ::apache::thrift::protocol::T_STRUCT, 6);
-  xfer += this->respondToCode.write(oprot);
+  xfer += oprot->writeFieldBegin("responseWithMessage", ::apache::thrift::protocol::T_STRUCT, 6);
+  xfer += this->responseWithMessage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("forwardToUsers", ::apache::thrift::protocol::T_STRUCT, 7);
@@ -2472,7 +2472,7 @@ void swap(AromaAction &a, AromaAction &b) {
   swap(a.sendEmail, b.sendEmail);
   swap(a.skipInbox, b.skipInbox);
   swap(a.dontStoreMessage, b.dontStoreMessage);
-  swap(a.respondToCode, b.respondToCode);
+  swap(a.responseWithMessage, b.responseWithMessage);
   swap(a.forwardToUsers, b.forwardToUsers);
   swap(a.__isset, b.__isset);
 }
@@ -2483,7 +2483,7 @@ AromaAction::AromaAction(const AromaAction& other58) {
   sendEmail = other58.sendEmail;
   skipInbox = other58.skipInbox;
   dontStoreMessage = other58.dontStoreMessage;
-  respondToCode = other58.respondToCode;
+  responseWithMessage = other58.responseWithMessage;
   forwardToUsers = other58.forwardToUsers;
   __isset = other58.__isset;
 }
@@ -2493,7 +2493,7 @@ AromaAction& AromaAction::operator=(const AromaAction& other59) {
   sendEmail = other59.sendEmail;
   skipInbox = other59.skipInbox;
   dontStoreMessage = other59.dontStoreMessage;
-  respondToCode = other59.respondToCode;
+  responseWithMessage = other59.responseWithMessage;
   forwardToUsers = other59.forwardToUsers;
   __isset = other59.__isset;
   return *this;
@@ -2506,7 +2506,7 @@ void AromaAction::printTo(std::ostream& out) const {
   out << ", " << "sendEmail=" << to_string(sendEmail);
   out << ", " << "skipInbox=" << to_string(skipInbox);
   out << ", " << "dontStoreMessage=" << to_string(dontStoreMessage);
-  out << ", " << "respondToCode=" << to_string(respondToCode);
+  out << ", " << "responseWithMessage=" << to_string(responseWithMessage);
   out << ", " << "forwardToUsers=" << to_string(forwardToUsers);
   out << ")";
 }

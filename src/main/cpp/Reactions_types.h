@@ -68,7 +68,7 @@ class ActionSkipInbox;
 
 class ActionDontStoreMessage;
 
-class ActionRespondToCode;
+class ActionRespondWithMessage;
 
 class ActionForwardToUsers;
 
@@ -1097,37 +1097,37 @@ inline std::ostream& operator<<(std::ostream& out, const ActionDontStoreMessage&
   return out;
 }
 
-typedef struct _ActionRespondToCode__isset {
-  _ActionRespondToCode__isset() : messageToSend(false) {}
-  bool messageToSend :1;
-} _ActionRespondToCode__isset;
+typedef struct _ActionRespondWithMessage__isset {
+  _ActionRespondWithMessage__isset() : messageToRespondWith(false) {}
+  bool messageToRespondWith :1;
+} _ActionRespondWithMessage__isset;
 
-class ActionRespondToCode {
+class ActionRespondWithMessage {
  public:
 
-  ActionRespondToCode(const ActionRespondToCode&);
-  ActionRespondToCode& operator=(const ActionRespondToCode&);
-  ActionRespondToCode() : messageToSend() {
+  ActionRespondWithMessage(const ActionRespondWithMessage&);
+  ActionRespondWithMessage& operator=(const ActionRespondWithMessage&);
+  ActionRespondWithMessage() : messageToRespondWith() {
   }
 
-  virtual ~ActionRespondToCode() throw();
-  std::string messageToSend;
+  virtual ~ActionRespondWithMessage() throw();
+  std::string messageToRespondWith;
 
-  _ActionRespondToCode__isset __isset;
+  _ActionRespondWithMessage__isset __isset;
 
-  void __set_messageToSend(const std::string& val);
+  void __set_messageToRespondWith(const std::string& val);
 
-  bool operator == (const ActionRespondToCode & rhs) const
+  bool operator == (const ActionRespondWithMessage & rhs) const
   {
-    if (!(messageToSend == rhs.messageToSend))
+    if (!(messageToRespondWith == rhs.messageToRespondWith))
       return false;
     return true;
   }
-  bool operator != (const ActionRespondToCode &rhs) const {
+  bool operator != (const ActionRespondWithMessage &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionRespondToCode & ) const;
+  bool operator < (const ActionRespondWithMessage & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1135,9 +1135,9 @@ class ActionRespondToCode {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionRespondToCode &a, ActionRespondToCode &b);
+void swap(ActionRespondWithMessage &a, ActionRespondWithMessage &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionRespondToCode& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionRespondWithMessage& obj)
 {
   obj.printTo(out);
   return out;
@@ -1191,13 +1191,13 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
 }
 
 typedef struct _AromaAction__isset {
-  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), respondToCode(false), forwardToUsers(false) {}
+  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), responseWithMessage(false), forwardToUsers(false) {}
   bool forwardToSlackChannel :1;
   bool forwardToSlackUser :1;
   bool sendEmail :1;
   bool skipInbox :1;
   bool dontStoreMessage :1;
-  bool respondToCode :1;
+  bool responseWithMessage :1;
   bool forwardToUsers :1;
 } _AromaAction__isset;
 
@@ -1215,7 +1215,7 @@ class AromaAction {
   ActionSendEmail sendEmail;
   ActionSkipInbox skipInbox;
   ActionDontStoreMessage dontStoreMessage;
-  ActionRespondToCode respondToCode;
+  ActionRespondWithMessage responseWithMessage;
   ActionForwardToUsers forwardToUsers;
 
   _AromaAction__isset __isset;
@@ -1230,7 +1230,7 @@ class AromaAction {
 
   void __set_dontStoreMessage(const ActionDontStoreMessage& val);
 
-  void __set_respondToCode(const ActionRespondToCode& val);
+  void __set_responseWithMessage(const ActionRespondWithMessage& val);
 
   void __set_forwardToUsers(const ActionForwardToUsers& val);
 
@@ -1246,7 +1246,7 @@ class AromaAction {
       return false;
     if (!(dontStoreMessage == rhs.dontStoreMessage))
       return false;
-    if (!(respondToCode == rhs.respondToCode))
+    if (!(responseWithMessage == rhs.responseWithMessage))
       return false;
     if (!(forwardToUsers == rhs.forwardToUsers))
       return false;

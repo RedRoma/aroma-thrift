@@ -2024,32 +2024,32 @@ class ActionDontStoreMessage {
 
 }
 
-class ActionRespondToCode {
+class ActionRespondWithMessage {
   static $_TSPEC;
 
   /**
    * @var string
    */
-  public $messageToSend = null;
+  public $messageToRespondWith = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
         1 => array(
-          'var' => 'messageToSend',
+          'var' => 'messageToRespondWith',
           'type' => TType::STRING,
           ),
         );
     }
     if (is_array($vals)) {
-      if (isset($vals['messageToSend'])) {
-        $this->messageToSend = $vals['messageToSend'];
+      if (isset($vals['messageToRespondWith'])) {
+        $this->messageToRespondWith = $vals['messageToRespondWith'];
       }
     }
   }
 
   public function getName() {
-    return 'ActionRespondToCode';
+    return 'ActionRespondWithMessage';
   }
 
   public function read($input)
@@ -2069,7 +2069,7 @@ class ActionRespondToCode {
       {
         case 1:
           if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->messageToSend);
+            $xfer += $input->readString($this->messageToRespondWith);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -2086,10 +2086,10 @@ class ActionRespondToCode {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('ActionRespondToCode');
-    if ($this->messageToSend !== null) {
-      $xfer += $output->writeFieldBegin('messageToSend', TType::STRING, 1);
-      $xfer += $output->writeString($this->messageToSend);
+    $xfer += $output->writeStructBegin('ActionRespondWithMessage');
+    if ($this->messageToRespondWith !== null) {
+      $xfer += $output->writeFieldBegin('messageToRespondWith', TType::STRING, 1);
+      $xfer += $output->writeString($this->messageToRespondWith);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -2225,9 +2225,9 @@ class AromaAction {
    */
   public $dontStoreMessage = null;
   /**
-   * @var \RedRoma\Aroma\Reactions\ActionRespondToCode
+   * @var \RedRoma\Aroma\Reactions\ActionRespondWithMessage
    */
-  public $respondToCode = null;
+  public $responseWithMessage = null;
   /**
    * @var \RedRoma\Aroma\Reactions\ActionForwardToUsers
    */
@@ -2262,9 +2262,9 @@ class AromaAction {
           'class' => '\RedRoma\Aroma\Reactions\ActionDontStoreMessage',
           ),
         6 => array(
-          'var' => 'respondToCode',
+          'var' => 'responseWithMessage',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\ActionRespondToCode',
+          'class' => '\RedRoma\Aroma\Reactions\ActionRespondWithMessage',
           ),
         7 => array(
           'var' => 'forwardToUsers',
@@ -2289,8 +2289,8 @@ class AromaAction {
       if (isset($vals['dontStoreMessage'])) {
         $this->dontStoreMessage = $vals['dontStoreMessage'];
       }
-      if (isset($vals['respondToCode'])) {
-        $this->respondToCode = $vals['respondToCode'];
+      if (isset($vals['responseWithMessage'])) {
+        $this->responseWithMessage = $vals['responseWithMessage'];
       }
       if (isset($vals['forwardToUsers'])) {
         $this->forwardToUsers = $vals['forwardToUsers'];
@@ -2359,8 +2359,8 @@ class AromaAction {
           break;
         case 6:
           if ($ftype == TType::STRUCT) {
-            $this->respondToCode = new \RedRoma\Aroma\Reactions\ActionRespondToCode();
-            $xfer += $this->respondToCode->read($input);
+            $this->responseWithMessage = new \RedRoma\Aroma\Reactions\ActionRespondWithMessage();
+            $xfer += $this->responseWithMessage->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -2426,12 +2426,12 @@ class AromaAction {
       $xfer += $this->dontStoreMessage->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->respondToCode !== null) {
-      if (!is_object($this->respondToCode)) {
+    if ($this->responseWithMessage !== null) {
+      if (!is_object($this->responseWithMessage)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('respondToCode', TType::STRUCT, 6);
-      $xfer += $this->respondToCode->write($output);
+      $xfer += $output->writeFieldBegin('responseWithMessage', TType::STRUCT, 6);
+      $xfer += $this->responseWithMessage->write($output);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->forwardToUsers !== null) {

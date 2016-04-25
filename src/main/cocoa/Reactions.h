@@ -695,18 +695,18 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_ActionRespondToCode : NSObject <TBase, NSCoding> {
-  NSString * __messageToSend;
+@interface AromaReactions_ActionRespondWithMessage : NSObject <TBase, NSCoding> {
+  NSString * __messageToRespondWith;
 
-  BOOL __messageToSend_isset;
+  BOOL __messageToRespondWith_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=messageToSend, setter=setMessageToSend:) NSString * messageToSend;
+@property (nonatomic, retain, getter=messageToRespondWith, setter=setMessageToRespondWith:) NSString * messageToRespondWith;
 #endif
 
 - (id) init;
-- (id) initWithMessageToSend: (NSString *) messageToSend;
+- (id) initWithMessageToRespondWith: (NSString *) messageToRespondWith;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -714,10 +714,10 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) messageToSend;
-- (void) setMessageToSend: (NSString *) messageToSend;
+- (NSString *) messageToRespondWith;
+- (void) setMessageToRespondWith: (NSString *) messageToRespondWith;
 #endif
-- (BOOL) messageToSendIsSet;
+- (BOOL) messageToRespondWithIsSet;
 
 @end
 
@@ -753,7 +753,7 @@ typedef Aroma_uuid AromaReactions_uuid;
   AromaReactions_ActionSendEmail * __sendEmail;
   AromaReactions_ActionSkipInbox * __skipInbox;
   AromaReactions_ActionDontStoreMessage * __dontStoreMessage;
-  AromaReactions_ActionRespondToCode * __respondToCode;
+  AromaReactions_ActionRespondWithMessage * __responseWithMessage;
   AromaReactions_ActionForwardToUsers * __forwardToUsers;
 
   BOOL __forwardToSlackChannel_isset;
@@ -761,7 +761,7 @@ typedef Aroma_uuid AromaReactions_uuid;
   BOOL __sendEmail_isset;
   BOOL __skipInbox_isset;
   BOOL __dontStoreMessage_isset;
-  BOOL __respondToCode_isset;
+  BOOL __responseWithMessage_isset;
   BOOL __forwardToUsers_isset;
 }
 
@@ -771,12 +771,12 @@ typedef Aroma_uuid AromaReactions_uuid;
 @property (nonatomic, retain, getter=sendEmail, setter=setSendEmail:) AromaReactions_ActionSendEmail * sendEmail;
 @property (nonatomic, retain, getter=skipInbox, setter=setSkipInbox:) AromaReactions_ActionSkipInbox * skipInbox;
 @property (nonatomic, retain, getter=dontStoreMessage, setter=setDontStoreMessage:) AromaReactions_ActionDontStoreMessage * dontStoreMessage;
-@property (nonatomic, retain, getter=respondToCode, setter=setRespondToCode:) AromaReactions_ActionRespondToCode * respondToCode;
+@property (nonatomic, retain, getter=responseWithMessage, setter=setResponseWithMessage:) AromaReactions_ActionRespondWithMessage * responseWithMessage;
 @property (nonatomic, retain, getter=forwardToUsers, setter=setForwardToUsers:) AromaReactions_ActionForwardToUsers * forwardToUsers;
 #endif
 
 - (id) init;
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -814,10 +814,10 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) dontStoreMessageIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_ActionRespondToCode *) respondToCode;
-- (void) setRespondToCode: (AromaReactions_ActionRespondToCode *) respondToCode;
+- (AromaReactions_ActionRespondWithMessage *) responseWithMessage;
+- (void) setResponseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage;
 #endif
-- (BOOL) respondToCodeIsSet;
+- (BOOL) responseWithMessageIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaReactions_ActionForwardToUsers *) forwardToUsers;
