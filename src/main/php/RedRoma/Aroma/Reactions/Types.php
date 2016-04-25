@@ -1974,7 +1974,7 @@ class ActionSkipInbox {
 
 }
 
-class ActionDeleteMessage {
+class ActionDontStoreMessage {
   static $_TSPEC;
 
 
@@ -1986,7 +1986,7 @@ class ActionDeleteMessage {
   }
 
   public function getName() {
-    return 'ActionDeleteMessage';
+    return 'ActionDontStoreMessage';
   }
 
   public function read($input)
@@ -2016,7 +2016,7 @@ class ActionDeleteMessage {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('ActionDeleteMessage');
+    $xfer += $output->writeStructBegin('ActionDontStoreMessage');
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -2221,9 +2221,9 @@ class AromaAction {
    */
   public $skipInbox = null;
   /**
-   * @var \RedRoma\Aroma\Reactions\ActionDeleteMessage
+   * @var \RedRoma\Aroma\Reactions\ActionDontStoreMessage
    */
-  public $deleteMessage = null;
+  public $dontStoreMessage = null;
   /**
    * @var \RedRoma\Aroma\Reactions\ActionRespondToCode
    */
@@ -2257,9 +2257,9 @@ class AromaAction {
           'class' => '\RedRoma\Aroma\Reactions\ActionSkipInbox',
           ),
         5 => array(
-          'var' => 'deleteMessage',
+          'var' => 'dontStoreMessage',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Reactions\ActionDeleteMessage',
+          'class' => '\RedRoma\Aroma\Reactions\ActionDontStoreMessage',
           ),
         6 => array(
           'var' => 'respondToCode',
@@ -2286,8 +2286,8 @@ class AromaAction {
       if (isset($vals['skipInbox'])) {
         $this->skipInbox = $vals['skipInbox'];
       }
-      if (isset($vals['deleteMessage'])) {
-        $this->deleteMessage = $vals['deleteMessage'];
+      if (isset($vals['dontStoreMessage'])) {
+        $this->dontStoreMessage = $vals['dontStoreMessage'];
       }
       if (isset($vals['respondToCode'])) {
         $this->respondToCode = $vals['respondToCode'];
@@ -2351,8 +2351,8 @@ class AromaAction {
           break;
         case 5:
           if ($ftype == TType::STRUCT) {
-            $this->deleteMessage = new \RedRoma\Aroma\Reactions\ActionDeleteMessage();
-            $xfer += $this->deleteMessage->read($input);
+            $this->dontStoreMessage = new \RedRoma\Aroma\Reactions\ActionDontStoreMessage();
+            $xfer += $this->dontStoreMessage->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -2418,12 +2418,12 @@ class AromaAction {
       $xfer += $this->skipInbox->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->deleteMessage !== null) {
-      if (!is_object($this->deleteMessage)) {
+    if ($this->dontStoreMessage !== null) {
+      if (!is_object($this->dontStoreMessage)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('deleteMessage', TType::STRUCT, 5);
-      $xfer += $this->deleteMessage->write($output);
+      $xfer += $output->writeFieldBegin('dontStoreMessage', TType::STRUCT, 5);
+      $xfer += $this->dontStoreMessage->write($output);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->respondToCode !== null) {

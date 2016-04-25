@@ -19,6 +19,9 @@ typedef Aroma.long long
 typedef Aroma.timestamp timestamp
 typedef Aroma.uuid uuid
 
+//=====================MATCHERS=============================
+
+
 /** Matches All Messages. */
 struct MatcherAll
 {
@@ -108,6 +111,7 @@ union AromaMatcher
     14: MatcherApplicationIsNot applicationIsNot;
 }
 
+//=====================ACTIONS=============================
 
 struct ActionForwardToSlackChannel
 {
@@ -136,7 +140,7 @@ struct ActionSkipInbox
 
 }
 
-struct ActionDeleteMessage
+struct ActionDontStoreMessage
 {
 
 }
@@ -157,7 +161,7 @@ union AromaAction
     2: ActionForwardToSlackUser forwardToSlackUser;
     3: ActionSendEmail sendEmail;
     4: ActionSkipInbox skipInbox;
-    5: ActionDeleteMessage deleteMessage;
+    5: ActionDontStoreMessage dontStoreMessage;
     6: ActionRespondToCode respondToCode;
     7: ActionForwardToUsers forwardToUsers;
 }

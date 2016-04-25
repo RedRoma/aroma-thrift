@@ -1325,10 +1325,10 @@ ActionSkipInbox.prototype.write = function(output) {
   return;
 };
 
-ActionDeleteMessage = module.exports.ActionDeleteMessage = function(args) {
+ActionDontStoreMessage = module.exports.ActionDontStoreMessage = function(args) {
 };
-ActionDeleteMessage.prototype = {};
-ActionDeleteMessage.prototype.read = function(input) {
+ActionDontStoreMessage.prototype = {};
+ActionDontStoreMessage.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -1346,8 +1346,8 @@ ActionDeleteMessage.prototype.read = function(input) {
   return;
 };
 
-ActionDeleteMessage.prototype.write = function(output) {
-  output.writeStructBegin('ActionDeleteMessage');
+ActionDontStoreMessage.prototype.write = function(output) {
+  output.writeStructBegin('ActionDontStoreMessage');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -1486,7 +1486,7 @@ AromaAction = module.exports.AromaAction = function(args) {
   this.forwardToSlackUser = null;
   this.sendEmail = null;
   this.skipInbox = null;
-  this.deleteMessage = null;
+  this.dontStoreMessage = null;
   this.respondToCode = null;
   this.forwardToUsers = null;
   if (args) {
@@ -1502,8 +1502,8 @@ AromaAction = module.exports.AromaAction = function(args) {
     if (args.skipInbox !== undefined && args.skipInbox !== null) {
       this.skipInbox = new ttypes.ActionSkipInbox(args.skipInbox);
     }
-    if (args.deleteMessage !== undefined && args.deleteMessage !== null) {
-      this.deleteMessage = new ttypes.ActionDeleteMessage(args.deleteMessage);
+    if (args.dontStoreMessage !== undefined && args.dontStoreMessage !== null) {
+      this.dontStoreMessage = new ttypes.ActionDontStoreMessage(args.dontStoreMessage);
     }
     if (args.respondToCode !== undefined && args.respondToCode !== null) {
       this.respondToCode = new ttypes.ActionRespondToCode(args.respondToCode);
@@ -1561,8 +1561,8 @@ AromaAction.prototype.read = function(input) {
       break;
       case 5:
       if (ftype == Thrift.Type.STRUCT) {
-        this.deleteMessage = new ttypes.ActionDeleteMessage();
-        this.deleteMessage.read(input);
+        this.dontStoreMessage = new ttypes.ActionDontStoreMessage();
+        this.dontStoreMessage.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1614,9 +1614,9 @@ AromaAction.prototype.write = function(output) {
     this.skipInbox.write(output);
     output.writeFieldEnd();
   }
-  if (this.deleteMessage !== null && this.deleteMessage !== undefined) {
-    output.writeFieldBegin('deleteMessage', Thrift.Type.STRUCT, 5);
-    this.deleteMessage.write(output);
+  if (this.dontStoreMessage !== null && this.dontStoreMessage !== undefined) {
+    output.writeFieldBegin('dontStoreMessage', Thrift.Type.STRUCT, 5);
+    this.dontStoreMessage.write(output);
     output.writeFieldEnd();
   }
   if (this.respondToCode !== null && this.respondToCode !== undefined) {

@@ -3991,7 +3991,7 @@
 
 @end
 
-@implementation AromaReactions_ActionDeleteMessage
+@implementation AromaReactions_ActionDontStoreMessage
 
 - (id) init
 {
@@ -4020,10 +4020,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_ActionDeleteMessage class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_ActionDontStoreMessage class]]) {
     return NO;
   }
-  AromaReactions_ActionDeleteMessage *other = (AromaReactions_ActionDeleteMessage *)anObject;
+  AromaReactions_ActionDontStoreMessage *other = (AromaReactions_ActionDontStoreMessage *)anObject;
   return YES;
 }
 
@@ -4052,7 +4052,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ActionDeleteMessage"];
+  [outProtocol writeStructBeginWithName: @"ActionDontStoreMessage"];
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -4062,7 +4062,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionDeleteMessage("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionDontStoreMessage("];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -4399,7 +4399,7 @@
   return self;
 }
 
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
 {
   self = [super init];
   __forwardToSlackChannel = [forwardToSlackChannel retain_stub];
@@ -4410,8 +4410,8 @@
   __sendEmail_isset = YES;
   __skipInbox = [skipInbox retain_stub];
   __skipInbox_isset = YES;
-  __deleteMessage = [deleteMessage retain_stub];
-  __deleteMessage_isset = YES;
+  __dontStoreMessage = [dontStoreMessage retain_stub];
+  __dontStoreMessage_isset = YES;
   __respondToCode = [respondToCode retain_stub];
   __respondToCode_isset = YES;
   __forwardToUsers = [forwardToUsers retain_stub];
@@ -4442,10 +4442,10 @@
     __skipInbox = [[decoder decodeObjectForKey: @"skipInbox"] retain_stub];
     __skipInbox_isset = YES;
   }
-  if ([decoder containsValueForKey: @"deleteMessage"])
+  if ([decoder containsValueForKey: @"dontStoreMessage"])
   {
-    __deleteMessage = [[decoder decodeObjectForKey: @"deleteMessage"] retain_stub];
-    __deleteMessage_isset = YES;
+    __dontStoreMessage = [[decoder decodeObjectForKey: @"dontStoreMessage"] retain_stub];
+    __dontStoreMessage_isset = YES;
   }
   if ([decoder containsValueForKey: @"respondToCode"])
   {
@@ -4478,9 +4478,9 @@
   {
     [encoder encodeObject: __skipInbox forKey: @"skipInbox"];
   }
-  if (__deleteMessage_isset)
+  if (__dontStoreMessage_isset)
   {
-    [encoder encodeObject: __deleteMessage forKey: @"deleteMessage"];
+    [encoder encodeObject: __dontStoreMessage forKey: @"dontStoreMessage"];
   }
   if (__respondToCode_isset)
   {
@@ -4515,10 +4515,10 @@
   {
     hash = (hash * 31) ^ [__skipInbox hash];
   }
-  hash = (hash * 31) ^ __deleteMessage_isset ? 2654435761 : 0;
-  if (__deleteMessage_isset)
+  hash = (hash * 31) ^ __dontStoreMessage_isset ? 2654435761 : 0;
+  if (__dontStoreMessage_isset)
   {
-    hash = (hash * 31) ^ [__deleteMessage hash];
+    hash = (hash * 31) ^ [__dontStoreMessage hash];
   }
   hash = (hash * 31) ^ __respondToCode_isset ? 2654435761 : 0;
   if (__respondToCode_isset)
@@ -4558,8 +4558,8 @@
       (__skipInbox_isset && ((__skipInbox || other->__skipInbox) && ![__skipInbox isEqual:other->__skipInbox]))) {
     return NO;
   }
-  if ((__deleteMessage_isset != other->__deleteMessage_isset) ||
-      (__deleteMessage_isset && ((__deleteMessage || other->__deleteMessage) && ![__deleteMessage isEqual:other->__deleteMessage]))) {
+  if ((__dontStoreMessage_isset != other->__dontStoreMessage_isset) ||
+      (__dontStoreMessage_isset && ((__dontStoreMessage || other->__dontStoreMessage) && ![__dontStoreMessage isEqual:other->__dontStoreMessage]))) {
     return NO;
   }
   if ((__respondToCode_isset != other->__respondToCode_isset) ||
@@ -4579,7 +4579,7 @@
   [__forwardToSlackUser release_stub];
   [__sendEmail release_stub];
   [__skipInbox release_stub];
-  [__deleteMessage release_stub];
+  [__dontStoreMessage release_stub];
   [__respondToCode release_stub];
   [__forwardToUsers release_stub];
   [super dealloc_stub];
@@ -4669,25 +4669,25 @@
   __skipInbox_isset = NO;
 }
 
-- (AromaReactions_ActionDeleteMessage *) deleteMessage {
-  return [[__deleteMessage retain_stub] autorelease_stub];
+- (AromaReactions_ActionDontStoreMessage *) dontStoreMessage {
+  return [[__dontStoreMessage retain_stub] autorelease_stub];
 }
 
-- (void) setDeleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage {
-  [deleteMessage retain_stub];
-  [__deleteMessage release_stub];
-  __deleteMessage = deleteMessage;
-  __deleteMessage_isset = YES;
+- (void) setDontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage {
+  [dontStoreMessage retain_stub];
+  [__dontStoreMessage release_stub];
+  __dontStoreMessage = dontStoreMessage;
+  __dontStoreMessage_isset = YES;
 }
 
-- (BOOL) deleteMessageIsSet {
-  return __deleteMessage_isset;
+- (BOOL) dontStoreMessageIsSet {
+  return __dontStoreMessage_isset;
 }
 
-- (void) unsetDeleteMessage {
-  [__deleteMessage release_stub];
-  __deleteMessage = nil;
-  __deleteMessage_isset = NO;
+- (void) unsetDontStoreMessage {
+  [__dontStoreMessage release_stub];
+  __dontStoreMessage = nil;
+  __dontStoreMessage_isset = NO;
 }
 
 - (AromaReactions_ActionRespondToCode *) respondToCode {
@@ -4789,9 +4789,9 @@
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_ActionDeleteMessage *fieldValue = [[AromaReactions_ActionDeleteMessage alloc] init];
+          AromaReactions_ActionDontStoreMessage *fieldValue = [[AromaReactions_ActionDontStoreMessage alloc] init];
           [fieldValue read: inProtocol];
-          [self setDeleteMessage: fieldValue];
+          [self setDontStoreMessage: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -4856,10 +4856,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__deleteMessage_isset) {
-    if (__deleteMessage != nil) {
-      [outProtocol writeFieldBeginWithName: @"deleteMessage" type: TType_STRUCT fieldID: 5];
-      [__deleteMessage write: outProtocol];
+  if (__dontStoreMessage_isset) {
+    if (__dontStoreMessage != nil) {
+      [outProtocol writeFieldBeginWithName: @"dontStoreMessage" type: TType_STRUCT fieldID: 5];
+      [__dontStoreMessage write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -4895,8 +4895,8 @@
   [ms appendFormat: @"%@", __sendEmail];
   [ms appendString: @",skipInbox:"];
   [ms appendFormat: @"%@", __skipInbox];
-  [ms appendString: @",deleteMessage:"];
-  [ms appendFormat: @"%@", __deleteMessage];
+  [ms appendString: @",dontStoreMessage:"];
+  [ms appendFormat: @"%@", __dontStoreMessage];
   [ms appendString: @",respondToCode:"];
   [ms appendFormat: @"%@", __respondToCode];
   [ms appendString: @",forwardToUsers:"];

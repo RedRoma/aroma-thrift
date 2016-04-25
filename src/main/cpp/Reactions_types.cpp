@@ -2052,11 +2052,11 @@ void ActionSkipInbox::printTo(std::ostream& out) const {
 }
 
 
-ActionDeleteMessage::~ActionDeleteMessage() throw() {
+ActionDontStoreMessage::~ActionDontStoreMessage() throw() {
 }
 
 
-uint32_t ActionDeleteMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ActionDontStoreMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2084,32 +2084,32 @@ uint32_t ActionDeleteMessage::read(::apache::thrift::protocol::TProtocol* iprot)
   return xfer;
 }
 
-uint32_t ActionDeleteMessage::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ActionDontStoreMessage::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ActionDeleteMessage");
+  xfer += oprot->writeStructBegin("ActionDontStoreMessage");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
 }
 
-void swap(ActionDeleteMessage &a, ActionDeleteMessage &b) {
+void swap(ActionDontStoreMessage &a, ActionDontStoreMessage &b) {
   using ::std::swap;
   (void) a;
   (void) b;
 }
 
-ActionDeleteMessage::ActionDeleteMessage(const ActionDeleteMessage& other46) {
+ActionDontStoreMessage::ActionDontStoreMessage(const ActionDontStoreMessage& other46) {
   (void) other46;
 }
-ActionDeleteMessage& ActionDeleteMessage::operator=(const ActionDeleteMessage& other47) {
+ActionDontStoreMessage& ActionDontStoreMessage::operator=(const ActionDontStoreMessage& other47) {
   (void) other47;
   return *this;
 }
-void ActionDeleteMessage::printTo(std::ostream& out) const {
+void ActionDontStoreMessage::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ActionDeleteMessage(";
+  out << "ActionDontStoreMessage(";
   out << ")";
 }
 
@@ -2326,8 +2326,8 @@ void AromaAction::__set_skipInbox(const ActionSkipInbox& val) {
   this->skipInbox = val;
 }
 
-void AromaAction::__set_deleteMessage(const ActionDeleteMessage& val) {
-  this->deleteMessage = val;
+void AromaAction::__set_dontStoreMessage(const ActionDontStoreMessage& val) {
+  this->dontStoreMessage = val;
 }
 
 void AromaAction::__set_respondToCode(const ActionRespondToCode& val) {
@@ -2393,8 +2393,8 @@ uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 5:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->deleteMessage.read(iprot);
-          this->__isset.deleteMessage = true;
+          xfer += this->dontStoreMessage.read(iprot);
+          this->__isset.dontStoreMessage = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2448,8 +2448,8 @@ uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += this->skipInbox.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("deleteMessage", ::apache::thrift::protocol::T_STRUCT, 5);
-  xfer += this->deleteMessage.write(oprot);
+  xfer += oprot->writeFieldBegin("dontStoreMessage", ::apache::thrift::protocol::T_STRUCT, 5);
+  xfer += this->dontStoreMessage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("respondToCode", ::apache::thrift::protocol::T_STRUCT, 6);
@@ -2471,7 +2471,7 @@ void swap(AromaAction &a, AromaAction &b) {
   swap(a.forwardToSlackUser, b.forwardToSlackUser);
   swap(a.sendEmail, b.sendEmail);
   swap(a.skipInbox, b.skipInbox);
-  swap(a.deleteMessage, b.deleteMessage);
+  swap(a.dontStoreMessage, b.dontStoreMessage);
   swap(a.respondToCode, b.respondToCode);
   swap(a.forwardToUsers, b.forwardToUsers);
   swap(a.__isset, b.__isset);
@@ -2482,7 +2482,7 @@ AromaAction::AromaAction(const AromaAction& other58) {
   forwardToSlackUser = other58.forwardToSlackUser;
   sendEmail = other58.sendEmail;
   skipInbox = other58.skipInbox;
-  deleteMessage = other58.deleteMessage;
+  dontStoreMessage = other58.dontStoreMessage;
   respondToCode = other58.respondToCode;
   forwardToUsers = other58.forwardToUsers;
   __isset = other58.__isset;
@@ -2492,7 +2492,7 @@ AromaAction& AromaAction::operator=(const AromaAction& other59) {
   forwardToSlackUser = other59.forwardToSlackUser;
   sendEmail = other59.sendEmail;
   skipInbox = other59.skipInbox;
-  deleteMessage = other59.deleteMessage;
+  dontStoreMessage = other59.dontStoreMessage;
   respondToCode = other59.respondToCode;
   forwardToUsers = other59.forwardToUsers;
   __isset = other59.__isset;
@@ -2505,7 +2505,7 @@ void AromaAction::printTo(std::ostream& out) const {
   out << ", " << "forwardToSlackUser=" << to_string(forwardToSlackUser);
   out << ", " << "sendEmail=" << to_string(sendEmail);
   out << ", " << "skipInbox=" << to_string(skipInbox);
-  out << ", " << "deleteMessage=" << to_string(deleteMessage);
+  out << ", " << "dontStoreMessage=" << to_string(dontStoreMessage);
   out << ", " << "respondToCode=" << to_string(respondToCode);
   out << ", " << "forwardToUsers=" << to_string(forwardToUsers);
   out << ")";

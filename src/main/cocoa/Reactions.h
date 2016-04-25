@@ -683,7 +683,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_ActionDeleteMessage : NSObject <TBase, NSCoding> {
+@interface AromaReactions_ActionDontStoreMessage : NSObject <TBase, NSCoding> {
 }
 
 - (id) init;
@@ -752,7 +752,7 @@ typedef Aroma_uuid AromaReactions_uuid;
   AromaReactions_ActionForwardToSlackUser * __forwardToSlackUser;
   AromaReactions_ActionSendEmail * __sendEmail;
   AromaReactions_ActionSkipInbox * __skipInbox;
-  AromaReactions_ActionDeleteMessage * __deleteMessage;
+  AromaReactions_ActionDontStoreMessage * __dontStoreMessage;
   AromaReactions_ActionRespondToCode * __respondToCode;
   AromaReactions_ActionForwardToUsers * __forwardToUsers;
 
@@ -760,7 +760,7 @@ typedef Aroma_uuid AromaReactions_uuid;
   BOOL __forwardToSlackUser_isset;
   BOOL __sendEmail_isset;
   BOOL __skipInbox_isset;
-  BOOL __deleteMessage_isset;
+  BOOL __dontStoreMessage_isset;
   BOOL __respondToCode_isset;
   BOOL __forwardToUsers_isset;
 }
@@ -770,13 +770,13 @@ typedef Aroma_uuid AromaReactions_uuid;
 @property (nonatomic, retain, getter=forwardToSlackUser, setter=setForwardToSlackUser:) AromaReactions_ActionForwardToSlackUser * forwardToSlackUser;
 @property (nonatomic, retain, getter=sendEmail, setter=setSendEmail:) AromaReactions_ActionSendEmail * sendEmail;
 @property (nonatomic, retain, getter=skipInbox, setter=setSkipInbox:) AromaReactions_ActionSkipInbox * skipInbox;
-@property (nonatomic, retain, getter=deleteMessage, setter=setDeleteMessage:) AromaReactions_ActionDeleteMessage * deleteMessage;
+@property (nonatomic, retain, getter=dontStoreMessage, setter=setDontStoreMessage:) AromaReactions_ActionDontStoreMessage * dontStoreMessage;
 @property (nonatomic, retain, getter=respondToCode, setter=setRespondToCode:) AromaReactions_ActionRespondToCode * respondToCode;
 @property (nonatomic, retain, getter=forwardToUsers, setter=setForwardToUsers:) AromaReactions_ActionForwardToUsers * forwardToUsers;
 #endif
 
 - (id) init;
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -808,10 +808,10 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) skipInboxIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_ActionDeleteMessage *) deleteMessage;
-- (void) setDeleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage;
+- (AromaReactions_ActionDontStoreMessage *) dontStoreMessage;
+- (void) setDontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage;
 #endif
-- (BOOL) deleteMessageIsSet;
+- (BOOL) dontStoreMessageIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaReactions_ActionRespondToCode *) respondToCode;

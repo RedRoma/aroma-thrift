@@ -66,7 +66,7 @@ class ActionSendEmail;
 
 class ActionSkipInbox;
 
-class ActionDeleteMessage;
+class ActionDontStoreMessage;
 
 class ActionRespondToCode;
 
@@ -1063,25 +1063,25 @@ inline std::ostream& operator<<(std::ostream& out, const ActionSkipInbox& obj)
 }
 
 
-class ActionDeleteMessage {
+class ActionDontStoreMessage {
  public:
 
-  ActionDeleteMessage(const ActionDeleteMessage&);
-  ActionDeleteMessage& operator=(const ActionDeleteMessage&);
-  ActionDeleteMessage() {
+  ActionDontStoreMessage(const ActionDontStoreMessage&);
+  ActionDontStoreMessage& operator=(const ActionDontStoreMessage&);
+  ActionDontStoreMessage() {
   }
 
-  virtual ~ActionDeleteMessage() throw();
+  virtual ~ActionDontStoreMessage() throw();
 
-  bool operator == (const ActionDeleteMessage & /* rhs */) const
+  bool operator == (const ActionDontStoreMessage & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const ActionDeleteMessage &rhs) const {
+  bool operator != (const ActionDontStoreMessage &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionDeleteMessage & ) const;
+  bool operator < (const ActionDontStoreMessage & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1089,9 +1089,9 @@ class ActionDeleteMessage {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionDeleteMessage &a, ActionDeleteMessage &b);
+void swap(ActionDontStoreMessage &a, ActionDontStoreMessage &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionDeleteMessage& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionDontStoreMessage& obj)
 {
   obj.printTo(out);
   return out;
@@ -1191,12 +1191,12 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
 }
 
 typedef struct _AromaAction__isset {
-  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), sendEmail(false), skipInbox(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
+  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), respondToCode(false), forwardToUsers(false) {}
   bool forwardToSlackChannel :1;
   bool forwardToSlackUser :1;
   bool sendEmail :1;
   bool skipInbox :1;
-  bool deleteMessage :1;
+  bool dontStoreMessage :1;
   bool respondToCode :1;
   bool forwardToUsers :1;
 } _AromaAction__isset;
@@ -1214,7 +1214,7 @@ class AromaAction {
   ActionForwardToSlackUser forwardToSlackUser;
   ActionSendEmail sendEmail;
   ActionSkipInbox skipInbox;
-  ActionDeleteMessage deleteMessage;
+  ActionDontStoreMessage dontStoreMessage;
   ActionRespondToCode respondToCode;
   ActionForwardToUsers forwardToUsers;
 
@@ -1228,7 +1228,7 @@ class AromaAction {
 
   void __set_skipInbox(const ActionSkipInbox& val);
 
-  void __set_deleteMessage(const ActionDeleteMessage& val);
+  void __set_dontStoreMessage(const ActionDontStoreMessage& val);
 
   void __set_respondToCode(const ActionRespondToCode& val);
 
@@ -1244,7 +1244,7 @@ class AromaAction {
       return false;
     if (!(skipInbox == rhs.skipInbox))
       return false;
-    if (!(deleteMessage == rhs.deleteMessage))
+    if (!(dontStoreMessage == rhs.dontStoreMessage))
       return false;
     if (!(respondToCode == rhs.respondToCode))
       return false;
