@@ -178,6 +178,7 @@ struct Message
     10: string title;
     /** The ID of the Application the Message was sent from. */
     11: uuid applicationId;
+    12: optional string deviceName;
 }
 
 

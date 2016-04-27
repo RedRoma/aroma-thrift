@@ -301,6 +301,7 @@ Message = module.exports.Message = function(args) {
   this.isTruncated = false;
   this.title = null;
   this.applicationId = null;
+  this.deviceName = null;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -334,6 +335,9 @@ Message = module.exports.Message = function(args) {
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
+    }
+    if (args.deviceName !== undefined && args.deviceName !== null) {
+      this.deviceName = args.deviceName;
     }
   }
 };
@@ -428,6 +432,13 @@ Message.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 12:
+      if (ftype == Thrift.Type.STRING) {
+        this.deviceName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -492,6 +503,11 @@ Message.prototype.write = function(output) {
   if (this.applicationId !== null && this.applicationId !== undefined) {
     output.writeFieldBegin('applicationId', Thrift.Type.STRING, 11);
     output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.deviceName !== null && this.deviceName !== undefined) {
+    output.writeFieldBegin('deviceName', Thrift.Type.STRING, 12);
+    output.writeString(this.deviceName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

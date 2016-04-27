@@ -704,7 +704,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (Aroma_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Aroma_timestamp) timeOfCreation timeMessageReceived: (Aroma_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Aroma_uuid) applicationId
+- (id) initWithMessageId: (Aroma_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Aroma_timestamp) timeOfCreation timeMessageReceived: (Aroma_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Aroma_uuid) applicationId deviceName: (NSString *) deviceName
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -729,6 +729,8 @@
   __title_isset = YES;
   __applicationId = [applicationId retain_stub];
   __applicationId_isset = YES;
+  __deviceName = [deviceName retain_stub];
+  __deviceName_isset = YES;
   return self;
 }
 
@@ -790,6 +792,11 @@
     __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
     __applicationId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"deviceName"])
+  {
+    __deviceName = [[decoder decodeObjectForKey: @"deviceName"] retain_stub];
+    __deviceName_isset = YES;
+  }
   return self;
 }
 
@@ -838,6 +845,10 @@
   if (__applicationId_isset)
   {
     [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__deviceName_isset)
+  {
+    [encoder encodeObject: __deviceName forKey: @"deviceName"];
   }
 }
 
@@ -899,6 +910,11 @@
   {
     hash = (hash * 31) ^ [__applicationId hash];
   }
+  hash = (hash * 31) ^ __deviceName_isset ? 2654435761 : 0;
+  if (__deviceName_isset)
+  {
+    hash = (hash * 31) ^ [__deviceName hash];
+  }
   return hash;
 }
 
@@ -955,6 +971,10 @@
       (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
     return NO;
   }
+  if ((__deviceName_isset != other->__deviceName_isset) ||
+      (__deviceName_isset && ((__deviceName || other->__deviceName) && ![__deviceName isEqual:other->__deviceName]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -967,6 +987,7 @@
   [__macAddress release_stub];
   [__title release_stub];
   [__applicationId release_stub];
+  [__deviceName release_stub];
   [super dealloc_stub];
 }
 
@@ -1185,6 +1206,27 @@
   __applicationId_isset = NO;
 }
 
+- (NSString *) deviceName {
+  return [[__deviceName retain_stub] autorelease_stub];
+}
+
+- (void) setDeviceName: (NSString *) deviceName {
+  [deviceName retain_stub];
+  [__deviceName release_stub];
+  __deviceName = deviceName;
+  __deviceName_isset = YES;
+}
+
+- (BOOL) deviceNameIsSet {
+  return __deviceName_isset;
+}
+
+- (void) unsetDeviceName {
+  [__deviceName release_stub];
+  __deviceName = nil;
+  __deviceName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1288,6 +1330,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 12:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setDeviceName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1368,6 +1418,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__deviceName_isset) {
+    if (__deviceName != nil) {
+      [outProtocol writeFieldBeginWithName: @"deviceName" type: TType_STRING fieldID: 12];
+      [outProtocol writeString: __deviceName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1400,6 +1457,8 @@
   [ms appendFormat: @"\"%@\"", __title];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",deviceName:"];
+  [ms appendFormat: @"\"%@\"", __deviceName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

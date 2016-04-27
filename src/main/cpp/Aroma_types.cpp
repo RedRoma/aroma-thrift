@@ -542,6 +542,11 @@ void Message::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
+void Message::__set_deviceName(const std::string& val) {
+  this->deviceName = val;
+__isset.deviceName = true;
+}
+
 uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -653,6 +658,14 @@ uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 12:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->deviceName);
+          this->__isset.deviceName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -718,6 +731,11 @@ uint32_t Message::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->applicationId);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.deviceName) {
+    xfer += oprot->writeFieldBegin("deviceName", ::apache::thrift::protocol::T_STRING, 12);
+    xfer += oprot->writeString(this->deviceName);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -736,6 +754,7 @@ void swap(Message &a, Message &b) {
   swap(a.isTruncated, b.isTruncated);
   swap(a.title, b.title);
   swap(a.applicationId, b.applicationId);
+  swap(a.deviceName, b.deviceName);
   swap(a.__isset, b.__isset);
 }
 
@@ -751,6 +770,7 @@ Message::Message(const Message& other9) {
   isTruncated = other9.isTruncated;
   title = other9.title;
   applicationId = other9.applicationId;
+  deviceName = other9.deviceName;
   __isset = other9.__isset;
 }
 Message& Message::operator=(const Message& other10) {
@@ -765,6 +785,7 @@ Message& Message::operator=(const Message& other10) {
   isTruncated = other10.isTruncated;
   title = other10.title;
   applicationId = other10.applicationId;
+  deviceName = other10.deviceName;
   __isset = other10.__isset;
   return *this;
 }
@@ -782,6 +803,7 @@ void Message::printTo(std::ostream& out) const {
   out << ", " << "isTruncated="; (__isset.isTruncated ? (out << to_string(isTruncated)) : (out << "<null>"));
   out << ", " << "title=" << to_string(title);
   out << ", " << "applicationId=" << to_string(applicationId);
+  out << ", " << "deviceName="; (__isset.deviceName ? (out << to_string(deviceName)) : (out << "<null>"));
   out << ")";
 }
 

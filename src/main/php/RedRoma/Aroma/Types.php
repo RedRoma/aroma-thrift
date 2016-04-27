@@ -553,6 +553,10 @@ class Message {
    * @var string
    */
   public $applicationId = null;
+  /**
+   * @var string
+   */
+  public $deviceName = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -601,6 +605,10 @@ class Message {
           'var' => 'applicationId',
           'type' => TType::STRING,
           ),
+        12 => array(
+          'var' => 'deviceName',
+          'type' => TType::STRING,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -636,6 +644,9 @@ class Message {
       }
       if (isset($vals['applicationId'])) {
         $this->applicationId = $vals['applicationId'];
+      }
+      if (isset($vals['deviceName'])) {
+        $this->deviceName = $vals['deviceName'];
       }
     }
   }
@@ -736,6 +747,13 @@ class Message {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 12:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->deviceName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -802,6 +820,11 @@ class Message {
     if ($this->applicationId !== null) {
       $xfer += $output->writeFieldBegin('applicationId', TType::STRING, 11);
       $xfer += $output->writeString($this->applicationId);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->deviceName !== null) {
+      $xfer += $output->writeFieldBegin('deviceName', TType::STRING, 12);
+      $xfer += $output->writeString($this->deviceName);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
