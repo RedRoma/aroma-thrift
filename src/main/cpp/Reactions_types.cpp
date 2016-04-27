@@ -1576,12 +1576,13 @@ void ActionForwardToSlackChannel::__set_includeBody(const bool val) {
 __isset.includeBody = true;
 }
 
-void ActionForwardToSlackChannel::__set_slackToken(const std::string& val) {
-  this->slackToken = val;
+void ActionForwardToSlackChannel::__set_webhookUrl(const std::string& val) {
+  this->webhookUrl = val;
 }
 
 void ActionForwardToSlackChannel::__set_domainName(const std::string& val) {
   this->domainName = val;
+__isset.domainName = true;
 }
 
 uint32_t ActionForwardToSlackChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1623,8 +1624,8 @@ uint32_t ActionForwardToSlackChannel::read(::apache::thrift::protocol::TProtocol
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->slackToken);
-          this->__isset.slackToken = true;
+          xfer += iprot->readString(this->webhookUrl);
+          this->__isset.webhookUrl = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1663,14 +1664,15 @@ uint32_t ActionForwardToSlackChannel::write(::apache::thrift::protocol::TProtoco
     xfer += oprot->writeBool(this->includeBody);
     xfer += oprot->writeFieldEnd();
   }
-  xfer += oprot->writeFieldBegin("slackToken", ::apache::thrift::protocol::T_STRING, 3);
-  xfer += oprot->writeString(this->slackToken);
+  xfer += oprot->writeFieldBegin("webhookUrl", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->webhookUrl);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("domainName", ::apache::thrift::protocol::T_STRING, 4);
-  xfer += oprot->writeString(this->domainName);
-  xfer += oprot->writeFieldEnd();
-
+  if (this->__isset.domainName) {
+    xfer += oprot->writeFieldBegin("domainName", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->domainName);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1680,7 +1682,7 @@ void swap(ActionForwardToSlackChannel &a, ActionForwardToSlackChannel &b) {
   using ::std::swap;
   swap(a.slackChannel, b.slackChannel);
   swap(a.includeBody, b.includeBody);
-  swap(a.slackToken, b.slackToken);
+  swap(a.webhookUrl, b.webhookUrl);
   swap(a.domainName, b.domainName);
   swap(a.__isset, b.__isset);
 }
@@ -1688,14 +1690,14 @@ void swap(ActionForwardToSlackChannel &a, ActionForwardToSlackChannel &b) {
 ActionForwardToSlackChannel::ActionForwardToSlackChannel(const ActionForwardToSlackChannel& other38) {
   slackChannel = other38.slackChannel;
   includeBody = other38.includeBody;
-  slackToken = other38.slackToken;
+  webhookUrl = other38.webhookUrl;
   domainName = other38.domainName;
   __isset = other38.__isset;
 }
 ActionForwardToSlackChannel& ActionForwardToSlackChannel::operator=(const ActionForwardToSlackChannel& other39) {
   slackChannel = other39.slackChannel;
   includeBody = other39.includeBody;
-  slackToken = other39.slackToken;
+  webhookUrl = other39.webhookUrl;
   domainName = other39.domainName;
   __isset = other39.__isset;
   return *this;
@@ -1705,8 +1707,8 @@ void ActionForwardToSlackChannel::printTo(std::ostream& out) const {
   out << "ActionForwardToSlackChannel(";
   out << "slackChannel=" << to_string(slackChannel);
   out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
-  out << ", " << "slackToken=" << to_string(slackToken);
-  out << ", " << "domainName=" << to_string(domainName);
+  out << ", " << "webhookUrl=" << to_string(webhookUrl);
+  out << ", " << "domainName="; (__isset.domainName ? (out << to_string(domainName)) : (out << "<null>"));
   out << ")";
 }
 

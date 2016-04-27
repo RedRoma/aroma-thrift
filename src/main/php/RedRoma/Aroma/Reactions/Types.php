@@ -1538,7 +1538,7 @@ class ActionForwardToSlackChannel {
   /**
    * @var string
    */
-  public $slackToken = null;
+  public $webhookUrl = null;
   /**
    * @var string
    */
@@ -1556,7 +1556,7 @@ class ActionForwardToSlackChannel {
           'type' => TType::BOOL,
           ),
         3 => array(
-          'var' => 'slackToken',
+          'var' => 'webhookUrl',
           'type' => TType::STRING,
           ),
         4 => array(
@@ -1572,8 +1572,8 @@ class ActionForwardToSlackChannel {
       if (isset($vals['includeBody'])) {
         $this->includeBody = $vals['includeBody'];
       }
-      if (isset($vals['slackToken'])) {
-        $this->slackToken = $vals['slackToken'];
+      if (isset($vals['webhookUrl'])) {
+        $this->webhookUrl = $vals['webhookUrl'];
       }
       if (isset($vals['domainName'])) {
         $this->domainName = $vals['domainName'];
@@ -1616,7 +1616,7 @@ class ActionForwardToSlackChannel {
           break;
         case 3:
           if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->slackToken);
+            $xfer += $input->readString($this->webhookUrl);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -1651,9 +1651,9 @@ class ActionForwardToSlackChannel {
       $xfer += $output->writeBool($this->includeBody);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->slackToken !== null) {
-      $xfer += $output->writeFieldBegin('slackToken', TType::STRING, 3);
-      $xfer += $output->writeString($this->slackToken);
+    if ($this->webhookUrl !== null) {
+      $xfer += $output->writeFieldBegin('webhookUrl', TType::STRING, 3);
+      $xfer += $output->writeString($this->webhookUrl);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->domainName !== null) {

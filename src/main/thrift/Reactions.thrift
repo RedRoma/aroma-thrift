@@ -116,8 +116,8 @@ struct ActionForwardToSlackChannel
 {
     1: string slackChannel;
     2: optional bool includeBody = true;
-    3: string slackToken;
-    4: string domainName;
+    3: string webhookUrl;
+    4: optional string domainName;
 }
 
 struct ActionForwardToSlackUser

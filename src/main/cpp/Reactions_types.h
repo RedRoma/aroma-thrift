@@ -835,10 +835,10 @@ inline std::ostream& operator<<(std::ostream& out, const AromaMatcher& obj)
 }
 
 typedef struct _ActionForwardToSlackChannel__isset {
-  _ActionForwardToSlackChannel__isset() : slackChannel(false), includeBody(true), slackToken(false), domainName(false) {}
+  _ActionForwardToSlackChannel__isset() : slackChannel(false), includeBody(true), webhookUrl(false), domainName(false) {}
   bool slackChannel :1;
   bool includeBody :1;
-  bool slackToken :1;
+  bool webhookUrl :1;
   bool domainName :1;
 } _ActionForwardToSlackChannel__isset;
 
@@ -847,13 +847,13 @@ class ActionForwardToSlackChannel {
 
   ActionForwardToSlackChannel(const ActionForwardToSlackChannel&);
   ActionForwardToSlackChannel& operator=(const ActionForwardToSlackChannel&);
-  ActionForwardToSlackChannel() : slackChannel(), includeBody(true), slackToken(), domainName() {
+  ActionForwardToSlackChannel() : slackChannel(), includeBody(true), webhookUrl(), domainName() {
   }
 
   virtual ~ActionForwardToSlackChannel() throw();
   std::string slackChannel;
   bool includeBody;
-  std::string slackToken;
+  std::string webhookUrl;
   std::string domainName;
 
   _ActionForwardToSlackChannel__isset __isset;
@@ -862,7 +862,7 @@ class ActionForwardToSlackChannel {
 
   void __set_includeBody(const bool val);
 
-  void __set_slackToken(const std::string& val);
+  void __set_webhookUrl(const std::string& val);
 
   void __set_domainName(const std::string& val);
 
@@ -874,9 +874,11 @@ class ActionForwardToSlackChannel {
       return false;
     else if (__isset.includeBody && !(includeBody == rhs.includeBody))
       return false;
-    if (!(slackToken == rhs.slackToken))
+    if (!(webhookUrl == rhs.webhookUrl))
       return false;
-    if (!(domainName == rhs.domainName))
+    if (__isset.domainName != rhs.__isset.domainName)
+      return false;
+    else if (__isset.domainName && !(domainName == rhs.domainName))
       return false;
     return true;
   }
