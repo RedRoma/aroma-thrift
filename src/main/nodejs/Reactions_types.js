@@ -1123,7 +1123,7 @@ ActionForwardToSlackChannel.prototype.write = function(output) {
 ActionForwardToSlackUser = module.exports.ActionForwardToSlackUser = function(args) {
   this.slackUsername = null;
   this.includeBody = true;
-  this.slackToken = null;
+  this.webhookUrl = null;
   this.domainName = null;
   if (args) {
     if (args.slackUsername !== undefined && args.slackUsername !== null) {
@@ -1132,8 +1132,8 @@ ActionForwardToSlackUser = module.exports.ActionForwardToSlackUser = function(ar
     if (args.includeBody !== undefined && args.includeBody !== null) {
       this.includeBody = args.includeBody;
     }
-    if (args.slackToken !== undefined && args.slackToken !== null) {
-      this.slackToken = args.slackToken;
+    if (args.webhookUrl !== undefined && args.webhookUrl !== null) {
+      this.webhookUrl = args.webhookUrl;
     }
     if (args.domainName !== undefined && args.domainName !== null) {
       this.domainName = args.domainName;
@@ -1170,7 +1170,7 @@ ActionForwardToSlackUser.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.STRING) {
-        this.slackToken = input.readString();
+        this.webhookUrl = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -1203,9 +1203,9 @@ ActionForwardToSlackUser.prototype.write = function(output) {
     output.writeBool(this.includeBody);
     output.writeFieldEnd();
   }
-  if (this.slackToken !== null && this.slackToken !== undefined) {
-    output.writeFieldBegin('slackToken', Thrift.Type.STRING, 3);
-    output.writeString(this.slackToken);
+  if (this.webhookUrl !== null && this.webhookUrl !== undefined) {
+    output.writeFieldBegin('webhookUrl', Thrift.Type.STRING, 3);
+    output.writeString(this.webhookUrl);
     output.writeFieldEnd();
   }
   if (this.domainName !== null && this.domainName !== undefined) {

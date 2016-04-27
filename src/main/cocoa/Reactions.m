@@ -3350,15 +3350,15 @@
   return self;
 }
 
-- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody slackToken: (NSString *) slackToken domainName: (NSString *) domainName
+- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody webhookUrl: (NSString *) webhookUrl domainName: (NSString *) domainName
 {
   self = [super init];
   __slackUsername = [slackUsername retain_stub];
   __slackUsername_isset = YES;
   __includeBody = includeBody;
   __includeBody_isset = YES;
-  __slackToken = [slackToken retain_stub];
-  __slackToken_isset = YES;
+  __webhookUrl = [webhookUrl retain_stub];
+  __webhookUrl_isset = YES;
   __domainName = [domainName retain_stub];
   __domainName_isset = YES;
   return self;
@@ -3377,10 +3377,10 @@
     __includeBody = [decoder decodeBoolForKey: @"includeBody"];
     __includeBody_isset = YES;
   }
-  if ([decoder containsValueForKey: @"slackToken"])
+  if ([decoder containsValueForKey: @"webhookUrl"])
   {
-    __slackToken = [[decoder decodeObjectForKey: @"slackToken"] retain_stub];
-    __slackToken_isset = YES;
+    __webhookUrl = [[decoder decodeObjectForKey: @"webhookUrl"] retain_stub];
+    __webhookUrl_isset = YES;
   }
   if ([decoder containsValueForKey: @"domainName"])
   {
@@ -3400,9 +3400,9 @@
   {
     [encoder encodeBool: __includeBody forKey: @"includeBody"];
   }
-  if (__slackToken_isset)
+  if (__webhookUrl_isset)
   {
-    [encoder encodeObject: __slackToken forKey: @"slackToken"];
+    [encoder encodeObject: __webhookUrl forKey: @"webhookUrl"];
   }
   if (__domainName_isset)
   {
@@ -3423,10 +3423,10 @@
   {
     hash = (hash * 31) ^ [@(__includeBody) hash];
   }
-  hash = (hash * 31) ^ __slackToken_isset ? 2654435761 : 0;
-  if (__slackToken_isset)
+  hash = (hash * 31) ^ __webhookUrl_isset ? 2654435761 : 0;
+  if (__webhookUrl_isset)
   {
-    hash = (hash * 31) ^ [__slackToken hash];
+    hash = (hash * 31) ^ [__webhookUrl hash];
   }
   hash = (hash * 31) ^ __domainName_isset ? 2654435761 : 0;
   if (__domainName_isset)
@@ -3453,8 +3453,8 @@
       (__includeBody_isset && (__includeBody != other->__includeBody))) {
     return NO;
   }
-  if ((__slackToken_isset != other->__slackToken_isset) ||
-      (__slackToken_isset && ((__slackToken || other->__slackToken) && ![__slackToken isEqual:other->__slackToken]))) {
+  if ((__webhookUrl_isset != other->__webhookUrl_isset) ||
+      (__webhookUrl_isset && ((__webhookUrl || other->__webhookUrl) && ![__webhookUrl isEqual:other->__webhookUrl]))) {
     return NO;
   }
   if ((__domainName_isset != other->__domainName_isset) ||
@@ -3467,7 +3467,7 @@
 - (void) dealloc
 {
   [__slackUsername release_stub];
-  [__slackToken release_stub];
+  [__webhookUrl release_stub];
   [__domainName release_stub];
   [super dealloc_stub];
 }
@@ -3510,25 +3510,25 @@
   __includeBody_isset = NO;
 }
 
-- (NSString *) slackToken {
-  return [[__slackToken retain_stub] autorelease_stub];
+- (NSString *) webhookUrl {
+  return [[__webhookUrl retain_stub] autorelease_stub];
 }
 
-- (void) setSlackToken: (NSString *) slackToken {
-  [slackToken retain_stub];
-  [__slackToken release_stub];
-  __slackToken = slackToken;
-  __slackToken_isset = YES;
+- (void) setWebhookUrl: (NSString *) webhookUrl {
+  [webhookUrl retain_stub];
+  [__webhookUrl release_stub];
+  __webhookUrl = webhookUrl;
+  __webhookUrl_isset = YES;
 }
 
-- (BOOL) slackTokenIsSet {
-  return __slackToken_isset;
+- (BOOL) webhookUrlIsSet {
+  return __webhookUrl_isset;
 }
 
-- (void) unsetSlackToken {
-  [__slackToken release_stub];
-  __slackToken = nil;
-  __slackToken_isset = NO;
+- (void) unsetWebhookUrl {
+  [__webhookUrl release_stub];
+  __webhookUrl = nil;
+  __webhookUrl_isset = NO;
 }
 
 - (NSString *) domainName {
@@ -3586,7 +3586,7 @@
       case 3:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setSlackToken: fieldValue];
+          [self setWebhookUrl: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -3622,10 +3622,10 @@
     [outProtocol writeBool: __includeBody];
     [outProtocol writeFieldEnd];
   }
-  if (__slackToken_isset) {
-    if (__slackToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"slackToken" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __slackToken];
+  if (__webhookUrl_isset) {
+    if (__webhookUrl != nil) {
+      [outProtocol writeFieldBeginWithName: @"webhookUrl" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __webhookUrl];
       [outProtocol writeFieldEnd];
     }
   }
@@ -3650,8 +3650,8 @@
   [ms appendFormat: @"\"%@\"", __slackUsername];
   [ms appendString: @",includeBody:"];
   [ms appendFormat: @"%i", __includeBody];
-  [ms appendString: @",slackToken:"];
-  [ms appendFormat: @"\"%@\"", __slackToken];
+  [ms appendString: @",webhookUrl:"];
+  [ms appendFormat: @"\"%@\"", __webhookUrl];
   [ms appendString: @",domainName:"];
   [ms appendFormat: @"\"%@\"", __domainName];
   [ms appendString: @")"];

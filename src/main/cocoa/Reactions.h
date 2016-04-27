@@ -577,24 +577,24 @@ typedef Aroma_uuid AromaReactions_uuid;
 @interface AromaReactions_ActionForwardToSlackUser : NSObject <TBase, NSCoding> {
   NSString * __slackUsername;
   BOOL __includeBody;
-  NSString * __slackToken;
+  NSString * __webhookUrl;
   NSString * __domainName;
 
   BOOL __slackUsername_isset;
   BOOL __includeBody_isset;
-  BOOL __slackToken_isset;
+  BOOL __webhookUrl_isset;
   BOOL __domainName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=slackUsername, setter=setSlackUsername:) NSString * slackUsername;
 @property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
-@property (nonatomic, retain, getter=slackToken, setter=setSlackToken:) NSString * slackToken;
+@property (nonatomic, retain, getter=webhookUrl, setter=setWebhookUrl:) NSString * webhookUrl;
 @property (nonatomic, retain, getter=domainName, setter=setDomainName:) NSString * domainName;
 #endif
 
 - (id) init;
-- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody slackToken: (NSString *) slackToken domainName: (NSString *) domainName;
+- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody webhookUrl: (NSString *) webhookUrl domainName: (NSString *) domainName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -614,10 +614,10 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) includeBodyIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) slackToken;
-- (void) setSlackToken: (NSString *) slackToken;
+- (NSString *) webhookUrl;
+- (void) setWebhookUrl: (NSString *) webhookUrl;
 #endif
-- (BOOL) slackTokenIsSet;
+- (BOOL) webhookUrlIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) domainName;

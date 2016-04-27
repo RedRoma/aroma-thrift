@@ -1726,12 +1726,13 @@ void ActionForwardToSlackUser::__set_includeBody(const bool val) {
 __isset.includeBody = true;
 }
 
-void ActionForwardToSlackUser::__set_slackToken(const std::string& val) {
-  this->slackToken = val;
+void ActionForwardToSlackUser::__set_webhookUrl(const std::string& val) {
+  this->webhookUrl = val;
 }
 
 void ActionForwardToSlackUser::__set_domainName(const std::string& val) {
   this->domainName = val;
+__isset.domainName = true;
 }
 
 uint32_t ActionForwardToSlackUser::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1773,8 +1774,8 @@ uint32_t ActionForwardToSlackUser::read(::apache::thrift::protocol::TProtocol* i
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->slackToken);
-          this->__isset.slackToken = true;
+          xfer += iprot->readString(this->webhookUrl);
+          this->__isset.webhookUrl = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1813,14 +1814,15 @@ uint32_t ActionForwardToSlackUser::write(::apache::thrift::protocol::TProtocol* 
     xfer += oprot->writeBool(this->includeBody);
     xfer += oprot->writeFieldEnd();
   }
-  xfer += oprot->writeFieldBegin("slackToken", ::apache::thrift::protocol::T_STRING, 3);
-  xfer += oprot->writeString(this->slackToken);
+  xfer += oprot->writeFieldBegin("webhookUrl", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->webhookUrl);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("domainName", ::apache::thrift::protocol::T_STRING, 4);
-  xfer += oprot->writeString(this->domainName);
-  xfer += oprot->writeFieldEnd();
-
+  if (this->__isset.domainName) {
+    xfer += oprot->writeFieldBegin("domainName", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->domainName);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1830,7 +1832,7 @@ void swap(ActionForwardToSlackUser &a, ActionForwardToSlackUser &b) {
   using ::std::swap;
   swap(a.slackUsername, b.slackUsername);
   swap(a.includeBody, b.includeBody);
-  swap(a.slackToken, b.slackToken);
+  swap(a.webhookUrl, b.webhookUrl);
   swap(a.domainName, b.domainName);
   swap(a.__isset, b.__isset);
 }
@@ -1838,14 +1840,14 @@ void swap(ActionForwardToSlackUser &a, ActionForwardToSlackUser &b) {
 ActionForwardToSlackUser::ActionForwardToSlackUser(const ActionForwardToSlackUser& other40) {
   slackUsername = other40.slackUsername;
   includeBody = other40.includeBody;
-  slackToken = other40.slackToken;
+  webhookUrl = other40.webhookUrl;
   domainName = other40.domainName;
   __isset = other40.__isset;
 }
 ActionForwardToSlackUser& ActionForwardToSlackUser::operator=(const ActionForwardToSlackUser& other41) {
   slackUsername = other41.slackUsername;
   includeBody = other41.includeBody;
-  slackToken = other41.slackToken;
+  webhookUrl = other41.webhookUrl;
   domainName = other41.domainName;
   __isset = other41.__isset;
   return *this;
@@ -1855,8 +1857,8 @@ void ActionForwardToSlackUser::printTo(std::ostream& out) const {
   out << "ActionForwardToSlackUser(";
   out << "slackUsername=" << to_string(slackUsername);
   out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
-  out << ", " << "slackToken=" << to_string(slackToken);
-  out << ", " << "domainName=" << to_string(domainName);
+  out << ", " << "webhookUrl=" << to_string(webhookUrl);
+  out << ", " << "domainName="; (__isset.domainName ? (out << to_string(domainName)) : (out << "<null>"));
   out << ")";
 }
 

@@ -903,10 +903,10 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToSlackCha
 }
 
 typedef struct _ActionForwardToSlackUser__isset {
-  _ActionForwardToSlackUser__isset() : slackUsername(false), includeBody(true), slackToken(false), domainName(false) {}
+  _ActionForwardToSlackUser__isset() : slackUsername(false), includeBody(true), webhookUrl(false), domainName(false) {}
   bool slackUsername :1;
   bool includeBody :1;
-  bool slackToken :1;
+  bool webhookUrl :1;
   bool domainName :1;
 } _ActionForwardToSlackUser__isset;
 
@@ -915,13 +915,13 @@ class ActionForwardToSlackUser {
 
   ActionForwardToSlackUser(const ActionForwardToSlackUser&);
   ActionForwardToSlackUser& operator=(const ActionForwardToSlackUser&);
-  ActionForwardToSlackUser() : slackUsername(), includeBody(true), slackToken(), domainName() {
+  ActionForwardToSlackUser() : slackUsername(), includeBody(true), webhookUrl(), domainName() {
   }
 
   virtual ~ActionForwardToSlackUser() throw();
   std::string slackUsername;
   bool includeBody;
-  std::string slackToken;
+  std::string webhookUrl;
   std::string domainName;
 
   _ActionForwardToSlackUser__isset __isset;
@@ -930,7 +930,7 @@ class ActionForwardToSlackUser {
 
   void __set_includeBody(const bool val);
 
-  void __set_slackToken(const std::string& val);
+  void __set_webhookUrl(const std::string& val);
 
   void __set_domainName(const std::string& val);
 
@@ -942,9 +942,11 @@ class ActionForwardToSlackUser {
       return false;
     else if (__isset.includeBody && !(includeBody == rhs.includeBody))
       return false;
-    if (!(slackToken == rhs.slackToken))
+    if (!(webhookUrl == rhs.webhookUrl))
       return false;
-    if (!(domainName == rhs.domainName))
+    if (__isset.domainName != rhs.__isset.domainName)
+      return false;
+    else if (__isset.domainName && !(domainName == rhs.domainName))
       return false;
     return true;
   }
