@@ -128,6 +128,12 @@ struct ActionForwardToSlackUser
     4: optional string domainName;
 }
 
+struct ActionForwardToGitter
+{
+    1: string gitterWebhookUrl;
+    2: optional bool includeBody = true;
+}
+
 struct ActionSendEmail
 {
     1: string emailAddress;
@@ -158,6 +164,7 @@ union AromaAction
 {
     1: ActionForwardToSlackChannel forwardToSlackChannel;
     2: ActionForwardToSlackUser forwardToSlackUser;
+    8: ActionForwardToGitter actionForwardToGitter;
     3: ActionSendEmail sendEmail;
     4: ActionSkipInbox skipInbox;
     5: ActionDontStoreMessage dontStoreMessage;

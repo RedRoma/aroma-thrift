@@ -1863,6 +1863,114 @@ void ActionForwardToSlackUser::printTo(std::ostream& out) const {
 }
 
 
+ActionForwardToGitter::~ActionForwardToGitter() throw() {
+}
+
+
+void ActionForwardToGitter::__set_gitterWebhookUrl(const std::string& val) {
+  this->gitterWebhookUrl = val;
+}
+
+void ActionForwardToGitter::__set_includeBody(const bool val) {
+  this->includeBody = val;
+__isset.includeBody = true;
+}
+
+uint32_t ActionForwardToGitter::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->gitterWebhookUrl);
+          this->__isset.gitterWebhookUrl = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->includeBody);
+          this->__isset.includeBody = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionForwardToGitter::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionForwardToGitter");
+
+  xfer += oprot->writeFieldBegin("gitterWebhookUrl", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->gitterWebhookUrl);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.includeBody) {
+    xfer += oprot->writeFieldBegin("includeBody", ::apache::thrift::protocol::T_BOOL, 2);
+    xfer += oprot->writeBool(this->includeBody);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionForwardToGitter &a, ActionForwardToGitter &b) {
+  using ::std::swap;
+  swap(a.gitterWebhookUrl, b.gitterWebhookUrl);
+  swap(a.includeBody, b.includeBody);
+  swap(a.__isset, b.__isset);
+}
+
+ActionForwardToGitter::ActionForwardToGitter(const ActionForwardToGitter& other42) {
+  gitterWebhookUrl = other42.gitterWebhookUrl;
+  includeBody = other42.includeBody;
+  __isset = other42.__isset;
+}
+ActionForwardToGitter& ActionForwardToGitter::operator=(const ActionForwardToGitter& other43) {
+  gitterWebhookUrl = other43.gitterWebhookUrl;
+  includeBody = other43.includeBody;
+  __isset = other43.__isset;
+  return *this;
+}
+void ActionForwardToGitter::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionForwardToGitter(";
+  out << "gitterWebhookUrl=" << to_string(gitterWebhookUrl);
+  out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
+  out << ")";
+}
+
+
 ActionSendEmail::~ActionSendEmail() throw() {
 }
 
@@ -1951,15 +2059,15 @@ void swap(ActionSendEmail &a, ActionSendEmail &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionSendEmail::ActionSendEmail(const ActionSendEmail& other42) {
-  emailAddress = other42.emailAddress;
-  includeBody = other42.includeBody;
-  __isset = other42.__isset;
+ActionSendEmail::ActionSendEmail(const ActionSendEmail& other44) {
+  emailAddress = other44.emailAddress;
+  includeBody = other44.includeBody;
+  __isset = other44.__isset;
 }
-ActionSendEmail& ActionSendEmail::operator=(const ActionSendEmail& other43) {
-  emailAddress = other43.emailAddress;
-  includeBody = other43.includeBody;
-  __isset = other43.__isset;
+ActionSendEmail& ActionSendEmail::operator=(const ActionSendEmail& other45) {
+  emailAddress = other45.emailAddress;
+  includeBody = other45.includeBody;
+  __isset = other45.__isset;
   return *this;
 }
 void ActionSendEmail::printTo(std::ostream& out) const {
@@ -2019,11 +2127,11 @@ void swap(ActionSkipInbox &a, ActionSkipInbox &b) {
   (void) b;
 }
 
-ActionSkipInbox::ActionSkipInbox(const ActionSkipInbox& other44) {
-  (void) other44;
+ActionSkipInbox::ActionSkipInbox(const ActionSkipInbox& other46) {
+  (void) other46;
 }
-ActionSkipInbox& ActionSkipInbox::operator=(const ActionSkipInbox& other45) {
-  (void) other45;
+ActionSkipInbox& ActionSkipInbox::operator=(const ActionSkipInbox& other47) {
+  (void) other47;
   return *this;
 }
 void ActionSkipInbox::printTo(std::ostream& out) const {
@@ -2081,11 +2189,11 @@ void swap(ActionDontStoreMessage &a, ActionDontStoreMessage &b) {
   (void) b;
 }
 
-ActionDontStoreMessage::ActionDontStoreMessage(const ActionDontStoreMessage& other46) {
-  (void) other46;
+ActionDontStoreMessage::ActionDontStoreMessage(const ActionDontStoreMessage& other48) {
+  (void) other48;
 }
-ActionDontStoreMessage& ActionDontStoreMessage::operator=(const ActionDontStoreMessage& other47) {
-  (void) other47;
+ActionDontStoreMessage& ActionDontStoreMessage::operator=(const ActionDontStoreMessage& other49) {
+  (void) other49;
   return *this;
 }
 void ActionDontStoreMessage::printTo(std::ostream& out) const {
@@ -2164,13 +2272,13 @@ void swap(ActionRespondWithMessage &a, ActionRespondWithMessage &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionRespondWithMessage::ActionRespondWithMessage(const ActionRespondWithMessage& other48) {
-  messageToRespondWith = other48.messageToRespondWith;
-  __isset = other48.__isset;
+ActionRespondWithMessage::ActionRespondWithMessage(const ActionRespondWithMessage& other50) {
+  messageToRespondWith = other50.messageToRespondWith;
+  __isset = other50.__isset;
 }
-ActionRespondWithMessage& ActionRespondWithMessage::operator=(const ActionRespondWithMessage& other49) {
-  messageToRespondWith = other49.messageToRespondWith;
-  __isset = other49.__isset;
+ActionRespondWithMessage& ActionRespondWithMessage::operator=(const ActionRespondWithMessage& other51) {
+  messageToRespondWith = other51.messageToRespondWith;
+  __isset = other51.__isset;
   return *this;
 }
 void ActionRespondWithMessage::printTo(std::ostream& out) const {
@@ -2214,14 +2322,14 @@ uint32_t ActionForwardToUsers::read(::apache::thrift::protocol::TProtocol* iprot
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->userIds.clear();
-            uint32_t _size50;
-            ::apache::thrift::protocol::TType _etype53;
-            xfer += iprot->readListBegin(_etype53, _size50);
-            this->userIds.resize(_size50);
-            uint32_t _i54;
-            for (_i54 = 0; _i54 < _size50; ++_i54)
+            uint32_t _size52;
+            ::apache::thrift::protocol::TType _etype55;
+            xfer += iprot->readListBegin(_etype55, _size52);
+            this->userIds.resize(_size52);
+            uint32_t _i56;
+            for (_i56 = 0; _i56 < _size52; ++_i56)
             {
-              xfer += iprot->readString(this->userIds[_i54]);
+              xfer += iprot->readString(this->userIds[_i56]);
             }
             xfer += iprot->readListEnd();
           }
@@ -2250,10 +2358,10 @@ uint32_t ActionForwardToUsers::write(::apache::thrift::protocol::TProtocol* opro
   xfer += oprot->writeFieldBegin("userIds", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->userIds.size()));
-    std::vector<uuid> ::const_iterator _iter55;
-    for (_iter55 = this->userIds.begin(); _iter55 != this->userIds.end(); ++_iter55)
+    std::vector<uuid> ::const_iterator _iter57;
+    for (_iter57 = this->userIds.begin(); _iter57 != this->userIds.end(); ++_iter57)
     {
-      xfer += oprot->writeString((*_iter55));
+      xfer += oprot->writeString((*_iter57));
     }
     xfer += oprot->writeListEnd();
   }
@@ -2270,13 +2378,13 @@ void swap(ActionForwardToUsers &a, ActionForwardToUsers &b) {
   swap(a.__isset, b.__isset);
 }
 
-ActionForwardToUsers::ActionForwardToUsers(const ActionForwardToUsers& other56) {
-  userIds = other56.userIds;
-  __isset = other56.__isset;
+ActionForwardToUsers::ActionForwardToUsers(const ActionForwardToUsers& other58) {
+  userIds = other58.userIds;
+  __isset = other58.__isset;
 }
-ActionForwardToUsers& ActionForwardToUsers::operator=(const ActionForwardToUsers& other57) {
-  userIds = other57.userIds;
-  __isset = other57.__isset;
+ActionForwardToUsers& ActionForwardToUsers::operator=(const ActionForwardToUsers& other59) {
+  userIds = other59.userIds;
+  __isset = other59.__isset;
   return *this;
 }
 void ActionForwardToUsers::printTo(std::ostream& out) const {
@@ -2297,6 +2405,10 @@ void AromaAction::__set_forwardToSlackChannel(const ActionForwardToSlackChannel&
 
 void AromaAction::__set_forwardToSlackUser(const ActionForwardToSlackUser& val) {
   this->forwardToSlackUser = val;
+}
+
+void AromaAction::__set_actionForwardToGitter(const ActionForwardToGitter& val) {
+  this->actionForwardToGitter = val;
 }
 
 void AromaAction::__set_sendEmail(const ActionSendEmail& val) {
@@ -2352,6 +2464,14 @@ uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->forwardToSlackUser.read(iprot);
           this->__isset.forwardToSlackUser = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->actionForwardToGitter.read(iprot);
+          this->__isset.actionForwardToGitter = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2441,6 +2561,10 @@ uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += this->forwardToUsers.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("actionForwardToGitter", ::apache::thrift::protocol::T_STRUCT, 8);
+  xfer += this->actionForwardToGitter.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -2450,6 +2574,7 @@ void swap(AromaAction &a, AromaAction &b) {
   using ::std::swap;
   swap(a.forwardToSlackChannel, b.forwardToSlackChannel);
   swap(a.forwardToSlackUser, b.forwardToSlackUser);
+  swap(a.actionForwardToGitter, b.actionForwardToGitter);
   swap(a.sendEmail, b.sendEmail);
   swap(a.skipInbox, b.skipInbox);
   swap(a.dontStoreMessage, b.dontStoreMessage);
@@ -2458,25 +2583,27 @@ void swap(AromaAction &a, AromaAction &b) {
   swap(a.__isset, b.__isset);
 }
 
-AromaAction::AromaAction(const AromaAction& other58) {
-  forwardToSlackChannel = other58.forwardToSlackChannel;
-  forwardToSlackUser = other58.forwardToSlackUser;
-  sendEmail = other58.sendEmail;
-  skipInbox = other58.skipInbox;
-  dontStoreMessage = other58.dontStoreMessage;
-  responseWithMessage = other58.responseWithMessage;
-  forwardToUsers = other58.forwardToUsers;
-  __isset = other58.__isset;
+AromaAction::AromaAction(const AromaAction& other60) {
+  forwardToSlackChannel = other60.forwardToSlackChannel;
+  forwardToSlackUser = other60.forwardToSlackUser;
+  actionForwardToGitter = other60.actionForwardToGitter;
+  sendEmail = other60.sendEmail;
+  skipInbox = other60.skipInbox;
+  dontStoreMessage = other60.dontStoreMessage;
+  responseWithMessage = other60.responseWithMessage;
+  forwardToUsers = other60.forwardToUsers;
+  __isset = other60.__isset;
 }
-AromaAction& AromaAction::operator=(const AromaAction& other59) {
-  forwardToSlackChannel = other59.forwardToSlackChannel;
-  forwardToSlackUser = other59.forwardToSlackUser;
-  sendEmail = other59.sendEmail;
-  skipInbox = other59.skipInbox;
-  dontStoreMessage = other59.dontStoreMessage;
-  responseWithMessage = other59.responseWithMessage;
-  forwardToUsers = other59.forwardToUsers;
-  __isset = other59.__isset;
+AromaAction& AromaAction::operator=(const AromaAction& other61) {
+  forwardToSlackChannel = other61.forwardToSlackChannel;
+  forwardToSlackUser = other61.forwardToSlackUser;
+  actionForwardToGitter = other61.actionForwardToGitter;
+  sendEmail = other61.sendEmail;
+  skipInbox = other61.skipInbox;
+  dontStoreMessage = other61.dontStoreMessage;
+  responseWithMessage = other61.responseWithMessage;
+  forwardToUsers = other61.forwardToUsers;
+  __isset = other61.__isset;
   return *this;
 }
 void AromaAction::printTo(std::ostream& out) const {
@@ -2484,6 +2611,7 @@ void AromaAction::printTo(std::ostream& out) const {
   out << "AromaAction(";
   out << "forwardToSlackChannel=" << to_string(forwardToSlackChannel);
   out << ", " << "forwardToSlackUser=" << to_string(forwardToSlackUser);
+  out << ", " << "actionForwardToGitter=" << to_string(actionForwardToGitter);
   out << ", " << "sendEmail=" << to_string(sendEmail);
   out << ", " << "skipInbox=" << to_string(skipInbox);
   out << ", " << "dontStoreMessage=" << to_string(dontStoreMessage);
@@ -2534,14 +2662,14 @@ uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->matchers.clear();
-            uint32_t _size60;
-            ::apache::thrift::protocol::TType _etype63;
-            xfer += iprot->readListBegin(_etype63, _size60);
-            this->matchers.resize(_size60);
-            uint32_t _i64;
-            for (_i64 = 0; _i64 < _size60; ++_i64)
+            uint32_t _size62;
+            ::apache::thrift::protocol::TType _etype65;
+            xfer += iprot->readListBegin(_etype65, _size62);
+            this->matchers.resize(_size62);
+            uint32_t _i66;
+            for (_i66 = 0; _i66 < _size62; ++_i66)
             {
-              xfer += this->matchers[_i64].read(iprot);
+              xfer += this->matchers[_i66].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2554,14 +2682,14 @@ uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->actions.clear();
-            uint32_t _size65;
-            ::apache::thrift::protocol::TType _etype68;
-            xfer += iprot->readListBegin(_etype68, _size65);
-            this->actions.resize(_size65);
-            uint32_t _i69;
-            for (_i69 = 0; _i69 < _size65; ++_i69)
+            uint32_t _size67;
+            ::apache::thrift::protocol::TType _etype70;
+            xfer += iprot->readListBegin(_etype70, _size67);
+            this->actions.resize(_size67);
+            uint32_t _i71;
+            for (_i71 = 0; _i71 < _size67; ++_i71)
             {
-              xfer += this->actions[_i69].read(iprot);
+              xfer += this->actions[_i71].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2598,10 +2726,10 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeFieldBegin("matchers", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->matchers.size()));
-    std::vector<AromaMatcher> ::const_iterator _iter70;
-    for (_iter70 = this->matchers.begin(); _iter70 != this->matchers.end(); ++_iter70)
+    std::vector<AromaMatcher> ::const_iterator _iter72;
+    for (_iter72 = this->matchers.begin(); _iter72 != this->matchers.end(); ++_iter72)
     {
-      xfer += (*_iter70).write(oprot);
+      xfer += (*_iter72).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2610,10 +2738,10 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeFieldBegin("actions", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->actions.size()));
-    std::vector<AromaAction> ::const_iterator _iter71;
-    for (_iter71 = this->actions.begin(); _iter71 != this->actions.end(); ++_iter71)
+    std::vector<AromaAction> ::const_iterator _iter73;
+    for (_iter73 = this->actions.begin(); _iter73 != this->actions.end(); ++_iter73)
     {
-      xfer += (*_iter71).write(oprot);
+      xfer += (*_iter73).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2636,17 +2764,17 @@ void swap(Reaction &a, Reaction &b) {
   swap(a.__isset, b.__isset);
 }
 
-Reaction::Reaction(const Reaction& other72) {
-  matchers = other72.matchers;
-  actions = other72.actions;
-  name = other72.name;
-  __isset = other72.__isset;
+Reaction::Reaction(const Reaction& other74) {
+  matchers = other74.matchers;
+  actions = other74.actions;
+  name = other74.name;
+  __isset = other74.__isset;
 }
-Reaction& Reaction::operator=(const Reaction& other73) {
-  matchers = other73.matchers;
-  actions = other73.actions;
-  name = other73.name;
-  __isset = other73.__isset;
+Reaction& Reaction::operator=(const Reaction& other75) {
+  matchers = other75.matchers;
+  actions = other75.actions;
+  name = other75.name;
+  __isset = other75.__isset;
   return *this;
 }
 void Reaction::printTo(std::ostream& out) const {

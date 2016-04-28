@@ -3660,6 +3660,210 @@
 
 @end
 
+@implementation AromaReactions_ActionForwardToGitter
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.includeBody = YES;
+
+#endif
+  return self;
+}
+
+- (id) initWithGitterWebhookUrl: (NSString *) gitterWebhookUrl includeBody: (BOOL) includeBody
+{
+  self = [super init];
+  __gitterWebhookUrl = [gitterWebhookUrl retain_stub];
+  __gitterWebhookUrl_isset = YES;
+  __includeBody = includeBody;
+  __includeBody_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"gitterWebhookUrl"])
+  {
+    __gitterWebhookUrl = [[decoder decodeObjectForKey: @"gitterWebhookUrl"] retain_stub];
+    __gitterWebhookUrl_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"includeBody"])
+  {
+    __includeBody = [decoder decodeBoolForKey: @"includeBody"];
+    __includeBody_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__gitterWebhookUrl_isset)
+  {
+    [encoder encodeObject: __gitterWebhookUrl forKey: @"gitterWebhookUrl"];
+  }
+  if (__includeBody_isset)
+  {
+    [encoder encodeBool: __includeBody forKey: @"includeBody"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __gitterWebhookUrl_isset ? 2654435761 : 0;
+  if (__gitterWebhookUrl_isset)
+  {
+    hash = (hash * 31) ^ [__gitterWebhookUrl hash];
+  }
+  hash = (hash * 31) ^ __includeBody_isset ? 2654435761 : 0;
+  if (__includeBody_isset)
+  {
+    hash = (hash * 31) ^ [@(__includeBody) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionForwardToGitter class]]) {
+    return NO;
+  }
+  AromaReactions_ActionForwardToGitter *other = (AromaReactions_ActionForwardToGitter *)anObject;
+  if ((__gitterWebhookUrl_isset != other->__gitterWebhookUrl_isset) ||
+      (__gitterWebhookUrl_isset && ((__gitterWebhookUrl || other->__gitterWebhookUrl) && ![__gitterWebhookUrl isEqual:other->__gitterWebhookUrl]))) {
+    return NO;
+  }
+  if ((__includeBody_isset != other->__includeBody_isset) ||
+      (__includeBody_isset && (__includeBody != other->__includeBody))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__gitterWebhookUrl release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) gitterWebhookUrl {
+  return [[__gitterWebhookUrl retain_stub] autorelease_stub];
+}
+
+- (void) setGitterWebhookUrl: (NSString *) gitterWebhookUrl {
+  [gitterWebhookUrl retain_stub];
+  [__gitterWebhookUrl release_stub];
+  __gitterWebhookUrl = gitterWebhookUrl;
+  __gitterWebhookUrl_isset = YES;
+}
+
+- (BOOL) gitterWebhookUrlIsSet {
+  return __gitterWebhookUrl_isset;
+}
+
+- (void) unsetGitterWebhookUrl {
+  [__gitterWebhookUrl release_stub];
+  __gitterWebhookUrl = nil;
+  __gitterWebhookUrl_isset = NO;
+}
+
+- (BOOL) includeBody {
+  return __includeBody;
+}
+
+- (void) setIncludeBody: (BOOL) includeBody {
+  __includeBody = includeBody;
+  __includeBody_isset = YES;
+}
+
+- (BOOL) includeBodyIsSet {
+  return __includeBody_isset;
+}
+
+- (void) unsetIncludeBody {
+  __includeBody_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setGitterWebhookUrl: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setIncludeBody: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionForwardToGitter"];
+  if (__gitterWebhookUrl_isset) {
+    if (__gitterWebhookUrl != nil) {
+      [outProtocol writeFieldBeginWithName: @"gitterWebhookUrl" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __gitterWebhookUrl];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__includeBody_isset) {
+    [outProtocol writeFieldBeginWithName: @"includeBody" type: TType_BOOL fieldID: 2];
+    [outProtocol writeBool: __includeBody];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionForwardToGitter("];
+  [ms appendString: @"gitterWebhookUrl:"];
+  [ms appendFormat: @"\"%@\"", __gitterWebhookUrl];
+  [ms appendString: @",includeBody:"];
+  [ms appendFormat: @"%i", __includeBody];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaReactions_ActionSendEmail
 
 - (id) init
@@ -4350,13 +4554,15 @@
   return self;
 }
 
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser actionForwardToGitter: (AromaReactions_ActionForwardToGitter *) actionForwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
 {
   self = [super init];
   __forwardToSlackChannel = [forwardToSlackChannel retain_stub];
   __forwardToSlackChannel_isset = YES;
   __forwardToSlackUser = [forwardToSlackUser retain_stub];
   __forwardToSlackUser_isset = YES;
+  __actionForwardToGitter = [actionForwardToGitter retain_stub];
+  __actionForwardToGitter_isset = YES;
   __sendEmail = [sendEmail retain_stub];
   __sendEmail_isset = YES;
   __skipInbox = [skipInbox retain_stub];
@@ -4382,6 +4588,11 @@
   {
     __forwardToSlackUser = [[decoder decodeObjectForKey: @"forwardToSlackUser"] retain_stub];
     __forwardToSlackUser_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"actionForwardToGitter"])
+  {
+    __actionForwardToGitter = [[decoder decodeObjectForKey: @"actionForwardToGitter"] retain_stub];
+    __actionForwardToGitter_isset = YES;
   }
   if ([decoder containsValueForKey: @"sendEmail"])
   {
@@ -4421,6 +4632,10 @@
   {
     [encoder encodeObject: __forwardToSlackUser forKey: @"forwardToSlackUser"];
   }
+  if (__actionForwardToGitter_isset)
+  {
+    [encoder encodeObject: __actionForwardToGitter forKey: @"actionForwardToGitter"];
+  }
   if (__sendEmail_isset)
   {
     [encoder encodeObject: __sendEmail forKey: @"sendEmail"];
@@ -4455,6 +4670,11 @@
   if (__forwardToSlackUser_isset)
   {
     hash = (hash * 31) ^ [__forwardToSlackUser hash];
+  }
+  hash = (hash * 31) ^ __actionForwardToGitter_isset ? 2654435761 : 0;
+  if (__actionForwardToGitter_isset)
+  {
+    hash = (hash * 31) ^ [__actionForwardToGitter hash];
   }
   hash = (hash * 31) ^ __sendEmail_isset ? 2654435761 : 0;
   if (__sendEmail_isset)
@@ -4501,6 +4721,10 @@
       (__forwardToSlackUser_isset && ((__forwardToSlackUser || other->__forwardToSlackUser) && ![__forwardToSlackUser isEqual:other->__forwardToSlackUser]))) {
     return NO;
   }
+  if ((__actionForwardToGitter_isset != other->__actionForwardToGitter_isset) ||
+      (__actionForwardToGitter_isset && ((__actionForwardToGitter || other->__actionForwardToGitter) && ![__actionForwardToGitter isEqual:other->__actionForwardToGitter]))) {
+    return NO;
+  }
   if ((__sendEmail_isset != other->__sendEmail_isset) ||
       (__sendEmail_isset && ((__sendEmail || other->__sendEmail) && ![__sendEmail isEqual:other->__sendEmail]))) {
     return NO;
@@ -4528,6 +4752,7 @@
 {
   [__forwardToSlackChannel release_stub];
   [__forwardToSlackUser release_stub];
+  [__actionForwardToGitter release_stub];
   [__sendEmail release_stub];
   [__skipInbox release_stub];
   [__dontStoreMessage release_stub];
@@ -4576,6 +4801,27 @@
   [__forwardToSlackUser release_stub];
   __forwardToSlackUser = nil;
   __forwardToSlackUser_isset = NO;
+}
+
+- (AromaReactions_ActionForwardToGitter *) actionForwardToGitter {
+  return [[__actionForwardToGitter retain_stub] autorelease_stub];
+}
+
+- (void) setActionForwardToGitter: (AromaReactions_ActionForwardToGitter *) actionForwardToGitter {
+  [actionForwardToGitter retain_stub];
+  [__actionForwardToGitter release_stub];
+  __actionForwardToGitter = actionForwardToGitter;
+  __actionForwardToGitter_isset = YES;
+}
+
+- (BOOL) actionForwardToGitterIsSet {
+  return __actionForwardToGitter_isset;
+}
+
+- (void) unsetActionForwardToGitter {
+  [__actionForwardToGitter release_stub];
+  __actionForwardToGitter = nil;
+  __actionForwardToGitter_isset = NO;
 }
 
 - (AromaReactions_ActionSendEmail *) sendEmail {
@@ -4718,6 +4964,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 8:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionForwardToGitter *fieldValue = [[AromaReactions_ActionForwardToGitter alloc] init];
+          [fieldValue read: inProtocol];
+          [self setActionForwardToGitter: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       case 3:
         if (fieldType == TType_STRUCT) {
           AromaReactions_ActionSendEmail *fieldValue = [[AromaReactions_ActionSendEmail alloc] init];
@@ -4793,6 +5049,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__actionForwardToGitter_isset) {
+    if (__actionForwardToGitter != nil) {
+      [outProtocol writeFieldBeginWithName: @"actionForwardToGitter" type: TType_STRUCT fieldID: 8];
+      [__actionForwardToGitter write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   if (__sendEmail_isset) {
     if (__sendEmail != nil) {
       [outProtocol writeFieldBeginWithName: @"sendEmail" type: TType_STRUCT fieldID: 3];
@@ -4842,6 +5105,8 @@
   [ms appendFormat: @"%@", __forwardToSlackChannel];
   [ms appendString: @",forwardToSlackUser:"];
   [ms appendFormat: @"%@", __forwardToSlackUser];
+  [ms appendString: @",actionForwardToGitter:"];
+  [ms appendFormat: @"%@", __actionForwardToGitter];
   [ms appendString: @",sendEmail:"];
   [ms appendFormat: @"%@", __sendEmail];
   [ms appendString: @",skipInbox:"];

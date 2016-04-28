@@ -62,6 +62,8 @@ class ActionForwardToSlackChannel;
 
 class ActionForwardToSlackUser;
 
+class ActionForwardToGitter;
+
 class ActionSendEmail;
 
 class ActionSkipInbox;
@@ -970,6 +972,60 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToSlackUse
   return out;
 }
 
+typedef struct _ActionForwardToGitter__isset {
+  _ActionForwardToGitter__isset() : gitterWebhookUrl(false), includeBody(true) {}
+  bool gitterWebhookUrl :1;
+  bool includeBody :1;
+} _ActionForwardToGitter__isset;
+
+class ActionForwardToGitter {
+ public:
+
+  ActionForwardToGitter(const ActionForwardToGitter&);
+  ActionForwardToGitter& operator=(const ActionForwardToGitter&);
+  ActionForwardToGitter() : gitterWebhookUrl(), includeBody(true) {
+  }
+
+  virtual ~ActionForwardToGitter() throw();
+  std::string gitterWebhookUrl;
+  bool includeBody;
+
+  _ActionForwardToGitter__isset __isset;
+
+  void __set_gitterWebhookUrl(const std::string& val);
+
+  void __set_includeBody(const bool val);
+
+  bool operator == (const ActionForwardToGitter & rhs) const
+  {
+    if (!(gitterWebhookUrl == rhs.gitterWebhookUrl))
+      return false;
+    if (__isset.includeBody != rhs.__isset.includeBody)
+      return false;
+    else if (__isset.includeBody && !(includeBody == rhs.includeBody))
+      return false;
+    return true;
+  }
+  bool operator != (const ActionForwardToGitter &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionForwardToGitter & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionForwardToGitter &a, ActionForwardToGitter &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionForwardToGitter& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _ActionSendEmail__isset {
   _ActionSendEmail__isset() : emailAddress(false), includeBody(true) {}
   bool emailAddress :1;
@@ -1188,9 +1244,10 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
 }
 
 typedef struct _AromaAction__isset {
-  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), responseWithMessage(false), forwardToUsers(false) {}
+  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), actionForwardToGitter(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), responseWithMessage(false), forwardToUsers(false) {}
   bool forwardToSlackChannel :1;
   bool forwardToSlackUser :1;
+  bool actionForwardToGitter :1;
   bool sendEmail :1;
   bool skipInbox :1;
   bool dontStoreMessage :1;
@@ -1209,6 +1266,7 @@ class AromaAction {
   virtual ~AromaAction() throw();
   ActionForwardToSlackChannel forwardToSlackChannel;
   ActionForwardToSlackUser forwardToSlackUser;
+  ActionForwardToGitter actionForwardToGitter;
   ActionSendEmail sendEmail;
   ActionSkipInbox skipInbox;
   ActionDontStoreMessage dontStoreMessage;
@@ -1220,6 +1278,8 @@ class AromaAction {
   void __set_forwardToSlackChannel(const ActionForwardToSlackChannel& val);
 
   void __set_forwardToSlackUser(const ActionForwardToSlackUser& val);
+
+  void __set_actionForwardToGitter(const ActionForwardToGitter& val);
 
   void __set_sendEmail(const ActionSendEmail& val);
 
@@ -1236,6 +1296,8 @@ class AromaAction {
     if (!(forwardToSlackChannel == rhs.forwardToSlackChannel))
       return false;
     if (!(forwardToSlackUser == rhs.forwardToSlackUser))
+      return false;
+    if (!(actionForwardToGitter == rhs.actionForwardToGitter))
       return false;
     if (!(sendEmail == rhs.sendEmail))
       return false;

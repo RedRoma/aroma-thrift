@@ -1812,6 +1812,104 @@ class ActionForwardToSlackUser {
 
 }
 
+class ActionForwardToGitter {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $gitterWebhookUrl = null;
+  /**
+   * @var bool
+   */
+  public $includeBody = true;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'gitterWebhookUrl',
+          'type' => TType::STRING,
+          ),
+        2 => array(
+          'var' => 'includeBody',
+          'type' => TType::BOOL,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['gitterWebhookUrl'])) {
+        $this->gitterWebhookUrl = $vals['gitterWebhookUrl'];
+      }
+      if (isset($vals['includeBody'])) {
+        $this->includeBody = $vals['includeBody'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'ActionForwardToGitter';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->gitterWebhookUrl);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::BOOL) {
+            $xfer += $input->readBool($this->includeBody);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('ActionForwardToGitter');
+    if ($this->gitterWebhookUrl !== null) {
+      $xfer += $output->writeFieldBegin('gitterWebhookUrl', TType::STRING, 1);
+      $xfer += $output->writeString($this->gitterWebhookUrl);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->includeBody !== null) {
+      $xfer += $output->writeFieldBegin('includeBody', TType::BOOL, 2);
+      $xfer += $output->writeBool($this->includeBody);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class ActionSendEmail {
   static $_TSPEC;
 
@@ -2199,6 +2297,10 @@ class AromaAction {
    */
   public $forwardToSlackUser = null;
   /**
+   * @var \RedRoma\Aroma\Reactions\ActionForwardToGitter
+   */
+  public $actionForwardToGitter = null;
+  /**
    * @var \RedRoma\Aroma\Reactions\ActionSendEmail
    */
   public $sendEmail = null;
@@ -2231,6 +2333,11 @@ class AromaAction {
           'var' => 'forwardToSlackUser',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\ActionForwardToSlackUser',
+          ),
+        8 => array(
+          'var' => 'actionForwardToGitter',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\ActionForwardToGitter',
           ),
         3 => array(
           'var' => 'sendEmail',
@@ -2265,6 +2372,9 @@ class AromaAction {
       }
       if (isset($vals['forwardToSlackUser'])) {
         $this->forwardToSlackUser = $vals['forwardToSlackUser'];
+      }
+      if (isset($vals['actionForwardToGitter'])) {
+        $this->actionForwardToGitter = $vals['actionForwardToGitter'];
       }
       if (isset($vals['sendEmail'])) {
         $this->sendEmail = $vals['sendEmail'];
@@ -2315,6 +2425,14 @@ class AromaAction {
           if ($ftype == TType::STRUCT) {
             $this->forwardToSlackUser = new \RedRoma\Aroma\Reactions\ActionForwardToSlackUser();
             $xfer += $this->forwardToSlackUser->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 8:
+          if ($ftype == TType::STRUCT) {
+            $this->actionForwardToGitter = new \RedRoma\Aroma\Reactions\ActionForwardToGitter();
+            $xfer += $this->actionForwardToGitter->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -2426,6 +2544,14 @@ class AromaAction {
       }
       $xfer += $output->writeFieldBegin('forwardToUsers', TType::STRUCT, 7);
       $xfer += $this->forwardToUsers->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->actionForwardToGitter !== null) {
+      if (!is_object($this->actionForwardToGitter)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('actionForwardToGitter', TType::STRUCT, 8);
+      $xfer += $this->actionForwardToGitter->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

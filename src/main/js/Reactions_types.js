@@ -1212,6 +1212,72 @@ ActionForwardToSlackUser.prototype.write = function(output) {
   return;
 };
 
+ActionForwardToGitter = function(args) {
+  this.gitterWebhookUrl = null;
+  this.includeBody = true;
+  if (args) {
+    if (args.gitterWebhookUrl !== undefined && args.gitterWebhookUrl !== null) {
+      this.gitterWebhookUrl = args.gitterWebhookUrl;
+    }
+    if (args.includeBody !== undefined && args.includeBody !== null) {
+      this.includeBody = args.includeBody;
+    }
+  }
+};
+ActionForwardToGitter.prototype = {};
+ActionForwardToGitter.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.gitterWebhookUrl = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.BOOL) {
+        this.includeBody = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionForwardToGitter.prototype.write = function(output) {
+  output.writeStructBegin('ActionForwardToGitter');
+  if (this.gitterWebhookUrl !== null && this.gitterWebhookUrl !== undefined) {
+    output.writeFieldBegin('gitterWebhookUrl', Thrift.Type.STRING, 1);
+    output.writeString(this.gitterWebhookUrl);
+    output.writeFieldEnd();
+  }
+  if (this.includeBody !== null && this.includeBody !== undefined) {
+    output.writeFieldBegin('includeBody', Thrift.Type.BOOL, 2);
+    output.writeBool(this.includeBody);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 ActionSendEmail = function(args) {
   this.emailAddress = null;
   this.includeBody = true;
@@ -1465,6 +1531,7 @@ ActionForwardToUsers.prototype.write = function(output) {
 AromaAction = function(args) {
   this.forwardToSlackChannel = null;
   this.forwardToSlackUser = null;
+  this.actionForwardToGitter = null;
   this.sendEmail = null;
   this.skipInbox = null;
   this.dontStoreMessage = null;
@@ -1476,6 +1543,9 @@ AromaAction = function(args) {
     }
     if (args.forwardToSlackUser !== undefined && args.forwardToSlackUser !== null) {
       this.forwardToSlackUser = new ActionForwardToSlackUser(args.forwardToSlackUser);
+    }
+    if (args.actionForwardToGitter !== undefined && args.actionForwardToGitter !== null) {
+      this.actionForwardToGitter = new ActionForwardToGitter(args.actionForwardToGitter);
     }
     if (args.sendEmail !== undefined && args.sendEmail !== null) {
       this.sendEmail = new ActionSendEmail(args.sendEmail);
@@ -1520,6 +1590,14 @@ AromaAction.prototype.read = function(input) {
       if (ftype == Thrift.Type.STRUCT) {
         this.forwardToSlackUser = new ActionForwardToSlackUser();
         this.forwardToSlackUser.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.actionForwardToGitter = new ActionForwardToGitter();
+        this.actionForwardToGitter.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1583,6 +1661,11 @@ AromaAction.prototype.write = function(output) {
   if (this.forwardToSlackUser !== null && this.forwardToSlackUser !== undefined) {
     output.writeFieldBegin('forwardToSlackUser', Thrift.Type.STRUCT, 2);
     this.forwardToSlackUser.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.actionForwardToGitter !== null && this.actionForwardToGitter !== undefined) {
+    output.writeFieldBegin('actionForwardToGitter', Thrift.Type.STRUCT, 8);
+    this.actionForwardToGitter.write(output);
     output.writeFieldEnd();
   }
   if (this.sendEmail !== null && this.sendEmail !== undefined) {
