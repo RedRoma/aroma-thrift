@@ -1531,7 +1531,7 @@ ActionForwardToUsers.prototype.write = function(output) {
 AromaAction = function(args) {
   this.forwardToSlackChannel = null;
   this.forwardToSlackUser = null;
-  this.actionForwardToGitter = null;
+  this.forwardToGitter = null;
   this.sendEmail = null;
   this.skipInbox = null;
   this.dontStoreMessage = null;
@@ -1544,8 +1544,8 @@ AromaAction = function(args) {
     if (args.forwardToSlackUser !== undefined && args.forwardToSlackUser !== null) {
       this.forwardToSlackUser = new ActionForwardToSlackUser(args.forwardToSlackUser);
     }
-    if (args.actionForwardToGitter !== undefined && args.actionForwardToGitter !== null) {
-      this.actionForwardToGitter = new ActionForwardToGitter(args.actionForwardToGitter);
+    if (args.forwardToGitter !== undefined && args.forwardToGitter !== null) {
+      this.forwardToGitter = new ActionForwardToGitter(args.forwardToGitter);
     }
     if (args.sendEmail !== undefined && args.sendEmail !== null) {
       this.sendEmail = new ActionSendEmail(args.sendEmail);
@@ -1596,8 +1596,8 @@ AromaAction.prototype.read = function(input) {
       break;
       case 8:
       if (ftype == Thrift.Type.STRUCT) {
-        this.actionForwardToGitter = new ActionForwardToGitter();
-        this.actionForwardToGitter.read(input);
+        this.forwardToGitter = new ActionForwardToGitter();
+        this.forwardToGitter.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1663,9 +1663,9 @@ AromaAction.prototype.write = function(output) {
     this.forwardToSlackUser.write(output);
     output.writeFieldEnd();
   }
-  if (this.actionForwardToGitter !== null && this.actionForwardToGitter !== undefined) {
-    output.writeFieldBegin('actionForwardToGitter', Thrift.Type.STRUCT, 8);
-    this.actionForwardToGitter.write(output);
+  if (this.forwardToGitter !== null && this.forwardToGitter !== undefined) {
+    output.writeFieldBegin('forwardToGitter', Thrift.Type.STRUCT, 8);
+    this.forwardToGitter.write(output);
     output.writeFieldEnd();
   }
   if (this.sendEmail !== null && this.sendEmail !== undefined) {

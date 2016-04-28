@@ -2407,8 +2407,8 @@ void AromaAction::__set_forwardToSlackUser(const ActionForwardToSlackUser& val) 
   this->forwardToSlackUser = val;
 }
 
-void AromaAction::__set_actionForwardToGitter(const ActionForwardToGitter& val) {
-  this->actionForwardToGitter = val;
+void AromaAction::__set_forwardToGitter(const ActionForwardToGitter& val) {
+  this->forwardToGitter = val;
 }
 
 void AromaAction::__set_sendEmail(const ActionSendEmail& val) {
@@ -2470,8 +2470,8 @@ uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 8:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->actionForwardToGitter.read(iprot);
-          this->__isset.actionForwardToGitter = true;
+          xfer += this->forwardToGitter.read(iprot);
+          this->__isset.forwardToGitter = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2561,8 +2561,8 @@ uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += this->forwardToUsers.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("actionForwardToGitter", ::apache::thrift::protocol::T_STRUCT, 8);
-  xfer += this->actionForwardToGitter.write(oprot);
+  xfer += oprot->writeFieldBegin("forwardToGitter", ::apache::thrift::protocol::T_STRUCT, 8);
+  xfer += this->forwardToGitter.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -2574,7 +2574,7 @@ void swap(AromaAction &a, AromaAction &b) {
   using ::std::swap;
   swap(a.forwardToSlackChannel, b.forwardToSlackChannel);
   swap(a.forwardToSlackUser, b.forwardToSlackUser);
-  swap(a.actionForwardToGitter, b.actionForwardToGitter);
+  swap(a.forwardToGitter, b.forwardToGitter);
   swap(a.sendEmail, b.sendEmail);
   swap(a.skipInbox, b.skipInbox);
   swap(a.dontStoreMessage, b.dontStoreMessage);
@@ -2586,7 +2586,7 @@ void swap(AromaAction &a, AromaAction &b) {
 AromaAction::AromaAction(const AromaAction& other60) {
   forwardToSlackChannel = other60.forwardToSlackChannel;
   forwardToSlackUser = other60.forwardToSlackUser;
-  actionForwardToGitter = other60.actionForwardToGitter;
+  forwardToGitter = other60.forwardToGitter;
   sendEmail = other60.sendEmail;
   skipInbox = other60.skipInbox;
   dontStoreMessage = other60.dontStoreMessage;
@@ -2597,7 +2597,7 @@ AromaAction::AromaAction(const AromaAction& other60) {
 AromaAction& AromaAction::operator=(const AromaAction& other61) {
   forwardToSlackChannel = other61.forwardToSlackChannel;
   forwardToSlackUser = other61.forwardToSlackUser;
-  actionForwardToGitter = other61.actionForwardToGitter;
+  forwardToGitter = other61.forwardToGitter;
   sendEmail = other61.sendEmail;
   skipInbox = other61.skipInbox;
   dontStoreMessage = other61.dontStoreMessage;
@@ -2611,7 +2611,7 @@ void AromaAction::printTo(std::ostream& out) const {
   out << "AromaAction(";
   out << "forwardToSlackChannel=" << to_string(forwardToSlackChannel);
   out << ", " << "forwardToSlackUser=" << to_string(forwardToSlackUser);
-  out << ", " << "actionForwardToGitter=" << to_string(actionForwardToGitter);
+  out << ", " << "forwardToGitter=" << to_string(forwardToGitter);
   out << ", " << "sendEmail=" << to_string(sendEmail);
   out << ", " << "skipInbox=" << to_string(skipInbox);
   out << ", " << "dontStoreMessage=" << to_string(dontStoreMessage);

@@ -776,7 +776,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 @interface AromaReactions_AromaAction : NSObject <TBase, NSCoding> {
   AromaReactions_ActionForwardToSlackChannel * __forwardToSlackChannel;
   AromaReactions_ActionForwardToSlackUser * __forwardToSlackUser;
-  AromaReactions_ActionForwardToGitter * __actionForwardToGitter;
+  AromaReactions_ActionForwardToGitter * __forwardToGitter;
   AromaReactions_ActionSendEmail * __sendEmail;
   AromaReactions_ActionSkipInbox * __skipInbox;
   AromaReactions_ActionDontStoreMessage * __dontStoreMessage;
@@ -785,7 +785,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 
   BOOL __forwardToSlackChannel_isset;
   BOOL __forwardToSlackUser_isset;
-  BOOL __actionForwardToGitter_isset;
+  BOOL __forwardToGitter_isset;
   BOOL __sendEmail_isset;
   BOOL __skipInbox_isset;
   BOOL __dontStoreMessage_isset;
@@ -796,7 +796,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=forwardToSlackChannel, setter=setForwardToSlackChannel:) AromaReactions_ActionForwardToSlackChannel * forwardToSlackChannel;
 @property (nonatomic, retain, getter=forwardToSlackUser, setter=setForwardToSlackUser:) AromaReactions_ActionForwardToSlackUser * forwardToSlackUser;
-@property (nonatomic, retain, getter=actionForwardToGitter, setter=setActionForwardToGitter:) AromaReactions_ActionForwardToGitter * actionForwardToGitter;
+@property (nonatomic, retain, getter=forwardToGitter, setter=setForwardToGitter:) AromaReactions_ActionForwardToGitter * forwardToGitter;
 @property (nonatomic, retain, getter=sendEmail, setter=setSendEmail:) AromaReactions_ActionSendEmail * sendEmail;
 @property (nonatomic, retain, getter=skipInbox, setter=setSkipInbox:) AromaReactions_ActionSkipInbox * skipInbox;
 @property (nonatomic, retain, getter=dontStoreMessage, setter=setDontStoreMessage:) AromaReactions_ActionDontStoreMessage * dontStoreMessage;
@@ -805,7 +805,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 #endif
 
 - (id) init;
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser actionForwardToGitter: (AromaReactions_ActionForwardToGitter *) actionForwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser forwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -825,10 +825,10 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) forwardToSlackUserIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_ActionForwardToGitter *) actionForwardToGitter;
-- (void) setActionForwardToGitter: (AromaReactions_ActionForwardToGitter *) actionForwardToGitter;
+- (AromaReactions_ActionForwardToGitter *) forwardToGitter;
+- (void) setForwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter;
 #endif
-- (BOOL) actionForwardToGitterIsSet;
+- (BOOL) forwardToGitterIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaReactions_ActionSendEmail *) sendEmail;

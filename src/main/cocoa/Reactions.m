@@ -4554,15 +4554,15 @@
   return self;
 }
 
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser actionForwardToGitter: (AromaReactions_ActionForwardToGitter *) actionForwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser forwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
 {
   self = [super init];
   __forwardToSlackChannel = [forwardToSlackChannel retain_stub];
   __forwardToSlackChannel_isset = YES;
   __forwardToSlackUser = [forwardToSlackUser retain_stub];
   __forwardToSlackUser_isset = YES;
-  __actionForwardToGitter = [actionForwardToGitter retain_stub];
-  __actionForwardToGitter_isset = YES;
+  __forwardToGitter = [forwardToGitter retain_stub];
+  __forwardToGitter_isset = YES;
   __sendEmail = [sendEmail retain_stub];
   __sendEmail_isset = YES;
   __skipInbox = [skipInbox retain_stub];
@@ -4589,10 +4589,10 @@
     __forwardToSlackUser = [[decoder decodeObjectForKey: @"forwardToSlackUser"] retain_stub];
     __forwardToSlackUser_isset = YES;
   }
-  if ([decoder containsValueForKey: @"actionForwardToGitter"])
+  if ([decoder containsValueForKey: @"forwardToGitter"])
   {
-    __actionForwardToGitter = [[decoder decodeObjectForKey: @"actionForwardToGitter"] retain_stub];
-    __actionForwardToGitter_isset = YES;
+    __forwardToGitter = [[decoder decodeObjectForKey: @"forwardToGitter"] retain_stub];
+    __forwardToGitter_isset = YES;
   }
   if ([decoder containsValueForKey: @"sendEmail"])
   {
@@ -4632,9 +4632,9 @@
   {
     [encoder encodeObject: __forwardToSlackUser forKey: @"forwardToSlackUser"];
   }
-  if (__actionForwardToGitter_isset)
+  if (__forwardToGitter_isset)
   {
-    [encoder encodeObject: __actionForwardToGitter forKey: @"actionForwardToGitter"];
+    [encoder encodeObject: __forwardToGitter forKey: @"forwardToGitter"];
   }
   if (__sendEmail_isset)
   {
@@ -4671,10 +4671,10 @@
   {
     hash = (hash * 31) ^ [__forwardToSlackUser hash];
   }
-  hash = (hash * 31) ^ __actionForwardToGitter_isset ? 2654435761 : 0;
-  if (__actionForwardToGitter_isset)
+  hash = (hash * 31) ^ __forwardToGitter_isset ? 2654435761 : 0;
+  if (__forwardToGitter_isset)
   {
-    hash = (hash * 31) ^ [__actionForwardToGitter hash];
+    hash = (hash * 31) ^ [__forwardToGitter hash];
   }
   hash = (hash * 31) ^ __sendEmail_isset ? 2654435761 : 0;
   if (__sendEmail_isset)
@@ -4721,8 +4721,8 @@
       (__forwardToSlackUser_isset && ((__forwardToSlackUser || other->__forwardToSlackUser) && ![__forwardToSlackUser isEqual:other->__forwardToSlackUser]))) {
     return NO;
   }
-  if ((__actionForwardToGitter_isset != other->__actionForwardToGitter_isset) ||
-      (__actionForwardToGitter_isset && ((__actionForwardToGitter || other->__actionForwardToGitter) && ![__actionForwardToGitter isEqual:other->__actionForwardToGitter]))) {
+  if ((__forwardToGitter_isset != other->__forwardToGitter_isset) ||
+      (__forwardToGitter_isset && ((__forwardToGitter || other->__forwardToGitter) && ![__forwardToGitter isEqual:other->__forwardToGitter]))) {
     return NO;
   }
   if ((__sendEmail_isset != other->__sendEmail_isset) ||
@@ -4752,7 +4752,7 @@
 {
   [__forwardToSlackChannel release_stub];
   [__forwardToSlackUser release_stub];
-  [__actionForwardToGitter release_stub];
+  [__forwardToGitter release_stub];
   [__sendEmail release_stub];
   [__skipInbox release_stub];
   [__dontStoreMessage release_stub];
@@ -4803,25 +4803,25 @@
   __forwardToSlackUser_isset = NO;
 }
 
-- (AromaReactions_ActionForwardToGitter *) actionForwardToGitter {
-  return [[__actionForwardToGitter retain_stub] autorelease_stub];
+- (AromaReactions_ActionForwardToGitter *) forwardToGitter {
+  return [[__forwardToGitter retain_stub] autorelease_stub];
 }
 
-- (void) setActionForwardToGitter: (AromaReactions_ActionForwardToGitter *) actionForwardToGitter {
-  [actionForwardToGitter retain_stub];
-  [__actionForwardToGitter release_stub];
-  __actionForwardToGitter = actionForwardToGitter;
-  __actionForwardToGitter_isset = YES;
+- (void) setForwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter {
+  [forwardToGitter retain_stub];
+  [__forwardToGitter release_stub];
+  __forwardToGitter = forwardToGitter;
+  __forwardToGitter_isset = YES;
 }
 
-- (BOOL) actionForwardToGitterIsSet {
-  return __actionForwardToGitter_isset;
+- (BOOL) forwardToGitterIsSet {
+  return __forwardToGitter_isset;
 }
 
-- (void) unsetActionForwardToGitter {
-  [__actionForwardToGitter release_stub];
-  __actionForwardToGitter = nil;
-  __actionForwardToGitter_isset = NO;
+- (void) unsetForwardToGitter {
+  [__forwardToGitter release_stub];
+  __forwardToGitter = nil;
+  __forwardToGitter_isset = NO;
 }
 
 - (AromaReactions_ActionSendEmail *) sendEmail {
@@ -4968,7 +4968,7 @@
         if (fieldType == TType_STRUCT) {
           AromaReactions_ActionForwardToGitter *fieldValue = [[AromaReactions_ActionForwardToGitter alloc] init];
           [fieldValue read: inProtocol];
-          [self setActionForwardToGitter: fieldValue];
+          [self setForwardToGitter: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -5049,10 +5049,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__actionForwardToGitter_isset) {
-    if (__actionForwardToGitter != nil) {
-      [outProtocol writeFieldBeginWithName: @"actionForwardToGitter" type: TType_STRUCT fieldID: 8];
-      [__actionForwardToGitter write: outProtocol];
+  if (__forwardToGitter_isset) {
+    if (__forwardToGitter != nil) {
+      [outProtocol writeFieldBeginWithName: @"forwardToGitter" type: TType_STRUCT fieldID: 8];
+      [__forwardToGitter write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -5105,8 +5105,8 @@
   [ms appendFormat: @"%@", __forwardToSlackChannel];
   [ms appendString: @",forwardToSlackUser:"];
   [ms appendFormat: @"%@", __forwardToSlackUser];
-  [ms appendString: @",actionForwardToGitter:"];
-  [ms appendFormat: @"%@", __actionForwardToGitter];
+  [ms appendString: @",forwardToGitter:"];
+  [ms appendFormat: @"%@", __forwardToGitter];
   [ms appendString: @",sendEmail:"];
   [ms appendFormat: @"%@", __sendEmail];
   [ms appendString: @",skipInbox:"];

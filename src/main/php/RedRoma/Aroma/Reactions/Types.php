@@ -2299,7 +2299,7 @@ class AromaAction {
   /**
    * @var \RedRoma\Aroma\Reactions\ActionForwardToGitter
    */
-  public $actionForwardToGitter = null;
+  public $forwardToGitter = null;
   /**
    * @var \RedRoma\Aroma\Reactions\ActionSendEmail
    */
@@ -2335,7 +2335,7 @@ class AromaAction {
           'class' => '\RedRoma\Aroma\Reactions\ActionForwardToSlackUser',
           ),
         8 => array(
-          'var' => 'actionForwardToGitter',
+          'var' => 'forwardToGitter',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\ActionForwardToGitter',
           ),
@@ -2373,8 +2373,8 @@ class AromaAction {
       if (isset($vals['forwardToSlackUser'])) {
         $this->forwardToSlackUser = $vals['forwardToSlackUser'];
       }
-      if (isset($vals['actionForwardToGitter'])) {
-        $this->actionForwardToGitter = $vals['actionForwardToGitter'];
+      if (isset($vals['forwardToGitter'])) {
+        $this->forwardToGitter = $vals['forwardToGitter'];
       }
       if (isset($vals['sendEmail'])) {
         $this->sendEmail = $vals['sendEmail'];
@@ -2431,8 +2431,8 @@ class AromaAction {
           break;
         case 8:
           if ($ftype == TType::STRUCT) {
-            $this->actionForwardToGitter = new \RedRoma\Aroma\Reactions\ActionForwardToGitter();
-            $xfer += $this->actionForwardToGitter->read($input);
+            $this->forwardToGitter = new \RedRoma\Aroma\Reactions\ActionForwardToGitter();
+            $xfer += $this->forwardToGitter->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -2546,12 +2546,12 @@ class AromaAction {
       $xfer += $this->forwardToUsers->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->actionForwardToGitter !== null) {
-      if (!is_object($this->actionForwardToGitter)) {
+    if ($this->forwardToGitter !== null) {
+      if (!is_object($this->forwardToGitter)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('actionForwardToGitter', TType::STRUCT, 8);
-      $xfer += $this->actionForwardToGitter->write($output);
+      $xfer += $output->writeFieldBegin('forwardToGitter', TType::STRUCT, 8);
+      $xfer += $this->forwardToGitter->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

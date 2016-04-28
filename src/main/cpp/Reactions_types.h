@@ -1244,10 +1244,10 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
 }
 
 typedef struct _AromaAction__isset {
-  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), actionForwardToGitter(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), responseWithMessage(false), forwardToUsers(false) {}
+  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), forwardToGitter(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), responseWithMessage(false), forwardToUsers(false) {}
   bool forwardToSlackChannel :1;
   bool forwardToSlackUser :1;
-  bool actionForwardToGitter :1;
+  bool forwardToGitter :1;
   bool sendEmail :1;
   bool skipInbox :1;
   bool dontStoreMessage :1;
@@ -1266,7 +1266,7 @@ class AromaAction {
   virtual ~AromaAction() throw();
   ActionForwardToSlackChannel forwardToSlackChannel;
   ActionForwardToSlackUser forwardToSlackUser;
-  ActionForwardToGitter actionForwardToGitter;
+  ActionForwardToGitter forwardToGitter;
   ActionSendEmail sendEmail;
   ActionSkipInbox skipInbox;
   ActionDontStoreMessage dontStoreMessage;
@@ -1279,7 +1279,7 @@ class AromaAction {
 
   void __set_forwardToSlackUser(const ActionForwardToSlackUser& val);
 
-  void __set_actionForwardToGitter(const ActionForwardToGitter& val);
+  void __set_forwardToGitter(const ActionForwardToGitter& val);
 
   void __set_sendEmail(const ActionSendEmail& val);
 
@@ -1297,7 +1297,7 @@ class AromaAction {
       return false;
     if (!(forwardToSlackUser == rhs.forwardToSlackUser))
       return false;
-    if (!(actionForwardToGitter == rhs.actionForwardToGitter))
+    if (!(forwardToGitter == rhs.forwardToGitter))
       return false;
     if (!(sendEmail == rhs.sendEmail))
       return false;

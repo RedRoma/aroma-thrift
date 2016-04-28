@@ -164,7 +164,7 @@ union AromaAction
 {
     1: ActionForwardToSlackChannel forwardToSlackChannel;
     2: ActionForwardToSlackUser forwardToSlackUser;
-    8: ActionForwardToGitter actionForwardToGitter;
+    8: ActionForwardToGitter forwardToGitter;
     3: ActionSendEmail sendEmail;
     4: ActionSkipInbox skipInbox;
     5: ActionDontStoreMessage dontStoreMessage;
