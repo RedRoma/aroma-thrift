@@ -15311,8 +15311,8 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
 ;
   AromaService_MAX_PROFILE_IMAGE_DIMENSION = [[Aroma_Dimension alloc] init];
-  [AromaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
   [AromaService_MAX_PROFILE_IMAGE_DIMENSION setHeight:1024];
+  [AromaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
 
 ;
   AromaService_DEFAULT_INBOX_LIFETIME = [[Aroma_LengthOfTime alloc] init];

@@ -838,6 +838,10 @@ class ChannelInfo {
    * @var int
    */
   public $timeRegistered = null;
+  /**
+   * @var string
+   */
+  public $channelId = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -851,6 +855,10 @@ class ChannelInfo {
           'var' => 'timeRegistered',
           'type' => TType::I64,
           ),
+        3 => array(
+          'var' => 'channelId',
+          'type' => TType::STRING,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -859,6 +867,9 @@ class ChannelInfo {
       }
       if (isset($vals['timeRegistered'])) {
         $this->timeRegistered = $vals['timeRegistered'];
+      }
+      if (isset($vals['channelId'])) {
+        $this->channelId = $vals['channelId'];
       }
     }
   }
@@ -897,6 +908,13 @@ class ChannelInfo {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->channelId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -921,6 +939,11 @@ class ChannelInfo {
     if ($this->timeRegistered !== null) {
       $xfer += $output->writeFieldBegin('timeRegistered', TType::I64, 2);
       $xfer += $output->writeI64($this->timeRegistered);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->channelId !== null) {
+      $xfer += $output->writeFieldBegin('channelId', TType::STRING, 3);
+      $xfer += $output->writeString($this->channelId);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

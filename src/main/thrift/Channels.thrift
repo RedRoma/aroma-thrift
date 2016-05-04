@@ -6,9 +6,9 @@ namespace php   RedRoma.Aroma.Channels
 /*
  * Defined in this File are the various Channels that
  * Aroma can send Messages to.
- * 
+ *
  * Essentially a channel is a way to contact a person.
- * 
+ *
  * A Person can register various channels where he/she can
  * be reached.
  */
@@ -20,6 +20,7 @@ include "Exceptions.thrift"
 typedef Aroma.int int
 typedef Aroma.long long
 typedef Aroma.timestamp timestamp
+typedef Aroma.uuid uuid
 
 /**
  * It's a bit confusing, but "Channel" here refers to
@@ -89,10 +90,11 @@ struct ChannelInfo
 {
     1: AromaChannel channel;
     2: timestamp timeRegistered;
+    3: optional uuid channelId;
 }
 
 /**
- * This is the Request Body that will be sent to any 
+ * This is the Request Body that will be sent to any
  * Custom Channels registered to a service.
  */
 struct ReceiveMessageRequest
@@ -104,7 +106,7 @@ struct ReceiveMessageRequest
  * Defines a custom endpoint to send messages to.
  * Note that a channel can receive messages and events from
  * more than one Application.
- * 
+ *
  * Note that no care is taken to rate-limit. Your endpoint
  * may get flooded. Use with caution.
  */
@@ -115,7 +117,7 @@ service CustomAromaChannel
      * to make sure it is reachable and operational.
      */
     int ping();
-    
+
     /**
      * Called each time Aroma receives a Message from the Application
      * in question.
