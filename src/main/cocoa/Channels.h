@@ -28,6 +28,8 @@ typedef Aroma_long AromaChannels_long;
 
 typedef Aroma_timestamp AromaChannels_timestamp;
 
+typedef Aroma_uuid AromaChannels_uuid;
+
 @interface AromaChannels_SlackChannel : NSObject <TBase, NSCoding> {
   NSString * __domainName;
   NSString * __channelName;
@@ -303,18 +305,21 @@ typedef Aroma_timestamp AromaChannels_timestamp;
 @interface AromaChannels_ChannelInfo : NSObject <TBase, NSCoding> {
   AromaChannels_AromaChannel * __channel;
   AromaChannels_timestamp __timeRegistered;
+  AromaChannels_uuid __channelId;
 
   BOOL __channel_isset;
   BOOL __timeRegistered_isset;
+  BOOL __channelId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=channel, setter=setChannel:) AromaChannels_AromaChannel * channel;
 @property (nonatomic, getter=timeRegistered, setter=setTimeRegistered:) AromaChannels_timestamp timeRegistered;
+@property (nonatomic, retain, getter=channelId, setter=setChannelId:) AromaChannels_uuid channelId;
 #endif
 
 - (id) init;
-- (id) initWithChannel: (AromaChannels_AromaChannel *) channel timeRegistered: (AromaChannels_timestamp) timeRegistered;
+- (id) initWithChannel: (AromaChannels_AromaChannel *) channel timeRegistered: (AromaChannels_timestamp) timeRegistered channelId: (AromaChannels_uuid) channelId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -332,6 +337,12 @@ typedef Aroma_timestamp AromaChannels_timestamp;
 - (void) setTimeRegistered: (AromaChannels_timestamp) timeRegistered;
 #endif
 - (BOOL) timeRegisteredIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaChannels_uuid) channelId;
+- (void) setChannelId: (AromaChannels_uuid) channelId;
+#endif
+- (BOOL) channelIdIsSet;
 
 @end
 
