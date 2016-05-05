@@ -51,6 +51,8 @@ class ApplicationUnfollowed;
 
 class ApplicationUpdated;
 
+class ApplicationReactionsUpdated;
+
 class HealthCheckFailed;
 
 class HealthCheckBackToNormal;
@@ -495,6 +497,54 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationUpdated& obj
   return out;
 }
 
+typedef struct _ApplicationReactionsUpdated__isset {
+  _ApplicationReactionsUpdated__isset() : message(true) {}
+  bool message :1;
+} _ApplicationReactionsUpdated__isset;
+
+class ApplicationReactionsUpdated {
+ public:
+
+  ApplicationReactionsUpdated(const ApplicationReactionsUpdated&);
+  ApplicationReactionsUpdated& operator=(const ApplicationReactionsUpdated&);
+  ApplicationReactionsUpdated() : message("Application Reactions Updated") {
+  }
+
+  virtual ~ApplicationReactionsUpdated() throw();
+  std::string message;
+
+  _ApplicationReactionsUpdated__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const ApplicationReactionsUpdated & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const ApplicationReactionsUpdated &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ApplicationReactionsUpdated & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ApplicationReactionsUpdated &a, ApplicationReactionsUpdated &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ApplicationReactionsUpdated& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _HealthCheckFailed__isset {
   _HealthCheckFailed__isset() : hostname(false), message(true) {}
   bool hostname :1;
@@ -758,12 +808,13 @@ inline std::ostream& operator<<(std::ostream& out, const GeneralEvent& obj)
 }
 
 typedef struct _EventType__isset {
-  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationFollowed(false), applicationDeleted(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), applicationUnfollowed(false), applicationUpdated(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false) {}
+  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationFollowed(false), applicationDeleted(false), applicationReactionsUpdated(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), applicationUnfollowed(false), applicationUpdated(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false) {}
   bool applicationMessageDeleted :1;
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
   bool applicationFollowed :1;
   bool applicationDeleted :1;
+  bool applicationReactionsUpdated :1;
   bool applicationTokenRenewed :1;
   bool applicationTokenRegenerated :1;
   bool applicationSentMessage :1;
@@ -788,6 +839,7 @@ class EventType {
   HealthCheckBackToNormal healthCheckBackToNormal;
   ApplicationFollowed applicationFollowed;
   ApplicationDeleted applicationDeleted;
+  ApplicationReactionsUpdated applicationReactionsUpdated;
   ApplicationTokenRenewed applicationTokenRenewed;
   ApplicationTokenRegenerated applicationTokenRegenerated;
   ApplicationSentMessage applicationSentMessage;
@@ -808,6 +860,8 @@ class EventType {
   void __set_applicationFollowed(const ApplicationFollowed& val);
 
   void __set_applicationDeleted(const ApplicationDeleted& val);
+
+  void __set_applicationReactionsUpdated(const ApplicationReactionsUpdated& val);
 
   void __set_applicationTokenRenewed(const ApplicationTokenRenewed& val);
 
@@ -836,6 +890,8 @@ class EventType {
     if (!(applicationFollowed == rhs.applicationFollowed))
       return false;
     if (!(applicationDeleted == rhs.applicationDeleted))
+      return false;
+    if (!(applicationReactionsUpdated == rhs.applicationReactionsUpdated))
       return false;
     if (!(applicationTokenRenewed == rhs.applicationTokenRenewed))
       return false;

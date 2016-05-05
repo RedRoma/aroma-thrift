@@ -7955,8 +7955,8 @@ new \RedRoma\Aroma\Dimension(array(
      * The Maximum Dimension for a Profile Picture submitted.
      */
 new \RedRoma\Aroma\Dimension(array(
-      "height" => 1024,
       "width" => 1024,
+      "height" => 1024,
     ));
   }
 

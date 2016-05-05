@@ -517,6 +517,59 @@ ApplicationUpdated.prototype.write = function(output) {
   return;
 };
 
+ApplicationReactionsUpdated = function(args) {
+  this.message = 'Application Reactions Updated';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+ApplicationReactionsUpdated.prototype = {};
+ApplicationReactionsUpdated.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ApplicationReactionsUpdated.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationReactionsUpdated');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 HealthCheckFailed = function(args) {
   this.hostname = null;
   this.message = 'Application failed a Health Check';
@@ -831,6 +884,7 @@ EventType = function(args) {
   this.healthCheckBackToNormal = null;
   this.applicationFollowed = null;
   this.applicationDeleted = null;
+  this.applicationReactionsUpdated = null;
   this.applicationTokenRenewed = null;
   this.applicationTokenRegenerated = null;
   this.applicationSentMessage = null;
@@ -854,6 +908,9 @@ EventType = function(args) {
     }
     if (args.applicationDeleted !== undefined && args.applicationDeleted !== null) {
       this.applicationDeleted = new ApplicationDeleted(args.applicationDeleted);
+    }
+    if (args.applicationReactionsUpdated !== undefined && args.applicationReactionsUpdated !== null) {
+      this.applicationReactionsUpdated = new ApplicationReactionsUpdated(args.applicationReactionsUpdated);
     }
     if (args.applicationTokenRenewed !== undefined && args.applicationTokenRenewed !== null) {
       this.applicationTokenRenewed = new ApplicationTokenRenewed(args.applicationTokenRenewed);
@@ -931,6 +988,14 @@ EventType.prototype.read = function(input) {
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationDeleted = new ApplicationDeleted();
         this.applicationDeleted.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 14:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationReactionsUpdated = new ApplicationReactionsUpdated();
+        this.applicationReactionsUpdated.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1033,6 +1098,11 @@ EventType.prototype.write = function(output) {
   if (this.applicationDeleted !== null && this.applicationDeleted !== undefined) {
     output.writeFieldBegin('applicationDeleted', Thrift.Type.STRUCT, 5);
     this.applicationDeleted.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationReactionsUpdated !== null && this.applicationReactionsUpdated !== undefined) {
+    output.writeFieldBegin('applicationReactionsUpdated', Thrift.Type.STRUCT, 14);
+    this.applicationReactionsUpdated.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationTokenRenewed !== null && this.applicationTokenRenewed !== undefined) {

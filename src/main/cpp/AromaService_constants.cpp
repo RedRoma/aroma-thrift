@@ -37,11 +37,11 @@ AromaServiceConstants::AromaServiceConstants() {
    ::tech::aroma::thrift::int tmp267;
   tmp267 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.height = tmp267;
+  MAX_PROFILE_IMAGE_DIMENSION.width = tmp267;
    ::tech::aroma::thrift::int tmp268;
   tmp268 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.width = tmp268;
+  MAX_PROFILE_IMAGE_DIMENSION.height = tmp268;
 
   MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 

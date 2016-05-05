@@ -78,6 +78,11 @@ struct ApplicationUpdated
     1: optional string message = "Application Updated"
 }
 
+struct ApplicationReactionsUpdated
+{
+    1: optional string message = "Application Reactions Updated"
+}
+
 /**
  * A Health Poke returned a failure.
  */
@@ -133,6 +138,7 @@ union EventType
     3 : HealthCheckBackToNormal healthCheckBackToNormal;
     4 : ApplicationFollowed applicationFollowed;
     5 : ApplicationDeleted applicationDeleted;
+    14: ApplicationReactionsUpdated applicationReactionsUpdated;
     6 : ApplicationTokenRenewed applicationTokenRenewed;
     7 : ApplicationTokenRegenerated applicationTokenRegenerated;
     8 : ApplicationSentMessage applicationSentMessage;

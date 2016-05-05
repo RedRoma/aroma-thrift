@@ -787,6 +787,81 @@ class ApplicationUpdated {
 
 }
 
+class ApplicationReactionsUpdated {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $message = "Application Reactions Updated";
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'message',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['message'])) {
+        $this->message = $vals['message'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'ApplicationReactionsUpdated';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->message);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('ApplicationReactionsUpdated');
+    if ($this->message !== null) {
+      $xfer += $output->writeFieldBegin('message', TType::STRING, 1);
+      $xfer += $output->writeString($this->message);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 /**
  * A Health Poke returned a failure.
  */
@@ -1282,6 +1357,10 @@ class EventType {
    */
   public $applicationDeleted = null;
   /**
+   * @var \RedRoma\Aroma\Events\ApplicationReactionsUpdated
+   */
+  public $applicationReactionsUpdated = null;
+  /**
    * @var \RedRoma\Aroma\Events\ApplicationTokenRenewed
    */
   public $applicationTokenRenewed = null;
@@ -1342,6 +1421,11 @@ class EventType {
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Events\ApplicationDeleted',
           ),
+        14 => array(
+          'var' => 'applicationReactionsUpdated',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Events\ApplicationReactionsUpdated',
+          ),
         6 => array(
           'var' => 'applicationTokenRenewed',
           'type' => TType::STRUCT,
@@ -1399,6 +1483,9 @@ class EventType {
       }
       if (isset($vals['applicationDeleted'])) {
         $this->applicationDeleted = $vals['applicationDeleted'];
+      }
+      if (isset($vals['applicationReactionsUpdated'])) {
+        $this->applicationReactionsUpdated = $vals['applicationReactionsUpdated'];
       }
       if (isset($vals['applicationTokenRenewed'])) {
         $this->applicationTokenRenewed = $vals['applicationTokenRenewed'];
@@ -1482,6 +1569,14 @@ class EventType {
           if ($ftype == TType::STRUCT) {
             $this->applicationDeleted = new \RedRoma\Aroma\Events\ApplicationDeleted();
             $xfer += $this->applicationDeleted->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 14:
+          if ($ftype == TType::STRUCT) {
+            $this->applicationReactionsUpdated = new \RedRoma\Aroma\Events\ApplicationReactionsUpdated();
+            $xfer += $this->applicationReactionsUpdated->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -1665,6 +1760,14 @@ class EventType {
       }
       $xfer += $output->writeFieldBegin('applicationUpdated', TType::STRUCT, 13);
       $xfer += $this->applicationUpdated->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationReactionsUpdated !== null) {
+      if (!is_object($this->applicationReactionsUpdated)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('applicationReactionsUpdated', TType::STRUCT, 14);
+      $xfer += $this->applicationReactionsUpdated->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

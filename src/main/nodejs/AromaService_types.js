@@ -5275,7 +5275,7 @@ ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 ttypes.MAX_APPLICATION_ICON_DIMENSION = new Aroma_ttypes.Dimension({
 'width' : 1024,'height' : 1024});
 ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Aroma_ttypes.Dimension({
-'height' : 1024,'width' : 1024});
+'width' : 1024,'height' : 1024});
 ttypes.MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_MESSAGE_LENGTH = 5000;
