@@ -5435,9 +5435,13 @@
 
 @end
 
+static AromaReactions_int AromaReactions_MAXIMUM_REACTIONS = 100;
 
 @implementation AromaReactions_ReactionsConstants
 + (void) initialize {
+}
++ (AromaReactions_int) MAXIMUM_REACTIONS{
+  return AromaReactions_MAXIMUM_REACTIONS;
 }
 @end
 

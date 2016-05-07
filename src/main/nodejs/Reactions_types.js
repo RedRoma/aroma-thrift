@@ -1832,3 +1832,4 @@ Reaction.prototype.write = function(output) {
   return;
 };
 
+ttypes.MAXIMUM_REACTIONS = 100;
