@@ -830,6 +830,11 @@ void ChannelInfo::__set_timeRegistered(const timestamp val) {
   this->timeRegistered = val;
 }
 
+void ChannelInfo::__set_channelId(const uuid& val) {
+  this->channelId = val;
+__isset.channelId = true;
+}
+
 uint32_t ChannelInfo::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -867,6 +872,14 @@ uint32_t ChannelInfo::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->channelId);
+          this->__isset.channelId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -892,6 +905,11 @@ uint32_t ChannelInfo::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeI64(this->timeRegistered);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.channelId) {
+    xfer += oprot->writeFieldBegin("channelId", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->channelId);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -901,17 +919,20 @@ void swap(ChannelInfo &a, ChannelInfo &b) {
   using ::std::swap;
   swap(a.channel, b.channel);
   swap(a.timeRegistered, b.timeRegistered);
+  swap(a.channelId, b.channelId);
   swap(a.__isset, b.__isset);
 }
 
 ChannelInfo::ChannelInfo(const ChannelInfo& other14) {
   channel = other14.channel;
   timeRegistered = other14.timeRegistered;
+  channelId = other14.channelId;
   __isset = other14.__isset;
 }
 ChannelInfo& ChannelInfo::operator=(const ChannelInfo& other15) {
   channel = other15.channel;
   timeRegistered = other15.timeRegistered;
+  channelId = other15.channelId;
   __isset = other15.__isset;
   return *this;
 }
@@ -920,6 +941,7 @@ void ChannelInfo::printTo(std::ostream& out) const {
   out << "ChannelInfo(";
   out << "channel=" << to_string(channel);
   out << ", " << "timeRegistered=" << to_string(timeRegistered);
+  out << ", " << "channelId="; (__isset.channelId ? (out << to_string(channelId)) : (out << "<null>"));
   out << ")";
 }
 

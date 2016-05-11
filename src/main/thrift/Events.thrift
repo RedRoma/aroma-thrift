@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.events
 namespace cocoa AromaEvents_
 namespace cpp   aroma.thrift.events
+namespace php   RedRoma.Aroma.Events
 
 /*
  * Defined in this File are the Aroma Events
@@ -72,6 +73,16 @@ struct ApplicationUnfollowed
     1: optional string message = "Application Unfollowed"
 }
 
+struct ApplicationUpdated
+{
+    1: optional string message = "Application Updated"
+}
+
+struct ApplicationReactionsUpdated
+{
+    1: optional string message = "Application Reactions Updated"
+}
+
 /**
  * A Health Poke returned a failure.
  */
@@ -127,10 +138,12 @@ union EventType
     3 : HealthCheckBackToNormal healthCheckBackToNormal;
     4 : ApplicationFollowed applicationFollowed;
     5 : ApplicationDeleted applicationDeleted;
+    14: ApplicationReactionsUpdated applicationReactionsUpdated;
     6 : ApplicationTokenRenewed applicationTokenRenewed;
     7 : ApplicationTokenRegenerated applicationTokenRegenerated;
     8 : ApplicationSentMessage applicationSentMessage;
     12: ApplicationUnfollowed applicationUnfollowed;
+    13: ApplicationUpdated applicationUpdated;
     9 : OwnerApprovedRequest ownerApprovedRequest;
     10: OwnerAdded ownerAdded;
     11: GeneralEvent generalEvent;

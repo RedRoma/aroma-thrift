@@ -119,6 +119,7 @@ class AromaServiceIf {
    * @param request
    */
   virtual void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) = 0;
+  virtual void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) = 0;
 
   /**
    * Get all of the User-Related activities that have happened recently.
@@ -171,6 +172,7 @@ class AromaServiceIf {
   virtual void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) = 0;
   virtual void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) = 0;
   virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
+  virtual void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) = 0;
   virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
 
   /**
@@ -259,6 +261,9 @@ class AromaServiceNull : virtual public AromaServiceIf {
   void updateApplication(UpdateApplicationResponse& /* _return */, const UpdateApplicationRequest& /* request */) {
     return;
   }
+  void updateReactions(UpdateReactionsResponse& /* _return */, const UpdateReactionsRequest& /* request */) {
+    return;
+  }
   void getActivity(GetActivityResponse& /* _return */, const GetActivityRequest& /* request */) {
     return;
   }
@@ -290,6 +295,9 @@ class AromaServiceNull : virtual public AromaServiceIf {
     return;
   }
   void getMySavedChannels(GetMySavedChannelsResponse& /* _return */, const GetMySavedChannelsRequest& /* request */) {
+    return;
+  }
+  void getReactions(GetReactionsResponse& /* _return */, const GetReactionsRequest& /* request */) {
     return;
   }
   void getUserInfo(GetUserInfoResponse& /* _return */, const GetUserInfoRequest& /* request */) {
@@ -2528,6 +2536,150 @@ class AromaService_updateApplication_presult {
 
 };
 
+typedef struct _AromaService_updateReactions_args__isset {
+  _AromaService_updateReactions_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_updateReactions_args__isset;
+
+class AromaService_updateReactions_args {
+ public:
+
+  AromaService_updateReactions_args(const AromaService_updateReactions_args&);
+  AromaService_updateReactions_args& operator=(const AromaService_updateReactions_args&);
+  AromaService_updateReactions_args() {
+  }
+
+  virtual ~AromaService_updateReactions_args() throw();
+  UpdateReactionsRequest request;
+
+  _AromaService_updateReactions_args__isset __isset;
+
+  void __set_request(const UpdateReactionsRequest& val);
+
+  bool operator == (const AromaService_updateReactions_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_updateReactions_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_updateReactions_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_updateReactions_pargs {
+ public:
+
+
+  virtual ~AromaService_updateReactions_pargs() throw();
+  const UpdateReactionsRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_updateReactions_result__isset {
+  _AromaService_updateReactions_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_updateReactions_result__isset;
+
+class AromaService_updateReactions_result {
+ public:
+
+  AromaService_updateReactions_result(const AromaService_updateReactions_result&);
+  AromaService_updateReactions_result& operator=(const AromaService_updateReactions_result&);
+  AromaService_updateReactions_result() {
+  }
+
+  virtual ~AromaService_updateReactions_result() throw();
+  UpdateReactionsResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_updateReactions_result__isset __isset;
+
+  void __set_success(const UpdateReactionsResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const ApplicationDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_updateReactions_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_updateReactions_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_updateReactions_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_updateReactions_presult__isset {
+  _AromaService_updateReactions_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_updateReactions_presult__isset;
+
+class AromaService_updateReactions_presult {
+ public:
+
+
+  virtual ~AromaService_updateReactions_presult() throw();
+  UpdateReactionsResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_updateReactions_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _AromaService_getActivity_args__isset {
   _AromaService_getActivity_args__isset() : request(false) {}
   bool request :1;
@@ -4000,6 +4152,150 @@ class AromaService_getMySavedChannels_presult {
 
 };
 
+typedef struct _AromaService_getReactions_args__isset {
+  _AromaService_getReactions_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getReactions_args__isset;
+
+class AromaService_getReactions_args {
+ public:
+
+  AromaService_getReactions_args(const AromaService_getReactions_args&);
+  AromaService_getReactions_args& operator=(const AromaService_getReactions_args&);
+  AromaService_getReactions_args() {
+  }
+
+  virtual ~AromaService_getReactions_args() throw();
+  GetReactionsRequest request;
+
+  _AromaService_getReactions_args__isset __isset;
+
+  void __set_request(const GetReactionsRequest& val);
+
+  bool operator == (const AromaService_getReactions_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getReactions_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getReactions_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getReactions_pargs {
+ public:
+
+
+  virtual ~AromaService_getReactions_pargs() throw();
+  const GetReactionsRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getReactions_result__isset {
+  _AromaService_getReactions_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_getReactions_result__isset;
+
+class AromaService_getReactions_result {
+ public:
+
+  AromaService_getReactions_result(const AromaService_getReactions_result&);
+  AromaService_getReactions_result& operator=(const AromaService_getReactions_result&);
+  AromaService_getReactions_result() {
+  }
+
+  virtual ~AromaService_getReactions_result() throw();
+  GetReactionsResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_getReactions_result__isset __isset;
+
+  void __set_success(const GetReactionsResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const ApplicationDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_getReactions_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getReactions_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getReactions_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getReactions_presult__isset {
+  _AromaService_getReactions_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_getReactions_presult__isset;
+
+class AromaService_getReactions_presult {
+ public:
+
+
+  virtual ~AromaService_getReactions_presult() throw();
+  GetReactionsResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_getReactions_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _AromaService_getUserInfo_args__isset {
   _AromaService_getUserInfo_args__isset() : request(false) {}
   bool request :1;
@@ -4353,6 +4649,9 @@ class AromaServiceClient : virtual public AromaServiceIf {
   void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request);
   void send_updateApplication(const UpdateApplicationRequest& request);
   void recv_updateApplication(UpdateApplicationResponse& _return);
+  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request);
+  void send_updateReactions(const UpdateReactionsRequest& request);
+  void recv_updateReactions(UpdateReactionsResponse& _return);
   void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
   void send_getActivity(const GetActivityRequest& request);
   void recv_getActivity(GetActivityResponse& _return);
@@ -4386,6 +4685,9 @@ class AromaServiceClient : virtual public AromaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   void send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return);
+  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request);
+  void send_getReactions(const GetReactionsRequest& request);
+  void recv_getReactions(GetReactionsResponse& _return);
   void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
   void send_getUserInfo(const GetUserInfoRequest& request);
   void recv_getUserInfo(GetUserInfoResponse& _return);
@@ -4423,6 +4725,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_unfollowApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_updateApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_updateReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -4434,6 +4737,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationsFollowedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
@@ -4455,6 +4759,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["followApplication"] = &AromaServiceProcessor::process_followApplication;
     processMap_["unfollowApplication"] = &AromaServiceProcessor::process_unfollowApplication;
     processMap_["updateApplication"] = &AromaServiceProcessor::process_updateApplication;
+    processMap_["updateReactions"] = &AromaServiceProcessor::process_updateReactions;
     processMap_["getActivity"] = &AromaServiceProcessor::process_getActivity;
     processMap_["getApplicationInfo"] = &AromaServiceProcessor::process_getApplicationInfo;
     processMap_["getBuzz"] = &AromaServiceProcessor::process_getBuzz;
@@ -4466,6 +4771,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getApplicationsOwnedBy"] = &AromaServiceProcessor::process_getApplicationsOwnedBy;
     processMap_["getApplicationsFollowedBy"] = &AromaServiceProcessor::process_getApplicationsFollowedBy;
     processMap_["getMySavedChannels"] = &AromaServiceProcessor::process_getMySavedChannels;
+    processMap_["getReactions"] = &AromaServiceProcessor::process_getReactions;
     processMap_["getUserInfo"] = &AromaServiceProcessor::process_getUserInfo;
     processMap_["searchForApplications"] = &AromaServiceProcessor::process_searchForApplications;
   }
@@ -4655,6 +4961,16 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
+  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->updateReactions(_return, request);
+    }
+    ifaces_[i]->updateReactions(_return, request);
+    return;
+  }
+
   void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -4765,6 +5081,16 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
+  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getReactions(_return, request);
+    }
+    ifaces_[i]->getReactions(_return, request);
+    return;
+  }
+
   void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -4863,6 +5189,9 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request);
   int32_t send_updateApplication(const UpdateApplicationRequest& request);
   void recv_updateApplication(UpdateApplicationResponse& _return, const int32_t seqid);
+  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request);
+  int32_t send_updateReactions(const UpdateReactionsRequest& request);
+  void recv_updateReactions(UpdateReactionsResponse& _return, const int32_t seqid);
   void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
   int32_t send_getActivity(const GetActivityRequest& request);
   void recv_getActivity(GetActivityResponse& _return, const int32_t seqid);
@@ -4896,6 +5225,9 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   int32_t send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid);
+  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request);
+  int32_t send_getReactions(const GetReactionsRequest& request);
+  void recv_getReactions(GetReactionsResponse& _return, const int32_t seqid);
   void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
   int32_t send_getUserInfo(const GetUserInfoRequest& request);
   void recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid);

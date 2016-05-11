@@ -284,7 +284,7 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
 }
 
 typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true), title(false), applicationId(false) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true), title(false), applicationId(false), deviceName(false) {}
   bool messageId :1;
   bool body :1;
   bool urgency :1;
@@ -296,6 +296,7 @@ typedef struct _Message__isset {
   bool isTruncated :1;
   bool title :1;
   bool applicationId :1;
+  bool deviceName :1;
 } _Message__isset;
 
 class Message {
@@ -303,7 +304,7 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false), title(), applicationId() {
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false), title(), applicationId(), deviceName() {
     urgency = (Urgency::type)1;
 
   }
@@ -320,6 +321,7 @@ class Message {
   bool isTruncated;
   std::string title;
   uuid applicationId;
+  std::string deviceName;
 
   _Message__isset __isset;
 
@@ -344,6 +346,8 @@ class Message {
   void __set_title(const std::string& val);
 
   void __set_applicationId(const uuid& val);
+
+  void __set_deviceName(const std::string& val);
 
   bool operator == (const Message & rhs) const
   {
@@ -376,6 +380,10 @@ class Message {
     if (!(title == rhs.title))
       return false;
     if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.deviceName != rhs.__isset.deviceName)
+      return false;
+    else if (__isset.deviceName && !(deviceName == rhs.deviceName))
       return false;
     return true;
   }

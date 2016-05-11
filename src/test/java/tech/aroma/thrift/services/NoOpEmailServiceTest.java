@@ -19,10 +19,10 @@ package tech.aroma.thrift.services;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import tech.aroma.thrift.AromaConstants;
 import tech.aroma.thrift.email.service.EmailService;
 import tech.aroma.thrift.email.service.SendEmailRequest;
 import tech.aroma.thrift.email.service.SendEmailResponse;
-import tech.aroma.thrift.service.AromaServiceConstants;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
@@ -60,7 +60,7 @@ public class NoOpEmailServiceTest
     public void testGetApiVersion() throws Exception
     {
         double result = instance.getApiVersion();
-        assertThat(result, is(AromaServiceConstants.API_VERSION));
+        assertThat(result, is(AromaConstants.API_VERSION));
     }
 
     @Test

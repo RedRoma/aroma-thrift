@@ -19,7 +19,6 @@
 #import "TBaseClient.h"
 
 #import "Aroma.h"
-#import "Exceptions.h"
 
 typedef Aroma_int AromaReactions_int;
 
@@ -67,7 +66,59 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
+@interface AromaReactions_MatcherTitleIsNot : NSObject <TBase, NSCoding> {
+  NSString * __title;
+
+  BOOL __title_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
+#endif
+
+- (id) init;
+- (id) initWithTitle: (NSString *) title;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) title;
+- (void) setTitle: (NSString *) title;
+#endif
+- (BOOL) titleIsSet;
+
+@end
+
 @interface AromaReactions_MatcherTitleContains : NSObject <TBase, NSCoding> {
+  NSString * __substring;
+
+  BOOL __substring_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=substring, setter=setSubstring:) NSString * substring;
+#endif
+
+- (id) init;
+- (id) initWithSubstring: (NSString *) substring;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) substring;
+- (void) setSubstring: (NSString *) substring;
+#endif
+- (BOOL) substringIsSet;
+
+@end
+
+@interface AromaReactions_MatcherTitleDoesNotContain : NSObject <TBase, NSCoding> {
   NSString * __substring;
 
   BOOL __substring_isset;
@@ -145,18 +196,18 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_MatcherUrgencyEquals : NSObject <TBase, NSCoding> {
-  int __urgency;
+@interface AromaReactions_MatcherBodyDoesNotContain : NSObject <TBase, NSCoding> {
+  NSString * __substring;
 
-  BOOL __urgency_isset;
+  BOOL __substring_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
+@property (nonatomic, retain, getter=substring, setter=setSubstring:) NSString * substring;
 #endif
 
 - (id) init;
-- (id) initWithUrgency: (int) urgency;
+- (id) initWithSubstring: (NSString *) substring;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -164,14 +215,40 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (int) urgency;
-- (void) setUrgency: (int) urgency;
+- (NSString *) substring;
+- (void) setSubstring: (NSString *) substring;
 #endif
-- (BOOL) urgencyIsSet;
+- (BOOL) substringIsSet;
 
 @end
 
-@interface AromaReactions_MatcherHostnameEquals : NSObject <TBase, NSCoding> {
+@interface AromaReactions_MatcherUrgencyIs : NSObject <TBase, NSCoding> {
+  NSMutableSet * __possibleUrgencies;
+
+  BOOL __possibleUrgencies_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=possibleUrgencies, setter=setPossibleUrgencies:) NSMutableSet * possibleUrgencies;
+#endif
+
+- (id) init;
+- (id) initWithPossibleUrgencies: (NSMutableSet *) possibleUrgencies;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableSet *) possibleUrgencies;
+- (void) setPossibleUrgencies: (NSMutableSet *) possibleUrgencies;
+#endif
+- (BOOL) possibleUrgenciesIsSet;
+
+@end
+
+@interface AromaReactions_MatcherHostnameIs : NSObject <TBase, NSCoding> {
   NSString * __expectedHostname;
 
   BOOL __expectedHostname_isset;
@@ -197,36 +274,161 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
+@interface AromaReactions_MatcherHostnameContains : NSObject <TBase, NSCoding> {
+  NSString * __substring;
+
+  BOOL __substring_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=substring, setter=setSubstring:) NSString * substring;
+#endif
+
+- (id) init;
+- (id) initWithSubstring: (NSString *) substring;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) substring;
+- (void) setSubstring: (NSString *) substring;
+#endif
+- (BOOL) substringIsSet;
+
+@end
+
+@interface AromaReactions_MatcherHostnameDoesNotContain : NSObject <TBase, NSCoding> {
+  NSString * __substring;
+
+  BOOL __substring_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=substring, setter=setSubstring:) NSString * substring;
+#endif
+
+- (id) init;
+- (id) initWithSubstring: (NSString *) substring;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) substring;
+- (void) setSubstring: (NSString *) substring;
+#endif
+- (BOOL) substringIsSet;
+
+@end
+
+@interface AromaReactions_MatcherApplicationIs : NSObject <TBase, NSCoding> {
+  AromaReactions_uuid __appId;
+
+  BOOL __appId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=appId, setter=setAppId:) AromaReactions_uuid appId;
+#endif
+
+- (id) init;
+- (id) initWithAppId: (AromaReactions_uuid) appId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_uuid) appId;
+- (void) setAppId: (AromaReactions_uuid) appId;
+#endif
+- (BOOL) appIdIsSet;
+
+@end
+
+@interface AromaReactions_MatcherApplicationIsNot : NSObject <TBase, NSCoding> {
+  AromaReactions_uuid __appId;
+
+  BOOL __appId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=appId, setter=setAppId:) AromaReactions_uuid appId;
+#endif
+
+- (id) init;
+- (id) initWithAppId: (AromaReactions_uuid) appId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_uuid) appId;
+- (void) setAppId: (AromaReactions_uuid) appId;
+#endif
+- (BOOL) appIdIsSet;
+
+@end
+
 @interface AromaReactions_AromaMatcher : NSObject <TBase, NSCoding> {
   AromaReactions_MatcherAll * __all;
   AromaReactions_MatcherTitleIs * __titleIs;
+  AromaReactions_MatcherTitleIsNot * __titleIsNot;
   AromaReactions_MatcherTitleContains * __titleContains;
+  AromaReactions_MatcherTitleDoesNotContain * __titleDoesNotContain;
   AromaReactions_MatcherBodyIs * __bodyIs;
   AromaReactions_MatcherBodyContains * __bodyContains;
-  AromaReactions_MatcherUrgencyEquals * __urgencyEquals;
-  AromaReactions_MatcherHostnameEquals * __hostnameEquals;
+  AromaReactions_MatcherBodyDoesNotContain * __bodyDoesNotContain;
+  AromaReactions_MatcherUrgencyIs * __urgencyEquals;
+  AromaReactions_MatcherHostnameIs * __hostnameIs;
+  AromaReactions_MatcherHostnameContains * __hostnameContains;
+  AromaReactions_MatcherHostnameDoesNotContain * __hostnameDoesNotContain;
+  AromaReactions_MatcherApplicationIs * __applicationIs;
+  AromaReactions_MatcherApplicationIsNot * __applicationIsNot;
 
   BOOL __all_isset;
   BOOL __titleIs_isset;
+  BOOL __titleIsNot_isset;
   BOOL __titleContains_isset;
+  BOOL __titleDoesNotContain_isset;
   BOOL __bodyIs_isset;
   BOOL __bodyContains_isset;
+  BOOL __bodyDoesNotContain_isset;
   BOOL __urgencyEquals_isset;
-  BOOL __hostnameEquals_isset;
+  BOOL __hostnameIs_isset;
+  BOOL __hostnameContains_isset;
+  BOOL __hostnameDoesNotContain_isset;
+  BOOL __applicationIs_isset;
+  BOOL __applicationIsNot_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=all, setter=setAll:) AromaReactions_MatcherAll * all;
 @property (nonatomic, retain, getter=titleIs, setter=setTitleIs:) AromaReactions_MatcherTitleIs * titleIs;
+@property (nonatomic, retain, getter=titleIsNot, setter=setTitleIsNot:) AromaReactions_MatcherTitleIsNot * titleIsNot;
 @property (nonatomic, retain, getter=titleContains, setter=setTitleContains:) AromaReactions_MatcherTitleContains * titleContains;
+@property (nonatomic, retain, getter=titleDoesNotContain, setter=setTitleDoesNotContain:) AromaReactions_MatcherTitleDoesNotContain * titleDoesNotContain;
 @property (nonatomic, retain, getter=bodyIs, setter=setBodyIs:) AromaReactions_MatcherBodyIs * bodyIs;
 @property (nonatomic, retain, getter=bodyContains, setter=setBodyContains:) AromaReactions_MatcherBodyContains * bodyContains;
-@property (nonatomic, retain, getter=urgencyEquals, setter=setUrgencyEquals:) AromaReactions_MatcherUrgencyEquals * urgencyEquals;
-@property (nonatomic, retain, getter=hostnameEquals, setter=setHostnameEquals:) AromaReactions_MatcherHostnameEquals * hostnameEquals;
+@property (nonatomic, retain, getter=bodyDoesNotContain, setter=setBodyDoesNotContain:) AromaReactions_MatcherBodyDoesNotContain * bodyDoesNotContain;
+@property (nonatomic, retain, getter=urgencyEquals, setter=setUrgencyEquals:) AromaReactions_MatcherUrgencyIs * urgencyEquals;
+@property (nonatomic, retain, getter=hostnameIs, setter=setHostnameIs:) AromaReactions_MatcherHostnameIs * hostnameIs;
+@property (nonatomic, retain, getter=hostnameContains, setter=setHostnameContains:) AromaReactions_MatcherHostnameContains * hostnameContains;
+@property (nonatomic, retain, getter=hostnameDoesNotContain, setter=setHostnameDoesNotContain:) AromaReactions_MatcherHostnameDoesNotContain * hostnameDoesNotContain;
+@property (nonatomic, retain, getter=applicationIs, setter=setApplicationIs:) AromaReactions_MatcherApplicationIs * applicationIs;
+@property (nonatomic, retain, getter=applicationIsNot, setter=setApplicationIsNot:) AromaReactions_MatcherApplicationIsNot * applicationIsNot;
 #endif
 
 - (id) init;
-- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleContains: (AromaReactions_MatcherTitleContains *) titleContains bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains urgencyEquals: (AromaReactions_MatcherUrgencyEquals *) urgencyEquals hostnameEquals: (AromaReactions_MatcherHostnameEquals *) hostnameEquals;
+- (id) initWithAll: (AromaReactions_MatcherAll *) all titleIs: (AromaReactions_MatcherTitleIs *) titleIs titleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot titleContains: (AromaReactions_MatcherTitleContains *) titleContains titleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain bodyIs: (AromaReactions_MatcherBodyIs *) bodyIs bodyContains: (AromaReactions_MatcherBodyContains *) bodyContains bodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain urgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals hostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs hostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains hostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain applicationIs: (AromaReactions_MatcherApplicationIs *) applicationIs applicationIsNot: (AromaReactions_MatcherApplicationIsNot *) applicationIsNot;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -246,10 +448,22 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) titleIsIsSet;
 
 #if !__has_feature(objc_arc)
+- (AromaReactions_MatcherTitleIsNot *) titleIsNot;
+- (void) setTitleIsNot: (AromaReactions_MatcherTitleIsNot *) titleIsNot;
+#endif
+- (BOOL) titleIsNotIsSet;
+
+#if !__has_feature(objc_arc)
 - (AromaReactions_MatcherTitleContains *) titleContains;
 - (void) setTitleContains: (AromaReactions_MatcherTitleContains *) titleContains;
 #endif
 - (BOOL) titleContainsIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain;
+- (void) setTitleDoesNotContain: (AromaReactions_MatcherTitleDoesNotContain *) titleDoesNotContain;
+#endif
+- (BOOL) titleDoesNotContainIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaReactions_MatcherBodyIs *) bodyIs;
@@ -264,34 +478,70 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) bodyContainsIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_MatcherUrgencyEquals *) urgencyEquals;
-- (void) setUrgencyEquals: (AromaReactions_MatcherUrgencyEquals *) urgencyEquals;
+- (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain;
+- (void) setBodyDoesNotContain: (AromaReactions_MatcherBodyDoesNotContain *) bodyDoesNotContain;
+#endif
+- (BOOL) bodyDoesNotContainIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherUrgencyIs *) urgencyEquals;
+- (void) setUrgencyEquals: (AromaReactions_MatcherUrgencyIs *) urgencyEquals;
 #endif
 - (BOOL) urgencyEqualsIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_MatcherHostnameEquals *) hostnameEquals;
-- (void) setHostnameEquals: (AromaReactions_MatcherHostnameEquals *) hostnameEquals;
+- (AromaReactions_MatcherHostnameIs *) hostnameIs;
+- (void) setHostnameIs: (AromaReactions_MatcherHostnameIs *) hostnameIs;
 #endif
-- (BOOL) hostnameEqualsIsSet;
+- (BOOL) hostnameIsIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherHostnameContains *) hostnameContains;
+- (void) setHostnameContains: (AromaReactions_MatcherHostnameContains *) hostnameContains;
+#endif
+- (BOOL) hostnameContainsIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain;
+- (void) setHostnameDoesNotContain: (AromaReactions_MatcherHostnameDoesNotContain *) hostnameDoesNotContain;
+#endif
+- (BOOL) hostnameDoesNotContainIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherApplicationIs *) applicationIs;
+- (void) setApplicationIs: (AromaReactions_MatcherApplicationIs *) applicationIs;
+#endif
+- (BOOL) applicationIsIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_MatcherApplicationIsNot *) applicationIsNot;
+- (void) setApplicationIsNot: (AromaReactions_MatcherApplicationIsNot *) applicationIsNot;
+#endif
+- (BOOL) applicationIsNotIsSet;
 
 @end
 
-@interface AromaReactions_ActionPostToSlackChannel : NSObject <TBase, NSCoding> {
+@interface AromaReactions_ActionForwardToSlackChannel : NSObject <TBase, NSCoding> {
   NSString * __slackChannel;
   BOOL __includeBody;
+  NSString * __webhookUrl;
+  NSString * __domainName;
 
   BOOL __slackChannel_isset;
   BOOL __includeBody_isset;
+  BOOL __webhookUrl_isset;
+  BOOL __domainName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=slackChannel, setter=setSlackChannel:) NSString * slackChannel;
 @property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
+@property (nonatomic, retain, getter=webhookUrl, setter=setWebhookUrl:) NSString * webhookUrl;
+@property (nonatomic, retain, getter=domainName, setter=setDomainName:) NSString * domainName;
 #endif
 
 - (id) init;
-- (id) initWithSlackChannel: (NSString *) slackChannel includeBody: (BOOL) includeBody;
+- (id) initWithSlackChannel: (NSString *) slackChannel includeBody: (BOOL) includeBody webhookUrl: (NSString *) webhookUrl domainName: (NSString *) domainName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -310,23 +560,41 @@ typedef Aroma_uuid AromaReactions_uuid;
 #endif
 - (BOOL) includeBodyIsSet;
 
+#if !__has_feature(objc_arc)
+- (NSString *) webhookUrl;
+- (void) setWebhookUrl: (NSString *) webhookUrl;
+#endif
+- (BOOL) webhookUrlIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) domainName;
+- (void) setDomainName: (NSString *) domainName;
+#endif
+- (BOOL) domainNameIsSet;
+
 @end
 
-@interface AromaReactions_ActionPostToSlackUser : NSObject <TBase, NSCoding> {
+@interface AromaReactions_ActionForwardToSlackUser : NSObject <TBase, NSCoding> {
   NSString * __slackUsername;
   BOOL __includeBody;
+  NSString * __webhookUrl;
+  NSString * __domainName;
 
   BOOL __slackUsername_isset;
   BOOL __includeBody_isset;
+  BOOL __webhookUrl_isset;
+  BOOL __domainName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=slackUsername, setter=setSlackUsername:) NSString * slackUsername;
 @property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
+@property (nonatomic, retain, getter=webhookUrl, setter=setWebhookUrl:) NSString * webhookUrl;
+@property (nonatomic, retain, getter=domainName, setter=setDomainName:) NSString * domainName;
 #endif
 
 - (id) init;
-- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody;
+- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody webhookUrl: (NSString *) webhookUrl domainName: (NSString *) domainName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -338,6 +606,53 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) setSlackUsername: (NSString *) slackUsername;
 #endif
 - (BOOL) slackUsernameIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) includeBody;
+- (void) setIncludeBody: (BOOL) includeBody;
+#endif
+- (BOOL) includeBodyIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) webhookUrl;
+- (void) setWebhookUrl: (NSString *) webhookUrl;
+#endif
+- (BOOL) webhookUrlIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) domainName;
+- (void) setDomainName: (NSString *) domainName;
+#endif
+- (BOOL) domainNameIsSet;
+
+@end
+
+@interface AromaReactions_ActionForwardToGitter : NSObject <TBase, NSCoding> {
+  NSString * __gitterWebhookUrl;
+  BOOL __includeBody;
+
+  BOOL __gitterWebhookUrl_isset;
+  BOOL __includeBody_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=gitterWebhookUrl, setter=setGitterWebhookUrl:) NSString * gitterWebhookUrl;
+@property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
+#endif
+
+- (id) init;
+- (id) initWithGitterWebhookUrl: (NSString *) gitterWebhookUrl includeBody: (BOOL) includeBody;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) gitterWebhookUrl;
+- (void) setGitterWebhookUrl: (NSString *) gitterWebhookUrl;
+#endif
+- (BOOL) gitterWebhookUrlIsSet;
 
 #if !__has_feature(objc_arc)
 - (BOOL) includeBody;
@@ -382,7 +697,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_ActionIgnore : NSObject <TBase, NSCoding> {
+@interface AromaReactions_ActionSkipInbox : NSObject <TBase, NSCoding> {
 }
 
 - (id) init;
@@ -394,7 +709,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_ActionDeleteMessage : NSObject <TBase, NSCoding> {
+@interface AromaReactions_ActionDontStoreMessage : NSObject <TBase, NSCoding> {
 }
 
 - (id) init;
@@ -406,18 +721,18 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_ActionRespondToCode : NSObject <TBase, NSCoding> {
-  NSString * __messageToSend;
+@interface AromaReactions_ActionRespondWithMessage : NSObject <TBase, NSCoding> {
+  NSString * __messageToRespondWith;
 
-  BOOL __messageToSend_isset;
+  BOOL __messageToRespondWith_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=messageToSend, setter=setMessageToSend:) NSString * messageToSend;
+@property (nonatomic, retain, getter=messageToRespondWith, setter=setMessageToRespondWith:) NSString * messageToRespondWith;
 #endif
 
 - (id) init;
-- (id) initWithMessageToSend: (NSString *) messageToSend;
+- (id) initWithMessageToRespondWith: (NSString *) messageToRespondWith;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -425,10 +740,10 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) messageToSend;
-- (void) setMessageToSend: (NSString *) messageToSend;
+- (NSString *) messageToRespondWith;
+- (void) setMessageToRespondWith: (NSString *) messageToRespondWith;
 #endif
-- (BOOL) messageToSendIsSet;
+- (BOOL) messageToRespondWithIsSet;
 
 @end
 
@@ -459,35 +774,38 @@ typedef Aroma_uuid AromaReactions_uuid;
 @end
 
 @interface AromaReactions_AromaAction : NSObject <TBase, NSCoding> {
-  AromaReactions_ActionPostToSlackChannel * __postToSlackChannel;
-  AromaReactions_ActionPostToSlackUser * __postToSlackUser;
+  AromaReactions_ActionForwardToSlackChannel * __forwardToSlackChannel;
+  AromaReactions_ActionForwardToSlackUser * __forwardToSlackUser;
+  AromaReactions_ActionForwardToGitter * __forwardToGitter;
   AromaReactions_ActionSendEmail * __sendEmail;
-  AromaReactions_ActionIgnore * __ignore;
-  AromaReactions_ActionDeleteMessage * __deleteMessage;
-  AromaReactions_ActionRespondToCode * __respondToCode;
+  AromaReactions_ActionSkipInbox * __skipInbox;
+  AromaReactions_ActionDontStoreMessage * __dontStoreMessage;
+  AromaReactions_ActionRespondWithMessage * __responseWithMessage;
   AromaReactions_ActionForwardToUsers * __forwardToUsers;
 
-  BOOL __postToSlackChannel_isset;
-  BOOL __postToSlackUser_isset;
+  BOOL __forwardToSlackChannel_isset;
+  BOOL __forwardToSlackUser_isset;
+  BOOL __forwardToGitter_isset;
   BOOL __sendEmail_isset;
-  BOOL __ignore_isset;
-  BOOL __deleteMessage_isset;
-  BOOL __respondToCode_isset;
+  BOOL __skipInbox_isset;
+  BOOL __dontStoreMessage_isset;
+  BOOL __responseWithMessage_isset;
   BOOL __forwardToUsers_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=postToSlackChannel, setter=setPostToSlackChannel:) AromaReactions_ActionPostToSlackChannel * postToSlackChannel;
-@property (nonatomic, retain, getter=postToSlackUser, setter=setPostToSlackUser:) AromaReactions_ActionPostToSlackUser * postToSlackUser;
+@property (nonatomic, retain, getter=forwardToSlackChannel, setter=setForwardToSlackChannel:) AromaReactions_ActionForwardToSlackChannel * forwardToSlackChannel;
+@property (nonatomic, retain, getter=forwardToSlackUser, setter=setForwardToSlackUser:) AromaReactions_ActionForwardToSlackUser * forwardToSlackUser;
+@property (nonatomic, retain, getter=forwardToGitter, setter=setForwardToGitter:) AromaReactions_ActionForwardToGitter * forwardToGitter;
 @property (nonatomic, retain, getter=sendEmail, setter=setSendEmail:) AromaReactions_ActionSendEmail * sendEmail;
-@property (nonatomic, retain, getter=ignore, setter=setIgnore:) AromaReactions_ActionIgnore * ignore;
-@property (nonatomic, retain, getter=deleteMessage, setter=setDeleteMessage:) AromaReactions_ActionDeleteMessage * deleteMessage;
-@property (nonatomic, retain, getter=respondToCode, setter=setRespondToCode:) AromaReactions_ActionRespondToCode * respondToCode;
+@property (nonatomic, retain, getter=skipInbox, setter=setSkipInbox:) AromaReactions_ActionSkipInbox * skipInbox;
+@property (nonatomic, retain, getter=dontStoreMessage, setter=setDontStoreMessage:) AromaReactions_ActionDontStoreMessage * dontStoreMessage;
+@property (nonatomic, retain, getter=responseWithMessage, setter=setResponseWithMessage:) AromaReactions_ActionRespondWithMessage * responseWithMessage;
 @property (nonatomic, retain, getter=forwardToUsers, setter=setForwardToUsers:) AromaReactions_ActionForwardToUsers * forwardToUsers;
 #endif
 
 - (id) init;
-- (id) initWithPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel postToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail ignore: (AromaReactions_ActionIgnore *) ignore deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser forwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -495,16 +813,22 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel;
-- (void) setPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel;
+- (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel;
+- (void) setForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel;
 #endif
-- (BOOL) postToSlackChannelIsSet;
+- (BOOL) forwardToSlackChannelIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_ActionPostToSlackUser *) postToSlackUser;
-- (void) setPostToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser;
+- (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser;
+- (void) setForwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser;
 #endif
-- (BOOL) postToSlackUserIsSet;
+- (BOOL) forwardToSlackUserIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionForwardToGitter *) forwardToGitter;
+- (void) setForwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter;
+#endif
+- (BOOL) forwardToGitterIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaReactions_ActionSendEmail *) sendEmail;
@@ -513,22 +837,22 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) sendEmailIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_ActionIgnore *) ignore;
-- (void) setIgnore: (AromaReactions_ActionIgnore *) ignore;
+- (AromaReactions_ActionSkipInbox *) skipInbox;
+- (void) setSkipInbox: (AromaReactions_ActionSkipInbox *) skipInbox;
 #endif
-- (BOOL) ignoreIsSet;
+- (BOOL) skipInboxIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_ActionDeleteMessage *) deleteMessage;
-- (void) setDeleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage;
+- (AromaReactions_ActionDontStoreMessage *) dontStoreMessage;
+- (void) setDontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage;
 #endif
-- (BOOL) deleteMessageIsSet;
+- (BOOL) dontStoreMessageIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_ActionRespondToCode *) respondToCode;
-- (void) setRespondToCode: (AromaReactions_ActionRespondToCode *) respondToCode;
+- (AromaReactions_ActionRespondWithMessage *) responseWithMessage;
+- (void) setResponseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage;
 #endif
-- (BOOL) respondToCodeIsSet;
+- (BOOL) responseWithMessageIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaReactions_ActionForwardToUsers *) forwardToUsers;
@@ -539,20 +863,23 @@ typedef Aroma_uuid AromaReactions_uuid;
 @end
 
 @interface AromaReactions_Reaction : NSObject <TBase, NSCoding> {
-  AromaReactions_AromaMatcher * __matcher;
-  AromaReactions_AromaAction * __action;
+  NSMutableArray * __matchers;
+  NSMutableArray * __actions;
+  NSString * __name;
 
-  BOOL __matcher_isset;
-  BOOL __action_isset;
+  BOOL __matchers_isset;
+  BOOL __actions_isset;
+  BOOL __name_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=matcher, setter=setMatcher:) AromaReactions_AromaMatcher * matcher;
-@property (nonatomic, retain, getter=action, setter=setAction:) AromaReactions_AromaAction * action;
+@property (nonatomic, retain, getter=matchers, setter=setMatchers:) NSMutableArray * matchers;
+@property (nonatomic, retain, getter=actions, setter=setActions:) NSMutableArray * actions;
+@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 #endif
 
 - (id) init;
-- (id) initWithMatcher: (AromaReactions_AromaMatcher *) matcher action: (AromaReactions_AromaAction *) action;
+- (id) initWithMatchers: (NSMutableArray *) matchers actions: (NSMutableArray *) actions name: (NSString *) name;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -560,19 +887,26 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_AromaMatcher *) matcher;
-- (void) setMatcher: (AromaReactions_AromaMatcher *) matcher;
+- (NSMutableArray *) matchers;
+- (void) setMatchers: (NSMutableArray *) matchers;
 #endif
-- (BOOL) matcherIsSet;
+- (BOOL) matchersIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_AromaAction *) action;
-- (void) setAction: (AromaReactions_AromaAction *) action;
+- (NSMutableArray *) actions;
+- (void) setActions: (NSMutableArray *) actions;
 #endif
-- (BOOL) actionIsSet;
+- (BOOL) actionsIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) name;
+- (void) setName: (NSString *) name;
+#endif
+- (BOOL) nameIsSet;
 
 @end
 
 @interface AromaReactions_ReactionsConstants : NSObject {
 }
++ (AromaReactions_int) MAXIMUM_REACTIONS;
 @end

@@ -2,14 +2,15 @@
 namespace java  tech.aroma.thrift
 namespace cocoa Aroma_
 namespace cpp   tech.aroma.thrift
+namespace php   RedRoma.Aroma
 
 /*
  * Defined in this file are the basic structures and types used by Aroma.
  */
- 
+
 
 /** Defines the Version of Aroma API of this specification. */
-const double API_VERSION = 1.8;
+const double API_VERSION = 1.9;
 
 typedef i32 int
 typedef i64 long
@@ -20,7 +21,7 @@ typedef i64 long
  */
 typedef i64 timestamp
 
-/** 
+/**
  * Defines a particular kind of string, as a Type-4 UUID.
  * These are commonly used for ID types.
  */
@@ -157,7 +158,7 @@ struct Message
 {
     /** Each message has a unique ID */
     1: uuid messageId;
-    /** 
+    /**
      * The body represents the Message's Payload, i.e. the actual message.
      * If the Message Body is too long, it may be truncated. The complete
      * body can then be loaded in a separate request.
@@ -177,6 +178,7 @@ struct Message
     10: string title;
     /** The ID of the Application the Message was sent from. */
     11: uuid applicationId;
+    12: optional string deviceName;
 }
 
 
@@ -234,13 +236,13 @@ struct Application
     3: string name;
     /** The Automatically generated ID for the Application. */
     4: uuid applicationId;
-    /** 
-     * The total amount of messages that 
+    /**
+     * The total amount of messages that
      * have been counted so far for the Application*/
     5: long totalMessagesSent;
     6: optional Image icon;
     7: optional ProgrammingLanguage programmingLanguage;
-    /** 
+    /**
      * Defines the userIds of the people who are following this Application.
      */
     8: optional set<uuid> followers = [];

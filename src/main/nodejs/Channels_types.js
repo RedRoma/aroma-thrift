@@ -542,12 +542,16 @@ AromaChannel.prototype.write = function(output) {
 ChannelInfo = module.exports.ChannelInfo = function(args) {
   this.channel = null;
   this.timeRegistered = null;
+  this.channelId = null;
   if (args) {
     if (args.channel !== undefined && args.channel !== null) {
       this.channel = new ttypes.AromaChannel(args.channel);
     }
     if (args.timeRegistered !== undefined && args.timeRegistered !== null) {
       this.timeRegistered = args.timeRegistered;
+    }
+    if (args.channelId !== undefined && args.channelId !== null) {
+      this.channelId = args.channelId;
     }
   }
 };
@@ -580,6 +584,13 @@ ChannelInfo.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.channelId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -599,6 +610,11 @@ ChannelInfo.prototype.write = function(output) {
   if (this.timeRegistered !== null && this.timeRegistered !== undefined) {
     output.writeFieldBegin('timeRegistered', Thrift.Type.I64, 2);
     output.writeI64(this.timeRegistered);
+    output.writeFieldEnd();
+  }
+  if (this.channelId !== null && this.channelId !== undefined) {
+    output.writeFieldBegin('channelId', Thrift.Type.STRING, 3);
+    output.writeString(this.channelId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

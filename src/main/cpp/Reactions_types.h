@@ -16,7 +16,6 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Aroma_types.h"
-#include "Exceptions_types.h"
 
 
 namespace tech { namespace aroma { namespace thrift { namespace reactions {
@@ -33,29 +32,45 @@ class MatcherAll;
 
 class MatcherTitleIs;
 
+class MatcherTitleIsNot;
+
 class MatcherTitleContains;
+
+class MatcherTitleDoesNotContain;
 
 class MatcherBodyIs;
 
 class MatcherBodyContains;
 
-class MatcherUrgencyEquals;
+class MatcherBodyDoesNotContain;
 
-class MatcherHostnameEquals;
+class MatcherUrgencyIs;
+
+class MatcherHostnameIs;
+
+class MatcherHostnameContains;
+
+class MatcherHostnameDoesNotContain;
+
+class MatcherApplicationIs;
+
+class MatcherApplicationIsNot;
 
 class AromaMatcher;
 
-class ActionPostToSlackChannel;
+class ActionForwardToSlackChannel;
 
-class ActionPostToSlackUser;
+class ActionForwardToSlackUser;
+
+class ActionForwardToGitter;
 
 class ActionSendEmail;
 
-class ActionIgnore;
+class ActionSkipInbox;
 
-class ActionDeleteMessage;
+class ActionDontStoreMessage;
 
-class ActionRespondToCode;
+class ActionRespondWithMessage;
 
 class ActionForwardToUsers;
 
@@ -144,6 +159,52 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherTitleIs& obj)
   return out;
 }
 
+typedef struct _MatcherTitleIsNot__isset {
+  _MatcherTitleIsNot__isset() : title(false) {}
+  bool title :1;
+} _MatcherTitleIsNot__isset;
+
+class MatcherTitleIsNot {
+ public:
+
+  MatcherTitleIsNot(const MatcherTitleIsNot&);
+  MatcherTitleIsNot& operator=(const MatcherTitleIsNot&);
+  MatcherTitleIsNot() : title() {
+  }
+
+  virtual ~MatcherTitleIsNot() throw();
+  std::string title;
+
+  _MatcherTitleIsNot__isset __isset;
+
+  void __set_title(const std::string& val);
+
+  bool operator == (const MatcherTitleIsNot & rhs) const
+  {
+    if (!(title == rhs.title))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherTitleIsNot &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherTitleIsNot & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherTitleIsNot &a, MatcherTitleIsNot &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherTitleIsNot& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _MatcherTitleContains__isset {
   _MatcherTitleContains__isset() : substring(false) {}
   bool substring :1;
@@ -185,6 +246,52 @@ class MatcherTitleContains {
 void swap(MatcherTitleContains &a, MatcherTitleContains &b);
 
 inline std::ostream& operator<<(std::ostream& out, const MatcherTitleContains& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherTitleDoesNotContain__isset {
+  _MatcherTitleDoesNotContain__isset() : substring(false) {}
+  bool substring :1;
+} _MatcherTitleDoesNotContain__isset;
+
+class MatcherTitleDoesNotContain {
+ public:
+
+  MatcherTitleDoesNotContain(const MatcherTitleDoesNotContain&);
+  MatcherTitleDoesNotContain& operator=(const MatcherTitleDoesNotContain&);
+  MatcherTitleDoesNotContain() : substring() {
+  }
+
+  virtual ~MatcherTitleDoesNotContain() throw();
+  std::string substring;
+
+  _MatcherTitleDoesNotContain__isset __isset;
+
+  void __set_substring(const std::string& val);
+
+  bool operator == (const MatcherTitleDoesNotContain & rhs) const
+  {
+    if (!(substring == rhs.substring))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherTitleDoesNotContain &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherTitleDoesNotContain & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherTitleDoesNotContain &a, MatcherTitleDoesNotContain &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherTitleDoesNotContain& obj)
 {
   obj.printTo(out);
   return out;
@@ -282,37 +389,37 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherBodyContains& ob
   return out;
 }
 
-typedef struct _MatcherUrgencyEquals__isset {
-  _MatcherUrgencyEquals__isset() : urgency(false) {}
-  bool urgency :1;
-} _MatcherUrgencyEquals__isset;
+typedef struct _MatcherBodyDoesNotContain__isset {
+  _MatcherBodyDoesNotContain__isset() : substring(false) {}
+  bool substring :1;
+} _MatcherBodyDoesNotContain__isset;
 
-class MatcherUrgencyEquals {
+class MatcherBodyDoesNotContain {
  public:
 
-  MatcherUrgencyEquals(const MatcherUrgencyEquals&);
-  MatcherUrgencyEquals& operator=(const MatcherUrgencyEquals&);
-  MatcherUrgencyEquals() : urgency(( ::tech::aroma::thrift::Urgency::type)0) {
+  MatcherBodyDoesNotContain(const MatcherBodyDoesNotContain&);
+  MatcherBodyDoesNotContain& operator=(const MatcherBodyDoesNotContain&);
+  MatcherBodyDoesNotContain() : substring() {
   }
 
-  virtual ~MatcherUrgencyEquals() throw();
-   ::tech::aroma::thrift::Urgency::type urgency;
+  virtual ~MatcherBodyDoesNotContain() throw();
+  std::string substring;
 
-  _MatcherUrgencyEquals__isset __isset;
+  _MatcherBodyDoesNotContain__isset __isset;
 
-  void __set_urgency(const  ::tech::aroma::thrift::Urgency::type val);
+  void __set_substring(const std::string& val);
 
-  bool operator == (const MatcherUrgencyEquals & rhs) const
+  bool operator == (const MatcherBodyDoesNotContain & rhs) const
   {
-    if (!(urgency == rhs.urgency))
+    if (!(substring == rhs.substring))
       return false;
     return true;
   }
-  bool operator != (const MatcherUrgencyEquals &rhs) const {
+  bool operator != (const MatcherBodyDoesNotContain &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const MatcherUrgencyEquals & ) const;
+  bool operator < (const MatcherBodyDoesNotContain & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -320,45 +427,46 @@ class MatcherUrgencyEquals {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(MatcherUrgencyEquals &a, MatcherUrgencyEquals &b);
+void swap(MatcherBodyDoesNotContain &a, MatcherBodyDoesNotContain &b);
 
-inline std::ostream& operator<<(std::ostream& out, const MatcherUrgencyEquals& obj)
+inline std::ostream& operator<<(std::ostream& out, const MatcherBodyDoesNotContain& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _MatcherHostnameEquals__isset {
-  _MatcherHostnameEquals__isset() : expectedHostname(false) {}
-  bool expectedHostname :1;
-} _MatcherHostnameEquals__isset;
+typedef struct _MatcherUrgencyIs__isset {
+  _MatcherUrgencyIs__isset() : possibleUrgencies(true) {}
+  bool possibleUrgencies :1;
+} _MatcherUrgencyIs__isset;
 
-class MatcherHostnameEquals {
+class MatcherUrgencyIs {
  public:
 
-  MatcherHostnameEquals(const MatcherHostnameEquals&);
-  MatcherHostnameEquals& operator=(const MatcherHostnameEquals&);
-  MatcherHostnameEquals() : expectedHostname() {
+  MatcherUrgencyIs(const MatcherUrgencyIs&);
+  MatcherUrgencyIs& operator=(const MatcherUrgencyIs&);
+  MatcherUrgencyIs() {
+
   }
 
-  virtual ~MatcherHostnameEquals() throw();
-  std::string expectedHostname;
+  virtual ~MatcherUrgencyIs() throw();
+  std::set< ::tech::aroma::thrift::Urgency::type>  possibleUrgencies;
 
-  _MatcherHostnameEquals__isset __isset;
+  _MatcherUrgencyIs__isset __isset;
 
-  void __set_expectedHostname(const std::string& val);
+  void __set_possibleUrgencies(const std::set< ::tech::aroma::thrift::Urgency::type> & val);
 
-  bool operator == (const MatcherHostnameEquals & rhs) const
+  bool operator == (const MatcherUrgencyIs & rhs) const
   {
-    if (!(expectedHostname == rhs.expectedHostname))
+    if (!(possibleUrgencies == rhs.possibleUrgencies))
       return false;
     return true;
   }
-  bool operator != (const MatcherHostnameEquals &rhs) const {
+  bool operator != (const MatcherUrgencyIs &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const MatcherHostnameEquals & ) const;
+  bool operator < (const MatcherUrgencyIs & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -366,23 +474,260 @@ class MatcherHostnameEquals {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(MatcherHostnameEquals &a, MatcherHostnameEquals &b);
+void swap(MatcherUrgencyIs &a, MatcherUrgencyIs &b);
 
-inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameEquals& obj)
+inline std::ostream& operator<<(std::ostream& out, const MatcherUrgencyIs& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherHostnameIs__isset {
+  _MatcherHostnameIs__isset() : expectedHostname(false) {}
+  bool expectedHostname :1;
+} _MatcherHostnameIs__isset;
+
+class MatcherHostnameIs {
+ public:
+
+  MatcherHostnameIs(const MatcherHostnameIs&);
+  MatcherHostnameIs& operator=(const MatcherHostnameIs&);
+  MatcherHostnameIs() : expectedHostname() {
+  }
+
+  virtual ~MatcherHostnameIs() throw();
+  std::string expectedHostname;
+
+  _MatcherHostnameIs__isset __isset;
+
+  void __set_expectedHostname(const std::string& val);
+
+  bool operator == (const MatcherHostnameIs & rhs) const
+  {
+    if (!(expectedHostname == rhs.expectedHostname))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherHostnameIs &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherHostnameIs & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherHostnameIs &a, MatcherHostnameIs &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameIs& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherHostnameContains__isset {
+  _MatcherHostnameContains__isset() : substring(false) {}
+  bool substring :1;
+} _MatcherHostnameContains__isset;
+
+class MatcherHostnameContains {
+ public:
+
+  MatcherHostnameContains(const MatcherHostnameContains&);
+  MatcherHostnameContains& operator=(const MatcherHostnameContains&);
+  MatcherHostnameContains() : substring() {
+  }
+
+  virtual ~MatcherHostnameContains() throw();
+  std::string substring;
+
+  _MatcherHostnameContains__isset __isset;
+
+  void __set_substring(const std::string& val);
+
+  bool operator == (const MatcherHostnameContains & rhs) const
+  {
+    if (!(substring == rhs.substring))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherHostnameContains &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherHostnameContains & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherHostnameContains &a, MatcherHostnameContains &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameContains& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherHostnameDoesNotContain__isset {
+  _MatcherHostnameDoesNotContain__isset() : substring(false) {}
+  bool substring :1;
+} _MatcherHostnameDoesNotContain__isset;
+
+class MatcherHostnameDoesNotContain {
+ public:
+
+  MatcherHostnameDoesNotContain(const MatcherHostnameDoesNotContain&);
+  MatcherHostnameDoesNotContain& operator=(const MatcherHostnameDoesNotContain&);
+  MatcherHostnameDoesNotContain() : substring() {
+  }
+
+  virtual ~MatcherHostnameDoesNotContain() throw();
+  std::string substring;
+
+  _MatcherHostnameDoesNotContain__isset __isset;
+
+  void __set_substring(const std::string& val);
+
+  bool operator == (const MatcherHostnameDoesNotContain & rhs) const
+  {
+    if (!(substring == rhs.substring))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherHostnameDoesNotContain &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherHostnameDoesNotContain & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherHostnameDoesNotContain &a, MatcherHostnameDoesNotContain &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameDoesNotContain& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherApplicationIs__isset {
+  _MatcherApplicationIs__isset() : appId(false) {}
+  bool appId :1;
+} _MatcherApplicationIs__isset;
+
+class MatcherApplicationIs {
+ public:
+
+  MatcherApplicationIs(const MatcherApplicationIs&);
+  MatcherApplicationIs& operator=(const MatcherApplicationIs&);
+  MatcherApplicationIs() : appId() {
+  }
+
+  virtual ~MatcherApplicationIs() throw();
+  uuid appId;
+
+  _MatcherApplicationIs__isset __isset;
+
+  void __set_appId(const uuid& val);
+
+  bool operator == (const MatcherApplicationIs & rhs) const
+  {
+    if (!(appId == rhs.appId))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherApplicationIs &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherApplicationIs & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherApplicationIs &a, MatcherApplicationIs &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherApplicationIs& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MatcherApplicationIsNot__isset {
+  _MatcherApplicationIsNot__isset() : appId(false) {}
+  bool appId :1;
+} _MatcherApplicationIsNot__isset;
+
+class MatcherApplicationIsNot {
+ public:
+
+  MatcherApplicationIsNot(const MatcherApplicationIsNot&);
+  MatcherApplicationIsNot& operator=(const MatcherApplicationIsNot&);
+  MatcherApplicationIsNot() : appId() {
+  }
+
+  virtual ~MatcherApplicationIsNot() throw();
+  uuid appId;
+
+  _MatcherApplicationIsNot__isset __isset;
+
+  void __set_appId(const uuid& val);
+
+  bool operator == (const MatcherApplicationIsNot & rhs) const
+  {
+    if (!(appId == rhs.appId))
+      return false;
+    return true;
+  }
+  bool operator != (const MatcherApplicationIsNot &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MatcherApplicationIsNot & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(MatcherApplicationIsNot &a, MatcherApplicationIsNot &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MatcherApplicationIsNot& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 typedef struct _AromaMatcher__isset {
-  _AromaMatcher__isset() : all(false), titleIs(false), titleContains(false), bodyIs(false), bodyContains(false), urgencyEquals(false), hostnameEquals(false) {}
+  _AromaMatcher__isset() : all(false), titleIs(false), titleIsNot(false), titleContains(false), titleDoesNotContain(false), bodyIs(false), bodyContains(false), bodyDoesNotContain(false), urgencyEquals(false), hostnameIs(false), hostnameContains(false), hostnameDoesNotContain(false), applicationIs(false), applicationIsNot(false) {}
   bool all :1;
   bool titleIs :1;
+  bool titleIsNot :1;
   bool titleContains :1;
+  bool titleDoesNotContain :1;
   bool bodyIs :1;
   bool bodyContains :1;
+  bool bodyDoesNotContain :1;
   bool urgencyEquals :1;
-  bool hostnameEquals :1;
+  bool hostnameIs :1;
+  bool hostnameContains :1;
+  bool hostnameDoesNotContain :1;
+  bool applicationIs :1;
+  bool applicationIsNot :1;
 } _AromaMatcher__isset;
 
 class AromaMatcher {
@@ -396,11 +741,18 @@ class AromaMatcher {
   virtual ~AromaMatcher() throw();
   MatcherAll all;
   MatcherTitleIs titleIs;
+  MatcherTitleIsNot titleIsNot;
   MatcherTitleContains titleContains;
+  MatcherTitleDoesNotContain titleDoesNotContain;
   MatcherBodyIs bodyIs;
   MatcherBodyContains bodyContains;
-  MatcherUrgencyEquals urgencyEquals;
-  MatcherHostnameEquals hostnameEquals;
+  MatcherBodyDoesNotContain bodyDoesNotContain;
+  MatcherUrgencyIs urgencyEquals;
+  MatcherHostnameIs hostnameIs;
+  MatcherHostnameContains hostnameContains;
+  MatcherHostnameDoesNotContain hostnameDoesNotContain;
+  MatcherApplicationIs applicationIs;
+  MatcherApplicationIsNot applicationIsNot;
 
   _AromaMatcher__isset __isset;
 
@@ -408,15 +760,29 @@ class AromaMatcher {
 
   void __set_titleIs(const MatcherTitleIs& val);
 
+  void __set_titleIsNot(const MatcherTitleIsNot& val);
+
   void __set_titleContains(const MatcherTitleContains& val);
+
+  void __set_titleDoesNotContain(const MatcherTitleDoesNotContain& val);
 
   void __set_bodyIs(const MatcherBodyIs& val);
 
   void __set_bodyContains(const MatcherBodyContains& val);
 
-  void __set_urgencyEquals(const MatcherUrgencyEquals& val);
+  void __set_bodyDoesNotContain(const MatcherBodyDoesNotContain& val);
 
-  void __set_hostnameEquals(const MatcherHostnameEquals& val);
+  void __set_urgencyEquals(const MatcherUrgencyIs& val);
+
+  void __set_hostnameIs(const MatcherHostnameIs& val);
+
+  void __set_hostnameContains(const MatcherHostnameContains& val);
+
+  void __set_hostnameDoesNotContain(const MatcherHostnameDoesNotContain& val);
+
+  void __set_applicationIs(const MatcherApplicationIs& val);
+
+  void __set_applicationIsNot(const MatcherApplicationIsNot& val);
 
   bool operator == (const AromaMatcher & rhs) const
   {
@@ -424,15 +790,29 @@ class AromaMatcher {
       return false;
     if (!(titleIs == rhs.titleIs))
       return false;
+    if (!(titleIsNot == rhs.titleIsNot))
+      return false;
     if (!(titleContains == rhs.titleContains))
+      return false;
+    if (!(titleDoesNotContain == rhs.titleDoesNotContain))
       return false;
     if (!(bodyIs == rhs.bodyIs))
       return false;
     if (!(bodyContains == rhs.bodyContains))
       return false;
+    if (!(bodyDoesNotContain == rhs.bodyDoesNotContain))
+      return false;
     if (!(urgencyEquals == rhs.urgencyEquals))
       return false;
-    if (!(hostnameEquals == rhs.hostnameEquals))
+    if (!(hostnameIs == rhs.hostnameIs))
+      return false;
+    if (!(hostnameContains == rhs.hostnameContains))
+      return false;
+    if (!(hostnameDoesNotContain == rhs.hostnameDoesNotContain))
+      return false;
+    if (!(applicationIs == rhs.applicationIs))
+      return false;
+    if (!(applicationIsNot == rhs.applicationIsNot))
       return false;
     return true;
   }
@@ -456,31 +836,39 @@ inline std::ostream& operator<<(std::ostream& out, const AromaMatcher& obj)
   return out;
 }
 
-typedef struct _ActionPostToSlackChannel__isset {
-  _ActionPostToSlackChannel__isset() : slackChannel(false), includeBody(true) {}
+typedef struct _ActionForwardToSlackChannel__isset {
+  _ActionForwardToSlackChannel__isset() : slackChannel(false), includeBody(true), webhookUrl(false), domainName(false) {}
   bool slackChannel :1;
   bool includeBody :1;
-} _ActionPostToSlackChannel__isset;
+  bool webhookUrl :1;
+  bool domainName :1;
+} _ActionForwardToSlackChannel__isset;
 
-class ActionPostToSlackChannel {
+class ActionForwardToSlackChannel {
  public:
 
-  ActionPostToSlackChannel(const ActionPostToSlackChannel&);
-  ActionPostToSlackChannel& operator=(const ActionPostToSlackChannel&);
-  ActionPostToSlackChannel() : slackChannel(), includeBody(true) {
+  ActionForwardToSlackChannel(const ActionForwardToSlackChannel&);
+  ActionForwardToSlackChannel& operator=(const ActionForwardToSlackChannel&);
+  ActionForwardToSlackChannel() : slackChannel(), includeBody(true), webhookUrl(), domainName() {
   }
 
-  virtual ~ActionPostToSlackChannel() throw();
+  virtual ~ActionForwardToSlackChannel() throw();
   std::string slackChannel;
   bool includeBody;
+  std::string webhookUrl;
+  std::string domainName;
 
-  _ActionPostToSlackChannel__isset __isset;
+  _ActionForwardToSlackChannel__isset __isset;
 
   void __set_slackChannel(const std::string& val);
 
   void __set_includeBody(const bool val);
 
-  bool operator == (const ActionPostToSlackChannel & rhs) const
+  void __set_webhookUrl(const std::string& val);
+
+  void __set_domainName(const std::string& val);
+
+  bool operator == (const ActionForwardToSlackChannel & rhs) const
   {
     if (!(slackChannel == rhs.slackChannel))
       return false;
@@ -488,13 +876,19 @@ class ActionPostToSlackChannel {
       return false;
     else if (__isset.includeBody && !(includeBody == rhs.includeBody))
       return false;
+    if (!(webhookUrl == rhs.webhookUrl))
+      return false;
+    if (__isset.domainName != rhs.__isset.domainName)
+      return false;
+    else if (__isset.domainName && !(domainName == rhs.domainName))
+      return false;
     return true;
   }
-  bool operator != (const ActionPostToSlackChannel &rhs) const {
+  bool operator != (const ActionForwardToSlackChannel &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionPostToSlackChannel & ) const;
+  bool operator < (const ActionForwardToSlackChannel & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -502,39 +896,47 @@ class ActionPostToSlackChannel {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionPostToSlackChannel &a, ActionPostToSlackChannel &b);
+void swap(ActionForwardToSlackChannel &a, ActionForwardToSlackChannel &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionPostToSlackChannel& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionForwardToSlackChannel& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _ActionPostToSlackUser__isset {
-  _ActionPostToSlackUser__isset() : slackUsername(false), includeBody(true) {}
+typedef struct _ActionForwardToSlackUser__isset {
+  _ActionForwardToSlackUser__isset() : slackUsername(false), includeBody(true), webhookUrl(false), domainName(false) {}
   bool slackUsername :1;
   bool includeBody :1;
-} _ActionPostToSlackUser__isset;
+  bool webhookUrl :1;
+  bool domainName :1;
+} _ActionForwardToSlackUser__isset;
 
-class ActionPostToSlackUser {
+class ActionForwardToSlackUser {
  public:
 
-  ActionPostToSlackUser(const ActionPostToSlackUser&);
-  ActionPostToSlackUser& operator=(const ActionPostToSlackUser&);
-  ActionPostToSlackUser() : slackUsername(), includeBody(true) {
+  ActionForwardToSlackUser(const ActionForwardToSlackUser&);
+  ActionForwardToSlackUser& operator=(const ActionForwardToSlackUser&);
+  ActionForwardToSlackUser() : slackUsername(), includeBody(true), webhookUrl(), domainName() {
   }
 
-  virtual ~ActionPostToSlackUser() throw();
+  virtual ~ActionForwardToSlackUser() throw();
   std::string slackUsername;
   bool includeBody;
+  std::string webhookUrl;
+  std::string domainName;
 
-  _ActionPostToSlackUser__isset __isset;
+  _ActionForwardToSlackUser__isset __isset;
 
   void __set_slackUsername(const std::string& val);
 
   void __set_includeBody(const bool val);
 
-  bool operator == (const ActionPostToSlackUser & rhs) const
+  void __set_webhookUrl(const std::string& val);
+
+  void __set_domainName(const std::string& val);
+
+  bool operator == (const ActionForwardToSlackUser & rhs) const
   {
     if (!(slackUsername == rhs.slackUsername))
       return false;
@@ -542,13 +944,19 @@ class ActionPostToSlackUser {
       return false;
     else if (__isset.includeBody && !(includeBody == rhs.includeBody))
       return false;
+    if (!(webhookUrl == rhs.webhookUrl))
+      return false;
+    if (__isset.domainName != rhs.__isset.domainName)
+      return false;
+    else if (__isset.domainName && !(domainName == rhs.domainName))
+      return false;
     return true;
   }
-  bool operator != (const ActionPostToSlackUser &rhs) const {
+  bool operator != (const ActionForwardToSlackUser &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionPostToSlackUser & ) const;
+  bool operator < (const ActionForwardToSlackUser & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -556,9 +964,63 @@ class ActionPostToSlackUser {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionPostToSlackUser &a, ActionPostToSlackUser &b);
+void swap(ActionForwardToSlackUser &a, ActionForwardToSlackUser &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionPostToSlackUser& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionForwardToSlackUser& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ActionForwardToGitter__isset {
+  _ActionForwardToGitter__isset() : gitterWebhookUrl(false), includeBody(true) {}
+  bool gitterWebhookUrl :1;
+  bool includeBody :1;
+} _ActionForwardToGitter__isset;
+
+class ActionForwardToGitter {
+ public:
+
+  ActionForwardToGitter(const ActionForwardToGitter&);
+  ActionForwardToGitter& operator=(const ActionForwardToGitter&);
+  ActionForwardToGitter() : gitterWebhookUrl(), includeBody(true) {
+  }
+
+  virtual ~ActionForwardToGitter() throw();
+  std::string gitterWebhookUrl;
+  bool includeBody;
+
+  _ActionForwardToGitter__isset __isset;
+
+  void __set_gitterWebhookUrl(const std::string& val);
+
+  void __set_includeBody(const bool val);
+
+  bool operator == (const ActionForwardToGitter & rhs) const
+  {
+    if (!(gitterWebhookUrl == rhs.gitterWebhookUrl))
+      return false;
+    if (__isset.includeBody != rhs.__isset.includeBody)
+      return false;
+    else if (__isset.includeBody && !(includeBody == rhs.includeBody))
+      return false;
+    return true;
+  }
+  bool operator != (const ActionForwardToGitter &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionForwardToGitter & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionForwardToGitter &a, ActionForwardToGitter &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionForwardToGitter& obj)
 {
   obj.printTo(out);
   return out;
@@ -619,25 +1081,25 @@ inline std::ostream& operator<<(std::ostream& out, const ActionSendEmail& obj)
 }
 
 
-class ActionIgnore {
+class ActionSkipInbox {
  public:
 
-  ActionIgnore(const ActionIgnore&);
-  ActionIgnore& operator=(const ActionIgnore&);
-  ActionIgnore() {
+  ActionSkipInbox(const ActionSkipInbox&);
+  ActionSkipInbox& operator=(const ActionSkipInbox&);
+  ActionSkipInbox() {
   }
 
-  virtual ~ActionIgnore() throw();
+  virtual ~ActionSkipInbox() throw();
 
-  bool operator == (const ActionIgnore & /* rhs */) const
+  bool operator == (const ActionSkipInbox & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const ActionIgnore &rhs) const {
+  bool operator != (const ActionSkipInbox &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionIgnore & ) const;
+  bool operator < (const ActionSkipInbox & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -645,34 +1107,34 @@ class ActionIgnore {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionIgnore &a, ActionIgnore &b);
+void swap(ActionSkipInbox &a, ActionSkipInbox &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionIgnore& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionSkipInbox& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 
-class ActionDeleteMessage {
+class ActionDontStoreMessage {
  public:
 
-  ActionDeleteMessage(const ActionDeleteMessage&);
-  ActionDeleteMessage& operator=(const ActionDeleteMessage&);
-  ActionDeleteMessage() {
+  ActionDontStoreMessage(const ActionDontStoreMessage&);
+  ActionDontStoreMessage& operator=(const ActionDontStoreMessage&);
+  ActionDontStoreMessage() {
   }
 
-  virtual ~ActionDeleteMessage() throw();
+  virtual ~ActionDontStoreMessage() throw();
 
-  bool operator == (const ActionDeleteMessage & /* rhs */) const
+  bool operator == (const ActionDontStoreMessage & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const ActionDeleteMessage &rhs) const {
+  bool operator != (const ActionDontStoreMessage &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionDeleteMessage & ) const;
+  bool operator < (const ActionDontStoreMessage & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -680,45 +1142,45 @@ class ActionDeleteMessage {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionDeleteMessage &a, ActionDeleteMessage &b);
+void swap(ActionDontStoreMessage &a, ActionDontStoreMessage &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionDeleteMessage& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionDontStoreMessage& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _ActionRespondToCode__isset {
-  _ActionRespondToCode__isset() : messageToSend(false) {}
-  bool messageToSend :1;
-} _ActionRespondToCode__isset;
+typedef struct _ActionRespondWithMessage__isset {
+  _ActionRespondWithMessage__isset() : messageToRespondWith(false) {}
+  bool messageToRespondWith :1;
+} _ActionRespondWithMessage__isset;
 
-class ActionRespondToCode {
+class ActionRespondWithMessage {
  public:
 
-  ActionRespondToCode(const ActionRespondToCode&);
-  ActionRespondToCode& operator=(const ActionRespondToCode&);
-  ActionRespondToCode() : messageToSend() {
+  ActionRespondWithMessage(const ActionRespondWithMessage&);
+  ActionRespondWithMessage& operator=(const ActionRespondWithMessage&);
+  ActionRespondWithMessage() : messageToRespondWith() {
   }
 
-  virtual ~ActionRespondToCode() throw();
-  std::string messageToSend;
+  virtual ~ActionRespondWithMessage() throw();
+  std::string messageToRespondWith;
 
-  _ActionRespondToCode__isset __isset;
+  _ActionRespondWithMessage__isset __isset;
 
-  void __set_messageToSend(const std::string& val);
+  void __set_messageToRespondWith(const std::string& val);
 
-  bool operator == (const ActionRespondToCode & rhs) const
+  bool operator == (const ActionRespondWithMessage & rhs) const
   {
-    if (!(messageToSend == rhs.messageToSend))
+    if (!(messageToRespondWith == rhs.messageToRespondWith))
       return false;
     return true;
   }
-  bool operator != (const ActionRespondToCode &rhs) const {
+  bool operator != (const ActionRespondWithMessage &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ActionRespondToCode & ) const;
+  bool operator < (const ActionRespondWithMessage & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -726,9 +1188,9 @@ class ActionRespondToCode {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ActionRespondToCode &a, ActionRespondToCode &b);
+void swap(ActionRespondWithMessage &a, ActionRespondWithMessage &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ActionRespondToCode& obj)
+inline std::ostream& operator<<(std::ostream& out, const ActionRespondWithMessage& obj)
 {
   obj.printTo(out);
   return out;
@@ -782,13 +1244,14 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
 }
 
 typedef struct _AromaAction__isset {
-  _AromaAction__isset() : postToSlackChannel(false), postToSlackUser(false), sendEmail(false), ignore(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
-  bool postToSlackChannel :1;
-  bool postToSlackUser :1;
+  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), forwardToGitter(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), responseWithMessage(false), forwardToUsers(false) {}
+  bool forwardToSlackChannel :1;
+  bool forwardToSlackUser :1;
+  bool forwardToGitter :1;
   bool sendEmail :1;
-  bool ignore :1;
-  bool deleteMessage :1;
-  bool respondToCode :1;
+  bool skipInbox :1;
+  bool dontStoreMessage :1;
+  bool responseWithMessage :1;
   bool forwardToUsers :1;
 } _AromaAction__isset;
 
@@ -801,43 +1264,48 @@ class AromaAction {
   }
 
   virtual ~AromaAction() throw();
-  ActionPostToSlackChannel postToSlackChannel;
-  ActionPostToSlackUser postToSlackUser;
+  ActionForwardToSlackChannel forwardToSlackChannel;
+  ActionForwardToSlackUser forwardToSlackUser;
+  ActionForwardToGitter forwardToGitter;
   ActionSendEmail sendEmail;
-  ActionIgnore ignore;
-  ActionDeleteMessage deleteMessage;
-  ActionRespondToCode respondToCode;
+  ActionSkipInbox skipInbox;
+  ActionDontStoreMessage dontStoreMessage;
+  ActionRespondWithMessage responseWithMessage;
   ActionForwardToUsers forwardToUsers;
 
   _AromaAction__isset __isset;
 
-  void __set_postToSlackChannel(const ActionPostToSlackChannel& val);
+  void __set_forwardToSlackChannel(const ActionForwardToSlackChannel& val);
 
-  void __set_postToSlackUser(const ActionPostToSlackUser& val);
+  void __set_forwardToSlackUser(const ActionForwardToSlackUser& val);
+
+  void __set_forwardToGitter(const ActionForwardToGitter& val);
 
   void __set_sendEmail(const ActionSendEmail& val);
 
-  void __set_ignore(const ActionIgnore& val);
+  void __set_skipInbox(const ActionSkipInbox& val);
 
-  void __set_deleteMessage(const ActionDeleteMessage& val);
+  void __set_dontStoreMessage(const ActionDontStoreMessage& val);
 
-  void __set_respondToCode(const ActionRespondToCode& val);
+  void __set_responseWithMessage(const ActionRespondWithMessage& val);
 
   void __set_forwardToUsers(const ActionForwardToUsers& val);
 
   bool operator == (const AromaAction & rhs) const
   {
-    if (!(postToSlackChannel == rhs.postToSlackChannel))
+    if (!(forwardToSlackChannel == rhs.forwardToSlackChannel))
       return false;
-    if (!(postToSlackUser == rhs.postToSlackUser))
+    if (!(forwardToSlackUser == rhs.forwardToSlackUser))
+      return false;
+    if (!(forwardToGitter == rhs.forwardToGitter))
       return false;
     if (!(sendEmail == rhs.sendEmail))
       return false;
-    if (!(ignore == rhs.ignore))
+    if (!(skipInbox == rhs.skipInbox))
       return false;
-    if (!(deleteMessage == rhs.deleteMessage))
+    if (!(dontStoreMessage == rhs.dontStoreMessage))
       return false;
-    if (!(respondToCode == rhs.respondToCode))
+    if (!(responseWithMessage == rhs.responseWithMessage))
       return false;
     if (!(forwardToUsers == rhs.forwardToUsers))
       return false;
@@ -864,9 +1332,10 @@ inline std::ostream& operator<<(std::ostream& out, const AromaAction& obj)
 }
 
 typedef struct _Reaction__isset {
-  _Reaction__isset() : matcher(false), action(false) {}
-  bool matcher :1;
-  bool action :1;
+  _Reaction__isset() : matchers(true), actions(true), name(false) {}
+  bool matchers :1;
+  bool actions :1;
+  bool name :1;
 } _Reaction__isset;
 
 class Reaction {
@@ -874,24 +1343,31 @@ class Reaction {
 
   Reaction(const Reaction&);
   Reaction& operator=(const Reaction&);
-  Reaction() {
+  Reaction() : name() {
+
+
   }
 
   virtual ~Reaction() throw();
-  AromaMatcher matcher;
-  AromaAction action;
+  std::vector<AromaMatcher>  matchers;
+  std::vector<AromaAction>  actions;
+  std::string name;
 
   _Reaction__isset __isset;
 
-  void __set_matcher(const AromaMatcher& val);
+  void __set_matchers(const std::vector<AromaMatcher> & val);
 
-  void __set_action(const AromaAction& val);
+  void __set_actions(const std::vector<AromaAction> & val);
+
+  void __set_name(const std::string& val);
 
   bool operator == (const Reaction & rhs) const
   {
-    if (!(matcher == rhs.matcher))
+    if (!(matchers == rhs.matchers))
       return false;
-    if (!(action == rhs.action))
+    if (!(actions == rhs.actions))
+      return false;
+    if (!(name == rhs.name))
       return false;
     return true;
   }

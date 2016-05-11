@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.application.service
 namespace cocoa ApplicationService_
 namespace cpp   aroma.thrift.application.service
+namespace php   RedRoma.Aroma.ApplicationService
 
 /*
  * Defined in this File is the Application Service API.
@@ -44,6 +45,20 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
+
+/**
+ * The maximum number of characters allowed in a Message.
+ * 
+ * Anything Longer will be Truncated.
+ */
+const int MAX_TITLE_LENGTH = 40;
+
+/**
+ * The maximum number of characters allowed in the body of a message.
+ * The rest will be truncated.
+ */
+const int MAX_CHARACTERS_IN_BODY = 15000
+
 //==========================================================
 // QUERY OPERATIONS
 
@@ -78,9 +93,9 @@ struct SendMessageResponse
  */
 service ApplicationService
 {
-    
+
     double getApiVersion()
-    
+
     //===============================================
     // Operations for Applications
     //===============================================

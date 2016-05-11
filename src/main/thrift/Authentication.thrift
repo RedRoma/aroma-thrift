@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.authentication
 namespace cocoa AromaAuthentication_
 namespace cpp   aroma.thrift.authentication
+namespace php   RedRoma.Aroma.Authentication
 
 /*
  * Defined in this file are the Authentication structures and relationships

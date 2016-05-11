@@ -15,6 +15,7 @@ class ReactionsConstants {
  public:
   ReactionsConstants();
 
+  int MAXIMUM_REACTIONS;
 };
 
 extern const ReactionsConstants g_Reactions_constants;

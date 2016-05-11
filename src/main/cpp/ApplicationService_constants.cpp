@@ -25,6 +25,10 @@ ApplicationServiceConstants::ApplicationServiceConstants() {
 
   BETA_ENDPOINT.port = tmp6;
 
+  MAX_TITLE_LENGTH = 40;
+
+  MAX_CHARACTERS_IN_BODY = 15000;
+
 }
 
 }}}} // namespace

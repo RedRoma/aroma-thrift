@@ -212,6 +212,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_getInbox">getInbox</a></li>
 <li><a href="#Fn_AromaService_getMedia">getMedia</a></li>
 <li><a href="#Fn_AromaService_getMySavedChannels">getMySavedChannels</a></li>
+<li><a href="#Fn_AromaService_getReactions">getReactions</a></li>
 <li><a href="#Fn_AromaService_getUserInfo">getUserInfo</a></li>
 <li><a href="#Fn_AromaService_provisionApplication">provisionApplication</a></li>
 <li><a href="#Fn_AromaService_regenerateToken">regenerateToken</a></li>
@@ -225,6 +226,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_snoozeChannel">snoozeChannel</a></li>
 <li><a href="#Fn_AromaService_unfollowApplication">unfollowApplication</a></li>
 <li><a href="#Fn_AromaService_updateApplication">updateApplication</a></li>
+<li><a href="#Fn_AromaService_updateReactions">updateReactions</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
@@ -272,6 +274,8 @@ code { line-height: 20px; }
 <a href="#Struct_GetMediaResponse">GetMediaResponse</a><br/>
 <a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a><br/>
 <a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a><br/>
+<a href="#Struct_GetReactionsRequest">GetReactionsRequest</a><br/>
+<a href="#Struct_GetReactionsResponse">GetReactionsResponse</a><br/>
 <a href="#Struct_GetServiceAnnouncementsRequest">GetServiceAnnouncementsRequest</a><br/>
 <a href="#Struct_GetServiceAnnouncementsResponse">GetServiceAnnouncementsResponse</a><br/>
 <a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a><br/>
@@ -285,6 +289,7 @@ code { line-height: 20px; }
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a><br/>
 <a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a><br/>
+<a href="#Typedef_Reaction">Reaction</a><br/>
 <a href="#Struct_RegenerateApplicationTokenRequest">RegenerateApplicationTokenRequest</a><br/>
 <a href="#Struct_RegenerateApplicationTokenResponse">RegenerateApplicationTokenResponse</a><br/>
 <a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
@@ -308,6 +313,8 @@ code { line-height: 20px; }
 <a href="#Struct_UnfollowApplicationResponse">UnfollowApplicationResponse</a><br/>
 <a href="#Struct_UpdateApplicationRequest">UpdateApplicationRequest</a><br/>
 <a href="#Struct_UpdateApplicationResponse">UpdateApplicationResponse</a><br/>
+<a href="#Struct_UpdateReactionsRequest">UpdateReactionsRequest</a><br/>
+<a href="#Struct_UpdateReactionsResponse">UpdateReactionsResponse</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
 <a href="#Typedef_User">User</a><br/>
 <a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a><br/>
@@ -317,8 +324,7 @@ code { line-height: 20px; }
 <a href="#Typedef_timestamp">timestamp</a><br/>
 <a href="#Typedef_uuid">uuid</a><br/>
 </td>
-<td><code><a href="#Const_API_VERSION">API_VERSION</a></code><br/>
-<code><a href="#Const_APPLICATION_MAX_OWNERS">APPLICATION_MAX_OWNERS</a></code><br/>
+<td><code><a href="#Const_APPLICATION_MAX_OWNERS">APPLICATION_MAX_OWNERS</a></code><br/>
 <code><a href="#Const_APPLICATION_NAME_MAX_LENGTH">APPLICATION_NAME_MAX_LENGTH</a></code><br/>
 <code><a href="#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
 <code><a href="#Const_DEFAULT_ACTIVITY_LIFETIME">DEFAULT_ACTIVITY_LIFETIME</a></code><br/>
@@ -334,8 +340,7 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.8</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of Aroma API of this specification.
-<br/></blockquote></td></tr><tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7010</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "aroma-srv.aroma.tech", port = 7010 }</code></td></tr><tr><td colspan="3"><blockquote>This is Aroma Production Endpoint
+<tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7010</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "aroma-srv.aroma.tech", port = 7010 }</code></td></tr><tr><td colspan="3"><blockquote>This is Aroma Production Endpoint
 <br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "aroma-srv.beta.aroma.tech", port = 7010 }</code></td></tr><tr><td colspan="3"><blockquote>This is Aroma Beta Endpoint
 <br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_DIMENSION"><td><code>MAX_APPLICATION_ICON_DIMENSION</code></td><td><code><a href="Aroma.html#Struct_Dimension">Aroma.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with an Application.
 <br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_IMAGE_DIMENSION"><td><code>MAX_PROFILE_IMAGE_DIMENSION</code></td><td><code><a href="Aroma.html#Struct_Dimension">Aroma.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimension for a Profile Picture submitted.
@@ -390,6 +395,9 @@ getFullMessage() operation.
 </div>
 <div class="definition"><h3 id="Typedef_HealthCheckFailed">Typedef: HealthCheckFailed</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Events.html#Struct_HealthCheckFailed">Events.HealthCheckFailed</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Reaction">Typedef: Reaction</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Reactions.html#Struct_Reaction">Reactions.Reaction</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
@@ -627,6 +635,23 @@ for a set time period.
 </table><br/></div><div class="definition"><h3 id="Struct_UpdateApplicationResponse">Struct: UpdateApplicationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>application</td><td><code><a href="#Typedef_Application">Application</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_UpdateReactionsRequest">Struct: UpdateReactionsRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>forAppId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>By default, this request updates the caller's Inbox Reactions. If an AppID
+is specified, it's Reactions will be updated instead. Note than only an owner can
+change an App's Rections.
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>reactions</td><td><code>list&lt;<code><a href="#Typedef_Reaction">Reaction</a></code>&gt;</code></td><td>Completely wipes out any existing reactions and sets them to this supplied list.
+</td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/>Sets the Reactions for either the calling user's Inbox, or an Application owned
+by the calling user.
+<br/></div><div class="definition"><h3 id="Struct_UpdateReactionsResponse">Struct: UpdateReactionsResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>reactions</td><td><code>list&lt;<code><a href="#Typedef_Reaction">Reaction</a></code>&gt;</code></td><td>Returns the complete list of Reactions after the operations is complete.
+If it's successful, this list will be the same as the list included in
+the request.
+</td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationInfoRequest">Struct: GetApplicationInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -731,6 +756,14 @@ action, and not an application or machine.
 <br/></div><div class="definition"><h3 id="Struct_GetActivityResponse">Struct: GetActivityResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>events</td><td><code>list&lt;<code><a href="Events.html#Struct_Event">Events.Event</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetReactionsRequest">Struct: GetReactionsRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>forAppId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>Get the reactions saved for either the calling user's Inbox, or an Application.
+<br/></div><div class="definition"><h3 id="Struct_GetReactionsResponse">Struct: GetReactionsResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>reactions</td><td><code>list&lt;<code><a href="#Typedef_Reaction">Reaction</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsRequest">Struct: GetServiceAnnouncementsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -836,7 +869,10 @@ Only an "owner" can perform this operation.
 <pre><code><a href="#Struct_UpdateApplicationResponse">UpdateApplicationResponse</a></code> updateApplication(<code><a href="#Struct_UpdateApplicationRequest">UpdateApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>#owner
-<br/></div><div class="definition"><h4 id="Fn_AromaService_getActivity">Function: AromaService.getActivity</h4>
+<br/></div><div class="definition"><h4 id="Fn_AromaService_updateReactions">Function: AromaService.updateReactions</h4>
+<pre><code><a href="#Struct_UpdateReactionsResponse">UpdateReactionsResponse</a></code> updateReactions(<code><a href="#Struct_UpdateReactionsRequest">UpdateReactionsRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getActivity">Function: AromaService.getActivity</h4>
 <pre><code><a href="#Struct_GetActivityResponse">GetActivityResponse</a></code> getActivity(<code><a href="#Struct_GetActivityRequest">GetActivityRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre>Get all of the User-Related activities that have happened recently.
@@ -880,6 +916,9 @@ to load the full message.
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getMySavedChannels">Function: AromaService.getMySavedChannels</h4>
 <pre><code><a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a></code> getMySavedChannels(<code><a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getReactions">Function: AromaService.getReactions</h4>
+<pre><code><a href="#Struct_GetReactionsResponse">GetReactionsResponse</a></code> getReactions(<code><a href="#Struct_GetReactionsRequest">GetReactionsRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getUserInfo">Function: AromaService.getUserInfo</h4>
 <pre><code><a href="#Struct_GetUserInfoResponse">GetUserInfoResponse</a></code> getUserInfo(<code><a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a></code>

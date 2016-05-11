@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.endpoint
 namespace cocoa AromaEndpoint_
 namespace cpp   aroma.thrift.endpoint
+namespace php   RedRoma.Aroma.Endpoint
 
 /*
  * Defined in this File are names and verbs relating to Application Endpoints

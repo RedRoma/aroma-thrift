@@ -21,6 +21,7 @@ package tech.aroma.thrift.services;
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tech.aroma.thrift.AromaConstants;
 import tech.aroma.thrift.authentication.service.AuthenticationService;
 import tech.aroma.thrift.authentication.service.CreateTokenRequest;
 import tech.aroma.thrift.authentication.service.CreateTokenResponse;
@@ -45,7 +46,7 @@ public class NoOpAuthenticationService implements AuthenticationService.Iface
     @Override
     public double getApiVersion() throws TException
     {
-        return 0;
+        return AromaConstants.API_VERSION;
     }
 
     @Override

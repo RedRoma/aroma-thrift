@@ -1690,13 +1690,15 @@
   return self;
 }
 
-- (id) initWithChannel: (AromaChannels_AromaChannel *) channel timeRegistered: (AromaChannels_timestamp) timeRegistered
+- (id) initWithChannel: (AromaChannels_AromaChannel *) channel timeRegistered: (AromaChannels_timestamp) timeRegistered channelId: (AromaChannels_uuid) channelId
 {
   self = [super init];
   __channel = [channel retain_stub];
   __channel_isset = YES;
   __timeRegistered = timeRegistered;
   __timeRegistered_isset = YES;
+  __channelId = [channelId retain_stub];
+  __channelId_isset = YES;
   return self;
 }
 
@@ -1713,6 +1715,11 @@
     __timeRegistered = [decoder decodeInt64ForKey: @"timeRegistered"];
     __timeRegistered_isset = YES;
   }
+  if ([decoder containsValueForKey: @"channelId"])
+  {
+    __channelId = [[decoder decodeObjectForKey: @"channelId"] retain_stub];
+    __channelId_isset = YES;
+  }
   return self;
 }
 
@@ -1725,6 +1732,10 @@
   if (__timeRegistered_isset)
   {
     [encoder encodeInt64: __timeRegistered forKey: @"timeRegistered"];
+  }
+  if (__channelId_isset)
+  {
+    [encoder encodeObject: __channelId forKey: @"channelId"];
   }
 }
 
@@ -1740,6 +1751,11 @@
   if (__timeRegistered_isset)
   {
     hash = (hash * 31) ^ [@(__timeRegistered) hash];
+  }
+  hash = (hash * 31) ^ __channelId_isset ? 2654435761 : 0;
+  if (__channelId_isset)
+  {
+    hash = (hash * 31) ^ [__channelId hash];
   }
   return hash;
 }
@@ -1761,12 +1777,17 @@
       (__timeRegistered_isset && (__timeRegistered != other->__timeRegistered))) {
     return NO;
   }
+  if ((__channelId_isset != other->__channelId_isset) ||
+      (__channelId_isset && ((__channelId || other->__channelId) && ![__channelId isEqual:other->__channelId]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__channel release_stub];
+  [__channelId release_stub];
   [super dealloc_stub];
 }
 
@@ -1808,6 +1829,27 @@
   __timeRegistered_isset = NO;
 }
 
+- (NSString *) channelId {
+  return [[__channelId retain_stub] autorelease_stub];
+}
+
+- (void) setChannelId: (NSString *) channelId {
+  [channelId retain_stub];
+  [__channelId release_stub];
+  __channelId = channelId;
+  __channelId_isset = YES;
+}
+
+- (BOOL) channelIdIsSet {
+  return __channelId_isset;
+}
+
+- (void) unsetChannelId {
+  [__channelId release_stub];
+  __channelId = nil;
+  __channelId_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1841,6 +1883,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setChannelId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1864,6 +1914,13 @@
     [outProtocol writeI64: __timeRegistered];
     [outProtocol writeFieldEnd];
   }
+  if (__channelId_isset) {
+    if (__channelId != nil) {
+      [outProtocol writeFieldBeginWithName: @"channelId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __channelId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1878,6 +1935,8 @@
   [ms appendFormat: @"%@", __channel];
   [ms appendString: @",timeRegistered:"];
   [ms appendFormat: @"%qi", __timeRegistered];
+  [ms appendString: @",channelId:"];
+  [ms appendFormat: @"\"%@\"", __channelId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

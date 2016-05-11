@@ -173,6 +173,11 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("updateApplication\n");
   }
 
+  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) {
+    // Your implementation goes here
+    printf("updateReactions\n");
+  }
+
   /**
    * Get all of the User-Related activities that have happened recently.
    * 
@@ -261,6 +266,11 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
     // Your implementation goes here
     printf("getMySavedChannels\n");
+  }
+
+  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {
+    // Your implementation goes here
+    printf("getReactions\n");
   }
 
   void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {

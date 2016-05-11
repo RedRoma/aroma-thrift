@@ -1,13 +1,10 @@
 Aroma Thrift
 ==============================================
 
-[<img src="https://raw.githubusercontent.com/RedRoma/aroma/develop/Graphics/Logo.png" width="300">](https://github.com/RedRoma/aroma)
+[<img src="https://raw.githubusercontent.com/RedRoma/aroma/develop/Graphics/Logo.png" width="300">](http://aroma.redroma.tech/)
 
-<!--
-[<p align="center"><img src="https://raw.githubusercontent.com/RedRoma/aroma/develop/Graphics/Logo.png" width="300"></p>](https://github.com/RedRoma/aroma)
--->
 
-[![Build Status](http://jenkins.sirwellington.tech/job/Aroma%20Thrift/badge/icon)](http://jenkins.sirwellington.tech/job/Aroma%20Thrift/)
+[![Build Status](http://jenkins.redroma.tech/job/Aroma%20Thrift/badge/icon)](http://jenkins.redroma.tech/job/Aroma%20Thrift/)
 
 The Model and Service Definitions for Aroma defined in Thrift
 
@@ -20,7 +17,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma</groupId>
 	<artifactId>aroma-thrift</artifactId>
-	<version>1.7</version>
+	<version>1.9</version>
 </dependency>
 ```
 
@@ -38,7 +35,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma</groupId>
 	<artifactId>aroma-thrift</artifactId>
-	<version>1.8-SNAPSHOT</version>
+	<version>1.10-SNAPSHOT</version>
 </dependency>
 ```
 

@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.email
 namespace cocoa AromaEmail_
 namespace cpp   aroma.thrift.email
+namespace php   RedRoma.Aroma.Email
 
 /*
  * Defined in this File are the various Channels that

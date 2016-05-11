@@ -1,6 +1,7 @@
 namespace java  tech.aroma.thrift.authentication.service
 namespace cocoa AuthenticationService_
 namespace cpp   aroma.thrift.authentication.service
+namespace php   RedRoma.Aroma.AuthenticationService
 
 /*
  * Defined in this File is the Authentication Service API.

@@ -217,6 +217,7 @@ typedef NSString * Aroma_uuid;
   BOOL __isTruncated;
   NSString * __title;
   Aroma_uuid __applicationId;
+  NSString * __deviceName;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
@@ -229,6 +230,7 @@ typedef NSString * Aroma_uuid;
   BOOL __isTruncated_isset;
   BOOL __title_isset;
   BOOL __applicationId_isset;
+  BOOL __deviceName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -243,10 +245,11 @@ typedef NSString * Aroma_uuid;
 @property (nonatomic, getter=isTruncated, setter=setIsTruncated:) BOOL isTruncated;
 @property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) Aroma_uuid applicationId;
+@property (nonatomic, retain, getter=deviceName, setter=setDeviceName:) NSString * deviceName;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (Aroma_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Aroma_timestamp) timeOfCreation timeMessageReceived: (Aroma_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Aroma_uuid) applicationId;
+- (id) initWithMessageId: (Aroma_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Aroma_timestamp) timeOfCreation timeMessageReceived: (Aroma_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Aroma_uuid) applicationId deviceName: (NSString *) deviceName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -318,6 +321,12 @@ typedef NSString * Aroma_uuid;
 - (void) setApplicationId: (Aroma_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) deviceName;
+- (void) setDeviceName: (NSString *) deviceName;
+#endif
+- (BOOL) deviceNameIsSet;
 
 @end
 

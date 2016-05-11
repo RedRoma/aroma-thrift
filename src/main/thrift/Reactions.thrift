@@ -2,22 +2,25 @@
 namespace java  tech.aroma.thrift.reactions
 namespace cocoa AromaReactions_
 namespace cpp   tech.aroma.thrift.reactions
+namespace php   RedRoma.Aroma.Reactions
 
 /*
  * Defined in this File are the Reactions that can occur when an Application sends a Messages.
- * 
+ *
  * A Reaction is composed into two parts, a Matcher and an Action.
  * When a Message matches a given matcher, the Action is performed.
- * 
+ *
  */
 
 include "Aroma.thrift"
-include "Exceptions.thrift"
 
 typedef Aroma.int int
 typedef Aroma.long long
 typedef Aroma.timestamp timestamp
 typedef Aroma.uuid uuid
+
+//=====================MATCHERS=============================
+
 
 /** Matches All Messages. */
 struct MatcherAll
@@ -29,7 +32,17 @@ struct MatcherTitleIs
     1: string expectedTitle;
 }
 
+struct MatcherTitleIsNot
+{
+    1: string title;
+}
+
 struct MatcherTitleContains
+{
+    1: string substring;
+}
+
+struct MatcherTitleDoesNotContain
 {
     1: string substring;
 }
@@ -44,37 +57,80 @@ struct MatcherBodyContains
     1: string substring;
 }
 
-struct MatcherUrgencyEquals
+struct MatcherBodyDoesNotContain
 {
-    1: Aroma.Urgency urgency;
+    1: string substring;
 }
 
-struct MatcherHostnameEquals
+struct MatcherUrgencyIs
+{
+    1: set<Aroma.Urgency> possibleUrgencies = [];
+}
+
+struct MatcherHostnameIs
 {
     1: string expectedHostname;
+}
+
+struct MatcherHostnameContains
+{
+    1: string substring;
+}
+
+struct MatcherHostnameDoesNotContain
+{
+    1: string substring;
+}
+
+struct MatcherApplicationIs
+{
+    1: uuid appId;
+}
+
+struct MatcherApplicationIsNot
+{
+    1: uuid appId;
 }
 
 union AromaMatcher
 {
     1: MatcherAll all;
     2: MatcherTitleIs titleIs;
-    3: MatcherTitleContains titleContains;
-    4: MatcherBodyIs bodyIs;
-    5: MatcherBodyContains bodyContains;
-    6: MatcherUrgencyEquals urgencyEquals;
-    7: MatcherHostnameEquals hostnameEquals;
+    3: MatcherTitleIsNot titleIsNot;
+    4: MatcherTitleContains titleContains;
+    5: MatcherTitleDoesNotContain titleDoesNotContain;
+    6: MatcherBodyIs bodyIs;
+    7: MatcherBodyContains bodyContains;
+    8: MatcherBodyDoesNotContain bodyDoesNotContain;
+    9: MatcherUrgencyIs urgencyEquals;
+    10: MatcherHostnameIs hostnameIs;
+    11: MatcherHostnameContains hostnameContains;
+    12: MatcherHostnameDoesNotContain hostnameDoesNotContain;
+    13: MatcherApplicationIs applicationIs;
+    14: MatcherApplicationIsNot applicationIsNot;
 }
 
+//=====================ACTIONS=============================
 
-struct ActionPostToSlackChannel
+struct ActionForwardToSlackChannel
 {
     1: string slackChannel;
     2: optional bool includeBody = true;
+    3: string webhookUrl;
+    4: optional string domainName;
 }
 
-struct ActionPostToSlackUser
+struct ActionForwardToSlackUser
 {
     1: string slackUsername;
+    2: optional bool includeBody = true;
+    3: string webhookUrl;
+    4: optional string domainName;
+}
+
+struct ActionForwardToGitter
+{
+    1: string gitterWebhookUrl;
     2: optional bool includeBody = true;
 }
 
@@ -84,19 +140,19 @@ struct ActionSendEmail
     2: optional bool includeBody = true;
 }
 
-struct ActionIgnore
+struct ActionSkipInbox
 {
-   
+
 }
 
-struct ActionDeleteMessage
+struct ActionDontStoreMessage
 {
-    
+
 }
 
-struct ActionRespondToCode
+struct ActionRespondWithMessage
 {
-    1: string messageToSend;
+    1: string messageToRespondWith;
 }
 
 struct ActionForwardToUsers
@@ -106,18 +162,25 @@ struct ActionForwardToUsers
 
 union AromaAction
 {
-    1: ActionPostToSlackChannel postToSlackChannel;
-    2: ActionPostToSlackUser postToSlackUser;
+    1: ActionForwardToSlackChannel forwardToSlackChannel;
+    2: ActionForwardToSlackUser forwardToSlackUser;
+    8: ActionForwardToGitter forwardToGitter;
     3: ActionSendEmail sendEmail;
-    4: ActionIgnore ignore;
-    5: ActionDeleteMessage deleteMessage;
-    6: ActionRespondToCode respondToCode;
+    4: ActionSkipInbox skipInbox;
+    5: ActionDontStoreMessage dontStoreMessage;
+    6: ActionRespondWithMessage responseWithMessage;
     7: ActionForwardToUsers forwardToUsers;
 }
 
 
+//=====================REACTIONS=============================
+
 struct Reaction
 {
-    1: AromaMatcher matcher;
-    2: AromaAction action;
+    1: list<AromaMatcher> matchers = [];
+    2: list<AromaAction> actions = [];
+    3: string name;
 }
+
+/** The Maximum Number of Reactions that can be saved for a User or and App. */
+const int MAXIMUM_REACTIONS = 100

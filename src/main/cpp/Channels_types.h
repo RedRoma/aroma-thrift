@@ -28,6 +28,8 @@ typedef  ::tech::aroma::thrift::long long;
 
 typedef  ::tech::aroma::thrift::timestamp timestamp;
 
+typedef  ::tech::aroma::thrift::uuid uuid;
+
 class SlackChannel;
 
 class SlackUsername;
@@ -431,9 +433,10 @@ inline std::ostream& operator<<(std::ostream& out, const AromaChannel& obj)
 }
 
 typedef struct _ChannelInfo__isset {
-  _ChannelInfo__isset() : channel(false), timeRegistered(false) {}
+  _ChannelInfo__isset() : channel(false), timeRegistered(false), channelId(false) {}
   bool channel :1;
   bool timeRegistered :1;
+  bool channelId :1;
 } _ChannelInfo__isset;
 
 class ChannelInfo {
@@ -441,12 +444,13 @@ class ChannelInfo {
 
   ChannelInfo(const ChannelInfo&);
   ChannelInfo& operator=(const ChannelInfo&);
-  ChannelInfo() : timeRegistered(0) {
+  ChannelInfo() : timeRegistered(0), channelId() {
   }
 
   virtual ~ChannelInfo() throw();
   AromaChannel channel;
   timestamp timeRegistered;
+  uuid channelId;
 
   _ChannelInfo__isset __isset;
 
@@ -454,11 +458,17 @@ class ChannelInfo {
 
   void __set_timeRegistered(const timestamp val);
 
+  void __set_channelId(const uuid& val);
+
   bool operator == (const ChannelInfo & rhs) const
   {
     if (!(channel == rhs.channel))
       return false;
     if (!(timeRegistered == rhs.timeRegistered))
+      return false;
+    if (__isset.channelId != rhs.__isset.channelId)
+      return false;
+    else if (__isset.channelId && !(channelId == rhs.channelId))
       return false;
     return true;
   }

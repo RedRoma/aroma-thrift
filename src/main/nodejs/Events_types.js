@@ -471,6 +471,112 @@ ApplicationUnfollowed.prototype.write = function(output) {
   return;
 };
 
+ApplicationUpdated = module.exports.ApplicationUpdated = function(args) {
+  this.message = 'Application Updated';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+ApplicationUpdated.prototype = {};
+ApplicationUpdated.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ApplicationUpdated.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationUpdated');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ApplicationReactionsUpdated = module.exports.ApplicationReactionsUpdated = function(args) {
+  this.message = 'Application Reactions Updated';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+ApplicationReactionsUpdated.prototype = {};
+ApplicationReactionsUpdated.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ApplicationReactionsUpdated.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationReactionsUpdated');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 HealthCheckFailed = module.exports.HealthCheckFailed = function(args) {
   this.hostname = null;
   this.message = 'Application failed a Health Check';
@@ -785,10 +891,12 @@ EventType = module.exports.EventType = function(args) {
   this.healthCheckBackToNormal = null;
   this.applicationFollowed = null;
   this.applicationDeleted = null;
+  this.applicationReactionsUpdated = null;
   this.applicationTokenRenewed = null;
   this.applicationTokenRegenerated = null;
   this.applicationSentMessage = null;
   this.applicationUnfollowed = null;
+  this.applicationUpdated = null;
   this.ownerApprovedRequest = null;
   this.ownerAdded = null;
   this.generalEvent = null;
@@ -808,6 +916,9 @@ EventType = module.exports.EventType = function(args) {
     if (args.applicationDeleted !== undefined && args.applicationDeleted !== null) {
       this.applicationDeleted = new ttypes.ApplicationDeleted(args.applicationDeleted);
     }
+    if (args.applicationReactionsUpdated !== undefined && args.applicationReactionsUpdated !== null) {
+      this.applicationReactionsUpdated = new ttypes.ApplicationReactionsUpdated(args.applicationReactionsUpdated);
+    }
     if (args.applicationTokenRenewed !== undefined && args.applicationTokenRenewed !== null) {
       this.applicationTokenRenewed = new ttypes.ApplicationTokenRenewed(args.applicationTokenRenewed);
     }
@@ -819,6 +930,9 @@ EventType = module.exports.EventType = function(args) {
     }
     if (args.applicationUnfollowed !== undefined && args.applicationUnfollowed !== null) {
       this.applicationUnfollowed = new ttypes.ApplicationUnfollowed(args.applicationUnfollowed);
+    }
+    if (args.applicationUpdated !== undefined && args.applicationUpdated !== null) {
+      this.applicationUpdated = new ttypes.ApplicationUpdated(args.applicationUpdated);
     }
     if (args.ownerApprovedRequest !== undefined && args.ownerApprovedRequest !== null) {
       this.ownerApprovedRequest = new ttypes.OwnerApprovedRequest(args.ownerApprovedRequest);
@@ -885,6 +999,14 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 14:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationReactionsUpdated = new ttypes.ApplicationReactionsUpdated();
+        this.applicationReactionsUpdated.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       case 6:
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationTokenRenewed = new ttypes.ApplicationTokenRenewed();
@@ -913,6 +1035,14 @@ EventType.prototype.read = function(input) {
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationUnfollowed = new ttypes.ApplicationUnfollowed();
         this.applicationUnfollowed.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 13:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationUpdated = new ttypes.ApplicationUpdated();
+        this.applicationUpdated.read(input);
       } else {
         input.skip(ftype);
       }
@@ -977,6 +1107,11 @@ EventType.prototype.write = function(output) {
     this.applicationDeleted.write(output);
     output.writeFieldEnd();
   }
+  if (this.applicationReactionsUpdated !== null && this.applicationReactionsUpdated !== undefined) {
+    output.writeFieldBegin('applicationReactionsUpdated', Thrift.Type.STRUCT, 14);
+    this.applicationReactionsUpdated.write(output);
+    output.writeFieldEnd();
+  }
   if (this.applicationTokenRenewed !== null && this.applicationTokenRenewed !== undefined) {
     output.writeFieldBegin('applicationTokenRenewed', Thrift.Type.STRUCT, 6);
     this.applicationTokenRenewed.write(output);
@@ -995,6 +1130,11 @@ EventType.prototype.write = function(output) {
   if (this.applicationUnfollowed !== null && this.applicationUnfollowed !== undefined) {
     output.writeFieldBegin('applicationUnfollowed', Thrift.Type.STRUCT, 12);
     this.applicationUnfollowed.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationUpdated !== null && this.applicationUpdated !== undefined) {
+    output.writeFieldBegin('applicationUpdated', Thrift.Type.STRUCT, 13);
+    this.applicationUpdated.write(output);
     output.writeFieldEnd();
   }
   if (this.ownerApprovedRequest !== null && this.ownerApprovedRequest !== undefined) {

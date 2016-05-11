@@ -86,6 +86,59 @@ MatcherTitleIs.prototype.write = function(output) {
   return;
 };
 
+MatcherTitleIsNot = function(args) {
+  this.title = null;
+  if (args) {
+    if (args.title !== undefined && args.title !== null) {
+      this.title = args.title;
+    }
+  }
+};
+MatcherTitleIsNot.prototype = {};
+MatcherTitleIsNot.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.title = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherTitleIsNot.prototype.write = function(output) {
+  output.writeStructBegin('MatcherTitleIsNot');
+  if (this.title !== null && this.title !== undefined) {
+    output.writeFieldBegin('title', Thrift.Type.STRING, 1);
+    output.writeString(this.title);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 MatcherTitleContains = function(args) {
   this.substring = null;
   if (args) {
@@ -129,6 +182,59 @@ MatcherTitleContains.prototype.read = function(input) {
 
 MatcherTitleContains.prototype.write = function(output) {
   output.writeStructBegin('MatcherTitleContains');
+  if (this.substring !== null && this.substring !== undefined) {
+    output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
+    output.writeString(this.substring);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MatcherTitleDoesNotContain = function(args) {
+  this.substring = null;
+  if (args) {
+    if (args.substring !== undefined && args.substring !== null) {
+      this.substring = args.substring;
+    }
+  }
+};
+MatcherTitleDoesNotContain.prototype = {};
+MatcherTitleDoesNotContain.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.substring = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherTitleDoesNotContain.prototype.write = function(output) {
+  output.writeStructBegin('MatcherTitleDoesNotContain');
   if (this.substring !== null && this.substring !== undefined) {
     output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
     output.writeString(this.substring);
@@ -245,16 +351,16 @@ MatcherBodyContains.prototype.write = function(output) {
   return;
 };
 
-MatcherUrgencyEquals = function(args) {
-  this.urgency = null;
+MatcherBodyDoesNotContain = function(args) {
+  this.substring = null;
   if (args) {
-    if (args.urgency !== undefined && args.urgency !== null) {
-      this.urgency = args.urgency;
+    if (args.substring !== undefined && args.substring !== null) {
+      this.substring = args.substring;
     }
   }
 };
-MatcherUrgencyEquals.prototype = {};
-MatcherUrgencyEquals.prototype.read = function(input) {
+MatcherBodyDoesNotContain.prototype = {};
+MatcherBodyDoesNotContain.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -268,8 +374,8 @@ MatcherUrgencyEquals.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.I32) {
-        this.urgency = input.readI32().value;
+      if (ftype == Thrift.Type.STRING) {
+        this.substring = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -286,11 +392,11 @@ MatcherUrgencyEquals.prototype.read = function(input) {
   return;
 };
 
-MatcherUrgencyEquals.prototype.write = function(output) {
-  output.writeStructBegin('MatcherUrgencyEquals');
-  if (this.urgency !== null && this.urgency !== undefined) {
-    output.writeFieldBegin('urgency', Thrift.Type.I32, 1);
-    output.writeI32(this.urgency);
+MatcherBodyDoesNotContain.prototype.write = function(output) {
+  output.writeStructBegin('MatcherBodyDoesNotContain');
+  if (this.substring !== null && this.substring !== undefined) {
+    output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
+    output.writeString(this.substring);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -298,7 +404,82 @@ MatcherUrgencyEquals.prototype.write = function(output) {
   return;
 };
 
-MatcherHostnameEquals = function(args) {
+MatcherUrgencyIs = function(args) {
+  this.possibleUrgencies = [];
+  if (args) {
+    if (args.possibleUrgencies !== undefined && args.possibleUrgencies !== null) {
+      this.possibleUrgencies = Thrift.copyList(args.possibleUrgencies, [null]);
+    }
+  }
+};
+MatcherUrgencyIs.prototype = {};
+MatcherUrgencyIs.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.SET) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.possibleUrgencies = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readSetBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readI32().value;
+          this.possibleUrgencies.push(elem6);
+        }
+        input.readSetEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherUrgencyIs.prototype.write = function(output) {
+  output.writeStructBegin('MatcherUrgencyIs');
+  if (this.possibleUrgencies !== null && this.possibleUrgencies !== undefined) {
+    output.writeFieldBegin('possibleUrgencies', Thrift.Type.SET, 1);
+    output.writeSetBegin(Thrift.Type.I32, this.possibleUrgencies.length);
+    for (var iter7 in this.possibleUrgencies)
+    {
+      if (this.possibleUrgencies.hasOwnProperty(iter7))
+      {
+        iter7 = this.possibleUrgencies[iter7];
+        output.writeI32(iter7);
+      }
+    }
+    output.writeSetEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MatcherHostnameIs = function(args) {
   this.expectedHostname = null;
   if (args) {
     if (args.expectedHostname !== undefined && args.expectedHostname !== null) {
@@ -306,8 +487,8 @@ MatcherHostnameEquals = function(args) {
     }
   }
 };
-MatcherHostnameEquals.prototype = {};
-MatcherHostnameEquals.prototype.read = function(input) {
+MatcherHostnameIs.prototype = {};
+MatcherHostnameIs.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -339,8 +520,8 @@ MatcherHostnameEquals.prototype.read = function(input) {
   return;
 };
 
-MatcherHostnameEquals.prototype.write = function(output) {
-  output.writeStructBegin('MatcherHostnameEquals');
+MatcherHostnameIs.prototype.write = function(output) {
+  output.writeStructBegin('MatcherHostnameIs');
   if (this.expectedHostname !== null && this.expectedHostname !== undefined) {
     output.writeFieldBegin('expectedHostname', Thrift.Type.STRING, 1);
     output.writeString(this.expectedHostname);
@@ -351,14 +532,233 @@ MatcherHostnameEquals.prototype.write = function(output) {
   return;
 };
 
+MatcherHostnameContains = function(args) {
+  this.substring = null;
+  if (args) {
+    if (args.substring !== undefined && args.substring !== null) {
+      this.substring = args.substring;
+    }
+  }
+};
+MatcherHostnameContains.prototype = {};
+MatcherHostnameContains.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.substring = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherHostnameContains.prototype.write = function(output) {
+  output.writeStructBegin('MatcherHostnameContains');
+  if (this.substring !== null && this.substring !== undefined) {
+    output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
+    output.writeString(this.substring);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MatcherHostnameDoesNotContain = function(args) {
+  this.substring = null;
+  if (args) {
+    if (args.substring !== undefined && args.substring !== null) {
+      this.substring = args.substring;
+    }
+  }
+};
+MatcherHostnameDoesNotContain.prototype = {};
+MatcherHostnameDoesNotContain.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.substring = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherHostnameDoesNotContain.prototype.write = function(output) {
+  output.writeStructBegin('MatcherHostnameDoesNotContain');
+  if (this.substring !== null && this.substring !== undefined) {
+    output.writeFieldBegin('substring', Thrift.Type.STRING, 1);
+    output.writeString(this.substring);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MatcherApplicationIs = function(args) {
+  this.appId = null;
+  if (args) {
+    if (args.appId !== undefined && args.appId !== null) {
+      this.appId = args.appId;
+    }
+  }
+};
+MatcherApplicationIs.prototype = {};
+MatcherApplicationIs.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.appId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherApplicationIs.prototype.write = function(output) {
+  output.writeStructBegin('MatcherApplicationIs');
+  if (this.appId !== null && this.appId !== undefined) {
+    output.writeFieldBegin('appId', Thrift.Type.STRING, 1);
+    output.writeString(this.appId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MatcherApplicationIsNot = function(args) {
+  this.appId = null;
+  if (args) {
+    if (args.appId !== undefined && args.appId !== null) {
+      this.appId = args.appId;
+    }
+  }
+};
+MatcherApplicationIsNot.prototype = {};
+MatcherApplicationIsNot.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.appId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MatcherApplicationIsNot.prototype.write = function(output) {
+  output.writeStructBegin('MatcherApplicationIsNot');
+  if (this.appId !== null && this.appId !== undefined) {
+    output.writeFieldBegin('appId', Thrift.Type.STRING, 1);
+    output.writeString(this.appId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 AromaMatcher = function(args) {
   this.all = null;
   this.titleIs = null;
+  this.titleIsNot = null;
   this.titleContains = null;
+  this.titleDoesNotContain = null;
   this.bodyIs = null;
   this.bodyContains = null;
+  this.bodyDoesNotContain = null;
   this.urgencyEquals = null;
-  this.hostnameEquals = null;
+  this.hostnameIs = null;
+  this.hostnameContains = null;
+  this.hostnameDoesNotContain = null;
+  this.applicationIs = null;
+  this.applicationIsNot = null;
   if (args) {
     if (args.all !== undefined && args.all !== null) {
       this.all = new MatcherAll(args.all);
@@ -366,8 +766,14 @@ AromaMatcher = function(args) {
     if (args.titleIs !== undefined && args.titleIs !== null) {
       this.titleIs = new MatcherTitleIs(args.titleIs);
     }
+    if (args.titleIsNot !== undefined && args.titleIsNot !== null) {
+      this.titleIsNot = new MatcherTitleIsNot(args.titleIsNot);
+    }
     if (args.titleContains !== undefined && args.titleContains !== null) {
       this.titleContains = new MatcherTitleContains(args.titleContains);
+    }
+    if (args.titleDoesNotContain !== undefined && args.titleDoesNotContain !== null) {
+      this.titleDoesNotContain = new MatcherTitleDoesNotContain(args.titleDoesNotContain);
     }
     if (args.bodyIs !== undefined && args.bodyIs !== null) {
       this.bodyIs = new MatcherBodyIs(args.bodyIs);
@@ -375,11 +781,26 @@ AromaMatcher = function(args) {
     if (args.bodyContains !== undefined && args.bodyContains !== null) {
       this.bodyContains = new MatcherBodyContains(args.bodyContains);
     }
-    if (args.urgencyEquals !== undefined && args.urgencyEquals !== null) {
-      this.urgencyEquals = new MatcherUrgencyEquals(args.urgencyEquals);
+    if (args.bodyDoesNotContain !== undefined && args.bodyDoesNotContain !== null) {
+      this.bodyDoesNotContain = new MatcherBodyDoesNotContain(args.bodyDoesNotContain);
     }
-    if (args.hostnameEquals !== undefined && args.hostnameEquals !== null) {
-      this.hostnameEquals = new MatcherHostnameEquals(args.hostnameEquals);
+    if (args.urgencyEquals !== undefined && args.urgencyEquals !== null) {
+      this.urgencyEquals = new MatcherUrgencyIs(args.urgencyEquals);
+    }
+    if (args.hostnameIs !== undefined && args.hostnameIs !== null) {
+      this.hostnameIs = new MatcherHostnameIs(args.hostnameIs);
+    }
+    if (args.hostnameContains !== undefined && args.hostnameContains !== null) {
+      this.hostnameContains = new MatcherHostnameContains(args.hostnameContains);
+    }
+    if (args.hostnameDoesNotContain !== undefined && args.hostnameDoesNotContain !== null) {
+      this.hostnameDoesNotContain = new MatcherHostnameDoesNotContain(args.hostnameDoesNotContain);
+    }
+    if (args.applicationIs !== undefined && args.applicationIs !== null) {
+      this.applicationIs = new MatcherApplicationIs(args.applicationIs);
+    }
+    if (args.applicationIsNot !== undefined && args.applicationIsNot !== null) {
+      this.applicationIsNot = new MatcherApplicationIsNot(args.applicationIsNot);
     }
   }
 };
@@ -415,13 +836,29 @@ AromaMatcher.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.STRUCT) {
+        this.titleIsNot = new MatcherTitleIsNot();
+        this.titleIsNot.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
         this.titleContains = new MatcherTitleContains();
         this.titleContains.read(input);
       } else {
         input.skip(ftype);
       }
       break;
-      case 4:
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.titleDoesNotContain = new MatcherTitleDoesNotContain();
+        this.titleDoesNotContain.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
       if (ftype == Thrift.Type.STRUCT) {
         this.bodyIs = new MatcherBodyIs();
         this.bodyIs.read(input);
@@ -429,7 +866,7 @@ AromaMatcher.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 5:
+      case 7:
       if (ftype == Thrift.Type.STRUCT) {
         this.bodyContains = new MatcherBodyContains();
         this.bodyContains.read(input);
@@ -437,18 +874,58 @@ AromaMatcher.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 6:
+      case 8:
       if (ftype == Thrift.Type.STRUCT) {
-        this.urgencyEquals = new MatcherUrgencyEquals();
+        this.bodyDoesNotContain = new MatcherBodyDoesNotContain();
+        this.bodyDoesNotContain.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.urgencyEquals = new MatcherUrgencyIs();
         this.urgencyEquals.read(input);
       } else {
         input.skip(ftype);
       }
       break;
-      case 7:
+      case 10:
       if (ftype == Thrift.Type.STRUCT) {
-        this.hostnameEquals = new MatcherHostnameEquals();
-        this.hostnameEquals.read(input);
+        this.hostnameIs = new MatcherHostnameIs();
+        this.hostnameIs.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.hostnameContains = new MatcherHostnameContains();
+        this.hostnameContains.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 12:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.hostnameDoesNotContain = new MatcherHostnameDoesNotContain();
+        this.hostnameDoesNotContain.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 13:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationIs = new MatcherApplicationIs();
+        this.applicationIs.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 14:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationIsNot = new MatcherApplicationIsNot();
+        this.applicationIsNot.read(input);
       } else {
         input.skip(ftype);
       }
@@ -474,29 +951,64 @@ AromaMatcher.prototype.write = function(output) {
     this.titleIs.write(output);
     output.writeFieldEnd();
   }
+  if (this.titleIsNot !== null && this.titleIsNot !== undefined) {
+    output.writeFieldBegin('titleIsNot', Thrift.Type.STRUCT, 3);
+    this.titleIsNot.write(output);
+    output.writeFieldEnd();
+  }
   if (this.titleContains !== null && this.titleContains !== undefined) {
-    output.writeFieldBegin('titleContains', Thrift.Type.STRUCT, 3);
+    output.writeFieldBegin('titleContains', Thrift.Type.STRUCT, 4);
     this.titleContains.write(output);
     output.writeFieldEnd();
   }
+  if (this.titleDoesNotContain !== null && this.titleDoesNotContain !== undefined) {
+    output.writeFieldBegin('titleDoesNotContain', Thrift.Type.STRUCT, 5);
+    this.titleDoesNotContain.write(output);
+    output.writeFieldEnd();
+  }
   if (this.bodyIs !== null && this.bodyIs !== undefined) {
-    output.writeFieldBegin('bodyIs', Thrift.Type.STRUCT, 4);
+    output.writeFieldBegin('bodyIs', Thrift.Type.STRUCT, 6);
     this.bodyIs.write(output);
     output.writeFieldEnd();
   }
   if (this.bodyContains !== null && this.bodyContains !== undefined) {
-    output.writeFieldBegin('bodyContains', Thrift.Type.STRUCT, 5);
+    output.writeFieldBegin('bodyContains', Thrift.Type.STRUCT, 7);
     this.bodyContains.write(output);
     output.writeFieldEnd();
   }
+  if (this.bodyDoesNotContain !== null && this.bodyDoesNotContain !== undefined) {
+    output.writeFieldBegin('bodyDoesNotContain', Thrift.Type.STRUCT, 8);
+    this.bodyDoesNotContain.write(output);
+    output.writeFieldEnd();
+  }
   if (this.urgencyEquals !== null && this.urgencyEquals !== undefined) {
-    output.writeFieldBegin('urgencyEquals', Thrift.Type.STRUCT, 6);
+    output.writeFieldBegin('urgencyEquals', Thrift.Type.STRUCT, 9);
     this.urgencyEquals.write(output);
     output.writeFieldEnd();
   }
-  if (this.hostnameEquals !== null && this.hostnameEquals !== undefined) {
-    output.writeFieldBegin('hostnameEquals', Thrift.Type.STRUCT, 7);
-    this.hostnameEquals.write(output);
+  if (this.hostnameIs !== null && this.hostnameIs !== undefined) {
+    output.writeFieldBegin('hostnameIs', Thrift.Type.STRUCT, 10);
+    this.hostnameIs.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.hostnameContains !== null && this.hostnameContains !== undefined) {
+    output.writeFieldBegin('hostnameContains', Thrift.Type.STRUCT, 11);
+    this.hostnameContains.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.hostnameDoesNotContain !== null && this.hostnameDoesNotContain !== undefined) {
+    output.writeFieldBegin('hostnameDoesNotContain', Thrift.Type.STRUCT, 12);
+    this.hostnameDoesNotContain.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationIs !== null && this.applicationIs !== undefined) {
+    output.writeFieldBegin('applicationIs', Thrift.Type.STRUCT, 13);
+    this.applicationIs.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationIsNot !== null && this.applicationIsNot !== undefined) {
+    output.writeFieldBegin('applicationIsNot', Thrift.Type.STRUCT, 14);
+    this.applicationIsNot.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -504,9 +1016,11 @@ AromaMatcher.prototype.write = function(output) {
   return;
 };
 
-ActionPostToSlackChannel = function(args) {
+ActionForwardToSlackChannel = function(args) {
   this.slackChannel = null;
   this.includeBody = true;
+  this.webhookUrl = null;
+  this.domainName = null;
   if (args) {
     if (args.slackChannel !== undefined && args.slackChannel !== null) {
       this.slackChannel = args.slackChannel;
@@ -514,10 +1028,16 @@ ActionPostToSlackChannel = function(args) {
     if (args.includeBody !== undefined && args.includeBody !== null) {
       this.includeBody = args.includeBody;
     }
+    if (args.webhookUrl !== undefined && args.webhookUrl !== null) {
+      this.webhookUrl = args.webhookUrl;
+    }
+    if (args.domainName !== undefined && args.domainName !== null) {
+      this.domainName = args.domainName;
+    }
   }
 };
-ActionPostToSlackChannel.prototype = {};
-ActionPostToSlackChannel.prototype.read = function(input) {
+ActionForwardToSlackChannel.prototype = {};
+ActionForwardToSlackChannel.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -544,6 +1064,20 @@ ActionPostToSlackChannel.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.webhookUrl = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.domainName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -553,8 +1087,8 @@ ActionPostToSlackChannel.prototype.read = function(input) {
   return;
 };
 
-ActionPostToSlackChannel.prototype.write = function(output) {
-  output.writeStructBegin('ActionPostToSlackChannel');
+ActionForwardToSlackChannel.prototype.write = function(output) {
+  output.writeStructBegin('ActionForwardToSlackChannel');
   if (this.slackChannel !== null && this.slackChannel !== undefined) {
     output.writeFieldBegin('slackChannel', Thrift.Type.STRING, 1);
     output.writeString(this.slackChannel);
@@ -565,14 +1099,26 @@ ActionPostToSlackChannel.prototype.write = function(output) {
     output.writeBool(this.includeBody);
     output.writeFieldEnd();
   }
+  if (this.webhookUrl !== null && this.webhookUrl !== undefined) {
+    output.writeFieldBegin('webhookUrl', Thrift.Type.STRING, 3);
+    output.writeString(this.webhookUrl);
+    output.writeFieldEnd();
+  }
+  if (this.domainName !== null && this.domainName !== undefined) {
+    output.writeFieldBegin('domainName', Thrift.Type.STRING, 4);
+    output.writeString(this.domainName);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-ActionPostToSlackUser = function(args) {
+ActionForwardToSlackUser = function(args) {
   this.slackUsername = null;
   this.includeBody = true;
+  this.webhookUrl = null;
+  this.domainName = null;
   if (args) {
     if (args.slackUsername !== undefined && args.slackUsername !== null) {
       this.slackUsername = args.slackUsername;
@@ -580,10 +1126,16 @@ ActionPostToSlackUser = function(args) {
     if (args.includeBody !== undefined && args.includeBody !== null) {
       this.includeBody = args.includeBody;
     }
+    if (args.webhookUrl !== undefined && args.webhookUrl !== null) {
+      this.webhookUrl = args.webhookUrl;
+    }
+    if (args.domainName !== undefined && args.domainName !== null) {
+      this.domainName = args.domainName;
+    }
   }
 };
-ActionPostToSlackUser.prototype = {};
-ActionPostToSlackUser.prototype.read = function(input) {
+ActionForwardToSlackUser.prototype = {};
+ActionForwardToSlackUser.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -610,6 +1162,20 @@ ActionPostToSlackUser.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.webhookUrl = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.domainName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -619,11 +1185,87 @@ ActionPostToSlackUser.prototype.read = function(input) {
   return;
 };
 
-ActionPostToSlackUser.prototype.write = function(output) {
-  output.writeStructBegin('ActionPostToSlackUser');
+ActionForwardToSlackUser.prototype.write = function(output) {
+  output.writeStructBegin('ActionForwardToSlackUser');
   if (this.slackUsername !== null && this.slackUsername !== undefined) {
     output.writeFieldBegin('slackUsername', Thrift.Type.STRING, 1);
     output.writeString(this.slackUsername);
+    output.writeFieldEnd();
+  }
+  if (this.includeBody !== null && this.includeBody !== undefined) {
+    output.writeFieldBegin('includeBody', Thrift.Type.BOOL, 2);
+    output.writeBool(this.includeBody);
+    output.writeFieldEnd();
+  }
+  if (this.webhookUrl !== null && this.webhookUrl !== undefined) {
+    output.writeFieldBegin('webhookUrl', Thrift.Type.STRING, 3);
+    output.writeString(this.webhookUrl);
+    output.writeFieldEnd();
+  }
+  if (this.domainName !== null && this.domainName !== undefined) {
+    output.writeFieldBegin('domainName', Thrift.Type.STRING, 4);
+    output.writeString(this.domainName);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ActionForwardToGitter = function(args) {
+  this.gitterWebhookUrl = null;
+  this.includeBody = true;
+  if (args) {
+    if (args.gitterWebhookUrl !== undefined && args.gitterWebhookUrl !== null) {
+      this.gitterWebhookUrl = args.gitterWebhookUrl;
+    }
+    if (args.includeBody !== undefined && args.includeBody !== null) {
+      this.includeBody = args.includeBody;
+    }
+  }
+};
+ActionForwardToGitter.prototype = {};
+ActionForwardToGitter.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.gitterWebhookUrl = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.BOOL) {
+        this.includeBody = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionForwardToGitter.prototype.write = function(output) {
+  output.writeStructBegin('ActionForwardToGitter');
+  if (this.gitterWebhookUrl !== null && this.gitterWebhookUrl !== undefined) {
+    output.writeFieldBegin('gitterWebhookUrl', Thrift.Type.STRING, 1);
+    output.writeString(this.gitterWebhookUrl);
     output.writeFieldEnd();
   }
   if (this.includeBody !== null && this.includeBody !== undefined) {
@@ -702,10 +1344,10 @@ ActionSendEmail.prototype.write = function(output) {
   return;
 };
 
-ActionIgnore = function(args) {
+ActionSkipInbox = function(args) {
 };
-ActionIgnore.prototype = {};
-ActionIgnore.prototype.read = function(input) {
+ActionSkipInbox.prototype = {};
+ActionSkipInbox.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -723,17 +1365,17 @@ ActionIgnore.prototype.read = function(input) {
   return;
 };
 
-ActionIgnore.prototype.write = function(output) {
-  output.writeStructBegin('ActionIgnore');
+ActionSkipInbox.prototype.write = function(output) {
+  output.writeStructBegin('ActionSkipInbox');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-ActionDeleteMessage = function(args) {
+ActionDontStoreMessage = function(args) {
 };
-ActionDeleteMessage.prototype = {};
-ActionDeleteMessage.prototype.read = function(input) {
+ActionDontStoreMessage.prototype = {};
+ActionDontStoreMessage.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -751,23 +1393,23 @@ ActionDeleteMessage.prototype.read = function(input) {
   return;
 };
 
-ActionDeleteMessage.prototype.write = function(output) {
-  output.writeStructBegin('ActionDeleteMessage');
+ActionDontStoreMessage.prototype.write = function(output) {
+  output.writeStructBegin('ActionDontStoreMessage');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-ActionRespondToCode = function(args) {
-  this.messageToSend = null;
+ActionRespondWithMessage = function(args) {
+  this.messageToRespondWith = null;
   if (args) {
-    if (args.messageToSend !== undefined && args.messageToSend !== null) {
-      this.messageToSend = args.messageToSend;
+    if (args.messageToRespondWith !== undefined && args.messageToRespondWith !== null) {
+      this.messageToRespondWith = args.messageToRespondWith;
     }
   }
 };
-ActionRespondToCode.prototype = {};
-ActionRespondToCode.prototype.read = function(input) {
+ActionRespondWithMessage.prototype = {};
+ActionRespondWithMessage.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -782,7 +1424,7 @@ ActionRespondToCode.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.messageToSend = input.readString().value;
+        this.messageToRespondWith = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -799,11 +1441,11 @@ ActionRespondToCode.prototype.read = function(input) {
   return;
 };
 
-ActionRespondToCode.prototype.write = function(output) {
-  output.writeStructBegin('ActionRespondToCode');
-  if (this.messageToSend !== null && this.messageToSend !== undefined) {
-    output.writeFieldBegin('messageToSend', Thrift.Type.STRING, 1);
-    output.writeString(this.messageToSend);
+ActionRespondWithMessage.prototype.write = function(output) {
+  output.writeStructBegin('ActionRespondWithMessage');
+  if (this.messageToRespondWith !== null && this.messageToRespondWith !== undefined) {
+    output.writeFieldBegin('messageToRespondWith', Thrift.Type.STRING, 1);
+    output.writeString(this.messageToRespondWith);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -835,18 +1477,18 @@ ActionForwardToUsers.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size0 = 0;
-        var _rtmp34;
+        var _size8 = 0;
+        var _rtmp312;
         this.userIds = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        var _etype11 = 0;
+        _rtmp312 = input.readListBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
         {
-          var elem6 = null;
-          elem6 = input.readString().value;
-          this.userIds.push(elem6);
+          var elem14 = null;
+          elem14 = input.readString().value;
+          this.userIds.push(elem14);
         }
         input.readListEnd();
       } else {
@@ -870,12 +1512,12 @@ ActionForwardToUsers.prototype.write = function(output) {
   if (this.userIds !== null && this.userIds !== undefined) {
     output.writeFieldBegin('userIds', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRING, this.userIds.length);
-    for (var iter7 in this.userIds)
+    for (var iter15 in this.userIds)
     {
-      if (this.userIds.hasOwnProperty(iter7))
+      if (this.userIds.hasOwnProperty(iter15))
       {
-        iter7 = this.userIds[iter7];
-        output.writeString(iter7);
+        iter15 = this.userIds[iter15];
+        output.writeString(iter15);
       }
     }
     output.writeListEnd();
@@ -887,31 +1529,35 @@ ActionForwardToUsers.prototype.write = function(output) {
 };
 
 AromaAction = function(args) {
-  this.postToSlackChannel = null;
-  this.postToSlackUser = null;
+  this.forwardToSlackChannel = null;
+  this.forwardToSlackUser = null;
+  this.forwardToGitter = null;
   this.sendEmail = null;
-  this.ignore = null;
-  this.deleteMessage = null;
-  this.respondToCode = null;
+  this.skipInbox = null;
+  this.dontStoreMessage = null;
+  this.responseWithMessage = null;
   this.forwardToUsers = null;
   if (args) {
-    if (args.postToSlackChannel !== undefined && args.postToSlackChannel !== null) {
-      this.postToSlackChannel = new ActionPostToSlackChannel(args.postToSlackChannel);
+    if (args.forwardToSlackChannel !== undefined && args.forwardToSlackChannel !== null) {
+      this.forwardToSlackChannel = new ActionForwardToSlackChannel(args.forwardToSlackChannel);
     }
-    if (args.postToSlackUser !== undefined && args.postToSlackUser !== null) {
-      this.postToSlackUser = new ActionPostToSlackUser(args.postToSlackUser);
+    if (args.forwardToSlackUser !== undefined && args.forwardToSlackUser !== null) {
+      this.forwardToSlackUser = new ActionForwardToSlackUser(args.forwardToSlackUser);
+    }
+    if (args.forwardToGitter !== undefined && args.forwardToGitter !== null) {
+      this.forwardToGitter = new ActionForwardToGitter(args.forwardToGitter);
     }
     if (args.sendEmail !== undefined && args.sendEmail !== null) {
       this.sendEmail = new ActionSendEmail(args.sendEmail);
     }
-    if (args.ignore !== undefined && args.ignore !== null) {
-      this.ignore = new ActionIgnore(args.ignore);
+    if (args.skipInbox !== undefined && args.skipInbox !== null) {
+      this.skipInbox = new ActionSkipInbox(args.skipInbox);
     }
-    if (args.deleteMessage !== undefined && args.deleteMessage !== null) {
-      this.deleteMessage = new ActionDeleteMessage(args.deleteMessage);
+    if (args.dontStoreMessage !== undefined && args.dontStoreMessage !== null) {
+      this.dontStoreMessage = new ActionDontStoreMessage(args.dontStoreMessage);
     }
-    if (args.respondToCode !== undefined && args.respondToCode !== null) {
-      this.respondToCode = new ActionRespondToCode(args.respondToCode);
+    if (args.responseWithMessage !== undefined && args.responseWithMessage !== null) {
+      this.responseWithMessage = new ActionRespondWithMessage(args.responseWithMessage);
     }
     if (args.forwardToUsers !== undefined && args.forwardToUsers !== null) {
       this.forwardToUsers = new ActionForwardToUsers(args.forwardToUsers);
@@ -934,16 +1580,24 @@ AromaAction.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.postToSlackChannel = new ActionPostToSlackChannel();
-        this.postToSlackChannel.read(input);
+        this.forwardToSlackChannel = new ActionForwardToSlackChannel();
+        this.forwardToSlackChannel.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.postToSlackUser = new ActionPostToSlackUser();
-        this.postToSlackUser.read(input);
+        this.forwardToSlackUser = new ActionForwardToSlackUser();
+        this.forwardToSlackUser.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.forwardToGitter = new ActionForwardToGitter();
+        this.forwardToGitter.read(input);
       } else {
         input.skip(ftype);
       }
@@ -958,24 +1612,24 @@ AromaAction.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.STRUCT) {
-        this.ignore = new ActionIgnore();
-        this.ignore.read(input);
+        this.skipInbox = new ActionSkipInbox();
+        this.skipInbox.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 5:
       if (ftype == Thrift.Type.STRUCT) {
-        this.deleteMessage = new ActionDeleteMessage();
-        this.deleteMessage.read(input);
+        this.dontStoreMessage = new ActionDontStoreMessage();
+        this.dontStoreMessage.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 6:
       if (ftype == Thrift.Type.STRUCT) {
-        this.respondToCode = new ActionRespondToCode();
-        this.respondToCode.read(input);
+        this.responseWithMessage = new ActionRespondWithMessage();
+        this.responseWithMessage.read(input);
       } else {
         input.skip(ftype);
       }
@@ -999,14 +1653,19 @@ AromaAction.prototype.read = function(input) {
 
 AromaAction.prototype.write = function(output) {
   output.writeStructBegin('AromaAction');
-  if (this.postToSlackChannel !== null && this.postToSlackChannel !== undefined) {
-    output.writeFieldBegin('postToSlackChannel', Thrift.Type.STRUCT, 1);
-    this.postToSlackChannel.write(output);
+  if (this.forwardToSlackChannel !== null && this.forwardToSlackChannel !== undefined) {
+    output.writeFieldBegin('forwardToSlackChannel', Thrift.Type.STRUCT, 1);
+    this.forwardToSlackChannel.write(output);
     output.writeFieldEnd();
   }
-  if (this.postToSlackUser !== null && this.postToSlackUser !== undefined) {
-    output.writeFieldBegin('postToSlackUser', Thrift.Type.STRUCT, 2);
-    this.postToSlackUser.write(output);
+  if (this.forwardToSlackUser !== null && this.forwardToSlackUser !== undefined) {
+    output.writeFieldBegin('forwardToSlackUser', Thrift.Type.STRUCT, 2);
+    this.forwardToSlackUser.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.forwardToGitter !== null && this.forwardToGitter !== undefined) {
+    output.writeFieldBegin('forwardToGitter', Thrift.Type.STRUCT, 8);
+    this.forwardToGitter.write(output);
     output.writeFieldEnd();
   }
   if (this.sendEmail !== null && this.sendEmail !== undefined) {
@@ -1014,19 +1673,19 @@ AromaAction.prototype.write = function(output) {
     this.sendEmail.write(output);
     output.writeFieldEnd();
   }
-  if (this.ignore !== null && this.ignore !== undefined) {
-    output.writeFieldBegin('ignore', Thrift.Type.STRUCT, 4);
-    this.ignore.write(output);
+  if (this.skipInbox !== null && this.skipInbox !== undefined) {
+    output.writeFieldBegin('skipInbox', Thrift.Type.STRUCT, 4);
+    this.skipInbox.write(output);
     output.writeFieldEnd();
   }
-  if (this.deleteMessage !== null && this.deleteMessage !== undefined) {
-    output.writeFieldBegin('deleteMessage', Thrift.Type.STRUCT, 5);
-    this.deleteMessage.write(output);
+  if (this.dontStoreMessage !== null && this.dontStoreMessage !== undefined) {
+    output.writeFieldBegin('dontStoreMessage', Thrift.Type.STRUCT, 5);
+    this.dontStoreMessage.write(output);
     output.writeFieldEnd();
   }
-  if (this.respondToCode !== null && this.respondToCode !== undefined) {
-    output.writeFieldBegin('respondToCode', Thrift.Type.STRUCT, 6);
-    this.respondToCode.write(output);
+  if (this.responseWithMessage !== null && this.responseWithMessage !== undefined) {
+    output.writeFieldBegin('responseWithMessage', Thrift.Type.STRUCT, 6);
+    this.responseWithMessage.write(output);
     output.writeFieldEnd();
   }
   if (this.forwardToUsers !== null && this.forwardToUsers !== undefined) {
@@ -1040,14 +1699,18 @@ AromaAction.prototype.write = function(output) {
 };
 
 Reaction = function(args) {
-  this.matcher = null;
-  this.action = null;
+  this.matchers = [];
+  this.actions = [];
+  this.name = null;
   if (args) {
-    if (args.matcher !== undefined && args.matcher !== null) {
-      this.matcher = new AromaMatcher(args.matcher);
+    if (args.matchers !== undefined && args.matchers !== null) {
+      this.matchers = Thrift.copyList(args.matchers, [AromaMatcher]);
     }
-    if (args.action !== undefined && args.action !== null) {
-      this.action = new AromaAction(args.action);
+    if (args.actions !== undefined && args.actions !== null) {
+      this.actions = Thrift.copyList(args.actions, [AromaAction]);
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
     }
   }
 };
@@ -1066,17 +1729,50 @@ Reaction.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.matcher = new AromaMatcher();
-        this.matcher.read(input);
+      if (ftype == Thrift.Type.LIST) {
+        var _size16 = 0;
+        var _rtmp320;
+        this.matchers = [];
+        var _etype19 = 0;
+        _rtmp320 = input.readListBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
+        {
+          var elem22 = null;
+          elem22 = new AromaMatcher();
+          elem22.read(input);
+          this.matchers.push(elem22);
+        }
+        input.readListEnd();
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.action = new AromaAction();
-        this.action.read(input);
+      if (ftype == Thrift.Type.LIST) {
+        var _size23 = 0;
+        var _rtmp327;
+        this.actions = [];
+        var _etype26 = 0;
+        _rtmp327 = input.readListBegin();
+        _etype26 = _rtmp327.etype;
+        _size23 = _rtmp327.size;
+        for (var _i28 = 0; _i28 < _size23; ++_i28)
+        {
+          var elem29 = null;
+          elem29 = new AromaAction();
+          elem29.read(input);
+          this.actions.push(elem29);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -1092,14 +1788,37 @@ Reaction.prototype.read = function(input) {
 
 Reaction.prototype.write = function(output) {
   output.writeStructBegin('Reaction');
-  if (this.matcher !== null && this.matcher !== undefined) {
-    output.writeFieldBegin('matcher', Thrift.Type.STRUCT, 1);
-    this.matcher.write(output);
+  if (this.matchers !== null && this.matchers !== undefined) {
+    output.writeFieldBegin('matchers', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.matchers.length);
+    for (var iter30 in this.matchers)
+    {
+      if (this.matchers.hasOwnProperty(iter30))
+      {
+        iter30 = this.matchers[iter30];
+        iter30.write(output);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
-  if (this.action !== null && this.action !== undefined) {
-    output.writeFieldBegin('action', Thrift.Type.STRUCT, 2);
-    this.action.write(output);
+  if (this.actions !== null && this.actions !== undefined) {
+    output.writeFieldBegin('actions', Thrift.Type.LIST, 2);
+    output.writeListBegin(Thrift.Type.STRUCT, this.actions.length);
+    for (var iter31 in this.actions)
+    {
+      if (this.actions.hasOwnProperty(iter31))
+      {
+        iter31 = this.actions[iter31];
+        iter31.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
+    output.writeString(this.name);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -1107,3 +1826,4 @@ Reaction.prototype.write = function(output) {
   return;
 };
 
+MAXIMUM_REACTIONS = 100;
