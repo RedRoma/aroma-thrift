@@ -1426,4 +1426,4 @@ ServiceAnnouncement.prototype.write = function(output) {
   return;
 };
 
-API_VERSION = 1.9;
+API_VERSION = 1.1;

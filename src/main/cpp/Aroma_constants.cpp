@@ -11,7 +11,7 @@ namespace tech { namespace aroma { namespace thrift {
 const AromaConstants g_Aroma_constants;
 
 AromaConstants::AromaConstants() {
-  API_VERSION = 1.9;
+  API_VERSION = 1.1;
 
 }
 
