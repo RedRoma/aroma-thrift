@@ -79,6 +79,8 @@ struct SendMessageRequest
     6: optional string hostname;
     7: optional string macAddress;
     8: optional string ipv4Address;
+    9: optional string deviceName;
+    10: optional string operatingSystemName;
 }
 
 struct SendMessageResponse

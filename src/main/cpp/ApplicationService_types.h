@@ -58,7 +58,7 @@ class SendMessageRequest;
 class SendMessageResponse;
 
 typedef struct _SendMessageRequest__isset {
-  _SendMessageRequest__isset() : applicationToken(false), body(false), urgency(true), timeOfMessage(false), title(false), hostname(false), macAddress(false), ipv4Address(false) {}
+  _SendMessageRequest__isset() : applicationToken(false), body(false), urgency(true), timeOfMessage(false), title(false), hostname(false), macAddress(false), ipv4Address(false), deviceName(false), operatingSystemName(false) {}
   bool applicationToken :1;
   bool body :1;
   bool urgency :1;
@@ -67,6 +67,8 @@ typedef struct _SendMessageRequest__isset {
   bool hostname :1;
   bool macAddress :1;
   bool ipv4Address :1;
+  bool deviceName :1;
+  bool operatingSystemName :1;
 } _SendMessageRequest__isset;
 
 class SendMessageRequest {
@@ -74,7 +76,7 @@ class SendMessageRequest {
 
   SendMessageRequest(const SendMessageRequest&);
   SendMessageRequest& operator=(const SendMessageRequest&);
-  SendMessageRequest() : body(), urgency(( ::tech::aroma::thrift::Urgency::type)1), timeOfMessage(0), title(), hostname(), macAddress(), ipv4Address() {
+  SendMessageRequest() : body(), urgency(( ::tech::aroma::thrift::Urgency::type)1), timeOfMessage(0), title(), hostname(), macAddress(), ipv4Address(), deviceName(), operatingSystemName() {
     urgency = ( ::tech::aroma::thrift::Urgency::type)1;
 
   }
@@ -88,6 +90,8 @@ class SendMessageRequest {
   std::string hostname;
   std::string macAddress;
   std::string ipv4Address;
+  std::string deviceName;
+  std::string operatingSystemName;
 
   _SendMessageRequest__isset __isset;
 
@@ -106,6 +110,10 @@ class SendMessageRequest {
   void __set_macAddress(const std::string& val);
 
   void __set_ipv4Address(const std::string& val);
+
+  void __set_deviceName(const std::string& val);
+
+  void __set_operatingSystemName(const std::string& val);
 
   bool operator == (const SendMessageRequest & rhs) const
   {
@@ -132,6 +140,14 @@ class SendMessageRequest {
     if (__isset.ipv4Address != rhs.__isset.ipv4Address)
       return false;
     else if (__isset.ipv4Address && !(ipv4Address == rhs.ipv4Address))
+      return false;
+    if (__isset.deviceName != rhs.__isset.deviceName)
+      return false;
+    else if (__isset.deviceName && !(deviceName == rhs.deviceName))
+      return false;
+    if (__isset.operatingSystemName != rhs.__isset.operatingSystemName)
+      return false;
+    else if (__isset.operatingSystemName && !(operatingSystemName == rhs.operatingSystemName))
       return false;
     return true;
   }

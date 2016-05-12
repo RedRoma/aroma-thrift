@@ -54,6 +54,16 @@ void SendMessageRequest::__set_ipv4Address(const std::string& val) {
 __isset.ipv4Address = true;
 }
 
+void SendMessageRequest::__set_deviceName(const std::string& val) {
+  this->deviceName = val;
+__isset.deviceName = true;
+}
+
+void SendMessageRequest::__set_operatingSystemName(const std::string& val) {
+  this->operatingSystemName = val;
+__isset.operatingSystemName = true;
+}
+
 uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -141,6 +151,22 @@ uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
           xfer += iprot->skip(ftype);
         }
         break;
+      case 9:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->deviceName);
+          this->__isset.deviceName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 10:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->operatingSystemName);
+          this->__isset.operatingSystemName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -194,6 +220,16 @@ uint32_t SendMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot)
     xfer += oprot->writeString(this->ipv4Address);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.deviceName) {
+    xfer += oprot->writeFieldBegin("deviceName", ::apache::thrift::protocol::T_STRING, 9);
+    xfer += oprot->writeString(this->deviceName);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.operatingSystemName) {
+    xfer += oprot->writeFieldBegin("operatingSystemName", ::apache::thrift::protocol::T_STRING, 10);
+    xfer += oprot->writeString(this->operatingSystemName);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -209,6 +245,8 @@ void swap(SendMessageRequest &a, SendMessageRequest &b) {
   swap(a.hostname, b.hostname);
   swap(a.macAddress, b.macAddress);
   swap(a.ipv4Address, b.ipv4Address);
+  swap(a.deviceName, b.deviceName);
+  swap(a.operatingSystemName, b.operatingSystemName);
   swap(a.__isset, b.__isset);
 }
 
@@ -221,6 +259,8 @@ SendMessageRequest::SendMessageRequest(const SendMessageRequest& other1) {
   hostname = other1.hostname;
   macAddress = other1.macAddress;
   ipv4Address = other1.ipv4Address;
+  deviceName = other1.deviceName;
+  operatingSystemName = other1.operatingSystemName;
   __isset = other1.__isset;
 }
 SendMessageRequest& SendMessageRequest::operator=(const SendMessageRequest& other2) {
@@ -232,6 +272,8 @@ SendMessageRequest& SendMessageRequest::operator=(const SendMessageRequest& othe
   hostname = other2.hostname;
   macAddress = other2.macAddress;
   ipv4Address = other2.ipv4Address;
+  deviceName = other2.deviceName;
+  operatingSystemName = other2.operatingSystemName;
   __isset = other2.__isset;
   return *this;
 }
@@ -246,6 +288,8 @@ void SendMessageRequest::printTo(std::ostream& out) const {
   out << ", " << "hostname="; (__isset.hostname ? (out << to_string(hostname)) : (out << "<null>"));
   out << ", " << "macAddress="; (__isset.macAddress ? (out << to_string(macAddress)) : (out << "<null>"));
   out << ", " << "ipv4Address="; (__isset.ipv4Address ? (out << to_string(ipv4Address)) : (out << "<null>"));
+  out << ", " << "deviceName="; (__isset.deviceName ? (out << to_string(deviceName)) : (out << "<null>"));
+  out << ", " << "operatingSystemName="; (__isset.operatingSystemName ? (out << to_string(operatingSystemName)) : (out << "<null>"));
   out << ")";
 }
 

@@ -57,6 +57,14 @@ class SendMessageRequest {
    * @var string
    */
   public $ipv4Address = null;
+  /**
+   * @var string
+   */
+  public $deviceName = null;
+  /**
+   * @var string
+   */
+  public $operatingSystemName = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -94,6 +102,14 @@ class SendMessageRequest {
           'var' => 'ipv4Address',
           'type' => TType::STRING,
           ),
+        9 => array(
+          'var' => 'deviceName',
+          'type' => TType::STRING,
+          ),
+        10 => array(
+          'var' => 'operatingSystemName',
+          'type' => TType::STRING,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -120,6 +136,12 @@ class SendMessageRequest {
       }
       if (isset($vals['ipv4Address'])) {
         $this->ipv4Address = $vals['ipv4Address'];
+      }
+      if (isset($vals['deviceName'])) {
+        $this->deviceName = $vals['deviceName'];
+      }
+      if (isset($vals['operatingSystemName'])) {
+        $this->operatingSystemName = $vals['operatingSystemName'];
       }
     }
   }
@@ -200,6 +222,20 @@ class SendMessageRequest {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 9:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->deviceName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 10:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->operatingSystemName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -254,6 +290,16 @@ class SendMessageRequest {
     if ($this->ipv4Address !== null) {
       $xfer += $output->writeFieldBegin('ipv4Address', TType::STRING, 8);
       $xfer += $output->writeString($this->ipv4Address);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->deviceName !== null) {
+      $xfer += $output->writeFieldBegin('deviceName', TType::STRING, 9);
+      $xfer += $output->writeString($this->deviceName);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->operatingSystemName !== null) {
+      $xfer += $output->writeFieldBegin('operatingSystemName', TType::STRING, 10);
+      $xfer += $output->writeString($this->operatingSystemName);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

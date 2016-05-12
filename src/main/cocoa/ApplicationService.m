@@ -37,7 +37,7 @@
   return self;
 }
 
-- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken body: (NSString *) body urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage title: (NSString *) title hostname: (NSString *) hostname macAddress: (NSString *) macAddress ipv4Address: (NSString *) ipv4Address
+- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken body: (NSString *) body urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage title: (NSString *) title hostname: (NSString *) hostname macAddress: (NSString *) macAddress ipv4Address: (NSString *) ipv4Address deviceName: (NSString *) deviceName operatingSystemName: (NSString *) operatingSystemName
 {
   self = [super init];
   __applicationToken = [applicationToken retain_stub];
@@ -56,6 +56,10 @@
   __macAddress_isset = YES;
   __ipv4Address = [ipv4Address retain_stub];
   __ipv4Address_isset = YES;
+  __deviceName = [deviceName retain_stub];
+  __deviceName_isset = YES;
+  __operatingSystemName = [operatingSystemName retain_stub];
+  __operatingSystemName_isset = YES;
   return self;
 }
 
@@ -102,6 +106,16 @@
     __ipv4Address = [[decoder decodeObjectForKey: @"ipv4Address"] retain_stub];
     __ipv4Address_isset = YES;
   }
+  if ([decoder containsValueForKey: @"deviceName"])
+  {
+    __deviceName = [[decoder decodeObjectForKey: @"deviceName"] retain_stub];
+    __deviceName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"operatingSystemName"])
+  {
+    __operatingSystemName = [[decoder decodeObjectForKey: @"operatingSystemName"] retain_stub];
+    __operatingSystemName_isset = YES;
+  }
   return self;
 }
 
@@ -138,6 +152,14 @@
   if (__ipv4Address_isset)
   {
     [encoder encodeObject: __ipv4Address forKey: @"ipv4Address"];
+  }
+  if (__deviceName_isset)
+  {
+    [encoder encodeObject: __deviceName forKey: @"deviceName"];
+  }
+  if (__operatingSystemName_isset)
+  {
+    [encoder encodeObject: __operatingSystemName forKey: @"operatingSystemName"];
   }
 }
 
@@ -184,6 +206,16 @@
   {
     hash = (hash * 31) ^ [__ipv4Address hash];
   }
+  hash = (hash * 31) ^ __deviceName_isset ? 2654435761 : 0;
+  if (__deviceName_isset)
+  {
+    hash = (hash * 31) ^ [__deviceName hash];
+  }
+  hash = (hash * 31) ^ __operatingSystemName_isset ? 2654435761 : 0;
+  if (__operatingSystemName_isset)
+  {
+    hash = (hash * 31) ^ [__operatingSystemName hash];
+  }
   return hash;
 }
 
@@ -228,6 +260,14 @@
       (__ipv4Address_isset && ((__ipv4Address || other->__ipv4Address) && ![__ipv4Address isEqual:other->__ipv4Address]))) {
     return NO;
   }
+  if ((__deviceName_isset != other->__deviceName_isset) ||
+      (__deviceName_isset && ((__deviceName || other->__deviceName) && ![__deviceName isEqual:other->__deviceName]))) {
+    return NO;
+  }
+  if ((__operatingSystemName_isset != other->__operatingSystemName_isset) ||
+      (__operatingSystemName_isset && ((__operatingSystemName || other->__operatingSystemName) && ![__operatingSystemName isEqual:other->__operatingSystemName]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -239,6 +279,8 @@
   [__hostname release_stub];
   [__macAddress release_stub];
   [__ipv4Address release_stub];
+  [__deviceName release_stub];
+  [__operatingSystemName release_stub];
   [super dealloc_stub];
 }
 
@@ -402,6 +444,48 @@
   __ipv4Address_isset = NO;
 }
 
+- (NSString *) deviceName {
+  return [[__deviceName retain_stub] autorelease_stub];
+}
+
+- (void) setDeviceName: (NSString *) deviceName {
+  [deviceName retain_stub];
+  [__deviceName release_stub];
+  __deviceName = deviceName;
+  __deviceName_isset = YES;
+}
+
+- (BOOL) deviceNameIsSet {
+  return __deviceName_isset;
+}
+
+- (void) unsetDeviceName {
+  [__deviceName release_stub];
+  __deviceName = nil;
+  __deviceName_isset = NO;
+}
+
+- (NSString *) operatingSystemName {
+  return [[__operatingSystemName retain_stub] autorelease_stub];
+}
+
+- (void) setOperatingSystemName: (NSString *) operatingSystemName {
+  [operatingSystemName retain_stub];
+  [__operatingSystemName release_stub];
+  __operatingSystemName = operatingSystemName;
+  __operatingSystemName_isset = YES;
+}
+
+- (BOOL) operatingSystemNameIsSet {
+  return __operatingSystemName_isset;
+}
+
+- (void) unsetOperatingSystemName {
+  [__operatingSystemName release_stub];
+  __operatingSystemName = nil;
+  __operatingSystemName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -483,6 +567,22 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 9:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setDeviceName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 10:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOperatingSystemName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -546,6 +646,20 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__deviceName_isset) {
+    if (__deviceName != nil) {
+      [outProtocol writeFieldBeginWithName: @"deviceName" type: TType_STRING fieldID: 9];
+      [outProtocol writeString: __deviceName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__operatingSystemName_isset) {
+    if (__operatingSystemName != nil) {
+      [outProtocol writeFieldBeginWithName: @"operatingSystemName" type: TType_STRING fieldID: 10];
+      [outProtocol writeString: __operatingSystemName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -572,6 +686,10 @@
   [ms appendFormat: @"\"%@\"", __macAddress];
   [ms appendString: @",ipv4Address:"];
   [ms appendFormat: @"\"%@\"", __ipv4Address];
+  [ms appendString: @",deviceName:"];
+  [ms appendFormat: @"\"%@\"", __deviceName];
+  [ms appendString: @",operatingSystemName:"];
+  [ms appendFormat: @"\"%@\"", __operatingSystemName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

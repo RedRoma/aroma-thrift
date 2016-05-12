@@ -23,6 +23,8 @@ SendMessageRequest = module.exports.SendMessageRequest = function(args) {
   this.hostname = null;
   this.macAddress = null;
   this.ipv4Address = null;
+  this.deviceName = null;
+  this.operatingSystemName = null;
   if (args) {
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
@@ -47,6 +49,12 @@ SendMessageRequest = module.exports.SendMessageRequest = function(args) {
     }
     if (args.ipv4Address !== undefined && args.ipv4Address !== null) {
       this.ipv4Address = args.ipv4Address;
+    }
+    if (args.deviceName !== undefined && args.deviceName !== null) {
+      this.deviceName = args.deviceName;
+    }
+    if (args.operatingSystemName !== undefined && args.operatingSystemName !== null) {
+      this.operatingSystemName = args.operatingSystemName;
     }
   }
 };
@@ -121,6 +129,20 @@ SendMessageRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 9:
+      if (ftype == Thrift.Type.STRING) {
+        this.deviceName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.STRING) {
+        this.operatingSystemName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -170,6 +192,16 @@ SendMessageRequest.prototype.write = function(output) {
   if (this.ipv4Address !== null && this.ipv4Address !== undefined) {
     output.writeFieldBegin('ipv4Address', Thrift.Type.STRING, 8);
     output.writeString(this.ipv4Address);
+    output.writeFieldEnd();
+  }
+  if (this.deviceName !== null && this.deviceName !== undefined) {
+    output.writeFieldBegin('deviceName', Thrift.Type.STRING, 9);
+    output.writeString(this.deviceName);
+    output.writeFieldEnd();
+  }
+  if (this.operatingSystemName !== null && this.operatingSystemName !== undefined) {
+    output.writeFieldBegin('operatingSystemName', Thrift.Type.STRING, 10);
+    output.writeString(this.operatingSystemName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
