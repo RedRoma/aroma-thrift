@@ -7,7 +7,8 @@ namespace php   RedRoma.Aroma.Channels
  * Defined in this File are the various Channels that
  * Aroma can send Messages to.
  *
- * Essentially a channel is a way to contact a person.
+ * A Channel represents a Medium where information can be transmitted and delivered to,
+ * such as a Push Notification to an iOS or Android Device.
  *
  * A Person can register various channels where he/she can
  * be reached.
@@ -65,12 +66,18 @@ struct CustomChannel
 
 struct IOSDevice
 {
+    /** Device Token may be stored and serialized as a Base64 encoded String. */
     1: string deviceToken;
 }
 
 struct AndroidDevice
 {
-    1: string deviceId;
+    1: string registrationId;
+}
+
+struct WindowsPhoneDevice
+{
+    
 }
 
 /**
@@ -84,6 +91,7 @@ union AromaChannel
     4: CustomChannel customChannel;
     5: IOSDevice iosDevice;
     6: AndroidDevice androidDevice;
+    7: WindowsPhoneDevice windowsPhone;
 }
 
 struct ChannelInfo

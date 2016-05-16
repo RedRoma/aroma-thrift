@@ -343,10 +343,10 @@ IOSDevice.prototype.write = function(output) {
 };
 
 AndroidDevice = function(args) {
-  this.deviceId = null;
+  this.registrationId = null;
   if (args) {
-    if (args.deviceId !== undefined && args.deviceId !== null) {
-      this.deviceId = args.deviceId;
+    if (args.registrationId !== undefined && args.registrationId !== null) {
+      this.registrationId = args.registrationId;
     }
   }
 };
@@ -366,7 +366,7 @@ AndroidDevice.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.deviceId = input.readString().value;
+        this.registrationId = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -385,11 +385,39 @@ AndroidDevice.prototype.read = function(input) {
 
 AndroidDevice.prototype.write = function(output) {
   output.writeStructBegin('AndroidDevice');
-  if (this.deviceId !== null && this.deviceId !== undefined) {
-    output.writeFieldBegin('deviceId', Thrift.Type.STRING, 1);
-    output.writeString(this.deviceId);
+  if (this.registrationId !== null && this.registrationId !== undefined) {
+    output.writeFieldBegin('registrationId', Thrift.Type.STRING, 1);
+    output.writeString(this.registrationId);
     output.writeFieldEnd();
   }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+WindowsPhoneDevice = function(args) {
+};
+WindowsPhoneDevice.prototype = {};
+WindowsPhoneDevice.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+WindowsPhoneDevice.prototype.write = function(output) {
+  output.writeStructBegin('WindowsPhoneDevice');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -402,6 +430,7 @@ AromaChannel = function(args) {
   this.customChannel = null;
   this.iosDevice = null;
   this.androidDevice = null;
+  this.windowsPhone = null;
   if (args) {
     if (args.slackChannel !== undefined && args.slackChannel !== null) {
       this.slackChannel = new SlackChannel(args.slackChannel);
@@ -420,6 +449,9 @@ AromaChannel = function(args) {
     }
     if (args.androidDevice !== undefined && args.androidDevice !== null) {
       this.androidDevice = new AndroidDevice(args.androidDevice);
+    }
+    if (args.windowsPhone !== undefined && args.windowsPhone !== null) {
+      this.windowsPhone = new WindowsPhoneDevice(args.windowsPhone);
     }
   }
 };
@@ -485,6 +517,14 @@ AromaChannel.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 7:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.windowsPhone = new WindowsPhoneDevice();
+        this.windowsPhone.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -524,6 +564,11 @@ AromaChannel.prototype.write = function(output) {
   if (this.androidDevice !== null && this.androidDevice !== undefined) {
     output.writeFieldBegin('androidDevice', Thrift.Type.STRUCT, 6);
     this.androidDevice.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.windowsPhone !== null && this.windowsPhone !== undefined) {
+    output.writeFieldBegin('windowsPhone', Thrift.Type.STRUCT, 7);
+    this.windowsPhone.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

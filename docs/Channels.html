@@ -209,6 +209,7 @@ code { line-height: 20px; }
 <a href="#Struct_ReceiveMessageRequest">ReceiveMessageRequest</a><br/>
 <a href="#Struct_SlackChannel">SlackChannel</a><br/>
 <a href="#Struct_SlackUsername">SlackUsername</a><br/>
+<a href="#Struct_WindowsPhoneDevice">WindowsPhoneDevice</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
@@ -257,10 +258,13 @@ username.
 </table><br/>Allows for messages to be sent to a custom Channel
 <br/></div><div class="definition"><h3 id="Struct_IOSDevice">Struct: IOSDevice</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>deviceToken</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>deviceToken</td><td><code>string</code></td><td>Device Token may be stored and serialized as a Base64 encoded String.
+</td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_AndroidDevice">Struct: AndroidDevice</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>deviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>registrationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_WindowsPhoneDevice">Struct: WindowsPhoneDevice</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_AromaChannel">Union: AromaChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>slackChannel</td><td><code><a href="#Struct_SlackChannel">SlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
@@ -269,6 +273,7 @@ username.
 <tr><td>4</td><td>customChannel</td><td><code><a href="#Struct_CustomChannel">CustomChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>5</td><td>iosDevice</td><td><code><a href="#Struct_IOSDevice">IOSDevice</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>6</td><td>androidDevice</td><td><code><a href="#Struct_AndroidDevice">AndroidDevice</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>7</td><td>windowsPhone</td><td><code><a href="#Struct_WindowsPhoneDevice">WindowsPhoneDevice</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>This Union represents the Abstract concept of an AromaChannel
 <br/></div><div class="definition"><h3 id="Struct_ChannelInfo">Struct: ChannelInfo</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>

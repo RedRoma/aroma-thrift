@@ -458,6 +458,8 @@ class IOSDevice {
   static $_TSPEC;
 
   /**
+   * Device Token may be stored and serialized as a Base64 encoded String.
+   * 
    * @var string
    */
   public $deviceToken = null;
@@ -535,20 +537,20 @@ class AndroidDevice {
   /**
    * @var string
    */
-  public $deviceId = null;
+  public $registrationId = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
         1 => array(
-          'var' => 'deviceId',
+          'var' => 'registrationId',
           'type' => TType::STRING,
           ),
         );
     }
     if (is_array($vals)) {
-      if (isset($vals['deviceId'])) {
-        $this->deviceId = $vals['deviceId'];
+      if (isset($vals['registrationId'])) {
+        $this->registrationId = $vals['registrationId'];
       }
     }
   }
@@ -574,7 +576,7 @@ class AndroidDevice {
       {
         case 1:
           if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->deviceId);
+            $xfer += $input->readString($this->registrationId);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -592,11 +594,61 @@ class AndroidDevice {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('AndroidDevice');
-    if ($this->deviceId !== null) {
-      $xfer += $output->writeFieldBegin('deviceId', TType::STRING, 1);
-      $xfer += $output->writeString($this->deviceId);
+    if ($this->registrationId !== null) {
+      $xfer += $output->writeFieldBegin('registrationId', TType::STRING, 1);
+      $xfer += $output->writeString($this->registrationId);
       $xfer += $output->writeFieldEnd();
     }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class WindowsPhoneDevice {
+  static $_TSPEC;
+
+
+  public function __construct() {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        );
+    }
+  }
+
+  public function getName() {
+    return 'WindowsPhoneDevice';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('WindowsPhoneDevice');
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -634,6 +686,10 @@ class AromaChannel {
    * @var \RedRoma\Aroma\Channels\AndroidDevice
    */
   public $androidDevice = null;
+  /**
+   * @var \RedRoma\Aroma\Channels\WindowsPhoneDevice
+   */
+  public $windowsPhone = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -668,6 +724,11 @@ class AromaChannel {
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Channels\AndroidDevice',
           ),
+        7 => array(
+          'var' => 'windowsPhone',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Channels\WindowsPhoneDevice',
+          ),
         );
     }
     if (is_array($vals)) {
@@ -688,6 +749,9 @@ class AromaChannel {
       }
       if (isset($vals['androidDevice'])) {
         $this->androidDevice = $vals['androidDevice'];
+      }
+      if (isset($vals['windowsPhone'])) {
+        $this->windowsPhone = $vals['windowsPhone'];
       }
     }
   }
@@ -759,6 +823,14 @@ class AromaChannel {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 7:
+          if ($ftype == TType::STRUCT) {
+            $this->windowsPhone = new \RedRoma\Aroma\Channels\WindowsPhoneDevice();
+            $xfer += $this->windowsPhone->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -818,6 +890,14 @@ class AromaChannel {
       }
       $xfer += $output->writeFieldBegin('androidDevice', TType::STRUCT, 6);
       $xfer += $this->androidDevice->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->windowsPhone !== null) {
+      if (!is_object($this->windowsPhone)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('windowsPhone', TType::STRUCT, 7);
+      $xfer += $this->windowsPhone->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
