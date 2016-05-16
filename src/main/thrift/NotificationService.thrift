@@ -87,11 +87,10 @@ service NotificationService
 {
     
     double getApiVersion()
-    
-    //===============================================
-    // Operations for Applications
-    //===============================================
-    
+
+    /**
+     * Send Notification of an Event to a Set of Users.
+     */
     SendNotificationResponse sendNotification(1: SendNotificationRequest request) throws (1 : InvalidArgumentException ex1,
                                                                                           2 : OperationFailedException ex2,
                                                                                           3 : InvalidTokenException ex3);
