@@ -851,7 +851,7 @@ class CheckExistsResponse {
 
 }
 
-class DeleteActivityRequest {
+class GetUserInfoRequest {
   static $_TSPEC;
 
   /**
@@ -861,15 +861,13 @@ class DeleteActivityRequest {
   /**
    * @var string
    */
-  public $eventId = null;
+  public $userId = null;
   /**
-   * @var bool
+   * Can Optionally query by Email as well.
+   * 
+   * @var string
    */
-  public $deleteAll = false;
-  /**
-   * @var string[]
-   */
-  public $multipleEventIds = null;
+  public $email = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -880,20 +878,12 @@ class DeleteActivityRequest {
           'class' => '\RedRoma\Aroma\Authentication\UserToken',
           ),
         2 => array(
-          'var' => 'eventId',
+          'var' => 'userId',
           'type' => TType::STRING,
           ),
         3 => array(
-          'var' => 'deleteAll',
-          'type' => TType::BOOL,
-          ),
-        4 => array(
-          'var' => 'multipleEventIds',
-          'type' => TType::LST,
-          'etype' => TType::STRING,
-          'elem' => array(
-            'type' => TType::STRING,
-            ),
+          'var' => 'email',
+          'type' => TType::STRING,
           ),
         );
     }
@@ -901,20 +891,17 @@ class DeleteActivityRequest {
       if (isset($vals['token'])) {
         $this->token = $vals['token'];
       }
-      if (isset($vals['eventId'])) {
-        $this->eventId = $vals['eventId'];
+      if (isset($vals['userId'])) {
+        $this->userId = $vals['userId'];
       }
-      if (isset($vals['deleteAll'])) {
-        $this->deleteAll = $vals['deleteAll'];
-      }
-      if (isset($vals['multipleEventIds'])) {
-        $this->multipleEventIds = $vals['multipleEventIds'];
+      if (isset($vals['email'])) {
+        $this->email = $vals['email'];
       }
     }
   }
 
   public function getName() {
-    return 'DeleteActivityRequest';
+    return 'GetUserInfoRequest';
   }
 
   public function read($input)
@@ -942,31 +929,14 @@ class DeleteActivityRequest {
           break;
         case 2:
           if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->eventId);
+            $xfer += $input->readString($this->userId);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 3:
-          if ($ftype == TType::BOOL) {
-            $xfer += $input->readBool($this->deleteAll);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::LST) {
-            $this->multipleEventIds = array();
-            $_size0 = 0;
-            $_etype3 = 0;
-            $xfer += $input->readListBegin($_etype3, $_size0);
-            for ($_i4 = 0; $_i4 < $_size0; ++$_i4)
-            {
-              $elem5 = null;
-              $xfer += $input->readString($elem5);
-              $this->multipleEventIds []= $elem5;
-            }
-            $xfer += $input->readListEnd();
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->email);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -983,7 +953,7 @@ class DeleteActivityRequest {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('DeleteActivityRequest');
+    $xfer += $output->writeStructBegin('GetUserInfoRequest');
     if ($this->token !== null) {
       if (!is_object($this->token)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -992,31 +962,14 @@ class DeleteActivityRequest {
       $xfer += $this->token->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->eventId !== null) {
-      $xfer += $output->writeFieldBegin('eventId', TType::STRING, 2);
-      $xfer += $output->writeString($this->eventId);
+    if ($this->userId !== null) {
+      $xfer += $output->writeFieldBegin('userId', TType::STRING, 2);
+      $xfer += $output->writeString($this->userId);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->deleteAll !== null) {
-      $xfer += $output->writeFieldBegin('deleteAll', TType::BOOL, 3);
-      $xfer += $output->writeBool($this->deleteAll);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->multipleEventIds !== null) {
-      if (!is_array($this->multipleEventIds)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('multipleEventIds', TType::LST, 4);
-      {
-        $output->writeListBegin(TType::STRING, count($this->multipleEventIds));
-        {
-          foreach ($this->multipleEventIds as $iter6)
-          {
-            $xfer += $output->writeString($iter6);
-          }
-        }
-        $output->writeListEnd();
-      }
+    if ($this->email !== null) {
+      $xfer += $output->writeFieldBegin('email', TType::STRING, 3);
+      $xfer += $output->writeString($this->email);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -1026,32 +979,33 @@ class DeleteActivityRequest {
 
 }
 
-class DeleteActivityResponse {
+class GetUserInfoResponse {
   static $_TSPEC;
 
   /**
-   * @var int
+   * @var \RedRoma\Aroma\User
    */
-  public $totalEventsDeleted = 0;
+  public $userInfo = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
         1 => array(
-          'var' => 'totalEventsDeleted',
-          'type' => TType::I32,
+          'var' => 'userInfo',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\User',
           ),
         );
     }
     if (is_array($vals)) {
-      if (isset($vals['totalEventsDeleted'])) {
-        $this->totalEventsDeleted = $vals['totalEventsDeleted'];
+      if (isset($vals['userInfo'])) {
+        $this->userInfo = $vals['userInfo'];
       }
     }
   }
 
   public function getName() {
-    return 'DeleteActivityResponse';
+    return 'GetUserInfoResponse';
   }
 
   public function read($input)
@@ -1070,8 +1024,9 @@ class DeleteActivityResponse {
       switch ($fid)
       {
         case 1:
-          if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->totalEventsDeleted);
+          if ($ftype == TType::STRUCT) {
+            $this->userInfo = new \RedRoma\Aroma\User();
+            $xfer += $this->userInfo->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -1088,10 +1043,613 @@ class DeleteActivityResponse {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('DeleteActivityResponse');
-    if ($this->totalEventsDeleted !== null) {
-      $xfer += $output->writeFieldBegin('totalEventsDeleted', TType::I32, 1);
-      $xfer += $output->writeI32($this->totalEventsDeleted);
+    $xfer += $output->writeStructBegin('GetUserInfoResponse');
+    if ($this->userInfo !== null) {
+      if (!is_object($this->userInfo)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('userInfo', TType::STRUCT, 1);
+      $xfer += $this->userInfo->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class GetApplicationInfoRequest {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\AuthenticationToken
+   */
+  public $token = null;
+  /**
+   * @var string
+   */
+  public $applicationId = null;
+  /**
+   * If set, the service will determine if the calling user follows the Application.
+   * 
+   * @var bool
+   */
+  public $includeFollowingInfo = false;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\AuthenticationToken',
+          ),
+        2 => array(
+          'var' => 'applicationId',
+          'type' => TType::STRING,
+          ),
+        3 => array(
+          'var' => 'includeFollowingInfo',
+          'type' => TType::BOOL,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['applicationId'])) {
+        $this->applicationId = $vals['applicationId'];
+      }
+      if (isset($vals['includeFollowingInfo'])) {
+        $this->includeFollowingInfo = $vals['includeFollowingInfo'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'GetApplicationInfoRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\AuthenticationToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->applicationId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::BOOL) {
+            $xfer += $input->readBool($this->includeFollowingInfo);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('GetApplicationInfoRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationId !== null) {
+      $xfer += $output->writeFieldBegin('applicationId', TType::STRING, 2);
+      $xfer += $output->writeString($this->applicationId);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->includeFollowingInfo !== null) {
+      $xfer += $output->writeFieldBegin('includeFollowingInfo', TType::BOOL, 3);
+      $xfer += $output->writeBool($this->includeFollowingInfo);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class GetApplicationInfoResponse {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Application
+   */
+  public $applicationInfo = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'applicationInfo',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Application',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['applicationInfo'])) {
+        $this->applicationInfo = $vals['applicationInfo'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'GetApplicationInfoResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->applicationInfo = new \RedRoma\Aroma\Application();
+            $xfer += $this->applicationInfo->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('GetApplicationInfoResponse');
+    if ($this->applicationInfo !== null) {
+      if (!is_object($this->applicationInfo)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('applicationInfo', TType::STRUCT, 1);
+      $xfer += $this->applicationInfo->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+/**
+ * Defines the required information to provision
+ * an Application with Aroma.
+ */
+class ProvisionApplicationRequest {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
+  /**
+   * @var string
+   */
+  public $applicationName = null;
+  /**
+   * @var int
+   */
+  public $programmingLanguage = null;
+  /**
+   * @var string
+   */
+  public $organizationId = null;
+  /**
+   * @var \RedRoma\Aroma\Image
+   */
+  public $icon = null;
+  /**
+   * @var string[]
+   */
+  public $owners = null;
+  /**
+   * @var string
+   */
+  public $applicationDescription = "";
+  /**
+   * @var int
+   */
+  public $tier =   1;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'applicationName',
+          'type' => TType::STRING,
+          ),
+        3 => array(
+          'var' => 'programmingLanguage',
+          'type' => TType::I32,
+          ),
+        4 => array(
+          'var' => 'organizationId',
+          'type' => TType::STRING,
+          ),
+        5 => array(
+          'var' => 'icon',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Image',
+          ),
+        6 => array(
+          'var' => 'owners',
+          'type' => TType::SET,
+          'etype' => TType::STRING,
+          'elem' => array(
+            'type' => TType::STRING,
+            ),
+          ),
+        7 => array(
+          'var' => 'applicationDescription',
+          'type' => TType::STRING,
+          ),
+        8 => array(
+          'var' => 'tier',
+          'type' => TType::I32,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['applicationName'])) {
+        $this->applicationName = $vals['applicationName'];
+      }
+      if (isset($vals['programmingLanguage'])) {
+        $this->programmingLanguage = $vals['programmingLanguage'];
+      }
+      if (isset($vals['organizationId'])) {
+        $this->organizationId = $vals['organizationId'];
+      }
+      if (isset($vals['icon'])) {
+        $this->icon = $vals['icon'];
+      }
+      if (isset($vals['owners'])) {
+        $this->owners = $vals['owners'];
+      }
+      if (isset($vals['applicationDescription'])) {
+        $this->applicationDescription = $vals['applicationDescription'];
+      }
+      if (isset($vals['tier'])) {
+        $this->tier = $vals['tier'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'ProvisionApplicationRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->applicationName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->programmingLanguage);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->organizationId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->icon = new \RedRoma\Aroma\Image();
+            $xfer += $this->icon->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
+          if ($ftype == TType::SET) {
+            $this->owners = array();
+            $_size0 = 0;
+            $_etype3 = 0;
+            $xfer += $input->readSetBegin($_etype3, $_size0);
+            for ($_i4 = 0; $_i4 < $_size0; ++$_i4)
+            {
+              $elem5 = null;
+              $xfer += $input->readString($elem5);
+              if (is_scalar($elem5)) {
+                $this->owners[$elem5] = true;
+              } else {
+                $this->owners []= $elem5;
+              }
+            }
+            $xfer += $input->readSetEnd();
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 7:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->applicationDescription);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 8:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->tier);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('ProvisionApplicationRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationName !== null) {
+      $xfer += $output->writeFieldBegin('applicationName', TType::STRING, 2);
+      $xfer += $output->writeString($this->applicationName);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->programmingLanguage !== null) {
+      $xfer += $output->writeFieldBegin('programmingLanguage', TType::I32, 3);
+      $xfer += $output->writeI32($this->programmingLanguage);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->organizationId !== null) {
+      $xfer += $output->writeFieldBegin('organizationId', TType::STRING, 4);
+      $xfer += $output->writeString($this->organizationId);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->icon !== null) {
+      if (!is_object($this->icon)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('icon', TType::STRUCT, 5);
+      $xfer += $this->icon->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->owners !== null) {
+      if (!is_array($this->owners)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('owners', TType::SET, 6);
+      {
+        $output->writeSetBegin(TType::STRING, count($this->owners));
+        {
+          foreach ($this->owners as $iter6 => $iter7)
+          {
+            if (is_scalar($iter7)) {
+            $xfer += $output->writeString($iter6);
+            } else {
+            $xfer += $output->writeString($iter7);
+            }
+          }
+        }
+        $output->writeSetEnd();
+      }
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationDescription !== null) {
+      $xfer += $output->writeFieldBegin('applicationDescription', TType::STRING, 7);
+      $xfer += $output->writeString($this->applicationDescription);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->tier !== null) {
+      $xfer += $output->writeFieldBegin('tier', TType::I32, 8);
+      $xfer += $output->writeI32($this->tier);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class ProvisionApplicationResponse {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\ApplicationToken
+   */
+  public $applicationToken = null;
+  /**
+   * @var \RedRoma\Aroma\Application
+   */
+  public $applicationInfo = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'applicationToken',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\ApplicationToken',
+          ),
+        2 => array(
+          'var' => 'applicationInfo',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Application',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['applicationToken'])) {
+        $this->applicationToken = $vals['applicationToken'];
+      }
+      if (isset($vals['applicationInfo'])) {
+        $this->applicationInfo = $vals['applicationInfo'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'ProvisionApplicationResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->applicationToken = new \RedRoma\Aroma\Authentication\ApplicationToken();
+            $xfer += $this->applicationToken->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->applicationInfo = new \RedRoma\Aroma\Application();
+            $xfer += $this->applicationInfo->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('ProvisionApplicationResponse');
+    if ($this->applicationToken !== null) {
+      if (!is_object($this->applicationToken)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('applicationToken', TType::STRUCT, 1);
+      $xfer += $this->applicationToken->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationInfo !== null) {
+      if (!is_object($this->applicationInfo)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('applicationInfo', TType::STRUCT, 2);
+      $xfer += $this->applicationInfo->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -1279,6 +1837,679 @@ class DeleteApplicationResponse {
 
 }
 
+class UpdateApplicationRequest {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
+  /**
+   * @var \RedRoma\Aroma\Application
+   */
+  public $updatedApplication = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'updatedApplication',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Application',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['updatedApplication'])) {
+        $this->updatedApplication = $vals['updatedApplication'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'UpdateApplicationRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->updatedApplication = new \RedRoma\Aroma\Application();
+            $xfer += $this->updatedApplication->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('UpdateApplicationRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->updatedApplication !== null) {
+      if (!is_object($this->updatedApplication)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('updatedApplication', TType::STRUCT, 2);
+      $xfer += $this->updatedApplication->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class UpdateApplicationResponse {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Application
+   */
+  public $application = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'application',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Application',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['application'])) {
+        $this->application = $vals['application'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'UpdateApplicationResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->application = new \RedRoma\Aroma\Application();
+            $xfer += $this->application->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('UpdateApplicationResponse');
+    if ($this->application !== null) {
+      if (!is_object($this->application)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('application', TType::STRUCT, 1);
+      $xfer += $this->application->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class DeleteActivityRequest {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
+  /**
+   * @var string
+   */
+  public $eventId = null;
+  /**
+   * @var bool
+   */
+  public $deleteAll = false;
+  /**
+   * @var string[]
+   */
+  public $multipleEventIds = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'eventId',
+          'type' => TType::STRING,
+          ),
+        3 => array(
+          'var' => 'deleteAll',
+          'type' => TType::BOOL,
+          ),
+        4 => array(
+          'var' => 'multipleEventIds',
+          'type' => TType::LST,
+          'etype' => TType::STRING,
+          'elem' => array(
+            'type' => TType::STRING,
+            ),
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['eventId'])) {
+        $this->eventId = $vals['eventId'];
+      }
+      if (isset($vals['deleteAll'])) {
+        $this->deleteAll = $vals['deleteAll'];
+      }
+      if (isset($vals['multipleEventIds'])) {
+        $this->multipleEventIds = $vals['multipleEventIds'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'DeleteActivityRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->eventId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::BOOL) {
+            $xfer += $input->readBool($this->deleteAll);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::LST) {
+            $this->multipleEventIds = array();
+            $_size8 = 0;
+            $_etype11 = 0;
+            $xfer += $input->readListBegin($_etype11, $_size8);
+            for ($_i12 = 0; $_i12 < $_size8; ++$_i12)
+            {
+              $elem13 = null;
+              $xfer += $input->readString($elem13);
+              $this->multipleEventIds []= $elem13;
+            }
+            $xfer += $input->readListEnd();
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('DeleteActivityRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->eventId !== null) {
+      $xfer += $output->writeFieldBegin('eventId', TType::STRING, 2);
+      $xfer += $output->writeString($this->eventId);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->deleteAll !== null) {
+      $xfer += $output->writeFieldBegin('deleteAll', TType::BOOL, 3);
+      $xfer += $output->writeBool($this->deleteAll);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->multipleEventIds !== null) {
+      if (!is_array($this->multipleEventIds)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('multipleEventIds', TType::LST, 4);
+      {
+        $output->writeListBegin(TType::STRING, count($this->multipleEventIds));
+        {
+          foreach ($this->multipleEventIds as $iter14)
+          {
+            $xfer += $output->writeString($iter14);
+          }
+        }
+        $output->writeListEnd();
+      }
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class DeleteActivityResponse {
+  static $_TSPEC;
+
+  /**
+   * @var int
+   */
+  public $totalEventsDeleted = 0;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'totalEventsDeleted',
+          'type' => TType::I32,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['totalEventsDeleted'])) {
+        $this->totalEventsDeleted = $vals['totalEventsDeleted'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'DeleteActivityResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->totalEventsDeleted);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('DeleteActivityResponse');
+    if ($this->totalEventsDeleted !== null) {
+      $xfer += $output->writeFieldBegin('totalEventsDeleted', TType::I32, 1);
+      $xfer += $output->writeI32($this->totalEventsDeleted);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+/**
+ * Search for Applications that match the given search terms.
+ */
+class SearchForApplicationsRequest {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
+  /**
+   * Performs a search based on the Application name.
+   * 
+   * @var string
+   */
+  public $applicationName = null;
+  /**
+   * @var string
+   */
+  public $organizationId = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'applicationName',
+          'type' => TType::STRING,
+          ),
+        3 => array(
+          'var' => 'organizationId',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['applicationName'])) {
+        $this->applicationName = $vals['applicationName'];
+      }
+      if (isset($vals['organizationId'])) {
+        $this->organizationId = $vals['organizationId'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'SearchForApplicationsRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->applicationName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->organizationId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('SearchForApplicationsRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationName !== null) {
+      $xfer += $output->writeFieldBegin('applicationName', TType::STRING, 2);
+      $xfer += $output->writeString($this->applicationName);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->organizationId !== null) {
+      $xfer += $output->writeFieldBegin('organizationId', TType::STRING, 3);
+      $xfer += $output->writeString($this->organizationId);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class SearchForApplicationsResponse {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Application[]
+   */
+  public $applications = array(
+  );
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'applications',
+          'type' => TType::LST,
+          'etype' => TType::STRUCT,
+          'elem' => array(
+            'type' => TType::STRUCT,
+            'class' => '\RedRoma\Aroma\Application',
+            ),
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['applications'])) {
+        $this->applications = $vals['applications'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'SearchForApplicationsResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::LST) {
+            $this->applications = array();
+            $_size15 = 0;
+            $_etype18 = 0;
+            $xfer += $input->readListBegin($_etype18, $_size15);
+            for ($_i19 = 0; $_i19 < $_size15; ++$_i19)
+            {
+              $elem20 = null;
+              $elem20 = new \RedRoma\Aroma\Application();
+              $xfer += $elem20->read($input);
+              $this->applications []= $elem20;
+            }
+            $xfer += $input->readListEnd();
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('SearchForApplicationsResponse');
+    if ($this->applications !== null) {
+      if (!is_array($this->applications)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('applications', TType::LST, 1);
+      {
+        $output->writeListBegin(TType::STRUCT, count($this->applications));
+        {
+          foreach ($this->applications as $iter21)
+          {
+            $xfer += $iter21->write($output);
+          }
+        }
+        $output->writeListEnd();
+      }
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 /**
  * Deletes a Message.
  * 
@@ -1408,14 +2639,14 @@ class DeleteMessageRequest {
         case 4:
           if ($ftype == TType::LST) {
             $this->messageIds = array();
-            $_size7 = 0;
-            $_etype10 = 0;
-            $xfer += $input->readListBegin($_etype10, $_size7);
-            for ($_i11 = 0; $_i11 < $_size7; ++$_i11)
+            $_size22 = 0;
+            $_etype25 = 0;
+            $xfer += $input->readListBegin($_etype25, $_size22);
+            for ($_i26 = 0; $_i26 < $_size22; ++$_i26)
             {
-              $elem12 = null;
-              $xfer += $input->readString($elem12);
-              $this->messageIds []= $elem12;
+              $elem27 = null;
+              $xfer += $input->readString($elem27);
+              $this->messageIds []= $elem27;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -1468,9 +2699,9 @@ class DeleteMessageRequest {
       {
         $output->writeListBegin(TType::STRING, count($this->messageIds));
         {
-          foreach ($this->messageIds as $iter13)
+          foreach ($this->messageIds as $iter28)
           {
-            $xfer += $output->writeString($iter13);
+            $xfer += $output->writeString($iter28);
           }
         }
         $output->writeListEnd();
@@ -1692,14 +2923,14 @@ class DismissMessageRequest {
         case 4:
           if ($ftype == TType::LST) {
             $this->messageIds = array();
-            $_size14 = 0;
-            $_etype17 = 0;
-            $xfer += $input->readListBegin($_etype17, $_size14);
-            for ($_i18 = 0; $_i18 < $_size14; ++$_i18)
+            $_size29 = 0;
+            $_etype32 = 0;
+            $xfer += $input->readListBegin($_etype32, $_size29);
+            for ($_i33 = 0; $_i33 < $_size29; ++$_i33)
             {
-              $elem19 = null;
-              $xfer += $input->readString($elem19);
-              $this->messageIds []= $elem19;
+              $elem34 = null;
+              $xfer += $input->readString($elem34);
+              $this->messageIds []= $elem34;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -1752,9 +2983,9 @@ class DismissMessageRequest {
       {
         $output->writeListBegin(TType::STRING, count($this->messageIds));
         {
-          foreach ($this->messageIds as $iter20)
+          foreach ($this->messageIds as $iter35)
           {
-            $xfer += $output->writeString($iter20);
+            $xfer += $output->writeString($iter35);
           }
         }
         $output->writeListEnd();
@@ -1839,398 +3070,6 @@ class DismissMessageResponse {
     if ($this->messagesDismissed !== null) {
       $xfer += $output->writeFieldBegin('messagesDismissed', TType::I32, 1);
       $xfer += $output->writeI32($this->messagesDismissed);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-/**
- * Defines the required information to provision
- * an Application with Aroma.
- */
-class ProvisionApplicationRequest {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\UserToken
-   */
-  public $token = null;
-  /**
-   * @var string
-   */
-  public $applicationName = null;
-  /**
-   * @var int
-   */
-  public $programmingLanguage = null;
-  /**
-   * @var string
-   */
-  public $organizationId = null;
-  /**
-   * @var \RedRoma\Aroma\Image
-   */
-  public $icon = null;
-  /**
-   * @var string[]
-   */
-  public $owners = null;
-  /**
-   * @var string
-   */
-  public $applicationDescription = "";
-  /**
-   * @var int
-   */
-  public $tier =   1;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'token',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\UserToken',
-          ),
-        2 => array(
-          'var' => 'applicationName',
-          'type' => TType::STRING,
-          ),
-        3 => array(
-          'var' => 'programmingLanguage',
-          'type' => TType::I32,
-          ),
-        4 => array(
-          'var' => 'organizationId',
-          'type' => TType::STRING,
-          ),
-        5 => array(
-          'var' => 'icon',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Image',
-          ),
-        6 => array(
-          'var' => 'owners',
-          'type' => TType::SET,
-          'etype' => TType::STRING,
-          'elem' => array(
-            'type' => TType::STRING,
-            ),
-          ),
-        7 => array(
-          'var' => 'applicationDescription',
-          'type' => TType::STRING,
-          ),
-        8 => array(
-          'var' => 'tier',
-          'type' => TType::I32,
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['token'])) {
-        $this->token = $vals['token'];
-      }
-      if (isset($vals['applicationName'])) {
-        $this->applicationName = $vals['applicationName'];
-      }
-      if (isset($vals['programmingLanguage'])) {
-        $this->programmingLanguage = $vals['programmingLanguage'];
-      }
-      if (isset($vals['organizationId'])) {
-        $this->organizationId = $vals['organizationId'];
-      }
-      if (isset($vals['icon'])) {
-        $this->icon = $vals['icon'];
-      }
-      if (isset($vals['owners'])) {
-        $this->owners = $vals['owners'];
-      }
-      if (isset($vals['applicationDescription'])) {
-        $this->applicationDescription = $vals['applicationDescription'];
-      }
-      if (isset($vals['tier'])) {
-        $this->tier = $vals['tier'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'ProvisionApplicationRequest';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
-            $xfer += $this->token->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->applicationName);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->programmingLanguage);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->organizationId);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRUCT) {
-            $this->icon = new \RedRoma\Aroma\Image();
-            $xfer += $this->icon->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 6:
-          if ($ftype == TType::SET) {
-            $this->owners = array();
-            $_size21 = 0;
-            $_etype24 = 0;
-            $xfer += $input->readSetBegin($_etype24, $_size21);
-            for ($_i25 = 0; $_i25 < $_size21; ++$_i25)
-            {
-              $elem26 = null;
-              $xfer += $input->readString($elem26);
-              if (is_scalar($elem26)) {
-                $this->owners[$elem26] = true;
-              } else {
-                $this->owners []= $elem26;
-              }
-            }
-            $xfer += $input->readSetEnd();
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 7:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->applicationDescription);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 8:
-          if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->tier);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('ProvisionApplicationRequest');
-    if ($this->token !== null) {
-      if (!is_object($this->token)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
-      $xfer += $this->token->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->applicationName !== null) {
-      $xfer += $output->writeFieldBegin('applicationName', TType::STRING, 2);
-      $xfer += $output->writeString($this->applicationName);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->programmingLanguage !== null) {
-      $xfer += $output->writeFieldBegin('programmingLanguage', TType::I32, 3);
-      $xfer += $output->writeI32($this->programmingLanguage);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->organizationId !== null) {
-      $xfer += $output->writeFieldBegin('organizationId', TType::STRING, 4);
-      $xfer += $output->writeString($this->organizationId);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->icon !== null) {
-      if (!is_object($this->icon)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('icon', TType::STRUCT, 5);
-      $xfer += $this->icon->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->owners !== null) {
-      if (!is_array($this->owners)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('owners', TType::SET, 6);
-      {
-        $output->writeSetBegin(TType::STRING, count($this->owners));
-        {
-          foreach ($this->owners as $iter27 => $iter28)
-          {
-            if (is_scalar($iter28)) {
-            $xfer += $output->writeString($iter27);
-            } else {
-            $xfer += $output->writeString($iter28);
-            }
-          }
-        }
-        $output->writeSetEnd();
-      }
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->applicationDescription !== null) {
-      $xfer += $output->writeFieldBegin('applicationDescription', TType::STRING, 7);
-      $xfer += $output->writeString($this->applicationDescription);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->tier !== null) {
-      $xfer += $output->writeFieldBegin('tier', TType::I32, 8);
-      $xfer += $output->writeI32($this->tier);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class ProvisionApplicationResponse {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\ApplicationToken
-   */
-  public $applicationToken = null;
-  /**
-   * @var \RedRoma\Aroma\Application
-   */
-  public $applicationInfo = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'applicationToken',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\ApplicationToken',
-          ),
-        2 => array(
-          'var' => 'applicationInfo',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Application',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['applicationToken'])) {
-        $this->applicationToken = $vals['applicationToken'];
-      }
-      if (isset($vals['applicationInfo'])) {
-        $this->applicationInfo = $vals['applicationInfo'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'ProvisionApplicationResponse';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->applicationToken = new \RedRoma\Aroma\Authentication\ApplicationToken();
-            $xfer += $this->applicationToken->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->applicationInfo = new \RedRoma\Aroma\Application();
-            $xfer += $this->applicationInfo->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('ProvisionApplicationResponse');
-    if ($this->applicationToken !== null) {
-      if (!is_object($this->applicationToken)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('applicationToken', TType::STRUCT, 1);
-      $xfer += $this->applicationToken->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->applicationInfo !== null) {
-      if (!is_object($this->applicationInfo)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('applicationInfo', TType::STRUCT, 2);
-      $xfer += $this->applicationInfo->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -3296,194 +4135,6 @@ class UnfollowApplicationResponse {
 
 }
 
-class UpdateApplicationRequest {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\UserToken
-   */
-  public $token = null;
-  /**
-   * @var \RedRoma\Aroma\Application
-   */
-  public $updatedApplication = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'token',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\UserToken',
-          ),
-        2 => array(
-          'var' => 'updatedApplication',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Application',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['token'])) {
-        $this->token = $vals['token'];
-      }
-      if (isset($vals['updatedApplication'])) {
-        $this->updatedApplication = $vals['updatedApplication'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'UpdateApplicationRequest';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
-            $xfer += $this->token->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->updatedApplication = new \RedRoma\Aroma\Application();
-            $xfer += $this->updatedApplication->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('UpdateApplicationRequest');
-    if ($this->token !== null) {
-      if (!is_object($this->token)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
-      $xfer += $this->token->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->updatedApplication !== null) {
-      if (!is_object($this->updatedApplication)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('updatedApplication', TType::STRUCT, 2);
-      $xfer += $this->updatedApplication->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class UpdateApplicationResponse {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Application
-   */
-  public $application = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'application',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Application',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['application'])) {
-        $this->application = $vals['application'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'UpdateApplicationResponse';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->application = new \RedRoma\Aroma\Application();
-            $xfer += $this->application->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('UpdateApplicationResponse');
-    if ($this->application !== null) {
-      if (!is_object($this->application)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('application', TType::STRUCT, 1);
-      $xfer += $this->application->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
 /**
  * Sets the Reactions for either the calling user's Inbox, or an Application owned
  * by the calling user.
@@ -3584,15 +4235,15 @@ class UpdateReactionsRequest {
         case 3:
           if ($ftype == TType::LST) {
             $this->reactions = array();
-            $_size29 = 0;
-            $_etype32 = 0;
-            $xfer += $input->readListBegin($_etype32, $_size29);
-            for ($_i33 = 0; $_i33 < $_size29; ++$_i33)
+            $_size36 = 0;
+            $_etype39 = 0;
+            $xfer += $input->readListBegin($_etype39, $_size36);
+            for ($_i40 = 0; $_i40 < $_size36; ++$_i40)
             {
-              $elem34 = null;
-              $elem34 = new \RedRoma\Aroma\Reactions\Reaction();
-              $xfer += $elem34->read($input);
-              $this->reactions []= $elem34;
+              $elem41 = null;
+              $elem41 = new \RedRoma\Aroma\Reactions\Reaction();
+              $xfer += $elem41->read($input);
+              $this->reactions []= $elem41;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -3633,9 +4284,9 @@ class UpdateReactionsRequest {
       {
         $output->writeListBegin(TType::STRUCT, count($this->reactions));
         {
-          foreach ($this->reactions as $iter35)
+          foreach ($this->reactions as $iter42)
           {
-            $xfer += $iter35->write($output);
+            $xfer += $iter42->write($output);
           }
         }
         $output->writeListEnd();
@@ -3705,15 +4356,15 @@ class UpdateReactionsResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->reactions = array();
-            $_size36 = 0;
-            $_etype39 = 0;
-            $xfer += $input->readListBegin($_etype39, $_size36);
-            for ($_i40 = 0; $_i40 < $_size36; ++$_i40)
+            $_size43 = 0;
+            $_etype46 = 0;
+            $xfer += $input->readListBegin($_etype46, $_size43);
+            for ($_i47 = 0; $_i47 < $_size43; ++$_i47)
             {
-              $elem41 = null;
-              $elem41 = new \RedRoma\Aroma\Reactions\Reaction();
-              $xfer += $elem41->read($input);
-              $this->reactions []= $elem41;
+              $elem48 = null;
+              $elem48 = new \RedRoma\Aroma\Reactions\Reaction();
+              $xfer += $elem48->read($input);
+              $this->reactions []= $elem48;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -3741,221 +4392,13 @@ class UpdateReactionsResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->reactions));
         {
-          foreach ($this->reactions as $iter42)
+          foreach ($this->reactions as $iter49)
           {
-            $xfer += $iter42->write($output);
+            $xfer += $iter49->write($output);
           }
         }
         $output->writeListEnd();
       }
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class GetApplicationInfoRequest {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\AuthenticationToken
-   */
-  public $token = null;
-  /**
-   * @var string
-   */
-  public $applicationId = null;
-  /**
-   * If set, the service will determine if the calling user follows the Application.
-   * 
-   * @var bool
-   */
-  public $includeFollowingInfo = false;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'token',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\AuthenticationToken',
-          ),
-        2 => array(
-          'var' => 'applicationId',
-          'type' => TType::STRING,
-          ),
-        3 => array(
-          'var' => 'includeFollowingInfo',
-          'type' => TType::BOOL,
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['token'])) {
-        $this->token = $vals['token'];
-      }
-      if (isset($vals['applicationId'])) {
-        $this->applicationId = $vals['applicationId'];
-      }
-      if (isset($vals['includeFollowingInfo'])) {
-        $this->includeFollowingInfo = $vals['includeFollowingInfo'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'GetApplicationInfoRequest';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->token = new \RedRoma\Aroma\Authentication\AuthenticationToken();
-            $xfer += $this->token->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->applicationId);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::BOOL) {
-            $xfer += $input->readBool($this->includeFollowingInfo);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('GetApplicationInfoRequest');
-    if ($this->token !== null) {
-      if (!is_object($this->token)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
-      $xfer += $this->token->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->applicationId !== null) {
-      $xfer += $output->writeFieldBegin('applicationId', TType::STRING, 2);
-      $xfer += $output->writeString($this->applicationId);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->includeFollowingInfo !== null) {
-      $xfer += $output->writeFieldBegin('includeFollowingInfo', TType::BOOL, 3);
-      $xfer += $output->writeBool($this->includeFollowingInfo);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class GetApplicationInfoResponse {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Application
-   */
-  public $applicationInfo = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'applicationInfo',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Application',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['applicationInfo'])) {
-        $this->applicationInfo = $vals['applicationInfo'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'GetApplicationInfoResponse';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->applicationInfo = new \RedRoma\Aroma\Application();
-            $xfer += $this->applicationInfo->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('GetApplicationInfoResponse');
-    if ($this->applicationInfo !== null) {
-      if (!is_object($this->applicationInfo)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('applicationInfo', TType::STRUCT, 1);
-      $xfer += $this->applicationInfo->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -4154,15 +4597,15 @@ class GetBuzzResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->freshUsers = array();
-            $_size43 = 0;
-            $_etype46 = 0;
-            $xfer += $input->readListBegin($_etype46, $_size43);
-            for ($_i47 = 0; $_i47 < $_size43; ++$_i47)
+            $_size50 = 0;
+            $_etype53 = 0;
+            $xfer += $input->readListBegin($_etype53, $_size50);
+            for ($_i54 = 0; $_i54 < $_size50; ++$_i54)
             {
-              $elem48 = null;
-              $elem48 = new \RedRoma\Aroma\User();
-              $xfer += $elem48->read($input);
-              $this->freshUsers []= $elem48;
+              $elem55 = null;
+              $elem55 = new \RedRoma\Aroma\User();
+              $xfer += $elem55->read($input);
+              $this->freshUsers []= $elem55;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4172,15 +4615,15 @@ class GetBuzzResponse {
         case 2:
           if ($ftype == TType::LST) {
             $this->freshApplications = array();
-            $_size49 = 0;
-            $_etype52 = 0;
-            $xfer += $input->readListBegin($_etype52, $_size49);
-            for ($_i53 = 0; $_i53 < $_size49; ++$_i53)
+            $_size56 = 0;
+            $_etype59 = 0;
+            $xfer += $input->readListBegin($_etype59, $_size56);
+            for ($_i60 = 0; $_i60 < $_size56; ++$_i60)
             {
-              $elem54 = null;
-              $elem54 = new \RedRoma\Aroma\Application();
-              $xfer += $elem54->read($input);
-              $this->freshApplications []= $elem54;
+              $elem61 = null;
+              $elem61 = new \RedRoma\Aroma\Application();
+              $xfer += $elem61->read($input);
+              $this->freshApplications []= $elem61;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4190,15 +4633,15 @@ class GetBuzzResponse {
         case 3:
           if ($ftype == TType::LST) {
             $this->failedHealthChecks = array();
-            $_size55 = 0;
-            $_etype58 = 0;
-            $xfer += $input->readListBegin($_etype58, $_size55);
-            for ($_i59 = 0; $_i59 < $_size55; ++$_i59)
+            $_size62 = 0;
+            $_etype65 = 0;
+            $xfer += $input->readListBegin($_etype65, $_size62);
+            for ($_i66 = 0; $_i66 < $_size62; ++$_i66)
             {
-              $elem60 = null;
-              $elem60 = new \RedRoma\Aroma\Events\HealthCheckFailed();
-              $xfer += $elem60->read($input);
-              $this->failedHealthChecks []= $elem60;
+              $elem67 = null;
+              $elem67 = new \RedRoma\Aroma\Events\HealthCheckFailed();
+              $xfer += $elem67->read($input);
+              $this->failedHealthChecks []= $elem67;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4208,15 +4651,15 @@ class GetBuzzResponse {
         case 4:
           if ($ftype == TType::LST) {
             $this->generalEvents = array();
-            $_size61 = 0;
-            $_etype64 = 0;
-            $xfer += $input->readListBegin($_etype64, $_size61);
-            for ($_i65 = 0; $_i65 < $_size61; ++$_i65)
+            $_size68 = 0;
+            $_etype71 = 0;
+            $xfer += $input->readListBegin($_etype71, $_size68);
+            for ($_i72 = 0; $_i72 < $_size68; ++$_i72)
             {
-              $elem66 = null;
-              $elem66 = new \RedRoma\Aroma\Events\Event();
-              $xfer += $elem66->read($input);
-              $this->generalEvents []= $elem66;
+              $elem73 = null;
+              $elem73 = new \RedRoma\Aroma\Events\Event();
+              $xfer += $elem73->read($input);
+              $this->generalEvents []= $elem73;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4244,9 +4687,9 @@ class GetBuzzResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->freshUsers));
         {
-          foreach ($this->freshUsers as $iter67)
+          foreach ($this->freshUsers as $iter74)
           {
-            $xfer += $iter67->write($output);
+            $xfer += $iter74->write($output);
           }
         }
         $output->writeListEnd();
@@ -4261,9 +4704,9 @@ class GetBuzzResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->freshApplications));
         {
-          foreach ($this->freshApplications as $iter68)
+          foreach ($this->freshApplications as $iter75)
           {
-            $xfer += $iter68->write($output);
+            $xfer += $iter75->write($output);
           }
         }
         $output->writeListEnd();
@@ -4278,9 +4721,9 @@ class GetBuzzResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->failedHealthChecks));
         {
-          foreach ($this->failedHealthChecks as $iter69)
+          foreach ($this->failedHealthChecks as $iter76)
           {
-            $xfer += $iter69->write($output);
+            $xfer += $iter76->write($output);
           }
         }
         $output->writeListEnd();
@@ -4295,9 +4738,9 @@ class GetBuzzResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->generalEvents));
         {
-          foreach ($this->generalEvents as $iter70)
+          foreach ($this->generalEvents as $iter77)
           {
-            $xfer += $iter70->write($output);
+            $xfer += $iter77->write($output);
           }
         }
         $output->writeListEnd();
@@ -4530,15 +4973,15 @@ class GetDashboardResponse {
         case 4:
           if ($ftype == TType::LST) {
             $this->recentMessages = array();
-            $_size71 = 0;
-            $_etype74 = 0;
-            $xfer += $input->readListBegin($_etype74, $_size71);
-            for ($_i75 = 0; $_i75 < $_size71; ++$_i75)
+            $_size78 = 0;
+            $_etype81 = 0;
+            $xfer += $input->readListBegin($_etype81, $_size78);
+            for ($_i82 = 0; $_i82 < $_size78; ++$_i82)
             {
-              $elem76 = null;
-              $elem76 = new \RedRoma\Aroma\Message();
-              $xfer += $elem76->read($input);
-              $this->recentMessages []= $elem76;
+              $elem83 = null;
+              $elem83 = new \RedRoma\Aroma\Message();
+              $xfer += $elem83->read($input);
+              $this->recentMessages []= $elem83;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4602,9 +5045,9 @@ class GetDashboardResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->recentMessages));
         {
-          foreach ($this->recentMessages as $iter77)
+          foreach ($this->recentMessages as $iter84)
           {
-            $xfer += $iter77->write($output);
+            $xfer += $iter84->write($output);
           }
         }
         $output->writeListEnd();
@@ -4790,15 +5233,15 @@ class GetInboxResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->messages = array();
-            $_size78 = 0;
-            $_etype81 = 0;
-            $xfer += $input->readListBegin($_etype81, $_size78);
-            for ($_i82 = 0; $_i82 < $_size78; ++$_i82)
+            $_size85 = 0;
+            $_etype88 = 0;
+            $xfer += $input->readListBegin($_etype88, $_size85);
+            for ($_i89 = 0; $_i89 < $_size85; ++$_i89)
             {
-              $elem83 = null;
-              $elem83 = new \RedRoma\Aroma\Message();
-              $xfer += $elem83->read($input);
-              $this->messages []= $elem83;
+              $elem90 = null;
+              $elem90 = new \RedRoma\Aroma\Message();
+              $xfer += $elem90->read($input);
+              $this->messages []= $elem90;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -4826,9 +5269,9 @@ class GetInboxResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->messages));
         {
-          foreach ($this->messages as $iter84)
+          foreach ($this->messages as $iter91)
           {
-            $xfer += $iter84->write($output);
+            $xfer += $iter91->write($output);
           }
         }
         $output->writeListEnd();
@@ -5039,15 +5482,15 @@ class GetApplicationMessagesResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->messages = array();
-            $_size85 = 0;
-            $_etype88 = 0;
-            $xfer += $input->readListBegin($_etype88, $_size85);
-            for ($_i89 = 0; $_i89 < $_size85; ++$_i89)
+            $_size92 = 0;
+            $_etype95 = 0;
+            $xfer += $input->readListBegin($_etype95, $_size92);
+            for ($_i96 = 0; $_i96 < $_size92; ++$_i96)
             {
-              $elem90 = null;
-              $elem90 = new \RedRoma\Aroma\Message();
-              $xfer += $elem90->read($input);
-              $this->messages []= $elem90;
+              $elem97 = null;
+              $elem97 = new \RedRoma\Aroma\Message();
+              $xfer += $elem97->read($input);
+              $this->messages []= $elem97;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -5082,9 +5525,9 @@ class GetApplicationMessagesResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->messages));
         {
-          foreach ($this->messages as $iter91)
+          foreach ($this->messages as $iter98)
           {
-            $xfer += $iter91->write($output);
+            $xfer += $iter98->write($output);
           }
         }
         $output->writeListEnd();
@@ -5677,15 +6120,15 @@ class GetApplicationsFollowedByResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->applications = array();
-            $_size92 = 0;
-            $_etype95 = 0;
-            $xfer += $input->readListBegin($_etype95, $_size92);
-            for ($_i96 = 0; $_i96 < $_size92; ++$_i96)
+            $_size99 = 0;
+            $_etype102 = 0;
+            $xfer += $input->readListBegin($_etype102, $_size99);
+            for ($_i103 = 0; $_i103 < $_size99; ++$_i103)
             {
-              $elem97 = null;
-              $elem97 = new \RedRoma\Aroma\Application();
-              $xfer += $elem97->read($input);
-              $this->applications []= $elem97;
+              $elem104 = null;
+              $elem104 = new \RedRoma\Aroma\Application();
+              $xfer += $elem104->read($input);
+              $this->applications []= $elem104;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -5713,9 +6156,9 @@ class GetApplicationsFollowedByResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->applications));
         {
-          foreach ($this->applications as $iter98)
+          foreach ($this->applications as $iter105)
           {
-            $xfer += $iter98->write($output);
+            $xfer += $iter105->write($output);
           }
         }
         $output->writeListEnd();
@@ -5886,15 +6329,15 @@ class GetApplicationsOwnedByResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->applications = array();
-            $_size99 = 0;
-            $_etype102 = 0;
-            $xfer += $input->readListBegin($_etype102, $_size99);
-            for ($_i103 = 0; $_i103 < $_size99; ++$_i103)
+            $_size106 = 0;
+            $_etype109 = 0;
+            $xfer += $input->readListBegin($_etype109, $_size106);
+            for ($_i110 = 0; $_i110 < $_size106; ++$_i110)
             {
-              $elem104 = null;
-              $elem104 = new \RedRoma\Aroma\Application();
-              $xfer += $elem104->read($input);
-              $this->applications []= $elem104;
+              $elem111 = null;
+              $elem111 = new \RedRoma\Aroma\Application();
+              $xfer += $elem111->read($input);
+              $this->applications []= $elem111;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -5922,9 +6365,9 @@ class GetApplicationsOwnedByResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->applications));
         {
-          foreach ($this->applications as $iter105)
+          foreach ($this->applications as $iter112)
           {
-            $xfer += $iter105->write($output);
+            $xfer += $iter112->write($output);
           }
         }
         $output->writeListEnd();
@@ -6098,15 +6541,15 @@ class GetActivityResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->events = array();
-            $_size106 = 0;
-            $_etype109 = 0;
-            $xfer += $input->readListBegin($_etype109, $_size106);
-            for ($_i110 = 0; $_i110 < $_size106; ++$_i110)
+            $_size113 = 0;
+            $_etype116 = 0;
+            $xfer += $input->readListBegin($_etype116, $_size113);
+            for ($_i117 = 0; $_i117 < $_size113; ++$_i117)
             {
-              $elem111 = null;
-              $elem111 = new \RedRoma\Aroma\Events\Event();
-              $xfer += $elem111->read($input);
-              $this->events []= $elem111;
+              $elem118 = null;
+              $elem118 = new \RedRoma\Aroma\Events\Event();
+              $xfer += $elem118->read($input);
+              $this->events []= $elem118;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -6134,9 +6577,9 @@ class GetActivityResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->events));
         {
-          foreach ($this->events as $iter112)
+          foreach ($this->events as $iter119)
           {
-            $xfer += $iter112->write($output);
+            $xfer += $iter119->write($output);
           }
         }
         $output->writeListEnd();
@@ -6308,15 +6751,15 @@ class GetReactionsResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->reactions = array();
-            $_size113 = 0;
-            $_etype116 = 0;
-            $xfer += $input->readListBegin($_etype116, $_size113);
-            for ($_i117 = 0; $_i117 < $_size113; ++$_i117)
+            $_size120 = 0;
+            $_etype123 = 0;
+            $xfer += $input->readListBegin($_etype123, $_size120);
+            for ($_i124 = 0; $_i124 < $_size120; ++$_i124)
             {
-              $elem118 = null;
-              $elem118 = new \RedRoma\Aroma\Reactions\Reaction();
-              $xfer += $elem118->read($input);
-              $this->reactions []= $elem118;
+              $elem125 = null;
+              $elem125 = new \RedRoma\Aroma\Reactions\Reaction();
+              $xfer += $elem125->read($input);
+              $this->reactions []= $elem125;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -6344,9 +6787,9 @@ class GetReactionsResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->reactions));
         {
-          foreach ($this->reactions as $iter119)
+          foreach ($this->reactions as $iter126)
           {
-            $xfer += $iter119->write($output);
+            $xfer += $iter126->write($output);
           }
         }
         $output->writeListEnd();
@@ -6496,15 +6939,15 @@ class GetServiceAnnouncementsResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->serviceAnnouncements = array();
-            $_size120 = 0;
-            $_etype123 = 0;
-            $xfer += $input->readListBegin($_etype123, $_size120);
-            for ($_i124 = 0; $_i124 < $_size120; ++$_i124)
+            $_size127 = 0;
+            $_etype130 = 0;
+            $xfer += $input->readListBegin($_etype130, $_size127);
+            for ($_i131 = 0; $_i131 < $_size127; ++$_i131)
             {
-              $elem125 = null;
-              $elem125 = new \RedRoma\Aroma\ServiceAnnouncement();
-              $xfer += $elem125->read($input);
-              $this->serviceAnnouncements []= $elem125;
+              $elem132 = null;
+              $elem132 = new \RedRoma\Aroma\ServiceAnnouncement();
+              $xfer += $elem132->read($input);
+              $this->serviceAnnouncements []= $elem132;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -6532,450 +6975,7 @@ class GetServiceAnnouncementsResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->serviceAnnouncements));
         {
-          foreach ($this->serviceAnnouncements as $iter126)
-          {
-            $xfer += $iter126->write($output);
-          }
-        }
-        $output->writeListEnd();
-      }
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class GetUserInfoRequest {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\UserToken
-   */
-  public $token = null;
-  /**
-   * @var string
-   */
-  public $userId = null;
-  /**
-   * Can Optionally query by Email as well.
-   * 
-   * @var string
-   */
-  public $email = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'token',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\UserToken',
-          ),
-        2 => array(
-          'var' => 'userId',
-          'type' => TType::STRING,
-          ),
-        3 => array(
-          'var' => 'email',
-          'type' => TType::STRING,
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['token'])) {
-        $this->token = $vals['token'];
-      }
-      if (isset($vals['userId'])) {
-        $this->userId = $vals['userId'];
-      }
-      if (isset($vals['email'])) {
-        $this->email = $vals['email'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'GetUserInfoRequest';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
-            $xfer += $this->token->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->userId);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->email);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('GetUserInfoRequest');
-    if ($this->token !== null) {
-      if (!is_object($this->token)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
-      $xfer += $this->token->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->userId !== null) {
-      $xfer += $output->writeFieldBegin('userId', TType::STRING, 2);
-      $xfer += $output->writeString($this->userId);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->email !== null) {
-      $xfer += $output->writeFieldBegin('email', TType::STRING, 3);
-      $xfer += $output->writeString($this->email);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class GetUserInfoResponse {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\User
-   */
-  public $userInfo = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'userInfo',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\User',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['userInfo'])) {
-        $this->userInfo = $vals['userInfo'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'GetUserInfoResponse';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->userInfo = new \RedRoma\Aroma\User();
-            $xfer += $this->userInfo->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('GetUserInfoResponse');
-    if ($this->userInfo !== null) {
-      if (!is_object($this->userInfo)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('userInfo', TType::STRUCT, 1);
-      $xfer += $this->userInfo->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-/**
- * Search for Applications that match the given search terms.
- */
-class SearchForApplicationsRequest {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\UserToken
-   */
-  public $token = null;
-  /**
-   * Performs a search based on the Application name.
-   * 
-   * @var string
-   */
-  public $applicationName = null;
-  /**
-   * @var string
-   */
-  public $organizationId = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'token',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\UserToken',
-          ),
-        2 => array(
-          'var' => 'applicationName',
-          'type' => TType::STRING,
-          ),
-        3 => array(
-          'var' => 'organizationId',
-          'type' => TType::STRING,
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['token'])) {
-        $this->token = $vals['token'];
-      }
-      if (isset($vals['applicationName'])) {
-        $this->applicationName = $vals['applicationName'];
-      }
-      if (isset($vals['organizationId'])) {
-        $this->organizationId = $vals['organizationId'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'SearchForApplicationsRequest';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
-            $xfer += $this->token->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->applicationName);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->organizationId);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('SearchForApplicationsRequest');
-    if ($this->token !== null) {
-      if (!is_object($this->token)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
-      $xfer += $this->token->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->applicationName !== null) {
-      $xfer += $output->writeFieldBegin('applicationName', TType::STRING, 2);
-      $xfer += $output->writeString($this->applicationName);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->organizationId !== null) {
-      $xfer += $output->writeFieldBegin('organizationId', TType::STRING, 3);
-      $xfer += $output->writeString($this->organizationId);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class SearchForApplicationsResponse {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Application[]
-   */
-  public $applications = array(
-  );
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'applications',
-          'type' => TType::LST,
-          'etype' => TType::STRUCT,
-          'elem' => array(
-            'type' => TType::STRUCT,
-            'class' => '\RedRoma\Aroma\Application',
-            ),
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['applications'])) {
-        $this->applications = $vals['applications'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'SearchForApplicationsResponse';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::LST) {
-            $this->applications = array();
-            $_size127 = 0;
-            $_etype130 = 0;
-            $xfer += $input->readListBegin($_etype130, $_size127);
-            for ($_i131 = 0; $_i131 < $_size127; ++$_i131)
-            {
-              $elem132 = null;
-              $elem132 = new \RedRoma\Aroma\Application();
-              $xfer += $elem132->read($input);
-              $this->applications []= $elem132;
-            }
-            $xfer += $input->readListEnd();
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('SearchForApplicationsResponse');
-    if ($this->applications !== null) {
-      if (!is_array($this->applications)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('applications', TType::LST, 1);
-      {
-        $output->writeListBegin(TType::STRUCT, count($this->applications));
-        {
-          foreach ($this->applications as $iter133)
+          foreach ($this->serviceAnnouncements as $iter133)
           {
             $xfer += $iter133->write($output);
           }

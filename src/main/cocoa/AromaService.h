@@ -373,6 +373,392 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
+@interface AromaService_GetUserInfoRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __userId;
+  NSString * __email;
+
+  BOOL __token_isset;
+  BOOL __userId_isset;
+  BOOL __email_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
+@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token userId: (AromaService_uuid) userId email: (NSString *) email;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) userId;
+- (void) setUserId: (AromaService_uuid) userId;
+#endif
+- (BOOL) userIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) email;
+- (void) setEmail: (NSString *) email;
+#endif
+- (BOOL) emailIsSet;
+
+@end
+
+@interface AromaService_GetUserInfoResponse : NSObject <TBase, NSCoding> {
+  AromaService_User __userInfo;
+
+  BOOL __userInfo_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=userInfo, setter=setUserInfo:) AromaService_User userInfo;
+#endif
+
+- (id) init;
+- (id) initWithUserInfo: (AromaService_User) userInfo;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_User) userInfo;
+- (void) setUserInfo: (AromaService_User) userInfo;
+#endif
+- (BOOL) userInfoIsSet;
+
+@end
+
+@interface AromaService_GetApplicationInfoRequest : NSObject <TBase, NSCoding> {
+  AromaService_AuthenticationToken __token;
+  AromaService_uuid __applicationId;
+  BOOL __includeFollowingInfo;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+  BOOL __includeFollowingInfo_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_AuthenticationToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
+@property (nonatomic, getter=includeFollowingInfo, setter=setIncludeFollowingInfo:) BOOL includeFollowingInfo;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_AuthenticationToken) token applicationId: (AromaService_uuid) applicationId includeFollowingInfo: (BOOL) includeFollowingInfo;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_AuthenticationToken) token;
+- (void) setToken: (AromaService_AuthenticationToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) includeFollowingInfo;
+- (void) setIncludeFollowingInfo: (BOOL) includeFollowingInfo;
+#endif
+- (BOOL) includeFollowingInfoIsSet;
+
+@end
+
+@interface AromaService_GetApplicationInfoResponse : NSObject <TBase, NSCoding> {
+  AromaService_Application __applicationInfo;
+
+  BOOL __applicationInfo_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) AromaService_Application applicationInfo;
+#endif
+
+- (id) init;
+- (id) initWithApplicationInfo: (AromaService_Application) applicationInfo;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_Application) applicationInfo;
+- (void) setApplicationInfo: (AromaService_Application) applicationInfo;
+#endif
+- (BOOL) applicationInfoIsSet;
+
+@end
+
+@interface AromaService_ProvisionApplicationRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  NSString * __applicationName;
+  int __programmingLanguage;
+  AromaService_uuid __organizationId;
+  AromaService_Image __icon;
+  NSMutableSet * __owners;
+  NSString * __applicationDescription;
+  int __tier;
+
+  BOOL __token_isset;
+  BOOL __applicationName_isset;
+  BOOL __programmingLanguage_isset;
+  BOOL __organizationId_isset;
+  BOOL __icon_isset;
+  BOOL __owners_isset;
+  BOOL __applicationDescription_isset;
+  BOOL __tier_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
+@property (nonatomic, retain, getter=icon, setter=setIcon:) AromaService_Image icon;
+@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
+@property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
+@property (nonatomic, getter=tier, setter=setTier:) int tier;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (AromaService_uuid) organizationId icon: (AromaService_Image) icon owners: (NSMutableSet *) owners applicationDescription: (NSString *) applicationDescription tier: (int) tier;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) programmingLanguage;
+- (void) setProgrammingLanguage: (int) programmingLanguage;
+#endif
+- (BOOL) programmingLanguageIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) organizationId;
+- (void) setOrganizationId: (AromaService_uuid) organizationId;
+#endif
+- (BOOL) organizationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_Image) icon;
+- (void) setIcon: (AromaService_Image) icon;
+#endif
+- (BOOL) iconIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableSet *) owners;
+- (void) setOwners: (NSMutableSet *) owners;
+#endif
+- (BOOL) ownersIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationDescription;
+- (void) setApplicationDescription: (NSString *) applicationDescription;
+#endif
+- (BOOL) applicationDescriptionIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) tier;
+- (void) setTier: (int) tier;
+#endif
+- (BOOL) tierIsSet;
+
+@end
+
+@interface AromaService_ProvisionApplicationResponse : NSObject <TBase, NSCoding> {
+  AromaService_ApplicationToken __applicationToken;
+  AromaService_Application __applicationInfo;
+
+  BOOL __applicationToken_isset;
+  BOOL __applicationInfo_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AromaService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) AromaService_Application applicationInfo;
+#endif
+
+- (id) init;
+- (id) initWithApplicationToken: (AromaService_ApplicationToken) applicationToken applicationInfo: (AromaService_Application) applicationInfo;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (AromaService_ApplicationToken) applicationToken;
+#endif
+- (BOOL) applicationTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_Application) applicationInfo;
+- (void) setApplicationInfo: (AromaService_Application) applicationInfo;
+#endif
+- (BOOL) applicationInfoIsSet;
+
+@end
+
+@interface AromaService_DeleteApplicationRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __applicationId;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+@end
+
+@interface AromaService_DeleteApplicationResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+
+  BOOL __message_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+@end
+
+@interface AromaService_UpdateApplicationRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_Application __updatedApplication;
+
+  BOOL __token_isset;
+  BOOL __updatedApplication_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=updatedApplication, setter=setUpdatedApplication:) AromaService_Application updatedApplication;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token updatedApplication: (AromaService_Application) updatedApplication;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_Application) updatedApplication;
+- (void) setUpdatedApplication: (AromaService_Application) updatedApplication;
+#endif
+- (BOOL) updatedApplicationIsSet;
+
+@end
+
+@interface AromaService_UpdateApplicationResponse : NSObject <TBase, NSCoding> {
+  AromaService_Application __application;
+
+  BOOL __application_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=application, setter=setApplication:) AromaService_Application application;
+#endif
+
+- (id) init;
+- (id) initWithApplication: (AromaService_Application) application;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_Application) application;
+- (void) setApplication: (AromaService_Application) application;
+#endif
+- (BOOL) applicationIsSet;
+
+@end
+
 @interface AromaService_DeleteActivityRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
   AromaService_uuid __eventId;
@@ -452,21 +838,24 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
-@interface AromaService_DeleteApplicationRequest : NSObject <TBase, NSCoding> {
+@interface AromaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
-  AromaService_uuid __applicationId;
+  NSString * __applicationName;
+  AromaService_uuid __organizationId;
 
   BOOL __token_isset;
-  BOOL __applicationId_isset;
+  BOOL __applicationName_isset;
+  BOOL __organizationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId;
+- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName organizationId: (AromaService_uuid) organizationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -480,25 +869,31 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaService_uuid) applicationId;
-- (void) setApplicationId: (AromaService_uuid) applicationId;
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
 #endif
-- (BOOL) applicationIdIsSet;
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) organizationId;
+- (void) setOrganizationId: (AromaService_uuid) organizationId;
+#endif
+- (BOOL) organizationIdIsSet;
 
 @end
 
-@interface AromaService_DeleteApplicationResponse : NSObject <TBase, NSCoding> {
-  NSString * __message;
+@interface AromaService_SearchForApplicationsResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __applications;
 
-  BOOL __message_isset;
+  BOOL __applications_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=applications, setter=setApplications:) NSMutableArray * applications;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message;
+- (id) initWithApplications: (NSMutableArray *) applications;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -506,10 +901,10 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
+- (NSMutableArray *) applications;
+- (void) setApplications: (NSMutableArray *) applications;
 #endif
-- (BOOL) messageIsSet;
+- (BOOL) applicationsIsSet;
 
 @end
 
@@ -686,130 +1081,6 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) setMessagesDismissed: (AromaService_int) messagesDismissed;
 #endif
 - (BOOL) messagesDismissedIsSet;
-
-@end
-
-@interface AromaService_ProvisionApplicationRequest : NSObject <TBase, NSCoding> {
-  AromaService_UserToken __token;
-  NSString * __applicationName;
-  int __programmingLanguage;
-  AromaService_uuid __organizationId;
-  AromaService_Image __icon;
-  NSMutableSet * __owners;
-  NSString * __applicationDescription;
-  int __tier;
-
-  BOOL __token_isset;
-  BOOL __applicationName_isset;
-  BOOL __programmingLanguage_isset;
-  BOOL __organizationId_isset;
-  BOOL __icon_isset;
-  BOOL __owners_isset;
-  BOOL __applicationDescription_isset;
-  BOOL __tier_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
-@property (nonatomic, retain, getter=icon, setter=setIcon:) AromaService_Image icon;
-@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
-@property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
-@property (nonatomic, getter=tier, setter=setTier:) int tier;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (AromaService_uuid) organizationId icon: (AromaService_Image) icon owners: (NSMutableSet *) owners applicationDescription: (NSString *) applicationDescription tier: (int) tier;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UserToken) token;
-- (void) setToken: (AromaService_UserToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (int) programmingLanguage;
-- (void) setProgrammingLanguage: (int) programmingLanguage;
-#endif
-- (BOOL) programmingLanguageIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_uuid) organizationId;
-- (void) setOrganizationId: (AromaService_uuid) organizationId;
-#endif
-- (BOOL) organizationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_Image) icon;
-- (void) setIcon: (AromaService_Image) icon;
-#endif
-- (BOOL) iconIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSMutableSet *) owners;
-- (void) setOwners: (NSMutableSet *) owners;
-#endif
-- (BOOL) ownersIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationDescription;
-- (void) setApplicationDescription: (NSString *) applicationDescription;
-#endif
-- (BOOL) applicationDescriptionIsSet;
-
-#if !__has_feature(objc_arc)
-- (int) tier;
-- (void) setTier: (int) tier;
-#endif
-- (BOOL) tierIsSet;
-
-@end
-
-@interface AromaService_ProvisionApplicationResponse : NSObject <TBase, NSCoding> {
-  AromaService_ApplicationToken __applicationToken;
-  AromaService_Application __applicationInfo;
-
-  BOOL __applicationToken_isset;
-  BOOL __applicationInfo_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AromaService_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) AromaService_Application applicationInfo;
-#endif
-
-- (id) init;
-- (id) initWithApplicationToken: (AromaService_ApplicationToken) applicationToken applicationInfo: (AromaService_Application) applicationInfo;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_ApplicationToken) applicationToken;
-- (void) setApplicationToken: (AromaService_ApplicationToken) applicationToken;
-#endif
-- (BOOL) applicationTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_Application) applicationInfo;
-- (void) setApplicationInfo: (AromaService_Application) applicationInfo;
-#endif
-- (BOOL) applicationInfoIsSet;
 
 @end
 
@@ -1163,67 +1434,6 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
-@interface AromaService_UpdateApplicationRequest : NSObject <TBase, NSCoding> {
-  AromaService_UserToken __token;
-  AromaService_Application __updatedApplication;
-
-  BOOL __token_isset;
-  BOOL __updatedApplication_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
-@property (nonatomic, retain, getter=updatedApplication, setter=setUpdatedApplication:) AromaService_Application updatedApplication;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AromaService_UserToken) token updatedApplication: (AromaService_Application) updatedApplication;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UserToken) token;
-- (void) setToken: (AromaService_UserToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_Application) updatedApplication;
-- (void) setUpdatedApplication: (AromaService_Application) updatedApplication;
-#endif
-- (BOOL) updatedApplicationIsSet;
-
-@end
-
-@interface AromaService_UpdateApplicationResponse : NSObject <TBase, NSCoding> {
-  AromaService_Application __application;
-
-  BOOL __application_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=application, setter=setApplication:) AromaService_Application application;
-#endif
-
-- (id) init;
-- (id) initWithApplication: (AromaService_Application) application;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_Application) application;
-- (void) setApplication: (AromaService_Application) application;
-#endif
-- (BOOL) applicationIsSet;
-
-@end
-
 @interface AromaService_UpdateReactionsRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
   AromaService_uuid __forAppId;
@@ -1291,76 +1501,6 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) setReactions: (NSMutableArray *) reactions;
 #endif
 - (BOOL) reactionsIsSet;
-
-@end
-
-@interface AromaService_GetApplicationInfoRequest : NSObject <TBase, NSCoding> {
-  AromaService_AuthenticationToken __token;
-  AromaService_uuid __applicationId;
-  BOOL __includeFollowingInfo;
-
-  BOOL __token_isset;
-  BOOL __applicationId_isset;
-  BOOL __includeFollowingInfo_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_AuthenticationToken token;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
-@property (nonatomic, getter=includeFollowingInfo, setter=setIncludeFollowingInfo:) BOOL includeFollowingInfo;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AromaService_AuthenticationToken) token applicationId: (AromaService_uuid) applicationId includeFollowingInfo: (BOOL) includeFollowingInfo;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_AuthenticationToken) token;
-- (void) setToken: (AromaService_AuthenticationToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_uuid) applicationId;
-- (void) setApplicationId: (AromaService_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (BOOL) includeFollowingInfo;
-- (void) setIncludeFollowingInfo: (BOOL) includeFollowingInfo;
-#endif
-- (BOOL) includeFollowingInfoIsSet;
-
-@end
-
-@interface AromaService_GetApplicationInfoResponse : NSObject <TBase, NSCoding> {
-  AromaService_Application __applicationInfo;
-
-  BOOL __applicationInfo_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) AromaService_Application applicationInfo;
-#endif
-
-- (id) init;
-- (id) initWithApplicationInfo: (AromaService_Application) applicationInfo;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_Application) applicationInfo;
-- (void) setApplicationInfo: (AromaService_Application) applicationInfo;
-#endif
-- (BOOL) applicationInfoIsSet;
 
 @end
 
@@ -2122,146 +2262,6 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) setServiceAnnouncements: (NSMutableArray *) serviceAnnouncements;
 #endif
 - (BOOL) serviceAnnouncementsIsSet;
-
-@end
-
-@interface AromaService_GetUserInfoRequest : NSObject <TBase, NSCoding> {
-  AromaService_UserToken __token;
-  AromaService_uuid __userId;
-  NSString * __email;
-
-  BOOL __token_isset;
-  BOOL __userId_isset;
-  BOOL __email_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
-@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
-@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AromaService_UserToken) token userId: (AromaService_uuid) userId email: (NSString *) email;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UserToken) token;
-- (void) setToken: (AromaService_UserToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_uuid) userId;
-- (void) setUserId: (AromaService_uuid) userId;
-#endif
-- (BOOL) userIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) email;
-- (void) setEmail: (NSString *) email;
-#endif
-- (BOOL) emailIsSet;
-
-@end
-
-@interface AromaService_GetUserInfoResponse : NSObject <TBase, NSCoding> {
-  AromaService_User __userInfo;
-
-  BOOL __userInfo_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userInfo, setter=setUserInfo:) AromaService_User userInfo;
-#endif
-
-- (id) init;
-- (id) initWithUserInfo: (AromaService_User) userInfo;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_User) userInfo;
-- (void) setUserInfo: (AromaService_User) userInfo;
-#endif
-- (BOOL) userInfoIsSet;
-
-@end
-
-@interface AromaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
-  AromaService_UserToken __token;
-  NSString * __applicationName;
-  AromaService_uuid __organizationId;
-
-  BOOL __token_isset;
-  BOOL __applicationName_isset;
-  BOOL __organizationId_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName organizationId: (AromaService_uuid) organizationId;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UserToken) token;
-- (void) setToken: (AromaService_UserToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_uuid) organizationId;
-- (void) setOrganizationId: (AromaService_uuid) organizationId;
-#endif
-- (BOOL) organizationIdIsSet;
-
-@end
-
-@interface AromaService_SearchForApplicationsResponse : NSObject <TBase, NSCoding> {
-  NSMutableArray * __applications;
-
-  BOOL __applications_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applications, setter=setApplications:) NSMutableArray * applications;
-#endif
-
-- (id) init;
-- (id) initWithApplications: (NSMutableArray *) applications;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) applications;
-- (void) setApplications: (NSMutableArray *) applications;
-#endif
-- (BOOL) applicationsIsSet;
 
 @end
 

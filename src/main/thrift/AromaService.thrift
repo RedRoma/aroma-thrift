@@ -156,6 +156,9 @@ struct SignUpResponse
     3: uuid userId;
 }
 
+//==========================================================
+// USER INFO
+//==========================================================
 
 struct CheckExistsRequest
 {
@@ -166,6 +169,88 @@ struct CheckExistsResponse
 {
     1: bool exists;
     2: optional string message;
+}
+
+struct GetUserInfoRequest
+{
+    1: UserToken token;
+    2: uuid userId;
+    /** Can Optionally query by Email as well. */
+    3: optional string email;
+}
+
+struct GetUserInfoResponse
+{
+    1: User userInfo;
+}
+
+
+//==========================================================
+// APPLICATION OPERATIONS
+//==========================================================
+
+struct GetApplicationInfoRequest
+{
+    1: AuthenticationToken token;
+    2: uuid applicationId;
+    /** If set, the service will determine if the calling user follows the Application. */
+    3: optional bool includeFollowingInfo = false;
+}
+
+struct GetApplicationInfoResponse
+{
+    1: Application applicationInfo;
+}
+
+
+/**
+ * Defines the required information to provision
+ * an Application with Aroma.
+ */
+struct ProvisionApplicationRequest
+{
+    1: UserToken token;
+    2: string applicationName;
+    3: optional Aroma.ProgrammingLanguage programmingLanguage;
+    4: uuid organizationId;
+    5: optional Image icon;
+    6: optional set<uuid> owners;
+    7: optional string applicationDescription = "";
+    8: optional Aroma.Tier tier = Aroma.Tier.FREE;
+}
+
+/** The Maximum number of characters that can be in the Application Name. */
+const int APPLICATION_NAME_MAX_LENGTH = 20;
+
+/** The Maximum number of owners that an Application can have. */
+const int APPLICATION_MAX_OWNERS = 10;
+
+struct ProvisionApplicationResponse
+{
+    1: ApplicationToken applicationToken;
+    2: Application applicationInfo;
+}
+
+struct DeleteApplicationRequest
+{
+    1: UserToken token;
+    2: uuid applicationId;
+}
+
+struct DeleteApplicationResponse
+{
+    1: optional string message = "Success";
+}
+
+struct UpdateApplicationRequest
+{
+    1: UserToken token;
+    2: Application updatedApplication;
+}
+
+struct UpdateApplicationResponse
+{
+    1: Application application;
 }
 
 struct DeleteActivityRequest
@@ -181,16 +266,22 @@ struct DeleteActivityResponse
     1: optional int totalEventsDeleted = 0;
 }
 
-struct DeleteApplicationRequest
+/**
+ * Search for Applications that match the given search terms.
+ */
+struct SearchForApplicationsRequest
 {
     1: UserToken token;
-    2: uuid applicationId;
+    /** Performs a search based on the Application name. */
+    2: string applicationName;
+    3: optional uuid organizationId;
 }
 
-struct DeleteApplicationResponse
+struct SearchForApplicationsResponse
 {
-    1: optional string message = "Success";
+    1: list<Application> applications = []
 }
+
 
 /**
  * Deletes a Message.
@@ -242,33 +333,6 @@ struct DismissMessageResponse
 }
 
 
-/**
- * Defines the required information to provision
- * an Application with Aroma.
- */
-struct ProvisionApplicationRequest
-{
-    1: UserToken token;
-    2: string applicationName;
-    3: optional Aroma.ProgrammingLanguage programmingLanguage;
-    4: uuid organizationId;
-    5: optional Image icon;
-    6: optional set<uuid> owners;
-    7: optional string applicationDescription = "";
-    8: optional Aroma.Tier tier = Aroma.Tier.FREE;
-}
-
-/** The Maximum number of characters that can be in the Application Name. */
-const int APPLICATION_NAME_MAX_LENGTH = 20;
-
-/** The Maximum number of owners that an Application can have. */
-const int APPLICATION_MAX_OWNERS = 10;
-
-struct ProvisionApplicationResponse
-{
-    1: ApplicationToken applicationToken;
-    2: Application applicationInfo;
-}
 
 /**
  * Regenerates an Application's Token. This is usually done because the original token was:
@@ -355,16 +419,6 @@ struct UnfollowApplicationResponse
     1: optional string message = "Success"
 }
 
-struct UpdateApplicationRequest
-{
-    1: UserToken token;
-    2: Application updatedApplication;
-}
-
-struct UpdateApplicationResponse
-{
-    1: Application application;
-}
 
 /**
  * Sets the Reactions for either the calling user's Inbox, or an Application owned
@@ -396,19 +450,6 @@ struct UpdateReactionsResponse
 //==========================================================
 // Query Operations
 //==========================================================
-
-struct GetApplicationInfoRequest
-{
-    1: AuthenticationToken token;
-    2: uuid applicationId;
-    /** If set, the service will determine if the calling user follows the Application. */
-    3: optional bool includeFollowingInfo = false;
-}
-
-struct GetApplicationInfoResponse
-{
-    1: Application applicationInfo;
-}
 
 /**
  * Buzz is like the latest news happening around
@@ -567,34 +608,7 @@ struct GetServiceAnnouncementsResponse
     1: optional list<Aroma.ServiceAnnouncement> serviceAnnouncements = []
 }
 
-struct GetUserInfoRequest
-{
-    1: UserToken token;
-    2: uuid userId;
-    /** Can Optionally query by Email as well. */
-    3: optional string email;
-}
 
-struct GetUserInfoResponse
-{
-    1: User userInfo;
-}
-
-/**
- * Search for Applications that match the given search terms.
- */
-struct SearchForApplicationsRequest
-{
-    1: UserToken token;
-    /** Performs a search based on the Application name. */
-    2: string applicationName;
-    3: optional uuid organizationId;
-}
-
-struct SearchForApplicationsResponse
-{
-    1: list<Application> applications = []
-}
 
 //==========================================================
 // DEVICE REGISTRATION OPERATIONS
