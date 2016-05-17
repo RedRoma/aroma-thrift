@@ -2508,9 +2508,13 @@
 
 @end
 
+static NSString * AromaChannels_PUSH_NOTIFICATION_KEY_FOR_MESSAGE = @"aroma.message";
 
 @implementation AromaChannels_ChannelsConstants
 + (void) initialize {
+}
++ (NSString *) PUSH_NOTIFICATION_KEY_FOR_MESSAGE{
+  return AromaChannels_PUSH_NOTIFICATION_KEY_FOR_MESSAGE;
 }
 @end
 

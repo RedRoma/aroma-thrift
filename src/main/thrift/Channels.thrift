@@ -29,6 +29,9 @@ struct IOSDevice
     1: string deviceToken;
 }
 
+/** The key used to store the serialized Message Object. **/
+const string PUSH_NOTIFICATION_KEY_FOR_MESSAGE = 'aroma.message';
+
 struct AndroidDevice
 {
     1: string registrationId;

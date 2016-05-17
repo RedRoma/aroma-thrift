@@ -806,3 +806,4 @@ ReceiveMessageRequest.prototype.write = function(output) {
   return;
 };
 
+ttypes.PUSH_NOTIFICATION_KEY_FOR_MESSAGE = 'aroma.message';

@@ -456,4 +456,5 @@ typedef Aroma_uuid AromaChannels_uuid;
 
 @interface AromaChannels_ChannelsConstants : NSObject {
 }
++ (NSString *) PUSH_NOTIFICATION_KEY_FOR_MESSAGE;
 @end

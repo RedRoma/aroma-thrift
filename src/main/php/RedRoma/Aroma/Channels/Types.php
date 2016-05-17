@@ -1257,4 +1257,15 @@ class ReceiveMessageRequest {
 
 }
 
+final class Constant extends \Thrift\Type\TConstant {
+  static protected $PUSH_NOTIFICATION_KEY_FOR_MESSAGE;
+
+  static protected function init_PUSH_NOTIFICATION_KEY_FOR_MESSAGE() {
+    return     /**
+     * The key used to store the serialized Message Object. *
+     */
+"aroma.message";
+  }
+}
+
 

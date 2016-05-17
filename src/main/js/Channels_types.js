@@ -798,3 +798,4 @@ ReceiveMessageRequest.prototype.write = function(output) {
   return;
 };
 
+PUSH_NOTIFICATION_KEY_FOR_MESSAGE = 'aroma.message';
