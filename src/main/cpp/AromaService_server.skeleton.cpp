@@ -242,6 +242,16 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("registerDevice\n");
   }
 
+  /**
+   * Unregisters a Device from a User Account, if it is found. Causes no harm if the device does not exist.
+   * 
+   * @param request
+   */
+  void unregisterDevice(UnregisterDeviceResponse& _return, const UnregisterDeviceRequest& request) {
+    // Your implementation goes here
+    printf("unregisterDevice\n");
+  }
+
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     // Your implementation goes here
     printf("getDashboard\n");

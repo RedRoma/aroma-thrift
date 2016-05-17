@@ -307,6 +307,17 @@ interface AromaServiceIf {
    */
   public function registerDevice(\RedRoma\Aroma\AromaService\RegisterDeviceRequest $request);
   /**
+   * Unregisters a Device from a User Account, if it is found. Causes no harm if the device does not exist.
+   * 
+   * @param \RedRoma\Aroma\AromaService\UnregisterDeviceRequest $request
+   * @return \RedRoma\Aroma\AromaService\UnregisterDeviceResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public function unregisterDevice(\RedRoma\Aroma\AromaService\UnregisterDeviceRequest $request);
+  /**
    * @param \RedRoma\Aroma\AromaService\GetDashboardRequest $request
    * @return \RedRoma\Aroma\AromaService\GetDashboardResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -1968,6 +1979,69 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
       throw $result->ex4;
     }
     throw new \Exception("registerDevice failed: unknown result");
+  }
+
+  public function unregisterDevice(\RedRoma\Aroma\AromaService\UnregisterDeviceRequest $request)
+  {
+    $this->send_unregisterDevice($request);
+    return $this->recv_unregisterDevice();
+  }
+
+  public function send_unregisterDevice(\RedRoma\Aroma\AromaService\UnregisterDeviceRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_unregisterDevice_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'unregisterDevice', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('unregisterDevice', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_unregisterDevice()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_unregisterDevice_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_unregisterDevice_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
+    }
+    throw new \Exception("unregisterDevice failed: unknown result");
   }
 
   public function getDashboard(\RedRoma\Aroma\AromaService\GetDashboardRequest $request)
@@ -8972,6 +9046,266 @@ class AromaService_registerDevice_result {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('AromaService_registerDevice_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_unregisterDevice_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\UnregisterDeviceRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\UnregisterDeviceRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_unregisterDevice_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\UnregisterDeviceRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_unregisterDevice_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_unregisterDevice_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\UnregisterDeviceResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public $ex4 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\UnregisterDeviceResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_unregisterDevice_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\UnregisterDeviceResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_unregisterDevice_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);

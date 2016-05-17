@@ -224,6 +224,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_signIn">signIn</a></li>
 <li><a href="#Fn_AromaService_signUp">signUp</a></li>
 <li><a href="#Fn_AromaService_unfollowApplication">unfollowApplication</a></li>
+<li><a href="#Fn_AromaService_unregisterDevice">unregisterDevice</a></li>
 <li><a href="#Fn_AromaService_updateApplication">updateApplication</a></li>
 <li><a href="#Fn_AromaService_updateReactions">updateReactions</a></li>
 </ul>
@@ -898,6 +899,10 @@ to load the full message.
 <pre><code><a href="#Struct_RegisterDeviceResponse">RegisterDeviceResponse</a></code> registerDevice(<code><a href="#Struct_RegisterDeviceRequest">RegisterDeviceRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Register a Device and associate it with the account of the User calling.
+<br/></div><div class="definition"><h4 id="Fn_AromaService_unregisterDevice">Function: AromaService.unregisterDevice</h4>
+<pre><code><a href="#Struct_UnregisterDeviceResponse">UnregisterDeviceResponse</a></code> unregisterDevice(<code><a href="#Struct_UnregisterDeviceRequest">UnregisterDeviceRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre>Unregisters a Device from a User Account, if it is found. Causes no harm if the device does not exist.
 <br/></div><div class="definition"><h4 id="Fn_AromaService_getDashboard">Function: AromaService.getDashboard</h4>
 <pre><code><a href="#Struct_GetDashboardResponse">GetDashboardResponse</a></code> getDashboard(<code><a href="#Struct_GetDashboardRequest">GetDashboardRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>

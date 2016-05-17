@@ -976,6 +976,14 @@ service AromaService
                                                                                     3 : InvalidTokenException ex3,
                                                                                     4 : UnauthorizedException ex4);
     
+    /**
+     * Unregisters a Device from a User Account, if it is found. Causes no harm if the device does not exist.
+     */
+    UnregisterDeviceResponse unregisterDevice(1 : UnregisterDeviceRequest request) throws(1 : OperationFailedException ex1,
+                                                                                          2 : InvalidArgumentException ex2,
+                                                                                          3 : InvalidTokenException ex3,
+                                                                                          4 : UnauthorizedException ex4);
+    
     //==========================================================
     // DASHBOARD OPERATIONS
     //==========================================================
