@@ -4665,6 +4665,16 @@ GetRegisteredDevicesResponse.prototype.write = function(output) {
 };
 
 RegisterDeviceRequest = module.exports.RegisterDeviceRequest = function(args) {
+  this.token = null;
+  this.device = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.device !== undefined && args.device !== null) {
+      this.device = new Channels_ttypes.MobileDevice(args.device);
+    }
+  }
 };
 RegisterDeviceRequest.prototype = {};
 RegisterDeviceRequest.prototype.read = function(input) {
@@ -4678,7 +4688,27 @@ RegisterDeviceRequest.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.device = new Channels_ttypes.MobileDevice();
+        this.device.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -4687,12 +4717,28 @@ RegisterDeviceRequest.prototype.read = function(input) {
 
 RegisterDeviceRequest.prototype.write = function(output) {
   output.writeStructBegin('RegisterDeviceRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.device !== null && this.device !== undefined) {
+    output.writeFieldBegin('device', Thrift.Type.STRUCT, 2);
+    this.device.write(output);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
 RegisterDeviceResponse = module.exports.RegisterDeviceResponse = function(args) {
+  this.message = 'Successfully Registered';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
 };
 RegisterDeviceResponse.prototype = {};
 RegisterDeviceResponse.prototype.read = function(input) {
@@ -4706,7 +4752,21 @@ RegisterDeviceResponse.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -4715,12 +4775,27 @@ RegisterDeviceResponse.prototype.read = function(input) {
 
 RegisterDeviceResponse.prototype.write = function(output) {
   output.writeStructBegin('RegisterDeviceResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
 UnregisterDeviceRequest = module.exports.UnregisterDeviceRequest = function(args) {
+  this.token = null;
+  this.device = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.device !== undefined && args.device !== null) {
+      this.device = new Channels_ttypes.MobileDevice(args.device);
+    }
+  }
 };
 UnregisterDeviceRequest.prototype = {};
 UnregisterDeviceRequest.prototype.read = function(input) {
@@ -4734,7 +4809,27 @@ UnregisterDeviceRequest.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.device = new Channels_ttypes.MobileDevice();
+        this.device.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -4743,12 +4838,28 @@ UnregisterDeviceRequest.prototype.read = function(input) {
 
 UnregisterDeviceRequest.prototype.write = function(output) {
   output.writeStructBegin('UnregisterDeviceRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.device !== null && this.device !== undefined) {
+    output.writeFieldBegin('device', Thrift.Type.STRUCT, 2);
+    this.device.write(output);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
 UnregisterDeviceResponse = module.exports.UnregisterDeviceResponse = function(args) {
+  this.removedDevice = null;
+  if (args) {
+    if (args.removedDevice !== undefined && args.removedDevice !== null) {
+      this.removedDevice = new Channels_ttypes.MobileDevice(args.removedDevice);
+    }
+  }
 };
 UnregisterDeviceResponse.prototype = {};
 UnregisterDeviceResponse.prototype.read = function(input) {
@@ -4762,7 +4873,22 @@ UnregisterDeviceResponse.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.removedDevice = new Channels_ttypes.MobileDevice();
+        this.removedDevice.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -4771,6 +4897,11 @@ UnregisterDeviceResponse.prototype.read = function(input) {
 
 UnregisterDeviceResponse.prototype.write = function(output) {
   output.writeStructBegin('UnregisterDeviceResponse');
+  if (this.removedDevice !== null && this.removedDevice !== undefined) {
+    output.writeFieldBegin('removedDevice', Thrift.Type.STRUCT, 1);
+    this.removedDevice.write(output);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;

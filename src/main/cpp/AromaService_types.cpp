@@ -6945,6 +6945,14 @@ RegisterDeviceRequest::~RegisterDeviceRequest() throw() {
 }
 
 
+void RegisterDeviceRequest::__set_token(const UserToken& val) {
+  this->token = val;
+}
+
+void RegisterDeviceRequest::__set_device(const MobileDevice& val) {
+  this->device = val;
+}
+
 uint32_t RegisterDeviceRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -6964,7 +6972,28 @@ uint32_t RegisterDeviceRequest::read(::apache::thrift::protocol::TProtocol* ipro
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->device.read(iprot);
+          this->__isset.device = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -6978,6 +7007,14 @@ uint32_t RegisterDeviceRequest::write(::apache::thrift::protocol::TProtocol* opr
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("RegisterDeviceRequest");
 
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("device", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->device.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -6985,20 +7022,27 @@ uint32_t RegisterDeviceRequest::write(::apache::thrift::protocol::TProtocol* opr
 
 void swap(RegisterDeviceRequest &a, RegisterDeviceRequest &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.token, b.token);
+  swap(a.device, b.device);
+  swap(a.__isset, b.__isset);
 }
 
 RegisterDeviceRequest::RegisterDeviceRequest(const RegisterDeviceRequest& other234) {
-  (void) other234;
+  token = other234.token;
+  device = other234.device;
+  __isset = other234.__isset;
 }
 RegisterDeviceRequest& RegisterDeviceRequest::operator=(const RegisterDeviceRequest& other235) {
-  (void) other235;
+  token = other235.token;
+  device = other235.device;
+  __isset = other235.__isset;
   return *this;
 }
 void RegisterDeviceRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "RegisterDeviceRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "device=" << to_string(device);
   out << ")";
 }
 
@@ -7006,6 +7050,11 @@ void RegisterDeviceRequest::printTo(std::ostream& out) const {
 RegisterDeviceResponse::~RegisterDeviceResponse() throw() {
 }
 
+
+void RegisterDeviceResponse::__set_message(const std::string& val) {
+  this->message = val;
+__isset.message = true;
+}
 
 uint32_t RegisterDeviceResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -7026,7 +7075,20 @@ uint32_t RegisterDeviceResponse::read(::apache::thrift::protocol::TProtocol* ipr
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -7040,6 +7102,11 @@ uint32_t RegisterDeviceResponse::write(::apache::thrift::protocol::TProtocol* op
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("RegisterDeviceResponse");
 
+  if (this->__isset.message) {
+    xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+    xfer += oprot->writeString(this->message);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -7047,20 +7114,23 @@ uint32_t RegisterDeviceResponse::write(::apache::thrift::protocol::TProtocol* op
 
 void swap(RegisterDeviceResponse &a, RegisterDeviceResponse &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.message, b.message);
+  swap(a.__isset, b.__isset);
 }
 
 RegisterDeviceResponse::RegisterDeviceResponse(const RegisterDeviceResponse& other236) {
-  (void) other236;
+  message = other236.message;
+  __isset = other236.__isset;
 }
 RegisterDeviceResponse& RegisterDeviceResponse::operator=(const RegisterDeviceResponse& other237) {
-  (void) other237;
+  message = other237.message;
+  __isset = other237.__isset;
   return *this;
 }
 void RegisterDeviceResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "RegisterDeviceResponse(";
+  out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
   out << ")";
 }
 
@@ -7068,6 +7138,14 @@ void RegisterDeviceResponse::printTo(std::ostream& out) const {
 UnregisterDeviceRequest::~UnregisterDeviceRequest() throw() {
 }
 
+
+void UnregisterDeviceRequest::__set_token(const UserToken& val) {
+  this->token = val;
+}
+
+void UnregisterDeviceRequest::__set_device(const MobileDevice& val) {
+  this->device = val;
+}
 
 uint32_t UnregisterDeviceRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -7088,7 +7166,28 @@ uint32_t UnregisterDeviceRequest::read(::apache::thrift::protocol::TProtocol* ip
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->device.read(iprot);
+          this->__isset.device = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -7102,6 +7201,14 @@ uint32_t UnregisterDeviceRequest::write(::apache::thrift::protocol::TProtocol* o
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("UnregisterDeviceRequest");
 
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("device", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->device.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -7109,20 +7216,27 @@ uint32_t UnregisterDeviceRequest::write(::apache::thrift::protocol::TProtocol* o
 
 void swap(UnregisterDeviceRequest &a, UnregisterDeviceRequest &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.token, b.token);
+  swap(a.device, b.device);
+  swap(a.__isset, b.__isset);
 }
 
 UnregisterDeviceRequest::UnregisterDeviceRequest(const UnregisterDeviceRequest& other238) {
-  (void) other238;
+  token = other238.token;
+  device = other238.device;
+  __isset = other238.__isset;
 }
 UnregisterDeviceRequest& UnregisterDeviceRequest::operator=(const UnregisterDeviceRequest& other239) {
-  (void) other239;
+  token = other239.token;
+  device = other239.device;
+  __isset = other239.__isset;
   return *this;
 }
 void UnregisterDeviceRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "UnregisterDeviceRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "device=" << to_string(device);
   out << ")";
 }
 
@@ -7130,6 +7244,10 @@ void UnregisterDeviceRequest::printTo(std::ostream& out) const {
 UnregisterDeviceResponse::~UnregisterDeviceResponse() throw() {
 }
 
+
+void UnregisterDeviceResponse::__set_removedDevice(const MobileDevice& val) {
+  this->removedDevice = val;
+}
 
 uint32_t UnregisterDeviceResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -7150,7 +7268,20 @@ uint32_t UnregisterDeviceResponse::read(::apache::thrift::protocol::TProtocol* i
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->removedDevice.read(iprot);
+          this->__isset.removedDevice = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -7164,6 +7295,10 @@ uint32_t UnregisterDeviceResponse::write(::apache::thrift::protocol::TProtocol* 
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("UnregisterDeviceResponse");
 
+  xfer += oprot->writeFieldBegin("removedDevice", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->removedDevice.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -7171,20 +7306,23 @@ uint32_t UnregisterDeviceResponse::write(::apache::thrift::protocol::TProtocol* 
 
 void swap(UnregisterDeviceResponse &a, UnregisterDeviceResponse &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.removedDevice, b.removedDevice);
+  swap(a.__isset, b.__isset);
 }
 
 UnregisterDeviceResponse::UnregisterDeviceResponse(const UnregisterDeviceResponse& other240) {
-  (void) other240;
+  removedDevice = other240.removedDevice;
+  __isset = other240.__isset;
 }
 UnregisterDeviceResponse& UnregisterDeviceResponse::operator=(const UnregisterDeviceResponse& other241) {
-  (void) other241;
+  removedDevice = other241.removedDevice;
+  __isset = other241.__isset;
   return *this;
 }
 void UnregisterDeviceResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "UnregisterDeviceResponse(";
+  out << "removedDevice=" << to_string(removedDevice);
   out << ")";
 }
 

@@ -2259,50 +2259,124 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 @end
 
 @interface AromaService_RegisterDeviceRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_MobileDevice __device;
+
+  BOOL __token_isset;
+  BOOL __device_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=device, setter=setDevice:) AromaService_MobileDevice device;
+#endif
+
 - (id) init;
+- (id) initWithToken: (AromaService_UserToken) token device: (AromaService_MobileDevice) device;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_MobileDevice) device;
+- (void) setDevice: (AromaService_MobileDevice) device;
+#endif
+- (BOOL) deviceIsSet;
 
 @end
 
 @interface AromaService_RegisterDeviceResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+
+  BOOL __message_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+#endif
+
 - (id) init;
+- (id) initWithMessage: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
 
 @end
 
 @interface AromaService_UnregisterDeviceRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_MobileDevice __device;
+
+  BOOL __token_isset;
+  BOOL __device_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=device, setter=setDevice:) AromaService_MobileDevice device;
+#endif
+
 - (id) init;
+- (id) initWithToken: (AromaService_UserToken) token device: (AromaService_MobileDevice) device;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_MobileDevice) device;
+- (void) setDevice: (AromaService_MobileDevice) device;
+#endif
+- (BOOL) deviceIsSet;
 
 @end
 
 @interface AromaService_UnregisterDeviceResponse : NSObject <TBase, NSCoding> {
+  AromaService_MobileDevice __removedDevice;
+
+  BOOL __removedDevice_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=removedDevice, setter=setRemovedDevice:) AromaService_MobileDevice removedDevice;
+#endif
+
 - (id) init;
+- (id) initWithRemovedDevice: (AromaService_MobileDevice) removedDevice;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_MobileDevice) removedDevice;
+- (void) setRemovedDevice: (AromaService_MobileDevice) removedDevice;
+#endif
+- (BOOL) removedDeviceIsSet;
 
 @end
 

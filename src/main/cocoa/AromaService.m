@@ -13487,22 +13487,62 @@
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (AromaService_UserToken) token device: (AromaService_MobileDevice) device
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __device = [device retain_stub];
+  __device_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"device"])
+  {
+    __device = [[decoder decodeObjectForKey: @"device"] retain_stub];
+    __device_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__device_isset)
+  {
+    [encoder encodeObject: __device forKey: @"device"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __device_isset ? 2654435761 : 0;
+  if (__device_isset)
+  {
+    hash = (hash * 31) ^ [__device hash];
+  }
   return hash;
 }
 
@@ -13515,7 +13555,64 @@
     return NO;
   }
   AromaService_RegisterDeviceRequest *other = (AromaService_RegisterDeviceRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__device_isset != other->__device_isset) ||
+      (__device_isset && ((__device || other->__device) && ![__device isEqual:other->__device]))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__device release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (AromaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (AromaChannels_MobileDevice *) device {
+  return [[__device retain_stub] autorelease_stub];
+}
+
+- (void) setDevice: (AromaChannels_MobileDevice *) device {
+  [device retain_stub];
+  [__device release_stub];
+  __device = device;
+  __device_isset = YES;
+}
+
+- (BOOL) deviceIsSet {
+  return __device_isset;
+}
+
+- (void) unsetDevice {
+  [__device release_stub];
+  __device = nil;
+  __device_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -13533,6 +13630,26 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          AromaChannels_MobileDevice *fieldValue = [[AromaChannels_MobileDevice alloc] init];
+          [fieldValue read: inProtocol];
+          [self setDevice: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -13544,6 +13661,20 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"RegisterDeviceRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__device_isset) {
+    if (__device != nil) {
+      [outProtocol writeFieldBeginWithName: @"device" type: TType_STRUCT fieldID: 2];
+      [__device write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -13554,6 +13685,10 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegisterDeviceRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",device:"];
+  [ms appendFormat: @"%@", __device];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -13565,22 +13700,48 @@
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.message = @"Successfully Registered";
+
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
   return hash;
 }
 
@@ -13593,7 +13754,38 @@
     return NO;
   }
   AromaService_RegisterDeviceResponse *other = (AromaService_RegisterDeviceResponse *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -13611,6 +13803,14 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -13622,6 +13822,13 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"RegisterDeviceResponse"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -13632,6 +13839,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegisterDeviceResponse("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -13643,22 +13852,62 @@
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (AromaService_UserToken) token device: (AromaService_MobileDevice) device
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __device = [device retain_stub];
+  __device_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"device"])
+  {
+    __device = [[decoder decodeObjectForKey: @"device"] retain_stub];
+    __device_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__device_isset)
+  {
+    [encoder encodeObject: __device forKey: @"device"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __device_isset ? 2654435761 : 0;
+  if (__device_isset)
+  {
+    hash = (hash * 31) ^ [__device hash];
+  }
   return hash;
 }
 
@@ -13671,7 +13920,64 @@
     return NO;
   }
   AromaService_UnregisterDeviceRequest *other = (AromaService_UnregisterDeviceRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__device_isset != other->__device_isset) ||
+      (__device_isset && ((__device || other->__device) && ![__device isEqual:other->__device]))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__device release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (AromaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (AromaChannels_MobileDevice *) device {
+  return [[__device retain_stub] autorelease_stub];
+}
+
+- (void) setDevice: (AromaChannels_MobileDevice *) device {
+  [device retain_stub];
+  [__device release_stub];
+  __device = device;
+  __device_isset = YES;
+}
+
+- (BOOL) deviceIsSet {
+  return __device_isset;
+}
+
+- (void) unsetDevice {
+  [__device release_stub];
+  __device = nil;
+  __device_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -13689,6 +13995,26 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          AromaChannels_MobileDevice *fieldValue = [[AromaChannels_MobileDevice alloc] init];
+          [fieldValue read: inProtocol];
+          [self setDevice: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -13700,6 +14026,20 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"UnregisterDeviceRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__device_isset) {
+    if (__device != nil) {
+      [outProtocol writeFieldBeginWithName: @"device" type: TType_STRUCT fieldID: 2];
+      [__device write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -13710,6 +14050,10 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_UnregisterDeviceRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",device:"];
+  [ms appendFormat: @"%@", __device];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -13721,22 +14065,46 @@
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRemovedDevice: (AromaService_MobileDevice) removedDevice
+{
+  self = [super init];
+  __removedDevice = [removedDevice retain_stub];
+  __removedDevice_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"removedDevice"])
+  {
+    __removedDevice = [[decoder decodeObjectForKey: @"removedDevice"] retain_stub];
+    __removedDevice_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__removedDevice_isset)
+  {
+    [encoder encodeObject: __removedDevice forKey: @"removedDevice"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __removedDevice_isset ? 2654435761 : 0;
+  if (__removedDevice_isset)
+  {
+    hash = (hash * 31) ^ [__removedDevice hash];
+  }
   return hash;
 }
 
@@ -13749,7 +14117,38 @@
     return NO;
   }
   AromaService_UnregisterDeviceResponse *other = (AromaService_UnregisterDeviceResponse *)anObject;
+  if ((__removedDevice_isset != other->__removedDevice_isset) ||
+      (__removedDevice_isset && ((__removedDevice || other->__removedDevice) && ![__removedDevice isEqual:other->__removedDevice]))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__removedDevice release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaChannels_MobileDevice *) removedDevice {
+  return [[__removedDevice retain_stub] autorelease_stub];
+}
+
+- (void) setRemovedDevice: (AromaChannels_MobileDevice *) removedDevice {
+  [removedDevice retain_stub];
+  [__removedDevice release_stub];
+  __removedDevice = removedDevice;
+  __removedDevice_isset = YES;
+}
+
+- (BOOL) removedDeviceIsSet {
+  return __removedDevice_isset;
+}
+
+- (void) unsetRemovedDevice {
+  [__removedDevice release_stub];
+  __removedDevice = nil;
+  __removedDevice_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -13767,6 +14166,16 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaChannels_MobileDevice *fieldValue = [[AromaChannels_MobileDevice alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRemovedDevice: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -13778,6 +14187,13 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"UnregisterDeviceResponse"];
+  if (__removedDevice_isset) {
+    if (__removedDevice != nil) {
+      [outProtocol writeFieldBeginWithName: @"removedDevice" type: TType_STRUCT fieldID: 1];
+      [__removedDevice write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -13788,6 +14204,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_UnregisterDeviceResponse("];
+  [ms appendString: @"removedDevice:"];
+  [ms appendFormat: @"%@", __removedDevice];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

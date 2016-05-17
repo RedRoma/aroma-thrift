@@ -6966,11 +6966,37 @@ class GetRegisteredDevicesResponse {
 class RegisterDeviceRequest {
   static $_TSPEC;
 
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
+  /**
+   * @var \RedRoma\Aroma\Channels\MobileDevice
+   */
+  public $device = null;
 
-  public function __construct() {
+  public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'device',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Channels\MobileDevice',
+          ),
         );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['device'])) {
+        $this->device = $vals['device'];
+      }
     }
   }
 
@@ -6993,6 +7019,22 @@ class RegisterDeviceRequest {
       }
       switch ($fid)
       {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->device = new \RedRoma\Aroma\Channels\MobileDevice();
+            $xfer += $this->device->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -7006,6 +7048,22 @@ class RegisterDeviceRequest {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('RegisterDeviceRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->device !== null) {
+      if (!is_object($this->device)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('device', TType::STRUCT, 2);
+      $xfer += $this->device->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -7016,11 +7074,24 @@ class RegisterDeviceRequest {
 class RegisterDeviceResponse {
   static $_TSPEC;
 
+  /**
+   * @var string
+   */
+  public $message = "Successfully Registered";
 
-  public function __construct() {
+  public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
+        1 => array(
+          'var' => 'message',
+          'type' => TType::STRING,
+          ),
         );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['message'])) {
+        $this->message = $vals['message'];
+      }
     }
   }
 
@@ -7043,6 +7114,13 @@ class RegisterDeviceResponse {
       }
       switch ($fid)
       {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->message);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -7056,6 +7134,11 @@ class RegisterDeviceResponse {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('RegisterDeviceResponse');
+    if ($this->message !== null) {
+      $xfer += $output->writeFieldBegin('message', TType::STRING, 1);
+      $xfer += $output->writeString($this->message);
+      $xfer += $output->writeFieldEnd();
+    }
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -7066,11 +7149,37 @@ class RegisterDeviceResponse {
 class UnregisterDeviceRequest {
   static $_TSPEC;
 
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
+  /**
+   * @var \RedRoma\Aroma\Channels\MobileDevice
+   */
+  public $device = null;
 
-  public function __construct() {
+  public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'device',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Channels\MobileDevice',
+          ),
         );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['device'])) {
+        $this->device = $vals['device'];
+      }
     }
   }
 
@@ -7093,6 +7202,22 @@ class UnregisterDeviceRequest {
       }
       switch ($fid)
       {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->device = new \RedRoma\Aroma\Channels\MobileDevice();
+            $xfer += $this->device->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -7106,6 +7231,22 @@ class UnregisterDeviceRequest {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('UnregisterDeviceRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->device !== null) {
+      if (!is_object($this->device)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('device', TType::STRUCT, 2);
+      $xfer += $this->device->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -7116,11 +7257,25 @@ class UnregisterDeviceRequest {
 class UnregisterDeviceResponse {
   static $_TSPEC;
 
+  /**
+   * @var \RedRoma\Aroma\Channels\MobileDevice
+   */
+  public $removedDevice = null;
 
-  public function __construct() {
+  public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
+        1 => array(
+          'var' => 'removedDevice',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Channels\MobileDevice',
+          ),
         );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['removedDevice'])) {
+        $this->removedDevice = $vals['removedDevice'];
+      }
     }
   }
 
@@ -7143,6 +7298,14 @@ class UnregisterDeviceResponse {
       }
       switch ($fid)
       {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->removedDevice = new \RedRoma\Aroma\Channels\MobileDevice();
+            $xfer += $this->removedDevice->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -7156,6 +7319,14 @@ class UnregisterDeviceResponse {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('UnregisterDeviceResponse');
+    if ($this->removedDevice !== null) {
+      if (!is_object($this->removedDevice)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('removedDevice', TType::STRUCT, 1);
+      $xfer += $this->removedDevice->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;

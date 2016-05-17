@@ -647,22 +647,24 @@ struct GetRegisteredDevicesResponse
 
 struct RegisterDeviceRequest
 {
-    
+    1: UserToken token;
+    2: MobileDevice device;
 }
 
 struct RegisterDeviceResponse
 {
-    
+    1: optional string message = "Successfully Registered";
 }
 
 struct UnregisterDeviceRequest
 {
-    
+    1: UserToken token;
+    2: MobileDevice device;
 }
 
 struct UnregisterDeviceResponse
 {
-    
+    1: MobileDevice removedDevice;
 }
 
 

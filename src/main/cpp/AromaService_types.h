@@ -3413,6 +3413,11 @@ inline std::ostream& operator<<(std::ostream& out, const GetRegisteredDevicesRes
   return out;
 }
 
+typedef struct _RegisterDeviceRequest__isset {
+  _RegisterDeviceRequest__isset() : token(false), device(false) {}
+  bool token :1;
+  bool device :1;
+} _RegisterDeviceRequest__isset;
 
 class RegisterDeviceRequest {
  public:
@@ -3423,9 +3428,21 @@ class RegisterDeviceRequest {
   }
 
   virtual ~RegisterDeviceRequest() throw();
+  UserToken token;
+  MobileDevice device;
 
-  bool operator == (const RegisterDeviceRequest & /* rhs */) const
+  _RegisterDeviceRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_device(const MobileDevice& val);
+
+  bool operator == (const RegisterDeviceRequest & rhs) const
   {
+    if (!(token == rhs.token))
+      return false;
+    if (!(device == rhs.device))
+      return false;
     return true;
   }
   bool operator != (const RegisterDeviceRequest &rhs) const {
@@ -3448,19 +3465,32 @@ inline std::ostream& operator<<(std::ostream& out, const RegisterDeviceRequest& 
   return out;
 }
 
+typedef struct _RegisterDeviceResponse__isset {
+  _RegisterDeviceResponse__isset() : message(true) {}
+  bool message :1;
+} _RegisterDeviceResponse__isset;
 
 class RegisterDeviceResponse {
  public:
 
   RegisterDeviceResponse(const RegisterDeviceResponse&);
   RegisterDeviceResponse& operator=(const RegisterDeviceResponse&);
-  RegisterDeviceResponse() {
+  RegisterDeviceResponse() : message("Successfully Registered") {
   }
 
   virtual ~RegisterDeviceResponse() throw();
+  std::string message;
 
-  bool operator == (const RegisterDeviceResponse & /* rhs */) const
+  _RegisterDeviceResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const RegisterDeviceResponse & rhs) const
   {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
     return true;
   }
   bool operator != (const RegisterDeviceResponse &rhs) const {
@@ -3483,6 +3513,11 @@ inline std::ostream& operator<<(std::ostream& out, const RegisterDeviceResponse&
   return out;
 }
 
+typedef struct _UnregisterDeviceRequest__isset {
+  _UnregisterDeviceRequest__isset() : token(false), device(false) {}
+  bool token :1;
+  bool device :1;
+} _UnregisterDeviceRequest__isset;
 
 class UnregisterDeviceRequest {
  public:
@@ -3493,9 +3528,21 @@ class UnregisterDeviceRequest {
   }
 
   virtual ~UnregisterDeviceRequest() throw();
+  UserToken token;
+  MobileDevice device;
 
-  bool operator == (const UnregisterDeviceRequest & /* rhs */) const
+  _UnregisterDeviceRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_device(const MobileDevice& val);
+
+  bool operator == (const UnregisterDeviceRequest & rhs) const
   {
+    if (!(token == rhs.token))
+      return false;
+    if (!(device == rhs.device))
+      return false;
     return true;
   }
   bool operator != (const UnregisterDeviceRequest &rhs) const {
@@ -3518,6 +3565,10 @@ inline std::ostream& operator<<(std::ostream& out, const UnregisterDeviceRequest
   return out;
 }
 
+typedef struct _UnregisterDeviceResponse__isset {
+  _UnregisterDeviceResponse__isset() : removedDevice(false) {}
+  bool removedDevice :1;
+} _UnregisterDeviceResponse__isset;
 
 class UnregisterDeviceResponse {
  public:
@@ -3528,9 +3579,16 @@ class UnregisterDeviceResponse {
   }
 
   virtual ~UnregisterDeviceResponse() throw();
+  MobileDevice removedDevice;
 
-  bool operator == (const UnregisterDeviceResponse & /* rhs */) const
+  _UnregisterDeviceResponse__isset __isset;
+
+  void __set_removedDevice(const MobileDevice& val);
+
+  bool operator == (const UnregisterDeviceResponse & rhs) const
   {
+    if (!(removedDevice == rhs.removedDevice))
+      return false;
     return true;
   }
   bool operator != (const UnregisterDeviceResponse &rhs) const {
