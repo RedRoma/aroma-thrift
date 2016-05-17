@@ -2335,6 +2335,78 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
+@interface AromaService_GetRegisteredDevicesRequest : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface AromaService_GetRegisteredDevicesResponse : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface AromaService_RegisterDeviceRequest : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface AromaService_RegisterDeviceResponse : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface AromaService_UnregisterDeviceRequest : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface AromaService_UnregisterDeviceResponse : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
 @protocol AromaService_AromaService <NSObject>
 - (double) getApiVersion;  // throws TException
 - (AromaService_DeleteApplicationResponse *) deleteApplication: (AromaService_DeleteApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException

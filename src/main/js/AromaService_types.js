@@ -4798,6 +4798,174 @@ SearchForApplicationsResponse.prototype.write = function(output) {
   return;
 };
 
+GetRegisteredDevicesRequest = function(args) {
+};
+GetRegisteredDevicesRequest.prototype = {};
+GetRegisteredDevicesRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetRegisteredDevicesRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetRegisteredDevicesRequest');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetRegisteredDevicesResponse = function(args) {
+};
+GetRegisteredDevicesResponse.prototype = {};
+GetRegisteredDevicesResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetRegisteredDevicesResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetRegisteredDevicesResponse');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegisterDeviceRequest = function(args) {
+};
+RegisterDeviceRequest.prototype = {};
+RegisterDeviceRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegisterDeviceRequest.prototype.write = function(output) {
+  output.writeStructBegin('RegisterDeviceRequest');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegisterDeviceResponse = function(args) {
+};
+RegisterDeviceResponse.prototype = {};
+RegisterDeviceResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegisterDeviceResponse.prototype.write = function(output) {
+  output.writeStructBegin('RegisterDeviceResponse');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+UnregisterDeviceRequest = function(args) {
+};
+UnregisterDeviceRequest.prototype = {};
+UnregisterDeviceRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+UnregisterDeviceRequest.prototype.write = function(output) {
+  output.writeStructBegin('UnregisterDeviceRequest');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+UnregisterDeviceResponse = function(args) {
+};
+UnregisterDeviceResponse.prototype = {};
+UnregisterDeviceResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+UnregisterDeviceResponse.prototype.write = function(output) {
+  output.writeStructBegin('UnregisterDeviceResponse');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 SERVICE_PORT = 7010;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'aroma-srv.aroma.tech','port' : 7010});

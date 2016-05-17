@@ -202,6 +202,18 @@ class SearchForApplicationsRequest;
 
 class SearchForApplicationsResponse;
 
+class GetRegisteredDevicesRequest;
+
+class GetRegisteredDevicesResponse;
+
+class RegisterDeviceRequest;
+
+class RegisterDeviceResponse;
+
+class UnregisterDeviceRequest;
+
+class UnregisterDeviceResponse;
+
 typedef struct _CheckExistsRequest__isset {
   _CheckExistsRequest__isset() : emailAddress(false) {}
   bool emailAddress :1;
@@ -3518,6 +3530,216 @@ class SearchForApplicationsResponse {
 void swap(SearchForApplicationsResponse &a, SearchForApplicationsResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const SearchForApplicationsResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class GetRegisteredDevicesRequest {
+ public:
+
+  GetRegisteredDevicesRequest(const GetRegisteredDevicesRequest&);
+  GetRegisteredDevicesRequest& operator=(const GetRegisteredDevicesRequest&);
+  GetRegisteredDevicesRequest() {
+  }
+
+  virtual ~GetRegisteredDevicesRequest() throw();
+
+  bool operator == (const GetRegisteredDevicesRequest & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const GetRegisteredDevicesRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetRegisteredDevicesRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetRegisteredDevicesRequest &a, GetRegisteredDevicesRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetRegisteredDevicesRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class GetRegisteredDevicesResponse {
+ public:
+
+  GetRegisteredDevicesResponse(const GetRegisteredDevicesResponse&);
+  GetRegisteredDevicesResponse& operator=(const GetRegisteredDevicesResponse&);
+  GetRegisteredDevicesResponse() {
+  }
+
+  virtual ~GetRegisteredDevicesResponse() throw();
+
+  bool operator == (const GetRegisteredDevicesResponse & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const GetRegisteredDevicesResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetRegisteredDevicesResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetRegisteredDevicesResponse &a, GetRegisteredDevicesResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetRegisteredDevicesResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class RegisterDeviceRequest {
+ public:
+
+  RegisterDeviceRequest(const RegisterDeviceRequest&);
+  RegisterDeviceRequest& operator=(const RegisterDeviceRequest&);
+  RegisterDeviceRequest() {
+  }
+
+  virtual ~RegisterDeviceRequest() throw();
+
+  bool operator == (const RegisterDeviceRequest & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const RegisterDeviceRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RegisterDeviceRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RegisterDeviceRequest &a, RegisterDeviceRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RegisterDeviceRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class RegisterDeviceResponse {
+ public:
+
+  RegisterDeviceResponse(const RegisterDeviceResponse&);
+  RegisterDeviceResponse& operator=(const RegisterDeviceResponse&);
+  RegisterDeviceResponse() {
+  }
+
+  virtual ~RegisterDeviceResponse() throw();
+
+  bool operator == (const RegisterDeviceResponse & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const RegisterDeviceResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RegisterDeviceResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RegisterDeviceResponse &a, RegisterDeviceResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RegisterDeviceResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class UnregisterDeviceRequest {
+ public:
+
+  UnregisterDeviceRequest(const UnregisterDeviceRequest&);
+  UnregisterDeviceRequest& operator=(const UnregisterDeviceRequest&);
+  UnregisterDeviceRequest() {
+  }
+
+  virtual ~UnregisterDeviceRequest() throw();
+
+  bool operator == (const UnregisterDeviceRequest & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const UnregisterDeviceRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const UnregisterDeviceRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(UnregisterDeviceRequest &a, UnregisterDeviceRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const UnregisterDeviceRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class UnregisterDeviceResponse {
+ public:
+
+  UnregisterDeviceResponse(const UnregisterDeviceResponse&);
+  UnregisterDeviceResponse& operator=(const UnregisterDeviceResponse&);
+  UnregisterDeviceResponse() {
+  }
+
+  virtual ~UnregisterDeviceResponse() throw();
+
+  bool operator == (const UnregisterDeviceResponse & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const UnregisterDeviceResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const UnregisterDeviceResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(UnregisterDeviceResponse &a, UnregisterDeviceResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const UnregisterDeviceResponse& obj)
 {
   obj.printTo(out);
   return out;

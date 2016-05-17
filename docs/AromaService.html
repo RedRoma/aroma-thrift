@@ -270,6 +270,8 @@ code { line-height: 20px; }
 <a href="#Struct_GetMediaResponse">GetMediaResponse</a><br/>
 <a href="#Struct_GetReactionsRequest">GetReactionsRequest</a><br/>
 <a href="#Struct_GetReactionsResponse">GetReactionsResponse</a><br/>
+<a href="#Struct_GetRegisteredDevicesRequest">GetRegisteredDevicesRequest</a><br/>
+<a href="#Struct_GetRegisteredDevicesResponse">GetRegisteredDevicesResponse</a><br/>
 <a href="#Struct_GetServiceAnnouncementsRequest">GetServiceAnnouncementsRequest</a><br/>
 <a href="#Struct_GetServiceAnnouncementsResponse">GetServiceAnnouncementsResponse</a><br/>
 <a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a><br/>
@@ -286,6 +288,8 @@ code { line-height: 20px; }
 <a href="#Typedef_Reaction">Reaction</a><br/>
 <a href="#Struct_RegenerateApplicationTokenRequest">RegenerateApplicationTokenRequest</a><br/>
 <a href="#Struct_RegenerateApplicationTokenResponse">RegenerateApplicationTokenResponse</a><br/>
+<a href="#Struct_RegisterDeviceRequest">RegisterDeviceRequest</a><br/>
+<a href="#Struct_RegisterDeviceResponse">RegisterDeviceResponse</a><br/>
 <a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
 <a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
 <a href="#Struct_RemoveSavedChannelRequest">RemoveSavedChannelRequest</a><br/>
@@ -301,6 +305,8 @@ code { line-height: 20px; }
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Struct_UnfollowApplicationRequest">UnfollowApplicationRequest</a><br/>
 <a href="#Struct_UnfollowApplicationResponse">UnfollowApplicationResponse</a><br/>
+<a href="#Struct_UnregisterDeviceRequest">UnregisterDeviceRequest</a><br/>
+<a href="#Struct_UnregisterDeviceResponse">UnregisterDeviceResponse</a><br/>
 <a href="#Struct_UpdateApplicationRequest">UpdateApplicationRequest</a><br/>
 <a href="#Struct_UpdateApplicationResponse">UpdateApplicationResponse</a><br/>
 <a href="#Struct_UpdateReactionsRequest">UpdateReactionsRequest</a><br/>
@@ -751,6 +757,18 @@ from the Team @ Aroma Tech.
 <br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsResponse">Struct: SearchForApplicationsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetRegisteredDevicesRequest">Struct: GetRegisteredDevicesRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_GetRegisteredDevicesResponse">Struct: GetRegisteredDevicesResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_RegisterDeviceRequest">Struct: RegisterDeviceRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_RegisterDeviceResponse">Struct: RegisterDeviceResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_UnregisterDeviceRequest">Struct: UnregisterDeviceRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_UnregisterDeviceResponse">Struct: UnregisterDeviceResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_AromaService">Service: AromaService</h3>
 The Aroma Service is designed to be used by People, and not Applications.

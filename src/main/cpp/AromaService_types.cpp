@@ -7180,4 +7180,376 @@ void SearchForApplicationsResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
+
+GetRegisteredDevicesRequest::~GetRegisteredDevicesRequest() throw() {
+}
+
+
+uint32_t GetRegisteredDevicesRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GetRegisteredDevicesRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GetRegisteredDevicesRequest");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(GetRegisteredDevicesRequest &a, GetRegisteredDevicesRequest &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+GetRegisteredDevicesRequest::GetRegisteredDevicesRequest(const GetRegisteredDevicesRequest& other238) {
+  (void) other238;
+}
+GetRegisteredDevicesRequest& GetRegisteredDevicesRequest::operator=(const GetRegisteredDevicesRequest& other239) {
+  (void) other239;
+  return *this;
+}
+void GetRegisteredDevicesRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "GetRegisteredDevicesRequest(";
+  out << ")";
+}
+
+
+GetRegisteredDevicesResponse::~GetRegisteredDevicesResponse() throw() {
+}
+
+
+uint32_t GetRegisteredDevicesResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GetRegisteredDevicesResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GetRegisteredDevicesResponse");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(GetRegisteredDevicesResponse &a, GetRegisteredDevicesResponse &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+GetRegisteredDevicesResponse::GetRegisteredDevicesResponse(const GetRegisteredDevicesResponse& other240) {
+  (void) other240;
+}
+GetRegisteredDevicesResponse& GetRegisteredDevicesResponse::operator=(const GetRegisteredDevicesResponse& other241) {
+  (void) other241;
+  return *this;
+}
+void GetRegisteredDevicesResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "GetRegisteredDevicesResponse(";
+  out << ")";
+}
+
+
+RegisterDeviceRequest::~RegisterDeviceRequest() throw() {
+}
+
+
+uint32_t RegisterDeviceRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t RegisterDeviceRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("RegisterDeviceRequest");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(RegisterDeviceRequest &a, RegisterDeviceRequest &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+RegisterDeviceRequest::RegisterDeviceRequest(const RegisterDeviceRequest& other242) {
+  (void) other242;
+}
+RegisterDeviceRequest& RegisterDeviceRequest::operator=(const RegisterDeviceRequest& other243) {
+  (void) other243;
+  return *this;
+}
+void RegisterDeviceRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "RegisterDeviceRequest(";
+  out << ")";
+}
+
+
+RegisterDeviceResponse::~RegisterDeviceResponse() throw() {
+}
+
+
+uint32_t RegisterDeviceResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t RegisterDeviceResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("RegisterDeviceResponse");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(RegisterDeviceResponse &a, RegisterDeviceResponse &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+RegisterDeviceResponse::RegisterDeviceResponse(const RegisterDeviceResponse& other244) {
+  (void) other244;
+}
+RegisterDeviceResponse& RegisterDeviceResponse::operator=(const RegisterDeviceResponse& other245) {
+  (void) other245;
+  return *this;
+}
+void RegisterDeviceResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "RegisterDeviceResponse(";
+  out << ")";
+}
+
+
+UnregisterDeviceRequest::~UnregisterDeviceRequest() throw() {
+}
+
+
+uint32_t UnregisterDeviceRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t UnregisterDeviceRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("UnregisterDeviceRequest");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(UnregisterDeviceRequest &a, UnregisterDeviceRequest &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+UnregisterDeviceRequest::UnregisterDeviceRequest(const UnregisterDeviceRequest& other246) {
+  (void) other246;
+}
+UnregisterDeviceRequest& UnregisterDeviceRequest::operator=(const UnregisterDeviceRequest& other247) {
+  (void) other247;
+  return *this;
+}
+void UnregisterDeviceRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "UnregisterDeviceRequest(";
+  out << ")";
+}
+
+
+UnregisterDeviceResponse::~UnregisterDeviceResponse() throw() {
+}
+
+
+uint32_t UnregisterDeviceResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t UnregisterDeviceResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("UnregisterDeviceResponse");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(UnregisterDeviceResponse &a, UnregisterDeviceResponse &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+UnregisterDeviceResponse::UnregisterDeviceResponse(const UnregisterDeviceResponse& other248) {
+  (void) other248;
+}
+UnregisterDeviceResponse& UnregisterDeviceResponse::operator=(const UnregisterDeviceResponse& other249) {
+  (void) other249;
+  return *this;
+}
+void UnregisterDeviceResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "UnregisterDeviceResponse(";
+  out << ")";
+}
+
 }}} // namespace

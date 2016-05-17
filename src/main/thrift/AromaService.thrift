@@ -612,9 +612,38 @@ struct SearchForApplicationsResponse
 }
 
 //==========================================================
-// DEVICE OPERATIONS
+// DEVICE REGISTRATION OPERATIONS
 //==========================================================
 
+struct GetRegisteredDevicesRequest
+{
+    
+}
+
+struct GetRegisteredDevicesResponse
+{
+    
+}
+
+struct RegisterDeviceRequest
+{
+    
+}
+
+struct RegisterDeviceResponse
+{
+    
+}
+
+struct UnregisterDeviceRequest
+{
+    
+}
+
+struct UnregisterDeviceResponse
+{
+    
+}
 
 
 /**
