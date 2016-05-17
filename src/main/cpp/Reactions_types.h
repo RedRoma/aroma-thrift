@@ -74,6 +74,10 @@ class ActionRespondWithMessage;
 
 class ActionForwardToUsers;
 
+class ActionSendPushNotification;
+
+class ActionDontSendPushNotification;
+
 class AromaAction;
 
 class Reaction;
@@ -1243,8 +1247,78 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
   return out;
 }
 
+
+class ActionSendPushNotification {
+ public:
+
+  ActionSendPushNotification(const ActionSendPushNotification&);
+  ActionSendPushNotification& operator=(const ActionSendPushNotification&);
+  ActionSendPushNotification() {
+  }
+
+  virtual ~ActionSendPushNotification() throw();
+
+  bool operator == (const ActionSendPushNotification & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const ActionSendPushNotification &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionSendPushNotification & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionSendPushNotification &a, ActionSendPushNotification &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionSendPushNotification& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class ActionDontSendPushNotification {
+ public:
+
+  ActionDontSendPushNotification(const ActionDontSendPushNotification&);
+  ActionDontSendPushNotification& operator=(const ActionDontSendPushNotification&);
+  ActionDontSendPushNotification() {
+  }
+
+  virtual ~ActionDontSendPushNotification() throw();
+
+  bool operator == (const ActionDontSendPushNotification & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const ActionDontSendPushNotification &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionDontSendPushNotification & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionDontSendPushNotification &a, ActionDontSendPushNotification &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionDontSendPushNotification& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _AromaAction__isset {
-  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), forwardToGitter(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), responseWithMessage(false), forwardToUsers(false) {}
+  _AromaAction__isset() : forwardToSlackChannel(false), forwardToSlackUser(false), forwardToGitter(false), sendEmail(false), skipInbox(false), dontStoreMessage(false), responseWithMessage(false), forwardToUsers(false), sendPushNotification(false), dontSendPushNotification(false) {}
   bool forwardToSlackChannel :1;
   bool forwardToSlackUser :1;
   bool forwardToGitter :1;
@@ -1253,6 +1327,8 @@ typedef struct _AromaAction__isset {
   bool dontStoreMessage :1;
   bool responseWithMessage :1;
   bool forwardToUsers :1;
+  bool sendPushNotification :1;
+  bool dontSendPushNotification :1;
 } _AromaAction__isset;
 
 class AromaAction {
@@ -1272,6 +1348,8 @@ class AromaAction {
   ActionDontStoreMessage dontStoreMessage;
   ActionRespondWithMessage responseWithMessage;
   ActionForwardToUsers forwardToUsers;
+  ActionSendPushNotification sendPushNotification;
+  ActionDontSendPushNotification dontSendPushNotification;
 
   _AromaAction__isset __isset;
 
@@ -1291,6 +1369,10 @@ class AromaAction {
 
   void __set_forwardToUsers(const ActionForwardToUsers& val);
 
+  void __set_sendPushNotification(const ActionSendPushNotification& val);
+
+  void __set_dontSendPushNotification(const ActionDontSendPushNotification& val);
+
   bool operator == (const AromaAction & rhs) const
   {
     if (!(forwardToSlackChannel == rhs.forwardToSlackChannel))
@@ -1308,6 +1390,10 @@ class AromaAction {
     if (!(responseWithMessage == rhs.responseWithMessage))
       return false;
     if (!(forwardToUsers == rhs.forwardToUsers))
+      return false;
+    if (!(sendPushNotification == rhs.sendPushNotification))
+      return false;
+    if (!(dontSendPushNotification == rhs.dontSendPushNotification))
       return false;
     return true;
   }

@@ -2285,6 +2285,106 @@ class ActionForwardToUsers {
 
 }
 
+class ActionSendPushNotification {
+  static $_TSPEC;
+
+
+  public function __construct() {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        );
+    }
+  }
+
+  public function getName() {
+    return 'ActionSendPushNotification';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('ActionSendPushNotification');
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class ActionDontSendPushNotification {
+  static $_TSPEC;
+
+
+  public function __construct() {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        );
+    }
+  }
+
+  public function getName() {
+    return 'ActionDontSendPushNotification';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('ActionDontSendPushNotification');
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class AromaAction {
   static $_TSPEC;
 
@@ -2320,6 +2420,14 @@ class AromaAction {
    * @var \RedRoma\Aroma\Reactions\ActionForwardToUsers
    */
   public $forwardToUsers = null;
+  /**
+   * @var \RedRoma\Aroma\Reactions\ActionSendPushNotification
+   */
+  public $sendPushNotification = null;
+  /**
+   * @var \RedRoma\Aroma\Reactions\ActionDontSendPushNotification
+   */
+  public $dontSendPushNotification = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -2364,6 +2472,16 @@ class AromaAction {
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Reactions\ActionForwardToUsers',
           ),
+        9 => array(
+          'var' => 'sendPushNotification',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\ActionSendPushNotification',
+          ),
+        10 => array(
+          'var' => 'dontSendPushNotification',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Reactions\ActionDontSendPushNotification',
+          ),
         );
     }
     if (is_array($vals)) {
@@ -2390,6 +2508,12 @@ class AromaAction {
       }
       if (isset($vals['forwardToUsers'])) {
         $this->forwardToUsers = $vals['forwardToUsers'];
+      }
+      if (isset($vals['sendPushNotification'])) {
+        $this->sendPushNotification = $vals['sendPushNotification'];
+      }
+      if (isset($vals['dontSendPushNotification'])) {
+        $this->dontSendPushNotification = $vals['dontSendPushNotification'];
       }
     }
   }
@@ -2477,6 +2601,22 @@ class AromaAction {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 9:
+          if ($ftype == TType::STRUCT) {
+            $this->sendPushNotification = new \RedRoma\Aroma\Reactions\ActionSendPushNotification();
+            $xfer += $this->sendPushNotification->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 10:
+          if ($ftype == TType::STRUCT) {
+            $this->dontSendPushNotification = new \RedRoma\Aroma\Reactions\ActionDontSendPushNotification();
+            $xfer += $this->dontSendPushNotification->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -2552,6 +2692,22 @@ class AromaAction {
       }
       $xfer += $output->writeFieldBegin('forwardToGitter', TType::STRUCT, 8);
       $xfer += $this->forwardToGitter->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->sendPushNotification !== null) {
+      if (!is_object($this->sendPushNotification)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('sendPushNotification', TType::STRUCT, 9);
+      $xfer += $this->sendPushNotification->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->dontSendPushNotification !== null) {
+      if (!is_object($this->dontSendPushNotification)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('dontSendPushNotification', TType::STRUCT, 10);
+      $xfer += $this->dontSendPushNotification->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

@@ -4544,6 +4544,162 @@
 
 @end
 
+@implementation AromaReactions_ActionSendPushNotification
+
+- (id) init
+{
+  self = [super init];
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionSendPushNotification class]]) {
+    return NO;
+  }
+  AromaReactions_ActionSendPushNotification *other = (AromaReactions_ActionSendPushNotification *)anObject;
+  return YES;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionSendPushNotification"];
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionSendPushNotification("];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_ActionDontSendPushNotification
+
+- (id) init
+{
+  self = [super init];
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionDontSendPushNotification class]]) {
+    return NO;
+  }
+  AromaReactions_ActionDontSendPushNotification *other = (AromaReactions_ActionDontSendPushNotification *)anObject;
+  return YES;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionDontSendPushNotification"];
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionDontSendPushNotification("];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaReactions_AromaAction
 
 - (id) init
@@ -4554,7 +4710,7 @@
   return self;
 }
 
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser forwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser forwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers sendPushNotification: (AromaReactions_ActionSendPushNotification *) sendPushNotification dontSendPushNotification: (AromaReactions_ActionDontSendPushNotification *) dontSendPushNotification
 {
   self = [super init];
   __forwardToSlackChannel = [forwardToSlackChannel retain_stub];
@@ -4573,6 +4729,10 @@
   __responseWithMessage_isset = YES;
   __forwardToUsers = [forwardToUsers retain_stub];
   __forwardToUsers_isset = YES;
+  __sendPushNotification = [sendPushNotification retain_stub];
+  __sendPushNotification_isset = YES;
+  __dontSendPushNotification = [dontSendPushNotification retain_stub];
+  __dontSendPushNotification_isset = YES;
   return self;
 }
 
@@ -4619,6 +4779,16 @@
     __forwardToUsers = [[decoder decodeObjectForKey: @"forwardToUsers"] retain_stub];
     __forwardToUsers_isset = YES;
   }
+  if ([decoder containsValueForKey: @"sendPushNotification"])
+  {
+    __sendPushNotification = [[decoder decodeObjectForKey: @"sendPushNotification"] retain_stub];
+    __sendPushNotification_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"dontSendPushNotification"])
+  {
+    __dontSendPushNotification = [[decoder decodeObjectForKey: @"dontSendPushNotification"] retain_stub];
+    __dontSendPushNotification_isset = YES;
+  }
   return self;
 }
 
@@ -4655,6 +4825,14 @@
   if (__forwardToUsers_isset)
   {
     [encoder encodeObject: __forwardToUsers forKey: @"forwardToUsers"];
+  }
+  if (__sendPushNotification_isset)
+  {
+    [encoder encodeObject: __sendPushNotification forKey: @"sendPushNotification"];
+  }
+  if (__dontSendPushNotification_isset)
+  {
+    [encoder encodeObject: __dontSendPushNotification forKey: @"dontSendPushNotification"];
   }
 }
 
@@ -4701,6 +4879,16 @@
   {
     hash = (hash * 31) ^ [__forwardToUsers hash];
   }
+  hash = (hash * 31) ^ __sendPushNotification_isset ? 2654435761 : 0;
+  if (__sendPushNotification_isset)
+  {
+    hash = (hash * 31) ^ [__sendPushNotification hash];
+  }
+  hash = (hash * 31) ^ __dontSendPushNotification_isset ? 2654435761 : 0;
+  if (__dontSendPushNotification_isset)
+  {
+    hash = (hash * 31) ^ [__dontSendPushNotification hash];
+  }
   return hash;
 }
 
@@ -4745,6 +4933,14 @@
       (__forwardToUsers_isset && ((__forwardToUsers || other->__forwardToUsers) && ![__forwardToUsers isEqual:other->__forwardToUsers]))) {
     return NO;
   }
+  if ((__sendPushNotification_isset != other->__sendPushNotification_isset) ||
+      (__sendPushNotification_isset && ((__sendPushNotification || other->__sendPushNotification) && ![__sendPushNotification isEqual:other->__sendPushNotification]))) {
+    return NO;
+  }
+  if ((__dontSendPushNotification_isset != other->__dontSendPushNotification_isset) ||
+      (__dontSendPushNotification_isset && ((__dontSendPushNotification || other->__dontSendPushNotification) && ![__dontSendPushNotification isEqual:other->__dontSendPushNotification]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -4758,6 +4954,8 @@
   [__dontStoreMessage release_stub];
   [__responseWithMessage release_stub];
   [__forwardToUsers release_stub];
+  [__sendPushNotification release_stub];
+  [__dontSendPushNotification release_stub];
   [super dealloc_stub];
 }
 
@@ -4929,6 +5127,48 @@
   __forwardToUsers_isset = NO;
 }
 
+- (AromaReactions_ActionSendPushNotification *) sendPushNotification {
+  return [[__sendPushNotification retain_stub] autorelease_stub];
+}
+
+- (void) setSendPushNotification: (AromaReactions_ActionSendPushNotification *) sendPushNotification {
+  [sendPushNotification retain_stub];
+  [__sendPushNotification release_stub];
+  __sendPushNotification = sendPushNotification;
+  __sendPushNotification_isset = YES;
+}
+
+- (BOOL) sendPushNotificationIsSet {
+  return __sendPushNotification_isset;
+}
+
+- (void) unsetSendPushNotification {
+  [__sendPushNotification release_stub];
+  __sendPushNotification = nil;
+  __sendPushNotification_isset = NO;
+}
+
+- (AromaReactions_ActionDontSendPushNotification *) dontSendPushNotification {
+  return [[__dontSendPushNotification retain_stub] autorelease_stub];
+}
+
+- (void) setDontSendPushNotification: (AromaReactions_ActionDontSendPushNotification *) dontSendPushNotification {
+  [dontSendPushNotification retain_stub];
+  [__dontSendPushNotification release_stub];
+  __dontSendPushNotification = dontSendPushNotification;
+  __dontSendPushNotification_isset = YES;
+}
+
+- (BOOL) dontSendPushNotificationIsSet {
+  return __dontSendPushNotification_isset;
+}
+
+- (void) unsetDontSendPushNotification {
+  [__dontSendPushNotification release_stub];
+  __dontSendPushNotification = nil;
+  __dontSendPushNotification_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -5024,6 +5264,26 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 9:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionSendPushNotification *fieldValue = [[AromaReactions_ActionSendPushNotification alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSendPushNotification: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 10:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionDontSendPushNotification *fieldValue = [[AromaReactions_ActionDontSendPushNotification alloc] init];
+          [fieldValue read: inProtocol];
+          [self setDontSendPushNotification: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -5091,6 +5351,20 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__sendPushNotification_isset) {
+    if (__sendPushNotification != nil) {
+      [outProtocol writeFieldBeginWithName: @"sendPushNotification" type: TType_STRUCT fieldID: 9];
+      [__sendPushNotification write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__dontSendPushNotification_isset) {
+    if (__dontSendPushNotification != nil) {
+      [outProtocol writeFieldBeginWithName: @"dontSendPushNotification" type: TType_STRUCT fieldID: 10];
+      [__dontSendPushNotification write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -5117,6 +5391,10 @@
   [ms appendFormat: @"%@", __responseWithMessage];
   [ms appendString: @",forwardToUsers:"];
   [ms appendFormat: @"%@", __forwardToUsers];
+  [ms appendString: @",sendPushNotification:"];
+  [ms appendFormat: @"%@", __sendPushNotification];
+  [ms appendString: @",dontSendPushNotification:"];
+  [ms appendFormat: @"%@", __dontSendPushNotification];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
