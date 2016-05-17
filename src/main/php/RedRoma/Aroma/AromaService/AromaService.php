@@ -285,6 +285,8 @@ interface AromaServiceIf {
    */
   public function checkIfDeviceIsRegistered(\RedRoma\Aroma\AromaService\CheckIfDeviceIsRegisteredRequest $request);
   /**
+   * Get a list of all the devices currently registered to a user account.
+   * 
    * @param \RedRoma\Aroma\AromaService\GetRegisteredDevicesRequest $request
    * @return \RedRoma\Aroma\AromaService\GetRegisteredDevicesResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -294,6 +296,8 @@ interface AromaServiceIf {
    */
   public function getRegisteredDevices(\RedRoma\Aroma\AromaService\GetRegisteredDevicesRequest $request);
   /**
+   * Register a Device and associate it with the account of the User calling.
+   * 
    * @param \RedRoma\Aroma\AromaService\RegisterDeviceRequest $request
    * @return \RedRoma\Aroma\AromaService\RegisterDeviceResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -1834,8 +1838,8 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex3 !== null) {
       throw $result->ex3;
     }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
     }
     throw new \Exception("checkIfDeviceIsRegistered failed: unknown result");
   }
@@ -1897,8 +1901,8 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex3 !== null) {
       throw $result->ex3;
     }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
     }
     throw new \Exception("getRegisteredDevices failed: unknown result");
   }
@@ -1960,8 +1964,8 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex3 !== null) {
       throw $result->ex3;
     }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
     }
     throw new \Exception("registerDevice failed: unknown result");
   }
@@ -8325,7 +8329,7 @@ class AromaService_checkIfDeviceIsRegistered_result {
   /**
    * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public $ex5 = null;
+  public $ex4 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -8351,7 +8355,7 @@ class AromaService_checkIfDeviceIsRegistered_result {
           'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
           ),
         4 => array(
-          'var' => 'ex5',
+          'var' => 'ex4',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
           ),
@@ -8370,8 +8374,8 @@ class AromaService_checkIfDeviceIsRegistered_result {
       if (isset($vals['ex3'])) {
         $this->ex3 = $vals['ex3'];
       }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
       }
     }
   }
@@ -8429,8 +8433,8 @@ class AromaService_checkIfDeviceIsRegistered_result {
           break;
         case 4:
           if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex4->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -8471,9 +8475,9 @@ class AromaService_checkIfDeviceIsRegistered_result {
       $xfer += $this->ex3->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 4);
-      $xfer += $this->ex5->write($output);
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -8585,7 +8589,7 @@ class AromaService_getRegisteredDevices_result {
   /**
    * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public $ex5 = null;
+  public $ex4 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -8611,7 +8615,7 @@ class AromaService_getRegisteredDevices_result {
           'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
           ),
         4 => array(
-          'var' => 'ex5',
+          'var' => 'ex4',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
           ),
@@ -8630,8 +8634,8 @@ class AromaService_getRegisteredDevices_result {
       if (isset($vals['ex3'])) {
         $this->ex3 = $vals['ex3'];
       }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
       }
     }
   }
@@ -8689,8 +8693,8 @@ class AromaService_getRegisteredDevices_result {
           break;
         case 4:
           if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex4->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -8731,9 +8735,9 @@ class AromaService_getRegisteredDevices_result {
       $xfer += $this->ex3->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 4);
-      $xfer += $this->ex5->write($output);
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -8845,7 +8849,7 @@ class AromaService_registerDevice_result {
   /**
    * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public $ex5 = null;
+  public $ex4 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -8871,7 +8875,7 @@ class AromaService_registerDevice_result {
           'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
           ),
         4 => array(
-          'var' => 'ex5',
+          'var' => 'ex4',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
           ),
@@ -8890,8 +8894,8 @@ class AromaService_registerDevice_result {
       if (isset($vals['ex3'])) {
         $this->ex3 = $vals['ex3'];
       }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
       }
     }
   }
@@ -8949,8 +8953,8 @@ class AromaService_registerDevice_result {
           break;
         case 4:
           if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex4->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -8991,9 +8995,9 @@ class AromaService_registerDevice_result {
       $xfer += $this->ex3->write($output);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 4);
-      $xfer += $this->ex5->write($output);
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

@@ -958,17 +958,23 @@ service AromaService
     CheckIfDeviceIsRegisteredResponse checkIfDeviceIsRegistered(1 : CheckIfDeviceIsRegisteredRequest request) throws(1 : OperationFailedException ex1,
                                                                                                                      2 : InvalidArgumentException ex2,
                                                                                                                      3 : InvalidTokenException ex3,
-                                                                                                                     4 : UnauthorizedException ex5);
+                                                                                                                     4 : UnauthorizedException ex4);
     
+    /**
+     * Get a list of all the devices currently registered to a user account.
+     */
     GetRegisteredDevicesResponse getRegisteredDevices(1 : GetRegisteredDevicesRequest request) throws(1 : OperationFailedException ex1,
                                                                                                       2 : InvalidArgumentException ex2,
                                                                                                       3 : InvalidTokenException ex3,
-                                                                                                      4 : UnauthorizedException ex5);
+                                                                                                      4 : UnauthorizedException ex4);
     
+    /**
+     * Register a Device and associate it with the account of the User calling.
+     */
     RegisterDeviceResponse registerDevice(1 : RegisterDeviceRequest request) throws(1 : OperationFailedException ex1,
                                                                                     2 : InvalidArgumentException ex2,
                                                                                     3 : InvalidTokenException ex3,
-                                                                                    4 : UnauthorizedException ex5);
+                                                                                    4 : UnauthorizedException ex4);
     
     //==========================================================
     // DASHBOARD OPERATIONS

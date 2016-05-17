@@ -222,11 +222,21 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("checkIfDeviceIsRegistered\n");
   }
 
+  /**
+   * Get a list of all the devices currently registered to a user account.
+   * 
+   * @param request
+   */
   void getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request) {
     // Your implementation goes here
     printf("getRegisteredDevices\n");
   }
 
+  /**
+   * Register a Device and associate it with the account of the User calling.
+   * 
+   * @param request
+   */
   void registerDevice(RegisterDeviceResponse& _return, const RegisterDeviceRequest& request) {
     // Your implementation goes here
     printf("registerDevice\n");

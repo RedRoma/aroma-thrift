@@ -142,7 +142,19 @@ class AromaServiceIf {
   virtual void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request) = 0;
   virtual void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request) = 0;
   virtual void checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request) = 0;
+
+  /**
+   * Get a list of all the devices currently registered to a user account.
+   * 
+   * @param request
+   */
   virtual void getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request) = 0;
+
+  /**
+   * Register a Device and associate it with the account of the User calling.
+   * 
+   * @param request
+   */
   virtual void registerDevice(RegisterDeviceResponse& _return, const RegisterDeviceRequest& request) = 0;
   virtual void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) = 0;
   virtual void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) = 0;
@@ -3400,12 +3412,12 @@ class AromaService_checkIfDeviceIsRegistered_pargs {
 };
 
 typedef struct _AromaService_checkIfDeviceIsRegistered_result__isset {
-  _AromaService_checkIfDeviceIsRegistered_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  _AromaService_checkIfDeviceIsRegistered_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex5 :1;
+  bool ex4 :1;
 } _AromaService_checkIfDeviceIsRegistered_result__isset;
 
 class AromaService_checkIfDeviceIsRegistered_result {
@@ -3421,7 +3433,7 @@ class AromaService_checkIfDeviceIsRegistered_result {
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
-  UnauthorizedException ex5;
+  UnauthorizedException ex4;
 
   _AromaService_checkIfDeviceIsRegistered_result__isset __isset;
 
@@ -3433,7 +3445,7 @@ class AromaService_checkIfDeviceIsRegistered_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex5(const UnauthorizedException& val);
+  void __set_ex4(const UnauthorizedException& val);
 
   bool operator == (const AromaService_checkIfDeviceIsRegistered_result & rhs) const
   {
@@ -3445,7 +3457,7 @@ class AromaService_checkIfDeviceIsRegistered_result {
       return false;
     if (!(ex3 == rhs.ex3))
       return false;
-    if (!(ex5 == rhs.ex5))
+    if (!(ex4 == rhs.ex4))
       return false;
     return true;
   }
@@ -3461,12 +3473,12 @@ class AromaService_checkIfDeviceIsRegistered_result {
 };
 
 typedef struct _AromaService_checkIfDeviceIsRegistered_presult__isset {
-  _AromaService_checkIfDeviceIsRegistered_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  _AromaService_checkIfDeviceIsRegistered_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex5 :1;
+  bool ex4 :1;
 } _AromaService_checkIfDeviceIsRegistered_presult__isset;
 
 class AromaService_checkIfDeviceIsRegistered_presult {
@@ -3478,7 +3490,7 @@ class AromaService_checkIfDeviceIsRegistered_presult {
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
-  UnauthorizedException* ex5;
+  UnauthorizedException* ex4;
 
   _AromaService_checkIfDeviceIsRegistered_presult__isset __isset;
 
@@ -3536,12 +3548,12 @@ class AromaService_getRegisteredDevices_pargs {
 };
 
 typedef struct _AromaService_getRegisteredDevices_result__isset {
-  _AromaService_getRegisteredDevices_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  _AromaService_getRegisteredDevices_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex5 :1;
+  bool ex4 :1;
 } _AromaService_getRegisteredDevices_result__isset;
 
 class AromaService_getRegisteredDevices_result {
@@ -3557,7 +3569,7 @@ class AromaService_getRegisteredDevices_result {
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
-  UnauthorizedException ex5;
+  UnauthorizedException ex4;
 
   _AromaService_getRegisteredDevices_result__isset __isset;
 
@@ -3569,7 +3581,7 @@ class AromaService_getRegisteredDevices_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex5(const UnauthorizedException& val);
+  void __set_ex4(const UnauthorizedException& val);
 
   bool operator == (const AromaService_getRegisteredDevices_result & rhs) const
   {
@@ -3581,7 +3593,7 @@ class AromaService_getRegisteredDevices_result {
       return false;
     if (!(ex3 == rhs.ex3))
       return false;
-    if (!(ex5 == rhs.ex5))
+    if (!(ex4 == rhs.ex4))
       return false;
     return true;
   }
@@ -3597,12 +3609,12 @@ class AromaService_getRegisteredDevices_result {
 };
 
 typedef struct _AromaService_getRegisteredDevices_presult__isset {
-  _AromaService_getRegisteredDevices_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  _AromaService_getRegisteredDevices_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex5 :1;
+  bool ex4 :1;
 } _AromaService_getRegisteredDevices_presult__isset;
 
 class AromaService_getRegisteredDevices_presult {
@@ -3614,7 +3626,7 @@ class AromaService_getRegisteredDevices_presult {
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
-  UnauthorizedException* ex5;
+  UnauthorizedException* ex4;
 
   _AromaService_getRegisteredDevices_presult__isset __isset;
 
@@ -3672,12 +3684,12 @@ class AromaService_registerDevice_pargs {
 };
 
 typedef struct _AromaService_registerDevice_result__isset {
-  _AromaService_registerDevice_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  _AromaService_registerDevice_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex5 :1;
+  bool ex4 :1;
 } _AromaService_registerDevice_result__isset;
 
 class AromaService_registerDevice_result {
@@ -3693,7 +3705,7 @@ class AromaService_registerDevice_result {
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
-  UnauthorizedException ex5;
+  UnauthorizedException ex4;
 
   _AromaService_registerDevice_result__isset __isset;
 
@@ -3705,7 +3717,7 @@ class AromaService_registerDevice_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex5(const UnauthorizedException& val);
+  void __set_ex4(const UnauthorizedException& val);
 
   bool operator == (const AromaService_registerDevice_result & rhs) const
   {
@@ -3717,7 +3729,7 @@ class AromaService_registerDevice_result {
       return false;
     if (!(ex3 == rhs.ex3))
       return false;
-    if (!(ex5 == rhs.ex5))
+    if (!(ex4 == rhs.ex4))
       return false;
     return true;
   }
@@ -3733,12 +3745,12 @@ class AromaService_registerDevice_result {
 };
 
 typedef struct _AromaService_registerDevice_presult__isset {
-  _AromaService_registerDevice_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  _AromaService_registerDevice_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex5 :1;
+  bool ex4 :1;
 } _AromaService_registerDevice_presult__isset;
 
 class AromaService_registerDevice_presult {
@@ -3750,7 +3762,7 @@ class AromaService_registerDevice_presult {
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
-  UnauthorizedException* ex5;
+  UnauthorizedException* ex4;
 
   _AromaService_registerDevice_presult__isset __isset;
 

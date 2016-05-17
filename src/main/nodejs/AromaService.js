@@ -4425,7 +4425,7 @@ AromaService_checkIfDeviceIsRegistered_result = function(args) {
               this.ex1 = null;
               this.ex2 = null;
               this.ex3 = null;
-              this.ex5 = null;
+              this.ex4 = null;
               if (args instanceof Exceptions_ttypes.OperationFailedException) {
                             this.ex1 = args;
                             return;
@@ -4439,7 +4439,7 @@ AromaService_checkIfDeviceIsRegistered_result = function(args) {
                             return;
               }
               if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
+                            this.ex4 = args;
                             return;
               }
               if (args) {
@@ -4455,8 +4455,8 @@ AromaService_checkIfDeviceIsRegistered_result = function(args) {
                             if (args.ex3 !== undefined && args.ex3 !== null) {
                                           this.ex3 = args.ex3;
                             }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
                             }
               }
 };
@@ -4508,8 +4508,8 @@ AromaService_checkIfDeviceIsRegistered_result.prototype.read = function(input) {
                   break;
                   case 4:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
                   } else {
                     input.skip(ftype);
                   }
@@ -4545,9 +4545,9 @@ AromaService_checkIfDeviceIsRegistered_result.prototype.write = function(output)
                 this.ex3.write(output);
                 output.writeFieldEnd();
               }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 4);
-                this.ex5.write(output);
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
                 output.writeFieldEnd();
               }
               output.writeFieldStop();
@@ -4614,7 +4614,7 @@ AromaService_getRegisteredDevices_result = function(args) {
               this.ex1 = null;
               this.ex2 = null;
               this.ex3 = null;
-              this.ex5 = null;
+              this.ex4 = null;
               if (args instanceof Exceptions_ttypes.OperationFailedException) {
                             this.ex1 = args;
                             return;
@@ -4628,7 +4628,7 @@ AromaService_getRegisteredDevices_result = function(args) {
                             return;
               }
               if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
+                            this.ex4 = args;
                             return;
               }
               if (args) {
@@ -4644,8 +4644,8 @@ AromaService_getRegisteredDevices_result = function(args) {
                             if (args.ex3 !== undefined && args.ex3 !== null) {
                                           this.ex3 = args.ex3;
                             }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
                             }
               }
 };
@@ -4697,8 +4697,8 @@ AromaService_getRegisteredDevices_result.prototype.read = function(input) {
                   break;
                   case 4:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
                   } else {
                     input.skip(ftype);
                   }
@@ -4734,9 +4734,9 @@ AromaService_getRegisteredDevices_result.prototype.write = function(output) {
                 this.ex3.write(output);
                 output.writeFieldEnd();
               }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 4);
-                this.ex5.write(output);
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
                 output.writeFieldEnd();
               }
               output.writeFieldStop();
@@ -4803,7 +4803,7 @@ AromaService_registerDevice_result = function(args) {
               this.ex1 = null;
               this.ex2 = null;
               this.ex3 = null;
-              this.ex5 = null;
+              this.ex4 = null;
               if (args instanceof Exceptions_ttypes.OperationFailedException) {
                             this.ex1 = args;
                             return;
@@ -4817,7 +4817,7 @@ AromaService_registerDevice_result = function(args) {
                             return;
               }
               if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
+                            this.ex4 = args;
                             return;
               }
               if (args) {
@@ -4833,8 +4833,8 @@ AromaService_registerDevice_result = function(args) {
                             if (args.ex3 !== undefined && args.ex3 !== null) {
                                           this.ex3 = args.ex3;
                             }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
                             }
               }
 };
@@ -4886,8 +4886,8 @@ AromaService_registerDevice_result.prototype.read = function(input) {
                   break;
                   case 4:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
                   } else {
                     input.skip(ftype);
                   }
@@ -4923,9 +4923,9 @@ AromaService_registerDevice_result.prototype.write = function(output) {
                 this.ex3.write(output);
                 output.writeFieldEnd();
               }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 4);
-                this.ex5.write(output);
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
                 output.writeFieldEnd();
               }
               output.writeFieldStop();
@@ -7197,8 +7197,8 @@ AromaServiceClient.prototype.recv_checkIfDeviceIsRegistered = function(input,mty
               if (null !== result.ex3) {
                 return callback(result.ex3);
               }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
+              if (null !== result.ex4) {
+                return callback(result.ex4);
               }
               if (null !== result.success) {
                 return callback(null, result.success);
@@ -7256,8 +7256,8 @@ AromaServiceClient.prototype.recv_getRegisteredDevices = function(input,mtype,rs
               if (null !== result.ex3) {
                 return callback(result.ex3);
               }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
+              if (null !== result.ex4) {
+                return callback(result.ex4);
               }
               if (null !== result.success) {
                 return callback(null, result.success);
@@ -7315,8 +7315,8 @@ AromaServiceClient.prototype.recv_registerDevice = function(input,mtype,rseqid) 
               if (null !== result.ex3) {
                 return callback(result.ex3);
               }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
+              if (null !== result.ex4) {
+                return callback(result.ex4);
               }
               if (null !== result.success) {
                 return callback(null, result.success);
