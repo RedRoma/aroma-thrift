@@ -14,6 +14,366 @@
 namespace aroma { namespace thrift { namespace channels {
 
 
+IOSDevice::~IOSDevice() throw() {
+}
+
+
+void IOSDevice::__set_deviceToken(const std::string& val) {
+  this->deviceToken = val;
+}
+
+uint32_t IOSDevice::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->deviceToken);
+          this->__isset.deviceToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t IOSDevice::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("IOSDevice");
+
+  xfer += oprot->writeFieldBegin("deviceToken", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->deviceToken);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(IOSDevice &a, IOSDevice &b) {
+  using ::std::swap;
+  swap(a.deviceToken, b.deviceToken);
+  swap(a.__isset, b.__isset);
+}
+
+IOSDevice::IOSDevice(const IOSDevice& other0) {
+  deviceToken = other0.deviceToken;
+  __isset = other0.__isset;
+}
+IOSDevice& IOSDevice::operator=(const IOSDevice& other1) {
+  deviceToken = other1.deviceToken;
+  __isset = other1.__isset;
+  return *this;
+}
+void IOSDevice::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "IOSDevice(";
+  out << "deviceToken=" << to_string(deviceToken);
+  out << ")";
+}
+
+
+AndroidDevice::~AndroidDevice() throw() {
+}
+
+
+void AndroidDevice::__set_registrationId(const std::string& val) {
+  this->registrationId = val;
+}
+
+uint32_t AndroidDevice::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->registrationId);
+          this->__isset.registrationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AndroidDevice::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AndroidDevice");
+
+  xfer += oprot->writeFieldBegin("registrationId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->registrationId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(AndroidDevice &a, AndroidDevice &b) {
+  using ::std::swap;
+  swap(a.registrationId, b.registrationId);
+  swap(a.__isset, b.__isset);
+}
+
+AndroidDevice::AndroidDevice(const AndroidDevice& other2) {
+  registrationId = other2.registrationId;
+  __isset = other2.__isset;
+}
+AndroidDevice& AndroidDevice::operator=(const AndroidDevice& other3) {
+  registrationId = other3.registrationId;
+  __isset = other3.__isset;
+  return *this;
+}
+void AndroidDevice::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "AndroidDevice(";
+  out << "registrationId=" << to_string(registrationId);
+  out << ")";
+}
+
+
+WindowsPhoneDevice::~WindowsPhoneDevice() throw() {
+}
+
+
+uint32_t WindowsPhoneDevice::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t WindowsPhoneDevice::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("WindowsPhoneDevice");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(WindowsPhoneDevice &a, WindowsPhoneDevice &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+WindowsPhoneDevice::WindowsPhoneDevice(const WindowsPhoneDevice& other4) {
+  (void) other4;
+}
+WindowsPhoneDevice& WindowsPhoneDevice::operator=(const WindowsPhoneDevice& other5) {
+  (void) other5;
+  return *this;
+}
+void WindowsPhoneDevice::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "WindowsPhoneDevice(";
+  out << ")";
+}
+
+
+MobileDevice::~MobileDevice() throw() {
+}
+
+
+void MobileDevice::__set_iosDevice(const IOSDevice& val) {
+  this->iosDevice = val;
+}
+
+void MobileDevice::__set_androidDevice(const AndroidDevice& val) {
+  this->androidDevice = val;
+}
+
+void MobileDevice::__set_windowsPhoneDevice(const WindowsPhoneDevice& val) {
+  this->windowsPhoneDevice = val;
+}
+
+uint32_t MobileDevice::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->iosDevice.read(iprot);
+          this->__isset.iosDevice = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->androidDevice.read(iprot);
+          this->__isset.androidDevice = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->windowsPhoneDevice.read(iprot);
+          this->__isset.windowsPhoneDevice = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t MobileDevice::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("MobileDevice");
+
+  xfer += oprot->writeFieldBegin("iosDevice", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->iosDevice.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("androidDevice", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->androidDevice.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("windowsPhoneDevice", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->windowsPhoneDevice.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(MobileDevice &a, MobileDevice &b) {
+  using ::std::swap;
+  swap(a.iosDevice, b.iosDevice);
+  swap(a.androidDevice, b.androidDevice);
+  swap(a.windowsPhoneDevice, b.windowsPhoneDevice);
+  swap(a.__isset, b.__isset);
+}
+
+MobileDevice::MobileDevice(const MobileDevice& other6) {
+  iosDevice = other6.iosDevice;
+  androidDevice = other6.androidDevice;
+  windowsPhoneDevice = other6.windowsPhoneDevice;
+  __isset = other6.__isset;
+}
+MobileDevice& MobileDevice::operator=(const MobileDevice& other7) {
+  iosDevice = other7.iosDevice;
+  androidDevice = other7.androidDevice;
+  windowsPhoneDevice = other7.windowsPhoneDevice;
+  __isset = other7.__isset;
+  return *this;
+}
+void MobileDevice::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "MobileDevice(";
+  out << "iosDevice=" << to_string(iosDevice);
+  out << ", " << "androidDevice=" << to_string(androidDevice);
+  out << ", " << "windowsPhoneDevice=" << to_string(windowsPhoneDevice);
+  out << ")";
+}
+
+
 SlackChannel::~SlackChannel() throw() {
 }
 
@@ -117,17 +477,17 @@ void swap(SlackChannel &a, SlackChannel &b) {
   swap(a.__isset, b.__isset);
 }
 
-SlackChannel::SlackChannel(const SlackChannel& other0) {
-  domainName = other0.domainName;
-  channelName = other0.channelName;
-  slackToken = other0.slackToken;
-  __isset = other0.__isset;
+SlackChannel::SlackChannel(const SlackChannel& other8) {
+  domainName = other8.domainName;
+  channelName = other8.channelName;
+  slackToken = other8.slackToken;
+  __isset = other8.__isset;
 }
-SlackChannel& SlackChannel::operator=(const SlackChannel& other1) {
-  domainName = other1.domainName;
-  channelName = other1.channelName;
-  slackToken = other1.slackToken;
-  __isset = other1.__isset;
+SlackChannel& SlackChannel::operator=(const SlackChannel& other9) {
+  domainName = other9.domainName;
+  channelName = other9.channelName;
+  slackToken = other9.slackToken;
+  __isset = other9.__isset;
   return *this;
 }
 void SlackChannel::printTo(std::ostream& out) const {
@@ -243,17 +603,17 @@ void swap(SlackUsername &a, SlackUsername &b) {
   swap(a.__isset, b.__isset);
 }
 
-SlackUsername::SlackUsername(const SlackUsername& other2) {
-  domainName = other2.domainName;
-  username = other2.username;
-  slackToken = other2.slackToken;
-  __isset = other2.__isset;
+SlackUsername::SlackUsername(const SlackUsername& other10) {
+  domainName = other10.domainName;
+  username = other10.username;
+  slackToken = other10.slackToken;
+  __isset = other10.__isset;
 }
-SlackUsername& SlackUsername::operator=(const SlackUsername& other3) {
-  domainName = other3.domainName;
-  username = other3.username;
-  slackToken = other3.slackToken;
-  __isset = other3.__isset;
+SlackUsername& SlackUsername::operator=(const SlackUsername& other11) {
+  domainName = other11.domainName;
+  username = other11.username;
+  slackToken = other11.slackToken;
+  __isset = other11.__isset;
   return *this;
 }
 void SlackUsername::printTo(std::ostream& out) const {
@@ -354,15 +714,15 @@ void swap(Email &a, Email &b) {
   swap(a.__isset, b.__isset);
 }
 
-Email::Email(const Email& other4) {
-  emailAddress = other4.emailAddress;
-  subject = other4.subject;
-  __isset = other4.__isset;
+Email::Email(const Email& other12) {
+  emailAddress = other12.emailAddress;
+  subject = other12.subject;
+  __isset = other12.__isset;
 }
-Email& Email::operator=(const Email& other5) {
-  emailAddress = other5.emailAddress;
-  subject = other5.subject;
-  __isset = other5.__isset;
+Email& Email::operator=(const Email& other13) {
+  emailAddress = other13.emailAddress;
+  subject = other13.subject;
+  __isset = other13.__isset;
   return *this;
 }
 void Email::printTo(std::ostream& out) const {
@@ -443,253 +803,19 @@ void swap(CustomChannel &a, CustomChannel &b) {
   swap(a.__isset, b.__isset);
 }
 
-CustomChannel::CustomChannel(const CustomChannel& other6) {
-  endpoint = other6.endpoint;
-  __isset = other6.__isset;
+CustomChannel::CustomChannel(const CustomChannel& other14) {
+  endpoint = other14.endpoint;
+  __isset = other14.__isset;
 }
-CustomChannel& CustomChannel::operator=(const CustomChannel& other7) {
-  endpoint = other7.endpoint;
-  __isset = other7.__isset;
+CustomChannel& CustomChannel::operator=(const CustomChannel& other15) {
+  endpoint = other15.endpoint;
+  __isset = other15.__isset;
   return *this;
 }
 void CustomChannel::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "CustomChannel(";
   out << "endpoint=" << to_string(endpoint);
-  out << ")";
-}
-
-
-IOSDevice::~IOSDevice() throw() {
-}
-
-
-void IOSDevice::__set_deviceToken(const std::string& val) {
-  this->deviceToken = val;
-}
-
-uint32_t IOSDevice::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->deviceToken);
-          this->__isset.deviceToken = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t IOSDevice::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("IOSDevice");
-
-  xfer += oprot->writeFieldBegin("deviceToken", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->deviceToken);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(IOSDevice &a, IOSDevice &b) {
-  using ::std::swap;
-  swap(a.deviceToken, b.deviceToken);
-  swap(a.__isset, b.__isset);
-}
-
-IOSDevice::IOSDevice(const IOSDevice& other8) {
-  deviceToken = other8.deviceToken;
-  __isset = other8.__isset;
-}
-IOSDevice& IOSDevice::operator=(const IOSDevice& other9) {
-  deviceToken = other9.deviceToken;
-  __isset = other9.__isset;
-  return *this;
-}
-void IOSDevice::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "IOSDevice(";
-  out << "deviceToken=" << to_string(deviceToken);
-  out << ")";
-}
-
-
-AndroidDevice::~AndroidDevice() throw() {
-}
-
-
-void AndroidDevice::__set_registrationId(const std::string& val) {
-  this->registrationId = val;
-}
-
-uint32_t AndroidDevice::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->registrationId);
-          this->__isset.registrationId = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AndroidDevice::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AndroidDevice");
-
-  xfer += oprot->writeFieldBegin("registrationId", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->registrationId);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(AndroidDevice &a, AndroidDevice &b) {
-  using ::std::swap;
-  swap(a.registrationId, b.registrationId);
-  swap(a.__isset, b.__isset);
-}
-
-AndroidDevice::AndroidDevice(const AndroidDevice& other10) {
-  registrationId = other10.registrationId;
-  __isset = other10.__isset;
-}
-AndroidDevice& AndroidDevice::operator=(const AndroidDevice& other11) {
-  registrationId = other11.registrationId;
-  __isset = other11.__isset;
-  return *this;
-}
-void AndroidDevice::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "AndroidDevice(";
-  out << "registrationId=" << to_string(registrationId);
-  out << ")";
-}
-
-
-WindowsPhoneDevice::~WindowsPhoneDevice() throw() {
-}
-
-
-uint32_t WindowsPhoneDevice::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    xfer += iprot->skip(ftype);
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t WindowsPhoneDevice::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("WindowsPhoneDevice");
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(WindowsPhoneDevice &a, WindowsPhoneDevice &b) {
-  using ::std::swap;
-  (void) a;
-  (void) b;
-}
-
-WindowsPhoneDevice::WindowsPhoneDevice(const WindowsPhoneDevice& other12) {
-  (void) other12;
-}
-WindowsPhoneDevice& WindowsPhoneDevice::operator=(const WindowsPhoneDevice& other13) {
-  (void) other13;
-  return *this;
-}
-void WindowsPhoneDevice::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "WindowsPhoneDevice(";
   out << ")";
 }
 
@@ -722,8 +848,8 @@ void AromaChannel::__set_androidDevice(const AndroidDevice& val) {
   this->androidDevice = val;
 }
 
-void AromaChannel::__set_windowsPhone(const WindowsPhoneDevice& val) {
-  this->windowsPhone = val;
+void AromaChannel::__set_windowsPhoneDevice(const WindowsPhoneDevice& val) {
+  this->windowsPhoneDevice = val;
 }
 
 uint32_t AromaChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -797,8 +923,8 @@ uint32_t AromaChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 7:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->windowsPhone.read(iprot);
-          this->__isset.windowsPhone = true;
+          xfer += this->windowsPhoneDevice.read(iprot);
+          this->__isset.windowsPhoneDevice = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -844,8 +970,8 @@ uint32_t AromaChannel::write(::apache::thrift::protocol::TProtocol* oprot) const
   xfer += this->androidDevice.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("windowsPhone", ::apache::thrift::protocol::T_STRUCT, 7);
-  xfer += this->windowsPhone.write(oprot);
+  xfer += oprot->writeFieldBegin("windowsPhoneDevice", ::apache::thrift::protocol::T_STRUCT, 7);
+  xfer += this->windowsPhoneDevice.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -861,29 +987,29 @@ void swap(AromaChannel &a, AromaChannel &b) {
   swap(a.customChannel, b.customChannel);
   swap(a.iosDevice, b.iosDevice);
   swap(a.androidDevice, b.androidDevice);
-  swap(a.windowsPhone, b.windowsPhone);
+  swap(a.windowsPhoneDevice, b.windowsPhoneDevice);
   swap(a.__isset, b.__isset);
 }
 
-AromaChannel::AromaChannel(const AromaChannel& other14) {
-  slackChannel = other14.slackChannel;
-  slackUsername = other14.slackUsername;
-  email = other14.email;
-  customChannel = other14.customChannel;
-  iosDevice = other14.iosDevice;
-  androidDevice = other14.androidDevice;
-  windowsPhone = other14.windowsPhone;
-  __isset = other14.__isset;
+AromaChannel::AromaChannel(const AromaChannel& other16) {
+  slackChannel = other16.slackChannel;
+  slackUsername = other16.slackUsername;
+  email = other16.email;
+  customChannel = other16.customChannel;
+  iosDevice = other16.iosDevice;
+  androidDevice = other16.androidDevice;
+  windowsPhoneDevice = other16.windowsPhoneDevice;
+  __isset = other16.__isset;
 }
-AromaChannel& AromaChannel::operator=(const AromaChannel& other15) {
-  slackChannel = other15.slackChannel;
-  slackUsername = other15.slackUsername;
-  email = other15.email;
-  customChannel = other15.customChannel;
-  iosDevice = other15.iosDevice;
-  androidDevice = other15.androidDevice;
-  windowsPhone = other15.windowsPhone;
-  __isset = other15.__isset;
+AromaChannel& AromaChannel::operator=(const AromaChannel& other17) {
+  slackChannel = other17.slackChannel;
+  slackUsername = other17.slackUsername;
+  email = other17.email;
+  customChannel = other17.customChannel;
+  iosDevice = other17.iosDevice;
+  androidDevice = other17.androidDevice;
+  windowsPhoneDevice = other17.windowsPhoneDevice;
+  __isset = other17.__isset;
   return *this;
 }
 void AromaChannel::printTo(std::ostream& out) const {
@@ -895,7 +1021,7 @@ void AromaChannel::printTo(std::ostream& out) const {
   out << ", " << "customChannel=" << to_string(customChannel);
   out << ", " << "iosDevice=" << to_string(iosDevice);
   out << ", " << "androidDevice=" << to_string(androidDevice);
-  out << ", " << "windowsPhone=" << to_string(windowsPhone);
+  out << ", " << "windowsPhoneDevice=" << to_string(windowsPhoneDevice);
   out << ")";
 }
 
@@ -1005,17 +1131,17 @@ void swap(ChannelInfo &a, ChannelInfo &b) {
   swap(a.__isset, b.__isset);
 }
 
-ChannelInfo::ChannelInfo(const ChannelInfo& other16) {
-  channel = other16.channel;
-  timeRegistered = other16.timeRegistered;
-  channelId = other16.channelId;
-  __isset = other16.__isset;
+ChannelInfo::ChannelInfo(const ChannelInfo& other18) {
+  channel = other18.channel;
+  timeRegistered = other18.timeRegistered;
+  channelId = other18.channelId;
+  __isset = other18.__isset;
 }
-ChannelInfo& ChannelInfo::operator=(const ChannelInfo& other17) {
-  channel = other17.channel;
-  timeRegistered = other17.timeRegistered;
-  channelId = other17.channelId;
-  __isset = other17.__isset;
+ChannelInfo& ChannelInfo::operator=(const ChannelInfo& other19) {
+  channel = other19.channel;
+  timeRegistered = other19.timeRegistered;
+  channelId = other19.channelId;
+  __isset = other19.__isset;
   return *this;
 }
 void ChannelInfo::printTo(std::ostream& out) const {
@@ -1097,13 +1223,13 @@ void swap(ReceiveMessageRequest &a, ReceiveMessageRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-ReceiveMessageRequest::ReceiveMessageRequest(const ReceiveMessageRequest& other18) {
-  message = other18.message;
-  __isset = other18.__isset;
+ReceiveMessageRequest::ReceiveMessageRequest(const ReceiveMessageRequest& other20) {
+  message = other20.message;
+  __isset = other20.__isset;
 }
-ReceiveMessageRequest& ReceiveMessageRequest::operator=(const ReceiveMessageRequest& other19) {
-  message = other19.message;
-  __isset = other19.__isset;
+ReceiveMessageRequest& ReceiveMessageRequest::operator=(const ReceiveMessageRequest& other21) {
+  message = other21.message;
+  __isset = other21.__isset;
   return *this;
 }
 void ReceiveMessageRequest::printTo(std::ostream& out) const {

@@ -23,6 +23,33 @@ typedef Aroma.long long
 typedef Aroma.timestamp timestamp
 typedef Aroma.uuid uuid
 
+struct IOSDevice
+{
+    /** Device Token may be stored and serialized as a Base64 encoded String. */
+    1: string deviceToken;
+}
+
+struct AndroidDevice
+{
+    1: string registrationId;
+}
+
+// Not in use for now, so it is empty.
+struct WindowsPhoneDevice
+{
+}
+
+/**
+ * A Mobile Device is capable of receiving Push Notifications
+ * using one of the Established platforms.
+ */
+union MobileDevice
+{
+    1: IOSDevice iosDevice;
+    2: AndroidDevice androidDevice;
+    3: WindowsPhoneDevice windowsPhoneDevice;
+}
+
 /**
  * It's a bit confusing, but "Channel" here refers to
  * a specific "Slack Channel" in a Team Slack Account,
@@ -64,21 +91,6 @@ struct CustomChannel
     1: Endpoint.Endpoint endpoint;
 }
 
-struct IOSDevice
-{
-    /** Device Token may be stored and serialized as a Base64 encoded String. */
-    1: string deviceToken;
-}
-
-struct AndroidDevice
-{
-    1: string registrationId;
-}
-
-struct WindowsPhoneDevice
-{
-    
-}
 
 /**
  * This Union represents the Abstract concept of an AromaChannel
@@ -91,7 +103,7 @@ union AromaChannel
     4: CustomChannel customChannel;
     5: IOSDevice iosDevice;
     6: AndroidDevice androidDevice;
-    7: WindowsPhoneDevice windowsPhone;
+    7: WindowsPhoneDevice windowsPhoneDevice;
 }
 
 struct ChannelInfo
