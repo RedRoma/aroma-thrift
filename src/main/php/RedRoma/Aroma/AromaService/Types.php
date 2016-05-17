@@ -7304,6 +7304,7 @@ final class Constant extends \Thrift\Type\TConstant {
   static protected $MAX_MESSAGE_LENGTH;
   static protected $DEFAULT_INBOX_LIFETIME;
   static protected $DEFAULT_ACTIVITY_LIFETIME;
+  static protected $MAXIMUM_REACTIONS;
 
   static protected function init_SERVICE_PORT() {
     return 7010;
@@ -7404,6 +7405,13 @@ new \RedRoma\Aroma\LengthOfTime(array(
       "value" => 4,
       "unit" =>       5,
     ));
+  }
+
+  static protected function init_MAXIMUM_REACTIONS() {
+    return     /**
+     * The Maximum Number of Reactions that can be saved for a User or and App.
+     */
+100;
   }
 }
 

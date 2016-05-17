@@ -529,6 +529,9 @@ struct DeleteActivityResponse
 // REACTION OPERATIONS
 //==========================================================
 
+/** The Maximum Number of Reactions that can be saved for a User or and App. */
+const int MAXIMUM_REACTIONS = 100
+
 
 /** Get the reactions saved for either the calling user's Inbox, or an Application.  */
 struct GetReactionsRequest

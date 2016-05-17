@@ -27,6 +27,7 @@ class AromaServiceConstants {
   int MAX_MESSAGE_LENGTH;
    ::tech::aroma::thrift::LengthOfTime DEFAULT_INBOX_LIFETIME;
    ::tech::aroma::thrift::LengthOfTime DEFAULT_ACTIVITY_LIFETIME;
+  int MAXIMUM_REACTIONS;
 };
 
 extern const AromaServiceConstants g_AromaService_constants;

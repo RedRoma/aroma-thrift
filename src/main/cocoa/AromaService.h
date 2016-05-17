@@ -2393,4 +2393,5 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 + (AromaService_int) MAX_MESSAGE_LENGTH;
 + (Aroma_LengthOfTime *) DEFAULT_INBOX_LIFETIME;
 + (Aroma_LengthOfTime *) DEFAULT_ACTIVITY_LIFETIME;
++ (AromaService_int) MAXIMUM_REACTIONS;
 @end

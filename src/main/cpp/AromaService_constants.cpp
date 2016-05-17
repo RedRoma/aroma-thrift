@@ -65,6 +65,8 @@ AromaServiceConstants::AromaServiceConstants() {
   DEFAULT_ACTIVITY_LIFETIME.value = tmp253;
   DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
+  MAXIMUM_REACTIONS = 100;
+
 }
 
 }}} // namespace

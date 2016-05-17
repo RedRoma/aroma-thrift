@@ -2740,15 +2740,4 @@ class Reaction {
 
 }
 
-final class Constant extends \Thrift\Type\TConstant {
-  static protected $MAXIMUM_REACTIONS;
-
-  static protected function init_MAXIMUM_REACTIONS() {
-    return     /**
-     * The Maximum Number of Reactions that can be saved for a User or and App.
-     */
-100;
-  }
-}
-
 

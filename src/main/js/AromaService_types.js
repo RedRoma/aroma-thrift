@@ -4849,3 +4849,4 @@ DEFAULT_INBOX_LIFETIME = new LengthOfTime({
 'value' : 3,'unit' : 5});
 DEFAULT_ACTIVITY_LIFETIME = new LengthOfTime({
 'value' : 4,'unit' : 5});
+MAXIMUM_REACTIONS = 100;

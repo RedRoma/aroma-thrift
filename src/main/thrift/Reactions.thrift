@@ -181,6 +181,3 @@ struct Reaction
     2: list<AromaAction> actions = [];
     3: string name;
 }
-
-/** The Maximum Number of Reactions that can be saved for a User or and App. */
-const int MAXIMUM_REACTIONS = 100

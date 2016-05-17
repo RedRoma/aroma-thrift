@@ -908,5 +908,4 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @interface AromaReactions_ReactionsConstants : NSObject {
 }
-+ (AromaReactions_int) MAXIMUM_REACTIONS;
 @end

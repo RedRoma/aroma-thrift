@@ -14024,6 +14024,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 static AromaService_int AromaService_MAX_MESSAGE_LENGTH = 5000;
 static Aroma_LengthOfTime * AromaService_DEFAULT_INBOX_LIFETIME;
 static Aroma_LengthOfTime * AromaService_DEFAULT_ACTIVITY_LIFETIME;
+static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 
 @implementation AromaService_AromaServiceConstants
 + (void) initialize {
@@ -14093,6 +14094,9 @@ static Aroma_LengthOfTime * AromaService_DEFAULT_ACTIVITY_LIFETIME;
 }
 + (Aroma_LengthOfTime *) DEFAULT_ACTIVITY_LIFETIME{
   return AromaService_DEFAULT_ACTIVITY_LIFETIME;
+}
++ (AromaService_int) MAXIMUM_REACTIONS{
+  return AromaService_MAXIMUM_REACTIONS;
 }
 @end
 

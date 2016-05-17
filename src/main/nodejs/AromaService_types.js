@@ -4861,3 +4861,4 @@ ttypes.DEFAULT_INBOX_LIFETIME = new Aroma_ttypes.LengthOfTime({
 'value' : 3,'unit' : 5});
 ttypes.DEFAULT_ACTIVITY_LIFETIME = new Aroma_ttypes.LengthOfTime({
 'value' : 4,'unit' : 5});
+ttypes.MAXIMUM_REACTIONS = 100;

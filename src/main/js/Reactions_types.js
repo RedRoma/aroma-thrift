@@ -1826,4 +1826,3 @@ Reaction.prototype.write = function(output) {
   return;
 };
 
-MAXIMUM_REACTIONS = 100;
