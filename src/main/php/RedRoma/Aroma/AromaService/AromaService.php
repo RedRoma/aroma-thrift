@@ -22,39 +22,62 @@ use Thrift\Exception\TApplicationException;
  */
 interface AromaServiceIf {
   /**
-   * @return double
+   * Sign in to the App and get a User Token in return.
+   * 
+   * #user
+   * 
+   * @param \RedRoma\Aroma\AromaService\SignInRequest $request
+   * @return \RedRoma\Aroma\AromaService\SignInResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidCredentialsException
+   * @throws \RedRoma\Aroma\Exceptions\UserDoesNotExistException
    */
-  public function getApiVersion();
+  public function signIn(\RedRoma\Aroma\AromaService\SignInRequest $request);
   /**
-   * @param \RedRoma\Aroma\AromaService\DeleteApplicationRequest $request
-   * @return \RedRoma\Aroma\AromaService\DeleteApplicationResponse
+   * Sign Up for an Aroma Account.
+   * 
+   * @param \RedRoma\Aroma\AromaService\SignUpRequest $request
+   * @return \RedRoma\Aroma\AromaService\SignUpResponse Receive a User Token after Signing Up.
+   * 
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidCredentialsException
+   * @throws \RedRoma\Aroma\Exceptions\AccountAlreadyExistsException
+   */
+  public function signUp(\RedRoma\Aroma\AromaService\SignUpRequest $request);
+  /**
+   * @param \RedRoma\Aroma\AromaService\GetUserInfoRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetUserInfoResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
+   * @throws \RedRoma\Aroma\Exceptions\UserDoesNotExistException
+   */
+  public function getUserInfo(\RedRoma\Aroma\AromaService\GetUserInfoRequest $request);
+  /**
+   * Get details about an Application from it's unique ID
+   * 
+   * #user
+   * 
+   * @param \RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetApplicationInfoResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
    * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
    * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
    * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public function deleteApplication(\RedRoma\Aroma\AromaService\DeleteApplicationRequest $request);
+  public function getApplicationInfo(\RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request);
   /**
-   * @param \RedRoma\Aroma\AromaService\DeleteMessageRequest $request
-   * @return \RedRoma\Aroma\AromaService\DeleteMessageResponse
+   * @param \RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetApplicationsOwnedByResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
    * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\MessageDoesNotExistException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public function deleteMessage(\RedRoma\Aroma\AromaService\DeleteMessageRequest $request);
-  /**
-   * @param \RedRoma\Aroma\AromaService\DismissMessageRequest $request
-   * @return \RedRoma\Aroma\AromaService\DismissMessageResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\MessageDoesNotExistException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public function dismissMessage(\RedRoma\Aroma\AromaService\DismissMessageRequest $request);
+  public function getApplicationsOwnedBy(\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request);
   /**
    * Provision a New Application to keep tabs on.
    * 
@@ -86,20 +109,15 @@ interface AromaServiceIf {
    */
   public function regenerateToken(\RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest $request);
   /**
-   * Register an existing Application for Health Pokes. The Aroma Service
-   * will then periodically poke the Application for health status.
-   * 
-   * #owner
-   * 
-   * @param \RedRoma\Aroma\AromaService\RegisterHealthCheckRequest $request
-   * @return \RedRoma\Aroma\AromaService\RegisterHealthCheckResponse
+   * @param \RedRoma\Aroma\AromaService\DeleteApplicationRequest $request
+   * @return \RedRoma\Aroma\AromaService\DeleteApplicationResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
    * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
    * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
    * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public function registerHealthCheck(\RedRoma\Aroma\AromaService\RegisterHealthCheckRequest $request);
+  public function deleteApplication(\RedRoma\Aroma\AromaService\DeleteApplicationRequest $request);
   /**
    * Renew an Application Token that is close to being expired.
    * Only an "owner" can perform this operation.
@@ -116,30 +134,123 @@ interface AromaServiceIf {
    */
   public function renewApplicationToken(\RedRoma\Aroma\AromaService\RenewApplicationTokenRequest $request);
   /**
-   * Sign in to the App and get a User Token in return.
+   * #owner
+   * 
+   * @param \RedRoma\Aroma\AromaService\UpdateApplicationRequest $request
+   * @return \RedRoma\Aroma\AromaService\UpdateApplicationResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public function updateApplication(\RedRoma\Aroma\AromaService\UpdateApplicationRequest $request);
+  /**
+   * Perform a Search on all the applications registered to Aroma by searching for its title.
    * 
    * #user
    * 
-   * @param \RedRoma\Aroma\AromaService\SignInRequest $request
-   * @return \RedRoma\Aroma\AromaService\SignInResponse
+   * @param \RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request
+   * @return \RedRoma\Aroma\AromaService\SearchForApplicationsResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidCredentialsException
-   * @throws \RedRoma\Aroma\Exceptions\UserDoesNotExistException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public function signIn(\RedRoma\Aroma\AromaService\SignInRequest $request);
+  public function searchForApplications(\RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request);
   /**
-   * Sign Up for an Aroma Account.
+   * Get an Application's Messages.
    * 
-   * @param \RedRoma\Aroma\AromaService\SignUpRequest $request
-   * @return \RedRoma\Aroma\AromaService\SignUpResponse Receive a User Token after Signing Up.
-   * 
+   * @param \RedRoma\Aroma\AromaService\GetApplicationMessagesRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetApplicationMessagesResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidCredentialsException
-   * @throws \RedRoma\Aroma\Exceptions\AccountAlreadyExistsException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
+   * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
    */
-  public function signUp(\RedRoma\Aroma\AromaService\SignUpRequest $request);
+  public function getApplicationMessages(\RedRoma\Aroma\AromaService\GetApplicationMessagesRequest $request);
+  /**
+   * In case the Message body has been truncated, use this operation
+   * to load the full message.
+   * 
+   * @param \RedRoma\Aroma\AromaService\GetFullMessageRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetFullMessageResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public function getFullMessage(\RedRoma\Aroma\AromaService\GetFullMessageRequest $request);
+  /**
+   * @param \RedRoma\Aroma\AromaService\DeleteMessageRequest $request
+   * @return \RedRoma\Aroma\AromaService\DeleteMessageResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\MessageDoesNotExistException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public function deleteMessage(\RedRoma\Aroma\AromaService\DeleteMessageRequest $request);
+  /**
+   * @param \RedRoma\Aroma\AromaService\DismissMessageRequest $request
+   * @return \RedRoma\Aroma\AromaService\DismissMessageResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\MessageDoesNotExistException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public function dismissMessage(\RedRoma\Aroma\AromaService\DismissMessageRequest $request);
+  /**
+   * Get Messages in a User's Inbox
+   * 
+   * @param \RedRoma\Aroma\AromaService\GetInboxRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetInboxResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public function getInbox(\RedRoma\Aroma\AromaService\GetInboxRequest $request);
+  /**
+   * Get all of the User-Related activities that have happened recently.
+   * 
+   * #user
+   * 
+   * @param \RedRoma\Aroma\AromaService\GetActivityRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetActivityResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public function getActivity(\RedRoma\Aroma\AromaService\GetActivityRequest $request);
+  /**
+   * @param \RedRoma\Aroma\AromaService\GetReactionsRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetReactionsResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public function getReactions(\RedRoma\Aroma\AromaService\GetReactionsRequest $request);
+  /**
+   * @param \RedRoma\Aroma\AromaService\UpdateReactionsRequest $request
+   * @return \RedRoma\Aroma\AromaService\UpdateReactionsResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public function updateReactions(\RedRoma\Aroma\AromaService\UpdateReactionsRequest $request);
+  /**
+   * @param \RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetApplicationsFollowedByResponse
+   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public function getApplicationsFollowedBy(\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request);
   /**
    * Subscribe to an existing application to get notifications.
    * 
@@ -165,53 +276,13 @@ interface AromaServiceIf {
    */
   public function unfollowApplication(\RedRoma\Aroma\AromaService\UnfollowApplicationRequest $request);
   /**
-   * #owner
-   * 
-   * @param \RedRoma\Aroma\AromaService\UpdateApplicationRequest $request
-   * @return \RedRoma\Aroma\AromaService\UpdateApplicationResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public function updateApplication(\RedRoma\Aroma\AromaService\UpdateApplicationRequest $request);
-  /**
-   * @param \RedRoma\Aroma\AromaService\UpdateReactionsRequest $request
-   * @return \RedRoma\Aroma\AromaService\UpdateReactionsResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public function updateReactions(\RedRoma\Aroma\AromaService\UpdateReactionsRequest $request);
-  /**
-   * Get all of the User-Related activities that have happened recently.
-   * 
-   * #user
-   * 
-   * @param \RedRoma\Aroma\AromaService\GetActivityRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetActivityResponse
+   * @param \RedRoma\Aroma\AromaService\GetDashboardRequest $request
+   * @return \RedRoma\Aroma\AromaService\GetDashboardResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
    * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
    */
-  public function getActivity(\RedRoma\Aroma\AromaService\GetActivityRequest $request);
-  /**
-   * Get details about an Application from it's unique ID
-   * 
-   * #user
-   * 
-   * @param \RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetApplicationInfoResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public function getApplicationInfo(\RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request);
+  public function getDashboard(\RedRoma\Aroma\AromaService\GetDashboardRequest $request);
   /**
    * @param \RedRoma\Aroma\AromaService\GetBuzzRequest $request
    * @return \RedRoma\Aroma\AromaService\GetBuzzResponse
@@ -223,46 +294,24 @@ interface AromaServiceIf {
    */
   public function getBuzz(\RedRoma\Aroma\AromaService\GetBuzzRequest $request);
   /**
-   * @param \RedRoma\Aroma\AromaService\GetDashboardRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetDashboardResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
+   * @return double
    */
-  public function getDashboard(\RedRoma\Aroma\AromaService\GetDashboardRequest $request);
+  public function getApiVersion();
   /**
-   * Get an Application's Messages.
+   * Register an existing Application for Health Pokes. The Aroma Service
+   * will then periodically poke the Application for health status.
    * 
-   * @param \RedRoma\Aroma\AromaService\GetApplicationMessagesRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetApplicationMessagesResponse
+   * #owner
+   * 
+   * @param \RedRoma\Aroma\AromaService\RegisterHealthCheckRequest $request
+   * @return \RedRoma\Aroma\AromaService\RegisterHealthCheckResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
    * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
    * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
+   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public function getApplicationMessages(\RedRoma\Aroma\AromaService\GetApplicationMessagesRequest $request);
-  /**
-   * Get Messages in a User's Inbox
-   * 
-   * @param \RedRoma\Aroma\AromaService\GetInboxRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetInboxResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public function getInbox(\RedRoma\Aroma\AromaService\GetInboxRequest $request);
-  /**
-   * In case the Message body has been truncated, use this operation
-   * to load the full message.
-   * 
-   * @param \RedRoma\Aroma\AromaService\GetFullMessageRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetFullMessageResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public function getFullMessage(\RedRoma\Aroma\AromaService\GetFullMessageRequest $request);
+  public function registerHealthCheck(\RedRoma\Aroma\AromaService\RegisterHealthCheckRequest $request);
   /**
    * Request to get Media stored by the Aroma Service.
    * 
@@ -275,55 +324,6 @@ interface AromaServiceIf {
    * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
   public function getMedia(\RedRoma\Aroma\AromaService\GetMediaRequest $request);
-  /**
-   * @param \RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetApplicationsOwnedByResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public function getApplicationsOwnedBy(\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request);
-  /**
-   * @param \RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetApplicationsFollowedByResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public function getApplicationsFollowedBy(\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request);
-  /**
-   * @param \RedRoma\Aroma\AromaService\GetReactionsRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetReactionsResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public function getReactions(\RedRoma\Aroma\AromaService\GetReactionsRequest $request);
-  /**
-   * @param \RedRoma\Aroma\AromaService\GetUserInfoRequest $request
-   * @return \RedRoma\Aroma\AromaService\GetUserInfoResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
-   * @throws \RedRoma\Aroma\Exceptions\UserDoesNotExistException
-   */
-  public function getUserInfo(\RedRoma\Aroma\AromaService\GetUserInfoRequest $request);
-  /**
-   * Perform a Search on all the applications registered to Aroma by searching for its title.
-   * 
-   * #user
-   * 
-   * @param \RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request
-   * @return \RedRoma\Aroma\AromaService\SearchForApplicationsResponse
-   * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
-   * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public function searchForApplications(\RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request);
 }
 
 class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
@@ -337,33 +337,34 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     $this->output_ = $output ? $output : $input;
   }
 
-  public function getApiVersion()
+  public function signIn(\RedRoma\Aroma\AromaService\SignInRequest $request)
   {
-    $this->send_getApiVersion();
-    return $this->recv_getApiVersion();
+    $this->send_signIn($request);
+    return $this->recv_signIn();
   }
 
-  public function send_getApiVersion()
+  public function send_signIn(\RedRoma\Aroma\AromaService\SignInRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getApiVersion_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_signIn_args();
+    $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'getApiVersion', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'signIn', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('getApiVersion', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('signIn', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_getApiVersion()
+  public function recv_signIn()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApiVersion_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_signIn_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -377,44 +378,56 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getApiVersion_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_signIn_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
     if ($result->success !== null) {
       return $result->success;
     }
-    throw new \Exception("getApiVersion failed: unknown result");
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
+    }
+    throw new \Exception("signIn failed: unknown result");
   }
 
-  public function deleteApplication(\RedRoma\Aroma\AromaService\DeleteApplicationRequest $request)
+  public function signUp(\RedRoma\Aroma\AromaService\SignUpRequest $request)
   {
-    $this->send_deleteApplication($request);
-    return $this->recv_deleteApplication();
+    $this->send_signUp($request);
+    return $this->recv_signUp();
   }
 
-  public function send_deleteApplication(\RedRoma\Aroma\AromaService\DeleteApplicationRequest $request)
+  public function send_signUp(\RedRoma\Aroma\AromaService\SignUpRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_deleteApplication_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_signUp_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'deleteApplication', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'signUp', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('deleteApplication', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('signUp', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_deleteApplication()
+  public function recv_signUp()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_deleteApplication_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_signUp_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -428,7 +441,70 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_deleteApplication_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_signUp_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
+    }
+    throw new \Exception("signUp failed: unknown result");
+  }
+
+  public function getUserInfo(\RedRoma\Aroma\AromaService\GetUserInfoRequest $request)
+  {
+    $this->send_getUserInfo($request);
+    return $this->recv_getUserInfo();
+  }
+
+  public function send_getUserInfo(\RedRoma\Aroma\AromaService\GetUserInfoRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getUserInfo_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'getUserInfo', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('getUserInfo', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_getUserInfo()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getUserInfo_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getUserInfo_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -450,37 +526,37 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex5 !== null) {
       throw $result->ex5;
     }
-    throw new \Exception("deleteApplication failed: unknown result");
+    throw new \Exception("getUserInfo failed: unknown result");
   }
 
-  public function deleteMessage(\RedRoma\Aroma\AromaService\DeleteMessageRequest $request)
+  public function getApplicationInfo(\RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request)
   {
-    $this->send_deleteMessage($request);
-    return $this->recv_deleteMessage();
+    $this->send_getApplicationInfo($request);
+    return $this->recv_getApplicationInfo();
   }
 
-  public function send_deleteMessage(\RedRoma\Aroma\AromaService\DeleteMessageRequest $request)
+  public function send_getApplicationInfo(\RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_deleteMessage_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getApplicationInfo_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'deleteMessage', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'getApplicationInfo', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('deleteMessage', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('getApplicationInfo', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_deleteMessage()
+  public function recv_getApplicationInfo()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_deleteMessage_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApplicationInfo_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -494,7 +570,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_deleteMessage_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getApplicationInfo_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -516,37 +592,37 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex5 !== null) {
       throw $result->ex5;
     }
-    throw new \Exception("deleteMessage failed: unknown result");
+    throw new \Exception("getApplicationInfo failed: unknown result");
   }
 
-  public function dismissMessage(\RedRoma\Aroma\AromaService\DismissMessageRequest $request)
+  public function getApplicationsOwnedBy(\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request)
   {
-    $this->send_dismissMessage($request);
-    return $this->recv_dismissMessage();
+    $this->send_getApplicationsOwnedBy($request);
+    return $this->recv_getApplicationsOwnedBy();
   }
 
-  public function send_dismissMessage(\RedRoma\Aroma\AromaService\DismissMessageRequest $request)
+  public function send_getApplicationsOwnedBy(\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_dismissMessage_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getApplicationsOwnedBy_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'dismissMessage', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'getApplicationsOwnedBy', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('dismissMessage', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('getApplicationsOwnedBy', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_dismissMessage()
+  public function recv_getApplicationsOwnedBy()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_dismissMessage_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApplicationsOwnedBy_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -560,7 +636,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_dismissMessage_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getApplicationsOwnedBy_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -576,13 +652,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex3 !== null) {
       throw $result->ex3;
     }
-    if ($result->ex4 !== null) {
-      throw $result->ex4;
-    }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
-    }
-    throw new \Exception("dismissMessage failed: unknown result");
+    throw new \Exception("getApplicationsOwnedBy failed: unknown result");
   }
 
   public function provisionApplication(\RedRoma\Aroma\AromaService\ProvisionApplicationRequest $request)
@@ -717,34 +787,34 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     throw new \Exception("regenerateToken failed: unknown result");
   }
 
-  public function registerHealthCheck(\RedRoma\Aroma\AromaService\RegisterHealthCheckRequest $request)
+  public function deleteApplication(\RedRoma\Aroma\AromaService\DeleteApplicationRequest $request)
   {
-    $this->send_registerHealthCheck($request);
-    return $this->recv_registerHealthCheck();
+    $this->send_deleteApplication($request);
+    return $this->recv_deleteApplication();
   }
 
-  public function send_registerHealthCheck(\RedRoma\Aroma\AromaService\RegisterHealthCheckRequest $request)
+  public function send_deleteApplication(\RedRoma\Aroma\AromaService\DeleteApplicationRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_registerHealthCheck_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_deleteApplication_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'registerHealthCheck', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'deleteApplication', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('registerHealthCheck', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('deleteApplication', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_registerHealthCheck()
+  public function recv_deleteApplication()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_registerHealthCheck_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_deleteApplication_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -758,7 +828,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_registerHealthCheck_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_deleteApplication_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -780,7 +850,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex5 !== null) {
       throw $result->ex5;
     }
-    throw new \Exception("registerHealthCheck failed: unknown result");
+    throw new \Exception("deleteApplication failed: unknown result");
   }
 
   public function renewApplicationToken(\RedRoma\Aroma\AromaService\RenewApplicationTokenRequest $request)
@@ -849,34 +919,34 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     throw new \Exception("renewApplicationToken failed: unknown result");
   }
 
-  public function signIn(\RedRoma\Aroma\AromaService\SignInRequest $request)
+  public function updateApplication(\RedRoma\Aroma\AromaService\UpdateApplicationRequest $request)
   {
-    $this->send_signIn($request);
-    return $this->recv_signIn();
+    $this->send_updateApplication($request);
+    return $this->recv_updateApplication();
   }
 
-  public function send_signIn(\RedRoma\Aroma\AromaService\SignInRequest $request)
+  public function send_updateApplication(\RedRoma\Aroma\AromaService\UpdateApplicationRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_signIn_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_updateApplication_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'signIn', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'updateApplication', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('signIn', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('updateApplication', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_signIn()
+  public function recv_updateApplication()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_signIn_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_updateApplication_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -890,7 +960,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_signIn_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_updateApplication_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -909,37 +979,40 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex4 !== null) {
       throw $result->ex4;
     }
-    throw new \Exception("signIn failed: unknown result");
+    if ($result->ex5 !== null) {
+      throw $result->ex5;
+    }
+    throw new \Exception("updateApplication failed: unknown result");
   }
 
-  public function signUp(\RedRoma\Aroma\AromaService\SignUpRequest $request)
+  public function searchForApplications(\RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request)
   {
-    $this->send_signUp($request);
-    return $this->recv_signUp();
+    $this->send_searchForApplications($request);
+    return $this->recv_searchForApplications();
   }
 
-  public function send_signUp(\RedRoma\Aroma\AromaService\SignUpRequest $request)
+  public function send_searchForApplications(\RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_signUp_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_searchForApplications_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'signUp', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'searchForApplications', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('signUp', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('searchForApplications', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_signUp()
+  public function recv_searchForApplications()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_signUp_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_searchForApplications_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -953,7 +1026,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_signUp_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_searchForApplications_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -972,7 +1045,577 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex4 !== null) {
       throw $result->ex4;
     }
-    throw new \Exception("signUp failed: unknown result");
+    throw new \Exception("searchForApplications failed: unknown result");
+  }
+
+  public function getApplicationMessages(\RedRoma\Aroma\AromaService\GetApplicationMessagesRequest $request)
+  {
+    $this->send_getApplicationMessages($request);
+    return $this->recv_getApplicationMessages();
+  }
+
+  public function send_getApplicationMessages(\RedRoma\Aroma\AromaService\GetApplicationMessagesRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getApplicationMessages_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'getApplicationMessages', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('getApplicationMessages', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_getApplicationMessages()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApplicationMessages_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getApplicationMessages_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
+    }
+    if ($result->ex5 !== null) {
+      throw $result->ex5;
+    }
+    throw new \Exception("getApplicationMessages failed: unknown result");
+  }
+
+  public function getFullMessage(\RedRoma\Aroma\AromaService\GetFullMessageRequest $request)
+  {
+    $this->send_getFullMessage($request);
+    return $this->recv_getFullMessage();
+  }
+
+  public function send_getFullMessage(\RedRoma\Aroma\AromaService\GetFullMessageRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getFullMessage_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'getFullMessage', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('getFullMessage', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_getFullMessage()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getFullMessage_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getFullMessage_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    throw new \Exception("getFullMessage failed: unknown result");
+  }
+
+  public function deleteMessage(\RedRoma\Aroma\AromaService\DeleteMessageRequest $request)
+  {
+    $this->send_deleteMessage($request);
+    return $this->recv_deleteMessage();
+  }
+
+  public function send_deleteMessage(\RedRoma\Aroma\AromaService\DeleteMessageRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_deleteMessage_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'deleteMessage', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('deleteMessage', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_deleteMessage()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_deleteMessage_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_deleteMessage_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
+    }
+    if ($result->ex5 !== null) {
+      throw $result->ex5;
+    }
+    throw new \Exception("deleteMessage failed: unknown result");
+  }
+
+  public function dismissMessage(\RedRoma\Aroma\AromaService\DismissMessageRequest $request)
+  {
+    $this->send_dismissMessage($request);
+    return $this->recv_dismissMessage();
+  }
+
+  public function send_dismissMessage(\RedRoma\Aroma\AromaService\DismissMessageRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_dismissMessage_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'dismissMessage', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('dismissMessage', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_dismissMessage()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_dismissMessage_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_dismissMessage_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
+    }
+    if ($result->ex5 !== null) {
+      throw $result->ex5;
+    }
+    throw new \Exception("dismissMessage failed: unknown result");
+  }
+
+  public function getInbox(\RedRoma\Aroma\AromaService\GetInboxRequest $request)
+  {
+    $this->send_getInbox($request);
+    return $this->recv_getInbox();
+  }
+
+  public function send_getInbox(\RedRoma\Aroma\AromaService\GetInboxRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getInbox_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'getInbox', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('getInbox', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_getInbox()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getInbox_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getInbox_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    throw new \Exception("getInbox failed: unknown result");
+  }
+
+  public function getActivity(\RedRoma\Aroma\AromaService\GetActivityRequest $request)
+  {
+    $this->send_getActivity($request);
+    return $this->recv_getActivity();
+  }
+
+  public function send_getActivity(\RedRoma\Aroma\AromaService\GetActivityRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getActivity_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'getActivity', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('getActivity', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_getActivity()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getActivity_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getActivity_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    throw new \Exception("getActivity failed: unknown result");
+  }
+
+  public function getReactions(\RedRoma\Aroma\AromaService\GetReactionsRequest $request)
+  {
+    $this->send_getReactions($request);
+    return $this->recv_getReactions();
+  }
+
+  public function send_getReactions(\RedRoma\Aroma\AromaService\GetReactionsRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getReactions_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'getReactions', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('getReactions', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_getReactions()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getReactions_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getReactions_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
+    }
+    if ($result->ex5 !== null) {
+      throw $result->ex5;
+    }
+    throw new \Exception("getReactions failed: unknown result");
+  }
+
+  public function updateReactions(\RedRoma\Aroma\AromaService\UpdateReactionsRequest $request)
+  {
+    $this->send_updateReactions($request);
+    return $this->recv_updateReactions();
+  }
+
+  public function send_updateReactions(\RedRoma\Aroma\AromaService\UpdateReactionsRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_updateReactions_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'updateReactions', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('updateReactions', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_updateReactions()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_updateReactions_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_updateReactions_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    if ($result->ex4 !== null) {
+      throw $result->ex4;
+    }
+    if ($result->ex5 !== null) {
+      throw $result->ex5;
+    }
+    throw new \Exception("updateReactions failed: unknown result");
+  }
+
+  public function getApplicationsFollowedBy(\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request)
+  {
+    $this->send_getApplicationsFollowedBy($request);
+    return $this->recv_getApplicationsFollowedBy();
+  }
+
+  public function send_getApplicationsFollowedBy(\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request)
+  {
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getApplicationsFollowedBy_args();
+    $args->request = $request;
+    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
+    if ($bin_accel)
+    {
+      thrift_protocol_write_binary($this->output_, 'getApplicationsFollowedBy', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+    }
+    else
+    {
+      $this->output_->writeMessageBegin('getApplicationsFollowedBy', TMessageType::CALL, $this->seqid_);
+      $args->write($this->output_);
+      $this->output_->writeMessageEnd();
+      $this->output_->getTransport()->flush();
+    }
+  }
+
+  public function recv_getApplicationsFollowedBy()
+  {
+    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApplicationsFollowedBy_result', $this->input_->isStrictRead());
+    else
+    {
+      $rseqid = 0;
+      $fname = null;
+      $mtype = 0;
+
+      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
+      if ($mtype == TMessageType::EXCEPTION) {
+        $x = new TApplicationException();
+        $x->read($this->input_);
+        $this->input_->readMessageEnd();
+        throw $x;
+      }
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getApplicationsFollowedBy_result();
+      $result->read($this->input_);
+      $this->input_->readMessageEnd();
+    }
+    if ($result->success !== null) {
+      return $result->success;
+    }
+    if ($result->ex1 !== null) {
+      throw $result->ex1;
+    }
+    if ($result->ex2 !== null) {
+      throw $result->ex2;
+    }
+    if ($result->ex3 !== null) {
+      throw $result->ex3;
+    }
+    throw new \Exception("getApplicationsFollowedBy failed: unknown result");
   }
 
   public function followApplication(\RedRoma\Aroma\AromaService\FollowApplicationRequest $request)
@@ -1107,34 +1750,34 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     throw new \Exception("unfollowApplication failed: unknown result");
   }
 
-  public function updateApplication(\RedRoma\Aroma\AromaService\UpdateApplicationRequest $request)
+  public function getDashboard(\RedRoma\Aroma\AromaService\GetDashboardRequest $request)
   {
-    $this->send_updateApplication($request);
-    return $this->recv_updateApplication();
+    $this->send_getDashboard($request);
+    return $this->recv_getDashboard();
   }
 
-  public function send_updateApplication(\RedRoma\Aroma\AromaService\UpdateApplicationRequest $request)
+  public function send_getDashboard(\RedRoma\Aroma\AromaService\GetDashboardRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_updateApplication_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getDashboard_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'updateApplication', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'getDashboard', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('updateApplication', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('getDashboard', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_updateApplication()
+  public function recv_getDashboard()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_updateApplication_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getDashboard_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -1148,7 +1791,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_updateApplication_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getDashboard_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -1164,205 +1807,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex3 !== null) {
       throw $result->ex3;
     }
-    if ($result->ex4 !== null) {
-      throw $result->ex4;
-    }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
-    }
-    throw new \Exception("updateApplication failed: unknown result");
-  }
-
-  public function updateReactions(\RedRoma\Aroma\AromaService\UpdateReactionsRequest $request)
-  {
-    $this->send_updateReactions($request);
-    return $this->recv_updateReactions();
-  }
-
-  public function send_updateReactions(\RedRoma\Aroma\AromaService\UpdateReactionsRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_updateReactions_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'updateReactions', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('updateReactions', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_updateReactions()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_updateReactions_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_updateReactions_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    if ($result->ex4 !== null) {
-      throw $result->ex4;
-    }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
-    }
-    throw new \Exception("updateReactions failed: unknown result");
-  }
-
-  public function getActivity(\RedRoma\Aroma\AromaService\GetActivityRequest $request)
-  {
-    $this->send_getActivity($request);
-    return $this->recv_getActivity();
-  }
-
-  public function send_getActivity(\RedRoma\Aroma\AromaService\GetActivityRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getActivity_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'getActivity', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('getActivity', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_getActivity()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getActivity_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getActivity_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    throw new \Exception("getActivity failed: unknown result");
-  }
-
-  public function getApplicationInfo(\RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request)
-  {
-    $this->send_getApplicationInfo($request);
-    return $this->recv_getApplicationInfo();
-  }
-
-  public function send_getApplicationInfo(\RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getApplicationInfo_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'getApplicationInfo', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('getApplicationInfo', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_getApplicationInfo()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApplicationInfo_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getApplicationInfo_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    if ($result->ex4 !== null) {
-      throw $result->ex4;
-    }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
-    }
-    throw new \Exception("getApplicationInfo failed: unknown result");
+    throw new \Exception("getDashboard failed: unknown result");
   }
 
   public function getBuzz(\RedRoma\Aroma\AromaService\GetBuzzRequest $request)
@@ -1431,34 +1876,33 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     throw new \Exception("getBuzz failed: unknown result");
   }
 
-  public function getDashboard(\RedRoma\Aroma\AromaService\GetDashboardRequest $request)
+  public function getApiVersion()
   {
-    $this->send_getDashboard($request);
-    return $this->recv_getDashboard();
+    $this->send_getApiVersion();
+    return $this->recv_getApiVersion();
   }
 
-  public function send_getDashboard(\RedRoma\Aroma\AromaService\GetDashboardRequest $request)
+  public function send_getApiVersion()
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getDashboard_args();
-    $args->request = $request;
+    $args = new \RedRoma\Aroma\AromaService\AromaService_getApiVersion_args();
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'getDashboard', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'getApiVersion', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('getDashboard', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('getApiVersion', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_getDashboard()
+  public function recv_getApiVersion()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getDashboard_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApiVersion_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -1472,53 +1916,44 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getDashboard_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_getApiVersion_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
     if ($result->success !== null) {
       return $result->success;
     }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    throw new \Exception("getDashboard failed: unknown result");
+    throw new \Exception("getApiVersion failed: unknown result");
   }
 
-  public function getApplicationMessages(\RedRoma\Aroma\AromaService\GetApplicationMessagesRequest $request)
+  public function registerHealthCheck(\RedRoma\Aroma\AromaService\RegisterHealthCheckRequest $request)
   {
-    $this->send_getApplicationMessages($request);
-    return $this->recv_getApplicationMessages();
+    $this->send_registerHealthCheck($request);
+    return $this->recv_registerHealthCheck();
   }
 
-  public function send_getApplicationMessages(\RedRoma\Aroma\AromaService\GetApplicationMessagesRequest $request)
+  public function send_registerHealthCheck(\RedRoma\Aroma\AromaService\RegisterHealthCheckRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getApplicationMessages_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_registerHealthCheck_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'getApplicationMessages', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'registerHealthCheck', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('getApplicationMessages', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('registerHealthCheck', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_getApplicationMessages()
+  public function recv_registerHealthCheck()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApplicationMessages_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_registerHealthCheck_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -1532,7 +1967,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getApplicationMessages_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_registerHealthCheck_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -1554,127 +1989,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex5 !== null) {
       throw $result->ex5;
     }
-    throw new \Exception("getApplicationMessages failed: unknown result");
-  }
-
-  public function getInbox(\RedRoma\Aroma\AromaService\GetInboxRequest $request)
-  {
-    $this->send_getInbox($request);
-    return $this->recv_getInbox();
-  }
-
-  public function send_getInbox(\RedRoma\Aroma\AromaService\GetInboxRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getInbox_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'getInbox', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('getInbox', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_getInbox()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getInbox_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getInbox_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    throw new \Exception("getInbox failed: unknown result");
-  }
-
-  public function getFullMessage(\RedRoma\Aroma\AromaService\GetFullMessageRequest $request)
-  {
-    $this->send_getFullMessage($request);
-    return $this->recv_getFullMessage();
-  }
-
-  public function send_getFullMessage(\RedRoma\Aroma\AromaService\GetFullMessageRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getFullMessage_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'getFullMessage', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('getFullMessage', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_getFullMessage()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getFullMessage_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getFullMessage_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    throw new \Exception("getFullMessage failed: unknown result");
+    throw new \Exception("registerHealthCheck failed: unknown result");
   }
 
   public function getMedia(\RedRoma\Aroma\AromaService\GetMediaRequest $request)
@@ -1743,455 +2058,15 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     throw new \Exception("getMedia failed: unknown result");
   }
 
-  public function getApplicationsOwnedBy(\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request)
-  {
-    $this->send_getApplicationsOwnedBy($request);
-    return $this->recv_getApplicationsOwnedBy();
-  }
-
-  public function send_getApplicationsOwnedBy(\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getApplicationsOwnedBy_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'getApplicationsOwnedBy', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('getApplicationsOwnedBy', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_getApplicationsOwnedBy()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApplicationsOwnedBy_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getApplicationsOwnedBy_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    throw new \Exception("getApplicationsOwnedBy failed: unknown result");
-  }
-
-  public function getApplicationsFollowedBy(\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request)
-  {
-    $this->send_getApplicationsFollowedBy($request);
-    return $this->recv_getApplicationsFollowedBy();
-  }
-
-  public function send_getApplicationsFollowedBy(\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getApplicationsFollowedBy_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'getApplicationsFollowedBy', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('getApplicationsFollowedBy', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_getApplicationsFollowedBy()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getApplicationsFollowedBy_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getApplicationsFollowedBy_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    throw new \Exception("getApplicationsFollowedBy failed: unknown result");
-  }
-
-  public function getReactions(\RedRoma\Aroma\AromaService\GetReactionsRequest $request)
-  {
-    $this->send_getReactions($request);
-    return $this->recv_getReactions();
-  }
-
-  public function send_getReactions(\RedRoma\Aroma\AromaService\GetReactionsRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getReactions_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'getReactions', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('getReactions', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_getReactions()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getReactions_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getReactions_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    if ($result->ex4 !== null) {
-      throw $result->ex4;
-    }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
-    }
-    throw new \Exception("getReactions failed: unknown result");
-  }
-
-  public function getUserInfo(\RedRoma\Aroma\AromaService\GetUserInfoRequest $request)
-  {
-    $this->send_getUserInfo($request);
-    return $this->recv_getUserInfo();
-  }
-
-  public function send_getUserInfo(\RedRoma\Aroma\AromaService\GetUserInfoRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_getUserInfo_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'getUserInfo', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('getUserInfo', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_getUserInfo()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_getUserInfo_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_getUserInfo_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    if ($result->ex4 !== null) {
-      throw $result->ex4;
-    }
-    if ($result->ex5 !== null) {
-      throw $result->ex5;
-    }
-    throw new \Exception("getUserInfo failed: unknown result");
-  }
-
-  public function searchForApplications(\RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request)
-  {
-    $this->send_searchForApplications($request);
-    return $this->recv_searchForApplications();
-  }
-
-  public function send_searchForApplications(\RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request)
-  {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_searchForApplications_args();
-    $args->request = $request;
-    $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
-    if ($bin_accel)
-    {
-      thrift_protocol_write_binary($this->output_, 'searchForApplications', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
-    }
-    else
-    {
-      $this->output_->writeMessageBegin('searchForApplications', TMessageType::CALL, $this->seqid_);
-      $args->write($this->output_);
-      $this->output_->writeMessageEnd();
-      $this->output_->getTransport()->flush();
-    }
-  }
-
-  public function recv_searchForApplications()
-  {
-    $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_searchForApplications_result', $this->input_->isStrictRead());
-    else
-    {
-      $rseqid = 0;
-      $fname = null;
-      $mtype = 0;
-
-      $this->input_->readMessageBegin($fname, $mtype, $rseqid);
-      if ($mtype == TMessageType::EXCEPTION) {
-        $x = new TApplicationException();
-        $x->read($this->input_);
-        $this->input_->readMessageEnd();
-        throw $x;
-      }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_searchForApplications_result();
-      $result->read($this->input_);
-      $this->input_->readMessageEnd();
-    }
-    if ($result->success !== null) {
-      return $result->success;
-    }
-    if ($result->ex1 !== null) {
-      throw $result->ex1;
-    }
-    if ($result->ex2 !== null) {
-      throw $result->ex2;
-    }
-    if ($result->ex3 !== null) {
-      throw $result->ex3;
-    }
-    if ($result->ex4 !== null) {
-      throw $result->ex4;
-    }
-    throw new \Exception("searchForApplications failed: unknown result");
-  }
-
 }
 
 // HELPER FUNCTIONS AND STRUCTURES
 
-class AromaService_getApiVersion_args {
-  static $_TSPEC;
-
-
-  public function __construct() {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        );
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getApiVersion_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApiVersion_args');
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getApiVersion_result {
+class AromaService_signIn_args {
   static $_TSPEC;
 
   /**
-   * @var double
-   */
-  public $success = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::DOUBLE,
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getApiVersion_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->success);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApiVersion_result');
-    if ($this->success !== null) {
-      $xfer += $output->writeFieldBegin('success', TType::DOUBLE, 0);
-      $xfer += $output->writeDouble($this->success);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_deleteApplication_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\DeleteApplicationRequest
+   * @var \RedRoma\Aroma\AromaService\SignInRequest
    */
   public $request = null;
 
@@ -2201,7 +2076,7 @@ class AromaService_deleteApplication_args {
         1 => array(
           'var' => 'request',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\DeleteApplicationRequest',
+          'class' => '\RedRoma\Aroma\AromaService\SignInRequest',
           ),
         );
     }
@@ -2213,7 +2088,7 @@ class AromaService_deleteApplication_args {
   }
 
   public function getName() {
-    return 'AromaService_deleteApplication_args';
+    return 'AromaService_signIn_args';
   }
 
   public function read($input)
@@ -2233,7 +2108,7 @@ class AromaService_deleteApplication_args {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\DeleteApplicationRequest();
+            $this->request = new \RedRoma\Aroma\AromaService\SignInRequest();
             $xfer += $this->request->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -2251,7 +2126,7 @@ class AromaService_deleteApplication_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_deleteApplication_args');
+    $xfer += $output->writeStructBegin('AromaService_signIn_args');
     if ($this->request !== null) {
       if (!is_object($this->request)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -2267,11 +2142,816 @@ class AromaService_deleteApplication_args {
 
 }
 
-class AromaService_deleteApplication_result {
+class AromaService_signIn_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\DeleteApplicationResponse
+   * @var \RedRoma\Aroma\AromaService\SignInResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidCredentialsException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UserDoesNotExistException
+   */
+  public $ex4 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\SignInResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidCredentialsException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UserDoesNotExistException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_signIn_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\SignInResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidCredentialsException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\UserDoesNotExistException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_signIn_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_signUp_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\SignUpRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\SignUpRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_signUp_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\SignUpRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_signUp_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_signUp_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\SignUpResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidCredentialsException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\AccountAlreadyExistsException
+   */
+  public $ex4 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\SignUpResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidCredentialsException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\AccountAlreadyExistsException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_signUp_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\SignUpResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidCredentialsException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\AccountAlreadyExistsException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_signUp_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getUserInfo_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetUserInfoRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetUserInfoRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getUserInfo_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\GetUserInfoRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getUserInfo_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getUserInfo_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetUserInfoResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public $ex4 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UserDoesNotExistException
+   */
+  public $ex5 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetUserInfoResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          ),
+        5 => array(
+          'var' => 'ex5',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UserDoesNotExistException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+      if (isset($vals['ex5'])) {
+        $this->ex5 = $vals['ex5'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getUserInfo_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\GetUserInfoResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->ex5 = new \RedRoma\Aroma\Exceptions\UserDoesNotExistException();
+            $xfer += $this->ex5->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getUserInfo_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex5 !== null) {
+      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
+      $xfer += $this->ex5->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getApplicationInfo_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetApplicationInfoRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetApplicationInfoRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getApplicationInfo_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\GetApplicationInfoRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getApplicationInfo_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getApplicationInfo_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetApplicationInfoResponse
    */
   public $success = null;
   /**
@@ -2301,7 +2981,7 @@ class AromaService_deleteApplication_result {
         0 => array(
           'var' => 'success',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\DeleteApplicationResponse',
+          'class' => '\RedRoma\Aroma\AromaService\GetApplicationInfoResponse',
           ),
         1 => array(
           'var' => 'ex1',
@@ -2353,7 +3033,7 @@ class AromaService_deleteApplication_result {
   }
 
   public function getName() {
-    return 'AromaService_deleteApplication_result';
+    return 'AromaService_getApplicationInfo_result';
   }
 
   public function read($input)
@@ -2373,7 +3053,7 @@ class AromaService_deleteApplication_result {
       {
         case 0:
           if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\DeleteApplicationResponse();
+            $this->success = new \RedRoma\Aroma\AromaService\GetApplicationInfoResponse();
             $xfer += $this->success->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -2431,7 +3111,7 @@ class AromaService_deleteApplication_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_deleteApplication_result');
+    $xfer += $output->writeStructBegin('AromaService_getApplicationInfo_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -2472,11 +3152,11 @@ class AromaService_deleteApplication_result {
 
 }
 
-class AromaService_deleteMessage_args {
+class AromaService_getApplicationsOwnedBy_args {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\DeleteMessageRequest
+   * @var \RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest
    */
   public $request = null;
 
@@ -2486,7 +3166,7 @@ class AromaService_deleteMessage_args {
         1 => array(
           'var' => 'request',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\DeleteMessageRequest',
+          'class' => '\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest',
           ),
         );
     }
@@ -2498,7 +3178,7 @@ class AromaService_deleteMessage_args {
   }
 
   public function getName() {
-    return 'AromaService_deleteMessage_args';
+    return 'AromaService_getApplicationsOwnedBy_args';
   }
 
   public function read($input)
@@ -2518,7 +3198,7 @@ class AromaService_deleteMessage_args {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\DeleteMessageRequest();
+            $this->request = new \RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest();
             $xfer += $this->request->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -2536,7 +3216,7 @@ class AromaService_deleteMessage_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_deleteMessage_args');
+    $xfer += $output->writeStructBegin('AromaService_getApplicationsOwnedBy_args');
     if ($this->request !== null) {
       if (!is_object($this->request)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -2552,11 +3232,11 @@ class AromaService_deleteMessage_args {
 
 }
 
-class AromaService_deleteMessage_result {
+class AromaService_getApplicationsOwnedBy_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\DeleteMessageResponse
+   * @var \RedRoma\Aroma\AromaService\GetApplicationsOwnedByResponse
    */
   public $success = null;
   /**
@@ -2571,14 +3251,6 @@ class AromaService_deleteMessage_result {
    * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
    */
   public $ex3 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\MessageDoesNotExistException
-   */
-  public $ex4 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public $ex5 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -2586,7 +3258,7 @@ class AromaService_deleteMessage_result {
         0 => array(
           'var' => 'success',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\DeleteMessageResponse',
+          'class' => '\RedRoma\Aroma\AromaService\GetApplicationsOwnedByResponse',
           ),
         1 => array(
           'var' => 'ex1',
@@ -2603,16 +3275,6 @@ class AromaService_deleteMessage_result {
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
           ),
-        4 => array(
-          'var' => 'ex4',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\MessageDoesNotExistException',
-          ),
-        5 => array(
-          'var' => 'ex5',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
-          ),
         );
     }
     if (is_array($vals)) {
@@ -2628,17 +3290,11 @@ class AromaService_deleteMessage_result {
       if (isset($vals['ex3'])) {
         $this->ex3 = $vals['ex3'];
       }
-      if (isset($vals['ex4'])) {
-        $this->ex4 = $vals['ex4'];
-      }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
-      }
     }
   }
 
   public function getName() {
-    return 'AromaService_deleteMessage_result';
+    return 'AromaService_getApplicationsOwnedBy_result';
   }
 
   public function read($input)
@@ -2658,7 +3314,7 @@ class AromaService_deleteMessage_result {
       {
         case 0:
           if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\DeleteMessageResponse();
+            $this->success = new \RedRoma\Aroma\AromaService\GetApplicationsOwnedByResponse();
             $xfer += $this->success->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -2688,22 +3344,6 @@ class AromaService_deleteMessage_result {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 4:
-          if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\MessageDoesNotExistException();
-            $xfer += $this->ex4->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -2716,7 +3356,7 @@ class AromaService_deleteMessage_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_deleteMessage_result');
+    $xfer += $output->writeStructBegin('AromaService_getApplicationsOwnedBy_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -2738,301 +3378,6 @@ class AromaService_deleteMessage_result {
     if ($this->ex3 !== null) {
       $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
       $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex4 !== null) {
-      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
-      $xfer += $this->ex4->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
-      $xfer += $this->ex5->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_dismissMessage_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\DismissMessageRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\DismissMessageRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_dismissMessage_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\DismissMessageRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_dismissMessage_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_dismissMessage_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\DismissMessageResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\MessageDoesNotExistException
-   */
-  public $ex4 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public $ex5 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\DismissMessageResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        4 => array(
-          'var' => 'ex4',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\MessageDoesNotExistException',
-          ),
-        5 => array(
-          'var' => 'ex5',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-      if (isset($vals['ex4'])) {
-        $this->ex4 = $vals['ex4'];
-      }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_dismissMessage_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\DismissMessageResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\MessageDoesNotExistException();
-            $xfer += $this->ex4->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_dismissMessage_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex4 !== null) {
-      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
-      $xfer += $this->ex4->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
-      $xfer += $this->ex5->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -3612,11 +3957,11 @@ class AromaService_regenerateToken_result {
 
 }
 
-class AromaService_registerHealthCheck_args {
+class AromaService_deleteApplication_args {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\RegisterHealthCheckRequest
+   * @var \RedRoma\Aroma\AromaService\DeleteApplicationRequest
    */
   public $request = null;
 
@@ -3626,7 +3971,7 @@ class AromaService_registerHealthCheck_args {
         1 => array(
           'var' => 'request',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\RegisterHealthCheckRequest',
+          'class' => '\RedRoma\Aroma\AromaService\DeleteApplicationRequest',
           ),
         );
     }
@@ -3638,7 +3983,7 @@ class AromaService_registerHealthCheck_args {
   }
 
   public function getName() {
-    return 'AromaService_registerHealthCheck_args';
+    return 'AromaService_deleteApplication_args';
   }
 
   public function read($input)
@@ -3658,7 +4003,7 @@ class AromaService_registerHealthCheck_args {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\RegisterHealthCheckRequest();
+            $this->request = new \RedRoma\Aroma\AromaService\DeleteApplicationRequest();
             $xfer += $this->request->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -3676,7 +4021,7 @@ class AromaService_registerHealthCheck_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_registerHealthCheck_args');
+    $xfer += $output->writeStructBegin('AromaService_deleteApplication_args');
     if ($this->request !== null) {
       if (!is_object($this->request)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -3692,11 +4037,11 @@ class AromaService_registerHealthCheck_args {
 
 }
 
-class AromaService_registerHealthCheck_result {
+class AromaService_deleteApplication_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\RegisterHealthCheckResponse
+   * @var \RedRoma\Aroma\AromaService\DeleteApplicationResponse
    */
   public $success = null;
   /**
@@ -3726,7 +4071,7 @@ class AromaService_registerHealthCheck_result {
         0 => array(
           'var' => 'success',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\RegisterHealthCheckResponse',
+          'class' => '\RedRoma\Aroma\AromaService\DeleteApplicationResponse',
           ),
         1 => array(
           'var' => 'ex1',
@@ -3778,7 +4123,7 @@ class AromaService_registerHealthCheck_result {
   }
 
   public function getName() {
-    return 'AromaService_registerHealthCheck_result';
+    return 'AromaService_deleteApplication_result';
   }
 
   public function read($input)
@@ -3798,7 +4143,7 @@ class AromaService_registerHealthCheck_result {
       {
         case 0:
           if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\RegisterHealthCheckResponse();
+            $this->success = new \RedRoma\Aroma\AromaService\DeleteApplicationResponse();
             $xfer += $this->success->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -3856,7 +4201,7 @@ class AromaService_registerHealthCheck_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_registerHealthCheck_result');
+    $xfer += $output->writeStructBegin('AromaService_deleteApplication_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -4182,11 +4527,11 @@ class AromaService_renewApplicationToken_result {
 
 }
 
-class AromaService_signIn_args {
+class AromaService_updateApplication_args {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\SignInRequest
+   * @var \RedRoma\Aroma\AromaService\UpdateApplicationRequest
    */
   public $request = null;
 
@@ -4196,7 +4541,7 @@ class AromaService_signIn_args {
         1 => array(
           'var' => 'request',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\SignInRequest',
+          'class' => '\RedRoma\Aroma\AromaService\UpdateApplicationRequest',
           ),
         );
     }
@@ -4208,7 +4553,7 @@ class AromaService_signIn_args {
   }
 
   public function getName() {
-    return 'AromaService_signIn_args';
+    return 'AromaService_updateApplication_args';
   }
 
   public function read($input)
@@ -4228,7 +4573,7 @@ class AromaService_signIn_args {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\SignInRequest();
+            $this->request = new \RedRoma\Aroma\AromaService\UpdateApplicationRequest();
             $xfer += $this->request->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4246,7 +4591,7 @@ class AromaService_signIn_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_signIn_args');
+    $xfer += $output->writeStructBegin('AromaService_updateApplication_args');
     if ($this->request !== null) {
       if (!is_object($this->request)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -4262,11 +4607,11 @@ class AromaService_signIn_args {
 
 }
 
-class AromaService_signIn_result {
+class AromaService_updateApplication_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\SignInResponse
+   * @var \RedRoma\Aroma\AromaService\UpdateApplicationResponse
    */
   public $success = null;
   /**
@@ -4278,13 +4623,17 @@ class AromaService_signIn_result {
    */
   public $ex2 = null;
   /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidCredentialsException
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
    */
   public $ex3 = null;
   /**
-   * @var \RedRoma\Aroma\Exceptions\UserDoesNotExistException
+   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
    */
   public $ex4 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public $ex5 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -4292,7 +4641,7 @@ class AromaService_signIn_result {
         0 => array(
           'var' => 'success',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\SignInResponse',
+          'class' => '\RedRoma\Aroma\AromaService\UpdateApplicationResponse',
           ),
         1 => array(
           'var' => 'ex1',
@@ -4307,12 +4656,17 @@ class AromaService_signIn_result {
         3 => array(
           'var' => 'ex3',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidCredentialsException',
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
           ),
         4 => array(
           'var' => 'ex4',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UserDoesNotExistException',
+          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
+          ),
+        5 => array(
+          'var' => 'ex5',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
           ),
         );
     }
@@ -4332,11 +4686,14 @@ class AromaService_signIn_result {
       if (isset($vals['ex4'])) {
         $this->ex4 = $vals['ex4'];
       }
+      if (isset($vals['ex5'])) {
+        $this->ex5 = $vals['ex5'];
+      }
     }
   }
 
   public function getName() {
-    return 'AromaService_signIn_result';
+    return 'AromaService_updateApplication_result';
   }
 
   public function read($input)
@@ -4356,7 +4713,7 @@ class AromaService_signIn_result {
       {
         case 0:
           if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\SignInResponse();
+            $this->success = new \RedRoma\Aroma\AromaService\UpdateApplicationResponse();
             $xfer += $this->success->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4380,7 +4737,7 @@ class AromaService_signIn_result {
           break;
         case 3:
           if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidCredentialsException();
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
             $xfer += $this->ex3->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4388,7 +4745,280 @@ class AromaService_signIn_result {
           break;
         case 4:
           if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\UserDoesNotExistException();
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex5->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_updateApplication_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex5 !== null) {
+      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
+      $xfer += $this->ex5->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_searchForApplications_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\SearchForApplicationsRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\SearchForApplicationsRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_searchForApplications_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\SearchForApplicationsRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_searchForApplications_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_searchForApplications_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\SearchForApplicationsResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public $ex4 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\SearchForApplicationsResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_searchForApplications_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\SearchForApplicationsResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
             $xfer += $this->ex4->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4406,7 +5036,7 @@ class AromaService_signIn_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_signIn_result');
+    $xfer += $output->writeStructBegin('AromaService_searchForApplications_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -4442,11 +5072,11 @@ class AromaService_signIn_result {
 
 }
 
-class AromaService_signUp_args {
+class AromaService_getApplicationMessages_args {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\SignUpRequest
+   * @var \RedRoma\Aroma\AromaService\GetApplicationMessagesRequest
    */
   public $request = null;
 
@@ -4456,7 +5086,7 @@ class AromaService_signUp_args {
         1 => array(
           'var' => 'request',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\SignUpRequest',
+          'class' => '\RedRoma\Aroma\AromaService\GetApplicationMessagesRequest',
           ),
         );
     }
@@ -4468,7 +5098,7 @@ class AromaService_signUp_args {
   }
 
   public function getName() {
-    return 'AromaService_signUp_args';
+    return 'AromaService_getApplicationMessages_args';
   }
 
   public function read($input)
@@ -4488,7 +5118,7 @@ class AromaService_signUp_args {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\SignUpRequest();
+            $this->request = new \RedRoma\Aroma\AromaService\GetApplicationMessagesRequest();
             $xfer += $this->request->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4506,7 +5136,7 @@ class AromaService_signUp_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_signUp_args');
+    $xfer += $output->writeStructBegin('AromaService_getApplicationMessages_args');
     if ($this->request !== null) {
       if (!is_object($this->request)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -4522,11 +5152,11 @@ class AromaService_signUp_args {
 
 }
 
-class AromaService_signUp_result {
+class AromaService_getApplicationMessages_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\SignUpResponse
+   * @var \RedRoma\Aroma\AromaService\GetApplicationMessagesResponse
    */
   public $success = null;
   /**
@@ -4538,13 +5168,17 @@ class AromaService_signUp_result {
    */
   public $ex2 = null;
   /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidCredentialsException
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
    */
   public $ex3 = null;
   /**
-   * @var \RedRoma\Aroma\Exceptions\AccountAlreadyExistsException
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
   public $ex4 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
+   */
+  public $ex5 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -4552,7 +5186,7 @@ class AromaService_signUp_result {
         0 => array(
           'var' => 'success',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\SignUpResponse',
+          'class' => '\RedRoma\Aroma\AromaService\GetApplicationMessagesResponse',
           ),
         1 => array(
           'var' => 'ex1',
@@ -4567,12 +5201,17 @@ class AromaService_signUp_result {
         3 => array(
           'var' => 'ex3',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidCredentialsException',
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
           ),
         4 => array(
           'var' => 'ex4',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\AccountAlreadyExistsException',
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          ),
+        5 => array(
+          'var' => 'ex5',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
           ),
         );
     }
@@ -4592,11 +5231,14 @@ class AromaService_signUp_result {
       if (isset($vals['ex4'])) {
         $this->ex4 = $vals['ex4'];
       }
+      if (isset($vals['ex5'])) {
+        $this->ex5 = $vals['ex5'];
+      }
     }
   }
 
   public function getName() {
-    return 'AromaService_signUp_result';
+    return 'AromaService_getApplicationMessages_result';
   }
 
   public function read($input)
@@ -4616,7 +5258,7 @@ class AromaService_signUp_result {
       {
         case 0:
           if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\SignUpResponse();
+            $this->success = new \RedRoma\Aroma\AromaService\GetApplicationMessagesResponse();
             $xfer += $this->success->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4640,7 +5282,7 @@ class AromaService_signUp_result {
           break;
         case 3:
           if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidCredentialsException();
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
             $xfer += $this->ex3->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4648,8 +5290,16 @@ class AromaService_signUp_result {
           break;
         case 4:
           if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\AccountAlreadyExistsException();
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
             $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->ex5 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
+            $xfer += $this->ex5->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -4666,7 +5316,7 @@ class AromaService_signUp_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_signUp_result');
+    $xfer += $output->writeStructBegin('AromaService_getApplicationMessages_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -4693,6 +5343,2091 @@ class AromaService_signUp_result {
     if ($this->ex4 !== null) {
       $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
       $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex5 !== null) {
+      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
+      $xfer += $this->ex5->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getFullMessage_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetFullMessageRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetFullMessageRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getFullMessage_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\GetFullMessageRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getFullMessage_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getFullMessage_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetFullMessageResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetFullMessageResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getFullMessage_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\GetFullMessageResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getFullMessage_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_deleteMessage_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\DeleteMessageRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\DeleteMessageRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_deleteMessage_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\DeleteMessageRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_deleteMessage_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_deleteMessage_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\DeleteMessageResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\MessageDoesNotExistException
+   */
+  public $ex4 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public $ex5 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\DeleteMessageResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\MessageDoesNotExistException',
+          ),
+        5 => array(
+          'var' => 'ex5',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+      if (isset($vals['ex5'])) {
+        $this->ex5 = $vals['ex5'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_deleteMessage_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\DeleteMessageResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\MessageDoesNotExistException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex5->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_deleteMessage_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex5 !== null) {
+      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
+      $xfer += $this->ex5->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_dismissMessage_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\DismissMessageRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\DismissMessageRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_dismissMessage_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\DismissMessageRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_dismissMessage_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_dismissMessage_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\DismissMessageResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\MessageDoesNotExistException
+   */
+  public $ex4 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public $ex5 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\DismissMessageResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\MessageDoesNotExistException',
+          ),
+        5 => array(
+          'var' => 'ex5',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+      if (isset($vals['ex5'])) {
+        $this->ex5 = $vals['ex5'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_dismissMessage_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\DismissMessageResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\MessageDoesNotExistException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex5->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_dismissMessage_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex5 !== null) {
+      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
+      $xfer += $this->ex5->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getInbox_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetInboxRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetInboxRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getInbox_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\GetInboxRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getInbox_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getInbox_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetInboxResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetInboxResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getInbox_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\GetInboxResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getInbox_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getActivity_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetActivityRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetActivityRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getActivity_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\GetActivityRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getActivity_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getActivity_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetActivityResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetActivityResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getActivity_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\GetActivityResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getActivity_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getReactions_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetReactionsRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetReactionsRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getReactions_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\GetReactionsRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getReactions_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getReactions_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetReactionsResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
+   */
+  public $ex4 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public $ex5 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetReactionsResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
+          ),
+        5 => array(
+          'var' => 'ex5',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+      if (isset($vals['ex5'])) {
+        $this->ex5 = $vals['ex5'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getReactions_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\GetReactionsResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex5->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getReactions_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex5 !== null) {
+      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
+      $xfer += $this->ex5->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_updateReactions_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\UpdateReactionsRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\UpdateReactionsRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_updateReactions_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\UpdateReactionsRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_updateReactions_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_updateReactions_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\UpdateReactionsResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
+   */
+  public $ex4 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   */
+  public $ex5 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\UpdateReactionsResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        4 => array(
+          'var' => 'ex4',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
+          ),
+        5 => array(
+          'var' => 'ex5',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+      if (isset($vals['ex4'])) {
+        $this->ex4 = $vals['ex4'];
+      }
+      if (isset($vals['ex5'])) {
+        $this->ex5 = $vals['ex5'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_updateReactions_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\UpdateReactionsResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRUCT) {
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
+            $xfer += $this->ex4->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRUCT) {
+            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $xfer += $this->ex5->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_updateReactions_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex4 !== null) {
+      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
+      $xfer += $this->ex4->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex5 !== null) {
+      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
+      $xfer += $this->ex5->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getApplicationsFollowedBy_args {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest
+   */
+  public $request = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'request',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['request'])) {
+        $this->request = $vals['request'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getApplicationsFollowedBy_args';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->request = new \RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest();
+            $xfer += $this->request->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getApplicationsFollowedBy_args');
+    if ($this->request !== null) {
+      if (!is_object($this->request)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
+      $xfer += $this->request->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class AromaService_getApplicationsFollowedBy_result {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\AromaService\GetApplicationsFollowedByResponse
+   */
+  public $success = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
+   */
+  public $ex1 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
+   */
+  public $ex2 = null;
+  /**
+   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
+   */
+  public $ex3 = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        0 => array(
+          'var' => 'success',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\AromaService\GetApplicationsFollowedByResponse',
+          ),
+        1 => array(
+          'var' => 'ex1',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
+          ),
+        2 => array(
+          'var' => 'ex2',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
+          ),
+        3 => array(
+          'var' => 'ex3',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['success'])) {
+        $this->success = $vals['success'];
+      }
+      if (isset($vals['ex1'])) {
+        $this->ex1 = $vals['ex1'];
+      }
+      if (isset($vals['ex2'])) {
+        $this->ex2 = $vals['ex2'];
+      }
+      if (isset($vals['ex3'])) {
+        $this->ex3 = $vals['ex3'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'AromaService_getApplicationsFollowedBy_result';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 0:
+          if ($ftype == TType::STRUCT) {
+            $this->success = new \RedRoma\Aroma\AromaService\GetApplicationsFollowedByResponse();
+            $xfer += $this->success->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
+            $xfer += $this->ex1->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
+            $xfer += $this->ex2->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRUCT) {
+            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
+            $xfer += $this->ex3->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('AromaService_getApplicationsFollowedBy_result');
+    if ($this->success !== null) {
+      if (!is_object($this->success)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
+      $xfer += $this->success->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex1 !== null) {
+      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
+      $xfer += $this->ex1->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex2 !== null) {
+      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
+      $xfer += $this->ex2->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ex3 !== null) {
+      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
+      $xfer += $this->ex3->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -5272,11 +8007,11 @@ class AromaService_unfollowApplication_result {
 
 }
 
-class AromaService_updateApplication_args {
+class AromaService_getDashboard_args {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\UpdateApplicationRequest
+   * @var \RedRoma\Aroma\AromaService\GetDashboardRequest
    */
   public $request = null;
 
@@ -5286,7 +8021,7 @@ class AromaService_updateApplication_args {
         1 => array(
           'var' => 'request',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\UpdateApplicationRequest',
+          'class' => '\RedRoma\Aroma\AromaService\GetDashboardRequest',
           ),
         );
     }
@@ -5298,7 +8033,7 @@ class AromaService_updateApplication_args {
   }
 
   public function getName() {
-    return 'AromaService_updateApplication_args';
+    return 'AromaService_getDashboard_args';
   }
 
   public function read($input)
@@ -5318,7 +8053,7 @@ class AromaService_updateApplication_args {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\UpdateApplicationRequest();
+            $this->request = new \RedRoma\Aroma\AromaService\GetDashboardRequest();
             $xfer += $this->request->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -5336,7 +8071,7 @@ class AromaService_updateApplication_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_updateApplication_args');
+    $xfer += $output->writeStructBegin('AromaService_getDashboard_args');
     if ($this->request !== null) {
       if (!is_object($this->request)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -5352,581 +8087,11 @@ class AromaService_updateApplication_args {
 
 }
 
-class AromaService_updateApplication_result {
+class AromaService_getDashboard_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\UpdateApplicationResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
-   */
-  public $ex4 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public $ex5 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\UpdateApplicationResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        4 => array(
-          'var' => 'ex4',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
-          ),
-        5 => array(
-          'var' => 'ex5',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-      if (isset($vals['ex4'])) {
-        $this->ex4 = $vals['ex4'];
-      }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_updateApplication_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\UpdateApplicationResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
-            $xfer += $this->ex4->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_updateApplication_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex4 !== null) {
-      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
-      $xfer += $this->ex4->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
-      $xfer += $this->ex5->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_updateReactions_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\UpdateReactionsRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\UpdateReactionsRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_updateReactions_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\UpdateReactionsRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_updateReactions_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_updateReactions_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\UpdateReactionsResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
-   */
-  public $ex4 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public $ex5 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\UpdateReactionsResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        4 => array(
-          'var' => 'ex4',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
-          ),
-        5 => array(
-          'var' => 'ex5',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-      if (isset($vals['ex4'])) {
-        $this->ex4 = $vals['ex4'];
-      }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_updateReactions_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\UpdateReactionsResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
-            $xfer += $this->ex4->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_updateReactions_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex4 !== null) {
-      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
-      $xfer += $this->ex4->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
-      $xfer += $this->ex5->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getActivity_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetActivityRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetActivityRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getActivity_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetActivityRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getActivity_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getActivity_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetActivityResponse
+   * @var \RedRoma\Aroma\AromaService\GetDashboardResponse
    */
   public $success = null;
   /**
@@ -5948,7 +8113,7 @@ class AromaService_getActivity_result {
         0 => array(
           'var' => 'success',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetActivityResponse',
+          'class' => '\RedRoma\Aroma\AromaService\GetDashboardResponse',
           ),
         1 => array(
           'var' => 'ex1',
@@ -5984,7 +8149,7 @@ class AromaService_getActivity_result {
   }
 
   public function getName() {
-    return 'AromaService_getActivity_result';
+    return 'AromaService_getDashboard_result';
   }
 
   public function read($input)
@@ -6004,7 +8169,7 @@ class AromaService_getActivity_result {
       {
         case 0:
           if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetActivityResponse();
+            $this->success = new \RedRoma\Aroma\AromaService\GetDashboardResponse();
             $xfer += $this->success->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -6046,7 +8211,7 @@ class AromaService_getActivity_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getActivity_result');
+    $xfer += $output->writeStructBegin('AromaService_getDashboard_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -6068,291 +8233,6 @@ class AromaService_getActivity_result {
     if ($this->ex3 !== null) {
       $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
       $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getApplicationInfo_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetApplicationInfoRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetApplicationInfoRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getApplicationInfo_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetApplicationInfoRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApplicationInfo_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getApplicationInfo_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetApplicationInfoResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
-   */
-  public $ex4 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public $ex5 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetApplicationInfoResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        4 => array(
-          'var' => 'ex4',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
-          ),
-        5 => array(
-          'var' => 'ex5',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-      if (isset($vals['ex4'])) {
-        $this->ex4 = $vals['ex4'];
-      }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getApplicationInfo_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetApplicationInfoResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
-            $xfer += $this->ex4->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApplicationInfo_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex4 !== null) {
-      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
-      $xfer += $this->ex4->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
-      $xfer += $this->ex5->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -6647,33 +8527,19 @@ class AromaService_getBuzz_result {
 
 }
 
-class AromaService_getDashboard_args {
+class AromaService_getApiVersion_args {
   static $_TSPEC;
 
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetDashboardRequest
-   */
-  public $request = null;
 
-  public function __construct($vals=null) {
+  public function __construct() {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetDashboardRequest',
-          ),
         );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
     }
   }
 
   public function getName() {
-    return 'AromaService_getDashboard_args';
+    return 'AromaService_getApiVersion_args';
   }
 
   public function read($input)
@@ -6691,14 +8557,6 @@ class AromaService_getDashboard_args {
       }
       switch ($fid)
       {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetDashboardRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -6711,15 +8569,7 @@ class AromaService_getDashboard_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getDashboard_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
+    $xfer += $output->writeStructBegin('AromaService_getApiVersion_args');
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -6727,48 +8577,20 @@ class AromaService_getDashboard_args {
 
 }
 
-class AromaService_getDashboard_result {
+class AromaService_getApiVersion_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\GetDashboardResponse
+   * @var double
    */
   public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
         0 => array(
           'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetDashboardResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
+          'type' => TType::DOUBLE,
           ),
         );
     }
@@ -6776,20 +8598,11 @@ class AromaService_getDashboard_result {
       if (isset($vals['success'])) {
         $this->success = $vals['success'];
       }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
     }
   }
 
   public function getName() {
-    return 'AromaService_getDashboard_result';
+    return 'AromaService_getApiVersion_result';
   }
 
   public function read($input)
@@ -6808,33 +8621,8 @@ class AromaService_getDashboard_result {
       switch ($fid)
       {
         case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetDashboardResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->success);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -6851,28 +8639,10 @@ class AromaService_getDashboard_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getDashboard_result');
+    $xfer += $output->writeStructBegin('AromaService_getApiVersion_result');
     if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
+      $xfer += $output->writeFieldBegin('success', TType::DOUBLE, 0);
+      $xfer += $output->writeDouble($this->success);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -6882,11 +8652,11 @@ class AromaService_getDashboard_result {
 
 }
 
-class AromaService_getApplicationMessages_args {
+class AromaService_registerHealthCheck_args {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\GetApplicationMessagesRequest
+   * @var \RedRoma\Aroma\AromaService\RegisterHealthCheckRequest
    */
   public $request = null;
 
@@ -6896,7 +8666,7 @@ class AromaService_getApplicationMessages_args {
         1 => array(
           'var' => 'request',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetApplicationMessagesRequest',
+          'class' => '\RedRoma\Aroma\AromaService\RegisterHealthCheckRequest',
           ),
         );
     }
@@ -6908,7 +8678,7 @@ class AromaService_getApplicationMessages_args {
   }
 
   public function getName() {
-    return 'AromaService_getApplicationMessages_args';
+    return 'AromaService_registerHealthCheck_args';
   }
 
   public function read($input)
@@ -6928,7 +8698,7 @@ class AromaService_getApplicationMessages_args {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetApplicationMessagesRequest();
+            $this->request = new \RedRoma\Aroma\AromaService\RegisterHealthCheckRequest();
             $xfer += $this->request->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -6946,7 +8716,7 @@ class AromaService_getApplicationMessages_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApplicationMessages_args');
+    $xfer += $output->writeStructBegin('AromaService_registerHealthCheck_args');
     if ($this->request !== null) {
       if (!is_object($this->request)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -6962,11 +8732,11 @@ class AromaService_getApplicationMessages_args {
 
 }
 
-class AromaService_getApplicationMessages_result {
+class AromaService_registerHealthCheck_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\GetApplicationMessagesResponse
+   * @var \RedRoma\Aroma\AromaService\RegisterHealthCheckResponse
    */
   public $success = null;
   /**
@@ -6982,11 +8752,11 @@ class AromaService_getApplicationMessages_result {
    */
   public $ex3 = null;
   /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
+   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
    */
   public $ex4 = null;
   /**
-   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
+   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
   public $ex5 = null;
 
@@ -6996,7 +8766,7 @@ class AromaService_getApplicationMessages_result {
         0 => array(
           'var' => 'success',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetApplicationMessagesResponse',
+          'class' => '\RedRoma\Aroma\AromaService\RegisterHealthCheckResponse',
           ),
         1 => array(
           'var' => 'ex1',
@@ -7016,12 +8786,12 @@ class AromaService_getApplicationMessages_result {
         4 => array(
           'var' => 'ex4',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
+          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
           ),
         5 => array(
           'var' => 'ex5',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
+          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
           ),
         );
     }
@@ -7048,7 +8818,7 @@ class AromaService_getApplicationMessages_result {
   }
 
   public function getName() {
-    return 'AromaService_getApplicationMessages_result';
+    return 'AromaService_registerHealthCheck_result';
   }
 
   public function read($input)
@@ -7068,7 +8838,7 @@ class AromaService_getApplicationMessages_result {
       {
         case 0:
           if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetApplicationMessagesResponse();
+            $this->success = new \RedRoma\Aroma\AromaService\RegisterHealthCheckResponse();
             $xfer += $this->success->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -7100,7 +8870,7 @@ class AromaService_getApplicationMessages_result {
           break;
         case 4:
           if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
+            $this->ex4 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
             $xfer += $this->ex4->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -7108,7 +8878,7 @@ class AromaService_getApplicationMessages_result {
           break;
         case 5:
           if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
+            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
             $xfer += $this->ex5->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -7126,7 +8896,7 @@ class AromaService_getApplicationMessages_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApplicationMessages_result');
+    $xfer += $output->writeStructBegin('AromaService_registerHealthCheck_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -7158,476 +8928,6 @@ class AromaService_getApplicationMessages_result {
     if ($this->ex5 !== null) {
       $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
       $xfer += $this->ex5->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getInbox_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetInboxRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetInboxRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getInbox_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetInboxRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getInbox_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getInbox_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetInboxResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetInboxResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getInbox_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetInboxResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getInbox_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getFullMessage_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetFullMessageRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetFullMessageRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getFullMessage_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetFullMessageRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getFullMessage_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getFullMessage_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetFullMessageResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetFullMessageResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getFullMessage_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetFullMessageResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getFullMessage_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -7913,1306 +9213,6 @@ class AromaService_getMedia_result {
     if ($this->ex5 !== null) {
       $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
       $xfer += $this->ex5->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getApplicationsOwnedBy_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getApplicationsOwnedBy_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApplicationsOwnedBy_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getApplicationsOwnedBy_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetApplicationsOwnedByResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetApplicationsOwnedByResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getApplicationsOwnedBy_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetApplicationsOwnedByResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApplicationsOwnedBy_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getApplicationsFollowedBy_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getApplicationsFollowedBy_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApplicationsFollowedBy_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getApplicationsFollowedBy_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetApplicationsFollowedByResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetApplicationsFollowedByResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getApplicationsFollowedBy_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetApplicationsFollowedByResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getApplicationsFollowedBy_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getReactions_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetReactionsRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetReactionsRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getReactions_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetReactionsRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getReactions_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getReactions_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetReactionsResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
-   */
-  public $ex4 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public $ex5 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetReactionsResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        4 => array(
-          'var' => 'ex4',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException',
-          ),
-        5 => array(
-          'var' => 'ex5',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-      if (isset($vals['ex4'])) {
-        $this->ex4 = $vals['ex4'];
-      }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getReactions_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetReactionsResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException();
-            $xfer += $this->ex4->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex5->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getReactions_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex4 !== null) {
-      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
-      $xfer += $this->ex4->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
-      $xfer += $this->ex5->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getUserInfo_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetUserInfoRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetUserInfoRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getUserInfo_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\GetUserInfoRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getUserInfo_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_getUserInfo_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\GetUserInfoResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public $ex4 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UserDoesNotExistException
-   */
-  public $ex5 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\GetUserInfoResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        4 => array(
-          'var' => 'ex4',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
-          ),
-        5 => array(
-          'var' => 'ex5',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UserDoesNotExistException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-      if (isset($vals['ex4'])) {
-        $this->ex4 = $vals['ex4'];
-      }
-      if (isset($vals['ex5'])) {
-        $this->ex5 = $vals['ex5'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_getUserInfo_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\GetUserInfoResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex4->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRUCT) {
-            $this->ex5 = new \RedRoma\Aroma\Exceptions\UserDoesNotExistException();
-            $xfer += $this->ex5->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_getUserInfo_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex4 !== null) {
-      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
-      $xfer += $this->ex4->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex5 !== null) {
-      $xfer += $output->writeFieldBegin('ex5', TType::STRUCT, 5);
-      $xfer += $this->ex5->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_searchForApplications_args {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\SearchForApplicationsRequest
-   */
-  public $request = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'request',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\SearchForApplicationsRequest',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['request'])) {
-        $this->request = $vals['request'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_searchForApplications_args';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\SearchForApplicationsRequest();
-            $xfer += $this->request->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_searchForApplications_args');
-    if ($this->request !== null) {
-      if (!is_object($this->request)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('request', TType::STRUCT, 1);
-      $xfer += $this->request->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class AromaService_searchForApplications_result {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\AromaService\SearchForApplicationsResponse
-   */
-  public $success = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\OperationFailedException
-   */
-  public $ex1 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidArgumentException
-   */
-  public $ex2 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\InvalidTokenException
-   */
-  public $ex3 = null;
-  /**
-   * @var \RedRoma\Aroma\Exceptions\UnauthorizedException
-   */
-  public $ex4 = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        0 => array(
-          'var' => 'success',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\SearchForApplicationsResponse',
-          ),
-        1 => array(
-          'var' => 'ex1',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\OperationFailedException',
-          ),
-        2 => array(
-          'var' => 'ex2',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidArgumentException',
-          ),
-        3 => array(
-          'var' => 'ex3',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\InvalidTokenException',
-          ),
-        4 => array(
-          'var' => 'ex4',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Exceptions\UnauthorizedException',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['success'])) {
-        $this->success = $vals['success'];
-      }
-      if (isset($vals['ex1'])) {
-        $this->ex1 = $vals['ex1'];
-      }
-      if (isset($vals['ex2'])) {
-        $this->ex2 = $vals['ex2'];
-      }
-      if (isset($vals['ex3'])) {
-        $this->ex3 = $vals['ex3'];
-      }
-      if (isset($vals['ex4'])) {
-        $this->ex4 = $vals['ex4'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'AromaService_searchForApplications_result';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 0:
-          if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\SearchForApplicationsResponse();
-            $xfer += $this->success->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->ex1 = new \RedRoma\Aroma\Exceptions\OperationFailedException();
-            $xfer += $this->ex1->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->ex2 = new \RedRoma\Aroma\Exceptions\InvalidArgumentException();
-            $xfer += $this->ex2->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRUCT) {
-            $this->ex3 = new \RedRoma\Aroma\Exceptions\InvalidTokenException();
-            $xfer += $this->ex3->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRUCT) {
-            $this->ex4 = new \RedRoma\Aroma\Exceptions\UnauthorizedException();
-            $xfer += $this->ex4->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_searchForApplications_result');
-    if ($this->success !== null) {
-      if (!is_object($this->success)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('success', TType::STRUCT, 0);
-      $xfer += $this->success->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex1 !== null) {
-      $xfer += $output->writeFieldBegin('ex1', TType::STRUCT, 1);
-      $xfer += $this->ex1->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex2 !== null) {
-      $xfer += $output->writeFieldBegin('ex2', TType::STRUCT, 2);
-      $xfer += $this->ex2->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex3 !== null) {
-      $xfer += $output->writeFieldBegin('ex3', TType::STRUCT, 3);
-      $xfer += $this->ex3->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->ex4 !== null) {
-      $xfer += $output->writeFieldBegin('ex4', TType::STRUCT, 4);
-      $xfer += $this->ex4->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

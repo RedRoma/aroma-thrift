@@ -22,24 +22,48 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     // Your initialization goes here
   }
 
-  double getApiVersion() {
+  /**
+   * Sign in to the App and get a User Token in return.
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  void signIn(SignInResponse& _return, const SignInRequest& request) {
     // Your implementation goes here
-    printf("getApiVersion\n");
+    printf("signIn\n");
   }
 
-  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) {
+  /**
+   * Sign Up for an Aroma Account.
+   * 
+   * @param request
+   */
+  void signUp(SignUpResponse& _return, const SignUpRequest& request) {
     // Your implementation goes here
-    printf("deleteApplication\n");
+    printf("signUp\n");
   }
 
-  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
     // Your implementation goes here
-    printf("deleteMessage\n");
+    printf("getUserInfo\n");
   }
 
-  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) {
+  /**
+   * Get details about an Application from it's unique ID
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) {
     // Your implementation goes here
-    printf("dismissMessage\n");
+    printf("getApplicationInfo\n");
+  }
+
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) {
+    // Your implementation goes here
+    printf("getApplicationsOwnedBy\n");
   }
 
   /**
@@ -68,17 +92,9 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("regenerateToken\n");
   }
 
-  /**
-   * Register an existing Application for Health Pokes. The Aroma Service
-   * will then periodically poke the Application for health status.
-   * 
-   * #owner
-   * 
-   * @param request
-   */
-  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
+  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) {
     // Your implementation goes here
-    printf("registerHealthCheck\n");
+    printf("deleteApplication\n");
   }
 
   /**
@@ -95,25 +111,93 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   }
 
   /**
-   * Sign in to the App and get a User Token in return.
+   * #owner
+   * 
+   * @param request
+   */
+  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) {
+    // Your implementation goes here
+    printf("updateApplication\n");
+  }
+
+  /**
+   * Perform a Search on all the applications registered to Aroma by searching for its title.
    * 
    * #user
    * 
    * @param request
    */
-  void signIn(SignInResponse& _return, const SignInRequest& request) {
+  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
     // Your implementation goes here
-    printf("signIn\n");
+    printf("searchForApplications\n");
   }
 
   /**
-   * Sign Up for an Aroma Account.
+   * Get an Application's Messages.
    * 
    * @param request
    */
-  void signUp(SignUpResponse& _return, const SignUpRequest& request) {
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) {
     // Your implementation goes here
-    printf("signUp\n");
+    printf("getApplicationMessages\n");
+  }
+
+  /**
+   * In case the Message body has been truncated, use this operation
+   * to load the full message.
+   * 
+   * @param request
+   */
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) {
+    // Your implementation goes here
+    printf("getFullMessage\n");
+  }
+
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
+    // Your implementation goes here
+    printf("deleteMessage\n");
+  }
+
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) {
+    // Your implementation goes here
+    printf("dismissMessage\n");
+  }
+
+  /**
+   * Get Messages in a User's Inbox
+   * 
+   * @param request
+   */
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) {
+    // Your implementation goes here
+    printf("getInbox\n");
+  }
+
+  /**
+   * Get all of the User-Related activities that have happened recently.
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
+    // Your implementation goes here
+    printf("getActivity\n");
+  }
+
+  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {
+    // Your implementation goes here
+    printf("getReactions\n");
+  }
+
+  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) {
+    // Your implementation goes here
+    printf("updateReactions\n");
+  }
+
+  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) {
+    // Your implementation goes here
+    printf("getApplicationsFollowedBy\n");
   }
 
   /**
@@ -133,43 +217,9 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("unfollowApplication\n");
   }
 
-  /**
-   * #owner
-   * 
-   * @param request
-   */
-  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) {
+  void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     // Your implementation goes here
-    printf("updateApplication\n");
-  }
-
-  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) {
-    // Your implementation goes here
-    printf("updateReactions\n");
-  }
-
-  /**
-   * Get all of the User-Related activities that have happened recently.
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
-    // Your implementation goes here
-    printf("getActivity\n");
-  }
-
-  /**
-   * Get details about an Application from it's unique ID
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) {
-    // Your implementation goes here
-    printf("getApplicationInfo\n");
+    printf("getDashboard\n");
   }
 
   void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) {
@@ -177,40 +227,22 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("getBuzz\n");
   }
 
-  void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
+  double getApiVersion() {
     // Your implementation goes here
-    printf("getDashboard\n");
+    printf("getApiVersion\n");
   }
 
   /**
-   * Get an Application's Messages.
+   * Register an existing Application for Health Pokes. The Aroma Service
+   * will then periodically poke the Application for health status.
+   * 
+   * #owner
    * 
    * @param request
    */
-  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) {
+  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
     // Your implementation goes here
-    printf("getApplicationMessages\n");
-  }
-
-  /**
-   * Get Messages in a User's Inbox
-   * 
-   * @param request
-   */
-  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) {
-    // Your implementation goes here
-    printf("getInbox\n");
-  }
-
-  /**
-   * In case the Message body has been truncated, use this operation
-   * to load the full message.
-   * 
-   * @param request
-   */
-  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) {
-    // Your implementation goes here
-    printf("getFullMessage\n");
+    printf("registerHealthCheck\n");
   }
 
   /**
@@ -221,38 +253,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   void getMedia(GetMediaResponse& _return, const GetMediaRequest& request) {
     // Your implementation goes here
     printf("getMedia\n");
-  }
-
-  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) {
-    // Your implementation goes here
-    printf("getApplicationsOwnedBy\n");
-  }
-
-  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) {
-    // Your implementation goes here
-    printf("getApplicationsFollowedBy\n");
-  }
-
-  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {
-    // Your implementation goes here
-    printf("getReactions\n");
-  }
-
-  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
-    // Your implementation goes here
-    printf("getUserInfo\n");
-  }
-
-  /**
-   * Perform a Search on all the applications registered to Aroma by searching for its title.
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
-    // Your implementation goes here
-    printf("searchForApplications\n");
   }
 
 };

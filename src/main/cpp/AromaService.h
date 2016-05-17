@@ -21,10 +21,33 @@ namespace aroma { namespace thrift { namespace service {
 class AromaServiceIf {
  public:
   virtual ~AromaServiceIf() {}
-  virtual double getApiVersion() = 0;
-  virtual void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) = 0;
-  virtual void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) = 0;
-  virtual void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) = 0;
+
+  /**
+   * Sign in to the App and get a User Token in return.
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  virtual void signIn(SignInResponse& _return, const SignInRequest& request) = 0;
+
+  /**
+   * Sign Up for an Aroma Account.
+   * 
+   * @param request
+   */
+  virtual void signUp(SignUpResponse& _return, const SignUpRequest& request) = 0;
+  virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
+
+  /**
+   * Get details about an Application from it's unique ID
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  virtual void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) = 0;
+  virtual void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) = 0;
 
   /**
    * Provision a New Application to keep tabs on.
@@ -45,16 +68,7 @@ class AromaServiceIf {
    * @param request
    */
   virtual void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) = 0;
-
-  /**
-   * Register an existing Application for Health Pokes. The Aroma Service
-   * will then periodically poke the Application for health status.
-   * 
-   * #owner
-   * 
-   * @param request
-   */
-  virtual void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) = 0;
+  virtual void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) = 0;
 
   /**
    * Renew an Application Token that is close to being expired.
@@ -67,20 +81,56 @@ class AromaServiceIf {
   virtual void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) = 0;
 
   /**
-   * Sign in to the App and get a User Token in return.
+   * #owner
+   * 
+   * @param request
+   */
+  virtual void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) = 0;
+
+  /**
+   * Perform a Search on all the applications registered to Aroma by searching for its title.
    * 
    * #user
    * 
    * @param request
    */
-  virtual void signIn(SignInResponse& _return, const SignInRequest& request) = 0;
+  virtual void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) = 0;
 
   /**
-   * Sign Up for an Aroma Account.
+   * Get an Application's Messages.
    * 
    * @param request
    */
-  virtual void signUp(SignUpResponse& _return, const SignUpRequest& request) = 0;
+  virtual void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) = 0;
+
+  /**
+   * In case the Message body has been truncated, use this operation
+   * to load the full message.
+   * 
+   * @param request
+   */
+  virtual void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) = 0;
+  virtual void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) = 0;
+  virtual void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) = 0;
+
+  /**
+   * Get Messages in a User's Inbox
+   * 
+   * @param request
+   */
+  virtual void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) = 0;
+
+  /**
+   * Get all of the User-Related activities that have happened recently.
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  virtual void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) = 0;
+  virtual void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) = 0;
+  virtual void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) = 0;
+  virtual void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) = 0;
 
   /**
    * Subscribe to an existing application to get notifications.
@@ -91,56 +141,19 @@ class AromaServiceIf {
    */
   virtual void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request) = 0;
   virtual void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request) = 0;
+  virtual void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) = 0;
+  virtual void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) = 0;
+  virtual double getApiVersion() = 0;
 
   /**
+   * Register an existing Application for Health Pokes. The Aroma Service
+   * will then periodically poke the Application for health status.
+   * 
    * #owner
    * 
    * @param request
    */
-  virtual void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) = 0;
-  virtual void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) = 0;
-
-  /**
-   * Get all of the User-Related activities that have happened recently.
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  virtual void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) = 0;
-
-  /**
-   * Get details about an Application from it's unique ID
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  virtual void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) = 0;
-  virtual void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) = 0;
-  virtual void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) = 0;
-
-  /**
-   * Get an Application's Messages.
-   * 
-   * @param request
-   */
-  virtual void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) = 0;
-
-  /**
-   * Get Messages in a User's Inbox
-   * 
-   * @param request
-   */
-  virtual void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) = 0;
-
-  /**
-   * In case the Message body has been truncated, use this operation
-   * to load the full message.
-   * 
-   * @param request
-   */
-  virtual void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) = 0;
+  virtual void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) = 0;
 
   /**
    * Request to get Media stored by the Aroma Service.
@@ -148,19 +161,6 @@ class AromaServiceIf {
    * @param request
    */
   virtual void getMedia(GetMediaResponse& _return, const GetMediaRequest& request) = 0;
-  virtual void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) = 0;
-  virtual void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) = 0;
-  virtual void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) = 0;
-  virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
-
-  /**
-   * Perform a Search on all the applications registered to Aroma by searching for its title.
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  virtual void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) = 0;
 };
 
 class AromaServiceIfFactory {
@@ -190,17 +190,19 @@ class AromaServiceIfSingletonFactory : virtual public AromaServiceIfFactory {
 class AromaServiceNull : virtual public AromaServiceIf {
  public:
   virtual ~AromaServiceNull() {}
-  double getApiVersion() {
-    double _return = (double)0;
-    return _return;
-  }
-  void deleteApplication(DeleteApplicationResponse& /* _return */, const DeleteApplicationRequest& /* request */) {
+  void signIn(SignInResponse& /* _return */, const SignInRequest& /* request */) {
     return;
   }
-  void deleteMessage(DeleteMessageResponse& /* _return */, const DeleteMessageRequest& /* request */) {
+  void signUp(SignUpResponse& /* _return */, const SignUpRequest& /* request */) {
     return;
   }
-  void dismissMessage(DismissMessageResponse& /* _return */, const DismissMessageRequest& /* request */) {
+  void getUserInfo(GetUserInfoResponse& /* _return */, const GetUserInfoRequest& /* request */) {
+    return;
+  }
+  void getApplicationInfo(GetApplicationInfoResponse& /* _return */, const GetApplicationInfoRequest& /* request */) {
+    return;
+  }
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& /* _return */, const GetApplicationsOwnedByRequest& /* request */) {
     return;
   }
   void provisionApplication(ProvisionApplicationResponse& /* _return */, const ProvisionApplicationRequest& /* request */) {
@@ -209,16 +211,43 @@ class AromaServiceNull : virtual public AromaServiceIf {
   void regenerateToken(RegenerateApplicationTokenResponse& /* _return */, const RegenerateApplicationTokenRequest& /* request */) {
     return;
   }
-  void registerHealthCheck(RegisterHealthCheckResponse& /* _return */, const RegisterHealthCheckRequest& /* request */) {
+  void deleteApplication(DeleteApplicationResponse& /* _return */, const DeleteApplicationRequest& /* request */) {
     return;
   }
   void renewApplicationToken(RenewApplicationTokenResponse& /* _return */, const RenewApplicationTokenRequest& /* request */) {
     return;
   }
-  void signIn(SignInResponse& /* _return */, const SignInRequest& /* request */) {
+  void updateApplication(UpdateApplicationResponse& /* _return */, const UpdateApplicationRequest& /* request */) {
     return;
   }
-  void signUp(SignUpResponse& /* _return */, const SignUpRequest& /* request */) {
+  void searchForApplications(SearchForApplicationsResponse& /* _return */, const SearchForApplicationsRequest& /* request */) {
+    return;
+  }
+  void getApplicationMessages(GetApplicationMessagesResponse& /* _return */, const GetApplicationMessagesRequest& /* request */) {
+    return;
+  }
+  void getFullMessage(GetFullMessageResponse& /* _return */, const GetFullMessageRequest& /* request */) {
+    return;
+  }
+  void deleteMessage(DeleteMessageResponse& /* _return */, const DeleteMessageRequest& /* request */) {
+    return;
+  }
+  void dismissMessage(DismissMessageResponse& /* _return */, const DismissMessageRequest& /* request */) {
+    return;
+  }
+  void getInbox(GetInboxResponse& /* _return */, const GetInboxRequest& /* request */) {
+    return;
+  }
+  void getActivity(GetActivityResponse& /* _return */, const GetActivityRequest& /* request */) {
+    return;
+  }
+  void getReactions(GetReactionsResponse& /* _return */, const GetReactionsRequest& /* request */) {
+    return;
+  }
+  void updateReactions(UpdateReactionsResponse& /* _return */, const UpdateReactionsRequest& /* request */) {
+    return;
+  }
+  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& /* _return */, const GetApplicationsFollowedByRequest& /* request */) {
     return;
   }
   void followApplication(FollowApplicationResponse& /* _return */, const FollowApplicationRequest& /* request */) {
@@ -227,176 +256,55 @@ class AromaServiceNull : virtual public AromaServiceIf {
   void unfollowApplication(UnfollowApplicationResponse& /* _return */, const UnfollowApplicationRequest& /* request */) {
     return;
   }
-  void updateApplication(UpdateApplicationResponse& /* _return */, const UpdateApplicationRequest& /* request */) {
-    return;
-  }
-  void updateReactions(UpdateReactionsResponse& /* _return */, const UpdateReactionsRequest& /* request */) {
-    return;
-  }
-  void getActivity(GetActivityResponse& /* _return */, const GetActivityRequest& /* request */) {
-    return;
-  }
-  void getApplicationInfo(GetApplicationInfoResponse& /* _return */, const GetApplicationInfoRequest& /* request */) {
+  void getDashboard(GetDashboardResponse& /* _return */, const GetDashboardRequest& /* request */) {
     return;
   }
   void getBuzz(GetBuzzResponse& /* _return */, const GetBuzzRequest& /* request */) {
     return;
   }
-  void getDashboard(GetDashboardResponse& /* _return */, const GetDashboardRequest& /* request */) {
-    return;
+  double getApiVersion() {
+    double _return = (double)0;
+    return _return;
   }
-  void getApplicationMessages(GetApplicationMessagesResponse& /* _return */, const GetApplicationMessagesRequest& /* request */) {
-    return;
-  }
-  void getInbox(GetInboxResponse& /* _return */, const GetInboxRequest& /* request */) {
-    return;
-  }
-  void getFullMessage(GetFullMessageResponse& /* _return */, const GetFullMessageRequest& /* request */) {
+  void registerHealthCheck(RegisterHealthCheckResponse& /* _return */, const RegisterHealthCheckRequest& /* request */) {
     return;
   }
   void getMedia(GetMediaResponse& /* _return */, const GetMediaRequest& /* request */) {
     return;
   }
-  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& /* _return */, const GetApplicationsOwnedByRequest& /* request */) {
-    return;
-  }
-  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& /* _return */, const GetApplicationsFollowedByRequest& /* request */) {
-    return;
-  }
-  void getReactions(GetReactionsResponse& /* _return */, const GetReactionsRequest& /* request */) {
-    return;
-  }
-  void getUserInfo(GetUserInfoResponse& /* _return */, const GetUserInfoRequest& /* request */) {
-    return;
-  }
-  void searchForApplications(SearchForApplicationsResponse& /* _return */, const SearchForApplicationsRequest& /* request */) {
-    return;
-  }
 };
 
-
-class AromaService_getApiVersion_args {
- public:
-
-  AromaService_getApiVersion_args(const AromaService_getApiVersion_args&);
-  AromaService_getApiVersion_args& operator=(const AromaService_getApiVersion_args&);
-  AromaService_getApiVersion_args() {
-  }
-
-  virtual ~AromaService_getApiVersion_args() throw();
-
-  bool operator == (const AromaService_getApiVersion_args & /* rhs */) const
-  {
-    return true;
-  }
-  bool operator != (const AromaService_getApiVersion_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getApiVersion_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getApiVersion_pargs {
- public:
-
-
-  virtual ~AromaService_getApiVersion_pargs() throw();
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getApiVersion_result__isset {
-  _AromaService_getApiVersion_result__isset() : success(false) {}
-  bool success :1;
-} _AromaService_getApiVersion_result__isset;
-
-class AromaService_getApiVersion_result {
- public:
-
-  AromaService_getApiVersion_result(const AromaService_getApiVersion_result&);
-  AromaService_getApiVersion_result& operator=(const AromaService_getApiVersion_result&);
-  AromaService_getApiVersion_result() : success(0) {
-  }
-
-  virtual ~AromaService_getApiVersion_result() throw();
-  double success;
-
-  _AromaService_getApiVersion_result__isset __isset;
-
-  void __set_success(const double val);
-
-  bool operator == (const AromaService_getApiVersion_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getApiVersion_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getApiVersion_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getApiVersion_presult__isset {
-  _AromaService_getApiVersion_presult__isset() : success(false) {}
-  bool success :1;
-} _AromaService_getApiVersion_presult__isset;
-
-class AromaService_getApiVersion_presult {
- public:
-
-
-  virtual ~AromaService_getApiVersion_presult() throw();
-  double* success;
-
-  _AromaService_getApiVersion_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_deleteApplication_args__isset {
-  _AromaService_deleteApplication_args__isset() : request(false) {}
+typedef struct _AromaService_signIn_args__isset {
+  _AromaService_signIn_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_deleteApplication_args__isset;
+} _AromaService_signIn_args__isset;
 
-class AromaService_deleteApplication_args {
+class AromaService_signIn_args {
  public:
 
-  AromaService_deleteApplication_args(const AromaService_deleteApplication_args&);
-  AromaService_deleteApplication_args& operator=(const AromaService_deleteApplication_args&);
-  AromaService_deleteApplication_args() {
+  AromaService_signIn_args(const AromaService_signIn_args&);
+  AromaService_signIn_args& operator=(const AromaService_signIn_args&);
+  AromaService_signIn_args() {
   }
 
-  virtual ~AromaService_deleteApplication_args() throw();
-  DeleteApplicationRequest request;
+  virtual ~AromaService_signIn_args() throw();
+  SignInRequest request;
 
-  _AromaService_deleteApplication_args__isset __isset;
+  _AromaService_signIn_args__isset __isset;
 
-  void __set_request(const DeleteApplicationRequest& val);
+  void __set_request(const SignInRequest& val);
 
-  bool operator == (const AromaService_deleteApplication_args & rhs) const
+  bool operator == (const AromaService_signIn_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_deleteApplication_args &rhs) const {
+  bool operator != (const AromaService_signIn_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_deleteApplication_args & ) const;
+  bool operator < (const AromaService_signIn_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -404,46 +312,462 @@ class AromaService_deleteApplication_args {
 };
 
 
-class AromaService_deleteApplication_pargs {
+class AromaService_signIn_pargs {
  public:
 
 
-  virtual ~AromaService_deleteApplication_pargs() throw();
-  const DeleteApplicationRequest* request;
+  virtual ~AromaService_signIn_pargs() throw();
+  const SignInRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_deleteApplication_result__isset {
-  _AromaService_deleteApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_signIn_result__isset {
+  _AromaService_signIn_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _AromaService_signIn_result__isset;
+
+class AromaService_signIn_result {
+ public:
+
+  AromaService_signIn_result(const AromaService_signIn_result&);
+  AromaService_signIn_result& operator=(const AromaService_signIn_result&);
+  AromaService_signIn_result() {
+  }
+
+  virtual ~AromaService_signIn_result() throw();
+  SignInResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+  UserDoesNotExistException ex4;
+
+  _AromaService_signIn_result__isset __isset;
+
+  void __set_success(const SignInResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  void __set_ex4(const UserDoesNotExistException& val);
+
+  bool operator == (const AromaService_signIn_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_signIn_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_signIn_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_signIn_presult__isset {
+  _AromaService_signIn_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _AromaService_signIn_presult__isset;
+
+class AromaService_signIn_presult {
+ public:
+
+
+  virtual ~AromaService_signIn_presult() throw();
+  SignInResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+  UserDoesNotExistException* ex4;
+
+  _AromaService_signIn_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_signUp_args__isset {
+  _AromaService_signUp_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_signUp_args__isset;
+
+class AromaService_signUp_args {
+ public:
+
+  AromaService_signUp_args(const AromaService_signUp_args&);
+  AromaService_signUp_args& operator=(const AromaService_signUp_args&);
+  AromaService_signUp_args() {
+  }
+
+  virtual ~AromaService_signUp_args() throw();
+  SignUpRequest request;
+
+  _AromaService_signUp_args__isset __isset;
+
+  void __set_request(const SignUpRequest& val);
+
+  bool operator == (const AromaService_signUp_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_signUp_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_signUp_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_signUp_pargs {
+ public:
+
+
+  virtual ~AromaService_signUp_pargs() throw();
+  const SignUpRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_signUp_result__isset {
+  _AromaService_signUp_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _AromaService_signUp_result__isset;
+
+class AromaService_signUp_result {
+ public:
+
+  AromaService_signUp_result(const AromaService_signUp_result&);
+  AromaService_signUp_result& operator=(const AromaService_signUp_result&);
+  AromaService_signUp_result() {
+  }
+
+  virtual ~AromaService_signUp_result() throw();
+  SignUpResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+  AccountAlreadyExistsException ex4;
+
+  _AromaService_signUp_result__isset __isset;
+
+  void __set_success(const SignUpResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  void __set_ex4(const AccountAlreadyExistsException& val);
+
+  bool operator == (const AromaService_signUp_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_signUp_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_signUp_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_signUp_presult__isset {
+  _AromaService_signUp_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _AromaService_signUp_presult__isset;
+
+class AromaService_signUp_presult {
+ public:
+
+
+  virtual ~AromaService_signUp_presult() throw();
+  SignUpResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+  AccountAlreadyExistsException* ex4;
+
+  _AromaService_signUp_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_getUserInfo_args__isset {
+  _AromaService_getUserInfo_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getUserInfo_args__isset;
+
+class AromaService_getUserInfo_args {
+ public:
+
+  AromaService_getUserInfo_args(const AromaService_getUserInfo_args&);
+  AromaService_getUserInfo_args& operator=(const AromaService_getUserInfo_args&);
+  AromaService_getUserInfo_args() {
+  }
+
+  virtual ~AromaService_getUserInfo_args() throw();
+  GetUserInfoRequest request;
+
+  _AromaService_getUserInfo_args__isset __isset;
+
+  void __set_request(const GetUserInfoRequest& val);
+
+  bool operator == (const AromaService_getUserInfo_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getUserInfo_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getUserInfo_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getUserInfo_pargs {
+ public:
+
+
+  virtual ~AromaService_getUserInfo_pargs() throw();
+  const GetUserInfoRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getUserInfo_result__isset {
+  _AromaService_getUserInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _AromaService_deleteApplication_result__isset;
+} _AromaService_getUserInfo_result__isset;
 
-class AromaService_deleteApplication_result {
+class AromaService_getUserInfo_result {
  public:
 
-  AromaService_deleteApplication_result(const AromaService_deleteApplication_result&);
-  AromaService_deleteApplication_result& operator=(const AromaService_deleteApplication_result&);
-  AromaService_deleteApplication_result() {
+  AromaService_getUserInfo_result(const AromaService_getUserInfo_result&);
+  AromaService_getUserInfo_result& operator=(const AromaService_getUserInfo_result&);
+  AromaService_getUserInfo_result() {
   }
 
-  virtual ~AromaService_deleteApplication_result() throw();
-  DeleteApplicationResponse success;
+  virtual ~AromaService_getUserInfo_result() throw();
+  GetUserInfoResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  UnauthorizedException ex4;
+  UserDoesNotExistException ex5;
+
+  _AromaService_getUserInfo_result__isset __isset;
+
+  void __set_success(const GetUserInfoResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const UnauthorizedException& val);
+
+  void __set_ex5(const UserDoesNotExistException& val);
+
+  bool operator == (const AromaService_getUserInfo_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getUserInfo_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getUserInfo_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getUserInfo_presult__isset {
+  _AromaService_getUserInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_getUserInfo_presult__isset;
+
+class AromaService_getUserInfo_presult {
+ public:
+
+
+  virtual ~AromaService_getUserInfo_presult() throw();
+  GetUserInfoResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  UnauthorizedException* ex4;
+  UserDoesNotExistException* ex5;
+
+  _AromaService_getUserInfo_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_getApplicationInfo_args__isset {
+  _AromaService_getApplicationInfo_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getApplicationInfo_args__isset;
+
+class AromaService_getApplicationInfo_args {
+ public:
+
+  AromaService_getApplicationInfo_args(const AromaService_getApplicationInfo_args&);
+  AromaService_getApplicationInfo_args& operator=(const AromaService_getApplicationInfo_args&);
+  AromaService_getApplicationInfo_args() {
+  }
+
+  virtual ~AromaService_getApplicationInfo_args() throw();
+  GetApplicationInfoRequest request;
+
+  _AromaService_getApplicationInfo_args__isset __isset;
+
+  void __set_request(const GetApplicationInfoRequest& val);
+
+  bool operator == (const AromaService_getApplicationInfo_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getApplicationInfo_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getApplicationInfo_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getApplicationInfo_pargs {
+ public:
+
+
+  virtual ~AromaService_getApplicationInfo_pargs() throw();
+  const GetApplicationInfoRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getApplicationInfo_result__isset {
+  _AromaService_getApplicationInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_getApplicationInfo_result__isset;
+
+class AromaService_getApplicationInfo_result {
+ public:
+
+  AromaService_getApplicationInfo_result(const AromaService_getApplicationInfo_result&);
+  AromaService_getApplicationInfo_result& operator=(const AromaService_getApplicationInfo_result&);
+  AromaService_getApplicationInfo_result() {
+  }
+
+  virtual ~AromaService_getApplicationInfo_result() throw();
+  GetApplicationInfoResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _AromaService_deleteApplication_result__isset __isset;
+  _AromaService_getApplicationInfo_result__isset __isset;
 
-  void __set_success(const DeleteApplicationResponse& val);
+  void __set_success(const GetApplicationInfoResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -455,7 +779,7 @@ class AromaService_deleteApplication_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const AromaService_deleteApplication_result & rhs) const
+  bool operator == (const AromaService_getApplicationInfo_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -471,76 +795,76 @@ class AromaService_deleteApplication_result {
       return false;
     return true;
   }
-  bool operator != (const AromaService_deleteApplication_result &rhs) const {
+  bool operator != (const AromaService_getApplicationInfo_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_deleteApplication_result & ) const;
+  bool operator < (const AromaService_getApplicationInfo_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_deleteApplication_presult__isset {
-  _AromaService_deleteApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getApplicationInfo_presult__isset {
+  _AromaService_getApplicationInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _AromaService_deleteApplication_presult__isset;
+} _AromaService_getApplicationInfo_presult__isset;
 
-class AromaService_deleteApplication_presult {
+class AromaService_getApplicationInfo_presult {
  public:
 
 
-  virtual ~AromaService_deleteApplication_presult() throw();
-  DeleteApplicationResponse* success;
+  virtual ~AromaService_getApplicationInfo_presult() throw();
+  GetApplicationInfoResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _AromaService_deleteApplication_presult__isset __isset;
+  _AromaService_getApplicationInfo_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _AromaService_deleteMessage_args__isset {
-  _AromaService_deleteMessage_args__isset() : request(false) {}
+typedef struct _AromaService_getApplicationsOwnedBy_args__isset {
+  _AromaService_getApplicationsOwnedBy_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_deleteMessage_args__isset;
+} _AromaService_getApplicationsOwnedBy_args__isset;
 
-class AromaService_deleteMessage_args {
+class AromaService_getApplicationsOwnedBy_args {
  public:
 
-  AromaService_deleteMessage_args(const AromaService_deleteMessage_args&);
-  AromaService_deleteMessage_args& operator=(const AromaService_deleteMessage_args&);
-  AromaService_deleteMessage_args() {
+  AromaService_getApplicationsOwnedBy_args(const AromaService_getApplicationsOwnedBy_args&);
+  AromaService_getApplicationsOwnedBy_args& operator=(const AromaService_getApplicationsOwnedBy_args&);
+  AromaService_getApplicationsOwnedBy_args() {
   }
 
-  virtual ~AromaService_deleteMessage_args() throw();
-  DeleteMessageRequest request;
+  virtual ~AromaService_getApplicationsOwnedBy_args() throw();
+  GetApplicationsOwnedByRequest request;
 
-  _AromaService_deleteMessage_args__isset __isset;
+  _AromaService_getApplicationsOwnedBy_args__isset __isset;
 
-  void __set_request(const DeleteMessageRequest& val);
+  void __set_request(const GetApplicationsOwnedByRequest& val);
 
-  bool operator == (const AromaService_deleteMessage_args & rhs) const
+  bool operator == (const AromaService_getApplicationsOwnedBy_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_deleteMessage_args &rhs) const {
+  bool operator != (const AromaService_getApplicationsOwnedBy_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_deleteMessage_args & ) const;
+  bool operator < (const AromaService_getApplicationsOwnedBy_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -548,46 +872,42 @@ class AromaService_deleteMessage_args {
 };
 
 
-class AromaService_deleteMessage_pargs {
+class AromaService_getApplicationsOwnedBy_pargs {
  public:
 
 
-  virtual ~AromaService_deleteMessage_pargs() throw();
-  const DeleteMessageRequest* request;
+  virtual ~AromaService_getApplicationsOwnedBy_pargs() throw();
+  const GetApplicationsOwnedByRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_deleteMessage_result__isset {
-  _AromaService_deleteMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getApplicationsOwnedBy_result__isset {
+  _AromaService_getApplicationsOwnedBy_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_deleteMessage_result__isset;
+} _AromaService_getApplicationsOwnedBy_result__isset;
 
-class AromaService_deleteMessage_result {
+class AromaService_getApplicationsOwnedBy_result {
  public:
 
-  AromaService_deleteMessage_result(const AromaService_deleteMessage_result&);
-  AromaService_deleteMessage_result& operator=(const AromaService_deleteMessage_result&);
-  AromaService_deleteMessage_result() {
+  AromaService_getApplicationsOwnedBy_result(const AromaService_getApplicationsOwnedBy_result&);
+  AromaService_getApplicationsOwnedBy_result& operator=(const AromaService_getApplicationsOwnedBy_result&);
+  AromaService_getApplicationsOwnedBy_result() {
   }
 
-  virtual ~AromaService_deleteMessage_result() throw();
-  DeleteMessageResponse success;
+  virtual ~AromaService_getApplicationsOwnedBy_result() throw();
+  GetApplicationsOwnedByResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
-  MessageDoesNotExistException ex4;
-  UnauthorizedException ex5;
 
-  _AromaService_deleteMessage_result__isset __isset;
+  _AromaService_getApplicationsOwnedBy_result__isset __isset;
 
-  void __set_success(const DeleteMessageResponse& val);
+  void __set_success(const GetApplicationsOwnedByResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -595,11 +915,7 @@ class AromaService_deleteMessage_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex4(const MessageDoesNotExistException& val);
-
-  void __set_ex5(const UnauthorizedException& val);
-
-  bool operator == (const AromaService_deleteMessage_result & rhs) const
+  bool operator == (const AromaService_getApplicationsOwnedBy_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -609,190 +925,38 @@ class AromaService_deleteMessage_result {
       return false;
     if (!(ex3 == rhs.ex3))
       return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
     return true;
   }
-  bool operator != (const AromaService_deleteMessage_result &rhs) const {
+  bool operator != (const AromaService_getApplicationsOwnedBy_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_deleteMessage_result & ) const;
+  bool operator < (const AromaService_getApplicationsOwnedBy_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_deleteMessage_presult__isset {
-  _AromaService_deleteMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getApplicationsOwnedBy_presult__isset {
+  _AromaService_getApplicationsOwnedBy_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_deleteMessage_presult__isset;
+} _AromaService_getApplicationsOwnedBy_presult__isset;
 
-class AromaService_deleteMessage_presult {
+class AromaService_getApplicationsOwnedBy_presult {
  public:
 
 
-  virtual ~AromaService_deleteMessage_presult() throw();
-  DeleteMessageResponse* success;
+  virtual ~AromaService_getApplicationsOwnedBy_presult() throw();
+  GetApplicationsOwnedByResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
-  MessageDoesNotExistException* ex4;
-  UnauthorizedException* ex5;
 
-  _AromaService_deleteMessage_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_dismissMessage_args__isset {
-  _AromaService_dismissMessage_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_dismissMessage_args__isset;
-
-class AromaService_dismissMessage_args {
- public:
-
-  AromaService_dismissMessage_args(const AromaService_dismissMessage_args&);
-  AromaService_dismissMessage_args& operator=(const AromaService_dismissMessage_args&);
-  AromaService_dismissMessage_args() {
-  }
-
-  virtual ~AromaService_dismissMessage_args() throw();
-  DismissMessageRequest request;
-
-  _AromaService_dismissMessage_args__isset __isset;
-
-  void __set_request(const DismissMessageRequest& val);
-
-  bool operator == (const AromaService_dismissMessage_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_dismissMessage_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_dismissMessage_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_dismissMessage_pargs {
- public:
-
-
-  virtual ~AromaService_dismissMessage_pargs() throw();
-  const DismissMessageRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_dismissMessage_result__isset {
-  _AromaService_dismissMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_dismissMessage_result__isset;
-
-class AromaService_dismissMessage_result {
- public:
-
-  AromaService_dismissMessage_result(const AromaService_dismissMessage_result&);
-  AromaService_dismissMessage_result& operator=(const AromaService_dismissMessage_result&);
-  AromaService_dismissMessage_result() {
-  }
-
-  virtual ~AromaService_dismissMessage_result() throw();
-  DismissMessageResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  MessageDoesNotExistException ex4;
-  UnauthorizedException ex5;
-
-  _AromaService_dismissMessage_result__isset __isset;
-
-  void __set_success(const DismissMessageResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const MessageDoesNotExistException& val);
-
-  void __set_ex5(const UnauthorizedException& val);
-
-  bool operator == (const AromaService_dismissMessage_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_dismissMessage_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_dismissMessage_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_dismissMessage_presult__isset {
-  _AromaService_dismissMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_dismissMessage_presult__isset;
-
-class AromaService_dismissMessage_presult {
- public:
-
-
-  virtual ~AromaService_dismissMessage_presult() throw();
-  DismissMessageResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  MessageDoesNotExistException* ex4;
-  UnauthorizedException* ex5;
-
-  _AromaService_dismissMessage_presult__isset __isset;
+  _AromaService_getApplicationsOwnedBy_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -1086,37 +1250,37 @@ class AromaService_regenerateToken_presult {
 
 };
 
-typedef struct _AromaService_registerHealthCheck_args__isset {
-  _AromaService_registerHealthCheck_args__isset() : request(false) {}
+typedef struct _AromaService_deleteApplication_args__isset {
+  _AromaService_deleteApplication_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_registerHealthCheck_args__isset;
+} _AromaService_deleteApplication_args__isset;
 
-class AromaService_registerHealthCheck_args {
+class AromaService_deleteApplication_args {
  public:
 
-  AromaService_registerHealthCheck_args(const AromaService_registerHealthCheck_args&);
-  AromaService_registerHealthCheck_args& operator=(const AromaService_registerHealthCheck_args&);
-  AromaService_registerHealthCheck_args() {
+  AromaService_deleteApplication_args(const AromaService_deleteApplication_args&);
+  AromaService_deleteApplication_args& operator=(const AromaService_deleteApplication_args&);
+  AromaService_deleteApplication_args() {
   }
 
-  virtual ~AromaService_registerHealthCheck_args() throw();
-  RegisterHealthCheckRequest request;
+  virtual ~AromaService_deleteApplication_args() throw();
+  DeleteApplicationRequest request;
 
-  _AromaService_registerHealthCheck_args__isset __isset;
+  _AromaService_deleteApplication_args__isset __isset;
 
-  void __set_request(const RegisterHealthCheckRequest& val);
+  void __set_request(const DeleteApplicationRequest& val);
 
-  bool operator == (const AromaService_registerHealthCheck_args & rhs) const
+  bool operator == (const AromaService_deleteApplication_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_registerHealthCheck_args &rhs) const {
+  bool operator != (const AromaService_deleteApplication_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_registerHealthCheck_args & ) const;
+  bool operator < (const AromaService_deleteApplication_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1124,46 +1288,46 @@ class AromaService_registerHealthCheck_args {
 };
 
 
-class AromaService_registerHealthCheck_pargs {
+class AromaService_deleteApplication_pargs {
  public:
 
 
-  virtual ~AromaService_registerHealthCheck_pargs() throw();
-  const RegisterHealthCheckRequest* request;
+  virtual ~AromaService_deleteApplication_pargs() throw();
+  const DeleteApplicationRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_registerHealthCheck_result__isset {
-  _AromaService_registerHealthCheck_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_deleteApplication_result__isset {
+  _AromaService_deleteApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _AromaService_registerHealthCheck_result__isset;
+} _AromaService_deleteApplication_result__isset;
 
-class AromaService_registerHealthCheck_result {
+class AromaService_deleteApplication_result {
  public:
 
-  AromaService_registerHealthCheck_result(const AromaService_registerHealthCheck_result&);
-  AromaService_registerHealthCheck_result& operator=(const AromaService_registerHealthCheck_result&);
-  AromaService_registerHealthCheck_result() {
+  AromaService_deleteApplication_result(const AromaService_deleteApplication_result&);
+  AromaService_deleteApplication_result& operator=(const AromaService_deleteApplication_result&);
+  AromaService_deleteApplication_result() {
   }
 
-  virtual ~AromaService_registerHealthCheck_result() throw();
-  RegisterHealthCheckResponse success;
+  virtual ~AromaService_deleteApplication_result() throw();
+  DeleteApplicationResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _AromaService_registerHealthCheck_result__isset __isset;
+  _AromaService_deleteApplication_result__isset __isset;
 
-  void __set_success(const RegisterHealthCheckResponse& val);
+  void __set_success(const DeleteApplicationResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -1175,7 +1339,7 @@ class AromaService_registerHealthCheck_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const AromaService_registerHealthCheck_result & rhs) const
+  bool operator == (const AromaService_deleteApplication_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1191,40 +1355,40 @@ class AromaService_registerHealthCheck_result {
       return false;
     return true;
   }
-  bool operator != (const AromaService_registerHealthCheck_result &rhs) const {
+  bool operator != (const AromaService_deleteApplication_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_registerHealthCheck_result & ) const;
+  bool operator < (const AromaService_deleteApplication_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_registerHealthCheck_presult__isset {
-  _AromaService_registerHealthCheck_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_deleteApplication_presult__isset {
+  _AromaService_deleteApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _AromaService_registerHealthCheck_presult__isset;
+} _AromaService_deleteApplication_presult__isset;
 
-class AromaService_registerHealthCheck_presult {
+class AromaService_deleteApplication_presult {
  public:
 
 
-  virtual ~AromaService_registerHealthCheck_presult() throw();
-  RegisterHealthCheckResponse* success;
+  virtual ~AromaService_deleteApplication_presult() throw();
+  DeleteApplicationResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _AromaService_registerHealthCheck_presult__isset __isset;
+  _AromaService_deleteApplication_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -1374,37 +1538,37 @@ class AromaService_renewApplicationToken_presult {
 
 };
 
-typedef struct _AromaService_signIn_args__isset {
-  _AromaService_signIn_args__isset() : request(false) {}
+typedef struct _AromaService_updateApplication_args__isset {
+  _AromaService_updateApplication_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_signIn_args__isset;
+} _AromaService_updateApplication_args__isset;
 
-class AromaService_signIn_args {
+class AromaService_updateApplication_args {
  public:
 
-  AromaService_signIn_args(const AromaService_signIn_args&);
-  AromaService_signIn_args& operator=(const AromaService_signIn_args&);
-  AromaService_signIn_args() {
+  AromaService_updateApplication_args(const AromaService_updateApplication_args&);
+  AromaService_updateApplication_args& operator=(const AromaService_updateApplication_args&);
+  AromaService_updateApplication_args() {
   }
 
-  virtual ~AromaService_signIn_args() throw();
-  SignInRequest request;
+  virtual ~AromaService_updateApplication_args() throw();
+  UpdateApplicationRequest request;
 
-  _AromaService_signIn_args__isset __isset;
+  _AromaService_updateApplication_args__isset __isset;
 
-  void __set_request(const SignInRequest& val);
+  void __set_request(const UpdateApplicationRequest& val);
 
-  bool operator == (const AromaService_signIn_args & rhs) const
+  bool operator == (const AromaService_updateApplication_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_signIn_args &rhs) const {
+  bool operator != (const AromaService_updateApplication_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_signIn_args & ) const;
+  bool operator < (const AromaService_updateApplication_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1412,54 +1576,198 @@ class AromaService_signIn_args {
 };
 
 
-class AromaService_signIn_pargs {
+class AromaService_updateApplication_pargs {
  public:
 
 
-  virtual ~AromaService_signIn_pargs() throw();
-  const SignInRequest* request;
+  virtual ~AromaService_updateApplication_pargs() throw();
+  const UpdateApplicationRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_signIn_result__isset {
-  _AromaService_signIn_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_updateApplication_result__isset {
+  _AromaService_updateApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _AromaService_signIn_result__isset;
+  bool ex5 :1;
+} _AromaService_updateApplication_result__isset;
 
-class AromaService_signIn_result {
+class AromaService_updateApplication_result {
  public:
 
-  AromaService_signIn_result(const AromaService_signIn_result&);
-  AromaService_signIn_result& operator=(const AromaService_signIn_result&);
-  AromaService_signIn_result() {
+  AromaService_updateApplication_result(const AromaService_updateApplication_result&);
+  AromaService_updateApplication_result& operator=(const AromaService_updateApplication_result&);
+  AromaService_updateApplication_result() {
   }
 
-  virtual ~AromaService_signIn_result() throw();
-  SignInResponse success;
+  virtual ~AromaService_updateApplication_result() throw();
+  UpdateApplicationResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
-  UserDoesNotExistException ex4;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
 
-  _AromaService_signIn_result__isset __isset;
+  _AromaService_updateApplication_result__isset __isset;
 
-  void __set_success(const SignInResponse& val);
+  void __set_success(const UpdateApplicationResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex4(const UserDoesNotExistException& val);
+  void __set_ex4(const ApplicationDoesNotExistException& val);
 
-  bool operator == (const AromaService_signIn_result & rhs) const
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_updateApplication_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_updateApplication_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_updateApplication_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_updateApplication_presult__isset {
+  _AromaService_updateApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_updateApplication_presult__isset;
+
+class AromaService_updateApplication_presult {
+ public:
+
+
+  virtual ~AromaService_updateApplication_presult() throw();
+  UpdateApplicationResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_updateApplication_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_searchForApplications_args__isset {
+  _AromaService_searchForApplications_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_searchForApplications_args__isset;
+
+class AromaService_searchForApplications_args {
+ public:
+
+  AromaService_searchForApplications_args(const AromaService_searchForApplications_args&);
+  AromaService_searchForApplications_args& operator=(const AromaService_searchForApplications_args&);
+  AromaService_searchForApplications_args() {
+  }
+
+  virtual ~AromaService_searchForApplications_args() throw();
+  SearchForApplicationsRequest request;
+
+  _AromaService_searchForApplications_args__isset __isset;
+
+  void __set_request(const SearchForApplicationsRequest& val);
+
+  bool operator == (const AromaService_searchForApplications_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_searchForApplications_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_searchForApplications_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_searchForApplications_pargs {
+ public:
+
+
+  virtual ~AromaService_searchForApplications_pargs() throw();
+  const SearchForApplicationsRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_searchForApplications_result__isset {
+  _AromaService_searchForApplications_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _AromaService_searchForApplications_result__isset;
+
+class AromaService_searchForApplications_result {
+ public:
+
+  AromaService_searchForApplications_result(const AromaService_searchForApplications_result&);
+  AromaService_searchForApplications_result& operator=(const AromaService_searchForApplications_result&);
+  AromaService_searchForApplications_result() {
+  }
+
+  virtual ~AromaService_searchForApplications_result() throw();
+  SearchForApplicationsResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  UnauthorizedException ex4;
+
+  _AromaService_searchForApplications_result__isset __isset;
+
+  void __set_success(const SearchForApplicationsResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_searchForApplications_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1473,74 +1781,74 @@ class AromaService_signIn_result {
       return false;
     return true;
   }
-  bool operator != (const AromaService_signIn_result &rhs) const {
+  bool operator != (const AromaService_searchForApplications_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_signIn_result & ) const;
+  bool operator < (const AromaService_searchForApplications_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_signIn_presult__isset {
-  _AromaService_signIn_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_searchForApplications_presult__isset {
+  _AromaService_searchForApplications_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _AromaService_signIn_presult__isset;
+} _AromaService_searchForApplications_presult__isset;
 
-class AromaService_signIn_presult {
+class AromaService_searchForApplications_presult {
  public:
 
 
-  virtual ~AromaService_signIn_presult() throw();
-  SignInResponse* success;
+  virtual ~AromaService_searchForApplications_presult() throw();
+  SearchForApplicationsResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
-  UserDoesNotExistException* ex4;
+  InvalidTokenException* ex3;
+  UnauthorizedException* ex4;
 
-  _AromaService_signIn_presult__isset __isset;
+  _AromaService_searchForApplications_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _AromaService_signUp_args__isset {
-  _AromaService_signUp_args__isset() : request(false) {}
+typedef struct _AromaService_getApplicationMessages_args__isset {
+  _AromaService_getApplicationMessages_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_signUp_args__isset;
+} _AromaService_getApplicationMessages_args__isset;
 
-class AromaService_signUp_args {
+class AromaService_getApplicationMessages_args {
  public:
 
-  AromaService_signUp_args(const AromaService_signUp_args&);
-  AromaService_signUp_args& operator=(const AromaService_signUp_args&);
-  AromaService_signUp_args() {
+  AromaService_getApplicationMessages_args(const AromaService_getApplicationMessages_args&);
+  AromaService_getApplicationMessages_args& operator=(const AromaService_getApplicationMessages_args&);
+  AromaService_getApplicationMessages_args() {
   }
 
-  virtual ~AromaService_signUp_args() throw();
-  SignUpRequest request;
+  virtual ~AromaService_getApplicationMessages_args() throw();
+  GetApplicationMessagesRequest request;
 
-  _AromaService_signUp_args__isset __isset;
+  _AromaService_getApplicationMessages_args__isset __isset;
 
-  void __set_request(const SignUpRequest& val);
+  void __set_request(const GetApplicationMessagesRequest& val);
 
-  bool operator == (const AromaService_signUp_args & rhs) const
+  bool operator == (const AromaService_getApplicationMessages_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_signUp_args &rhs) const {
+  bool operator != (const AromaService_getApplicationMessages_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_signUp_args & ) const;
+  bool operator < (const AromaService_getApplicationMessages_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1548,54 +1856,58 @@ class AromaService_signUp_args {
 };
 
 
-class AromaService_signUp_pargs {
+class AromaService_getApplicationMessages_pargs {
  public:
 
 
-  virtual ~AromaService_signUp_pargs() throw();
-  const SignUpRequest* request;
+  virtual ~AromaService_getApplicationMessages_pargs() throw();
+  const GetApplicationMessagesRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_signUp_result__isset {
-  _AromaService_signUp_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_getApplicationMessages_result__isset {
+  _AromaService_getApplicationMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _AromaService_signUp_result__isset;
+  bool ex5 :1;
+} _AromaService_getApplicationMessages_result__isset;
 
-class AromaService_signUp_result {
+class AromaService_getApplicationMessages_result {
  public:
 
-  AromaService_signUp_result(const AromaService_signUp_result&);
-  AromaService_signUp_result& operator=(const AromaService_signUp_result&);
-  AromaService_signUp_result() {
+  AromaService_getApplicationMessages_result(const AromaService_getApplicationMessages_result&);
+  AromaService_getApplicationMessages_result& operator=(const AromaService_getApplicationMessages_result&);
+  AromaService_getApplicationMessages_result() {
   }
 
-  virtual ~AromaService_signUp_result() throw();
-  SignUpResponse success;
+  virtual ~AromaService_getApplicationMessages_result() throw();
+  GetApplicationMessagesResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
-  AccountAlreadyExistsException ex4;
+  InvalidTokenException ex3;
+  UnauthorizedException ex4;
+  ApplicationDoesNotExistException ex5;
 
-  _AromaService_signUp_result__isset __isset;
+  _AromaService_getApplicationMessages_result__isset __isset;
 
-  void __set_success(const SignUpResponse& val);
+  void __set_success(const GetApplicationMessagesResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex4(const AccountAlreadyExistsException& val);
+  void __set_ex4(const UnauthorizedException& val);
 
-  bool operator == (const AromaService_signUp_result & rhs) const
+  void __set_ex5(const ApplicationDoesNotExistException& val);
+
+  bool operator == (const AromaService_getApplicationMessages_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1607,40 +1919,1132 @@ class AromaService_signUp_result {
       return false;
     if (!(ex4 == rhs.ex4))
       return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
     return true;
   }
-  bool operator != (const AromaService_signUp_result &rhs) const {
+  bool operator != (const AromaService_getApplicationMessages_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_signUp_result & ) const;
+  bool operator < (const AromaService_getApplicationMessages_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_signUp_presult__isset {
-  _AromaService_signUp_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_getApplicationMessages_presult__isset {
+  _AromaService_getApplicationMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _AromaService_signUp_presult__isset;
+  bool ex5 :1;
+} _AromaService_getApplicationMessages_presult__isset;
 
-class AromaService_signUp_presult {
+class AromaService_getApplicationMessages_presult {
  public:
 
 
-  virtual ~AromaService_signUp_presult() throw();
-  SignUpResponse* success;
+  virtual ~AromaService_getApplicationMessages_presult() throw();
+  GetApplicationMessagesResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
-  AccountAlreadyExistsException* ex4;
+  InvalidTokenException* ex3;
+  UnauthorizedException* ex4;
+  ApplicationDoesNotExistException* ex5;
 
-  _AromaService_signUp_presult__isset __isset;
+  _AromaService_getApplicationMessages_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_getFullMessage_args__isset {
+  _AromaService_getFullMessage_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getFullMessage_args__isset;
+
+class AromaService_getFullMessage_args {
+ public:
+
+  AromaService_getFullMessage_args(const AromaService_getFullMessage_args&);
+  AromaService_getFullMessage_args& operator=(const AromaService_getFullMessage_args&);
+  AromaService_getFullMessage_args() {
+  }
+
+  virtual ~AromaService_getFullMessage_args() throw();
+  GetFullMessageRequest request;
+
+  _AromaService_getFullMessage_args__isset __isset;
+
+  void __set_request(const GetFullMessageRequest& val);
+
+  bool operator == (const AromaService_getFullMessage_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getFullMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getFullMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getFullMessage_pargs {
+ public:
+
+
+  virtual ~AromaService_getFullMessage_pargs() throw();
+  const GetFullMessageRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getFullMessage_result__isset {
+  _AromaService_getFullMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _AromaService_getFullMessage_result__isset;
+
+class AromaService_getFullMessage_result {
+ public:
+
+  AromaService_getFullMessage_result(const AromaService_getFullMessage_result&);
+  AromaService_getFullMessage_result& operator=(const AromaService_getFullMessage_result&);
+  AromaService_getFullMessage_result() {
+  }
+
+  virtual ~AromaService_getFullMessage_result() throw();
+  GetFullMessageResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+
+  _AromaService_getFullMessage_result__isset __isset;
+
+  void __set_success(const GetFullMessageResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  bool operator == (const AromaService_getFullMessage_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getFullMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getFullMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getFullMessage_presult__isset {
+  _AromaService_getFullMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _AromaService_getFullMessage_presult__isset;
+
+class AromaService_getFullMessage_presult {
+ public:
+
+
+  virtual ~AromaService_getFullMessage_presult() throw();
+  GetFullMessageResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+
+  _AromaService_getFullMessage_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_deleteMessage_args__isset {
+  _AromaService_deleteMessage_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_deleteMessage_args__isset;
+
+class AromaService_deleteMessage_args {
+ public:
+
+  AromaService_deleteMessage_args(const AromaService_deleteMessage_args&);
+  AromaService_deleteMessage_args& operator=(const AromaService_deleteMessage_args&);
+  AromaService_deleteMessage_args() {
+  }
+
+  virtual ~AromaService_deleteMessage_args() throw();
+  DeleteMessageRequest request;
+
+  _AromaService_deleteMessage_args__isset __isset;
+
+  void __set_request(const DeleteMessageRequest& val);
+
+  bool operator == (const AromaService_deleteMessage_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_deleteMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_deleteMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_deleteMessage_pargs {
+ public:
+
+
+  virtual ~AromaService_deleteMessage_pargs() throw();
+  const DeleteMessageRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_deleteMessage_result__isset {
+  _AromaService_deleteMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_deleteMessage_result__isset;
+
+class AromaService_deleteMessage_result {
+ public:
+
+  AromaService_deleteMessage_result(const AromaService_deleteMessage_result&);
+  AromaService_deleteMessage_result& operator=(const AromaService_deleteMessage_result&);
+  AromaService_deleteMessage_result() {
+  }
+
+  virtual ~AromaService_deleteMessage_result() throw();
+  DeleteMessageResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  MessageDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_deleteMessage_result__isset __isset;
+
+  void __set_success(const DeleteMessageResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const MessageDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_deleteMessage_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_deleteMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_deleteMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_deleteMessage_presult__isset {
+  _AromaService_deleteMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_deleteMessage_presult__isset;
+
+class AromaService_deleteMessage_presult {
+ public:
+
+
+  virtual ~AromaService_deleteMessage_presult() throw();
+  DeleteMessageResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  MessageDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_deleteMessage_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_dismissMessage_args__isset {
+  _AromaService_dismissMessage_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_dismissMessage_args__isset;
+
+class AromaService_dismissMessage_args {
+ public:
+
+  AromaService_dismissMessage_args(const AromaService_dismissMessage_args&);
+  AromaService_dismissMessage_args& operator=(const AromaService_dismissMessage_args&);
+  AromaService_dismissMessage_args() {
+  }
+
+  virtual ~AromaService_dismissMessage_args() throw();
+  DismissMessageRequest request;
+
+  _AromaService_dismissMessage_args__isset __isset;
+
+  void __set_request(const DismissMessageRequest& val);
+
+  bool operator == (const AromaService_dismissMessage_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_dismissMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_dismissMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_dismissMessage_pargs {
+ public:
+
+
+  virtual ~AromaService_dismissMessage_pargs() throw();
+  const DismissMessageRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_dismissMessage_result__isset {
+  _AromaService_dismissMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_dismissMessage_result__isset;
+
+class AromaService_dismissMessage_result {
+ public:
+
+  AromaService_dismissMessage_result(const AromaService_dismissMessage_result&);
+  AromaService_dismissMessage_result& operator=(const AromaService_dismissMessage_result&);
+  AromaService_dismissMessage_result() {
+  }
+
+  virtual ~AromaService_dismissMessage_result() throw();
+  DismissMessageResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  MessageDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_dismissMessage_result__isset __isset;
+
+  void __set_success(const DismissMessageResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const MessageDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_dismissMessage_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_dismissMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_dismissMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_dismissMessage_presult__isset {
+  _AromaService_dismissMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_dismissMessage_presult__isset;
+
+class AromaService_dismissMessage_presult {
+ public:
+
+
+  virtual ~AromaService_dismissMessage_presult() throw();
+  DismissMessageResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  MessageDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_dismissMessage_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_getInbox_args__isset {
+  _AromaService_getInbox_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getInbox_args__isset;
+
+class AromaService_getInbox_args {
+ public:
+
+  AromaService_getInbox_args(const AromaService_getInbox_args&);
+  AromaService_getInbox_args& operator=(const AromaService_getInbox_args&);
+  AromaService_getInbox_args() {
+  }
+
+  virtual ~AromaService_getInbox_args() throw();
+  GetInboxRequest request;
+
+  _AromaService_getInbox_args__isset __isset;
+
+  void __set_request(const GetInboxRequest& val);
+
+  bool operator == (const AromaService_getInbox_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getInbox_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getInbox_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getInbox_pargs {
+ public:
+
+
+  virtual ~AromaService_getInbox_pargs() throw();
+  const GetInboxRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getInbox_result__isset {
+  _AromaService_getInbox_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _AromaService_getInbox_result__isset;
+
+class AromaService_getInbox_result {
+ public:
+
+  AromaService_getInbox_result(const AromaService_getInbox_result&);
+  AromaService_getInbox_result& operator=(const AromaService_getInbox_result&);
+  AromaService_getInbox_result() {
+  }
+
+  virtual ~AromaService_getInbox_result() throw();
+  GetInboxResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+
+  _AromaService_getInbox_result__isset __isset;
+
+  void __set_success(const GetInboxResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  bool operator == (const AromaService_getInbox_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getInbox_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getInbox_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getInbox_presult__isset {
+  _AromaService_getInbox_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _AromaService_getInbox_presult__isset;
+
+class AromaService_getInbox_presult {
+ public:
+
+
+  virtual ~AromaService_getInbox_presult() throw();
+  GetInboxResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+
+  _AromaService_getInbox_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_getActivity_args__isset {
+  _AromaService_getActivity_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getActivity_args__isset;
+
+class AromaService_getActivity_args {
+ public:
+
+  AromaService_getActivity_args(const AromaService_getActivity_args&);
+  AromaService_getActivity_args& operator=(const AromaService_getActivity_args&);
+  AromaService_getActivity_args() {
+  }
+
+  virtual ~AromaService_getActivity_args() throw();
+  GetActivityRequest request;
+
+  _AromaService_getActivity_args__isset __isset;
+
+  void __set_request(const GetActivityRequest& val);
+
+  bool operator == (const AromaService_getActivity_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getActivity_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getActivity_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getActivity_pargs {
+ public:
+
+
+  virtual ~AromaService_getActivity_pargs() throw();
+  const GetActivityRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getActivity_result__isset {
+  _AromaService_getActivity_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _AromaService_getActivity_result__isset;
+
+class AromaService_getActivity_result {
+ public:
+
+  AromaService_getActivity_result(const AromaService_getActivity_result&);
+  AromaService_getActivity_result& operator=(const AromaService_getActivity_result&);
+  AromaService_getActivity_result() {
+  }
+
+  virtual ~AromaService_getActivity_result() throw();
+  GetActivityResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+
+  _AromaService_getActivity_result__isset __isset;
+
+  void __set_success(const GetActivityResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  bool operator == (const AromaService_getActivity_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getActivity_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getActivity_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getActivity_presult__isset {
+  _AromaService_getActivity_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _AromaService_getActivity_presult__isset;
+
+class AromaService_getActivity_presult {
+ public:
+
+
+  virtual ~AromaService_getActivity_presult() throw();
+  GetActivityResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+
+  _AromaService_getActivity_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_getReactions_args__isset {
+  _AromaService_getReactions_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getReactions_args__isset;
+
+class AromaService_getReactions_args {
+ public:
+
+  AromaService_getReactions_args(const AromaService_getReactions_args&);
+  AromaService_getReactions_args& operator=(const AromaService_getReactions_args&);
+  AromaService_getReactions_args() {
+  }
+
+  virtual ~AromaService_getReactions_args() throw();
+  GetReactionsRequest request;
+
+  _AromaService_getReactions_args__isset __isset;
+
+  void __set_request(const GetReactionsRequest& val);
+
+  bool operator == (const AromaService_getReactions_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getReactions_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getReactions_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getReactions_pargs {
+ public:
+
+
+  virtual ~AromaService_getReactions_pargs() throw();
+  const GetReactionsRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getReactions_result__isset {
+  _AromaService_getReactions_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_getReactions_result__isset;
+
+class AromaService_getReactions_result {
+ public:
+
+  AromaService_getReactions_result(const AromaService_getReactions_result&);
+  AromaService_getReactions_result& operator=(const AromaService_getReactions_result&);
+  AromaService_getReactions_result() {
+  }
+
+  virtual ~AromaService_getReactions_result() throw();
+  GetReactionsResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_getReactions_result__isset __isset;
+
+  void __set_success(const GetReactionsResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const ApplicationDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_getReactions_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getReactions_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getReactions_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getReactions_presult__isset {
+  _AromaService_getReactions_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_getReactions_presult__isset;
+
+class AromaService_getReactions_presult {
+ public:
+
+
+  virtual ~AromaService_getReactions_presult() throw();
+  GetReactionsResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_getReactions_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_updateReactions_args__isset {
+  _AromaService_updateReactions_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_updateReactions_args__isset;
+
+class AromaService_updateReactions_args {
+ public:
+
+  AromaService_updateReactions_args(const AromaService_updateReactions_args&);
+  AromaService_updateReactions_args& operator=(const AromaService_updateReactions_args&);
+  AromaService_updateReactions_args() {
+  }
+
+  virtual ~AromaService_updateReactions_args() throw();
+  UpdateReactionsRequest request;
+
+  _AromaService_updateReactions_args__isset __isset;
+
+  void __set_request(const UpdateReactionsRequest& val);
+
+  bool operator == (const AromaService_updateReactions_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_updateReactions_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_updateReactions_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_updateReactions_pargs {
+ public:
+
+
+  virtual ~AromaService_updateReactions_pargs() throw();
+  const UpdateReactionsRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_updateReactions_result__isset {
+  _AromaService_updateReactions_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_updateReactions_result__isset;
+
+class AromaService_updateReactions_result {
+ public:
+
+  AromaService_updateReactions_result(const AromaService_updateReactions_result&);
+  AromaService_updateReactions_result& operator=(const AromaService_updateReactions_result&);
+  AromaService_updateReactions_result() {
+  }
+
+  virtual ~AromaService_updateReactions_result() throw();
+  UpdateReactionsResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_updateReactions_result__isset __isset;
+
+  void __set_success(const UpdateReactionsResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const ApplicationDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_updateReactions_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_updateReactions_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_updateReactions_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_updateReactions_presult__isset {
+  _AromaService_updateReactions_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_updateReactions_presult__isset;
+
+class AromaService_updateReactions_presult {
+ public:
+
+
+  virtual ~AromaService_updateReactions_presult() throw();
+  UpdateReactionsResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_updateReactions_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_getApplicationsFollowedBy_args__isset {
+  _AromaService_getApplicationsFollowedBy_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getApplicationsFollowedBy_args__isset;
+
+class AromaService_getApplicationsFollowedBy_args {
+ public:
+
+  AromaService_getApplicationsFollowedBy_args(const AromaService_getApplicationsFollowedBy_args&);
+  AromaService_getApplicationsFollowedBy_args& operator=(const AromaService_getApplicationsFollowedBy_args&);
+  AromaService_getApplicationsFollowedBy_args() {
+  }
+
+  virtual ~AromaService_getApplicationsFollowedBy_args() throw();
+  GetApplicationsFollowedByRequest request;
+
+  _AromaService_getApplicationsFollowedBy_args__isset __isset;
+
+  void __set_request(const GetApplicationsFollowedByRequest& val);
+
+  bool operator == (const AromaService_getApplicationsFollowedBy_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getApplicationsFollowedBy_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getApplicationsFollowedBy_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getApplicationsFollowedBy_pargs {
+ public:
+
+
+  virtual ~AromaService_getApplicationsFollowedBy_pargs() throw();
+  const GetApplicationsFollowedByRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getApplicationsFollowedBy_result__isset {
+  _AromaService_getApplicationsFollowedBy_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _AromaService_getApplicationsFollowedBy_result__isset;
+
+class AromaService_getApplicationsFollowedBy_result {
+ public:
+
+  AromaService_getApplicationsFollowedBy_result(const AromaService_getApplicationsFollowedBy_result&);
+  AromaService_getApplicationsFollowedBy_result& operator=(const AromaService_getApplicationsFollowedBy_result&);
+  AromaService_getApplicationsFollowedBy_result() {
+  }
+
+  virtual ~AromaService_getApplicationsFollowedBy_result() throw();
+  GetApplicationsFollowedByResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+
+  _AromaService_getApplicationsFollowedBy_result__isset __isset;
+
+  void __set_success(const GetApplicationsFollowedByResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  bool operator == (const AromaService_getApplicationsFollowedBy_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getApplicationsFollowedBy_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getApplicationsFollowedBy_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getApplicationsFollowedBy_presult__isset {
+  _AromaService_getApplicationsFollowedBy_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _AromaService_getApplicationsFollowedBy_presult__isset;
+
+class AromaService_getApplicationsFollowedBy_presult {
+ public:
+
+
+  virtual ~AromaService_getApplicationsFollowedBy_presult() throw();
+  GetApplicationsFollowedByResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+
+  _AromaService_getApplicationsFollowedBy_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -1934,37 +3338,37 @@ class AromaService_unfollowApplication_presult {
 
 };
 
-typedef struct _AromaService_updateApplication_args__isset {
-  _AromaService_updateApplication_args__isset() : request(false) {}
+typedef struct _AromaService_getDashboard_args__isset {
+  _AromaService_getDashboard_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_updateApplication_args__isset;
+} _AromaService_getDashboard_args__isset;
 
-class AromaService_updateApplication_args {
+class AromaService_getDashboard_args {
  public:
 
-  AromaService_updateApplication_args(const AromaService_updateApplication_args&);
-  AromaService_updateApplication_args& operator=(const AromaService_updateApplication_args&);
-  AromaService_updateApplication_args() {
+  AromaService_getDashboard_args(const AromaService_getDashboard_args&);
+  AromaService_getDashboard_args& operator=(const AromaService_getDashboard_args&);
+  AromaService_getDashboard_args() {
   }
 
-  virtual ~AromaService_updateApplication_args() throw();
-  UpdateApplicationRequest request;
+  virtual ~AromaService_getDashboard_args() throw();
+  GetDashboardRequest request;
 
-  _AromaService_updateApplication_args__isset __isset;
+  _AromaService_getDashboard_args__isset __isset;
 
-  void __set_request(const UpdateApplicationRequest& val);
+  void __set_request(const GetDashboardRequest& val);
 
-  bool operator == (const AromaService_updateApplication_args & rhs) const
+  bool operator == (const AromaService_getDashboard_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_updateApplication_args &rhs) const {
+  bool operator != (const AromaService_getDashboard_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_updateApplication_args & ) const;
+  bool operator < (const AromaService_getDashboard_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1972,46 +3376,42 @@ class AromaService_updateApplication_args {
 };
 
 
-class AromaService_updateApplication_pargs {
+class AromaService_getDashboard_pargs {
  public:
 
 
-  virtual ~AromaService_updateApplication_pargs() throw();
-  const UpdateApplicationRequest* request;
+  virtual ~AromaService_getDashboard_pargs() throw();
+  const GetDashboardRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_updateApplication_result__isset {
-  _AromaService_updateApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getDashboard_result__isset {
+  _AromaService_getDashboard_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_updateApplication_result__isset;
+} _AromaService_getDashboard_result__isset;
 
-class AromaService_updateApplication_result {
+class AromaService_getDashboard_result {
  public:
 
-  AromaService_updateApplication_result(const AromaService_updateApplication_result&);
-  AromaService_updateApplication_result& operator=(const AromaService_updateApplication_result&);
-  AromaService_updateApplication_result() {
+  AromaService_getDashboard_result(const AromaService_getDashboard_result&);
+  AromaService_getDashboard_result& operator=(const AromaService_getDashboard_result&);
+  AromaService_getDashboard_result() {
   }
 
-  virtual ~AromaService_updateApplication_result() throw();
-  UpdateApplicationResponse success;
+  virtual ~AromaService_getDashboard_result() throw();
+  GetDashboardResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
-  ApplicationDoesNotExistException ex4;
-  UnauthorizedException ex5;
 
-  _AromaService_updateApplication_result__isset __isset;
+  _AromaService_getDashboard_result__isset __isset;
 
-  void __set_success(const UpdateApplicationResponse& val);
+  void __set_success(const GetDashboardResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -2019,291 +3419,7 @@ class AromaService_updateApplication_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex4(const ApplicationDoesNotExistException& val);
-
-  void __set_ex5(const UnauthorizedException& val);
-
-  bool operator == (const AromaService_updateApplication_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_updateApplication_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_updateApplication_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_updateApplication_presult__isset {
-  _AromaService_updateApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_updateApplication_presult__isset;
-
-class AromaService_updateApplication_presult {
- public:
-
-
-  virtual ~AromaService_updateApplication_presult() throw();
-  UpdateApplicationResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  ApplicationDoesNotExistException* ex4;
-  UnauthorizedException* ex5;
-
-  _AromaService_updateApplication_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_updateReactions_args__isset {
-  _AromaService_updateReactions_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_updateReactions_args__isset;
-
-class AromaService_updateReactions_args {
- public:
-
-  AromaService_updateReactions_args(const AromaService_updateReactions_args&);
-  AromaService_updateReactions_args& operator=(const AromaService_updateReactions_args&);
-  AromaService_updateReactions_args() {
-  }
-
-  virtual ~AromaService_updateReactions_args() throw();
-  UpdateReactionsRequest request;
-
-  _AromaService_updateReactions_args__isset __isset;
-
-  void __set_request(const UpdateReactionsRequest& val);
-
-  bool operator == (const AromaService_updateReactions_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_updateReactions_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_updateReactions_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_updateReactions_pargs {
- public:
-
-
-  virtual ~AromaService_updateReactions_pargs() throw();
-  const UpdateReactionsRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_updateReactions_result__isset {
-  _AromaService_updateReactions_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_updateReactions_result__isset;
-
-class AromaService_updateReactions_result {
- public:
-
-  AromaService_updateReactions_result(const AromaService_updateReactions_result&);
-  AromaService_updateReactions_result& operator=(const AromaService_updateReactions_result&);
-  AromaService_updateReactions_result() {
-  }
-
-  virtual ~AromaService_updateReactions_result() throw();
-  UpdateReactionsResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  ApplicationDoesNotExistException ex4;
-  UnauthorizedException ex5;
-
-  _AromaService_updateReactions_result__isset __isset;
-
-  void __set_success(const UpdateReactionsResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const ApplicationDoesNotExistException& val);
-
-  void __set_ex5(const UnauthorizedException& val);
-
-  bool operator == (const AromaService_updateReactions_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_updateReactions_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_updateReactions_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_updateReactions_presult__isset {
-  _AromaService_updateReactions_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_updateReactions_presult__isset;
-
-class AromaService_updateReactions_presult {
- public:
-
-
-  virtual ~AromaService_updateReactions_presult() throw();
-  UpdateReactionsResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  ApplicationDoesNotExistException* ex4;
-  UnauthorizedException* ex5;
-
-  _AromaService_updateReactions_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_getActivity_args__isset {
-  _AromaService_getActivity_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getActivity_args__isset;
-
-class AromaService_getActivity_args {
- public:
-
-  AromaService_getActivity_args(const AromaService_getActivity_args&);
-  AromaService_getActivity_args& operator=(const AromaService_getActivity_args&);
-  AromaService_getActivity_args() {
-  }
-
-  virtual ~AromaService_getActivity_args() throw();
-  GetActivityRequest request;
-
-  _AromaService_getActivity_args__isset __isset;
-
-  void __set_request(const GetActivityRequest& val);
-
-  bool operator == (const AromaService_getActivity_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getActivity_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getActivity_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getActivity_pargs {
- public:
-
-
-  virtual ~AromaService_getActivity_pargs() throw();
-  const GetActivityRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getActivity_result__isset {
-  _AromaService_getActivity_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getActivity_result__isset;
-
-class AromaService_getActivity_result {
- public:
-
-  AromaService_getActivity_result(const AromaService_getActivity_result&);
-  AromaService_getActivity_result& operator=(const AromaService_getActivity_result&);
-  AromaService_getActivity_result() {
-  }
-
-  virtual ~AromaService_getActivity_result() throw();
-  GetActivityResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-
-  _AromaService_getActivity_result__isset __isset;
-
-  void __set_success(const GetActivityResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  bool operator == (const AromaService_getActivity_result & rhs) const
+  bool operator == (const AromaService_getDashboard_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2315,180 +3431,36 @@ class AromaService_getActivity_result {
       return false;
     return true;
   }
-  bool operator != (const AromaService_getActivity_result &rhs) const {
+  bool operator != (const AromaService_getDashboard_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_getActivity_result & ) const;
+  bool operator < (const AromaService_getDashboard_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_getActivity_presult__isset {
-  _AromaService_getActivity_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getDashboard_presult__isset {
+  _AromaService_getDashboard_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _AromaService_getActivity_presult__isset;
+} _AromaService_getDashboard_presult__isset;
 
-class AromaService_getActivity_presult {
+class AromaService_getDashboard_presult {
  public:
 
 
-  virtual ~AromaService_getActivity_presult() throw();
-  GetActivityResponse* success;
+  virtual ~AromaService_getDashboard_presult() throw();
+  GetDashboardResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _AromaService_getActivity_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_getApplicationInfo_args__isset {
-  _AromaService_getApplicationInfo_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getApplicationInfo_args__isset;
-
-class AromaService_getApplicationInfo_args {
- public:
-
-  AromaService_getApplicationInfo_args(const AromaService_getApplicationInfo_args&);
-  AromaService_getApplicationInfo_args& operator=(const AromaService_getApplicationInfo_args&);
-  AromaService_getApplicationInfo_args() {
-  }
-
-  virtual ~AromaService_getApplicationInfo_args() throw();
-  GetApplicationInfoRequest request;
-
-  _AromaService_getApplicationInfo_args__isset __isset;
-
-  void __set_request(const GetApplicationInfoRequest& val);
-
-  bool operator == (const AromaService_getApplicationInfo_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getApplicationInfo_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getApplicationInfo_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getApplicationInfo_pargs {
- public:
-
-
-  virtual ~AromaService_getApplicationInfo_pargs() throw();
-  const GetApplicationInfoRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getApplicationInfo_result__isset {
-  _AromaService_getApplicationInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_getApplicationInfo_result__isset;
-
-class AromaService_getApplicationInfo_result {
- public:
-
-  AromaService_getApplicationInfo_result(const AromaService_getApplicationInfo_result&);
-  AromaService_getApplicationInfo_result& operator=(const AromaService_getApplicationInfo_result&);
-  AromaService_getApplicationInfo_result() {
-  }
-
-  virtual ~AromaService_getApplicationInfo_result() throw();
-  GetApplicationInfoResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  ApplicationDoesNotExistException ex4;
-  UnauthorizedException ex5;
-
-  _AromaService_getApplicationInfo_result__isset __isset;
-
-  void __set_success(const GetApplicationInfoResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const ApplicationDoesNotExistException& val);
-
-  void __set_ex5(const UnauthorizedException& val);
-
-  bool operator == (const AromaService_getApplicationInfo_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getApplicationInfo_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getApplicationInfo_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getApplicationInfo_presult__isset {
-  _AromaService_getApplicationInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_getApplicationInfo_presult__isset;
-
-class AromaService_getApplicationInfo_presult {
- public:
-
-
-  virtual ~AromaService_getApplicationInfo_presult() throw();
-  GetApplicationInfoResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  ApplicationDoesNotExistException* ex4;
-  UnauthorizedException* ex5;
-
-  _AromaService_getApplicationInfo_presult__isset __isset;
+  _AromaService_getDashboard_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -2638,37 +3610,26 @@ class AromaService_getBuzz_presult {
 
 };
 
-typedef struct _AromaService_getDashboard_args__isset {
-  _AromaService_getDashboard_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getDashboard_args__isset;
 
-class AromaService_getDashboard_args {
+class AromaService_getApiVersion_args {
  public:
 
-  AromaService_getDashboard_args(const AromaService_getDashboard_args&);
-  AromaService_getDashboard_args& operator=(const AromaService_getDashboard_args&);
-  AromaService_getDashboard_args() {
+  AromaService_getApiVersion_args(const AromaService_getApiVersion_args&);
+  AromaService_getApiVersion_args& operator=(const AromaService_getApiVersion_args&);
+  AromaService_getApiVersion_args() {
   }
 
-  virtual ~AromaService_getDashboard_args() throw();
-  GetDashboardRequest request;
+  virtual ~AromaService_getApiVersion_args() throw();
 
-  _AromaService_getDashboard_args__isset __isset;
-
-  void __set_request(const GetDashboardRequest& val);
-
-  bool operator == (const AromaService_getDashboard_args & rhs) const
+  bool operator == (const AromaService_getApiVersion_args & /* rhs */) const
   {
-    if (!(request == rhs.request))
-      return false;
     return true;
   }
-  bool operator != (const AromaService_getDashboard_args &rhs) const {
+  bool operator != (const AromaService_getApiVersion_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_getDashboard_args & ) const;
+  bool operator < (const AromaService_getApiVersion_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2676,127 +3637,102 @@ class AromaService_getDashboard_args {
 };
 
 
-class AromaService_getDashboard_pargs {
+class AromaService_getApiVersion_pargs {
  public:
 
 
-  virtual ~AromaService_getDashboard_pargs() throw();
-  const GetDashboardRequest* request;
+  virtual ~AromaService_getApiVersion_pargs() throw();
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_getDashboard_result__isset {
-  _AromaService_getDashboard_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getApiVersion_result__isset {
+  _AromaService_getApiVersion_result__isset() : success(false) {}
   bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getDashboard_result__isset;
+} _AromaService_getApiVersion_result__isset;
 
-class AromaService_getDashboard_result {
+class AromaService_getApiVersion_result {
  public:
 
-  AromaService_getDashboard_result(const AromaService_getDashboard_result&);
-  AromaService_getDashboard_result& operator=(const AromaService_getDashboard_result&);
-  AromaService_getDashboard_result() {
+  AromaService_getApiVersion_result(const AromaService_getApiVersion_result&);
+  AromaService_getApiVersion_result& operator=(const AromaService_getApiVersion_result&);
+  AromaService_getApiVersion_result() : success(0) {
   }
 
-  virtual ~AromaService_getDashboard_result() throw();
-  GetDashboardResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
+  virtual ~AromaService_getApiVersion_result() throw();
+  double success;
 
-  _AromaService_getDashboard_result__isset __isset;
+  _AromaService_getApiVersion_result__isset __isset;
 
-  void __set_success(const GetDashboardResponse& val);
+  void __set_success(const double val);
 
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  bool operator == (const AromaService_getDashboard_result & rhs) const
+  bool operator == (const AromaService_getApiVersion_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
     return true;
   }
-  bool operator != (const AromaService_getDashboard_result &rhs) const {
+  bool operator != (const AromaService_getApiVersion_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_getDashboard_result & ) const;
+  bool operator < (const AromaService_getApiVersion_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_getDashboard_presult__isset {
-  _AromaService_getDashboard_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getApiVersion_presult__isset {
+  _AromaService_getApiVersion_presult__isset() : success(false) {}
   bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getDashboard_presult__isset;
+} _AromaService_getApiVersion_presult__isset;
 
-class AromaService_getDashboard_presult {
+class AromaService_getApiVersion_presult {
  public:
 
 
-  virtual ~AromaService_getDashboard_presult() throw();
-  GetDashboardResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
+  virtual ~AromaService_getApiVersion_presult() throw();
+  double* success;
 
-  _AromaService_getDashboard_presult__isset __isset;
+  _AromaService_getApiVersion_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _AromaService_getApplicationMessages_args__isset {
-  _AromaService_getApplicationMessages_args__isset() : request(false) {}
+typedef struct _AromaService_registerHealthCheck_args__isset {
+  _AromaService_registerHealthCheck_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_getApplicationMessages_args__isset;
+} _AromaService_registerHealthCheck_args__isset;
 
-class AromaService_getApplicationMessages_args {
+class AromaService_registerHealthCheck_args {
  public:
 
-  AromaService_getApplicationMessages_args(const AromaService_getApplicationMessages_args&);
-  AromaService_getApplicationMessages_args& operator=(const AromaService_getApplicationMessages_args&);
-  AromaService_getApplicationMessages_args() {
+  AromaService_registerHealthCheck_args(const AromaService_registerHealthCheck_args&);
+  AromaService_registerHealthCheck_args& operator=(const AromaService_registerHealthCheck_args&);
+  AromaService_registerHealthCheck_args() {
   }
 
-  virtual ~AromaService_getApplicationMessages_args() throw();
-  GetApplicationMessagesRequest request;
+  virtual ~AromaService_registerHealthCheck_args() throw();
+  RegisterHealthCheckRequest request;
 
-  _AromaService_getApplicationMessages_args__isset __isset;
+  _AromaService_registerHealthCheck_args__isset __isset;
 
-  void __set_request(const GetApplicationMessagesRequest& val);
+  void __set_request(const RegisterHealthCheckRequest& val);
 
-  bool operator == (const AromaService_getApplicationMessages_args & rhs) const
+  bool operator == (const AromaService_registerHealthCheck_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_getApplicationMessages_args &rhs) const {
+  bool operator != (const AromaService_registerHealthCheck_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_getApplicationMessages_args & ) const;
+  bool operator < (const AromaService_registerHealthCheck_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2804,46 +3740,46 @@ class AromaService_getApplicationMessages_args {
 };
 
 
-class AromaService_getApplicationMessages_pargs {
+class AromaService_registerHealthCheck_pargs {
  public:
 
 
-  virtual ~AromaService_getApplicationMessages_pargs() throw();
-  const GetApplicationMessagesRequest* request;
+  virtual ~AromaService_registerHealthCheck_pargs() throw();
+  const RegisterHealthCheckRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_getApplicationMessages_result__isset {
-  _AromaService_getApplicationMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_registerHealthCheck_result__isset {
+  _AromaService_registerHealthCheck_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _AromaService_getApplicationMessages_result__isset;
+} _AromaService_registerHealthCheck_result__isset;
 
-class AromaService_getApplicationMessages_result {
+class AromaService_registerHealthCheck_result {
  public:
 
-  AromaService_getApplicationMessages_result(const AromaService_getApplicationMessages_result&);
-  AromaService_getApplicationMessages_result& operator=(const AromaService_getApplicationMessages_result&);
-  AromaService_getApplicationMessages_result() {
+  AromaService_registerHealthCheck_result(const AromaService_registerHealthCheck_result&);
+  AromaService_registerHealthCheck_result& operator=(const AromaService_registerHealthCheck_result&);
+  AromaService_registerHealthCheck_result() {
   }
 
-  virtual ~AromaService_getApplicationMessages_result() throw();
-  GetApplicationMessagesResponse success;
+  virtual ~AromaService_registerHealthCheck_result() throw();
+  RegisterHealthCheckResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
-  UnauthorizedException ex4;
-  ApplicationDoesNotExistException ex5;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
 
-  _AromaService_getApplicationMessages_result__isset __isset;
+  _AromaService_registerHealthCheck_result__isset __isset;
 
-  void __set_success(const GetApplicationMessagesResponse& val);
+  void __set_success(const RegisterHealthCheckResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -2851,11 +3787,11 @@ class AromaService_getApplicationMessages_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex4(const UnauthorizedException& val);
+  void __set_ex4(const ApplicationDoesNotExistException& val);
 
-  void __set_ex5(const ApplicationDoesNotExistException& val);
+  void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const AromaService_getApplicationMessages_result & rhs) const
+  bool operator == (const AromaService_registerHealthCheck_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2871,296 +3807,40 @@ class AromaService_getApplicationMessages_result {
       return false;
     return true;
   }
-  bool operator != (const AromaService_getApplicationMessages_result &rhs) const {
+  bool operator != (const AromaService_registerHealthCheck_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_getApplicationMessages_result & ) const;
+  bool operator < (const AromaService_registerHealthCheck_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_getApplicationMessages_presult__isset {
-  _AromaService_getApplicationMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_registerHealthCheck_presult__isset {
+  _AromaService_registerHealthCheck_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _AromaService_getApplicationMessages_presult__isset;
+} _AromaService_registerHealthCheck_presult__isset;
 
-class AromaService_getApplicationMessages_presult {
+class AromaService_registerHealthCheck_presult {
  public:
 
 
-  virtual ~AromaService_getApplicationMessages_presult() throw();
-  GetApplicationMessagesResponse* success;
+  virtual ~AromaService_registerHealthCheck_presult() throw();
+  RegisterHealthCheckResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
-  UnauthorizedException* ex4;
-  ApplicationDoesNotExistException* ex5;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
 
-  _AromaService_getApplicationMessages_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_getInbox_args__isset {
-  _AromaService_getInbox_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getInbox_args__isset;
-
-class AromaService_getInbox_args {
- public:
-
-  AromaService_getInbox_args(const AromaService_getInbox_args&);
-  AromaService_getInbox_args& operator=(const AromaService_getInbox_args&);
-  AromaService_getInbox_args() {
-  }
-
-  virtual ~AromaService_getInbox_args() throw();
-  GetInboxRequest request;
-
-  _AromaService_getInbox_args__isset __isset;
-
-  void __set_request(const GetInboxRequest& val);
-
-  bool operator == (const AromaService_getInbox_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getInbox_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getInbox_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getInbox_pargs {
- public:
-
-
-  virtual ~AromaService_getInbox_pargs() throw();
-  const GetInboxRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getInbox_result__isset {
-  _AromaService_getInbox_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getInbox_result__isset;
-
-class AromaService_getInbox_result {
- public:
-
-  AromaService_getInbox_result(const AromaService_getInbox_result&);
-  AromaService_getInbox_result& operator=(const AromaService_getInbox_result&);
-  AromaService_getInbox_result() {
-  }
-
-  virtual ~AromaService_getInbox_result() throw();
-  GetInboxResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-
-  _AromaService_getInbox_result__isset __isset;
-
-  void __set_success(const GetInboxResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  bool operator == (const AromaService_getInbox_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getInbox_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getInbox_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getInbox_presult__isset {
-  _AromaService_getInbox_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getInbox_presult__isset;
-
-class AromaService_getInbox_presult {
- public:
-
-
-  virtual ~AromaService_getInbox_presult() throw();
-  GetInboxResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-
-  _AromaService_getInbox_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_getFullMessage_args__isset {
-  _AromaService_getFullMessage_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getFullMessage_args__isset;
-
-class AromaService_getFullMessage_args {
- public:
-
-  AromaService_getFullMessage_args(const AromaService_getFullMessage_args&);
-  AromaService_getFullMessage_args& operator=(const AromaService_getFullMessage_args&);
-  AromaService_getFullMessage_args() {
-  }
-
-  virtual ~AromaService_getFullMessage_args() throw();
-  GetFullMessageRequest request;
-
-  _AromaService_getFullMessage_args__isset __isset;
-
-  void __set_request(const GetFullMessageRequest& val);
-
-  bool operator == (const AromaService_getFullMessage_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getFullMessage_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getFullMessage_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getFullMessage_pargs {
- public:
-
-
-  virtual ~AromaService_getFullMessage_pargs() throw();
-  const GetFullMessageRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getFullMessage_result__isset {
-  _AromaService_getFullMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getFullMessage_result__isset;
-
-class AromaService_getFullMessage_result {
- public:
-
-  AromaService_getFullMessage_result(const AromaService_getFullMessage_result&);
-  AromaService_getFullMessage_result& operator=(const AromaService_getFullMessage_result&);
-  AromaService_getFullMessage_result() {
-  }
-
-  virtual ~AromaService_getFullMessage_result() throw();
-  GetFullMessageResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-
-  _AromaService_getFullMessage_result__isset __isset;
-
-  void __set_success(const GetFullMessageResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  bool operator == (const AromaService_getFullMessage_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getFullMessage_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getFullMessage_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getFullMessage_presult__isset {
-  _AromaService_getFullMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getFullMessage_presult__isset;
-
-class AromaService_getFullMessage_presult {
- public:
-
-
-  virtual ~AromaService_getFullMessage_presult() throw();
-  GetFullMessageResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-
-  _AromaService_getFullMessage_presult__isset __isset;
+  _AromaService_registerHealthCheck_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -3310,686 +3990,6 @@ class AromaService_getMedia_presult {
 
 };
 
-typedef struct _AromaService_getApplicationsOwnedBy_args__isset {
-  _AromaService_getApplicationsOwnedBy_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getApplicationsOwnedBy_args__isset;
-
-class AromaService_getApplicationsOwnedBy_args {
- public:
-
-  AromaService_getApplicationsOwnedBy_args(const AromaService_getApplicationsOwnedBy_args&);
-  AromaService_getApplicationsOwnedBy_args& operator=(const AromaService_getApplicationsOwnedBy_args&);
-  AromaService_getApplicationsOwnedBy_args() {
-  }
-
-  virtual ~AromaService_getApplicationsOwnedBy_args() throw();
-  GetApplicationsOwnedByRequest request;
-
-  _AromaService_getApplicationsOwnedBy_args__isset __isset;
-
-  void __set_request(const GetApplicationsOwnedByRequest& val);
-
-  bool operator == (const AromaService_getApplicationsOwnedBy_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getApplicationsOwnedBy_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getApplicationsOwnedBy_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getApplicationsOwnedBy_pargs {
- public:
-
-
-  virtual ~AromaService_getApplicationsOwnedBy_pargs() throw();
-  const GetApplicationsOwnedByRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getApplicationsOwnedBy_result__isset {
-  _AromaService_getApplicationsOwnedBy_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getApplicationsOwnedBy_result__isset;
-
-class AromaService_getApplicationsOwnedBy_result {
- public:
-
-  AromaService_getApplicationsOwnedBy_result(const AromaService_getApplicationsOwnedBy_result&);
-  AromaService_getApplicationsOwnedBy_result& operator=(const AromaService_getApplicationsOwnedBy_result&);
-  AromaService_getApplicationsOwnedBy_result() {
-  }
-
-  virtual ~AromaService_getApplicationsOwnedBy_result() throw();
-  GetApplicationsOwnedByResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-
-  _AromaService_getApplicationsOwnedBy_result__isset __isset;
-
-  void __set_success(const GetApplicationsOwnedByResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  bool operator == (const AromaService_getApplicationsOwnedBy_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getApplicationsOwnedBy_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getApplicationsOwnedBy_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getApplicationsOwnedBy_presult__isset {
-  _AromaService_getApplicationsOwnedBy_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getApplicationsOwnedBy_presult__isset;
-
-class AromaService_getApplicationsOwnedBy_presult {
- public:
-
-
-  virtual ~AromaService_getApplicationsOwnedBy_presult() throw();
-  GetApplicationsOwnedByResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-
-  _AromaService_getApplicationsOwnedBy_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_getApplicationsFollowedBy_args__isset {
-  _AromaService_getApplicationsFollowedBy_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getApplicationsFollowedBy_args__isset;
-
-class AromaService_getApplicationsFollowedBy_args {
- public:
-
-  AromaService_getApplicationsFollowedBy_args(const AromaService_getApplicationsFollowedBy_args&);
-  AromaService_getApplicationsFollowedBy_args& operator=(const AromaService_getApplicationsFollowedBy_args&);
-  AromaService_getApplicationsFollowedBy_args() {
-  }
-
-  virtual ~AromaService_getApplicationsFollowedBy_args() throw();
-  GetApplicationsFollowedByRequest request;
-
-  _AromaService_getApplicationsFollowedBy_args__isset __isset;
-
-  void __set_request(const GetApplicationsFollowedByRequest& val);
-
-  bool operator == (const AromaService_getApplicationsFollowedBy_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getApplicationsFollowedBy_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getApplicationsFollowedBy_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getApplicationsFollowedBy_pargs {
- public:
-
-
-  virtual ~AromaService_getApplicationsFollowedBy_pargs() throw();
-  const GetApplicationsFollowedByRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getApplicationsFollowedBy_result__isset {
-  _AromaService_getApplicationsFollowedBy_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getApplicationsFollowedBy_result__isset;
-
-class AromaService_getApplicationsFollowedBy_result {
- public:
-
-  AromaService_getApplicationsFollowedBy_result(const AromaService_getApplicationsFollowedBy_result&);
-  AromaService_getApplicationsFollowedBy_result& operator=(const AromaService_getApplicationsFollowedBy_result&);
-  AromaService_getApplicationsFollowedBy_result() {
-  }
-
-  virtual ~AromaService_getApplicationsFollowedBy_result() throw();
-  GetApplicationsFollowedByResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-
-  _AromaService_getApplicationsFollowedBy_result__isset __isset;
-
-  void __set_success(const GetApplicationsFollowedByResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  bool operator == (const AromaService_getApplicationsFollowedBy_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getApplicationsFollowedBy_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getApplicationsFollowedBy_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getApplicationsFollowedBy_presult__isset {
-  _AromaService_getApplicationsFollowedBy_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getApplicationsFollowedBy_presult__isset;
-
-class AromaService_getApplicationsFollowedBy_presult {
- public:
-
-
-  virtual ~AromaService_getApplicationsFollowedBy_presult() throw();
-  GetApplicationsFollowedByResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-
-  _AromaService_getApplicationsFollowedBy_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_getReactions_args__isset {
-  _AromaService_getReactions_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getReactions_args__isset;
-
-class AromaService_getReactions_args {
- public:
-
-  AromaService_getReactions_args(const AromaService_getReactions_args&);
-  AromaService_getReactions_args& operator=(const AromaService_getReactions_args&);
-  AromaService_getReactions_args() {
-  }
-
-  virtual ~AromaService_getReactions_args() throw();
-  GetReactionsRequest request;
-
-  _AromaService_getReactions_args__isset __isset;
-
-  void __set_request(const GetReactionsRequest& val);
-
-  bool operator == (const AromaService_getReactions_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getReactions_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getReactions_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getReactions_pargs {
- public:
-
-
-  virtual ~AromaService_getReactions_pargs() throw();
-  const GetReactionsRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getReactions_result__isset {
-  _AromaService_getReactions_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_getReactions_result__isset;
-
-class AromaService_getReactions_result {
- public:
-
-  AromaService_getReactions_result(const AromaService_getReactions_result&);
-  AromaService_getReactions_result& operator=(const AromaService_getReactions_result&);
-  AromaService_getReactions_result() {
-  }
-
-  virtual ~AromaService_getReactions_result() throw();
-  GetReactionsResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  ApplicationDoesNotExistException ex4;
-  UnauthorizedException ex5;
-
-  _AromaService_getReactions_result__isset __isset;
-
-  void __set_success(const GetReactionsResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const ApplicationDoesNotExistException& val);
-
-  void __set_ex5(const UnauthorizedException& val);
-
-  bool operator == (const AromaService_getReactions_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getReactions_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getReactions_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getReactions_presult__isset {
-  _AromaService_getReactions_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_getReactions_presult__isset;
-
-class AromaService_getReactions_presult {
- public:
-
-
-  virtual ~AromaService_getReactions_presult() throw();
-  GetReactionsResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  ApplicationDoesNotExistException* ex4;
-  UnauthorizedException* ex5;
-
-  _AromaService_getReactions_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_getUserInfo_args__isset {
-  _AromaService_getUserInfo_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getUserInfo_args__isset;
-
-class AromaService_getUserInfo_args {
- public:
-
-  AromaService_getUserInfo_args(const AromaService_getUserInfo_args&);
-  AromaService_getUserInfo_args& operator=(const AromaService_getUserInfo_args&);
-  AromaService_getUserInfo_args() {
-  }
-
-  virtual ~AromaService_getUserInfo_args() throw();
-  GetUserInfoRequest request;
-
-  _AromaService_getUserInfo_args__isset __isset;
-
-  void __set_request(const GetUserInfoRequest& val);
-
-  bool operator == (const AromaService_getUserInfo_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getUserInfo_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getUserInfo_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getUserInfo_pargs {
- public:
-
-
-  virtual ~AromaService_getUserInfo_pargs() throw();
-  const GetUserInfoRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getUserInfo_result__isset {
-  _AromaService_getUserInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_getUserInfo_result__isset;
-
-class AromaService_getUserInfo_result {
- public:
-
-  AromaService_getUserInfo_result(const AromaService_getUserInfo_result&);
-  AromaService_getUserInfo_result& operator=(const AromaService_getUserInfo_result&);
-  AromaService_getUserInfo_result() {
-  }
-
-  virtual ~AromaService_getUserInfo_result() throw();
-  GetUserInfoResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  UnauthorizedException ex4;
-  UserDoesNotExistException ex5;
-
-  _AromaService_getUserInfo_result__isset __isset;
-
-  void __set_success(const GetUserInfoResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const UnauthorizedException& val);
-
-  void __set_ex5(const UserDoesNotExistException& val);
-
-  bool operator == (const AromaService_getUserInfo_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getUserInfo_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getUserInfo_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getUserInfo_presult__isset {
-  _AromaService_getUserInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_getUserInfo_presult__isset;
-
-class AromaService_getUserInfo_presult {
- public:
-
-
-  virtual ~AromaService_getUserInfo_presult() throw();
-  GetUserInfoResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  UnauthorizedException* ex4;
-  UserDoesNotExistException* ex5;
-
-  _AromaService_getUserInfo_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_searchForApplications_args__isset {
-  _AromaService_searchForApplications_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_searchForApplications_args__isset;
-
-class AromaService_searchForApplications_args {
- public:
-
-  AromaService_searchForApplications_args(const AromaService_searchForApplications_args&);
-  AromaService_searchForApplications_args& operator=(const AromaService_searchForApplications_args&);
-  AromaService_searchForApplications_args() {
-  }
-
-  virtual ~AromaService_searchForApplications_args() throw();
-  SearchForApplicationsRequest request;
-
-  _AromaService_searchForApplications_args__isset __isset;
-
-  void __set_request(const SearchForApplicationsRequest& val);
-
-  bool operator == (const AromaService_searchForApplications_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_searchForApplications_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_searchForApplications_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_searchForApplications_pargs {
- public:
-
-
-  virtual ~AromaService_searchForApplications_pargs() throw();
-  const SearchForApplicationsRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_searchForApplications_result__isset {
-  _AromaService_searchForApplications_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-} _AromaService_searchForApplications_result__isset;
-
-class AromaService_searchForApplications_result {
- public:
-
-  AromaService_searchForApplications_result(const AromaService_searchForApplications_result&);
-  AromaService_searchForApplications_result& operator=(const AromaService_searchForApplications_result&);
-  AromaService_searchForApplications_result() {
-  }
-
-  virtual ~AromaService_searchForApplications_result() throw();
-  SearchForApplicationsResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  UnauthorizedException ex4;
-
-  _AromaService_searchForApplications_result__isset __isset;
-
-  void __set_success(const SearchForApplicationsResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const UnauthorizedException& val);
-
-  bool operator == (const AromaService_searchForApplications_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_searchForApplications_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_searchForApplications_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_searchForApplications_presult__isset {
-  _AromaService_searchForApplications_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-} _AromaService_searchForApplications_presult__isset;
-
-class AromaService_searchForApplications_presult {
- public:
-
-
-  virtual ~AromaService_searchForApplications_presult() throw();
-  SearchForApplicationsResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  UnauthorizedException* ex4;
-
-  _AromaService_searchForApplications_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
 class AromaServiceClient : virtual public AromaServiceIf {
  public:
   AromaServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -4015,87 +4015,87 @@ class AromaServiceClient : virtual public AromaServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  double getApiVersion();
-  void send_getApiVersion();
-  double recv_getApiVersion();
-  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request);
-  void send_deleteApplication(const DeleteApplicationRequest& request);
-  void recv_deleteApplication(DeleteApplicationResponse& _return);
-  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request);
-  void send_deleteMessage(const DeleteMessageRequest& request);
-  void recv_deleteMessage(DeleteMessageResponse& _return);
-  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request);
-  void send_dismissMessage(const DismissMessageRequest& request);
-  void recv_dismissMessage(DismissMessageResponse& _return);
-  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request);
-  void send_provisionApplication(const ProvisionApplicationRequest& request);
-  void recv_provisionApplication(ProvisionApplicationResponse& _return);
-  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request);
-  void send_regenerateToken(const RegenerateApplicationTokenRequest& request);
-  void recv_regenerateToken(RegenerateApplicationTokenResponse& _return);
-  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request);
-  void send_registerHealthCheck(const RegisterHealthCheckRequest& request);
-  void recv_registerHealthCheck(RegisterHealthCheckResponse& _return);
-  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request);
-  void send_renewApplicationToken(const RenewApplicationTokenRequest& request);
-  void recv_renewApplicationToken(RenewApplicationTokenResponse& _return);
   void signIn(SignInResponse& _return, const SignInRequest& request);
   void send_signIn(const SignInRequest& request);
   void recv_signIn(SignInResponse& _return);
   void signUp(SignUpResponse& _return, const SignUpRequest& request);
   void send_signUp(const SignUpRequest& request);
   void recv_signUp(SignUpResponse& _return);
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
+  void send_getUserInfo(const GetUserInfoRequest& request);
+  void recv_getUserInfo(GetUserInfoResponse& _return);
+  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
+  void send_getApplicationInfo(const GetApplicationInfoRequest& request);
+  void recv_getApplicationInfo(GetApplicationInfoResponse& _return);
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request);
+  void send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request);
+  void recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return);
+  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request);
+  void send_provisionApplication(const ProvisionApplicationRequest& request);
+  void recv_provisionApplication(ProvisionApplicationResponse& _return);
+  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request);
+  void send_regenerateToken(const RegenerateApplicationTokenRequest& request);
+  void recv_regenerateToken(RegenerateApplicationTokenResponse& _return);
+  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request);
+  void send_deleteApplication(const DeleteApplicationRequest& request);
+  void recv_deleteApplication(DeleteApplicationResponse& _return);
+  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request);
+  void send_renewApplicationToken(const RenewApplicationTokenRequest& request);
+  void recv_renewApplicationToken(RenewApplicationTokenResponse& _return);
+  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request);
+  void send_updateApplication(const UpdateApplicationRequest& request);
+  void recv_updateApplication(UpdateApplicationResponse& _return);
+  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request);
+  void send_searchForApplications(const SearchForApplicationsRequest& request);
+  void recv_searchForApplications(SearchForApplicationsResponse& _return);
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request);
+  void send_getApplicationMessages(const GetApplicationMessagesRequest& request);
+  void recv_getApplicationMessages(GetApplicationMessagesResponse& _return);
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
+  void send_getFullMessage(const GetFullMessageRequest& request);
+  void recv_getFullMessage(GetFullMessageResponse& _return);
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request);
+  void send_deleteMessage(const DeleteMessageRequest& request);
+  void recv_deleteMessage(DeleteMessageResponse& _return);
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request);
+  void send_dismissMessage(const DismissMessageRequest& request);
+  void recv_dismissMessage(DismissMessageResponse& _return);
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request);
+  void send_getInbox(const GetInboxRequest& request);
+  void recv_getInbox(GetInboxResponse& _return);
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
+  void send_getActivity(const GetActivityRequest& request);
+  void recv_getActivity(GetActivityResponse& _return);
+  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request);
+  void send_getReactions(const GetReactionsRequest& request);
+  void recv_getReactions(GetReactionsResponse& _return);
+  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request);
+  void send_updateReactions(const UpdateReactionsRequest& request);
+  void recv_updateReactions(UpdateReactionsResponse& _return);
+  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request);
+  void send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request);
+  void recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return);
   void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request);
   void send_followApplication(const FollowApplicationRequest& request);
   void recv_followApplication(FollowApplicationResponse& _return);
   void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request);
   void send_unfollowApplication(const UnfollowApplicationRequest& request);
   void recv_unfollowApplication(UnfollowApplicationResponse& _return);
-  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request);
-  void send_updateApplication(const UpdateApplicationRequest& request);
-  void recv_updateApplication(UpdateApplicationResponse& _return);
-  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request);
-  void send_updateReactions(const UpdateReactionsRequest& request);
-  void recv_updateReactions(UpdateReactionsResponse& _return);
-  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
-  void send_getActivity(const GetActivityRequest& request);
-  void recv_getActivity(GetActivityResponse& _return);
-  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
-  void send_getApplicationInfo(const GetApplicationInfoRequest& request);
-  void recv_getApplicationInfo(GetApplicationInfoResponse& _return);
-  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request);
-  void send_getBuzz(const GetBuzzRequest& request);
-  void recv_getBuzz(GetBuzzResponse& _return);
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   void send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return);
-  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request);
-  void send_getApplicationMessages(const GetApplicationMessagesRequest& request);
-  void recv_getApplicationMessages(GetApplicationMessagesResponse& _return);
-  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request);
-  void send_getInbox(const GetInboxRequest& request);
-  void recv_getInbox(GetInboxResponse& _return);
-  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
-  void send_getFullMessage(const GetFullMessageRequest& request);
-  void recv_getFullMessage(GetFullMessageResponse& _return);
+  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request);
+  void send_getBuzz(const GetBuzzRequest& request);
+  void recv_getBuzz(GetBuzzResponse& _return);
+  double getApiVersion();
+  void send_getApiVersion();
+  double recv_getApiVersion();
+  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request);
+  void send_registerHealthCheck(const RegisterHealthCheckRequest& request);
+  void recv_registerHealthCheck(RegisterHealthCheckResponse& _return);
   void getMedia(GetMediaResponse& _return, const GetMediaRequest& request);
   void send_getMedia(const GetMediaRequest& request);
   void recv_getMedia(GetMediaResponse& _return);
-  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request);
-  void send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request);
-  void recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return);
-  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request);
-  void send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request);
-  void recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return);
-  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request);
-  void send_getReactions(const GetReactionsRequest& request);
-  void recv_getReactions(GetReactionsResponse& _return);
-  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
-  void send_getUserInfo(const GetUserInfoRequest& request);
-  void recv_getUserInfo(GetUserInfoResponse& _return);
-  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request);
-  void send_searchForApplications(const SearchForApplicationsRequest& request);
-  void recv_searchForApplications(SearchForApplicationsResponse& _return);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -4111,63 +4111,63 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef  void (AromaServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
-  void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_deleteApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_deleteMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_dismissMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_renewApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_deleteApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_renewApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_updateApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getApplicationMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_deleteMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_dismissMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_updateReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getApplicationsFollowedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_unfollowApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_updateApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_updateReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getApplicationMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMedia(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getApplicationsFollowedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   AromaServiceProcessor(boost::shared_ptr<AromaServiceIf> iface) :
     iface_(iface) {
-    processMap_["getApiVersion"] = &AromaServiceProcessor::process_getApiVersion;
-    processMap_["deleteApplication"] = &AromaServiceProcessor::process_deleteApplication;
-    processMap_["deleteMessage"] = &AromaServiceProcessor::process_deleteMessage;
-    processMap_["dismissMessage"] = &AromaServiceProcessor::process_dismissMessage;
-    processMap_["provisionApplication"] = &AromaServiceProcessor::process_provisionApplication;
-    processMap_["regenerateToken"] = &AromaServiceProcessor::process_regenerateToken;
-    processMap_["registerHealthCheck"] = &AromaServiceProcessor::process_registerHealthCheck;
-    processMap_["renewApplicationToken"] = &AromaServiceProcessor::process_renewApplicationToken;
     processMap_["signIn"] = &AromaServiceProcessor::process_signIn;
     processMap_["signUp"] = &AromaServiceProcessor::process_signUp;
+    processMap_["getUserInfo"] = &AromaServiceProcessor::process_getUserInfo;
+    processMap_["getApplicationInfo"] = &AromaServiceProcessor::process_getApplicationInfo;
+    processMap_["getApplicationsOwnedBy"] = &AromaServiceProcessor::process_getApplicationsOwnedBy;
+    processMap_["provisionApplication"] = &AromaServiceProcessor::process_provisionApplication;
+    processMap_["regenerateToken"] = &AromaServiceProcessor::process_regenerateToken;
+    processMap_["deleteApplication"] = &AromaServiceProcessor::process_deleteApplication;
+    processMap_["renewApplicationToken"] = &AromaServiceProcessor::process_renewApplicationToken;
+    processMap_["updateApplication"] = &AromaServiceProcessor::process_updateApplication;
+    processMap_["searchForApplications"] = &AromaServiceProcessor::process_searchForApplications;
+    processMap_["getApplicationMessages"] = &AromaServiceProcessor::process_getApplicationMessages;
+    processMap_["getFullMessage"] = &AromaServiceProcessor::process_getFullMessage;
+    processMap_["deleteMessage"] = &AromaServiceProcessor::process_deleteMessage;
+    processMap_["dismissMessage"] = &AromaServiceProcessor::process_dismissMessage;
+    processMap_["getInbox"] = &AromaServiceProcessor::process_getInbox;
+    processMap_["getActivity"] = &AromaServiceProcessor::process_getActivity;
+    processMap_["getReactions"] = &AromaServiceProcessor::process_getReactions;
+    processMap_["updateReactions"] = &AromaServiceProcessor::process_updateReactions;
+    processMap_["getApplicationsFollowedBy"] = &AromaServiceProcessor::process_getApplicationsFollowedBy;
     processMap_["followApplication"] = &AromaServiceProcessor::process_followApplication;
     processMap_["unfollowApplication"] = &AromaServiceProcessor::process_unfollowApplication;
-    processMap_["updateApplication"] = &AromaServiceProcessor::process_updateApplication;
-    processMap_["updateReactions"] = &AromaServiceProcessor::process_updateReactions;
-    processMap_["getActivity"] = &AromaServiceProcessor::process_getActivity;
-    processMap_["getApplicationInfo"] = &AromaServiceProcessor::process_getApplicationInfo;
-    processMap_["getBuzz"] = &AromaServiceProcessor::process_getBuzz;
     processMap_["getDashboard"] = &AromaServiceProcessor::process_getDashboard;
-    processMap_["getApplicationMessages"] = &AromaServiceProcessor::process_getApplicationMessages;
-    processMap_["getInbox"] = &AromaServiceProcessor::process_getInbox;
-    processMap_["getFullMessage"] = &AromaServiceProcessor::process_getFullMessage;
+    processMap_["getBuzz"] = &AromaServiceProcessor::process_getBuzz;
+    processMap_["getApiVersion"] = &AromaServiceProcessor::process_getApiVersion;
+    processMap_["registerHealthCheck"] = &AromaServiceProcessor::process_registerHealthCheck;
     processMap_["getMedia"] = &AromaServiceProcessor::process_getMedia;
-    processMap_["getApplicationsOwnedBy"] = &AromaServiceProcessor::process_getApplicationsOwnedBy;
-    processMap_["getApplicationsFollowedBy"] = &AromaServiceProcessor::process_getApplicationsFollowedBy;
-    processMap_["getReactions"] = &AromaServiceProcessor::process_getReactions;
-    processMap_["getUserInfo"] = &AromaServiceProcessor::process_getUserInfo;
-    processMap_["searchForApplications"] = &AromaServiceProcessor::process_searchForApplications;
   }
 
   virtual ~AromaServiceProcessor() {}
@@ -4196,42 +4196,53 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     ifaces_.push_back(iface);
   }
  public:
-  double getApiVersion() {
+  void signIn(SignInResponse& _return, const SignInRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getApiVersion();
+      ifaces_[i]->signIn(_return, request);
     }
-    return ifaces_[i]->getApiVersion();
-  }
-
-  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->deleteApplication(_return, request);
-    }
-    ifaces_[i]->deleteApplication(_return, request);
+    ifaces_[i]->signIn(_return, request);
     return;
   }
 
-  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
+  void signUp(SignUpResponse& _return, const SignUpRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->deleteMessage(_return, request);
+      ifaces_[i]->signUp(_return, request);
     }
-    ifaces_[i]->deleteMessage(_return, request);
+    ifaces_[i]->signUp(_return, request);
     return;
   }
 
-  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) {
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->dismissMessage(_return, request);
+      ifaces_[i]->getUserInfo(_return, request);
     }
-    ifaces_[i]->dismissMessage(_return, request);
+    ifaces_[i]->getUserInfo(_return, request);
+    return;
+  }
+
+  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getApplicationInfo(_return, request);
+    }
+    ifaces_[i]->getApplicationInfo(_return, request);
+    return;
+  }
+
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getApplicationsOwnedBy(_return, request);
+    }
+    ifaces_[i]->getApplicationsOwnedBy(_return, request);
     return;
   }
 
@@ -4255,13 +4266,13 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
-  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
+  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->registerHealthCheck(_return, request);
+      ifaces_[i]->deleteApplication(_return, request);
     }
-    ifaces_[i]->registerHealthCheck(_return, request);
+    ifaces_[i]->deleteApplication(_return, request);
     return;
   }
 
@@ -4275,23 +4286,113 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
-  void signIn(SignInResponse& _return, const SignInRequest& request) {
+  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->signIn(_return, request);
+      ifaces_[i]->updateApplication(_return, request);
     }
-    ifaces_[i]->signIn(_return, request);
+    ifaces_[i]->updateApplication(_return, request);
     return;
   }
 
-  void signUp(SignUpResponse& _return, const SignUpRequest& request) {
+  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->signUp(_return, request);
+      ifaces_[i]->searchForApplications(_return, request);
     }
-    ifaces_[i]->signUp(_return, request);
+    ifaces_[i]->searchForApplications(_return, request);
+    return;
+  }
+
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getApplicationMessages(_return, request);
+    }
+    ifaces_[i]->getApplicationMessages(_return, request);
+    return;
+  }
+
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getFullMessage(_return, request);
+    }
+    ifaces_[i]->getFullMessage(_return, request);
+    return;
+  }
+
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->deleteMessage(_return, request);
+    }
+    ifaces_[i]->deleteMessage(_return, request);
+    return;
+  }
+
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->dismissMessage(_return, request);
+    }
+    ifaces_[i]->dismissMessage(_return, request);
+    return;
+  }
+
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getInbox(_return, request);
+    }
+    ifaces_[i]->getInbox(_return, request);
+    return;
+  }
+
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getActivity(_return, request);
+    }
+    ifaces_[i]->getActivity(_return, request);
+    return;
+  }
+
+  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getReactions(_return, request);
+    }
+    ifaces_[i]->getReactions(_return, request);
+    return;
+  }
+
+  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->updateReactions(_return, request);
+    }
+    ifaces_[i]->updateReactions(_return, request);
+    return;
+  }
+
+  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getApplicationsFollowedBy(_return, request);
+    }
+    ifaces_[i]->getApplicationsFollowedBy(_return, request);
     return;
   }
 
@@ -4315,43 +4416,13 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
-  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) {
+  void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->updateApplication(_return, request);
+      ifaces_[i]->getDashboard(_return, request);
     }
-    ifaces_[i]->updateApplication(_return, request);
-    return;
-  }
-
-  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->updateReactions(_return, request);
-    }
-    ifaces_[i]->updateReactions(_return, request);
-    return;
-  }
-
-  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getActivity(_return, request);
-    }
-    ifaces_[i]->getActivity(_return, request);
-    return;
-  }
-
-  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getApplicationInfo(_return, request);
-    }
-    ifaces_[i]->getApplicationInfo(_return, request);
+    ifaces_[i]->getDashboard(_return, request);
     return;
   }
 
@@ -4365,43 +4436,22 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
-  void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
+  double getApiVersion() {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getDashboard(_return, request);
+      ifaces_[i]->getApiVersion();
     }
-    ifaces_[i]->getDashboard(_return, request);
-    return;
+    return ifaces_[i]->getApiVersion();
   }
 
-  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) {
+  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getApplicationMessages(_return, request);
+      ifaces_[i]->registerHealthCheck(_return, request);
     }
-    ifaces_[i]->getApplicationMessages(_return, request);
-    return;
-  }
-
-  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getInbox(_return, request);
-    }
-    ifaces_[i]->getInbox(_return, request);
-    return;
-  }
-
-  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getFullMessage(_return, request);
-    }
-    ifaces_[i]->getFullMessage(_return, request);
+    ifaces_[i]->registerHealthCheck(_return, request);
     return;
   }
 
@@ -4412,56 +4462,6 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
       ifaces_[i]->getMedia(_return, request);
     }
     ifaces_[i]->getMedia(_return, request);
-    return;
-  }
-
-  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getApplicationsOwnedBy(_return, request);
-    }
-    ifaces_[i]->getApplicationsOwnedBy(_return, request);
-    return;
-  }
-
-  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getApplicationsFollowedBy(_return, request);
-    }
-    ifaces_[i]->getApplicationsFollowedBy(_return, request);
-    return;
-  }
-
-  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getReactions(_return, request);
-    }
-    ifaces_[i]->getReactions(_return, request);
-    return;
-  }
-
-  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getUserInfo(_return, request);
-    }
-    ifaces_[i]->getUserInfo(_return, request);
-    return;
-  }
-
-  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->searchForApplications(_return, request);
-    }
-    ifaces_[i]->searchForApplications(_return, request);
     return;
   }
 
@@ -4495,87 +4495,87 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  double getApiVersion();
-  int32_t send_getApiVersion();
-  double recv_getApiVersion(const int32_t seqid);
-  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request);
-  int32_t send_deleteApplication(const DeleteApplicationRequest& request);
-  void recv_deleteApplication(DeleteApplicationResponse& _return, const int32_t seqid);
-  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request);
-  int32_t send_deleteMessage(const DeleteMessageRequest& request);
-  void recv_deleteMessage(DeleteMessageResponse& _return, const int32_t seqid);
-  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request);
-  int32_t send_dismissMessage(const DismissMessageRequest& request);
-  void recv_dismissMessage(DismissMessageResponse& _return, const int32_t seqid);
-  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request);
-  int32_t send_provisionApplication(const ProvisionApplicationRequest& request);
-  void recv_provisionApplication(ProvisionApplicationResponse& _return, const int32_t seqid);
-  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request);
-  int32_t send_regenerateToken(const RegenerateApplicationTokenRequest& request);
-  void recv_regenerateToken(RegenerateApplicationTokenResponse& _return, const int32_t seqid);
-  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request);
-  int32_t send_registerHealthCheck(const RegisterHealthCheckRequest& request);
-  void recv_registerHealthCheck(RegisterHealthCheckResponse& _return, const int32_t seqid);
-  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request);
-  int32_t send_renewApplicationToken(const RenewApplicationTokenRequest& request);
-  void recv_renewApplicationToken(RenewApplicationTokenResponse& _return, const int32_t seqid);
   void signIn(SignInResponse& _return, const SignInRequest& request);
   int32_t send_signIn(const SignInRequest& request);
   void recv_signIn(SignInResponse& _return, const int32_t seqid);
   void signUp(SignUpResponse& _return, const SignUpRequest& request);
   int32_t send_signUp(const SignUpRequest& request);
   void recv_signUp(SignUpResponse& _return, const int32_t seqid);
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
+  int32_t send_getUserInfo(const GetUserInfoRequest& request);
+  void recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid);
+  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
+  int32_t send_getApplicationInfo(const GetApplicationInfoRequest& request);
+  void recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid);
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request);
+  int32_t send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request);
+  void recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const int32_t seqid);
+  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request);
+  int32_t send_provisionApplication(const ProvisionApplicationRequest& request);
+  void recv_provisionApplication(ProvisionApplicationResponse& _return, const int32_t seqid);
+  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request);
+  int32_t send_regenerateToken(const RegenerateApplicationTokenRequest& request);
+  void recv_regenerateToken(RegenerateApplicationTokenResponse& _return, const int32_t seqid);
+  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request);
+  int32_t send_deleteApplication(const DeleteApplicationRequest& request);
+  void recv_deleteApplication(DeleteApplicationResponse& _return, const int32_t seqid);
+  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request);
+  int32_t send_renewApplicationToken(const RenewApplicationTokenRequest& request);
+  void recv_renewApplicationToken(RenewApplicationTokenResponse& _return, const int32_t seqid);
+  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request);
+  int32_t send_updateApplication(const UpdateApplicationRequest& request);
+  void recv_updateApplication(UpdateApplicationResponse& _return, const int32_t seqid);
+  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request);
+  int32_t send_searchForApplications(const SearchForApplicationsRequest& request);
+  void recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid);
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request);
+  int32_t send_getApplicationMessages(const GetApplicationMessagesRequest& request);
+  void recv_getApplicationMessages(GetApplicationMessagesResponse& _return, const int32_t seqid);
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
+  int32_t send_getFullMessage(const GetFullMessageRequest& request);
+  void recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid);
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request);
+  int32_t send_deleteMessage(const DeleteMessageRequest& request);
+  void recv_deleteMessage(DeleteMessageResponse& _return, const int32_t seqid);
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request);
+  int32_t send_dismissMessage(const DismissMessageRequest& request);
+  void recv_dismissMessage(DismissMessageResponse& _return, const int32_t seqid);
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request);
+  int32_t send_getInbox(const GetInboxRequest& request);
+  void recv_getInbox(GetInboxResponse& _return, const int32_t seqid);
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
+  int32_t send_getActivity(const GetActivityRequest& request);
+  void recv_getActivity(GetActivityResponse& _return, const int32_t seqid);
+  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request);
+  int32_t send_getReactions(const GetReactionsRequest& request);
+  void recv_getReactions(GetReactionsResponse& _return, const int32_t seqid);
+  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request);
+  int32_t send_updateReactions(const UpdateReactionsRequest& request);
+  void recv_updateReactions(UpdateReactionsResponse& _return, const int32_t seqid);
+  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request);
+  int32_t send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request);
+  void recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const int32_t seqid);
   void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request);
   int32_t send_followApplication(const FollowApplicationRequest& request);
   void recv_followApplication(FollowApplicationResponse& _return, const int32_t seqid);
   void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request);
   int32_t send_unfollowApplication(const UnfollowApplicationRequest& request);
   void recv_unfollowApplication(UnfollowApplicationResponse& _return, const int32_t seqid);
-  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request);
-  int32_t send_updateApplication(const UpdateApplicationRequest& request);
-  void recv_updateApplication(UpdateApplicationResponse& _return, const int32_t seqid);
-  void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request);
-  int32_t send_updateReactions(const UpdateReactionsRequest& request);
-  void recv_updateReactions(UpdateReactionsResponse& _return, const int32_t seqid);
-  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
-  int32_t send_getActivity(const GetActivityRequest& request);
-  void recv_getActivity(GetActivityResponse& _return, const int32_t seqid);
-  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
-  int32_t send_getApplicationInfo(const GetApplicationInfoRequest& request);
-  void recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid);
-  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request);
-  int32_t send_getBuzz(const GetBuzzRequest& request);
-  void recv_getBuzz(GetBuzzResponse& _return, const int32_t seqid);
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   int32_t send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid);
-  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request);
-  int32_t send_getApplicationMessages(const GetApplicationMessagesRequest& request);
-  void recv_getApplicationMessages(GetApplicationMessagesResponse& _return, const int32_t seqid);
-  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request);
-  int32_t send_getInbox(const GetInboxRequest& request);
-  void recv_getInbox(GetInboxResponse& _return, const int32_t seqid);
-  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
-  int32_t send_getFullMessage(const GetFullMessageRequest& request);
-  void recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid);
+  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request);
+  int32_t send_getBuzz(const GetBuzzRequest& request);
+  void recv_getBuzz(GetBuzzResponse& _return, const int32_t seqid);
+  double getApiVersion();
+  int32_t send_getApiVersion();
+  double recv_getApiVersion(const int32_t seqid);
+  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request);
+  int32_t send_registerHealthCheck(const RegisterHealthCheckRequest& request);
+  void recv_registerHealthCheck(RegisterHealthCheckResponse& _return, const int32_t seqid);
   void getMedia(GetMediaResponse& _return, const GetMediaRequest& request);
   int32_t send_getMedia(const GetMediaRequest& request);
   void recv_getMedia(GetMediaResponse& _return, const int32_t seqid);
-  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request);
-  int32_t send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request);
-  void recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const int32_t seqid);
-  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request);
-  int32_t send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request);
-  void recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const int32_t seqid);
-  void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request);
-  int32_t send_getReactions(const GetReactionsRequest& request);
-  void recv_getReactions(GetReactionsResponse& _return, const int32_t seqid);
-  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
-  int32_t send_getUserInfo(const GetUserInfoRequest& request);
-  void recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid);
-  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request);
-  int32_t send_searchForApplications(const SearchForApplicationsRequest& request);
-  void recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

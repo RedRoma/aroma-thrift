@@ -19,97 +19,16 @@ var Reactions_ttypes = require('./Reactions_types')
 var ttypes = require('./AromaService_types');
 //HELPER FUNCTIONS AND STRUCTURES
 
-AromaService_getApiVersion_args = function(args) {
-};
-AromaService_getApiVersion_args.prototype = {};
-AromaService_getApiVersion_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                input.skip(ftype);
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getApiVersion_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApiVersion_args');
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getApiVersion_result = function(args) {
-              this.success = null;
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = args.success;
-                            }
-              }
-};
-AromaService_getApiVersion_result.prototype = {};
-AromaService_getApiVersion_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.DOUBLE) {
-                    this.success = input.readDouble();
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getApiVersion_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApiVersion_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.DOUBLE, 0);
-                output.writeDouble(this.success);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_deleteApplication_args = function(args) {
+AromaService_signIn_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.DeleteApplicationRequest(args.request);
+                                          this.request = new ttypes.SignInRequest(args.request);
                             }
               }
 };
-AromaService_deleteApplication_args.prototype = {};
-AromaService_deleteApplication_args.prototype.read = function(input) {
+AromaService_signIn_args.prototype = {};
+AromaService_signIn_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -124,7 +43,7 @@ AromaService_deleteApplication_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.DeleteApplicationRequest();
+                    this.request = new ttypes.SignInRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -142,8 +61,8 @@ AromaService_deleteApplication_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_deleteApplication_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_deleteApplication_args');
+AromaService_signIn_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_signIn_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -154,7 +73,595 @@ AromaService_deleteApplication_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_deleteApplication_result = function(args) {
+AromaService_signIn_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.SignInResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+              }
+};
+AromaService_signIn_result.prototype = {};
+AromaService_signIn_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.SignInResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UserDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_signIn_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_signIn_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_signUp_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.SignUpRequest(args.request);
+                            }
+              }
+};
+AromaService_signUp_args.prototype = {};
+AromaService_signUp_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.SignUpRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_signUp_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_signUp_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_signUp_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.SignUpResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+              }
+};
+AromaService_signUp_result.prototype = {};
+AromaService_signUp_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.SignUpResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.AccountAlreadyExistsException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_signUp_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_signUp_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getUserInfo_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetUserInfoRequest(args.request);
+                            }
+              }
+};
+AromaService_getUserInfo_args.prototype = {};
+AromaService_getUserInfo_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetUserInfoRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getUserInfo_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getUserInfo_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getUserInfo_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetUserInfoResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
+};
+AromaService_getUserInfo_result.prototype = {};
+AromaService_getUserInfo_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetUserInfoResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UserDoesNotExistException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getUserInfo_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getUserInfo_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getApplicationInfo_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetApplicationInfoRequest(args.request);
+                            }
+              }
+};
+AromaService_getApplicationInfo_args.prototype = {};
+AromaService_getApplicationInfo_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetApplicationInfoRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getApplicationInfo_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationInfo_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getApplicationInfo_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
@@ -183,7 +690,7 @@ AromaService_deleteApplication_result = function(args) {
               }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.DeleteApplicationResponse(args.success);
+                                          this.success = new ttypes.GetApplicationInfoResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -202,8 +709,8 @@ AromaService_deleteApplication_result = function(args) {
                             }
               }
 };
-AromaService_deleteApplication_result.prototype = {};
-AromaService_deleteApplication_result.prototype.read = function(input) {
+AromaService_getApplicationInfo_result.prototype = {};
+AromaService_getApplicationInfo_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -218,7 +725,7 @@ AromaService_deleteApplication_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.DeleteApplicationResponse();
+                    this.success = new ttypes.GetApplicationInfoResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -273,8 +780,8 @@ AromaService_deleteApplication_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_deleteApplication_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_deleteApplication_result');
+AromaService_getApplicationInfo_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationInfo_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -310,16 +817,16 @@ AromaService_deleteApplication_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_deleteMessage_args = function(args) {
+AromaService_getApplicationsOwnedBy_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.DeleteMessageRequest(args.request);
+                                          this.request = new ttypes.GetApplicationsOwnedByRequest(args.request);
                             }
               }
 };
-AromaService_deleteMessage_args.prototype = {};
-AromaService_deleteMessage_args.prototype.read = function(input) {
+AromaService_getApplicationsOwnedBy_args.prototype = {};
+AromaService_getApplicationsOwnedBy_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -334,7 +841,7 @@ AromaService_deleteMessage_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.DeleteMessageRequest();
+                    this.request = new ttypes.GetApplicationsOwnedByRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -352,8 +859,8 @@ AromaService_deleteMessage_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_deleteMessage_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_deleteMessage_args');
+AromaService_getApplicationsOwnedBy_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationsOwnedBy_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -364,13 +871,11 @@ AromaService_deleteMessage_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_deleteMessage_result = function(args) {
+AromaService_getApplicationsOwnedBy_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
               this.ex3 = null;
-              this.ex4 = null;
-              this.ex5 = null;
               if (args instanceof Exceptions_ttypes.OperationFailedException) {
                             this.ex1 = args;
                             return;
@@ -383,17 +888,9 @@ AromaService_deleteMessage_result = function(args) {
                             this.ex3 = args;
                             return;
               }
-              if (args instanceof Exceptions_ttypes.MessageDoesNotExistException) {
-                            this.ex4 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
-                            return;
-              }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.DeleteMessageResponse(args.success);
+                                          this.success = new ttypes.GetApplicationsOwnedByResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -404,16 +901,10 @@ AromaService_deleteMessage_result = function(args) {
                             if (args.ex3 !== undefined && args.ex3 !== null) {
                                           this.ex3 = args.ex3;
                             }
-                            if (args.ex4 !== undefined && args.ex4 !== null) {
-                                          this.ex4 = args.ex4;
-                            }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
-                            }
               }
 };
-AromaService_deleteMessage_result.prototype = {};
-AromaService_deleteMessage_result.prototype.read = function(input) {
+AromaService_getApplicationsOwnedBy_result.prototype = {};
+AromaService_getApplicationsOwnedBy_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -428,7 +919,7 @@ AromaService_deleteMessage_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.DeleteMessageResponse();
+                    this.success = new ttypes.GetApplicationsOwnedByResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -458,22 +949,6 @@ AromaService_deleteMessage_result.prototype.read = function(input) {
                     input.skip(ftype);
                   }
                   break;
-                  case 4:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.MessageDoesNotExistException();
-                    this.ex4.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 5:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
                   default:
                     input.skip(ftype);
                 }
@@ -483,8 +958,8 @@ AromaService_deleteMessage_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_deleteMessage_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_deleteMessage_result');
+AromaService_getApplicationsOwnedBy_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationsOwnedBy_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -503,226 +978,6 @@ AromaService_deleteMessage_result.prototype.write = function(output) {
               if (this.ex3 !== null && this.ex3 !== undefined) {
                 output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
                 this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex4 !== null && this.ex4 !== undefined) {
-                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-                this.ex4.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-                this.ex5.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_dismissMessage_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.DismissMessageRequest(args.request);
-                            }
-              }
-};
-AromaService_dismissMessage_args.prototype = {};
-AromaService_dismissMessage_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.DismissMessageRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_dismissMessage_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_dismissMessage_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_dismissMessage_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              this.ex4 = null;
-              this.ex5 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.MessageDoesNotExistException) {
-                            this.ex4 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.DismissMessageResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-                            if (args.ex4 !== undefined && args.ex4 !== null) {
-                                          this.ex4 = args.ex4;
-                            }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
-                            }
-              }
-};
-AromaService_dismissMessage_result.prototype = {};
-AromaService_dismissMessage_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.DismissMessageResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 4:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.MessageDoesNotExistException();
-                    this.ex4.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 5:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_dismissMessage_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_dismissMessage_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex4 !== null && this.ex4 !== undefined) {
-                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-                this.ex4.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-                this.ex5.write(output);
                 output.writeFieldEnd();
               }
               output.writeFieldStop();
@@ -1150,16 +1405,16 @@ AromaService_regenerateToken_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_registerHealthCheck_args = function(args) {
+AromaService_deleteApplication_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.RegisterHealthCheckRequest(args.request);
+                                          this.request = new ttypes.DeleteApplicationRequest(args.request);
                             }
               }
 };
-AromaService_registerHealthCheck_args.prototype = {};
-AromaService_registerHealthCheck_args.prototype.read = function(input) {
+AromaService_deleteApplication_args.prototype = {};
+AromaService_deleteApplication_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -1174,7 +1429,7 @@ AromaService_registerHealthCheck_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.RegisterHealthCheckRequest();
+                    this.request = new ttypes.DeleteApplicationRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -1192,8 +1447,8 @@ AromaService_registerHealthCheck_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_registerHealthCheck_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_registerHealthCheck_args');
+AromaService_deleteApplication_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_deleteApplication_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -1204,7 +1459,7 @@ AromaService_registerHealthCheck_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_registerHealthCheck_result = function(args) {
+AromaService_deleteApplication_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
@@ -1233,7 +1488,7 @@ AromaService_registerHealthCheck_result = function(args) {
               }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.RegisterHealthCheckResponse(args.success);
+                                          this.success = new ttypes.DeleteApplicationResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -1252,8 +1507,8 @@ AromaService_registerHealthCheck_result = function(args) {
                             }
               }
 };
-AromaService_registerHealthCheck_result.prototype = {};
-AromaService_registerHealthCheck_result.prototype.read = function(input) {
+AromaService_deleteApplication_result.prototype = {};
+AromaService_deleteApplication_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -1268,7 +1523,7 @@ AromaService_registerHealthCheck_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.RegisterHealthCheckResponse();
+                    this.success = new ttypes.DeleteApplicationResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -1323,8 +1578,8 @@ AromaService_registerHealthCheck_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_registerHealthCheck_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_registerHealthCheck_result');
+AromaService_deleteApplication_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_deleteApplication_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -1570,16 +1825,16 @@ AromaService_renewApplicationToken_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_signIn_args = function(args) {
+AromaService_updateApplication_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.SignInRequest(args.request);
+                                          this.request = new ttypes.UpdateApplicationRequest(args.request);
                             }
               }
 };
-AromaService_signIn_args.prototype = {};
-AromaService_signIn_args.prototype.read = function(input) {
+AromaService_updateApplication_args.prototype = {};
+AromaService_updateApplication_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -1594,7 +1849,7 @@ AromaService_signIn_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.SignInRequest();
+                    this.request = new ttypes.UpdateApplicationRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -1612,8 +1867,8 @@ AromaService_signIn_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_signIn_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_signIn_args');
+AromaService_updateApplication_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_updateApplication_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -1624,12 +1879,13 @@ AromaService_signIn_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_signIn_result = function(args) {
+AromaService_updateApplication_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
               this.ex3 = null;
               this.ex4 = null;
+              this.ex5 = null;
               if (args instanceof Exceptions_ttypes.OperationFailedException) {
                             this.ex1 = args;
                             return;
@@ -1638,17 +1894,21 @@ AromaService_signIn_result = function(args) {
                             this.ex2 = args;
                             return;
               }
-              if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                             this.ex3 = args;
                             return;
               }
-              if (args instanceof Exceptions_ttypes.UserDoesNotExistException) {
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
                             this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
                             return;
               }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.SignInResponse(args.success);
+                                          this.success = new ttypes.UpdateApplicationResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -1662,10 +1922,13 @@ AromaService_signIn_result = function(args) {
                             if (args.ex4 !== undefined && args.ex4 !== null) {
                                           this.ex4 = args.ex4;
                             }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
               }
 };
-AromaService_signIn_result.prototype = {};
-AromaService_signIn_result.prototype.read = function(input) {
+AromaService_updateApplication_result.prototype = {};
+AromaService_updateApplication_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -1680,7 +1943,7 @@ AromaService_signIn_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.SignInResponse();
+                    this.success = new ttypes.UpdateApplicationResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -1704,7 +1967,7 @@ AromaService_signIn_result.prototype.read = function(input) {
                   break;
                   case 3:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                     this.ex3.read(input);
                   } else {
                     input.skip(ftype);
@@ -1712,7 +1975,209 @@ AromaService_signIn_result.prototype.read = function(input) {
                   break;
                   case 4:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.UserDoesNotExistException();
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_updateApplication_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_updateApplication_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_searchForApplications_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.SearchForApplicationsRequest(args.request);
+                            }
+              }
+};
+AromaService_searchForApplications_args.prototype = {};
+AromaService_searchForApplications_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.SearchForApplicationsRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_searchForApplications_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_searchForApplications_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_searchForApplications_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.SearchForApplicationsResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+              }
+};
+AromaService_searchForApplications_result.prototype = {};
+AromaService_searchForApplications_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.SearchForApplicationsResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
                     this.ex4.read(input);
                   } else {
                     input.skip(ftype);
@@ -1727,8 +2192,8 @@ AromaService_signIn_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_signIn_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_signIn_result');
+AromaService_searchForApplications_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_searchForApplications_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -1759,16 +2224,16 @@ AromaService_signIn_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_signUp_args = function(args) {
+AromaService_getApplicationMessages_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.SignUpRequest(args.request);
+                                          this.request = new ttypes.GetApplicationMessagesRequest(args.request);
                             }
               }
 };
-AromaService_signUp_args.prototype = {};
-AromaService_signUp_args.prototype.read = function(input) {
+AromaService_getApplicationMessages_args.prototype = {};
+AromaService_getApplicationMessages_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -1783,7 +2248,7 @@ AromaService_signUp_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.SignUpRequest();
+                    this.request = new ttypes.GetApplicationMessagesRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -1801,8 +2266,8 @@ AromaService_signUp_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_signUp_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_signUp_args');
+AromaService_getApplicationMessages_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationMessages_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -1813,12 +2278,13 @@ AromaService_signUp_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_signUp_result = function(args) {
+AromaService_getApplicationMessages_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
               this.ex3 = null;
               this.ex4 = null;
+              this.ex5 = null;
               if (args instanceof Exceptions_ttypes.OperationFailedException) {
                             this.ex1 = args;
                             return;
@@ -1827,17 +2293,21 @@ AromaService_signUp_result = function(args) {
                             this.ex2 = args;
                             return;
               }
-              if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                             this.ex3 = args;
                             return;
               }
-              if (args instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
                             this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex5 = args;
                             return;
               }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.SignUpResponse(args.success);
+                                          this.success = new ttypes.GetApplicationMessagesResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -1851,10 +2321,13 @@ AromaService_signUp_result = function(args) {
                             if (args.ex4 !== undefined && args.ex4 !== null) {
                                           this.ex4 = args.ex4;
                             }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
               }
 };
-AromaService_signUp_result.prototype = {};
-AromaService_signUp_result.prototype.read = function(input) {
+AromaService_getApplicationMessages_result.prototype = {};
+AromaService_getApplicationMessages_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -1869,7 +2342,7 @@ AromaService_signUp_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.SignUpResponse();
+                    this.success = new ttypes.GetApplicationMessagesResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -1893,7 +2366,7 @@ AromaService_signUp_result.prototype.read = function(input) {
                   break;
                   case 3:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                     this.ex3.read(input);
                   } else {
                     input.skip(ftype);
@@ -1901,8 +2374,16 @@ AromaService_signUp_result.prototype.read = function(input) {
                   break;
                   case 4:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.AccountAlreadyExistsException();
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
                     this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex5.read(input);
                   } else {
                     input.skip(ftype);
                   }
@@ -1916,8 +2397,8 @@ AromaService_signUp_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_signUp_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_signUp_result');
+AromaService_getApplicationMessages_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationMessages_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -1941,6 +2422,1523 @@ AromaService_signUp_result.prototype.write = function(output) {
               if (this.ex4 !== null && this.ex4 !== undefined) {
                 output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
                 this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getFullMessage_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetFullMessageRequest(args.request);
+                            }
+              }
+};
+AromaService_getFullMessage_args.prototype = {};
+AromaService_getFullMessage_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetFullMessageRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getFullMessage_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getFullMessage_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getFullMessage_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetFullMessageResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
+};
+AromaService_getFullMessage_result.prototype = {};
+AromaService_getFullMessage_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetFullMessageResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getFullMessage_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getFullMessage_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_deleteMessage_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.DeleteMessageRequest(args.request);
+                            }
+              }
+};
+AromaService_deleteMessage_args.prototype = {};
+AromaService_deleteMessage_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.DeleteMessageRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_deleteMessage_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_deleteMessage_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_deleteMessage_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.MessageDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.DeleteMessageResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
+};
+AromaService_deleteMessage_result.prototype = {};
+AromaService_deleteMessage_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.DeleteMessageResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.MessageDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_deleteMessage_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_deleteMessage_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_dismissMessage_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.DismissMessageRequest(args.request);
+                            }
+              }
+};
+AromaService_dismissMessage_args.prototype = {};
+AromaService_dismissMessage_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.DismissMessageRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_dismissMessage_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_dismissMessage_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_dismissMessage_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.MessageDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.DismissMessageResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
+};
+AromaService_dismissMessage_result.prototype = {};
+AromaService_dismissMessage_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.DismissMessageResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.MessageDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_dismissMessage_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_dismissMessage_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getInbox_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetInboxRequest(args.request);
+                            }
+              }
+};
+AromaService_getInbox_args.prototype = {};
+AromaService_getInbox_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetInboxRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getInbox_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getInbox_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getInbox_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetInboxResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
+};
+AromaService_getInbox_result.prototype = {};
+AromaService_getInbox_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetInboxResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getInbox_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getInbox_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getActivity_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetActivityRequest(args.request);
+                            }
+              }
+};
+AromaService_getActivity_args.prototype = {};
+AromaService_getActivity_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetActivityRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getActivity_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getActivity_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getActivity_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetActivityResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
+};
+AromaService_getActivity_result.prototype = {};
+AromaService_getActivity_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetActivityResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getActivity_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getActivity_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getReactions_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetReactionsRequest(args.request);
+                            }
+              }
+};
+AromaService_getReactions_args.prototype = {};
+AromaService_getReactions_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetReactionsRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getReactions_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getReactions_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getReactions_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetReactionsResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
+};
+AromaService_getReactions_result.prototype = {};
+AromaService_getReactions_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetReactionsResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getReactions_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getReactions_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_updateReactions_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.UpdateReactionsRequest(args.request);
+                            }
+              }
+};
+AromaService_updateReactions_args.prototype = {};
+AromaService_updateReactions_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.UpdateReactionsRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_updateReactions_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_updateReactions_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_updateReactions_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.UpdateReactionsResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
+};
+AromaService_updateReactions_result.prototype = {};
+AromaService_updateReactions_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.UpdateReactionsResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_updateReactions_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_updateReactions_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getApplicationsFollowedBy_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetApplicationsFollowedByRequest(args.request);
+                            }
+              }
+};
+AromaService_getApplicationsFollowedBy_args.prototype = {};
+AromaService_getApplicationsFollowedBy_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetApplicationsFollowedByRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getApplicationsFollowedBy_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationsFollowedBy_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+AromaService_getApplicationsFollowedBy_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetApplicationsFollowedByResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
+};
+AromaService_getApplicationsFollowedBy_result.prototype = {};
+AromaService_getApplicationsFollowedBy_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetApplicationsFollowedByResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+AromaService_getApplicationsFollowedBy_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationsFollowedBy_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
                 output.writeFieldEnd();
               }
               output.writeFieldStop();
@@ -2368,16 +4366,16 @@ AromaService_unfollowApplication_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_updateApplication_args = function(args) {
+AromaService_getDashboard_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.UpdateApplicationRequest(args.request);
+                                          this.request = new ttypes.GetDashboardRequest(args.request);
                             }
               }
 };
-AromaService_updateApplication_args.prototype = {};
-AromaService_updateApplication_args.prototype.read = function(input) {
+AromaService_getDashboard_args.prototype = {};
+AromaService_getDashboard_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -2392,7 +4390,7 @@ AromaService_updateApplication_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.UpdateApplicationRequest();
+                    this.request = new ttypes.GetDashboardRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -2410,8 +4408,8 @@ AromaService_updateApplication_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_updateApplication_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_updateApplication_args');
+AromaService_getDashboard_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getDashboard_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -2422,427 +4420,7 @@ AromaService_updateApplication_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_updateApplication_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              this.ex4 = null;
-              this.ex5 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                            this.ex4 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.UpdateApplicationResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-                            if (args.ex4 !== undefined && args.ex4 !== null) {
-                                          this.ex4 = args.ex4;
-                            }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
-                            }
-              }
-};
-AromaService_updateApplication_result.prototype = {};
-AromaService_updateApplication_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.UpdateApplicationResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 4:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                    this.ex4.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 5:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_updateApplication_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_updateApplication_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex4 !== null && this.ex4 !== undefined) {
-                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-                this.ex4.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-                this.ex5.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_updateReactions_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.UpdateReactionsRequest(args.request);
-                            }
-              }
-};
-AromaService_updateReactions_args.prototype = {};
-AromaService_updateReactions_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.UpdateReactionsRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_updateReactions_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_updateReactions_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_updateReactions_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              this.ex4 = null;
-              this.ex5 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                            this.ex4 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.UpdateReactionsResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-                            if (args.ex4 !== undefined && args.ex4 !== null) {
-                                          this.ex4 = args.ex4;
-                            }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
-                            }
-              }
-};
-AromaService_updateReactions_result.prototype = {};
-AromaService_updateReactions_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.UpdateReactionsResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 4:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                    this.ex4.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 5:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_updateReactions_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_updateReactions_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex4 !== null && this.ex4 !== undefined) {
-                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-                this.ex4.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-                this.ex5.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getActivity_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetActivityRequest(args.request);
-                            }
-              }
-};
-AromaService_getActivity_args.prototype = {};
-AromaService_getActivity_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetActivityRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getActivity_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getActivity_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getActivity_result = function(args) {
+AromaService_getDashboard_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
@@ -2861,7 +4439,7 @@ AromaService_getActivity_result = function(args) {
               }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetActivityResponse(args.success);
+                                          this.success = new ttypes.GetDashboardResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -2874,8 +4452,8 @@ AromaService_getActivity_result = function(args) {
                             }
               }
 };
-AromaService_getActivity_result.prototype = {};
-AromaService_getActivity_result.prototype.read = function(input) {
+AromaService_getDashboard_result.prototype = {};
+AromaService_getDashboard_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -2890,7 +4468,7 @@ AromaService_getActivity_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetActivityResponse();
+                    this.success = new ttypes.GetDashboardResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -2929,8 +4507,8 @@ AromaService_getActivity_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_getActivity_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getActivity_result');
+AromaService_getDashboard_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getDashboard_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -2949,216 +4527,6 @@ AromaService_getActivity_result.prototype.write = function(output) {
               if (this.ex3 !== null && this.ex3 !== undefined) {
                 output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
                 this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getApplicationInfo_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetApplicationInfoRequest(args.request);
-                            }
-              }
-};
-AromaService_getApplicationInfo_args.prototype = {};
-AromaService_getApplicationInfo_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetApplicationInfoRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getApplicationInfo_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApplicationInfo_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getApplicationInfo_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              this.ex4 = null;
-              this.ex5 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                            this.ex4 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetApplicationInfoResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-                            if (args.ex4 !== undefined && args.ex4 !== null) {
-                                          this.ex4 = args.ex4;
-                            }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
-                            }
-              }
-};
-AromaService_getApplicationInfo_result.prototype = {};
-AromaService_getApplicationInfo_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetApplicationInfoResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 4:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                    this.ex4.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 5:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getApplicationInfo_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApplicationInfo_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex4 !== null && this.ex4 !== undefined) {
-                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-                this.ex4.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-                this.ex5.write(output);
                 output.writeFieldEnd();
               }
               output.writeFieldStop();
@@ -3376,16 +4744,10 @@ AromaService_getBuzz_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_getDashboard_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetDashboardRequest(args.request);
-                            }
-              }
+AromaService_getApiVersion_args = function(args) {
 };
-AromaService_getDashboard_args.prototype = {};
-AromaService_getDashboard_args.prototype.read = function(input) {
+AromaService_getApiVersion_args.prototype = {};
+AromaService_getApiVersion_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -3396,74 +4758,30 @@ AromaService_getDashboard_args.prototype.read = function(input) {
                 if (ftype == Thrift.Type.STOP) {
                   break;
                 }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetDashboardRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
+                input.skip(ftype);
                 input.readFieldEnd();
               }
               input.readStructEnd();
               return;
             };
 
-AromaService_getDashboard_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getDashboard_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
+AromaService_getApiVersion_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApiVersion_args');
               output.writeFieldStop();
               output.writeStructEnd();
               return;
             };
 
-AromaService_getDashboard_result = function(args) {
+AromaService_getApiVersion_result = function(args) {
               this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetDashboardResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
+                                          this.success = args.success;
                             }
               }
 };
-AromaService_getDashboard_result.prototype = {};
-AromaService_getDashboard_result.prototype.read = function(input) {
+AromaService_getApiVersion_result.prototype = {};
+AromaService_getApiVersion_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -3477,37 +4795,15 @@ AromaService_getDashboard_result.prototype.read = function(input) {
                 switch (fid)
                 {
                   case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetDashboardResponse();
-                    this.success.read(input);
+                  if (ftype == Thrift.Type.DOUBLE) {
+                    this.success = input.readDouble();
                   } else {
                     input.skip(ftype);
                   }
                   break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
+                  case 0:
                     input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
+                    break;
                   default:
                     input.skip(ftype);
                 }
@@ -3517,26 +4813,11 @@ AromaService_getDashboard_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_getDashboard_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getDashboard_result');
+AromaService_getApiVersion_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApiVersion_result');
               if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
+                output.writeFieldBegin('success', Thrift.Type.DOUBLE, 0);
+                output.writeDouble(this.success);
                 output.writeFieldEnd();
               }
               output.writeFieldStop();
@@ -3544,16 +4825,16 @@ AromaService_getDashboard_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_getApplicationMessages_args = function(args) {
+AromaService_registerHealthCheck_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetApplicationMessagesRequest(args.request);
+                                          this.request = new ttypes.RegisterHealthCheckRequest(args.request);
                             }
               }
 };
-AromaService_getApplicationMessages_args.prototype = {};
-AromaService_getApplicationMessages_args.prototype.read = function(input) {
+AromaService_registerHealthCheck_args.prototype = {};
+AromaService_registerHealthCheck_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -3568,7 +4849,7 @@ AromaService_getApplicationMessages_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetApplicationMessagesRequest();
+                    this.request = new ttypes.RegisterHealthCheckRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -3586,8 +4867,8 @@ AromaService_getApplicationMessages_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_getApplicationMessages_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApplicationMessages_args');
+AromaService_registerHealthCheck_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_registerHealthCheck_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -3598,7 +4879,7 @@ AromaService_getApplicationMessages_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_getApplicationMessages_result = function(args) {
+AromaService_registerHealthCheck_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
@@ -3617,17 +4898,17 @@ AromaService_getApplicationMessages_result = function(args) {
                             this.ex3 = args;
                             return;
               }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
                             this.ex4 = args;
                             return;
               }
-              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
                             this.ex5 = args;
                             return;
               }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetApplicationMessagesResponse(args.success);
+                                          this.success = new ttypes.RegisterHealthCheckResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -3646,8 +4927,8 @@ AromaService_getApplicationMessages_result = function(args) {
                             }
               }
 };
-AromaService_getApplicationMessages_result.prototype = {};
-AromaService_getApplicationMessages_result.prototype.read = function(input) {
+AromaService_registerHealthCheck_result.prototype = {};
+AromaService_registerHealthCheck_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -3662,7 +4943,7 @@ AromaService_getApplicationMessages_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetApplicationMessagesResponse();
+                    this.success = new ttypes.RegisterHealthCheckResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -3694,7 +4975,7 @@ AromaService_getApplicationMessages_result.prototype.read = function(input) {
                   break;
                   case 4:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
                     this.ex4.read(input);
                   } else {
                     input.skip(ftype);
@@ -3702,7 +4983,7 @@ AromaService_getApplicationMessages_result.prototype.read = function(input) {
                   break;
                   case 5:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
                     this.ex5.read(input);
                   } else {
                     input.skip(ftype);
@@ -3717,8 +4998,8 @@ AromaService_getApplicationMessages_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_getApplicationMessages_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApplicationMessages_result');
+AromaService_registerHealthCheck_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_registerHealthCheck_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -3747,342 +5028,6 @@ AromaService_getApplicationMessages_result.prototype.write = function(output) {
               if (this.ex5 !== null && this.ex5 !== undefined) {
                 output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
                 this.ex5.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getInbox_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetInboxRequest(args.request);
-                            }
-              }
-};
-AromaService_getInbox_args.prototype = {};
-AromaService_getInbox_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetInboxRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getInbox_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getInbox_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getInbox_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetInboxResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-              }
-};
-AromaService_getInbox_result.prototype = {};
-AromaService_getInbox_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetInboxResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getInbox_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getInbox_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getFullMessage_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetFullMessageRequest(args.request);
-                            }
-              }
-};
-AromaService_getFullMessage_args.prototype = {};
-AromaService_getFullMessage_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetFullMessageRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getFullMessage_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getFullMessage_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getFullMessage_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetFullMessageResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-              }
-};
-AromaService_getFullMessage_result.prototype = {};
-AromaService_getFullMessage_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetFullMessageResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getFullMessage_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getFullMessage_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
                 output.writeFieldEnd();
               }
               output.writeFieldStop();
@@ -4300,951 +5245,6 @@ AromaService_getMedia_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_getApplicationsOwnedBy_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetApplicationsOwnedByRequest(args.request);
-                            }
-              }
-};
-AromaService_getApplicationsOwnedBy_args.prototype = {};
-AromaService_getApplicationsOwnedBy_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetApplicationsOwnedByRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getApplicationsOwnedBy_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApplicationsOwnedBy_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getApplicationsOwnedBy_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetApplicationsOwnedByResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-              }
-};
-AromaService_getApplicationsOwnedBy_result.prototype = {};
-AromaService_getApplicationsOwnedBy_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetApplicationsOwnedByResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getApplicationsOwnedBy_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApplicationsOwnedBy_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getApplicationsFollowedBy_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetApplicationsFollowedByRequest(args.request);
-                            }
-              }
-};
-AromaService_getApplicationsFollowedBy_args.prototype = {};
-AromaService_getApplicationsFollowedBy_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetApplicationsFollowedByRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getApplicationsFollowedBy_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApplicationsFollowedBy_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getApplicationsFollowedBy_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetApplicationsFollowedByResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-              }
-};
-AromaService_getApplicationsFollowedBy_result.prototype = {};
-AromaService_getApplicationsFollowedBy_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetApplicationsFollowedByResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getApplicationsFollowedBy_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getApplicationsFollowedBy_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getReactions_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetReactionsRequest(args.request);
-                            }
-              }
-};
-AromaService_getReactions_args.prototype = {};
-AromaService_getReactions_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetReactionsRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getReactions_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getReactions_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getReactions_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              this.ex4 = null;
-              this.ex5 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                            this.ex4 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex5 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetReactionsResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-                            if (args.ex4 !== undefined && args.ex4 !== null) {
-                                          this.ex4 = args.ex4;
-                            }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
-                            }
-              }
-};
-AromaService_getReactions_result.prototype = {};
-AromaService_getReactions_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetReactionsResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 4:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                    this.ex4.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 5:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex5.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getReactions_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getReactions_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex4 !== null && this.ex4 !== undefined) {
-                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-                this.ex4.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-                this.ex5.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getUserInfo_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.GetUserInfoRequest(args.request);
-                            }
-              }
-};
-AromaService_getUserInfo_args.prototype = {};
-AromaService_getUserInfo_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.GetUserInfoRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getUserInfo_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getUserInfo_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_getUserInfo_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              this.ex4 = null;
-              this.ex5 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex4 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UserDoesNotExistException) {
-                            this.ex5 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.GetUserInfoResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-                            if (args.ex4 !== undefined && args.ex4 !== null) {
-                                          this.ex4 = args.ex4;
-                            }
-                            if (args.ex5 !== undefined && args.ex5 !== null) {
-                                          this.ex5 = args.ex5;
-                            }
-              }
-};
-AromaService_getUserInfo_result.prototype = {};
-AromaService_getUserInfo_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.GetUserInfoResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 4:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex4.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 5:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex5 = new Exceptions_ttypes.UserDoesNotExistException();
-                    this.ex5.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_getUserInfo_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getUserInfo_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex4 !== null && this.ex4 !== undefined) {
-                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-                this.ex4.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex5 !== null && this.ex5 !== undefined) {
-                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-                this.ex5.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_searchForApplications_args = function(args) {
-              this.request = null;
-              if (args) {
-                            if (args.request !== undefined && args.request !== null) {
-                                          this.request = new ttypes.SearchForApplicationsRequest(args.request);
-                            }
-              }
-};
-AromaService_searchForApplications_args.prototype = {};
-AromaService_searchForApplications_args.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new ttypes.SearchForApplicationsRequest();
-                    this.request.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 0:
-                    input.skip(ftype);
-                    break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_searchForApplications_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_searchForApplications_args');
-              if (this.request !== null && this.request !== undefined) {
-                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-                this.request.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
-AromaService_searchForApplications_result = function(args) {
-              this.success = null;
-              this.ex1 = null;
-              this.ex2 = null;
-              this.ex3 = null;
-              this.ex4 = null;
-              if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                            this.ex1 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                            this.ex2 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                            this.ex3 = args;
-                            return;
-              }
-              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                            this.ex4 = args;
-                            return;
-              }
-              if (args) {
-                            if (args.success !== undefined && args.success !== null) {
-                                          this.success = new ttypes.SearchForApplicationsResponse(args.success);
-                            }
-                            if (args.ex1 !== undefined && args.ex1 !== null) {
-                                          this.ex1 = args.ex1;
-                            }
-                            if (args.ex2 !== undefined && args.ex2 !== null) {
-                                          this.ex2 = args.ex2;
-                            }
-                            if (args.ex3 !== undefined && args.ex3 !== null) {
-                                          this.ex3 = args.ex3;
-                            }
-                            if (args.ex4 !== undefined && args.ex4 !== null) {
-                                          this.ex4 = args.ex4;
-                            }
-              }
-};
-AromaService_searchForApplications_result.prototype = {};
-AromaService_searchForApplications_result.prototype.read = function(input) {
-              input.readStructBegin();
-              while (true)
-              {
-                var ret = input.readFieldBegin();
-                var fname = ret.fname;
-                var ftype = ret.ftype;
-                var fid = ret.fid;
-                if (ftype == Thrift.Type.STOP) {
-                  break;
-                }
-                switch (fid)
-                {
-                  case 0:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new ttypes.SearchForApplicationsResponse();
-                    this.success.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 1:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                    this.ex1.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 2:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                    this.ex2.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 3:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                    this.ex3.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  case 4:
-                  if (ftype == Thrift.Type.STRUCT) {
-                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
-                    this.ex4.read(input);
-                  } else {
-                    input.skip(ftype);
-                  }
-                  break;
-                  default:
-                    input.skip(ftype);
-                }
-                input.readFieldEnd();
-              }
-              input.readStructEnd();
-              return;
-            };
-
-AromaService_searchForApplications_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_searchForApplications_result');
-              if (this.success !== null && this.success !== undefined) {
-                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-                this.success.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex1 !== null && this.ex1 !== undefined) {
-                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-                this.ex1.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex2 !== null && this.ex2 !== undefined) {
-                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-                this.ex2.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex3 !== null && this.ex3 !== undefined) {
-                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-                this.ex3.write(output);
-                output.writeFieldEnd();
-              }
-              if (this.ex4 !== null && this.ex4 !== undefined) {
-                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-                this.ex4.write(output);
-                output.writeFieldEnd();
-              }
-              output.writeFieldStop();
-              output.writeStructEnd();
-              return;
-            };
-
 AromaServiceClient = exports.Client = function(output, pClass) {
                 this.output = output;
                 this.pClass = pClass;
@@ -5254,7 +5254,7 @@ AromaServiceClient = exports.Client = function(output, pClass) {
             AromaServiceClient.prototype = {};
             AromaServiceClient.prototype.seqid = function() { return this._seqid; }
 AromaServiceClient.prototype.new_seqid = function() { return this._seqid += 1; }
-AromaServiceClient.prototype.getApiVersion = function(callback) {
+AromaServiceClient.prototype.signIn = function(request, callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -5265,71 +5265,25 @@ AromaServiceClient.prototype.getApiVersion = function(callback) {
                     _defer.resolve(result);
                   }
                 };
-                this.send_getApiVersion();
+                this.send_signIn(request);
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_getApiVersion();
+                this.send_signIn(request);
               }
 };
 
-AromaServiceClient.prototype.send_getApiVersion = function() {
+AromaServiceClient.prototype.send_signIn = function(request) {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('getApiVersion', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getApiVersion_args();
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getApiVersion = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getApiVersion_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('getApiVersion failed: unknown result');
-};
-AromaServiceClient.prototype.deleteApplication = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_deleteApplication(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_deleteApplication(request);
-              }
-};
-
-AromaServiceClient.prototype.send_deleteApplication = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('deleteApplication', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_deleteApplication_args();
+              output.writeMessageBegin('signIn', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_signIn_args();
               args.request = request;
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_deleteApplication = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_signIn = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -5338,7 +5292,125 @@ AromaServiceClient.prototype.recv_deleteApplication = function(input,mtype,rseqi
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_deleteApplication_result();
+              var result = new AromaService_signIn_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('signIn failed: unknown result');
+};
+AromaServiceClient.prototype.signUp = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_signUp(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_signUp(request);
+              }
+};
+
+AromaServiceClient.prototype.send_signUp = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('signUp', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_signUp_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_signUp = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_signUp_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('signUp failed: unknown result');
+};
+AromaServiceClient.prototype.getUserInfo = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getUserInfo(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getUserInfo(request);
+              }
+};
+
+AromaServiceClient.prototype.send_getUserInfo = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getUserInfo', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getUserInfo_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_getUserInfo = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_getUserInfo_result();
               result.read(input);
               input.readMessageEnd();
 
@@ -5360,9 +5432,9 @@ AromaServiceClient.prototype.recv_deleteApplication = function(input,mtype,rseqi
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('deleteApplication failed: unknown result');
+              return callback('getUserInfo failed: unknown result');
 };
-AromaServiceClient.prototype.deleteMessage = function(request, callback) {
+AromaServiceClient.prototype.getApplicationInfo = function(request, callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -5373,25 +5445,25 @@ AromaServiceClient.prototype.deleteMessage = function(request, callback) {
                     _defer.resolve(result);
                   }
                 };
-                this.send_deleteMessage(request);
+                this.send_getApplicationInfo(request);
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_deleteMessage(request);
+                this.send_getApplicationInfo(request);
               }
 };
 
-AromaServiceClient.prototype.send_deleteMessage = function(request) {
+AromaServiceClient.prototype.send_getApplicationInfo = function(request) {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('deleteMessage', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_deleteMessage_args();
+              output.writeMessageBegin('getApplicationInfo', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getApplicationInfo_args();
               args.request = request;
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_deleteMessage = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_getApplicationInfo = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -5400,7 +5472,7 @@ AromaServiceClient.prototype.recv_deleteMessage = function(input,mtype,rseqid) {
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_deleteMessage_result();
+              var result = new AromaService_getApplicationInfo_result();
               result.read(input);
               input.readMessageEnd();
 
@@ -5422,9 +5494,9 @@ AromaServiceClient.prototype.recv_deleteMessage = function(input,mtype,rseqid) {
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('deleteMessage failed: unknown result');
+              return callback('getApplicationInfo failed: unknown result');
 };
-AromaServiceClient.prototype.dismissMessage = function(request, callback) {
+AromaServiceClient.prototype.getApplicationsOwnedBy = function(request, callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -5435,25 +5507,25 @@ AromaServiceClient.prototype.dismissMessage = function(request, callback) {
                     _defer.resolve(result);
                   }
                 };
-                this.send_dismissMessage(request);
+                this.send_getApplicationsOwnedBy(request);
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_dismissMessage(request);
+                this.send_getApplicationsOwnedBy(request);
               }
 };
 
-AromaServiceClient.prototype.send_dismissMessage = function(request) {
+AromaServiceClient.prototype.send_getApplicationsOwnedBy = function(request) {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('dismissMessage', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_dismissMessage_args();
+              output.writeMessageBegin('getApplicationsOwnedBy', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getApplicationsOwnedBy_args();
               args.request = request;
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_dismissMessage = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_getApplicationsOwnedBy = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -5462,7 +5534,7 @@ AromaServiceClient.prototype.recv_dismissMessage = function(input,mtype,rseqid) 
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_dismissMessage_result();
+              var result = new AromaService_getApplicationsOwnedBy_result();
               result.read(input);
               input.readMessageEnd();
 
@@ -5475,16 +5547,10 @@ AromaServiceClient.prototype.recv_dismissMessage = function(input,mtype,rseqid) 
               if (null !== result.ex3) {
                 return callback(result.ex3);
               }
-              if (null !== result.ex4) {
-                return callback(result.ex4);
-              }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
-              }
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('dismissMessage failed: unknown result');
+              return callback('getApplicationsOwnedBy failed: unknown result');
 };
 AromaServiceClient.prototype.provisionApplication = function(request, callback) {
               this._seqid = this.new_seqid();
@@ -5610,7 +5676,7 @@ AromaServiceClient.prototype.recv_regenerateToken = function(input,mtype,rseqid)
               }
               return callback('regenerateToken failed: unknown result');
 };
-AromaServiceClient.prototype.registerHealthCheck = function(request, callback) {
+AromaServiceClient.prototype.deleteApplication = function(request, callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -5621,25 +5687,25 @@ AromaServiceClient.prototype.registerHealthCheck = function(request, callback) {
                     _defer.resolve(result);
                   }
                 };
-                this.send_registerHealthCheck(request);
+                this.send_deleteApplication(request);
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_registerHealthCheck(request);
+                this.send_deleteApplication(request);
               }
 };
 
-AromaServiceClient.prototype.send_registerHealthCheck = function(request) {
+AromaServiceClient.prototype.send_deleteApplication = function(request) {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('registerHealthCheck', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_registerHealthCheck_args();
+              output.writeMessageBegin('deleteApplication', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_deleteApplication_args();
               args.request = request;
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_registerHealthCheck = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_deleteApplication = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -5648,7 +5714,7 @@ AromaServiceClient.prototype.recv_registerHealthCheck = function(input,mtype,rse
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_registerHealthCheck_result();
+              var result = new AromaService_deleteApplication_result();
               result.read(input);
               input.readMessageEnd();
 
@@ -5670,7 +5736,7 @@ AromaServiceClient.prototype.recv_registerHealthCheck = function(input,mtype,rse
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('registerHealthCheck failed: unknown result');
+              return callback('deleteApplication failed: unknown result');
 };
 AromaServiceClient.prototype.renewApplicationToken = function(request, callback) {
               this._seqid = this.new_seqid();
@@ -5734,7 +5800,7 @@ AromaServiceClient.prototype.recv_renewApplicationToken = function(input,mtype,r
               }
               return callback('renewApplicationToken failed: unknown result');
 };
-AromaServiceClient.prototype.signIn = function(request, callback) {
+AromaServiceClient.prototype.updateApplication = function(request, callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -5745,25 +5811,25 @@ AromaServiceClient.prototype.signIn = function(request, callback) {
                     _defer.resolve(result);
                   }
                 };
-                this.send_signIn(request);
+                this.send_updateApplication(request);
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_signIn(request);
+                this.send_updateApplication(request);
               }
 };
 
-AromaServiceClient.prototype.send_signIn = function(request) {
+AromaServiceClient.prototype.send_updateApplication = function(request) {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('signIn', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_signIn_args();
+              output.writeMessageBegin('updateApplication', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_updateApplication_args();
               args.request = request;
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_signIn = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_updateApplication = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -5772,7 +5838,69 @@ AromaServiceClient.prototype.recv_signIn = function(input,mtype,rseqid) {
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_signIn_result();
+              var result = new AromaService_updateApplication_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('updateApplication failed: unknown result');
+};
+AromaServiceClient.prototype.searchForApplications = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_searchForApplications(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_searchForApplications(request);
+              }
+};
+
+AromaServiceClient.prototype.send_searchForApplications = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('searchForApplications', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_searchForApplications_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_searchForApplications = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_searchForApplications_result();
               result.read(input);
               input.readMessageEnd();
 
@@ -5791,9 +5919,9 @@ AromaServiceClient.prototype.recv_signIn = function(input,mtype,rseqid) {
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('signIn failed: unknown result');
+              return callback('searchForApplications failed: unknown result');
 };
-AromaServiceClient.prototype.signUp = function(request, callback) {
+AromaServiceClient.prototype.getApplicationMessages = function(request, callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -5804,25 +5932,25 @@ AromaServiceClient.prototype.signUp = function(request, callback) {
                     _defer.resolve(result);
                   }
                 };
-                this.send_signUp(request);
+                this.send_getApplicationMessages(request);
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_signUp(request);
+                this.send_getApplicationMessages(request);
               }
 };
 
-AromaServiceClient.prototype.send_signUp = function(request) {
+AromaServiceClient.prototype.send_getApplicationMessages = function(request) {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('signUp', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_signUp_args();
+              output.writeMessageBegin('getApplicationMessages', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getApplicationMessages_args();
               args.request = request;
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_signUp = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_getApplicationMessages = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -5831,7 +5959,7 @@ AromaServiceClient.prototype.recv_signUp = function(input,mtype,rseqid) {
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_signUp_result();
+              var result = new AromaService_getApplicationMessages_result();
               result.read(input);
               input.readMessageEnd();
 
@@ -5847,10 +5975,485 @@ AromaServiceClient.prototype.recv_signUp = function(input,mtype,rseqid) {
               if (null !== result.ex4) {
                 return callback(result.ex4);
               }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('signUp failed: unknown result');
+              return callback('getApplicationMessages failed: unknown result');
+};
+AromaServiceClient.prototype.getFullMessage = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getFullMessage(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getFullMessage(request);
+              }
+};
+
+AromaServiceClient.prototype.send_getFullMessage = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getFullMessage', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getFullMessage_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_getFullMessage = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_getFullMessage_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getFullMessage failed: unknown result');
+};
+AromaServiceClient.prototype.deleteMessage = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_deleteMessage(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_deleteMessage(request);
+              }
+};
+
+AromaServiceClient.prototype.send_deleteMessage = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('deleteMessage', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_deleteMessage_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_deleteMessage = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_deleteMessage_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('deleteMessage failed: unknown result');
+};
+AromaServiceClient.prototype.dismissMessage = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_dismissMessage(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_dismissMessage(request);
+              }
+};
+
+AromaServiceClient.prototype.send_dismissMessage = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('dismissMessage', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_dismissMessage_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_dismissMessage = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_dismissMessage_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('dismissMessage failed: unknown result');
+};
+AromaServiceClient.prototype.getInbox = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getInbox(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getInbox(request);
+              }
+};
+
+AromaServiceClient.prototype.send_getInbox = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getInbox', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getInbox_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_getInbox = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_getInbox_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getInbox failed: unknown result');
+};
+AromaServiceClient.prototype.getActivity = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getActivity(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getActivity(request);
+              }
+};
+
+AromaServiceClient.prototype.send_getActivity = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getActivity', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getActivity_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_getActivity = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_getActivity_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getActivity failed: unknown result');
+};
+AromaServiceClient.prototype.getReactions = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getReactions(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getReactions(request);
+              }
+};
+
+AromaServiceClient.prototype.send_getReactions = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getReactions', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getReactions_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_getReactions = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_getReactions_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getReactions failed: unknown result');
+};
+AromaServiceClient.prototype.updateReactions = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_updateReactions(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_updateReactions(request);
+              }
+};
+
+AromaServiceClient.prototype.send_updateReactions = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('updateReactions', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_updateReactions_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_updateReactions = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_updateReactions_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('updateReactions failed: unknown result');
+};
+AromaServiceClient.prototype.getApplicationsFollowedBy = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getApplicationsFollowedBy(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getApplicationsFollowedBy(request);
+              }
+};
+
+AromaServiceClient.prototype.send_getApplicationsFollowedBy = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getApplicationsFollowedBy', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getApplicationsFollowedBy_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+AromaServiceClient.prototype.recv_getApplicationsFollowedBy = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new AromaService_getApplicationsFollowedBy_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getApplicationsFollowedBy failed: unknown result');
 };
 AromaServiceClient.prototype.followApplication = function(request, callback) {
               this._seqid = this.new_seqid();
@@ -5976,7 +6579,7 @@ AromaServiceClient.prototype.recv_unfollowApplication = function(input,mtype,rse
               }
               return callback('unfollowApplication failed: unknown result');
 };
-AromaServiceClient.prototype.updateApplication = function(request, callback) {
+AromaServiceClient.prototype.getDashboard = function(request, callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -5987,25 +6590,25 @@ AromaServiceClient.prototype.updateApplication = function(request, callback) {
                     _defer.resolve(result);
                   }
                 };
-                this.send_updateApplication(request);
+                this.send_getDashboard(request);
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_updateApplication(request);
+                this.send_getDashboard(request);
               }
 };
 
-AromaServiceClient.prototype.send_updateApplication = function(request) {
+AromaServiceClient.prototype.send_getDashboard = function(request) {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('updateApplication', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_updateApplication_args();
+              output.writeMessageBegin('getDashboard', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getDashboard_args();
               args.request = request;
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_updateApplication = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_getDashboard = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -6014,131 +6617,7 @@ AromaServiceClient.prototype.recv_updateApplication = function(input,mtype,rseqi
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_updateApplication_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.ex4) {
-                return callback(result.ex4);
-              }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('updateApplication failed: unknown result');
-};
-AromaServiceClient.prototype.updateReactions = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_updateReactions(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_updateReactions(request);
-              }
-};
-
-AromaServiceClient.prototype.send_updateReactions = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('updateReactions', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_updateReactions_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_updateReactions = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_updateReactions_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.ex4) {
-                return callback(result.ex4);
-              }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('updateReactions failed: unknown result');
-};
-AromaServiceClient.prototype.getActivity = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_getActivity(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_getActivity(request);
-              }
-};
-
-AromaServiceClient.prototype.send_getActivity = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('getActivity', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getActivity_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getActivity = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getActivity_result();
+              var result = new AromaService_getDashboard_result();
               result.read(input);
               input.readMessageEnd();
 
@@ -6154,69 +6633,7 @@ AromaServiceClient.prototype.recv_getActivity = function(input,mtype,rseqid) {
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('getActivity failed: unknown result');
-};
-AromaServiceClient.prototype.getApplicationInfo = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_getApplicationInfo(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_getApplicationInfo(request);
-              }
-};
-
-AromaServiceClient.prototype.send_getApplicationInfo = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('getApplicationInfo', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getApplicationInfo_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getApplicationInfo = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getApplicationInfo_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.ex4) {
-                return callback(result.ex4);
-              }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('getApplicationInfo failed: unknown result');
+              return callback('getDashboard failed: unknown result');
 };
 AromaServiceClient.prototype.getBuzz = function(request, callback) {
               this._seqid = this.new_seqid();
@@ -6280,7 +6697,7 @@ AromaServiceClient.prototype.recv_getBuzz = function(input,mtype,rseqid) {
               }
               return callback('getBuzz failed: unknown result');
 };
-AromaServiceClient.prototype.getDashboard = function(request, callback) {
+AromaServiceClient.prototype.getApiVersion = function(callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -6291,25 +6708,24 @@ AromaServiceClient.prototype.getDashboard = function(request, callback) {
                     _defer.resolve(result);
                   }
                 };
-                this.send_getDashboard(request);
+                this.send_getApiVersion();
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_getDashboard(request);
+                this.send_getApiVersion();
               }
 };
 
-AromaServiceClient.prototype.send_getDashboard = function(request) {
+AromaServiceClient.prototype.send_getApiVersion = function() {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('getDashboard', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getDashboard_args();
-              args.request = request;
+              output.writeMessageBegin('getApiVersion', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_getApiVersion_args();
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_getDashboard = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_getApiVersion = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -6318,25 +6734,16 @@ AromaServiceClient.prototype.recv_getDashboard = function(input,mtype,rseqid) {
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_getDashboard_result();
+              var result = new AromaService_getApiVersion_result();
               result.read(input);
               input.readMessageEnd();
 
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('getDashboard failed: unknown result');
+              return callback('getApiVersion failed: unknown result');
 };
-AromaServiceClient.prototype.getApplicationMessages = function(request, callback) {
+AromaServiceClient.prototype.registerHealthCheck = function(request, callback) {
               this._seqid = this.new_seqid();
               if (callback === undefined) {
                 var _defer = Q.defer();
@@ -6347,25 +6754,25 @@ AromaServiceClient.prototype.getApplicationMessages = function(request, callback
                     _defer.resolve(result);
                   }
                 };
-                this.send_getApplicationMessages(request);
+                this.send_registerHealthCheck(request);
                 return _defer.promise;
               } else {
                 this._reqs[this.seqid()] = callback;
-                this.send_getApplicationMessages(request);
+                this.send_registerHealthCheck(request);
               }
 };
 
-AromaServiceClient.prototype.send_getApplicationMessages = function(request) {
+AromaServiceClient.prototype.send_registerHealthCheck = function(request) {
               var output = new this.pClass(this.output);
-              output.writeMessageBegin('getApplicationMessages', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getApplicationMessages_args();
+              output.writeMessageBegin('registerHealthCheck', Thrift.MessageType.CALL, this.seqid());
+              var args = new AromaService_registerHealthCheck_args();
               args.request = request;
               args.write(output);
               output.writeMessageEnd();
               return this.output.flush();
 };
 
-AromaServiceClient.prototype.recv_getApplicationMessages = function(input,mtype,rseqid) {
+AromaServiceClient.prototype.recv_registerHealthCheck = function(input,mtype,rseqid) {
               var callback = this._reqs[rseqid] || function() {};
               delete this._reqs[rseqid];
               if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -6374,7 +6781,7 @@ AromaServiceClient.prototype.recv_getApplicationMessages = function(input,mtype,
                 input.readMessageEnd();
                 return callback(x);
               }
-              var result = new AromaService_getApplicationMessages_result();
+              var result = new AromaService_registerHealthCheck_result();
               result.read(input);
               input.readMessageEnd();
 
@@ -6396,119 +6803,7 @@ AromaServiceClient.prototype.recv_getApplicationMessages = function(input,mtype,
               if (null !== result.success) {
                 return callback(null, result.success);
               }
-              return callback('getApplicationMessages failed: unknown result');
-};
-AromaServiceClient.prototype.getInbox = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_getInbox(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_getInbox(request);
-              }
-};
-
-AromaServiceClient.prototype.send_getInbox = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('getInbox', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getInbox_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getInbox = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getInbox_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('getInbox failed: unknown result');
-};
-AromaServiceClient.prototype.getFullMessage = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_getFullMessage(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_getFullMessage(request);
-              }
-};
-
-AromaServiceClient.prototype.send_getFullMessage = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('getFullMessage', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getFullMessage_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getFullMessage = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getFullMessage_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('getFullMessage failed: unknown result');
+              return callback('registerHealthCheck failed: unknown result');
 };
 AromaServiceClient.prototype.getMedia = function(request, callback) {
               this._seqid = this.new_seqid();
@@ -6572,301 +6867,6 @@ AromaServiceClient.prototype.recv_getMedia = function(input,mtype,rseqid) {
               }
               return callback('getMedia failed: unknown result');
 };
-AromaServiceClient.prototype.getApplicationsOwnedBy = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_getApplicationsOwnedBy(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_getApplicationsOwnedBy(request);
-              }
-};
-
-AromaServiceClient.prototype.send_getApplicationsOwnedBy = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('getApplicationsOwnedBy', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getApplicationsOwnedBy_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getApplicationsOwnedBy = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getApplicationsOwnedBy_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('getApplicationsOwnedBy failed: unknown result');
-};
-AromaServiceClient.prototype.getApplicationsFollowedBy = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_getApplicationsFollowedBy(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_getApplicationsFollowedBy(request);
-              }
-};
-
-AromaServiceClient.prototype.send_getApplicationsFollowedBy = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('getApplicationsFollowedBy', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getApplicationsFollowedBy_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getApplicationsFollowedBy = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getApplicationsFollowedBy_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('getApplicationsFollowedBy failed: unknown result');
-};
-AromaServiceClient.prototype.getReactions = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_getReactions(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_getReactions(request);
-              }
-};
-
-AromaServiceClient.prototype.send_getReactions = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('getReactions', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getReactions_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getReactions = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getReactions_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.ex4) {
-                return callback(result.ex4);
-              }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('getReactions failed: unknown result');
-};
-AromaServiceClient.prototype.getUserInfo = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_getUserInfo(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_getUserInfo(request);
-              }
-};
-
-AromaServiceClient.prototype.send_getUserInfo = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('getUserInfo', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_getUserInfo_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_getUserInfo = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_getUserInfo_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.ex4) {
-                return callback(result.ex4);
-              }
-              if (null !== result.ex5) {
-                return callback(result.ex5);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('getUserInfo failed: unknown result');
-};
-AromaServiceClient.prototype.searchForApplications = function(request, callback) {
-              this._seqid = this.new_seqid();
-              if (callback === undefined) {
-                var _defer = Q.defer();
-                this._reqs[this.seqid()] = function(error, result) {
-                  if (error) {
-                    _defer.reject(error);
-                  } else {
-                    _defer.resolve(result);
-                  }
-                };
-                this.send_searchForApplications(request);
-                return _defer.promise;
-              } else {
-                this._reqs[this.seqid()] = callback;
-                this.send_searchForApplications(request);
-              }
-};
-
-AromaServiceClient.prototype.send_searchForApplications = function(request) {
-              var output = new this.pClass(this.output);
-              output.writeMessageBegin('searchForApplications', Thrift.MessageType.CALL, this.seqid());
-              var args = new AromaService_searchForApplications_args();
-              args.request = request;
-              args.write(output);
-              output.writeMessageEnd();
-              return this.output.flush();
-};
-
-AromaServiceClient.prototype.recv_searchForApplications = function(input,mtype,rseqid) {
-              var callback = this._reqs[rseqid] || function() {};
-              delete this._reqs[rseqid];
-              if (mtype == Thrift.MessageType.EXCEPTION) {
-                var x = new Thrift.TApplicationException();
-                x.read(input);
-                input.readMessageEnd();
-                return callback(x);
-              }
-              var result = new AromaService_searchForApplications_result();
-              result.read(input);
-              input.readMessageEnd();
-
-              if (null !== result.ex1) {
-                return callback(result.ex1);
-              }
-              if (null !== result.ex2) {
-                return callback(result.ex2);
-              }
-              if (null !== result.ex3) {
-                return callback(result.ex3);
-              }
-              if (null !== result.ex4) {
-                return callback(result.ex4);
-              }
-              if (null !== result.success) {
-                return callback(null, result.success);
-              }
-              return callback('searchForApplications failed: unknown result');
-};
 AromaServiceProcessor = exports.Processor = function(handler)             {
               this._handler = handler
             }
@@ -6885,33 +6885,38 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_getApiVersion = function(seqid, input, output)             {
-              var args = new AromaService_getApiVersion_args();
+            AromaServiceProcessor.prototype.process_signIn = function(seqid, input, output)             {
+              var args = new AromaService_signIn_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.getApiVersion.length === 0) {
-                Q.fcall(this._handler.getApiVersion)
+              if (this._handler.signIn.length === 1) {
+                Q.fcall(this._handler.signIn, args.request)
                   .then(function(result) {
-                    var result = new AromaService_getApiVersion_result({success: result});
-                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_signIn_result({success: result});
+                    output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.EXCEPTION, seqid);
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                      var result = new AromaService_signIn_result(err);
+                      output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("signIn", Thrift.MessageType.EXCEPTION, seqid);
+                    }
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.getApiVersion(function (err, result) {
-                  if (err == null) {
-                    var result = new AromaService_getApiVersion_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
+                this._handler.signIn(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                    var result = new AromaService_signIn_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("signIn", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -6920,38 +6925,118 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_deleteApplication = function(seqid, input, output)             {
-              var args = new AromaService_deleteApplication_args();
+            AromaServiceProcessor.prototype.process_signUp = function(seqid, input, output)             {
+              var args = new AromaService_signUp_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.deleteApplication.length === 1) {
-                Q.fcall(this._handler.deleteApplication, args.request)
+              if (this._handler.signUp.length === 1) {
+                Q.fcall(this._handler.signUp, args.request)
                   .then(function(result) {
-                    var result = new AromaService_deleteApplication_result({success: result});
-                    output.writeMessageBegin("deleteApplication", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_signUp_result({success: result});
+                    output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
+                      var result = new AromaService_signUp_result(err);
+                      output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("signUp", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.signUp(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
+                    var result = new AromaService_signUp_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("signUp", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_getUserInfo = function(seqid, input, output)             {
+              var args = new AromaService_getUserInfo_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getUserInfo.length === 1) {
+                Q.fcall(this._handler.getUserInfo, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_getUserInfo_result({success: result});
+                    output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                      var result = new AromaService_getUserInfo_result(err);
+                      output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getUserInfo", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getUserInfo(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                    var result = new AromaService_getUserInfo_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getUserInfo", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_getApplicationInfo = function(seqid, input, output)             {
+              var args = new AromaService_getApplicationInfo_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getApplicationInfo.length === 1) {
+                Q.fcall(this._handler.getApplicationInfo, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_getApplicationInfo_result({success: result});
+                    output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
                     if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_deleteApplication_result(err);
-                      output.writeMessageBegin("deleteApplication", Thrift.MessageType.REPLY, seqid);
+                      var result = new AromaService_getApplicationInfo_result(err);
+                      output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
                     } else {
                       var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("deleteApplication", Thrift.MessageType.EXCEPTION, seqid);
+                      output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.EXCEPTION, seqid);
                     }
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.deleteApplication(args.request, function (err, result) {
+                this._handler.getApplicationInfo(args.request, function (err, result) {
                   if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_deleteApplication_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("deleteApplication", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_getApplicationInfo_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("deleteApplication", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -6960,78 +7045,38 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_deleteMessage = function(seqid, input, output)             {
-              var args = new AromaService_deleteMessage_args();
+            AromaServiceProcessor.prototype.process_getApplicationsOwnedBy = function(seqid, input, output)             {
+              var args = new AromaService_getApplicationsOwnedBy_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.deleteMessage.length === 1) {
-                Q.fcall(this._handler.deleteMessage, args.request)
+              if (this._handler.getApplicationsOwnedBy.length === 1) {
+                Q.fcall(this._handler.getApplicationsOwnedBy, args.request)
                   .then(function(result) {
-                    var result = new AromaService_deleteMessage_result({success: result});
-                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_getApplicationsOwnedBy_result({success: result});
+                    output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_deleteMessage_result(err);
-                      output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new AromaService_getApplicationsOwnedBy_result(err);
+                      output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.REPLY, seqid);
                     } else {
                       var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("deleteMessage", Thrift.MessageType.EXCEPTION, seqid);
+                      output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.EXCEPTION, seqid);
                     }
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.deleteMessage(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_deleteMessage_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                this._handler.getApplicationsOwnedBy(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new AromaService_getApplicationsOwnedBy_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_dismissMessage = function(seqid, input, output)             {
-              var args = new AromaService_dismissMessage_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.dismissMessage.length === 1) {
-                Q.fcall(this._handler.dismissMessage, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_dismissMessage_result({success: result});
-                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_dismissMessage_result(err);
-                      output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("dismissMessage", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.dismissMessage(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_dismissMessage_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -7120,38 +7165,38 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_registerHealthCheck = function(seqid, input, output)             {
-              var args = new AromaService_registerHealthCheck_args();
+            AromaServiceProcessor.prototype.process_deleteApplication = function(seqid, input, output)             {
+              var args = new AromaService_deleteApplication_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.registerHealthCheck.length === 1) {
-                Q.fcall(this._handler.registerHealthCheck, args.request)
+              if (this._handler.deleteApplication.length === 1) {
+                Q.fcall(this._handler.deleteApplication, args.request)
                   .then(function(result) {
-                    var result = new AromaService_registerHealthCheck_result({success: result});
-                    output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_deleteApplication_result({success: result});
+                    output.writeMessageBegin("deleteApplication", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
                     if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_registerHealthCheck_result(err);
-                      output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
+                      var result = new AromaService_deleteApplication_result(err);
+                      output.writeMessageBegin("deleteApplication", Thrift.MessageType.REPLY, seqid);
                     } else {
                       var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.EXCEPTION, seqid);
+                      output.writeMessageBegin("deleteApplication", Thrift.MessageType.EXCEPTION, seqid);
                     }
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.registerHealthCheck(args.request, function (err, result) {
+                this._handler.deleteApplication(args.request, function (err, result) {
                   if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_registerHealthCheck_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_deleteApplication_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("deleteApplication", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("deleteApplication", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -7200,38 +7245,38 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_signIn = function(seqid, input, output)             {
-              var args = new AromaService_signIn_args();
+            AromaServiceProcessor.prototype.process_updateApplication = function(seqid, input, output)             {
+              var args = new AromaService_updateApplication_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.signIn.length === 1) {
-                Q.fcall(this._handler.signIn, args.request)
+              if (this._handler.updateApplication.length === 1) {
+                Q.fcall(this._handler.updateApplication, args.request)
                   .then(function(result) {
-                    var result = new AromaService_signIn_result({success: result});
-                    output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_updateApplication_result({success: result});
+                    output.writeMessageBegin("updateApplication", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
-                      var result = new AromaService_signIn_result(err);
-                      output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new AromaService_updateApplication_result(err);
+                      output.writeMessageBegin("updateApplication", Thrift.MessageType.REPLY, seqid);
                     } else {
                       var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("signIn", Thrift.MessageType.EXCEPTION, seqid);
+                      output.writeMessageBegin("updateApplication", Thrift.MessageType.EXCEPTION, seqid);
                     }
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.signIn(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
-                    var result = new AromaService_signIn_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
+                this._handler.updateApplication(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new AromaService_updateApplication_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("updateApplication", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("signIn", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("updateApplication", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -7240,38 +7285,398 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_signUp = function(seqid, input, output)             {
-              var args = new AromaService_signUp_args();
+            AromaServiceProcessor.prototype.process_searchForApplications = function(seqid, input, output)             {
+              var args = new AromaService_searchForApplications_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.signUp.length === 1) {
-                Q.fcall(this._handler.signUp, args.request)
+              if (this._handler.searchForApplications.length === 1) {
+                Q.fcall(this._handler.searchForApplications, args.request)
                   .then(function(result) {
-                    var result = new AromaService_signUp_result({success: result});
-                    output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_searchForApplications_result({success: result});
+                    output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
-                      var result = new AromaService_signUp_result(err);
-                      output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new AromaService_searchForApplications_result(err);
+                      output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
                     } else {
                       var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("signUp", Thrift.MessageType.EXCEPTION, seqid);
+                      output.writeMessageBegin("searchForApplications", Thrift.MessageType.EXCEPTION, seqid);
                     }
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.signUp(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
-                    var result = new AromaService_signUp_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
+                this._handler.searchForApplications(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new AromaService_searchForApplications_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("signUp", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("searchForApplications", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_getApplicationMessages = function(seqid, input, output)             {
+              var args = new AromaService_getApplicationMessages_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getApplicationMessages.length === 1) {
+                Q.fcall(this._handler.getApplicationMessages, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_getApplicationMessages_result({success: result});
+                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                      var result = new AromaService_getApplicationMessages_result(err);
+                      output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getApplicationMessages(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                    var result = new AromaService_getApplicationMessages_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_getFullMessage = function(seqid, input, output)             {
+              var args = new AromaService_getFullMessage_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getFullMessage.length === 1) {
+                Q.fcall(this._handler.getFullMessage, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_getFullMessage_result({success: result});
+                    output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new AromaService_getFullMessage_result(err);
+                      output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getFullMessage", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getFullMessage(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new AromaService_getFullMessage_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getFullMessage", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_deleteMessage = function(seqid, input, output)             {
+              var args = new AromaService_deleteMessage_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.deleteMessage.length === 1) {
+                Q.fcall(this._handler.deleteMessage, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_deleteMessage_result({success: result});
+                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new AromaService_deleteMessage_result(err);
+                      output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("deleteMessage", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.deleteMessage(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new AromaService_deleteMessage_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_dismissMessage = function(seqid, input, output)             {
+              var args = new AromaService_dismissMessage_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.dismissMessage.length === 1) {
+                Q.fcall(this._handler.dismissMessage, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_dismissMessage_result({success: result});
+                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new AromaService_dismissMessage_result(err);
+                      output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("dismissMessage", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.dismissMessage(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new AromaService_dismissMessage_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_getInbox = function(seqid, input, output)             {
+              var args = new AromaService_getInbox_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getInbox.length === 1) {
+                Q.fcall(this._handler.getInbox, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_getInbox_result({success: result});
+                    output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new AromaService_getInbox_result(err);
+                      output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getInbox", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getInbox(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new AromaService_getInbox_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getInbox", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_getActivity = function(seqid, input, output)             {
+              var args = new AromaService_getActivity_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getActivity.length === 1) {
+                Q.fcall(this._handler.getActivity, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_getActivity_result({success: result});
+                    output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new AromaService_getActivity_result(err);
+                      output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getActivity", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getActivity(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new AromaService_getActivity_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getActivity", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_getReactions = function(seqid, input, output)             {
+              var args = new AromaService_getReactions_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getReactions.length === 1) {
+                Q.fcall(this._handler.getReactions, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_getReactions_result({success: result});
+                    output.writeMessageBegin("getReactions", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new AromaService_getReactions_result(err);
+                      output.writeMessageBegin("getReactions", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getReactions", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getReactions(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new AromaService_getReactions_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getReactions", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getReactions", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_updateReactions = function(seqid, input, output)             {
+              var args = new AromaService_updateReactions_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.updateReactions.length === 1) {
+                Q.fcall(this._handler.updateReactions, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_updateReactions_result({success: result});
+                    output.writeMessageBegin("updateReactions", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new AromaService_updateReactions_result(err);
+                      output.writeMessageBegin("updateReactions", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("updateReactions", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.updateReactions(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new AromaService_updateReactions_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("updateReactions", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("updateReactions", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            AromaServiceProcessor.prototype.process_getApplicationsFollowedBy = function(seqid, input, output)             {
+              var args = new AromaService_getApplicationsFollowedBy_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getApplicationsFollowedBy.length === 1) {
+                Q.fcall(this._handler.getApplicationsFollowedBy, args.request)
+                  .then(function(result) {
+                    var result = new AromaService_getApplicationsFollowedBy_result({success: result});
+                    output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new AromaService_getApplicationsFollowedBy_result(err);
+                      output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getApplicationsFollowedBy(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new AromaService_getApplicationsFollowedBy_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -7360,158 +7765,38 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_updateApplication = function(seqid, input, output)             {
-              var args = new AromaService_updateApplication_args();
+            AromaServiceProcessor.prototype.process_getDashboard = function(seqid, input, output)             {
+              var args = new AromaService_getDashboard_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.updateApplication.length === 1) {
-                Q.fcall(this._handler.updateApplication, args.request)
+              if (this._handler.getDashboard.length === 1) {
+                Q.fcall(this._handler.getDashboard, args.request)
                   .then(function(result) {
-                    var result = new AromaService_updateApplication_result({success: result});
-                    output.writeMessageBegin("updateApplication", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_updateApplication_result(err);
-                      output.writeMessageBegin("updateApplication", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("updateApplication", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.updateApplication(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_updateApplication_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("updateApplication", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("updateApplication", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_updateReactions = function(seqid, input, output)             {
-              var args = new AromaService_updateReactions_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.updateReactions.length === 1) {
-                Q.fcall(this._handler.updateReactions, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_updateReactions_result({success: result});
-                    output.writeMessageBegin("updateReactions", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_updateReactions_result(err);
-                      output.writeMessageBegin("updateReactions", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("updateReactions", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.updateReactions(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_updateReactions_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("updateReactions", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("updateReactions", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_getActivity = function(seqid, input, output)             {
-              var args = new AromaService_getActivity_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.getActivity.length === 1) {
-                Q.fcall(this._handler.getActivity, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_getActivity_result({success: result});
-                    output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_getDashboard_result({success: result});
+                    output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
                     if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                      var result = new AromaService_getActivity_result(err);
-                      output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
+                      var result = new AromaService_getDashboard_result(err);
+                      output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
                     } else {
                       var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getActivity", Thrift.MessageType.EXCEPTION, seqid);
+                      output.writeMessageBegin("getDashboard", Thrift.MessageType.EXCEPTION, seqid);
                     }
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.getActivity(args.request, function (err, result) {
+                this._handler.getDashboard(args.request, function (err, result) {
                   if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new AromaService_getActivity_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_getDashboard_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getActivity", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_getApplicationInfo = function(seqid, input, output)             {
-              var args = new AromaService_getApplicationInfo_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.getApplicationInfo.length === 1) {
-                Q.fcall(this._handler.getApplicationInfo, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_getApplicationInfo_result({success: result});
-                    output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_getApplicationInfo_result(err);
-                      output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.getApplicationInfo(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_getApplicationInfo_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("getDashboard", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -7560,38 +7845,33 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_getDashboard = function(seqid, input, output)             {
-              var args = new AromaService_getDashboard_args();
+            AromaServiceProcessor.prototype.process_getApiVersion = function(seqid, input, output)             {
+              var args = new AromaService_getApiVersion_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.getDashboard.length === 1) {
-                Q.fcall(this._handler.getDashboard, args.request)
+              if (this._handler.getApiVersion.length === 0) {
+                Q.fcall(this._handler.getApiVersion)
                   .then(function(result) {
-                    var result = new AromaService_getDashboard_result({success: result});
-                    output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_getApiVersion_result({success: result});
+                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                      var result = new AromaService_getDashboard_result(err);
-                      output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getDashboard", Thrift.MessageType.EXCEPTION, seqid);
-                    }
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.EXCEPTION, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.getDashboard(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new AromaService_getDashboard_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
+                this._handler.getApiVersion(function (err, result) {
+                  if (err == null) {
+                    var result = new AromaService_getApiVersion_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getDashboard", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -7600,118 +7880,38 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
               }
             }
 
-            AromaServiceProcessor.prototype.process_getApplicationMessages = function(seqid, input, output)             {
-              var args = new AromaService_getApplicationMessages_args();
+            AromaServiceProcessor.prototype.process_registerHealthCheck = function(seqid, input, output)             {
+              var args = new AromaService_registerHealthCheck_args();
               args.read(input);
               input.readMessageEnd();
-              if (this._handler.getApplicationMessages.length === 1) {
-                Q.fcall(this._handler.getApplicationMessages, args.request)
+              if (this._handler.registerHealthCheck.length === 1) {
+                Q.fcall(this._handler.registerHealthCheck, args.request)
                   .then(function(result) {
-                    var result = new AromaService_getApplicationMessages_result({success: result});
-                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
+                    var result = new AromaService_registerHealthCheck_result({success: result});
+                    output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                      var result = new AromaService_getApplicationMessages_result(err);
-                      output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new AromaService_registerHealthCheck_result(err);
+                      output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
                     } else {
                       var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.EXCEPTION, seqid);
+                      output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.EXCEPTION, seqid);
                     }
                     result.write(output);
                     output.writeMessageEnd();
                     output.flush();
                   });
               } else {
-                this._handler.getApplicationMessages(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                    var result = new AromaService_getApplicationMessages_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
+                this._handler.registerHealthCheck(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new AromaService_registerHealthCheck_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_getInbox = function(seqid, input, output)             {
-              var args = new AromaService_getInbox_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.getInbox.length === 1) {
-                Q.fcall(this._handler.getInbox, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_getInbox_result({success: result});
-                    output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                      var result = new AromaService_getInbox_result(err);
-                      output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getInbox", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.getInbox(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new AromaService_getInbox_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getInbox", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_getFullMessage = function(seqid, input, output)             {
-              var args = new AromaService_getFullMessage_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.getFullMessage.length === 1) {
-                Q.fcall(this._handler.getFullMessage, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_getFullMessage_result({success: result});
-                    output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                      var result = new AromaService_getFullMessage_result(err);
-                      output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getFullMessage", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.getFullMessage(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new AromaService_getFullMessage_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getFullMessage", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
@@ -7752,206 +7952,6 @@ AromaServiceProcessor = exports.Processor = function(handler)             {
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
                     output.writeMessageBegin("getMedia", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_getApplicationsOwnedBy = function(seqid, input, output)             {
-              var args = new AromaService_getApplicationsOwnedBy_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.getApplicationsOwnedBy.length === 1) {
-                Q.fcall(this._handler.getApplicationsOwnedBy, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_getApplicationsOwnedBy_result({success: result});
-                    output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                      var result = new AromaService_getApplicationsOwnedBy_result(err);
-                      output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.getApplicationsOwnedBy(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new AromaService_getApplicationsOwnedBy_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getApplicationsOwnedBy", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_getApplicationsFollowedBy = function(seqid, input, output)             {
-              var args = new AromaService_getApplicationsFollowedBy_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.getApplicationsFollowedBy.length === 1) {
-                Q.fcall(this._handler.getApplicationsFollowedBy, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_getApplicationsFollowedBy_result({success: result});
-                    output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                      var result = new AromaService_getApplicationsFollowedBy_result(err);
-                      output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.getApplicationsFollowedBy(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new AromaService_getApplicationsFollowedBy_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getApplicationsFollowedBy", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_getReactions = function(seqid, input, output)             {
-              var args = new AromaService_getReactions_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.getReactions.length === 1) {
-                Q.fcall(this._handler.getReactions, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_getReactions_result({success: result});
-                    output.writeMessageBegin("getReactions", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_getReactions_result(err);
-                      output.writeMessageBegin("getReactions", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getReactions", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.getReactions(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_getReactions_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getReactions", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getReactions", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_getUserInfo = function(seqid, input, output)             {
-              var args = new AromaService_getUserInfo_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.getUserInfo.length === 1) {
-                Q.fcall(this._handler.getUserInfo, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_getUserInfo_result({success: result});
-                    output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
-                      var result = new AromaService_getUserInfo_result(err);
-                      output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("getUserInfo", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.getUserInfo(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
-                    var result = new AromaService_getUserInfo_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getUserInfo", Thrift.MessageType.EXCEPTION, seqid);
-                  }
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                });
-              }
-            }
-
-            AromaServiceProcessor.prototype.process_searchForApplications = function(seqid, input, output)             {
-              var args = new AromaService_searchForApplications_args();
-              args.read(input);
-              input.readMessageEnd();
-              if (this._handler.searchForApplications.length === 1) {
-                Q.fcall(this._handler.searchForApplications, args.request)
-                  .then(function(result) {
-                    var result = new AromaService_searchForApplications_result({success: result});
-                    output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  }, function (err) {
-                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                      var result = new AromaService_searchForApplications_result(err);
-                      output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
-                    } else {
-                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                      output.writeMessageBegin("searchForApplications", Thrift.MessageType.EXCEPTION, seqid);
-                    }
-                    result.write(output);
-                    output.writeMessageEnd();
-                    output.flush();
-                  });
-              } else {
-                this._handler.searchForApplications(args.request, function (err, result) {
-                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new AromaService_searchForApplications_result((err != null ? err : {success: result}));
-                    output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
-                  } else {
-                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("searchForApplications", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();

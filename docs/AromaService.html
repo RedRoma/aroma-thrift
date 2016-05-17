@@ -785,17 +785,28 @@ from the Team @ Aroma Tech.
 <h3 id="Svc_AromaService">Service: AromaService</h3>
 The Aroma Service is designed to be used by People, and not Applications.
 They provide query interfaces and Authentication/Authorization over Data.
-<br/><div class="definition"><h4 id="Fn_AromaService_getApiVersion">Function: AromaService.getApiVersion</h4>
-<pre><code>double</code> getApiVersion()
-</pre></div><div class="definition"><h4 id="Fn_AromaService_deleteApplication">Function: AromaService.deleteApplication</h4>
-<pre><code><a href="#Struct_DeleteApplicationResponse">DeleteApplicationResponse</a></code> deleteApplication(<code><a href="#Struct_DeleteApplicationRequest">DeleteApplicationRequest</a></code> request)
+<br/><div class="definition"><h4 id="Fn_AromaService_signIn">Function: AromaService.signIn</h4>
+<pre><code><a href="#Struct_SignInResponse">SignInResponse</a></code> signIn(<code><a href="#Struct_SignInRequest">SignInRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a></code>
+</pre>Sign in to the App and get a User Token in return.
+
+#user
+<br/></div><div class="definition"><h4 id="Fn_AromaService_signUp">Function: AromaService.signUp</h4>
+<pre><code><a href="#Struct_SignUpResponse">SignUpResponse</a></code> signUp(<code><a href="#Struct_SignUpRequest">SignUpRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a></code>
+</pre>Sign Up for an Aroma Account.
+<br/></div><div class="definition"><h4 id="Fn_AromaService_getUserInfo">Function: AromaService.getUserInfo</h4>
+<pre><code><a href="#Struct_GetUserInfoResponse">GetUserInfoResponse</a></code> getUserInfo(<code><a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getApplicationInfo">Function: AromaService.getApplicationInfo</h4>
+<pre><code><a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a></code> getApplicationInfo(<code><a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_deleteMessage">Function: AromaService.deleteMessage</h4>
-<pre><code><a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a></code> deleteMessage(<code><a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_dismissMessage">Function: AromaService.dismissMessage</h4>
-<pre><code><a href="#Struct_DismissMessageResponse">DismissMessageResponse</a></code> dismissMessage(<code><a href="#Struct_DismissMessageRequest">DismissMessageRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre>Get details about an Application from it's unique ID
+
+#user
+<br/></div><div class="definition"><h4 id="Fn_AromaService_getApplicationsOwnedBy">Function: AromaService.getApplicationsOwnedBy</h4>
+<pre><code><a href="#Struct_GetApplicationsOwnedByResponse">GetApplicationsOwnedByResponse</a></code> getApplicationsOwnedBy(<code><a href="#Struct_GetApplicationsOwnedByRequest">GetApplicationsOwnedByRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_provisionApplication">Function: AromaService.provisionApplication</h4>
 <pre><code><a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a></code> provisionApplication(<code><a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
@@ -810,31 +821,61 @@ Keep in mind that this will invalidate any prior existing Application Tokens.
 Only an "owner" can perform this operation.
 
 #owner
-<br/></div><div class="definition"><h4 id="Fn_AromaService_registerHealthCheck">Function: AromaService.registerHealthCheck</h4>
-<pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
+<br/></div><div class="definition"><h4 id="Fn_AromaService_deleteApplication">Function: AromaService.deleteApplication</h4>
+<pre><code><a href="#Struct_DeleteApplicationResponse">DeleteApplicationResponse</a></code> deleteApplication(<code><a href="#Struct_DeleteApplicationRequest">DeleteApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre>Register an existing Application for Health Pokes. The Aroma Service
-will then periodically poke the Application for health status.
-
-#owner
-<br/></div><div class="definition"><h4 id="Fn_AromaService_renewApplicationToken">Function: AromaService.renewApplicationToken</h4>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_renewApplicationToken">Function: AromaService.renewApplicationToken</h4>
 <pre><code><a href="#Struct_RenewApplicationTokenResponse">RenewApplicationTokenResponse</a></code> renewApplicationToken(<code><a href="#Struct_RenewApplicationTokenRequest">RenewApplicationTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Renew an Application Token that is close to being expired.
 Only an "owner" can perform this operation.
 
 #owner
-<br/></div><div class="definition"><h4 id="Fn_AromaService_signIn">Function: AromaService.signIn</h4>
-<pre><code><a href="#Struct_SignInResponse">SignInResponse</a></code> signIn(<code><a href="#Struct_SignInRequest">SignInRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a></code>
-</pre>Sign in to the App and get a User Token in return.
+<br/></div><div class="definition"><h4 id="Fn_AromaService_updateApplication">Function: AromaService.updateApplication</h4>
+<pre><code><a href="#Struct_UpdateApplicationResponse">UpdateApplicationResponse</a></code> updateApplication(<code><a href="#Struct_UpdateApplicationRequest">UpdateApplicationRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre>#owner
+<br/></div><div class="definition"><h4 id="Fn_AromaService_searchForApplications">Function: AromaService.searchForApplications</h4>
+<pre><code><a href="#Struct_SearchForApplicationsResponse">SearchForApplicationsResponse</a></code> searchForApplications(<code><a href="#Struct_SearchForApplicationsRequest">SearchForApplicationsRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre>Perform a Search on all the applications registered to Aroma by searching for its title.
 
 #user
-<br/></div><div class="definition"><h4 id="Fn_AromaService_signUp">Function: AromaService.signUp</h4>
-<pre><code><a href="#Struct_SignUpResponse">SignUpResponse</a></code> signUp(<code><a href="#Struct_SignUpRequest">SignUpRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a></code>
-</pre>Sign Up for an Aroma Account.
-<br/></div><div class="definition"><h4 id="Fn_AromaService_followApplication">Function: AromaService.followApplication</h4>
+<br/></div><div class="definition"><h4 id="Fn_AromaService_getApplicationMessages">Function: AromaService.getApplicationMessages</h4>
+<pre><code><a href="#Struct_GetApplicationMessagesResponse">GetApplicationMessagesResponse</a></code> getApplicationMessages(<code><a href="#Struct_GetApplicationMessagesRequest">GetApplicationMessagesRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>
+</pre>Get an Application's Messages.
+<br/></div><div class="definition"><h4 id="Fn_AromaService_getFullMessage">Function: AromaService.getFullMessage</h4>
+<pre><code><a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a></code> getFullMessage(<code><a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>In case the Message body has been truncated, use this operation
+to load the full message.
+<br/></div><div class="definition"><h4 id="Fn_AromaService_deleteMessage">Function: AromaService.deleteMessage</h4>
+<pre><code><a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a></code> deleteMessage(<code><a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_dismissMessage">Function: AromaService.dismissMessage</h4>
+<pre><code><a href="#Struct_DismissMessageResponse">DismissMessageResponse</a></code> dismissMessage(<code><a href="#Struct_DismissMessageRequest">DismissMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getInbox">Function: AromaService.getInbox</h4>
+<pre><code><a href="#Struct_GetInboxResponse">GetInboxResponse</a></code> getInbox(<code><a href="#Struct_GetInboxRequest">GetInboxRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>Get Messages in a User's Inbox
+<br/></div><div class="definition"><h4 id="Fn_AromaService_getActivity">Function: AromaService.getActivity</h4>
+<pre><code><a href="#Struct_GetActivityResponse">GetActivityResponse</a></code> getActivity(<code><a href="#Struct_GetActivityRequest">GetActivityRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>Get all of the User-Related activities that have happened recently.
+
+#user
+<br/></div><div class="definition"><h4 id="Fn_AromaService_getReactions">Function: AromaService.getReactions</h4>
+<pre><code><a href="#Struct_GetReactionsResponse">GetReactionsResponse</a></code> getReactions(<code><a href="#Struct_GetReactionsRequest">GetReactionsRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_updateReactions">Function: AromaService.updateReactions</h4>
+<pre><code><a href="#Struct_UpdateReactionsResponse">UpdateReactionsResponse</a></code> updateReactions(<code><a href="#Struct_UpdateReactionsRequest">UpdateReactionsRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getApplicationsFollowedBy">Function: AromaService.getApplicationsFollowedBy</h4>
+<pre><code><a href="#Struct_GetApplicationsFollowedByResponse">GetApplicationsFollowedByResponse</a></code> getApplicationsFollowedBy(<code><a href="#Struct_GetApplicationsFollowedByRequest">GetApplicationsFollowedByRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_followApplication">Function: AromaService.followApplication</h4>
 <pre><code><a href="#Struct_FollowApplicationResponse">FollowApplicationResponse</a></code> followApplication(<code><a href="#Struct_FollowApplicationRequest">FollowApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Subscribe to an existing application to get notifications.
@@ -843,64 +884,23 @@ Only an "owner" can perform this operation.
 <br/></div><div class="definition"><h4 id="Fn_AromaService_unfollowApplication">Function: AromaService.unfollowApplication</h4>
 <pre><code><a href="#Struct_UnfollowApplicationResponse">UnfollowApplicationResponse</a></code> unfollowApplication(<code><a href="#Struct_UnfollowApplicationRequest">UnfollowApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_updateApplication">Function: AromaService.updateApplication</h4>
-<pre><code><a href="#Struct_UpdateApplicationResponse">UpdateApplicationResponse</a></code> updateApplication(<code><a href="#Struct_UpdateApplicationRequest">UpdateApplicationRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre>#owner
-<br/></div><div class="definition"><h4 id="Fn_AromaService_updateReactions">Function: AromaService.updateReactions</h4>
-<pre><code><a href="#Struct_UpdateReactionsResponse">UpdateReactionsResponse</a></code> updateReactions(<code><a href="#Struct_UpdateReactionsRequest">UpdateReactionsRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_getActivity">Function: AromaService.getActivity</h4>
-<pre><code><a href="#Struct_GetActivityResponse">GetActivityResponse</a></code> getActivity(<code><a href="#Struct_GetActivityRequest">GetActivityRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre>Get all of the User-Related activities that have happened recently.
-
-#user
-<br/></div><div class="definition"><h4 id="Fn_AromaService_getApplicationInfo">Function: AromaService.getApplicationInfo</h4>
-<pre><code><a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a></code> getApplicationInfo(<code><a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre>Get details about an Application from it's unique ID
-
-#user
-<br/></div><div class="definition"><h4 id="Fn_AromaService_getBuzz">Function: AromaService.getBuzz</h4>
-<pre><code><a href="#Struct_GetBuzzResponse">GetBuzzResponse</a></code> getBuzz(<code><a href="#Struct_GetBuzzRequest">GetBuzzRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getDashboard">Function: AromaService.getDashboard</h4>
 <pre><code><a href="#Struct_GetDashboardResponse">GetDashboardResponse</a></code> getDashboard(<code><a href="#Struct_GetDashboardRequest">GetDashboardRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_getApplicationMessages">Function: AromaService.getApplicationMessages</h4>
-<pre><code><a href="#Struct_GetApplicationMessagesResponse">GetApplicationMessagesResponse</a></code> getApplicationMessages(<code><a href="#Struct_GetApplicationMessagesRequest">GetApplicationMessagesRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>
-</pre>Get an Application's Messages.
-<br/></div><div class="definition"><h4 id="Fn_AromaService_getInbox">Function: AromaService.getInbox</h4>
-<pre><code><a href="#Struct_GetInboxResponse">GetInboxResponse</a></code> getInbox(<code><a href="#Struct_GetInboxRequest">GetInboxRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre>Get Messages in a User's Inbox
-<br/></div><div class="definition"><h4 id="Fn_AromaService_getFullMessage">Function: AromaService.getFullMessage</h4>
-<pre><code><a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a></code> getFullMessage(<code><a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre>In case the Message body has been truncated, use this operation
-to load the full message.
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getBuzz">Function: AromaService.getBuzz</h4>
+<pre><code><a href="#Struct_GetBuzzResponse">GetBuzzResponse</a></code> getBuzz(<code><a href="#Struct_GetBuzzRequest">GetBuzzRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getApiVersion">Function: AromaService.getApiVersion</h4>
+<pre><code>double</code> getApiVersion()
+</pre></div><div class="definition"><h4 id="Fn_AromaService_registerHealthCheck">Function: AromaService.registerHealthCheck</h4>
+<pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre>Register an existing Application for Health Pokes. The Aroma Service
+will then periodically poke the Application for health status.
+
+#owner
 <br/></div><div class="definition"><h4 id="Fn_AromaService_getMedia">Function: AromaService.getMedia</h4>
 <pre><code><a href="#Struct_GetMediaResponse">GetMediaResponse</a></code> getMedia(<code><a href="#Struct_GetMediaRequest">GetMediaRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_DoesNotExistException">DoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Request to get Media stored by the Aroma Service.
-<br/></div><div class="definition"><h4 id="Fn_AromaService_getApplicationsOwnedBy">Function: AromaService.getApplicationsOwnedBy</h4>
-<pre><code><a href="#Struct_GetApplicationsOwnedByResponse">GetApplicationsOwnedByResponse</a></code> getApplicationsOwnedBy(<code><a href="#Struct_GetApplicationsOwnedByRequest">GetApplicationsOwnedByRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_getApplicationsFollowedBy">Function: AromaService.getApplicationsFollowedBy</h4>
-<pre><code><a href="#Struct_GetApplicationsFollowedByResponse">GetApplicationsFollowedByResponse</a></code> getApplicationsFollowedBy(<code><a href="#Struct_GetApplicationsFollowedByRequest">GetApplicationsFollowedByRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_getReactions">Function: AromaService.getReactions</h4>
-<pre><code><a href="#Struct_GetReactionsResponse">GetReactionsResponse</a></code> getReactions(<code><a href="#Struct_GetReactionsRequest">GetReactionsRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_getUserInfo">Function: AromaService.getUserInfo</h4>
-<pre><code><a href="#Struct_GetUserInfoResponse">GetUserInfoResponse</a></code> getUserInfo(<code><a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_AromaService_searchForApplications">Function: AromaService.searchForApplications</h4>
-<pre><code><a href="#Struct_SearchForApplicationsResponse">SearchForApplicationsResponse</a></code> searchForApplications(<code><a href="#Struct_SearchForApplicationsRequest">SearchForApplicationsRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre>Perform a Search on all the applications registered to Aroma by searching for its title.
-
-#user
 <br/></div></div></body></html>
