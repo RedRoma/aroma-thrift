@@ -28,6 +28,1430 @@
 
 #import "AromaService.h"
 
+@implementation AromaService_SignInRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithCredentials: (AromaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress
+{
+  self = [super init];
+  __credentials = [credentials retain_stub];
+  __credentials_isset = YES;
+  __emailAddress = [emailAddress retain_stub];
+  __emailAddress_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"credentials"])
+  {
+    __credentials = [[decoder decodeObjectForKey: @"credentials"] retain_stub];
+    __credentials_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"emailAddress"])
+  {
+    __emailAddress = [[decoder decodeObjectForKey: @"emailAddress"] retain_stub];
+    __emailAddress_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__credentials_isset)
+  {
+    [encoder encodeObject: __credentials forKey: @"credentials"];
+  }
+  if (__emailAddress_isset)
+  {
+    [encoder encodeObject: __emailAddress forKey: @"emailAddress"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __credentials_isset ? 2654435761 : 0;
+  if (__credentials_isset)
+  {
+    hash = (hash * 31) ^ [__credentials hash];
+  }
+  hash = (hash * 31) ^ __emailAddress_isset ? 2654435761 : 0;
+  if (__emailAddress_isset)
+  {
+    hash = (hash * 31) ^ [__emailAddress hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_SignInRequest class]]) {
+    return NO;
+  }
+  AromaService_SignInRequest *other = (AromaService_SignInRequest *)anObject;
+  if ((__credentials_isset != other->__credentials_isset) ||
+      (__credentials_isset && ((__credentials || other->__credentials) && ![__credentials isEqual:other->__credentials]))) {
+    return NO;
+  }
+  if ((__emailAddress_isset != other->__emailAddress_isset) ||
+      (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__credentials release_stub];
+  [__emailAddress release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaAuthentication_Credentials *) credentials {
+  return [[__credentials retain_stub] autorelease_stub];
+}
+
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials {
+  [credentials retain_stub];
+  [__credentials release_stub];
+  __credentials = credentials;
+  __credentials_isset = YES;
+}
+
+- (BOOL) credentialsIsSet {
+  return __credentials_isset;
+}
+
+- (void) unsetCredentials {
+  [__credentials release_stub];
+  __credentials = nil;
+  __credentials_isset = NO;
+}
+
+- (NSString *) emailAddress {
+  return [[__emailAddress retain_stub] autorelease_stub];
+}
+
+- (void) setEmailAddress: (NSString *) emailAddress {
+  [emailAddress retain_stub];
+  [__emailAddress release_stub];
+  __emailAddress = emailAddress;
+  __emailAddress_isset = YES;
+}
+
+- (BOOL) emailAddressIsSet {
+  return __emailAddress_isset;
+}
+
+- (void) unsetEmailAddress {
+  [__emailAddress release_stub];
+  __emailAddress = nil;
+  __emailAddress_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_Credentials *fieldValue = [[AromaAuthentication_Credentials alloc] init];
+          [fieldValue read: inProtocol];
+          [self setCredentials: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmailAddress: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SignInRequest"];
+  if (__credentials_isset) {
+    if (__credentials != nil) {
+      [outProtocol writeFieldBeginWithName: @"credentials" type: TType_STRUCT fieldID: 1];
+      [__credentials write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__emailAddress_isset) {
+    if (__emailAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __emailAddress];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignInRequest("];
+  [ms appendString: @"credentials:"];
+  [ms appendFormat: @"%@", __credentials];
+  [ms appendString: @",emailAddress:"];
+  [ms appendFormat: @"\"%@\"", __emailAddress];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaService_SignInResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithUserToken: (AromaService_UserToken) userToken
+{
+  self = [super init];
+  __userToken = [userToken retain_stub];
+  __userToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"userToken"])
+  {
+    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
+    __userToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__userToken_isset)
+  {
+    [encoder encodeObject: __userToken forKey: @"userToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
+  if (__userToken_isset)
+  {
+    hash = (hash * 31) ^ [__userToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_SignInResponse class]]) {
+    return NO;
+  }
+  AromaService_SignInResponse *other = (AromaService_SignInResponse *)anObject;
+  if ((__userToken_isset != other->__userToken_isset) ||
+      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__userToken release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaAuthentication_UserToken *) userToken {
+  return [[__userToken retain_stub] autorelease_stub];
+}
+
+- (void) setUserToken: (AromaAuthentication_UserToken *) userToken {
+  [userToken retain_stub];
+  [__userToken release_stub];
+  __userToken = userToken;
+  __userToken_isset = YES;
+}
+
+- (BOOL) userTokenIsSet {
+  return __userToken_isset;
+}
+
+- (void) unsetUserToken {
+  [__userToken release_stub];
+  __userToken = nil;
+  __userToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setUserToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SignInResponse"];
+  if (__userToken_isset) {
+    if (__userToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 1];
+      [__userToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignInResponse("];
+  [ms appendString: @"userToken:"];
+  [ms appendFormat: @"%@", __userToken];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaService_SignUpRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (AromaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage
+{
+  self = [super init];
+  __email = [email retain_stub];
+  __email_isset = YES;
+  __name = [name retain_stub];
+  __name_isset = YES;
+  __firstName = [firstName retain_stub];
+  __firstName_isset = YES;
+  __middleName = [middleName retain_stub];
+  __middleName_isset = YES;
+  __lastName = [lastName retain_stub];
+  __lastName_isset = YES;
+  __username = [username retain_stub];
+  __username_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
+  __credentials = [credentials retain_stub];
+  __credentials_isset = YES;
+  __mainRole = mainRole;
+  __mainRole_isset = YES;
+  __birthDate = birthDate;
+  __birthDate_isset = YES;
+  __githubProfile = [githubProfile retain_stub];
+  __githubProfile_isset = YES;
+  __profileImage = [profileImage retain_stub];
+  __profileImage_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"email"])
+  {
+    __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
+    __email_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"name"])
+  {
+    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
+    __name_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"firstName"])
+  {
+    __firstName = [[decoder decodeObjectForKey: @"firstName"] retain_stub];
+    __firstName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"middleName"])
+  {
+    __middleName = [[decoder decodeObjectForKey: @"middleName"] retain_stub];
+    __middleName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"lastName"])
+  {
+    __lastName = [[decoder decodeObjectForKey: @"lastName"] retain_stub];
+    __lastName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"username"])
+  {
+    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
+    __username_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationId"])
+  {
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"credentials"])
+  {
+    __credentials = [[decoder decodeObjectForKey: @"credentials"] retain_stub];
+    __credentials_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"mainRole"])
+  {
+    __mainRole = [decoder decodeIntForKey: @"mainRole"];
+    __mainRole_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"birthDate"])
+  {
+    __birthDate = [decoder decodeInt64ForKey: @"birthDate"];
+    __birthDate_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"githubProfile"])
+  {
+    __githubProfile = [[decoder decodeObjectForKey: @"githubProfile"] retain_stub];
+    __githubProfile_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"profileImage"])
+  {
+    __profileImage = [[decoder decodeObjectForKey: @"profileImage"] retain_stub];
+    __profileImage_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__email_isset)
+  {
+    [encoder encodeObject: __email forKey: @"email"];
+  }
+  if (__name_isset)
+  {
+    [encoder encodeObject: __name forKey: @"name"];
+  }
+  if (__firstName_isset)
+  {
+    [encoder encodeObject: __firstName forKey: @"firstName"];
+  }
+  if (__middleName_isset)
+  {
+    [encoder encodeObject: __middleName forKey: @"middleName"];
+  }
+  if (__lastName_isset)
+  {
+    [encoder encodeObject: __lastName forKey: @"lastName"];
+  }
+  if (__username_isset)
+  {
+    [encoder encodeObject: __username forKey: @"username"];
+  }
+  if (__organizationId_isset)
+  {
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
+  }
+  if (__credentials_isset)
+  {
+    [encoder encodeObject: __credentials forKey: @"credentials"];
+  }
+  if (__mainRole_isset)
+  {
+    [encoder encodeInt: __mainRole forKey: @"mainRole"];
+  }
+  if (__birthDate_isset)
+  {
+    [encoder encodeInt64: __birthDate forKey: @"birthDate"];
+  }
+  if (__githubProfile_isset)
+  {
+    [encoder encodeObject: __githubProfile forKey: @"githubProfile"];
+  }
+  if (__profileImage_isset)
+  {
+    [encoder encodeObject: __profileImage forKey: @"profileImage"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __email_isset ? 2654435761 : 0;
+  if (__email_isset)
+  {
+    hash = (hash * 31) ^ [__email hash];
+  }
+  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
+  if (__name_isset)
+  {
+    hash = (hash * 31) ^ [__name hash];
+  }
+  hash = (hash * 31) ^ __firstName_isset ? 2654435761 : 0;
+  if (__firstName_isset)
+  {
+    hash = (hash * 31) ^ [__firstName hash];
+  }
+  hash = (hash * 31) ^ __middleName_isset ? 2654435761 : 0;
+  if (__middleName_isset)
+  {
+    hash = (hash * 31) ^ [__middleName hash];
+  }
+  hash = (hash * 31) ^ __lastName_isset ? 2654435761 : 0;
+  if (__lastName_isset)
+  {
+    hash = (hash * 31) ^ [__lastName hash];
+  }
+  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
+  if (__username_isset)
+  {
+    hash = (hash * 31) ^ [__username hash];
+  }
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
+  {
+    hash = (hash * 31) ^ [__organizationId hash];
+  }
+  hash = (hash * 31) ^ __credentials_isset ? 2654435761 : 0;
+  if (__credentials_isset)
+  {
+    hash = (hash * 31) ^ [__credentials hash];
+  }
+  hash = (hash * 31) ^ __mainRole_isset ? 2654435761 : 0;
+  if (__mainRole_isset)
+  {
+    hash = (hash * 31) ^ [@(__mainRole) hash];
+  }
+  hash = (hash * 31) ^ __birthDate_isset ? 2654435761 : 0;
+  if (__birthDate_isset)
+  {
+    hash = (hash * 31) ^ [@(__birthDate) hash];
+  }
+  hash = (hash * 31) ^ __githubProfile_isset ? 2654435761 : 0;
+  if (__githubProfile_isset)
+  {
+    hash = (hash * 31) ^ [__githubProfile hash];
+  }
+  hash = (hash * 31) ^ __profileImage_isset ? 2654435761 : 0;
+  if (__profileImage_isset)
+  {
+    hash = (hash * 31) ^ [__profileImage hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_SignUpRequest class]]) {
+    return NO;
+  }
+  AromaService_SignUpRequest *other = (AromaService_SignUpRequest *)anObject;
+  if ((__email_isset != other->__email_isset) ||
+      (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
+    return NO;
+  }
+  if ((__name_isset != other->__name_isset) ||
+      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
+    return NO;
+  }
+  if ((__firstName_isset != other->__firstName_isset) ||
+      (__firstName_isset && ((__firstName || other->__firstName) && ![__firstName isEqual:other->__firstName]))) {
+    return NO;
+  }
+  if ((__middleName_isset != other->__middleName_isset) ||
+      (__middleName_isset && ((__middleName || other->__middleName) && ![__middleName isEqual:other->__middleName]))) {
+    return NO;
+  }
+  if ((__lastName_isset != other->__lastName_isset) ||
+      (__lastName_isset && ((__lastName || other->__lastName) && ![__lastName isEqual:other->__lastName]))) {
+    return NO;
+  }
+  if ((__username_isset != other->__username_isset) ||
+      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
+    return NO;
+  }
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
+    return NO;
+  }
+  if ((__credentials_isset != other->__credentials_isset) ||
+      (__credentials_isset && ((__credentials || other->__credentials) && ![__credentials isEqual:other->__credentials]))) {
+    return NO;
+  }
+  if ((__mainRole_isset != other->__mainRole_isset) ||
+      (__mainRole_isset && (__mainRole != other->__mainRole))) {
+    return NO;
+  }
+  if ((__birthDate_isset != other->__birthDate_isset) ||
+      (__birthDate_isset && (__birthDate != other->__birthDate))) {
+    return NO;
+  }
+  if ((__githubProfile_isset != other->__githubProfile_isset) ||
+      (__githubProfile_isset && ((__githubProfile || other->__githubProfile) && ![__githubProfile isEqual:other->__githubProfile]))) {
+    return NO;
+  }
+  if ((__profileImage_isset != other->__profileImage_isset) ||
+      (__profileImage_isset && ((__profileImage || other->__profileImage) && ![__profileImage isEqual:other->__profileImage]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__email release_stub];
+  [__name release_stub];
+  [__firstName release_stub];
+  [__middleName release_stub];
+  [__lastName release_stub];
+  [__username release_stub];
+  [__organizationId release_stub];
+  [__credentials release_stub];
+  [__githubProfile release_stub];
+  [__profileImage release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) email {
+  return [[__email retain_stub] autorelease_stub];
+}
+
+- (void) setEmail: (NSString *) email {
+  [email retain_stub];
+  [__email release_stub];
+  __email = email;
+  __email_isset = YES;
+}
+
+- (BOOL) emailIsSet {
+  return __email_isset;
+}
+
+- (void) unsetEmail {
+  [__email release_stub];
+  __email = nil;
+  __email_isset = NO;
+}
+
+- (NSString *) name {
+  return [[__name retain_stub] autorelease_stub];
+}
+
+- (void) setName: (NSString *) name {
+  [name retain_stub];
+  [__name release_stub];
+  __name = name;
+  __name_isset = YES;
+}
+
+- (BOOL) nameIsSet {
+  return __name_isset;
+}
+
+- (void) unsetName {
+  [__name release_stub];
+  __name = nil;
+  __name_isset = NO;
+}
+
+- (NSString *) firstName {
+  return [[__firstName retain_stub] autorelease_stub];
+}
+
+- (void) setFirstName: (NSString *) firstName {
+  [firstName retain_stub];
+  [__firstName release_stub];
+  __firstName = firstName;
+  __firstName_isset = YES;
+}
+
+- (BOOL) firstNameIsSet {
+  return __firstName_isset;
+}
+
+- (void) unsetFirstName {
+  [__firstName release_stub];
+  __firstName = nil;
+  __firstName_isset = NO;
+}
+
+- (NSString *) middleName {
+  return [[__middleName retain_stub] autorelease_stub];
+}
+
+- (void) setMiddleName: (NSString *) middleName {
+  [middleName retain_stub];
+  [__middleName release_stub];
+  __middleName = middleName;
+  __middleName_isset = YES;
+}
+
+- (BOOL) middleNameIsSet {
+  return __middleName_isset;
+}
+
+- (void) unsetMiddleName {
+  [__middleName release_stub];
+  __middleName = nil;
+  __middleName_isset = NO;
+}
+
+- (NSString *) lastName {
+  return [[__lastName retain_stub] autorelease_stub];
+}
+
+- (void) setLastName: (NSString *) lastName {
+  [lastName retain_stub];
+  [__lastName release_stub];
+  __lastName = lastName;
+  __lastName_isset = YES;
+}
+
+- (BOOL) lastNameIsSet {
+  return __lastName_isset;
+}
+
+- (void) unsetLastName {
+  [__lastName release_stub];
+  __lastName = nil;
+  __lastName_isset = NO;
+}
+
+- (NSString *) username {
+  return [[__username retain_stub] autorelease_stub];
+}
+
+- (void) setUsername: (NSString *) username {
+  [username retain_stub];
+  [__username release_stub];
+  __username = username;
+  __username_isset = YES;
+}
+
+- (BOOL) usernameIsSet {
+  return __username_isset;
+}
+
+- (void) unsetUsername {
+  [__username release_stub];
+  __username = nil;
+  __username_isset = NO;
+}
+
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
+}
+
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
+}
+
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
+}
+
+- (AromaAuthentication_Credentials *) credentials {
+  return [[__credentials retain_stub] autorelease_stub];
+}
+
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials {
+  [credentials retain_stub];
+  [__credentials release_stub];
+  __credentials = credentials;
+  __credentials_isset = YES;
+}
+
+- (BOOL) credentialsIsSet {
+  return __credentials_isset;
+}
+
+- (void) unsetCredentials {
+  [__credentials release_stub];
+  __credentials = nil;
+  __credentials_isset = NO;
+}
+
+- (int) mainRole {
+  return __mainRole;
+}
+
+- (void) setMainRole: (int) mainRole {
+  __mainRole = mainRole;
+  __mainRole_isset = YES;
+}
+
+- (BOOL) mainRoleIsSet {
+  return __mainRole_isset;
+}
+
+- (void) unsetMainRole {
+  __mainRole_isset = NO;
+}
+
+- (int64_t) birthDate {
+  return __birthDate;
+}
+
+- (void) setBirthDate: (int64_t) birthDate {
+  __birthDate = birthDate;
+  __birthDate_isset = YES;
+}
+
+- (BOOL) birthDateIsSet {
+  return __birthDate_isset;
+}
+
+- (void) unsetBirthDate {
+  __birthDate_isset = NO;
+}
+
+- (NSString *) githubProfile {
+  return [[__githubProfile retain_stub] autorelease_stub];
+}
+
+- (void) setGithubProfile: (NSString *) githubProfile {
+  [githubProfile retain_stub];
+  [__githubProfile release_stub];
+  __githubProfile = githubProfile;
+  __githubProfile_isset = YES;
+}
+
+- (BOOL) githubProfileIsSet {
+  return __githubProfile_isset;
+}
+
+- (void) unsetGithubProfile {
+  [__githubProfile release_stub];
+  __githubProfile = nil;
+  __githubProfile_isset = NO;
+}
+
+- (Aroma_Image *) profileImage {
+  return [[__profileImage retain_stub] autorelease_stub];
+}
+
+- (void) setProfileImage: (Aroma_Image *) profileImage {
+  [profileImage retain_stub];
+  [__profileImage release_stub];
+  __profileImage = profileImage;
+  __profileImage_isset = YES;
+}
+
+- (BOOL) profileImageIsSet {
+  return __profileImage_isset;
+}
+
+- (void) unsetProfileImage {
+  [__profileImage release_stub];
+  __profileImage = nil;
+  __profileImage_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmail: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setFirstName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMiddleName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setLastName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUsername: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 8:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_Credentials *fieldValue = [[AromaAuthentication_Credentials alloc] init];
+          [fieldValue read: inProtocol];
+          [self setCredentials: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 9:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setMainRole: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 10:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setBirthDate: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 11:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setGithubProfile: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 12:
+        if (fieldType == TType_STRUCT) {
+          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setProfileImage: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SignUpRequest"];
+  if (__email_isset) {
+    if (__email != nil) {
+      [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __email];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__name_isset) {
+    if (__name != nil) {
+      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __name];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__firstName_isset) {
+    if (__firstName != nil) {
+      [outProtocol writeFieldBeginWithName: @"firstName" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __firstName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__middleName_isset) {
+    if (__middleName != nil) {
+      [outProtocol writeFieldBeginWithName: @"middleName" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __middleName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__lastName_isset) {
+    if (__lastName != nil) {
+      [outProtocol writeFieldBeginWithName: @"lastName" type: TType_STRING fieldID: 5];
+      [outProtocol writeString: __lastName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__username_isset) {
+    if (__username != nil) {
+      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __username];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __organizationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__credentials_isset) {
+    if (__credentials != nil) {
+      [outProtocol writeFieldBeginWithName: @"credentials" type: TType_STRUCT fieldID: 8];
+      [__credentials write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__mainRole_isset) {
+    [outProtocol writeFieldBeginWithName: @"mainRole" type: TType_I32 fieldID: 9];
+    [outProtocol writeI32: __mainRole];
+    [outProtocol writeFieldEnd];
+  }
+  if (__birthDate_isset) {
+    [outProtocol writeFieldBeginWithName: @"birthDate" type: TType_I64 fieldID: 10];
+    [outProtocol writeI64: __birthDate];
+    [outProtocol writeFieldEnd];
+  }
+  if (__githubProfile_isset) {
+    if (__githubProfile != nil) {
+      [outProtocol writeFieldBeginWithName: @"githubProfile" type: TType_STRING fieldID: 11];
+      [outProtocol writeString: __githubProfile];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__profileImage_isset) {
+    if (__profileImage != nil) {
+      [outProtocol writeFieldBeginWithName: @"profileImage" type: TType_STRUCT fieldID: 12];
+      [__profileImage write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignUpRequest("];
+  [ms appendString: @"email:"];
+  [ms appendFormat: @"\"%@\"", __email];
+  [ms appendString: @",name:"];
+  [ms appendFormat: @"\"%@\"", __name];
+  [ms appendString: @",firstName:"];
+  [ms appendFormat: @"\"%@\"", __firstName];
+  [ms appendString: @",middleName:"];
+  [ms appendFormat: @"\"%@\"", __middleName];
+  [ms appendString: @",lastName:"];
+  [ms appendFormat: @"\"%@\"", __lastName];
+  [ms appendString: @",username:"];
+  [ms appendFormat: @"\"%@\"", __username];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
+  [ms appendString: @",credentials:"];
+  [ms appendFormat: @"%@", __credentials];
+  [ms appendString: @",mainRole:"];
+  [ms appendFormat: @"%i", __mainRole];
+  [ms appendString: @",birthDate:"];
+  [ms appendFormat: @"%qi", __birthDate];
+  [ms appendString: @",githubProfile:"];
+  [ms appendFormat: @"\"%@\"", __githubProfile];
+  [ms appendString: @",profileImage:"];
+  [ms appendFormat: @"%@", __profileImage];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaService_SignUpResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithUserToken: (AromaService_UserToken) userToken account: (AromaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId
+{
+  self = [super init];
+  __userToken = [userToken retain_stub];
+  __userToken_isset = YES;
+  __account = [account retain_stub];
+  __account_isset = YES;
+  __userId = [userId retain_stub];
+  __userId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"userToken"])
+  {
+    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
+    __userToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"account"])
+  {
+    __account = [[decoder decodeObjectForKey: @"account"] retain_stub];
+    __account_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"userId"])
+  {
+    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
+    __userId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__userToken_isset)
+  {
+    [encoder encodeObject: __userToken forKey: @"userToken"];
+  }
+  if (__account_isset)
+  {
+    [encoder encodeObject: __account forKey: @"account"];
+  }
+  if (__userId_isset)
+  {
+    [encoder encodeObject: __userId forKey: @"userId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
+  if (__userToken_isset)
+  {
+    hash = (hash * 31) ^ [__userToken hash];
+  }
+  hash = (hash * 31) ^ __account_isset ? 2654435761 : 0;
+  if (__account_isset)
+  {
+    hash = (hash * 31) ^ [__account hash];
+  }
+  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
+  if (__userId_isset)
+  {
+    hash = (hash * 31) ^ [__userId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_SignUpResponse class]]) {
+    return NO;
+  }
+  AromaService_SignUpResponse *other = (AromaService_SignUpResponse *)anObject;
+  if ((__userToken_isset != other->__userToken_isset) ||
+      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
+    return NO;
+  }
+  if ((__account_isset != other->__account_isset) ||
+      (__account_isset && ((__account || other->__account) && ![__account isEqual:other->__account]))) {
+    return NO;
+  }
+  if ((__userId_isset != other->__userId_isset) ||
+      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__userToken release_stub];
+  [__account release_stub];
+  [__userId release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaAuthentication_UserToken *) userToken {
+  return [[__userToken retain_stub] autorelease_stub];
+}
+
+- (void) setUserToken: (AromaAuthentication_UserToken *) userToken {
+  [userToken retain_stub];
+  [__userToken release_stub];
+  __userToken = userToken;
+  __userToken_isset = YES;
+}
+
+- (BOOL) userTokenIsSet {
+  return __userToken_isset;
+}
+
+- (void) unsetUserToken {
+  [__userToken release_stub];
+  __userToken = nil;
+  __userToken_isset = NO;
+}
+
+- (AromaAuthentication_AromaAccount *) account {
+  return [[__account retain_stub] autorelease_stub];
+}
+
+- (void) setAccount: (AromaAuthentication_AromaAccount *) account {
+  [account retain_stub];
+  [__account release_stub];
+  __account = account;
+  __account_isset = YES;
+}
+
+- (BOOL) accountIsSet {
+  return __account_isset;
+}
+
+- (void) unsetAccount {
+  [__account release_stub];
+  __account = nil;
+  __account_isset = NO;
+}
+
+- (NSString *) userId {
+  return [[__userId retain_stub] autorelease_stub];
+}
+
+- (void) setUserId: (NSString *) userId {
+  [userId retain_stub];
+  [__userId release_stub];
+  __userId = userId;
+  __userId_isset = YES;
+}
+
+- (BOOL) userIdIsSet {
+  return __userId_isset;
+}
+
+- (void) unsetUserId {
+  [__userId release_stub];
+  __userId = nil;
+  __userId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setUserToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          AromaAuthentication_AromaAccount *fieldValue = [[AromaAuthentication_AromaAccount alloc] init];
+          [fieldValue read: inProtocol];
+          [self setAccount: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUserId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SignUpResponse"];
+  if (__userToken_isset) {
+    if (__userToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 1];
+      [__userToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__account_isset) {
+    if (__account != nil) {
+      [outProtocol writeFieldBeginWithName: @"account" type: TType_STRUCT fieldID: 2];
+      [__account write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__userId_isset) {
+    if (__userId != nil) {
+      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __userId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignUpResponse("];
+  [ms appendString: @"userToken:"];
+  [ms appendFormat: @"%@", __userToken];
+  [ms appendString: @",account:"];
+  [ms appendFormat: @"%@", __account];
+  [ms appendString: @",userId:"];
+  [ms appendFormat: @"\"%@\"", __userId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaService_CheckExistsRequest
 
 - (id) init
@@ -3900,430 +5324,6 @@
 
 @end
 
-@implementation AromaService_RemoveSavedChannelRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_RemoveSavedChannelRequest class]]) {
-    return NO;
-  }
-  AromaService_RemoveSavedChannelRequest *other = (AromaService_RemoveSavedChannelRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaAuthentication_UserToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (AromaAuthentication_UserToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (AromaChannels_AromaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (AromaChannels_AromaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RemoveSavedChannelRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RemoveSavedChannelRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_RemoveSavedChannelResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message channel: (AromaService_AromaChannel) channel
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_RemoveSavedChannelResponse class]]) {
-    return NO;
-  }
-  AromaService_RemoveSavedChannelResponse *other = (AromaService_RemoveSavedChannelResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (AromaChannels_AromaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (AromaChannels_AromaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RemoveSavedChannelResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RemoveSavedChannelResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @implementation AromaService_RenewApplicationTokenRequest
 
 - (id) init
@@ -4803,1430 +5803,6 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RenewApplicationTokenResponse("];
   [ms appendString: @"serviceToken:"];
   [ms appendFormat: @"%@", __serviceToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_SignInRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithCredentials: (AromaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress
-{
-  self = [super init];
-  __credentials = [credentials retain_stub];
-  __credentials_isset = YES;
-  __emailAddress = [emailAddress retain_stub];
-  __emailAddress_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"credentials"])
-  {
-    __credentials = [[decoder decodeObjectForKey: @"credentials"] retain_stub];
-    __credentials_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"emailAddress"])
-  {
-    __emailAddress = [[decoder decodeObjectForKey: @"emailAddress"] retain_stub];
-    __emailAddress_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__credentials_isset)
-  {
-    [encoder encodeObject: __credentials forKey: @"credentials"];
-  }
-  if (__emailAddress_isset)
-  {
-    [encoder encodeObject: __emailAddress forKey: @"emailAddress"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __credentials_isset ? 2654435761 : 0;
-  if (__credentials_isset)
-  {
-    hash = (hash * 31) ^ [__credentials hash];
-  }
-  hash = (hash * 31) ^ __emailAddress_isset ? 2654435761 : 0;
-  if (__emailAddress_isset)
-  {
-    hash = (hash * 31) ^ [__emailAddress hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SignInRequest class]]) {
-    return NO;
-  }
-  AromaService_SignInRequest *other = (AromaService_SignInRequest *)anObject;
-  if ((__credentials_isset != other->__credentials_isset) ||
-      (__credentials_isset && ((__credentials || other->__credentials) && ![__credentials isEqual:other->__credentials]))) {
-    return NO;
-  }
-  if ((__emailAddress_isset != other->__emailAddress_isset) ||
-      (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__credentials release_stub];
-  [__emailAddress release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaAuthentication_Credentials *) credentials {
-  return [[__credentials retain_stub] autorelease_stub];
-}
-
-- (void) setCredentials: (AromaAuthentication_Credentials *) credentials {
-  [credentials retain_stub];
-  [__credentials release_stub];
-  __credentials = credentials;
-  __credentials_isset = YES;
-}
-
-- (BOOL) credentialsIsSet {
-  return __credentials_isset;
-}
-
-- (void) unsetCredentials {
-  [__credentials release_stub];
-  __credentials = nil;
-  __credentials_isset = NO;
-}
-
-- (NSString *) emailAddress {
-  return [[__emailAddress retain_stub] autorelease_stub];
-}
-
-- (void) setEmailAddress: (NSString *) emailAddress {
-  [emailAddress retain_stub];
-  [__emailAddress release_stub];
-  __emailAddress = emailAddress;
-  __emailAddress_isset = YES;
-}
-
-- (BOOL) emailAddressIsSet {
-  return __emailAddress_isset;
-}
-
-- (void) unsetEmailAddress {
-  [__emailAddress release_stub];
-  __emailAddress = nil;
-  __emailAddress_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_Credentials *fieldValue = [[AromaAuthentication_Credentials alloc] init];
-          [fieldValue read: inProtocol];
-          [self setCredentials: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setEmailAddress: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SignInRequest"];
-  if (__credentials_isset) {
-    if (__credentials != nil) {
-      [outProtocol writeFieldBeginWithName: @"credentials" type: TType_STRUCT fieldID: 1];
-      [__credentials write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__emailAddress_isset) {
-    if (__emailAddress != nil) {
-      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __emailAddress];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignInRequest("];
-  [ms appendString: @"credentials:"];
-  [ms appendFormat: @"%@", __credentials];
-  [ms appendString: @",emailAddress:"];
-  [ms appendFormat: @"\"%@\"", __emailAddress];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_SignInResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithUserToken: (AromaService_UserToken) userToken
-{
-  self = [super init];
-  __userToken = [userToken retain_stub];
-  __userToken_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"userToken"])
-  {
-    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
-    __userToken_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__userToken_isset)
-  {
-    [encoder encodeObject: __userToken forKey: @"userToken"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
-  if (__userToken_isset)
-  {
-    hash = (hash * 31) ^ [__userToken hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SignInResponse class]]) {
-    return NO;
-  }
-  AromaService_SignInResponse *other = (AromaService_SignInResponse *)anObject;
-  if ((__userToken_isset != other->__userToken_isset) ||
-      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__userToken release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaAuthentication_UserToken *) userToken {
-  return [[__userToken retain_stub] autorelease_stub];
-}
-
-- (void) setUserToken: (AromaAuthentication_UserToken *) userToken {
-  [userToken retain_stub];
-  [__userToken release_stub];
-  __userToken = userToken;
-  __userToken_isset = YES;
-}
-
-- (BOOL) userTokenIsSet {
-  return __userToken_isset;
-}
-
-- (void) unsetUserToken {
-  [__userToken release_stub];
-  __userToken = nil;
-  __userToken_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setUserToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SignInResponse"];
-  if (__userToken_isset) {
-    if (__userToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 1];
-      [__userToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignInResponse("];
-  [ms appendString: @"userToken:"];
-  [ms appendFormat: @"%@", __userToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_SignUpRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (AromaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage
-{
-  self = [super init];
-  __email = [email retain_stub];
-  __email_isset = YES;
-  __name = [name retain_stub];
-  __name_isset = YES;
-  __firstName = [firstName retain_stub];
-  __firstName_isset = YES;
-  __middleName = [middleName retain_stub];
-  __middleName_isset = YES;
-  __lastName = [lastName retain_stub];
-  __lastName_isset = YES;
-  __username = [username retain_stub];
-  __username_isset = YES;
-  __organizationId = [organizationId retain_stub];
-  __organizationId_isset = YES;
-  __credentials = [credentials retain_stub];
-  __credentials_isset = YES;
-  __mainRole = mainRole;
-  __mainRole_isset = YES;
-  __birthDate = birthDate;
-  __birthDate_isset = YES;
-  __githubProfile = [githubProfile retain_stub];
-  __githubProfile_isset = YES;
-  __profileImage = [profileImage retain_stub];
-  __profileImage_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"email"])
-  {
-    __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
-    __email_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"name"])
-  {
-    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
-    __name_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"firstName"])
-  {
-    __firstName = [[decoder decodeObjectForKey: @"firstName"] retain_stub];
-    __firstName_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"middleName"])
-  {
-    __middleName = [[decoder decodeObjectForKey: @"middleName"] retain_stub];
-    __middleName_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"lastName"])
-  {
-    __lastName = [[decoder decodeObjectForKey: @"lastName"] retain_stub];
-    __lastName_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"username"])
-  {
-    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
-    __username_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"organizationId"])
-  {
-    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
-    __organizationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"credentials"])
-  {
-    __credentials = [[decoder decodeObjectForKey: @"credentials"] retain_stub];
-    __credentials_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"mainRole"])
-  {
-    __mainRole = [decoder decodeIntForKey: @"mainRole"];
-    __mainRole_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"birthDate"])
-  {
-    __birthDate = [decoder decodeInt64ForKey: @"birthDate"];
-    __birthDate_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"githubProfile"])
-  {
-    __githubProfile = [[decoder decodeObjectForKey: @"githubProfile"] retain_stub];
-    __githubProfile_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"profileImage"])
-  {
-    __profileImage = [[decoder decodeObjectForKey: @"profileImage"] retain_stub];
-    __profileImage_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__email_isset)
-  {
-    [encoder encodeObject: __email forKey: @"email"];
-  }
-  if (__name_isset)
-  {
-    [encoder encodeObject: __name forKey: @"name"];
-  }
-  if (__firstName_isset)
-  {
-    [encoder encodeObject: __firstName forKey: @"firstName"];
-  }
-  if (__middleName_isset)
-  {
-    [encoder encodeObject: __middleName forKey: @"middleName"];
-  }
-  if (__lastName_isset)
-  {
-    [encoder encodeObject: __lastName forKey: @"lastName"];
-  }
-  if (__username_isset)
-  {
-    [encoder encodeObject: __username forKey: @"username"];
-  }
-  if (__organizationId_isset)
-  {
-    [encoder encodeObject: __organizationId forKey: @"organizationId"];
-  }
-  if (__credentials_isset)
-  {
-    [encoder encodeObject: __credentials forKey: @"credentials"];
-  }
-  if (__mainRole_isset)
-  {
-    [encoder encodeInt: __mainRole forKey: @"mainRole"];
-  }
-  if (__birthDate_isset)
-  {
-    [encoder encodeInt64: __birthDate forKey: @"birthDate"];
-  }
-  if (__githubProfile_isset)
-  {
-    [encoder encodeObject: __githubProfile forKey: @"githubProfile"];
-  }
-  if (__profileImage_isset)
-  {
-    [encoder encodeObject: __profileImage forKey: @"profileImage"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __email_isset ? 2654435761 : 0;
-  if (__email_isset)
-  {
-    hash = (hash * 31) ^ [__email hash];
-  }
-  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
-  if (__name_isset)
-  {
-    hash = (hash * 31) ^ [__name hash];
-  }
-  hash = (hash * 31) ^ __firstName_isset ? 2654435761 : 0;
-  if (__firstName_isset)
-  {
-    hash = (hash * 31) ^ [__firstName hash];
-  }
-  hash = (hash * 31) ^ __middleName_isset ? 2654435761 : 0;
-  if (__middleName_isset)
-  {
-    hash = (hash * 31) ^ [__middleName hash];
-  }
-  hash = (hash * 31) ^ __lastName_isset ? 2654435761 : 0;
-  if (__lastName_isset)
-  {
-    hash = (hash * 31) ^ [__lastName hash];
-  }
-  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
-  if (__username_isset)
-  {
-    hash = (hash * 31) ^ [__username hash];
-  }
-  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
-  if (__organizationId_isset)
-  {
-    hash = (hash * 31) ^ [__organizationId hash];
-  }
-  hash = (hash * 31) ^ __credentials_isset ? 2654435761 : 0;
-  if (__credentials_isset)
-  {
-    hash = (hash * 31) ^ [__credentials hash];
-  }
-  hash = (hash * 31) ^ __mainRole_isset ? 2654435761 : 0;
-  if (__mainRole_isset)
-  {
-    hash = (hash * 31) ^ [@(__mainRole) hash];
-  }
-  hash = (hash * 31) ^ __birthDate_isset ? 2654435761 : 0;
-  if (__birthDate_isset)
-  {
-    hash = (hash * 31) ^ [@(__birthDate) hash];
-  }
-  hash = (hash * 31) ^ __githubProfile_isset ? 2654435761 : 0;
-  if (__githubProfile_isset)
-  {
-    hash = (hash * 31) ^ [__githubProfile hash];
-  }
-  hash = (hash * 31) ^ __profileImage_isset ? 2654435761 : 0;
-  if (__profileImage_isset)
-  {
-    hash = (hash * 31) ^ [__profileImage hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SignUpRequest class]]) {
-    return NO;
-  }
-  AromaService_SignUpRequest *other = (AromaService_SignUpRequest *)anObject;
-  if ((__email_isset != other->__email_isset) ||
-      (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
-    return NO;
-  }
-  if ((__name_isset != other->__name_isset) ||
-      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
-    return NO;
-  }
-  if ((__firstName_isset != other->__firstName_isset) ||
-      (__firstName_isset && ((__firstName || other->__firstName) && ![__firstName isEqual:other->__firstName]))) {
-    return NO;
-  }
-  if ((__middleName_isset != other->__middleName_isset) ||
-      (__middleName_isset && ((__middleName || other->__middleName) && ![__middleName isEqual:other->__middleName]))) {
-    return NO;
-  }
-  if ((__lastName_isset != other->__lastName_isset) ||
-      (__lastName_isset && ((__lastName || other->__lastName) && ![__lastName isEqual:other->__lastName]))) {
-    return NO;
-  }
-  if ((__username_isset != other->__username_isset) ||
-      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
-    return NO;
-  }
-  if ((__organizationId_isset != other->__organizationId_isset) ||
-      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
-    return NO;
-  }
-  if ((__credentials_isset != other->__credentials_isset) ||
-      (__credentials_isset && ((__credentials || other->__credentials) && ![__credentials isEqual:other->__credentials]))) {
-    return NO;
-  }
-  if ((__mainRole_isset != other->__mainRole_isset) ||
-      (__mainRole_isset && (__mainRole != other->__mainRole))) {
-    return NO;
-  }
-  if ((__birthDate_isset != other->__birthDate_isset) ||
-      (__birthDate_isset && (__birthDate != other->__birthDate))) {
-    return NO;
-  }
-  if ((__githubProfile_isset != other->__githubProfile_isset) ||
-      (__githubProfile_isset && ((__githubProfile || other->__githubProfile) && ![__githubProfile isEqual:other->__githubProfile]))) {
-    return NO;
-  }
-  if ((__profileImage_isset != other->__profileImage_isset) ||
-      (__profileImage_isset && ((__profileImage || other->__profileImage) && ![__profileImage isEqual:other->__profileImage]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__email release_stub];
-  [__name release_stub];
-  [__firstName release_stub];
-  [__middleName release_stub];
-  [__lastName release_stub];
-  [__username release_stub];
-  [__organizationId release_stub];
-  [__credentials release_stub];
-  [__githubProfile release_stub];
-  [__profileImage release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) email {
-  return [[__email retain_stub] autorelease_stub];
-}
-
-- (void) setEmail: (NSString *) email {
-  [email retain_stub];
-  [__email release_stub];
-  __email = email;
-  __email_isset = YES;
-}
-
-- (BOOL) emailIsSet {
-  return __email_isset;
-}
-
-- (void) unsetEmail {
-  [__email release_stub];
-  __email = nil;
-  __email_isset = NO;
-}
-
-- (NSString *) name {
-  return [[__name retain_stub] autorelease_stub];
-}
-
-- (void) setName: (NSString *) name {
-  [name retain_stub];
-  [__name release_stub];
-  __name = name;
-  __name_isset = YES;
-}
-
-- (BOOL) nameIsSet {
-  return __name_isset;
-}
-
-- (void) unsetName {
-  [__name release_stub];
-  __name = nil;
-  __name_isset = NO;
-}
-
-- (NSString *) firstName {
-  return [[__firstName retain_stub] autorelease_stub];
-}
-
-- (void) setFirstName: (NSString *) firstName {
-  [firstName retain_stub];
-  [__firstName release_stub];
-  __firstName = firstName;
-  __firstName_isset = YES;
-}
-
-- (BOOL) firstNameIsSet {
-  return __firstName_isset;
-}
-
-- (void) unsetFirstName {
-  [__firstName release_stub];
-  __firstName = nil;
-  __firstName_isset = NO;
-}
-
-- (NSString *) middleName {
-  return [[__middleName retain_stub] autorelease_stub];
-}
-
-- (void) setMiddleName: (NSString *) middleName {
-  [middleName retain_stub];
-  [__middleName release_stub];
-  __middleName = middleName;
-  __middleName_isset = YES;
-}
-
-- (BOOL) middleNameIsSet {
-  return __middleName_isset;
-}
-
-- (void) unsetMiddleName {
-  [__middleName release_stub];
-  __middleName = nil;
-  __middleName_isset = NO;
-}
-
-- (NSString *) lastName {
-  return [[__lastName retain_stub] autorelease_stub];
-}
-
-- (void) setLastName: (NSString *) lastName {
-  [lastName retain_stub];
-  [__lastName release_stub];
-  __lastName = lastName;
-  __lastName_isset = YES;
-}
-
-- (BOOL) lastNameIsSet {
-  return __lastName_isset;
-}
-
-- (void) unsetLastName {
-  [__lastName release_stub];
-  __lastName = nil;
-  __lastName_isset = NO;
-}
-
-- (NSString *) username {
-  return [[__username retain_stub] autorelease_stub];
-}
-
-- (void) setUsername: (NSString *) username {
-  [username retain_stub];
-  [__username release_stub];
-  __username = username;
-  __username_isset = YES;
-}
-
-- (BOOL) usernameIsSet {
-  return __username_isset;
-}
-
-- (void) unsetUsername {
-  [__username release_stub];
-  __username = nil;
-  __username_isset = NO;
-}
-
-- (NSString *) organizationId {
-  return [[__organizationId retain_stub] autorelease_stub];
-}
-
-- (void) setOrganizationId: (NSString *) organizationId {
-  [organizationId retain_stub];
-  [__organizationId release_stub];
-  __organizationId = organizationId;
-  __organizationId_isset = YES;
-}
-
-- (BOOL) organizationIdIsSet {
-  return __organizationId_isset;
-}
-
-- (void) unsetOrganizationId {
-  [__organizationId release_stub];
-  __organizationId = nil;
-  __organizationId_isset = NO;
-}
-
-- (AromaAuthentication_Credentials *) credentials {
-  return [[__credentials retain_stub] autorelease_stub];
-}
-
-- (void) setCredentials: (AromaAuthentication_Credentials *) credentials {
-  [credentials retain_stub];
-  [__credentials release_stub];
-  __credentials = credentials;
-  __credentials_isset = YES;
-}
-
-- (BOOL) credentialsIsSet {
-  return __credentials_isset;
-}
-
-- (void) unsetCredentials {
-  [__credentials release_stub];
-  __credentials = nil;
-  __credentials_isset = NO;
-}
-
-- (int) mainRole {
-  return __mainRole;
-}
-
-- (void) setMainRole: (int) mainRole {
-  __mainRole = mainRole;
-  __mainRole_isset = YES;
-}
-
-- (BOOL) mainRoleIsSet {
-  return __mainRole_isset;
-}
-
-- (void) unsetMainRole {
-  __mainRole_isset = NO;
-}
-
-- (int64_t) birthDate {
-  return __birthDate;
-}
-
-- (void) setBirthDate: (int64_t) birthDate {
-  __birthDate = birthDate;
-  __birthDate_isset = YES;
-}
-
-- (BOOL) birthDateIsSet {
-  return __birthDate_isset;
-}
-
-- (void) unsetBirthDate {
-  __birthDate_isset = NO;
-}
-
-- (NSString *) githubProfile {
-  return [[__githubProfile retain_stub] autorelease_stub];
-}
-
-- (void) setGithubProfile: (NSString *) githubProfile {
-  [githubProfile retain_stub];
-  [__githubProfile release_stub];
-  __githubProfile = githubProfile;
-  __githubProfile_isset = YES;
-}
-
-- (BOOL) githubProfileIsSet {
-  return __githubProfile_isset;
-}
-
-- (void) unsetGithubProfile {
-  [__githubProfile release_stub];
-  __githubProfile = nil;
-  __githubProfile_isset = NO;
-}
-
-- (Aroma_Image *) profileImage {
-  return [[__profileImage retain_stub] autorelease_stub];
-}
-
-- (void) setProfileImage: (Aroma_Image *) profileImage {
-  [profileImage retain_stub];
-  [__profileImage release_stub];
-  __profileImage = profileImage;
-  __profileImage_isset = YES;
-}
-
-- (BOOL) profileImageIsSet {
-  return __profileImage_isset;
-}
-
-- (void) unsetProfileImage {
-  [__profileImage release_stub];
-  __profileImage = nil;
-  __profileImage_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setEmail: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setFirstName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMiddleName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setLastName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 6:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setUsername: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 7:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setOrganizationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 8:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_Credentials *fieldValue = [[AromaAuthentication_Credentials alloc] init];
-          [fieldValue read: inProtocol];
-          [self setCredentials: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 9:
-        if (fieldType == TType_I32) {
-          int fieldValue = [inProtocol readI32];
-          [self setMainRole: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 10:
-        if (fieldType == TType_I64) {
-          int64_t fieldValue = [inProtocol readI64];
-          [self setBirthDate: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 11:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setGithubProfile: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 12:
-        if (fieldType == TType_STRUCT) {
-          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
-          [fieldValue read: inProtocol];
-          [self setProfileImage: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SignUpRequest"];
-  if (__email_isset) {
-    if (__email != nil) {
-      [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __email];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__name_isset) {
-    if (__name != nil) {
-      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __name];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__firstName_isset) {
-    if (__firstName != nil) {
-      [outProtocol writeFieldBeginWithName: @"firstName" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __firstName];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__middleName_isset) {
-    if (__middleName != nil) {
-      [outProtocol writeFieldBeginWithName: @"middleName" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __middleName];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__lastName_isset) {
-    if (__lastName != nil) {
-      [outProtocol writeFieldBeginWithName: @"lastName" type: TType_STRING fieldID: 5];
-      [outProtocol writeString: __lastName];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__username_isset) {
-    if (__username != nil) {
-      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 6];
-      [outProtocol writeString: __username];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__organizationId_isset) {
-    if (__organizationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 7];
-      [outProtocol writeString: __organizationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__credentials_isset) {
-    if (__credentials != nil) {
-      [outProtocol writeFieldBeginWithName: @"credentials" type: TType_STRUCT fieldID: 8];
-      [__credentials write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__mainRole_isset) {
-    [outProtocol writeFieldBeginWithName: @"mainRole" type: TType_I32 fieldID: 9];
-    [outProtocol writeI32: __mainRole];
-    [outProtocol writeFieldEnd];
-  }
-  if (__birthDate_isset) {
-    [outProtocol writeFieldBeginWithName: @"birthDate" type: TType_I64 fieldID: 10];
-    [outProtocol writeI64: __birthDate];
-    [outProtocol writeFieldEnd];
-  }
-  if (__githubProfile_isset) {
-    if (__githubProfile != nil) {
-      [outProtocol writeFieldBeginWithName: @"githubProfile" type: TType_STRING fieldID: 11];
-      [outProtocol writeString: __githubProfile];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__profileImage_isset) {
-    if (__profileImage != nil) {
-      [outProtocol writeFieldBeginWithName: @"profileImage" type: TType_STRUCT fieldID: 12];
-      [__profileImage write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignUpRequest("];
-  [ms appendString: @"email:"];
-  [ms appendFormat: @"\"%@\"", __email];
-  [ms appendString: @",name:"];
-  [ms appendFormat: @"\"%@\"", __name];
-  [ms appendString: @",firstName:"];
-  [ms appendFormat: @"\"%@\"", __firstName];
-  [ms appendString: @",middleName:"];
-  [ms appendFormat: @"\"%@\"", __middleName];
-  [ms appendString: @",lastName:"];
-  [ms appendFormat: @"\"%@\"", __lastName];
-  [ms appendString: @",username:"];
-  [ms appendFormat: @"\"%@\"", __username];
-  [ms appendString: @",organizationId:"];
-  [ms appendFormat: @"\"%@\"", __organizationId];
-  [ms appendString: @",credentials:"];
-  [ms appendFormat: @"%@", __credentials];
-  [ms appendString: @",mainRole:"];
-  [ms appendFormat: @"%i", __mainRole];
-  [ms appendString: @",birthDate:"];
-  [ms appendFormat: @"%qi", __birthDate];
-  [ms appendString: @",githubProfile:"];
-  [ms appendFormat: @"\"%@\"", __githubProfile];
-  [ms appendString: @",profileImage:"];
-  [ms appendFormat: @"%@", __profileImage];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_SignUpResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithUserToken: (AromaService_UserToken) userToken account: (AromaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId
-{
-  self = [super init];
-  __userToken = [userToken retain_stub];
-  __userToken_isset = YES;
-  __account = [account retain_stub];
-  __account_isset = YES;
-  __userId = [userId retain_stub];
-  __userId_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"userToken"])
-  {
-    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
-    __userToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"account"])
-  {
-    __account = [[decoder decodeObjectForKey: @"account"] retain_stub];
-    __account_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"userId"])
-  {
-    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
-    __userId_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__userToken_isset)
-  {
-    [encoder encodeObject: __userToken forKey: @"userToken"];
-  }
-  if (__account_isset)
-  {
-    [encoder encodeObject: __account forKey: @"account"];
-  }
-  if (__userId_isset)
-  {
-    [encoder encodeObject: __userId forKey: @"userId"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
-  if (__userToken_isset)
-  {
-    hash = (hash * 31) ^ [__userToken hash];
-  }
-  hash = (hash * 31) ^ __account_isset ? 2654435761 : 0;
-  if (__account_isset)
-  {
-    hash = (hash * 31) ^ [__account hash];
-  }
-  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
-  if (__userId_isset)
-  {
-    hash = (hash * 31) ^ [__userId hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SignUpResponse class]]) {
-    return NO;
-  }
-  AromaService_SignUpResponse *other = (AromaService_SignUpResponse *)anObject;
-  if ((__userToken_isset != other->__userToken_isset) ||
-      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
-    return NO;
-  }
-  if ((__account_isset != other->__account_isset) ||
-      (__account_isset && ((__account || other->__account) && ![__account isEqual:other->__account]))) {
-    return NO;
-  }
-  if ((__userId_isset != other->__userId_isset) ||
-      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__userToken release_stub];
-  [__account release_stub];
-  [__userId release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaAuthentication_UserToken *) userToken {
-  return [[__userToken retain_stub] autorelease_stub];
-}
-
-- (void) setUserToken: (AromaAuthentication_UserToken *) userToken {
-  [userToken retain_stub];
-  [__userToken release_stub];
-  __userToken = userToken;
-  __userToken_isset = YES;
-}
-
-- (BOOL) userTokenIsSet {
-  return __userToken_isset;
-}
-
-- (void) unsetUserToken {
-  [__userToken release_stub];
-  __userToken = nil;
-  __userToken_isset = NO;
-}
-
-- (AromaAuthentication_AromaAccount *) account {
-  return [[__account retain_stub] autorelease_stub];
-}
-
-- (void) setAccount: (AromaAuthentication_AromaAccount *) account {
-  [account retain_stub];
-  [__account release_stub];
-  __account = account;
-  __account_isset = YES;
-}
-
-- (BOOL) accountIsSet {
-  return __account_isset;
-}
-
-- (void) unsetAccount {
-  [__account release_stub];
-  __account = nil;
-  __account_isset = NO;
-}
-
-- (NSString *) userId {
-  return [[__userId retain_stub] autorelease_stub];
-}
-
-- (void) setUserId: (NSString *) userId {
-  [userId retain_stub];
-  [__userId release_stub];
-  __userId = userId;
-  __userId_isset = YES;
-}
-
-- (BOOL) userIdIsSet {
-  return __userId_isset;
-}
-
-- (void) unsetUserId {
-  [__userId release_stub];
-  __userId = nil;
-  __userId_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setUserToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_AromaAccount *fieldValue = [[AromaAuthentication_AromaAccount alloc] init];
-          [fieldValue read: inProtocol];
-          [self setAccount: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setUserId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SignUpResponse"];
-  if (__userToken_isset) {
-    if (__userToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 1];
-      [__userToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__account_isset) {
-    if (__account != nil) {
-      [outProtocol writeFieldBeginWithName: @"account" type: TType_STRUCT fieldID: 2];
-      [__account write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__userId_isset) {
-    if (__userId != nil) {
-      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __userId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignUpResponse("];
-  [ms appendString: @"userToken:"];
-  [ms appendFormat: @"%@", __userToken];
-  [ms appendString: @",account:"];
-  [ms appendFormat: @"%@", __account];
-  [ms appendString: @",userId:"];
-  [ms appendFormat: @"\"%@\"", __userId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

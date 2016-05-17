@@ -17,6 +17,667 @@ use Thrift\Protocol\TBinaryProtocolAccelerated;
 use Thrift\Exception\TApplicationException;
 
 
+/**
+ * Sign In to Aroma, and get a User Token.
+ */
+class SignInRequest {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\Credentials
+   */
+  public $credentials = null;
+  /**
+   * @var string
+   */
+  public $emailAddress = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'credentials',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\Credentials',
+          ),
+        2 => array(
+          'var' => 'emailAddress',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['credentials'])) {
+        $this->credentials = $vals['credentials'];
+      }
+      if (isset($vals['emailAddress'])) {
+        $this->emailAddress = $vals['emailAddress'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'SignInRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->credentials = new \RedRoma\Aroma\Authentication\Credentials();
+            $xfer += $this->credentials->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->emailAddress);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('SignInRequest');
+    if ($this->credentials !== null) {
+      if (!is_object($this->credentials)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('credentials', TType::STRUCT, 1);
+      $xfer += $this->credentials->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->emailAddress !== null) {
+      $xfer += $output->writeFieldBegin('emailAddress', TType::STRING, 2);
+      $xfer += $output->writeString($this->emailAddress);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class SignInResponse {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $userToken = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'userToken',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['userToken'])) {
+        $this->userToken = $vals['userToken'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'SignInResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->userToken = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->userToken->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('SignInResponse');
+    if ($this->userToken !== null) {
+      if (!is_object($this->userToken)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('userToken', TType::STRUCT, 1);
+      $xfer += $this->userToken->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+/**
+ * Sign Up for an Aroma Account.
+ */
+class SignUpRequest {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $email = null;
+  /**
+   * @var string
+   */
+  public $name = null;
+  /**
+   * @var string
+   */
+  public $firstName = null;
+  /**
+   * @var string
+   */
+  public $middleName = null;
+  /**
+   * @var string
+   */
+  public $lastName = null;
+  /**
+   * @var string
+   */
+  public $username = null;
+  /**
+   * @var string
+   */
+  public $organizationId = null;
+  /**
+   * @var \RedRoma\Aroma\Authentication\Credentials
+   */
+  public $credentials = null;
+  /**
+   * @var int
+   */
+  public $mainRole = null;
+  /**
+   * @var int
+   */
+  public $birthDate = null;
+  /**
+   * @var string
+   */
+  public $githubProfile = null;
+  /**
+   * @var \RedRoma\Aroma\Image
+   */
+  public $profileImage = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'email',
+          'type' => TType::STRING,
+          ),
+        2 => array(
+          'var' => 'name',
+          'type' => TType::STRING,
+          ),
+        3 => array(
+          'var' => 'firstName',
+          'type' => TType::STRING,
+          ),
+        4 => array(
+          'var' => 'middleName',
+          'type' => TType::STRING,
+          ),
+        5 => array(
+          'var' => 'lastName',
+          'type' => TType::STRING,
+          ),
+        6 => array(
+          'var' => 'username',
+          'type' => TType::STRING,
+          ),
+        7 => array(
+          'var' => 'organizationId',
+          'type' => TType::STRING,
+          ),
+        8 => array(
+          'var' => 'credentials',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\Credentials',
+          ),
+        9 => array(
+          'var' => 'mainRole',
+          'type' => TType::I32,
+          ),
+        10 => array(
+          'var' => 'birthDate',
+          'type' => TType::I64,
+          ),
+        11 => array(
+          'var' => 'githubProfile',
+          'type' => TType::STRING,
+          ),
+        12 => array(
+          'var' => 'profileImage',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Image',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['email'])) {
+        $this->email = $vals['email'];
+      }
+      if (isset($vals['name'])) {
+        $this->name = $vals['name'];
+      }
+      if (isset($vals['firstName'])) {
+        $this->firstName = $vals['firstName'];
+      }
+      if (isset($vals['middleName'])) {
+        $this->middleName = $vals['middleName'];
+      }
+      if (isset($vals['lastName'])) {
+        $this->lastName = $vals['lastName'];
+      }
+      if (isset($vals['username'])) {
+        $this->username = $vals['username'];
+      }
+      if (isset($vals['organizationId'])) {
+        $this->organizationId = $vals['organizationId'];
+      }
+      if (isset($vals['credentials'])) {
+        $this->credentials = $vals['credentials'];
+      }
+      if (isset($vals['mainRole'])) {
+        $this->mainRole = $vals['mainRole'];
+      }
+      if (isset($vals['birthDate'])) {
+        $this->birthDate = $vals['birthDate'];
+      }
+      if (isset($vals['githubProfile'])) {
+        $this->githubProfile = $vals['githubProfile'];
+      }
+      if (isset($vals['profileImage'])) {
+        $this->profileImage = $vals['profileImage'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'SignUpRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->email);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->name);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->firstName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->middleName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->lastName);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->username);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 7:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->organizationId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 8:
+          if ($ftype == TType::STRUCT) {
+            $this->credentials = new \RedRoma\Aroma\Authentication\Credentials();
+            $xfer += $this->credentials->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 9:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->mainRole);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 10:
+          if ($ftype == TType::I64) {
+            $xfer += $input->readI64($this->birthDate);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 11:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->githubProfile);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 12:
+          if ($ftype == TType::STRUCT) {
+            $this->profileImage = new \RedRoma\Aroma\Image();
+            $xfer += $this->profileImage->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('SignUpRequest');
+    if ($this->email !== null) {
+      $xfer += $output->writeFieldBegin('email', TType::STRING, 1);
+      $xfer += $output->writeString($this->email);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->name !== null) {
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 2);
+      $xfer += $output->writeString($this->name);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->firstName !== null) {
+      $xfer += $output->writeFieldBegin('firstName', TType::STRING, 3);
+      $xfer += $output->writeString($this->firstName);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->middleName !== null) {
+      $xfer += $output->writeFieldBegin('middleName', TType::STRING, 4);
+      $xfer += $output->writeString($this->middleName);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->lastName !== null) {
+      $xfer += $output->writeFieldBegin('lastName', TType::STRING, 5);
+      $xfer += $output->writeString($this->lastName);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->username !== null) {
+      $xfer += $output->writeFieldBegin('username', TType::STRING, 6);
+      $xfer += $output->writeString($this->username);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->organizationId !== null) {
+      $xfer += $output->writeFieldBegin('organizationId', TType::STRING, 7);
+      $xfer += $output->writeString($this->organizationId);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->credentials !== null) {
+      if (!is_object($this->credentials)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('credentials', TType::STRUCT, 8);
+      $xfer += $this->credentials->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->mainRole !== null) {
+      $xfer += $output->writeFieldBegin('mainRole', TType::I32, 9);
+      $xfer += $output->writeI32($this->mainRole);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->birthDate !== null) {
+      $xfer += $output->writeFieldBegin('birthDate', TType::I64, 10);
+      $xfer += $output->writeI64($this->birthDate);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->githubProfile !== null) {
+      $xfer += $output->writeFieldBegin('githubProfile', TType::STRING, 11);
+      $xfer += $output->writeString($this->githubProfile);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->profileImage !== null) {
+      if (!is_object($this->profileImage)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('profileImage', TType::STRUCT, 12);
+      $xfer += $this->profileImage->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+/**
+ * Receive a User Token after Signing Up.
+ */
+class SignUpResponse {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $userToken = null;
+  /**
+   * @var \RedRoma\Aroma\Authentication\AromaAccount
+   */
+  public $account = null;
+  /**
+   * @var string
+   */
+  public $userId = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'userToken',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'account',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\AromaAccount',
+          ),
+        3 => array(
+          'var' => 'userId',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['userToken'])) {
+        $this->userToken = $vals['userToken'];
+      }
+      if (isset($vals['account'])) {
+        $this->account = $vals['account'];
+      }
+      if (isset($vals['userId'])) {
+        $this->userId = $vals['userId'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'SignUpResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->userToken = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->userToken->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->account = new \RedRoma\Aroma\Authentication\AromaAccount();
+            $xfer += $this->account->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->userId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('SignUpResponse');
+    if ($this->userToken !== null) {
+      if (!is_object($this->userToken)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('userToken', TType::STRUCT, 1);
+      $xfer += $this->userToken->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->account !== null) {
+      if (!is_object($this->account)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('account', TType::STRUCT, 2);
+      $xfer += $this->account->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->userId !== null) {
+      $xfer += $output->writeFieldBegin('userId', TType::STRING, 3);
+      $xfer += $output->writeString($this->userId);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class CheckExistsRequest {
   static $_TSPEC;
 
@@ -1984,221 +2645,6 @@ class RegisterHealthCheckResponse {
 }
 
 /**
- *  Removes a User's Saved Channel.
- * It will no longer be remembered or suggested.
- */
-class RemoveSavedChannelRequest {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\UserToken
-   */
-  public $token = null;
-  /**
-   * @var \RedRoma\Aroma\Channels\AromaChannel
-   */
-  public $channel = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'token',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\UserToken',
-          ),
-        2 => array(
-          'var' => 'channel',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Channels\AromaChannel',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['token'])) {
-        $this->token = $vals['token'];
-      }
-      if (isset($vals['channel'])) {
-        $this->channel = $vals['channel'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'RemoveSavedChannelRequest';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
-            $xfer += $this->token->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->channel = new \RedRoma\Aroma\Channels\AromaChannel();
-            $xfer += $this->channel->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('RemoveSavedChannelRequest');
-    if ($this->token !== null) {
-      if (!is_object($this->token)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
-      $xfer += $this->token->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->channel !== null) {
-      if (!is_object($this->channel)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('channel', TType::STRUCT, 2);
-      $xfer += $this->channel->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class RemoveSavedChannelResponse {
-  static $_TSPEC;
-
-  /**
-   * @var string
-   */
-  public $message = null;
-  /**
-   * @var \RedRoma\Aroma\Channels\AromaChannel
-   */
-  public $channel = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'message',
-          'type' => TType::STRING,
-          ),
-        2 => array(
-          'var' => 'channel',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Channels\AromaChannel',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['message'])) {
-        $this->message = $vals['message'];
-      }
-      if (isset($vals['channel'])) {
-        $this->channel = $vals['channel'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'RemoveSavedChannelResponse';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->message);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->channel = new \RedRoma\Aroma\Channels\AromaChannel();
-            $xfer += $this->channel->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('RemoveSavedChannelResponse');
-    if ($this->message !== null) {
-      $xfer += $output->writeFieldBegin('message', TType::STRING, 1);
-      $xfer += $output->writeString($this->message);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->channel !== null) {
-      if (!is_object($this->channel)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('channel', TType::STRUCT, 2);
-      $xfer += $this->channel->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-/**
  * Renews an Application Token, effectively extending it's lifetime.
  * Additional Charges may apply.
  */
@@ -2436,667 +2882,6 @@ class RenewApplicationTokenResponse {
       }
       $xfer += $output->writeFieldBegin('serviceToken', TType::STRUCT, 1);
       $xfer += $this->serviceToken->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-/**
- * Sign In to Aroma, and get a User Token.
- */
-class SignInRequest {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\Credentials
-   */
-  public $credentials = null;
-  /**
-   * @var string
-   */
-  public $emailAddress = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'credentials',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\Credentials',
-          ),
-        2 => array(
-          'var' => 'emailAddress',
-          'type' => TType::STRING,
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['credentials'])) {
-        $this->credentials = $vals['credentials'];
-      }
-      if (isset($vals['emailAddress'])) {
-        $this->emailAddress = $vals['emailAddress'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'SignInRequest';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->credentials = new \RedRoma\Aroma\Authentication\Credentials();
-            $xfer += $this->credentials->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->emailAddress);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('SignInRequest');
-    if ($this->credentials !== null) {
-      if (!is_object($this->credentials)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('credentials', TType::STRUCT, 1);
-      $xfer += $this->credentials->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->emailAddress !== null) {
-      $xfer += $output->writeFieldBegin('emailAddress', TType::STRING, 2);
-      $xfer += $output->writeString($this->emailAddress);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class SignInResponse {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\UserToken
-   */
-  public $userToken = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'userToken',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\UserToken',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['userToken'])) {
-        $this->userToken = $vals['userToken'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'SignInResponse';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->userToken = new \RedRoma\Aroma\Authentication\UserToken();
-            $xfer += $this->userToken->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('SignInResponse');
-    if ($this->userToken !== null) {
-      if (!is_object($this->userToken)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('userToken', TType::STRUCT, 1);
-      $xfer += $this->userToken->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-/**
- * Sign Up for an Aroma Account.
- */
-class SignUpRequest {
-  static $_TSPEC;
-
-  /**
-   * @var string
-   */
-  public $email = null;
-  /**
-   * @var string
-   */
-  public $name = null;
-  /**
-   * @var string
-   */
-  public $firstName = null;
-  /**
-   * @var string
-   */
-  public $middleName = null;
-  /**
-   * @var string
-   */
-  public $lastName = null;
-  /**
-   * @var string
-   */
-  public $username = null;
-  /**
-   * @var string
-   */
-  public $organizationId = null;
-  /**
-   * @var \RedRoma\Aroma\Authentication\Credentials
-   */
-  public $credentials = null;
-  /**
-   * @var int
-   */
-  public $mainRole = null;
-  /**
-   * @var int
-   */
-  public $birthDate = null;
-  /**
-   * @var string
-   */
-  public $githubProfile = null;
-  /**
-   * @var \RedRoma\Aroma\Image
-   */
-  public $profileImage = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'email',
-          'type' => TType::STRING,
-          ),
-        2 => array(
-          'var' => 'name',
-          'type' => TType::STRING,
-          ),
-        3 => array(
-          'var' => 'firstName',
-          'type' => TType::STRING,
-          ),
-        4 => array(
-          'var' => 'middleName',
-          'type' => TType::STRING,
-          ),
-        5 => array(
-          'var' => 'lastName',
-          'type' => TType::STRING,
-          ),
-        6 => array(
-          'var' => 'username',
-          'type' => TType::STRING,
-          ),
-        7 => array(
-          'var' => 'organizationId',
-          'type' => TType::STRING,
-          ),
-        8 => array(
-          'var' => 'credentials',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\Credentials',
-          ),
-        9 => array(
-          'var' => 'mainRole',
-          'type' => TType::I32,
-          ),
-        10 => array(
-          'var' => 'birthDate',
-          'type' => TType::I64,
-          ),
-        11 => array(
-          'var' => 'githubProfile',
-          'type' => TType::STRING,
-          ),
-        12 => array(
-          'var' => 'profileImage',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Image',
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['email'])) {
-        $this->email = $vals['email'];
-      }
-      if (isset($vals['name'])) {
-        $this->name = $vals['name'];
-      }
-      if (isset($vals['firstName'])) {
-        $this->firstName = $vals['firstName'];
-      }
-      if (isset($vals['middleName'])) {
-        $this->middleName = $vals['middleName'];
-      }
-      if (isset($vals['lastName'])) {
-        $this->lastName = $vals['lastName'];
-      }
-      if (isset($vals['username'])) {
-        $this->username = $vals['username'];
-      }
-      if (isset($vals['organizationId'])) {
-        $this->organizationId = $vals['organizationId'];
-      }
-      if (isset($vals['credentials'])) {
-        $this->credentials = $vals['credentials'];
-      }
-      if (isset($vals['mainRole'])) {
-        $this->mainRole = $vals['mainRole'];
-      }
-      if (isset($vals['birthDate'])) {
-        $this->birthDate = $vals['birthDate'];
-      }
-      if (isset($vals['githubProfile'])) {
-        $this->githubProfile = $vals['githubProfile'];
-      }
-      if (isset($vals['profileImage'])) {
-        $this->profileImage = $vals['profileImage'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'SignUpRequest';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->email);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->name);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->firstName);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->middleName);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->lastName);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 6:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->username);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 7:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->organizationId);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 8:
-          if ($ftype == TType::STRUCT) {
-            $this->credentials = new \RedRoma\Aroma\Authentication\Credentials();
-            $xfer += $this->credentials->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 9:
-          if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->mainRole);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 10:
-          if ($ftype == TType::I64) {
-            $xfer += $input->readI64($this->birthDate);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 11:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->githubProfile);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 12:
-          if ($ftype == TType::STRUCT) {
-            $this->profileImage = new \RedRoma\Aroma\Image();
-            $xfer += $this->profileImage->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('SignUpRequest');
-    if ($this->email !== null) {
-      $xfer += $output->writeFieldBegin('email', TType::STRING, 1);
-      $xfer += $output->writeString($this->email);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->name !== null) {
-      $xfer += $output->writeFieldBegin('name', TType::STRING, 2);
-      $xfer += $output->writeString($this->name);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->firstName !== null) {
-      $xfer += $output->writeFieldBegin('firstName', TType::STRING, 3);
-      $xfer += $output->writeString($this->firstName);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->middleName !== null) {
-      $xfer += $output->writeFieldBegin('middleName', TType::STRING, 4);
-      $xfer += $output->writeString($this->middleName);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->lastName !== null) {
-      $xfer += $output->writeFieldBegin('lastName', TType::STRING, 5);
-      $xfer += $output->writeString($this->lastName);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->username !== null) {
-      $xfer += $output->writeFieldBegin('username', TType::STRING, 6);
-      $xfer += $output->writeString($this->username);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->organizationId !== null) {
-      $xfer += $output->writeFieldBegin('organizationId', TType::STRING, 7);
-      $xfer += $output->writeString($this->organizationId);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->credentials !== null) {
-      if (!is_object($this->credentials)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('credentials', TType::STRUCT, 8);
-      $xfer += $this->credentials->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->mainRole !== null) {
-      $xfer += $output->writeFieldBegin('mainRole', TType::I32, 9);
-      $xfer += $output->writeI32($this->mainRole);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->birthDate !== null) {
-      $xfer += $output->writeFieldBegin('birthDate', TType::I64, 10);
-      $xfer += $output->writeI64($this->birthDate);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->githubProfile !== null) {
-      $xfer += $output->writeFieldBegin('githubProfile', TType::STRING, 11);
-      $xfer += $output->writeString($this->githubProfile);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->profileImage !== null) {
-      if (!is_object($this->profileImage)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('profileImage', TType::STRUCT, 12);
-      $xfer += $this->profileImage->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-/**
- * Receive a User Token after Signing Up.
- */
-class SignUpResponse {
-  static $_TSPEC;
-
-  /**
-   * @var \RedRoma\Aroma\Authentication\UserToken
-   */
-  public $userToken = null;
-  /**
-   * @var \RedRoma\Aroma\Authentication\AromaAccount
-   */
-  public $account = null;
-  /**
-   * @var string
-   */
-  public $userId = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'userToken',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\UserToken',
-          ),
-        2 => array(
-          'var' => 'account',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\AromaAccount',
-          ),
-        3 => array(
-          'var' => 'userId',
-          'type' => TType::STRING,
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['userToken'])) {
-        $this->userToken = $vals['userToken'];
-      }
-      if (isset($vals['account'])) {
-        $this->account = $vals['account'];
-      }
-      if (isset($vals['userId'])) {
-        $this->userId = $vals['userId'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'SignUpResponse';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::STRUCT) {
-            $this->userToken = new \RedRoma\Aroma\Authentication\UserToken();
-            $xfer += $this->userToken->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->account = new \RedRoma\Aroma\Authentication\AromaAccount();
-            $xfer += $this->account->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->userId);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('SignUpResponse');
-    if ($this->userToken !== null) {
-      if (!is_object($this->userToken)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('userToken', TType::STRUCT, 1);
-      $xfer += $this->userToken->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->account !== null) {
-      if (!is_object($this->account)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('account', TType::STRUCT, 2);
-      $xfer += $this->account->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->userId !== null) {
-      $xfer += $output->writeFieldBegin('userId', TType::STRING, 3);
-      $xfer += $output->writeString($this->userId);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

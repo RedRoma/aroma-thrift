@@ -82,6 +82,236 @@ typedef AromaException_UnauthorizedException * AromaService_UnauthorizedExceptio
 
 typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExistException;
 
+@interface AromaService_SignInRequest : NSObject <TBase, NSCoding> {
+  AromaAuthentication_Credentials * __credentials;
+  NSString * __emailAddress;
+
+  BOOL __credentials_isset;
+  BOOL __emailAddress_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=credentials, setter=setCredentials:) AromaAuthentication_Credentials * credentials;
+@property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
+#endif
+
+- (id) init;
+- (id) initWithCredentials: (AromaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaAuthentication_Credentials *) credentials;
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials;
+#endif
+- (BOOL) credentialsIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) emailAddress;
+- (void) setEmailAddress: (NSString *) emailAddress;
+#endif
+- (BOOL) emailAddressIsSet;
+
+@end
+
+@interface AromaService_SignInResponse : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __userToken;
+
+  BOOL __userToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=userToken, setter=setUserToken:) AromaService_UserToken userToken;
+#endif
+
+- (id) init;
+- (id) initWithUserToken: (AromaService_UserToken) userToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) userToken;
+- (void) setUserToken: (AromaService_UserToken) userToken;
+#endif
+- (BOOL) userTokenIsSet;
+
+@end
+
+@interface AromaService_SignUpRequest : NSObject <TBase, NSCoding> {
+  NSString * __email;
+  NSString * __name;
+  NSString * __firstName;
+  NSString * __middleName;
+  NSString * __lastName;
+  NSString * __username;
+  AromaService_uuid __organizationId;
+  AromaAuthentication_Credentials * __credentials;
+  int __mainRole;
+  AromaService_timestamp __birthDate;
+  NSString * __githubProfile;
+  AromaService_Image __profileImage;
+
+  BOOL __email_isset;
+  BOOL __name_isset;
+  BOOL __firstName_isset;
+  BOOL __middleName_isset;
+  BOOL __lastName_isset;
+  BOOL __username_isset;
+  BOOL __organizationId_isset;
+  BOOL __credentials_isset;
+  BOOL __mainRole_isset;
+  BOOL __birthDate_isset;
+  BOOL __githubProfile_isset;
+  BOOL __profileImage_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
+@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
+@property (nonatomic, retain, getter=firstName, setter=setFirstName:) NSString * firstName;
+@property (nonatomic, retain, getter=middleName, setter=setMiddleName:) NSString * middleName;
+@property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
+@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
+@property (nonatomic, retain, getter=credentials, setter=setCredentials:) AromaAuthentication_Credentials * credentials;
+@property (nonatomic, getter=mainRole, setter=setMainRole:) int mainRole;
+@property (nonatomic, getter=birthDate, setter=setBirthDate:) AromaService_timestamp birthDate;
+@property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) AromaService_Image profileImage;
+#endif
+
+- (id) init;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (AromaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) email;
+- (void) setEmail: (NSString *) email;
+#endif
+- (BOOL) emailIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) name;
+- (void) setName: (NSString *) name;
+#endif
+- (BOOL) nameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) firstName;
+- (void) setFirstName: (NSString *) firstName;
+#endif
+- (BOOL) firstNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) middleName;
+- (void) setMiddleName: (NSString *) middleName;
+#endif
+- (BOOL) middleNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) lastName;
+- (void) setLastName: (NSString *) lastName;
+#endif
+- (BOOL) lastNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) username;
+- (void) setUsername: (NSString *) username;
+#endif
+- (BOOL) usernameIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) organizationId;
+- (void) setOrganizationId: (AromaService_uuid) organizationId;
+#endif
+- (BOOL) organizationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaAuthentication_Credentials *) credentials;
+- (void) setCredentials: (AromaAuthentication_Credentials *) credentials;
+#endif
+- (BOOL) credentialsIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) mainRole;
+- (void) setMainRole: (int) mainRole;
+#endif
+- (BOOL) mainRoleIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_timestamp) birthDate;
+- (void) setBirthDate: (AromaService_timestamp) birthDate;
+#endif
+- (BOOL) birthDateIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) githubProfile;
+- (void) setGithubProfile: (NSString *) githubProfile;
+#endif
+- (BOOL) githubProfileIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_Image) profileImage;
+- (void) setProfileImage: (AromaService_Image) profileImage;
+#endif
+- (BOOL) profileImageIsSet;
+
+@end
+
+@interface AromaService_SignUpResponse : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __userToken;
+  AromaAuthentication_AromaAccount * __account;
+  AromaService_uuid __userId;
+
+  BOOL __userToken_isset;
+  BOOL __account_isset;
+  BOOL __userId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=userToken, setter=setUserToken:) AromaService_UserToken userToken;
+@property (nonatomic, retain, getter=account, setter=setAccount:) AromaAuthentication_AromaAccount * account;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
+#endif
+
+- (id) init;
+- (id) initWithUserToken: (AromaService_UserToken) userToken account: (AromaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) userToken;
+- (void) setUserToken: (AromaService_UserToken) userToken;
+#endif
+- (BOOL) userTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaAuthentication_AromaAccount *) account;
+- (void) setAccount: (AromaAuthentication_AromaAccount *) account;
+#endif
+- (BOOL) accountIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) userId;
+- (void) setUserId: (AromaService_uuid) userId;
+#endif
+- (BOOL) userIdIsSet;
+
+@end
+
 @interface AromaService_CheckExistsRequest : NSObject <TBase, NSCoding> {
   NSString * __emailAddress;
 
@@ -714,76 +944,6 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
-@interface AromaService_RemoveSavedChannelRequest : NSObject <TBase, NSCoding> {
-  AromaService_UserToken __token;
-  AromaService_AromaChannel __channel;
-
-  BOOL __token_isset;
-  BOOL __channel_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) AromaService_AromaChannel channel;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UserToken) token;
-- (void) setToken: (AromaService_UserToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_AromaChannel) channel;
-- (void) setChannel: (AromaService_AromaChannel) channel;
-#endif
-- (BOOL) channelIsSet;
-
-@end
-
-@interface AromaService_RemoveSavedChannelResponse : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  AromaService_AromaChannel __channel;
-
-  BOOL __message_isset;
-  BOOL __channel_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) AromaService_AromaChannel channel;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message channel: (AromaService_AromaChannel) channel;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_AromaChannel) channel;
-- (void) setChannel: (AromaService_AromaChannel) channel;
-#endif
-- (BOOL) channelIsSet;
-
-@end
-
 @interface AromaService_RenewApplicationTokenRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
   AromaService_ApplicationToken __applicationToken;
@@ -860,236 +1020,6 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) setServiceToken: (AromaService_ApplicationToken) serviceToken;
 #endif
 - (BOOL) serviceTokenIsSet;
-
-@end
-
-@interface AromaService_SignInRequest : NSObject <TBase, NSCoding> {
-  AromaAuthentication_Credentials * __credentials;
-  NSString * __emailAddress;
-
-  BOOL __credentials_isset;
-  BOOL __emailAddress_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=credentials, setter=setCredentials:) AromaAuthentication_Credentials * credentials;
-@property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
-#endif
-
-- (id) init;
-- (id) initWithCredentials: (AromaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaAuthentication_Credentials *) credentials;
-- (void) setCredentials: (AromaAuthentication_Credentials *) credentials;
-#endif
-- (BOOL) credentialsIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) emailAddress;
-- (void) setEmailAddress: (NSString *) emailAddress;
-#endif
-- (BOOL) emailAddressIsSet;
-
-@end
-
-@interface AromaService_SignInResponse : NSObject <TBase, NSCoding> {
-  AromaService_UserToken __userToken;
-
-  BOOL __userToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userToken, setter=setUserToken:) AromaService_UserToken userToken;
-#endif
-
-- (id) init;
-- (id) initWithUserToken: (AromaService_UserToken) userToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UserToken) userToken;
-- (void) setUserToken: (AromaService_UserToken) userToken;
-#endif
-- (BOOL) userTokenIsSet;
-
-@end
-
-@interface AromaService_SignUpRequest : NSObject <TBase, NSCoding> {
-  NSString * __email;
-  NSString * __name;
-  NSString * __firstName;
-  NSString * __middleName;
-  NSString * __lastName;
-  NSString * __username;
-  AromaService_uuid __organizationId;
-  AromaAuthentication_Credentials * __credentials;
-  int __mainRole;
-  AromaService_timestamp __birthDate;
-  NSString * __githubProfile;
-  AromaService_Image __profileImage;
-
-  BOOL __email_isset;
-  BOOL __name_isset;
-  BOOL __firstName_isset;
-  BOOL __middleName_isset;
-  BOOL __lastName_isset;
-  BOOL __username_isset;
-  BOOL __organizationId_isset;
-  BOOL __credentials_isset;
-  BOOL __mainRole_isset;
-  BOOL __birthDate_isset;
-  BOOL __githubProfile_isset;
-  BOOL __profileImage_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
-@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=firstName, setter=setFirstName:) NSString * firstName;
-@property (nonatomic, retain, getter=middleName, setter=setMiddleName:) NSString * middleName;
-@property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
-@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
-@property (nonatomic, retain, getter=credentials, setter=setCredentials:) AromaAuthentication_Credentials * credentials;
-@property (nonatomic, getter=mainRole, setter=setMainRole:) int mainRole;
-@property (nonatomic, getter=birthDate, setter=setBirthDate:) AromaService_timestamp birthDate;
-@property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
-@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) AromaService_Image profileImage;
-#endif
-
-- (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (AromaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) email;
-- (void) setEmail: (NSString *) email;
-#endif
-- (BOOL) emailIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) name;
-- (void) setName: (NSString *) name;
-#endif
-- (BOOL) nameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) firstName;
-- (void) setFirstName: (NSString *) firstName;
-#endif
-- (BOOL) firstNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) middleName;
-- (void) setMiddleName: (NSString *) middleName;
-#endif
-- (BOOL) middleNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) lastName;
-- (void) setLastName: (NSString *) lastName;
-#endif
-- (BOOL) lastNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) username;
-- (void) setUsername: (NSString *) username;
-#endif
-- (BOOL) usernameIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_uuid) organizationId;
-- (void) setOrganizationId: (AromaService_uuid) organizationId;
-#endif
-- (BOOL) organizationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaAuthentication_Credentials *) credentials;
-- (void) setCredentials: (AromaAuthentication_Credentials *) credentials;
-#endif
-- (BOOL) credentialsIsSet;
-
-#if !__has_feature(objc_arc)
-- (int) mainRole;
-- (void) setMainRole: (int) mainRole;
-#endif
-- (BOOL) mainRoleIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_timestamp) birthDate;
-- (void) setBirthDate: (AromaService_timestamp) birthDate;
-#endif
-- (BOOL) birthDateIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) githubProfile;
-- (void) setGithubProfile: (NSString *) githubProfile;
-#endif
-- (BOOL) githubProfileIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_Image) profileImage;
-- (void) setProfileImage: (AromaService_Image) profileImage;
-#endif
-- (BOOL) profileImageIsSet;
-
-@end
-
-@interface AromaService_SignUpResponse : NSObject <TBase, NSCoding> {
-  AromaService_UserToken __userToken;
-  AromaAuthentication_AromaAccount * __account;
-  AromaService_uuid __userId;
-
-  BOOL __userToken_isset;
-  BOOL __account_isset;
-  BOOL __userId_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userToken, setter=setUserToken:) AromaService_UserToken userToken;
-@property (nonatomic, retain, getter=account, setter=setAccount:) AromaAuthentication_AromaAccount * account;
-@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
-#endif
-
-- (id) init;
-- (id) initWithUserToken: (AromaService_UserToken) userToken account: (AromaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UserToken) userToken;
-- (void) setUserToken: (AromaService_UserToken) userToken;
-#endif
-- (BOOL) userTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaAuthentication_AromaAccount *) account;
-- (void) setAccount: (AromaAuthentication_AromaAccount *) account;
-#endif
-- (BOOL) accountIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_uuid) userId;
-- (void) setUserId: (AromaService_uuid) userId;
-#endif
-- (BOOL) userIdIsSet;
 
 @end
 

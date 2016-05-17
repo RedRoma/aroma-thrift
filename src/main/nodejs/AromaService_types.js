@@ -17,6 +17,439 @@ var Reactions_ttypes = require('./Reactions_types')
 
 
 var ttypes = module.exports = {};
+SignInRequest = module.exports.SignInRequest = function(args) {
+  this.credentials = null;
+  this.emailAddress = null;
+  if (args) {
+    if (args.credentials !== undefined && args.credentials !== null) {
+      this.credentials = new Authentication_ttypes.Credentials(args.credentials);
+    }
+    if (args.emailAddress !== undefined && args.emailAddress !== null) {
+      this.emailAddress = args.emailAddress;
+    }
+  }
+};
+SignInRequest.prototype = {};
+SignInRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.credentials = new Authentication_ttypes.Credentials();
+        this.credentials.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.emailAddress = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignInRequest.prototype.write = function(output) {
+  output.writeStructBegin('SignInRequest');
+  if (this.credentials !== null && this.credentials !== undefined) {
+    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 1);
+    this.credentials.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.emailAddress !== null && this.emailAddress !== undefined) {
+    output.writeFieldBegin('emailAddress', Thrift.Type.STRING, 2);
+    output.writeString(this.emailAddress);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SignInResponse = module.exports.SignInResponse = function(args) {
+  this.userToken = null;
+  if (args) {
+    if (args.userToken !== undefined && args.userToken !== null) {
+      this.userToken = new Authentication_ttypes.UserToken(args.userToken);
+    }
+  }
+};
+SignInResponse.prototype = {};
+SignInResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.userToken = new Authentication_ttypes.UserToken();
+        this.userToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignInResponse.prototype.write = function(output) {
+  output.writeStructBegin('SignInResponse');
+  if (this.userToken !== null && this.userToken !== undefined) {
+    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 1);
+    this.userToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SignUpRequest = module.exports.SignUpRequest = function(args) {
+  this.email = null;
+  this.name = null;
+  this.firstName = null;
+  this.middleName = null;
+  this.lastName = null;
+  this.username = null;
+  this.organizationId = null;
+  this.credentials = null;
+  this.mainRole = null;
+  this.birthDate = null;
+  this.githubProfile = null;
+  this.profileImage = null;
+  if (args) {
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.firstName !== undefined && args.firstName !== null) {
+      this.firstName = args.firstName;
+    }
+    if (args.middleName !== undefined && args.middleName !== null) {
+      this.middleName = args.middleName;
+    }
+    if (args.lastName !== undefined && args.lastName !== null) {
+      this.lastName = args.lastName;
+    }
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+    if (args.credentials !== undefined && args.credentials !== null) {
+      this.credentials = new Authentication_ttypes.Credentials(args.credentials);
+    }
+    if (args.mainRole !== undefined && args.mainRole !== null) {
+      this.mainRole = args.mainRole;
+    }
+    if (args.birthDate !== undefined && args.birthDate !== null) {
+      this.birthDate = args.birthDate;
+    }
+    if (args.githubProfile !== undefined && args.githubProfile !== null) {
+      this.githubProfile = args.githubProfile;
+    }
+    if (args.profileImage !== undefined && args.profileImage !== null) {
+      this.profileImage = new Aroma_ttypes.Image(args.profileImage);
+    }
+  }
+};
+SignUpRequest.prototype = {};
+SignUpRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.firstName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.middleName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.lastName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.credentials = new Authentication_ttypes.Credentials();
+        this.credentials.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.I32) {
+        this.mainRole = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.I64) {
+        this.birthDate = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.STRING) {
+        this.githubProfile = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 12:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.profileImage = new Aroma_ttypes.Image();
+        this.profileImage.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignUpRequest.prototype.write = function(output) {
+  output.writeStructBegin('SignUpRequest');
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.firstName !== null && this.firstName !== undefined) {
+    output.writeFieldBegin('firstName', Thrift.Type.STRING, 3);
+    output.writeString(this.firstName);
+    output.writeFieldEnd();
+  }
+  if (this.middleName !== null && this.middleName !== undefined) {
+    output.writeFieldBegin('middleName', Thrift.Type.STRING, 4);
+    output.writeString(this.middleName);
+    output.writeFieldEnd();
+  }
+  if (this.lastName !== null && this.lastName !== undefined) {
+    output.writeFieldBegin('lastName', Thrift.Type.STRING, 5);
+    output.writeString(this.lastName);
+    output.writeFieldEnd();
+  }
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 6);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 7);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.credentials !== null && this.credentials !== undefined) {
+    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 8);
+    this.credentials.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.mainRole !== null && this.mainRole !== undefined) {
+    output.writeFieldBegin('mainRole', Thrift.Type.I32, 9);
+    output.writeI32(this.mainRole);
+    output.writeFieldEnd();
+  }
+  if (this.birthDate !== null && this.birthDate !== undefined) {
+    output.writeFieldBegin('birthDate', Thrift.Type.I64, 10);
+    output.writeI64(this.birthDate);
+    output.writeFieldEnd();
+  }
+  if (this.githubProfile !== null && this.githubProfile !== undefined) {
+    output.writeFieldBegin('githubProfile', Thrift.Type.STRING, 11);
+    output.writeString(this.githubProfile);
+    output.writeFieldEnd();
+  }
+  if (this.profileImage !== null && this.profileImage !== undefined) {
+    output.writeFieldBegin('profileImage', Thrift.Type.STRUCT, 12);
+    this.profileImage.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SignUpResponse = module.exports.SignUpResponse = function(args) {
+  this.userToken = null;
+  this.account = null;
+  this.userId = null;
+  if (args) {
+    if (args.userToken !== undefined && args.userToken !== null) {
+      this.userToken = new Authentication_ttypes.UserToken(args.userToken);
+    }
+    if (args.account !== undefined && args.account !== null) {
+      this.account = new Authentication_ttypes.AromaAccount(args.account);
+    }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
+    }
+  }
+};
+SignUpResponse.prototype = {};
+SignUpResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.userToken = new Authentication_ttypes.UserToken();
+        this.userToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.account = new Authentication_ttypes.AromaAccount();
+        this.account.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.userId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignUpResponse.prototype.write = function(output) {
+  output.writeStructBegin('SignUpResponse');
+  if (this.userToken !== null && this.userToken !== undefined) {
+    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 1);
+    this.userToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.account !== null && this.account !== undefined) {
+    output.writeFieldBegin('account', Thrift.Type.STRUCT, 2);
+    this.account.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 3);
+    output.writeString(this.userId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 CheckExistsRequest = module.exports.CheckExistsRequest = function(args) {
   this.emailAddress = null;
   if (args) {
@@ -1319,141 +1752,6 @@ RegisterHealthCheckResponse.prototype.write = function(output) {
   return;
 };
 
-RemoveSavedChannelRequest = module.exports.RemoveSavedChannelRequest = function(args) {
-  this.token = null;
-  this.channel = null;
-  if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = new Authentication_ttypes.UserToken(args.token);
-    }
-    if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.AromaChannel(args.channel);
-    }
-  }
-};
-RemoveSavedChannelRequest.prototype = {};
-RemoveSavedChannelRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.token = new Authentication_ttypes.UserToken();
-        this.token.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.AromaChannel();
-        this.channel.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RemoveSavedChannelRequest.prototype.write = function(output) {
-  output.writeStructBegin('RemoveSavedChannelRequest');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
-    this.token.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.channel !== null && this.channel !== undefined) {
-    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
-    this.channel.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-RemoveSavedChannelResponse = module.exports.RemoveSavedChannelResponse = function(args) {
-  this.message = null;
-  this.channel = null;
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-    if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.AromaChannel(args.channel);
-    }
-  }
-};
-RemoveSavedChannelResponse.prototype = {};
-RemoveSavedChannelResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.AromaChannel();
-        this.channel.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RemoveSavedChannelResponse.prototype.write = function(output) {
-  output.writeStructBegin('RemoveSavedChannelResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.channel !== null && this.channel !== undefined) {
-    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
-    this.channel.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 RenewApplicationTokenRequest = module.exports.RenewApplicationTokenRequest = function(args) {
   this.token = null;
   this.applicationToken = null;
@@ -1602,439 +1900,6 @@ RenewApplicationTokenResponse.prototype.write = function(output) {
   if (this.serviceToken !== null && this.serviceToken !== undefined) {
     output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
     this.serviceToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-SignInRequest = module.exports.SignInRequest = function(args) {
-  this.credentials = null;
-  this.emailAddress = null;
-  if (args) {
-    if (args.credentials !== undefined && args.credentials !== null) {
-      this.credentials = new Authentication_ttypes.Credentials(args.credentials);
-    }
-    if (args.emailAddress !== undefined && args.emailAddress !== null) {
-      this.emailAddress = args.emailAddress;
-    }
-  }
-};
-SignInRequest.prototype = {};
-SignInRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.credentials = new Authentication_ttypes.Credentials();
-        this.credentials.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.emailAddress = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-SignInRequest.prototype.write = function(output) {
-  output.writeStructBegin('SignInRequest');
-  if (this.credentials !== null && this.credentials !== undefined) {
-    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 1);
-    this.credentials.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.emailAddress !== null && this.emailAddress !== undefined) {
-    output.writeFieldBegin('emailAddress', Thrift.Type.STRING, 2);
-    output.writeString(this.emailAddress);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-SignInResponse = module.exports.SignInResponse = function(args) {
-  this.userToken = null;
-  if (args) {
-    if (args.userToken !== undefined && args.userToken !== null) {
-      this.userToken = new Authentication_ttypes.UserToken(args.userToken);
-    }
-  }
-};
-SignInResponse.prototype = {};
-SignInResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.userToken = new Authentication_ttypes.UserToken();
-        this.userToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-SignInResponse.prototype.write = function(output) {
-  output.writeStructBegin('SignInResponse');
-  if (this.userToken !== null && this.userToken !== undefined) {
-    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 1);
-    this.userToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-SignUpRequest = module.exports.SignUpRequest = function(args) {
-  this.email = null;
-  this.name = null;
-  this.firstName = null;
-  this.middleName = null;
-  this.lastName = null;
-  this.username = null;
-  this.organizationId = null;
-  this.credentials = null;
-  this.mainRole = null;
-  this.birthDate = null;
-  this.githubProfile = null;
-  this.profileImage = null;
-  if (args) {
-    if (args.email !== undefined && args.email !== null) {
-      this.email = args.email;
-    }
-    if (args.name !== undefined && args.name !== null) {
-      this.name = args.name;
-    }
-    if (args.firstName !== undefined && args.firstName !== null) {
-      this.firstName = args.firstName;
-    }
-    if (args.middleName !== undefined && args.middleName !== null) {
-      this.middleName = args.middleName;
-    }
-    if (args.lastName !== undefined && args.lastName !== null) {
-      this.lastName = args.lastName;
-    }
-    if (args.username !== undefined && args.username !== null) {
-      this.username = args.username;
-    }
-    if (args.organizationId !== undefined && args.organizationId !== null) {
-      this.organizationId = args.organizationId;
-    }
-    if (args.credentials !== undefined && args.credentials !== null) {
-      this.credentials = new Authentication_ttypes.Credentials(args.credentials);
-    }
-    if (args.mainRole !== undefined && args.mainRole !== null) {
-      this.mainRole = args.mainRole;
-    }
-    if (args.birthDate !== undefined && args.birthDate !== null) {
-      this.birthDate = args.birthDate;
-    }
-    if (args.githubProfile !== undefined && args.githubProfile !== null) {
-      this.githubProfile = args.githubProfile;
-    }
-    if (args.profileImage !== undefined && args.profileImage !== null) {
-      this.profileImage = new Aroma_ttypes.Image(args.profileImage);
-    }
-  }
-};
-SignUpRequest.prototype = {};
-SignUpRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.email = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.name = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.firstName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.middleName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 5:
-      if (ftype == Thrift.Type.STRING) {
-        this.lastName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 6:
-      if (ftype == Thrift.Type.STRING) {
-        this.username = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 7:
-      if (ftype == Thrift.Type.STRING) {
-        this.organizationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 8:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.credentials = new Authentication_ttypes.Credentials();
-        this.credentials.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 9:
-      if (ftype == Thrift.Type.I32) {
-        this.mainRole = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 10:
-      if (ftype == Thrift.Type.I64) {
-        this.birthDate = input.readI64();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 11:
-      if (ftype == Thrift.Type.STRING) {
-        this.githubProfile = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 12:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.profileImage = new Aroma_ttypes.Image();
-        this.profileImage.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-SignUpRequest.prototype.write = function(output) {
-  output.writeStructBegin('SignUpRequest');
-  if (this.email !== null && this.email !== undefined) {
-    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
-    output.writeString(this.email);
-    output.writeFieldEnd();
-  }
-  if (this.name !== null && this.name !== undefined) {
-    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
-    output.writeString(this.name);
-    output.writeFieldEnd();
-  }
-  if (this.firstName !== null && this.firstName !== undefined) {
-    output.writeFieldBegin('firstName', Thrift.Type.STRING, 3);
-    output.writeString(this.firstName);
-    output.writeFieldEnd();
-  }
-  if (this.middleName !== null && this.middleName !== undefined) {
-    output.writeFieldBegin('middleName', Thrift.Type.STRING, 4);
-    output.writeString(this.middleName);
-    output.writeFieldEnd();
-  }
-  if (this.lastName !== null && this.lastName !== undefined) {
-    output.writeFieldBegin('lastName', Thrift.Type.STRING, 5);
-    output.writeString(this.lastName);
-    output.writeFieldEnd();
-  }
-  if (this.username !== null && this.username !== undefined) {
-    output.writeFieldBegin('username', Thrift.Type.STRING, 6);
-    output.writeString(this.username);
-    output.writeFieldEnd();
-  }
-  if (this.organizationId !== null && this.organizationId !== undefined) {
-    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 7);
-    output.writeString(this.organizationId);
-    output.writeFieldEnd();
-  }
-  if (this.credentials !== null && this.credentials !== undefined) {
-    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 8);
-    this.credentials.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.mainRole !== null && this.mainRole !== undefined) {
-    output.writeFieldBegin('mainRole', Thrift.Type.I32, 9);
-    output.writeI32(this.mainRole);
-    output.writeFieldEnd();
-  }
-  if (this.birthDate !== null && this.birthDate !== undefined) {
-    output.writeFieldBegin('birthDate', Thrift.Type.I64, 10);
-    output.writeI64(this.birthDate);
-    output.writeFieldEnd();
-  }
-  if (this.githubProfile !== null && this.githubProfile !== undefined) {
-    output.writeFieldBegin('githubProfile', Thrift.Type.STRING, 11);
-    output.writeString(this.githubProfile);
-    output.writeFieldEnd();
-  }
-  if (this.profileImage !== null && this.profileImage !== undefined) {
-    output.writeFieldBegin('profileImage', Thrift.Type.STRUCT, 12);
-    this.profileImage.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-SignUpResponse = module.exports.SignUpResponse = function(args) {
-  this.userToken = null;
-  this.account = null;
-  this.userId = null;
-  if (args) {
-    if (args.userToken !== undefined && args.userToken !== null) {
-      this.userToken = new Authentication_ttypes.UserToken(args.userToken);
-    }
-    if (args.account !== undefined && args.account !== null) {
-      this.account = new Authentication_ttypes.AromaAccount(args.account);
-    }
-    if (args.userId !== undefined && args.userId !== null) {
-      this.userId = args.userId;
-    }
-  }
-};
-SignUpResponse.prototype = {};
-SignUpResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.userToken = new Authentication_ttypes.UserToken();
-        this.userToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.account = new Authentication_ttypes.AromaAccount();
-        this.account.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.userId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-SignUpResponse.prototype.write = function(output) {
-  output.writeStructBegin('SignUpResponse');
-  if (this.userToken !== null && this.userToken !== undefined) {
-    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 1);
-    this.userToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.account !== null && this.account !== undefined) {
-    output.writeFieldBegin('account', Thrift.Type.STRUCT, 2);
-    this.account.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.userId !== null && this.userId !== undefined) {
-    output.writeFieldBegin('userId', Thrift.Type.STRING, 3);
-    output.writeString(this.userId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

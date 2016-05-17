@@ -82,6 +82,14 @@ typedef class  ::aroma::thrift::exceptions::UnauthorizedException UnauthorizedEx
 
 typedef class  ::aroma::thrift::exceptions::UserDoesNotExistException UserDoesNotExistException;
 
+class SignInRequest;
+
+class SignInResponse;
+
+class SignUpRequest;
+
+class SignUpResponse;
+
 class CheckExistsRequest;
 
 class CheckExistsResponse;
@@ -114,21 +122,9 @@ class RegisterHealthCheckRequest;
 
 class RegisterHealthCheckResponse;
 
-class RemoveSavedChannelRequest;
-
-class RemoveSavedChannelResponse;
-
 class RenewApplicationTokenRequest;
 
 class RenewApplicationTokenResponse;
-
-class SignInRequest;
-
-class SignInResponse;
-
-class SignUpRequest;
-
-class SignUpResponse;
 
 class FollowApplicationRequest;
 
@@ -213,6 +209,280 @@ class RegisterDeviceResponse;
 class UnregisterDeviceRequest;
 
 class UnregisterDeviceResponse;
+
+typedef struct _SignInRequest__isset {
+  _SignInRequest__isset() : credentials(false), emailAddress(false) {}
+  bool credentials :1;
+  bool emailAddress :1;
+} _SignInRequest__isset;
+
+class SignInRequest {
+ public:
+
+  SignInRequest(const SignInRequest&);
+  SignInRequest& operator=(const SignInRequest&);
+  SignInRequest() : emailAddress() {
+  }
+
+  virtual ~SignInRequest() throw();
+   ::aroma::thrift::authentication::Credentials credentials;
+  std::string emailAddress;
+
+  _SignInRequest__isset __isset;
+
+  void __set_credentials(const  ::aroma::thrift::authentication::Credentials& val);
+
+  void __set_emailAddress(const std::string& val);
+
+  bool operator == (const SignInRequest & rhs) const
+  {
+    if (!(credentials == rhs.credentials))
+      return false;
+    if (!(emailAddress == rhs.emailAddress))
+      return false;
+    return true;
+  }
+  bool operator != (const SignInRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignInRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignInRequest &a, SignInRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignInRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignInResponse__isset {
+  _SignInResponse__isset() : userToken(false) {}
+  bool userToken :1;
+} _SignInResponse__isset;
+
+class SignInResponse {
+ public:
+
+  SignInResponse(const SignInResponse&);
+  SignInResponse& operator=(const SignInResponse&);
+  SignInResponse() {
+  }
+
+  virtual ~SignInResponse() throw();
+  UserToken userToken;
+
+  _SignInResponse__isset __isset;
+
+  void __set_userToken(const UserToken& val);
+
+  bool operator == (const SignInResponse & rhs) const
+  {
+    if (!(userToken == rhs.userToken))
+      return false;
+    return true;
+  }
+  bool operator != (const SignInResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignInResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignInResponse &a, SignInResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignUpRequest__isset {
+  _SignUpRequest__isset() : email(false), name(false), firstName(false), middleName(false), lastName(false), username(false), organizationId(false), credentials(false), mainRole(false), birthDate(false), githubProfile(false), profileImage(false) {}
+  bool email :1;
+  bool name :1;
+  bool firstName :1;
+  bool middleName :1;
+  bool lastName :1;
+  bool username :1;
+  bool organizationId :1;
+  bool credentials :1;
+  bool mainRole :1;
+  bool birthDate :1;
+  bool githubProfile :1;
+  bool profileImage :1;
+} _SignUpRequest__isset;
+
+class SignUpRequest {
+ public:
+
+  SignUpRequest(const SignUpRequest&);
+  SignUpRequest& operator=(const SignUpRequest&);
+  SignUpRequest() : email(), name(), firstName(), middleName(), lastName(), username(), organizationId(), mainRole(( ::tech::aroma::thrift::Role::type)0), birthDate(0), githubProfile() {
+  }
+
+  virtual ~SignUpRequest() throw();
+  std::string email;
+  std::string name;
+  std::string firstName;
+  std::string middleName;
+  std::string lastName;
+  std::string username;
+  uuid organizationId;
+   ::aroma::thrift::authentication::Credentials credentials;
+   ::tech::aroma::thrift::Role::type mainRole;
+  timestamp birthDate;
+  std::string githubProfile;
+  Image profileImage;
+
+  _SignUpRequest__isset __isset;
+
+  void __set_email(const std::string& val);
+
+  void __set_name(const std::string& val);
+
+  void __set_firstName(const std::string& val);
+
+  void __set_middleName(const std::string& val);
+
+  void __set_lastName(const std::string& val);
+
+  void __set_username(const std::string& val);
+
+  void __set_organizationId(const uuid& val);
+
+  void __set_credentials(const  ::aroma::thrift::authentication::Credentials& val);
+
+  void __set_mainRole(const  ::tech::aroma::thrift::Role::type val);
+
+  void __set_birthDate(const timestamp val);
+
+  void __set_githubProfile(const std::string& val);
+
+  void __set_profileImage(const Image& val);
+
+  bool operator == (const SignUpRequest & rhs) const
+  {
+    if (!(email == rhs.email))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(firstName == rhs.firstName))
+      return false;
+    if (!(middleName == rhs.middleName))
+      return false;
+    if (!(lastName == rhs.lastName))
+      return false;
+    if (!(username == rhs.username))
+      return false;
+    if (!(organizationId == rhs.organizationId))
+      return false;
+    if (!(credentials == rhs.credentials))
+      return false;
+    if (!(mainRole == rhs.mainRole))
+      return false;
+    if (__isset.birthDate != rhs.__isset.birthDate)
+      return false;
+    else if (__isset.birthDate && !(birthDate == rhs.birthDate))
+      return false;
+    if (__isset.githubProfile != rhs.__isset.githubProfile)
+      return false;
+    else if (__isset.githubProfile && !(githubProfile == rhs.githubProfile))
+      return false;
+    if (__isset.profileImage != rhs.__isset.profileImage)
+      return false;
+    else if (__isset.profileImage && !(profileImage == rhs.profileImage))
+      return false;
+    return true;
+  }
+  bool operator != (const SignUpRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignUpRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignUpRequest &a, SignUpRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignUpRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignUpResponse__isset {
+  _SignUpResponse__isset() : userToken(false), account(false), userId(false) {}
+  bool userToken :1;
+  bool account :1;
+  bool userId :1;
+} _SignUpResponse__isset;
+
+class SignUpResponse {
+ public:
+
+  SignUpResponse(const SignUpResponse&);
+  SignUpResponse& operator=(const SignUpResponse&);
+  SignUpResponse() : userId() {
+  }
+
+  virtual ~SignUpResponse() throw();
+  UserToken userToken;
+   ::aroma::thrift::authentication::AromaAccount account;
+  uuid userId;
+
+  _SignUpResponse__isset __isset;
+
+  void __set_userToken(const UserToken& val);
+
+  void __set_account(const  ::aroma::thrift::authentication::AromaAccount& val);
+
+  void __set_userId(const uuid& val);
+
+  bool operator == (const SignUpResponse & rhs) const
+  {
+    if (!(userToken == rhs.userToken))
+      return false;
+    if (!(account == rhs.account))
+      return false;
+    if (!(userId == rhs.userId))
+      return false;
+    return true;
+  }
+  bool operator != (const SignUpResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignUpResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignUpResponse &a, SignUpResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 typedef struct _CheckExistsRequest__isset {
   _CheckExistsRequest__isset() : emailAddress(false) {}
@@ -1134,112 +1404,6 @@ inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckResp
   return out;
 }
 
-typedef struct _RemoveSavedChannelRequest__isset {
-  _RemoveSavedChannelRequest__isset() : token(false), channel(false) {}
-  bool token :1;
-  bool channel :1;
-} _RemoveSavedChannelRequest__isset;
-
-class RemoveSavedChannelRequest {
- public:
-
-  RemoveSavedChannelRequest(const RemoveSavedChannelRequest&);
-  RemoveSavedChannelRequest& operator=(const RemoveSavedChannelRequest&);
-  RemoveSavedChannelRequest() {
-  }
-
-  virtual ~RemoveSavedChannelRequest() throw();
-  UserToken token;
-  AromaChannel channel;
-
-  _RemoveSavedChannelRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_channel(const AromaChannel& val);
-
-  bool operator == (const RemoveSavedChannelRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(channel == rhs.channel))
-      return false;
-    return true;
-  }
-  bool operator != (const RemoveSavedChannelRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RemoveSavedChannelRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RemoveSavedChannelRequest &a, RemoveSavedChannelRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _RemoveSavedChannelResponse__isset {
-  _RemoveSavedChannelResponse__isset() : message(false), channel(false) {}
-  bool message :1;
-  bool channel :1;
-} _RemoveSavedChannelResponse__isset;
-
-class RemoveSavedChannelResponse {
- public:
-
-  RemoveSavedChannelResponse(const RemoveSavedChannelResponse&);
-  RemoveSavedChannelResponse& operator=(const RemoveSavedChannelResponse&);
-  RemoveSavedChannelResponse() : message() {
-  }
-
-  virtual ~RemoveSavedChannelResponse() throw();
-  std::string message;
-  AromaChannel channel;
-
-  _RemoveSavedChannelResponse__isset __isset;
-
-  void __set_message(const std::string& val);
-
-  void __set_channel(const AromaChannel& val);
-
-  bool operator == (const RemoveSavedChannelResponse & rhs) const
-  {
-    if (!(message == rhs.message))
-      return false;
-    if (__isset.channel != rhs.__isset.channel)
-      return false;
-    else if (__isset.channel && !(channel == rhs.channel))
-      return false;
-    return true;
-  }
-  bool operator != (const RemoveSavedChannelResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RemoveSavedChannelResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RemoveSavedChannelResponse &a, RemoveSavedChannelResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
 typedef struct _RenewApplicationTokenRequest__isset {
   _RenewApplicationTokenRequest__isset() : token(false), applicationToken(false), newLifetime(false), applicationId(false) {}
   bool token :1;
@@ -1345,280 +1509,6 @@ class RenewApplicationTokenResponse {
 void swap(RenewApplicationTokenResponse &a, RenewApplicationTokenResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const RenewApplicationTokenResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SignInRequest__isset {
-  _SignInRequest__isset() : credentials(false), emailAddress(false) {}
-  bool credentials :1;
-  bool emailAddress :1;
-} _SignInRequest__isset;
-
-class SignInRequest {
- public:
-
-  SignInRequest(const SignInRequest&);
-  SignInRequest& operator=(const SignInRequest&);
-  SignInRequest() : emailAddress() {
-  }
-
-  virtual ~SignInRequest() throw();
-   ::aroma::thrift::authentication::Credentials credentials;
-  std::string emailAddress;
-
-  _SignInRequest__isset __isset;
-
-  void __set_credentials(const  ::aroma::thrift::authentication::Credentials& val);
-
-  void __set_emailAddress(const std::string& val);
-
-  bool operator == (const SignInRequest & rhs) const
-  {
-    if (!(credentials == rhs.credentials))
-      return false;
-    if (!(emailAddress == rhs.emailAddress))
-      return false;
-    return true;
-  }
-  bool operator != (const SignInRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SignInRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SignInRequest &a, SignInRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SignInRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SignInResponse__isset {
-  _SignInResponse__isset() : userToken(false) {}
-  bool userToken :1;
-} _SignInResponse__isset;
-
-class SignInResponse {
- public:
-
-  SignInResponse(const SignInResponse&);
-  SignInResponse& operator=(const SignInResponse&);
-  SignInResponse() {
-  }
-
-  virtual ~SignInResponse() throw();
-  UserToken userToken;
-
-  _SignInResponse__isset __isset;
-
-  void __set_userToken(const UserToken& val);
-
-  bool operator == (const SignInResponse & rhs) const
-  {
-    if (!(userToken == rhs.userToken))
-      return false;
-    return true;
-  }
-  bool operator != (const SignInResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SignInResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SignInResponse &a, SignInResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SignUpRequest__isset {
-  _SignUpRequest__isset() : email(false), name(false), firstName(false), middleName(false), lastName(false), username(false), organizationId(false), credentials(false), mainRole(false), birthDate(false), githubProfile(false), profileImage(false) {}
-  bool email :1;
-  bool name :1;
-  bool firstName :1;
-  bool middleName :1;
-  bool lastName :1;
-  bool username :1;
-  bool organizationId :1;
-  bool credentials :1;
-  bool mainRole :1;
-  bool birthDate :1;
-  bool githubProfile :1;
-  bool profileImage :1;
-} _SignUpRequest__isset;
-
-class SignUpRequest {
- public:
-
-  SignUpRequest(const SignUpRequest&);
-  SignUpRequest& operator=(const SignUpRequest&);
-  SignUpRequest() : email(), name(), firstName(), middleName(), lastName(), username(), organizationId(), mainRole(( ::tech::aroma::thrift::Role::type)0), birthDate(0), githubProfile() {
-  }
-
-  virtual ~SignUpRequest() throw();
-  std::string email;
-  std::string name;
-  std::string firstName;
-  std::string middleName;
-  std::string lastName;
-  std::string username;
-  uuid organizationId;
-   ::aroma::thrift::authentication::Credentials credentials;
-   ::tech::aroma::thrift::Role::type mainRole;
-  timestamp birthDate;
-  std::string githubProfile;
-  Image profileImage;
-
-  _SignUpRequest__isset __isset;
-
-  void __set_email(const std::string& val);
-
-  void __set_name(const std::string& val);
-
-  void __set_firstName(const std::string& val);
-
-  void __set_middleName(const std::string& val);
-
-  void __set_lastName(const std::string& val);
-
-  void __set_username(const std::string& val);
-
-  void __set_organizationId(const uuid& val);
-
-  void __set_credentials(const  ::aroma::thrift::authentication::Credentials& val);
-
-  void __set_mainRole(const  ::tech::aroma::thrift::Role::type val);
-
-  void __set_birthDate(const timestamp val);
-
-  void __set_githubProfile(const std::string& val);
-
-  void __set_profileImage(const Image& val);
-
-  bool operator == (const SignUpRequest & rhs) const
-  {
-    if (!(email == rhs.email))
-      return false;
-    if (!(name == rhs.name))
-      return false;
-    if (!(firstName == rhs.firstName))
-      return false;
-    if (!(middleName == rhs.middleName))
-      return false;
-    if (!(lastName == rhs.lastName))
-      return false;
-    if (!(username == rhs.username))
-      return false;
-    if (!(organizationId == rhs.organizationId))
-      return false;
-    if (!(credentials == rhs.credentials))
-      return false;
-    if (!(mainRole == rhs.mainRole))
-      return false;
-    if (__isset.birthDate != rhs.__isset.birthDate)
-      return false;
-    else if (__isset.birthDate && !(birthDate == rhs.birthDate))
-      return false;
-    if (__isset.githubProfile != rhs.__isset.githubProfile)
-      return false;
-    else if (__isset.githubProfile && !(githubProfile == rhs.githubProfile))
-      return false;
-    if (__isset.profileImage != rhs.__isset.profileImage)
-      return false;
-    else if (__isset.profileImage && !(profileImage == rhs.profileImage))
-      return false;
-    return true;
-  }
-  bool operator != (const SignUpRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SignUpRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SignUpRequest &a, SignUpRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SignUpRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SignUpResponse__isset {
-  _SignUpResponse__isset() : userToken(false), account(false), userId(false) {}
-  bool userToken :1;
-  bool account :1;
-  bool userId :1;
-} _SignUpResponse__isset;
-
-class SignUpResponse {
- public:
-
-  SignUpResponse(const SignUpResponse&);
-  SignUpResponse& operator=(const SignUpResponse&);
-  SignUpResponse() : userId() {
-  }
-
-  virtual ~SignUpResponse() throw();
-  UserToken userToken;
-   ::aroma::thrift::authentication::AromaAccount account;
-  uuid userId;
-
-  _SignUpResponse__isset __isset;
-
-  void __set_userToken(const UserToken& val);
-
-  void __set_account(const  ::aroma::thrift::authentication::AromaAccount& val);
-
-  void __set_userId(const uuid& val);
-
-  bool operator == (const SignUpResponse & rhs) const
-  {
-    if (!(userToken == rhs.userToken))
-      return false;
-    if (!(account == rhs.account))
-      return false;
-    if (!(userId == rhs.userId))
-      return false;
-    return true;
-  }
-  bool operator != (const SignUpResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SignUpResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SignUpResponse &a, SignUpResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
 {
   obj.printTo(out);
   return out;

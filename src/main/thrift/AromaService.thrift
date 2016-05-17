@@ -109,8 +109,53 @@ const Aroma.LengthOfTime DEFAULT_ACTIVITY_LIFETIME = { "value" : 4, "unit" : Aro
 
 
 //==========================================================
-// Actions
+// AUTHENTICATION OPERATIONS
 //==========================================================
+
+/**
+ * Sign In to Aroma, and get a User Token.
+ */
+struct SignInRequest
+{
+    1: Authentication.Credentials credentials;
+    2: string emailAddress;
+}
+
+struct SignInResponse
+{
+    1: UserToken userToken;
+}
+
+/**
+ * Sign Up for an Aroma Account.
+ */
+struct SignUpRequest
+{
+    1: string email;
+    //TODO: Rename to fullName or completeName
+    2: string name;
+    3: string firstName;
+    4: string middleName;
+    5: string lastName;
+    6: string username;
+    7: uuid organizationId;
+    8: Authentication.Credentials credentials;
+    9: Aroma.Role mainRole;
+    10: optional timestamp birthDate;
+    11: optional string githubProfile;
+    12: optional Image profileImage;
+}
+
+/**
+ * Receive a User Token after Signing Up.
+ */
+struct SignUpResponse
+{
+    1: UserToken userToken;
+    2: Authentication.AromaAccount account;
+    3: uuid userId;
+}
+
 
 struct CheckExistsRequest
 {
@@ -264,22 +309,6 @@ struct RegisterHealthCheckResponse
 }
 
 /**
- *  Removes a User's Saved Channel.
- * It will no longer be remembered or suggested.
- */
-struct RemoveSavedChannelRequest
-{
-    1: UserToken token;
-    2: AromaChannel channel;
-}
-
-struct RemoveSavedChannelResponse
-{
-    1: string message;
-    2: optional AromaChannel channel;
-}
-
-/**
  * Renews an Application Token, effectively extending it's lifetime.
  * Additional Charges may apply.
  */
@@ -298,50 +327,6 @@ struct RenewApplicationTokenResponse
     1: ApplicationToken serviceToken;
 }
 
-
-/**
- * Sign In to Aroma, and get a User Token.
- */
-struct SignInRequest
-{
-    1: Authentication.Credentials credentials;
-    2: string emailAddress;
-}
-
-struct SignInResponse
-{
-    1: UserToken userToken;
-}
-
-/**
- * Sign Up for an Aroma Account.
- */
-struct SignUpRequest
-{
-    1: string email;
-    //TODO: Rename to fullName or completeName
-    2: string name;
-    3: string firstName;
-    4: string middleName;
-    5: string lastName;
-    6: string username;
-    7: uuid organizationId;
-    8: Authentication.Credentials credentials;
-    9: Aroma.Role mainRole;
-    10: optional timestamp birthDate;
-    11: optional string githubProfile;
-    12: optional Image profileImage;
-}
-
-/**
- * Receive a User Token after Signing Up.
- */
-struct SignUpResponse
-{
-    1: UserToken userToken;
-    2: Authentication.AromaAccount account;
-    3: uuid userId;
-}
 
 /**
  * Follow an Application to receive notifications from it.
