@@ -235,6 +235,8 @@ code { line-height: 20px; }
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Struct_CheckExistsRequest">CheckExistsRequest</a><br/>
 <a href="#Struct_CheckExistsResponse">CheckExistsResponse</a><br/>
+<a href="#Struct_CheckIfDeviceIsRegisteredRequest">CheckIfDeviceIsRegisteredRequest</a><br/>
+<a href="#Struct_CheckIfDeviceIsRegisteredResponse">CheckIfDeviceIsRegisteredResponse</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
 <a href="#Struct_DeleteActivityRequest">DeleteActivityRequest</a><br/>
 <a href="#Struct_DeleteActivityResponse">DeleteActivityResponse</a><br/>
@@ -282,6 +284,7 @@ code { line-height: 20px; }
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
 <a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a><br/>
+<a href="#Typedef_MobileDevice">MobileDevice</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a><br/>
 <a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a><br/>
@@ -385,6 +388,9 @@ getFullMessage() operation.
 </div>
 <div class="definition"><h3 id="Typedef_AromaChannel">Typedef: AromaChannel</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_AromaChannel">Channels.AromaChannel</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_MobileDevice">Typedef: MobileDevice</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_MobileDevice">Channels.MobileDevice</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Endpoint">Typedef: Endpoint</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></p>
@@ -729,10 +735,20 @@ Aroma.
 <tr><td>5</td><td>numberOfLowUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>6</td><td>numberOfMediumUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>7</td><td>numberOfHighUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_CheckIfDeviceIsRegisteredRequest">Struct: CheckIfDeviceIsRegisteredRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>device</td><td><code><a href="#Typedef_MobileDevice">MobileDevice</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_CheckIfDeviceIsRegisteredResponse">Struct: CheckIfDeviceIsRegisteredResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>isRegistered</td><td><code>bool</code></td><td></td><td>required</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetRegisteredDevicesRequest">Struct: GetRegisteredDevicesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-</table><br/></div><div class="definition"><h3 id="Struct_GetRegisteredDevicesResponse">Struct: GetRegisteredDevicesResponse</h3>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Get a list of devices registered to the calling user.
+<br/></div><div class="definition"><h3 id="Struct_GetRegisteredDevicesResponse">Struct: GetRegisteredDevicesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>devices</td><td><code>list&lt;<code><a href="#Typedef_MobileDevice">MobileDevice</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterDeviceRequest">Struct: RegisterDeviceRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterDeviceResponse">Struct: RegisterDeviceResponse</h3>

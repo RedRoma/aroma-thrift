@@ -50,6 +50,8 @@ typedef Aroma_User * AromaService_User;
 
 typedef AromaChannels_AromaChannel * AromaService_AromaChannel;
 
+typedef AromaChannels_MobileDevice * AromaService_MobileDevice;
+
 typedef AromaEndpoint_Endpoint * AromaService_Endpoint;
 
 typedef AromaEvents_HealthCheckFailed * AromaService_HealthCheckFailed;
@@ -2143,27 +2145,116 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
-@interface AromaService_GetRegisteredDevicesRequest : NSObject <TBase, NSCoding> {
+@interface AromaService_CheckIfDeviceIsRegisteredRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_MobileDevice __device;
+
+  BOOL __token_isset;
+  BOOL __device_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=device, setter=setDevice:) AromaService_MobileDevice device;
+#endif
+
 - (id) init;
+- (id) initWithToken: (AromaService_UserToken) token device: (AromaService_MobileDevice) device;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_MobileDevice) device;
+- (void) setDevice: (AromaService_MobileDevice) device;
+#endif
+- (BOOL) deviceIsSet;
+
+@end
+
+@interface AromaService_CheckIfDeviceIsRegisteredResponse : NSObject <TBase, NSCoding> {
+  BOOL __isRegistered;
+
+  BOOL __isRegistered_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=isRegistered, setter=setIsRegistered:) BOOL isRegistered;
+#endif
+
+- (id) init;
+- (id) initWithIsRegistered: (BOOL) isRegistered;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BOOL) isRegistered;
+- (void) setIsRegistered: (BOOL) isRegistered;
+#endif
+- (BOOL) isRegisteredIsSet;
+
+@end
+
+@interface AromaService_GetRegisteredDevicesRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+
+  BOOL __token_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
 
 @end
 
 @interface AromaService_GetRegisteredDevicesResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __devices;
+
+  BOOL __devices_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=devices, setter=setDevices:) NSMutableArray * devices;
+#endif
+
 - (id) init;
+- (id) initWithDevices: (NSMutableArray *) devices;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) devices;
+- (void) setDevices: (NSMutableArray *) devices;
+#endif
+- (BOOL) devicesIsSet;
 
 @end
 

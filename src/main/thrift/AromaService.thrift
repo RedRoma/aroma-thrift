@@ -50,6 +50,7 @@ typedef Aroma.Image Image
 typedef Aroma.Urgency Urgency
 typedef Aroma.User User
 typedef Channels.AromaChannel AromaChannel
+typedef Channels.MobileDevice MobileDevice
 typedef Endpoint.Endpoint Endpoint
 typedef Events.HealthCheckFailed HealthCheckFailed
 typedef Reactions.Reaction Reaction
@@ -620,14 +621,28 @@ struct GetDashboardResponse
 // DEVICE REGISTRATION OPERATIONS
 //==========================================================
 
+struct CheckIfDeviceIsRegisteredRequest
+{
+    1: UserToken token;
+    2: MobileDevice device;
+}
+
+struct CheckIfDeviceIsRegisteredResponse
+{
+    1: required bool isRegistered;
+}
+
+/**
+ * Get a list of devices registered to the calling user.
+ */
 struct GetRegisteredDevicesRequest
 {
-    
+    1: UserToken token;
 }
 
 struct GetRegisteredDevicesResponse
 {
-    
+    1: list<MobileDevice> devices = [];
 }
 
 struct RegisterDeviceRequest

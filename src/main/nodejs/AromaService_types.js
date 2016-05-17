@@ -4411,7 +4411,136 @@ GetDashboardResponse.prototype.write = function(output) {
   return;
 };
 
+CheckIfDeviceIsRegisteredRequest = module.exports.CheckIfDeviceIsRegisteredRequest = function(args) {
+  this.token = null;
+  this.device = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.device !== undefined && args.device !== null) {
+      this.device = new Channels_ttypes.MobileDevice(args.device);
+    }
+  }
+};
+CheckIfDeviceIsRegisteredRequest.prototype = {};
+CheckIfDeviceIsRegisteredRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.device = new Channels_ttypes.MobileDevice();
+        this.device.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+CheckIfDeviceIsRegisteredRequest.prototype.write = function(output) {
+  output.writeStructBegin('CheckIfDeviceIsRegisteredRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.device !== null && this.device !== undefined) {
+    output.writeFieldBegin('device', Thrift.Type.STRUCT, 2);
+    this.device.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+CheckIfDeviceIsRegisteredResponse = module.exports.CheckIfDeviceIsRegisteredResponse = function(args) {
+  this.isRegistered = null;
+  if (args) {
+    if (args.isRegistered !== undefined && args.isRegistered !== null) {
+      this.isRegistered = args.isRegistered;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field isRegistered is unset!');
+    }
+  }
+};
+CheckIfDeviceIsRegisteredResponse.prototype = {};
+CheckIfDeviceIsRegisteredResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.BOOL) {
+        this.isRegistered = input.readBool();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+CheckIfDeviceIsRegisteredResponse.prototype.write = function(output) {
+  output.writeStructBegin('CheckIfDeviceIsRegisteredResponse');
+  if (this.isRegistered !== null && this.isRegistered !== undefined) {
+    output.writeFieldBegin('isRegistered', Thrift.Type.BOOL, 1);
+    output.writeBool(this.isRegistered);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 GetRegisteredDevicesRequest = module.exports.GetRegisteredDevicesRequest = function(args) {
+  this.token = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+  }
 };
 GetRegisteredDevicesRequest.prototype = {};
 GetRegisteredDevicesRequest.prototype.read = function(input) {
@@ -4425,7 +4554,22 @@ GetRegisteredDevicesRequest.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -4434,12 +4578,23 @@ GetRegisteredDevicesRequest.prototype.read = function(input) {
 
 GetRegisteredDevicesRequest.prototype.write = function(output) {
   output.writeStructBegin('GetRegisteredDevicesRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
 GetRegisteredDevicesResponse = module.exports.GetRegisteredDevicesResponse = function(args) {
+  this.devices = [];
+  if (args) {
+    if (args.devices !== undefined && args.devices !== null) {
+      this.devices = Thrift.copyList(args.devices, [null]);
+    }
+  }
 };
 GetRegisteredDevicesResponse.prototype = {};
 GetRegisteredDevicesResponse.prototype.read = function(input) {
@@ -4453,7 +4608,35 @@ GetRegisteredDevicesResponse.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size144 = 0;
+        var _rtmp3148;
+        this.devices = [];
+        var _etype147 = 0;
+        _rtmp3148 = input.readListBegin();
+        _etype147 = _rtmp3148.etype;
+        _size144 = _rtmp3148.size;
+        for (var _i149 = 0; _i149 < _size144; ++_i149)
+        {
+          var elem150 = null;
+          elem150 = new Channels_ttypes.MobileDevice();
+          elem150.read(input);
+          this.devices.push(elem150);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -4462,6 +4645,20 @@ GetRegisteredDevicesResponse.prototype.read = function(input) {
 
 GetRegisteredDevicesResponse.prototype.write = function(output) {
   output.writeStructBegin('GetRegisteredDevicesResponse');
+  if (this.devices !== null && this.devices !== undefined) {
+    output.writeFieldBegin('devices', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.devices.length);
+    for (var iter151 in this.devices)
+    {
+      if (this.devices.hasOwnProperty(iter151))
+      {
+        iter151 = this.devices[iter151];
+        iter151.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -4791,19 +4988,19 @@ GetServiceAnnouncementsResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size144 = 0;
-        var _rtmp3148;
+        var _size152 = 0;
+        var _rtmp3156;
         this.serviceAnnouncements = [];
-        var _etype147 = 0;
-        _rtmp3148 = input.readListBegin();
-        _etype147 = _rtmp3148.etype;
-        _size144 = _rtmp3148.size;
-        for (var _i149 = 0; _i149 < _size144; ++_i149)
+        var _etype155 = 0;
+        _rtmp3156 = input.readListBegin();
+        _etype155 = _rtmp3156.etype;
+        _size152 = _rtmp3156.size;
+        for (var _i157 = 0; _i157 < _size152; ++_i157)
         {
-          var elem150 = null;
-          elem150 = new Aroma_ttypes.ServiceAnnouncement();
-          elem150.read(input);
-          this.serviceAnnouncements.push(elem150);
+          var elem158 = null;
+          elem158 = new Aroma_ttypes.ServiceAnnouncement();
+          elem158.read(input);
+          this.serviceAnnouncements.push(elem158);
         }
         input.readListEnd();
       } else {
@@ -4827,12 +5024,12 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
   if (this.serviceAnnouncements !== null && this.serviceAnnouncements !== undefined) {
     output.writeFieldBegin('serviceAnnouncements', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.serviceAnnouncements.length);
-    for (var iter151 in this.serviceAnnouncements)
+    for (var iter159 in this.serviceAnnouncements)
     {
-      if (this.serviceAnnouncements.hasOwnProperty(iter151))
+      if (this.serviceAnnouncements.hasOwnProperty(iter159))
       {
-        iter151 = this.serviceAnnouncements[iter151];
-        iter151.write(output);
+        iter159 = this.serviceAnnouncements[iter159];
+        iter159.write(output);
       }
     }
     output.writeListEnd();

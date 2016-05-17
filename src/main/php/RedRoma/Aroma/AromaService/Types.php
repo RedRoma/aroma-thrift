@@ -6593,14 +6593,214 @@ class GetDashboardResponse {
 
 }
 
+class CheckIfDeviceIsRegisteredRequest {
+  static $_TSPEC;
+
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
+  /**
+   * @var \RedRoma\Aroma\Channels\MobileDevice
+   */
+  public $device = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
+        2 => array(
+          'var' => 'device',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Channels\MobileDevice',
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
+      if (isset($vals['device'])) {
+        $this->device = $vals['device'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'CheckIfDeviceIsRegisteredRequest';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRUCT) {
+            $this->device = new \RedRoma\Aroma\Channels\MobileDevice();
+            $xfer += $this->device->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('CheckIfDeviceIsRegisteredRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->device !== null) {
+      if (!is_object($this->device)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('device', TType::STRUCT, 2);
+      $xfer += $this->device->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class CheckIfDeviceIsRegisteredResponse {
+  static $_TSPEC;
+
+  /**
+   * @var bool
+   */
+  public $isRegistered = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'isRegistered',
+          'type' => TType::BOOL,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['isRegistered'])) {
+        $this->isRegistered = $vals['isRegistered'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'CheckIfDeviceIsRegisteredResponse';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::BOOL) {
+            $xfer += $input->readBool($this->isRegistered);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('CheckIfDeviceIsRegisteredResponse');
+    if ($this->isRegistered !== null) {
+      $xfer += $output->writeFieldBegin('isRegistered', TType::BOOL, 1);
+      $xfer += $output->writeBool($this->isRegistered);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+/**
+ * Get a list of devices registered to the calling user.
+ */
 class GetRegisteredDevicesRequest {
   static $_TSPEC;
 
+  /**
+   * @var \RedRoma\Aroma\Authentication\UserToken
+   */
+  public $token = null;
 
-  public function __construct() {
+  public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
+        1 => array(
+          'var' => 'token',
+          'type' => TType::STRUCT,
+          'class' => '\RedRoma\Aroma\Authentication\UserToken',
+          ),
         );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['token'])) {
+        $this->token = $vals['token'];
+      }
     }
   }
 
@@ -6623,6 +6823,14 @@ class GetRegisteredDevicesRequest {
       }
       switch ($fid)
       {
+        case 1:
+          if ($ftype == TType::STRUCT) {
+            $this->token = new \RedRoma\Aroma\Authentication\UserToken();
+            $xfer += $this->token->read($input);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -6636,6 +6844,14 @@ class GetRegisteredDevicesRequest {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('GetRegisteredDevicesRequest');
+    if ($this->token !== null) {
+      if (!is_object($this->token)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
+      $xfer += $this->token->write($output);
+      $xfer += $output->writeFieldEnd();
+    }
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -6646,11 +6862,30 @@ class GetRegisteredDevicesRequest {
 class GetRegisteredDevicesResponse {
   static $_TSPEC;
 
+  /**
+   * @var \RedRoma\Aroma\Channels\MobileDevice[]
+   */
+  public $devices = array(
+  );
 
-  public function __construct() {
+  public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
+        1 => array(
+          'var' => 'devices',
+          'type' => TType::LST,
+          'etype' => TType::STRUCT,
+          'elem' => array(
+            'type' => TType::STRUCT,
+            'class' => '\RedRoma\Aroma\Channels\MobileDevice',
+            ),
+          ),
         );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['devices'])) {
+        $this->devices = $vals['devices'];
+      }
     }
   }
 
@@ -6673,6 +6908,24 @@ class GetRegisteredDevicesResponse {
       }
       switch ($fid)
       {
+        case 1:
+          if ($ftype == TType::LST) {
+            $this->devices = array();
+            $_size127 = 0;
+            $_etype130 = 0;
+            $xfer += $input->readListBegin($_etype130, $_size127);
+            for ($_i131 = 0; $_i131 < $_size127; ++$_i131)
+            {
+              $elem132 = null;
+              $elem132 = new \RedRoma\Aroma\Channels\MobileDevice();
+              $xfer += $elem132->read($input);
+              $this->devices []= $elem132;
+            }
+            $xfer += $input->readListEnd();
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -6686,6 +6939,23 @@ class GetRegisteredDevicesResponse {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('GetRegisteredDevicesResponse');
+    if ($this->devices !== null) {
+      if (!is_array($this->devices)) {
+        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
+      }
+      $xfer += $output->writeFieldBegin('devices', TType::LST, 1);
+      {
+        $output->writeListBegin(TType::STRUCT, count($this->devices));
+        {
+          foreach ($this->devices as $iter133)
+          {
+            $xfer += $iter133->write($output);
+          }
+        }
+        $output->writeListEnd();
+      }
+      $xfer += $output->writeFieldEnd();
+    }
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -7239,15 +7509,15 @@ class GetServiceAnnouncementsResponse {
         case 1:
           if ($ftype == TType::LST) {
             $this->serviceAnnouncements = array();
-            $_size127 = 0;
-            $_etype130 = 0;
-            $xfer += $input->readListBegin($_etype130, $_size127);
-            for ($_i131 = 0; $_i131 < $_size127; ++$_i131)
+            $_size134 = 0;
+            $_etype137 = 0;
+            $xfer += $input->readListBegin($_etype137, $_size134);
+            for ($_i138 = 0; $_i138 < $_size134; ++$_i138)
             {
-              $elem132 = null;
-              $elem132 = new \RedRoma\Aroma\ServiceAnnouncement();
-              $xfer += $elem132->read($input);
-              $this->serviceAnnouncements []= $elem132;
+              $elem139 = null;
+              $elem139 = new \RedRoma\Aroma\ServiceAnnouncement();
+              $xfer += $elem139->read($input);
+              $this->serviceAnnouncements []= $elem139;
             }
             $xfer += $input->readListEnd();
           } else {
@@ -7275,9 +7545,9 @@ class GetServiceAnnouncementsResponse {
       {
         $output->writeListBegin(TType::STRUCT, count($this->serviceAnnouncements));
         {
-          foreach ($this->serviceAnnouncements as $iter133)
+          foreach ($this->serviceAnnouncements as $iter140)
           {
-            $xfer += $iter133->write($output);
+            $xfer += $iter140->write($output);
           }
         }
         $output->writeListEnd();

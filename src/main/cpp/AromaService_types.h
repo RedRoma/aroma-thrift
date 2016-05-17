@@ -50,6 +50,8 @@ typedef class  ::tech::aroma::thrift::User User;
 
 typedef class  ::aroma::thrift::channels::AromaChannel AromaChannel;
 
+typedef class  ::aroma::thrift::channels::MobileDevice MobileDevice;
+
 typedef class  ::aroma::thrift::endpoint::Endpoint Endpoint;
 
 typedef class  ::aroma::thrift::events::HealthCheckFailed HealthCheckFailed;
@@ -189,6 +191,10 @@ class GetBuzzResponse;
 class GetDashboardRequest;
 
 class GetDashboardResponse;
+
+class CheckIfDeviceIsRegisteredRequest;
+
+class CheckIfDeviceIsRegisteredResponse;
 
 class GetRegisteredDevicesRequest;
 
@@ -3222,6 +3228,102 @@ inline std::ostream& operator<<(std::ostream& out, const GetDashboardResponse& o
   return out;
 }
 
+typedef struct _CheckIfDeviceIsRegisteredRequest__isset {
+  _CheckIfDeviceIsRegisteredRequest__isset() : token(false), device(false) {}
+  bool token :1;
+  bool device :1;
+} _CheckIfDeviceIsRegisteredRequest__isset;
+
+class CheckIfDeviceIsRegisteredRequest {
+ public:
+
+  CheckIfDeviceIsRegisteredRequest(const CheckIfDeviceIsRegisteredRequest&);
+  CheckIfDeviceIsRegisteredRequest& operator=(const CheckIfDeviceIsRegisteredRequest&);
+  CheckIfDeviceIsRegisteredRequest() {
+  }
+
+  virtual ~CheckIfDeviceIsRegisteredRequest() throw();
+  UserToken token;
+  MobileDevice device;
+
+  _CheckIfDeviceIsRegisteredRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_device(const MobileDevice& val);
+
+  bool operator == (const CheckIfDeviceIsRegisteredRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(device == rhs.device))
+      return false;
+    return true;
+  }
+  bool operator != (const CheckIfDeviceIsRegisteredRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CheckIfDeviceIsRegisteredRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(CheckIfDeviceIsRegisteredRequest &a, CheckIfDeviceIsRegisteredRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const CheckIfDeviceIsRegisteredRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class CheckIfDeviceIsRegisteredResponse {
+ public:
+
+  CheckIfDeviceIsRegisteredResponse(const CheckIfDeviceIsRegisteredResponse&);
+  CheckIfDeviceIsRegisteredResponse& operator=(const CheckIfDeviceIsRegisteredResponse&);
+  CheckIfDeviceIsRegisteredResponse() : isRegistered(0) {
+  }
+
+  virtual ~CheckIfDeviceIsRegisteredResponse() throw();
+  bool isRegistered;
+
+  void __set_isRegistered(const bool val);
+
+  bool operator == (const CheckIfDeviceIsRegisteredResponse & rhs) const
+  {
+    if (!(isRegistered == rhs.isRegistered))
+      return false;
+    return true;
+  }
+  bool operator != (const CheckIfDeviceIsRegisteredResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CheckIfDeviceIsRegisteredResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(CheckIfDeviceIsRegisteredResponse &a, CheckIfDeviceIsRegisteredResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const CheckIfDeviceIsRegisteredResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetRegisteredDevicesRequest__isset {
+  _GetRegisteredDevicesRequest__isset() : token(false) {}
+  bool token :1;
+} _GetRegisteredDevicesRequest__isset;
 
 class GetRegisteredDevicesRequest {
  public:
@@ -3232,9 +3334,16 @@ class GetRegisteredDevicesRequest {
   }
 
   virtual ~GetRegisteredDevicesRequest() throw();
+  UserToken token;
 
-  bool operator == (const GetRegisteredDevicesRequest & /* rhs */) const
+  _GetRegisteredDevicesRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  bool operator == (const GetRegisteredDevicesRequest & rhs) const
   {
+    if (!(token == rhs.token))
+      return false;
     return true;
   }
   bool operator != (const GetRegisteredDevicesRequest &rhs) const {
@@ -3257,6 +3366,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetRegisteredDevicesReq
   return out;
 }
 
+typedef struct _GetRegisteredDevicesResponse__isset {
+  _GetRegisteredDevicesResponse__isset() : devices(true) {}
+  bool devices :1;
+} _GetRegisteredDevicesResponse__isset;
 
 class GetRegisteredDevicesResponse {
  public:
@@ -3264,12 +3377,20 @@ class GetRegisteredDevicesResponse {
   GetRegisteredDevicesResponse(const GetRegisteredDevicesResponse&);
   GetRegisteredDevicesResponse& operator=(const GetRegisteredDevicesResponse&);
   GetRegisteredDevicesResponse() {
+
   }
 
   virtual ~GetRegisteredDevicesResponse() throw();
+  std::vector<MobileDevice>  devices;
 
-  bool operator == (const GetRegisteredDevicesResponse & /* rhs */) const
+  _GetRegisteredDevicesResponse__isset __isset;
+
+  void __set_devices(const std::vector<MobileDevice> & val);
+
+  bool operator == (const GetRegisteredDevicesResponse & rhs) const
   {
+    if (!(devices == rhs.devices))
+      return false;
     return true;
   }
   bool operator != (const GetRegisteredDevicesResponse &rhs) const {

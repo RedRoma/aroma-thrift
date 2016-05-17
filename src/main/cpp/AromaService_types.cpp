@@ -6557,9 +6557,205 @@ void GetDashboardResponse::printTo(std::ostream& out) const {
 }
 
 
+CheckIfDeviceIsRegisteredRequest::~CheckIfDeviceIsRegisteredRequest() throw() {
+}
+
+
+void CheckIfDeviceIsRegisteredRequest::__set_token(const UserToken& val) {
+  this->token = val;
+}
+
+void CheckIfDeviceIsRegisteredRequest::__set_device(const MobileDevice& val) {
+  this->device = val;
+}
+
+uint32_t CheckIfDeviceIsRegisteredRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->device.read(iprot);
+          this->__isset.device = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t CheckIfDeviceIsRegisteredRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("CheckIfDeviceIsRegisteredRequest");
+
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("device", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->device.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(CheckIfDeviceIsRegisteredRequest &a, CheckIfDeviceIsRegisteredRequest &b) {
+  using ::std::swap;
+  swap(a.token, b.token);
+  swap(a.device, b.device);
+  swap(a.__isset, b.__isset);
+}
+
+CheckIfDeviceIsRegisteredRequest::CheckIfDeviceIsRegisteredRequest(const CheckIfDeviceIsRegisteredRequest& other220) {
+  token = other220.token;
+  device = other220.device;
+  __isset = other220.__isset;
+}
+CheckIfDeviceIsRegisteredRequest& CheckIfDeviceIsRegisteredRequest::operator=(const CheckIfDeviceIsRegisteredRequest& other221) {
+  token = other221.token;
+  device = other221.device;
+  __isset = other221.__isset;
+  return *this;
+}
+void CheckIfDeviceIsRegisteredRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "CheckIfDeviceIsRegisteredRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "device=" << to_string(device);
+  out << ")";
+}
+
+
+CheckIfDeviceIsRegisteredResponse::~CheckIfDeviceIsRegisteredResponse() throw() {
+}
+
+
+void CheckIfDeviceIsRegisteredResponse::__set_isRegistered(const bool val) {
+  this->isRegistered = val;
+}
+
+uint32_t CheckIfDeviceIsRegisteredResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+  bool isset_isRegistered = false;
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->isRegistered);
+          isset_isRegistered = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  if (!isset_isRegistered)
+    throw TProtocolException(TProtocolException::INVALID_DATA);
+  return xfer;
+}
+
+uint32_t CheckIfDeviceIsRegisteredResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("CheckIfDeviceIsRegisteredResponse");
+
+  xfer += oprot->writeFieldBegin("isRegistered", ::apache::thrift::protocol::T_BOOL, 1);
+  xfer += oprot->writeBool(this->isRegistered);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(CheckIfDeviceIsRegisteredResponse &a, CheckIfDeviceIsRegisteredResponse &b) {
+  using ::std::swap;
+  swap(a.isRegistered, b.isRegistered);
+}
+
+CheckIfDeviceIsRegisteredResponse::CheckIfDeviceIsRegisteredResponse(const CheckIfDeviceIsRegisteredResponse& other222) {
+  isRegistered = other222.isRegistered;
+}
+CheckIfDeviceIsRegisteredResponse& CheckIfDeviceIsRegisteredResponse::operator=(const CheckIfDeviceIsRegisteredResponse& other223) {
+  isRegistered = other223.isRegistered;
+  return *this;
+}
+void CheckIfDeviceIsRegisteredResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "CheckIfDeviceIsRegisteredResponse(";
+  out << "isRegistered=" << to_string(isRegistered);
+  out << ")";
+}
+
+
 GetRegisteredDevicesRequest::~GetRegisteredDevicesRequest() throw() {
 }
 
+
+void GetRegisteredDevicesRequest::__set_token(const UserToken& val) {
+  this->token = val;
+}
 
 uint32_t GetRegisteredDevicesRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -6580,7 +6776,20 @@ uint32_t GetRegisteredDevicesRequest::read(::apache::thrift::protocol::TProtocol
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -6594,6 +6803,10 @@ uint32_t GetRegisteredDevicesRequest::write(::apache::thrift::protocol::TProtoco
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("GetRegisteredDevicesRequest");
 
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -6601,20 +6814,23 @@ uint32_t GetRegisteredDevicesRequest::write(::apache::thrift::protocol::TProtoco
 
 void swap(GetRegisteredDevicesRequest &a, GetRegisteredDevicesRequest &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.token, b.token);
+  swap(a.__isset, b.__isset);
 }
 
-GetRegisteredDevicesRequest::GetRegisteredDevicesRequest(const GetRegisteredDevicesRequest& other220) {
-  (void) other220;
+GetRegisteredDevicesRequest::GetRegisteredDevicesRequest(const GetRegisteredDevicesRequest& other224) {
+  token = other224.token;
+  __isset = other224.__isset;
 }
-GetRegisteredDevicesRequest& GetRegisteredDevicesRequest::operator=(const GetRegisteredDevicesRequest& other221) {
-  (void) other221;
+GetRegisteredDevicesRequest& GetRegisteredDevicesRequest::operator=(const GetRegisteredDevicesRequest& other225) {
+  token = other225.token;
+  __isset = other225.__isset;
   return *this;
 }
 void GetRegisteredDevicesRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "GetRegisteredDevicesRequest(";
+  out << "token=" << to_string(token);
   out << ")";
 }
 
@@ -6622,6 +6838,10 @@ void GetRegisteredDevicesRequest::printTo(std::ostream& out) const {
 GetRegisteredDevicesResponse::~GetRegisteredDevicesResponse() throw() {
 }
 
+
+void GetRegisteredDevicesResponse::__set_devices(const std::vector<MobileDevice> & val) {
+  this->devices = val;
+}
 
 uint32_t GetRegisteredDevicesResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -6642,7 +6862,32 @@ uint32_t GetRegisteredDevicesResponse::read(::apache::thrift::protocol::TProtoco
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->devices.clear();
+            uint32_t _size226;
+            ::apache::thrift::protocol::TType _etype229;
+            xfer += iprot->readListBegin(_etype229, _size226);
+            this->devices.resize(_size226);
+            uint32_t _i230;
+            for (_i230 = 0; _i230 < _size226; ++_i230)
+            {
+              xfer += this->devices[_i230].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.devices = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -6656,6 +6901,18 @@ uint32_t GetRegisteredDevicesResponse::write(::apache::thrift::protocol::TProtoc
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("GetRegisteredDevicesResponse");
 
+  xfer += oprot->writeFieldBegin("devices", ::apache::thrift::protocol::T_LIST, 1);
+  {
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->devices.size()));
+    std::vector<MobileDevice> ::const_iterator _iter231;
+    for (_iter231 = this->devices.begin(); _iter231 != this->devices.end(); ++_iter231)
+    {
+      xfer += (*_iter231).write(oprot);
+    }
+    xfer += oprot->writeListEnd();
+  }
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -6663,20 +6920,23 @@ uint32_t GetRegisteredDevicesResponse::write(::apache::thrift::protocol::TProtoc
 
 void swap(GetRegisteredDevicesResponse &a, GetRegisteredDevicesResponse &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.devices, b.devices);
+  swap(a.__isset, b.__isset);
 }
 
-GetRegisteredDevicesResponse::GetRegisteredDevicesResponse(const GetRegisteredDevicesResponse& other222) {
-  (void) other222;
+GetRegisteredDevicesResponse::GetRegisteredDevicesResponse(const GetRegisteredDevicesResponse& other232) {
+  devices = other232.devices;
+  __isset = other232.__isset;
 }
-GetRegisteredDevicesResponse& GetRegisteredDevicesResponse::operator=(const GetRegisteredDevicesResponse& other223) {
-  (void) other223;
+GetRegisteredDevicesResponse& GetRegisteredDevicesResponse::operator=(const GetRegisteredDevicesResponse& other233) {
+  devices = other233.devices;
+  __isset = other233.__isset;
   return *this;
 }
 void GetRegisteredDevicesResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "GetRegisteredDevicesResponse(";
+  out << "devices=" << to_string(devices);
   out << ")";
 }
 
@@ -6729,11 +6989,11 @@ void swap(RegisterDeviceRequest &a, RegisterDeviceRequest &b) {
   (void) b;
 }
 
-RegisterDeviceRequest::RegisterDeviceRequest(const RegisterDeviceRequest& other224) {
-  (void) other224;
+RegisterDeviceRequest::RegisterDeviceRequest(const RegisterDeviceRequest& other234) {
+  (void) other234;
 }
-RegisterDeviceRequest& RegisterDeviceRequest::operator=(const RegisterDeviceRequest& other225) {
-  (void) other225;
+RegisterDeviceRequest& RegisterDeviceRequest::operator=(const RegisterDeviceRequest& other235) {
+  (void) other235;
   return *this;
 }
 void RegisterDeviceRequest::printTo(std::ostream& out) const {
@@ -6791,11 +7051,11 @@ void swap(RegisterDeviceResponse &a, RegisterDeviceResponse &b) {
   (void) b;
 }
 
-RegisterDeviceResponse::RegisterDeviceResponse(const RegisterDeviceResponse& other226) {
-  (void) other226;
+RegisterDeviceResponse::RegisterDeviceResponse(const RegisterDeviceResponse& other236) {
+  (void) other236;
 }
-RegisterDeviceResponse& RegisterDeviceResponse::operator=(const RegisterDeviceResponse& other227) {
-  (void) other227;
+RegisterDeviceResponse& RegisterDeviceResponse::operator=(const RegisterDeviceResponse& other237) {
+  (void) other237;
   return *this;
 }
 void RegisterDeviceResponse::printTo(std::ostream& out) const {
@@ -6853,11 +7113,11 @@ void swap(UnregisterDeviceRequest &a, UnregisterDeviceRequest &b) {
   (void) b;
 }
 
-UnregisterDeviceRequest::UnregisterDeviceRequest(const UnregisterDeviceRequest& other228) {
-  (void) other228;
+UnregisterDeviceRequest::UnregisterDeviceRequest(const UnregisterDeviceRequest& other238) {
+  (void) other238;
 }
-UnregisterDeviceRequest& UnregisterDeviceRequest::operator=(const UnregisterDeviceRequest& other229) {
-  (void) other229;
+UnregisterDeviceRequest& UnregisterDeviceRequest::operator=(const UnregisterDeviceRequest& other239) {
+  (void) other239;
   return *this;
 }
 void UnregisterDeviceRequest::printTo(std::ostream& out) const {
@@ -6915,11 +7175,11 @@ void swap(UnregisterDeviceResponse &a, UnregisterDeviceResponse &b) {
   (void) b;
 }
 
-UnregisterDeviceResponse::UnregisterDeviceResponse(const UnregisterDeviceResponse& other230) {
-  (void) other230;
+UnregisterDeviceResponse::UnregisterDeviceResponse(const UnregisterDeviceResponse& other240) {
+  (void) other240;
 }
-UnregisterDeviceResponse& UnregisterDeviceResponse::operator=(const UnregisterDeviceResponse& other231) {
-  (void) other231;
+UnregisterDeviceResponse& UnregisterDeviceResponse::operator=(const UnregisterDeviceResponse& other241) {
+  (void) other241;
   return *this;
 }
 void UnregisterDeviceResponse::printTo(std::ostream& out) const {
@@ -7015,15 +7275,15 @@ void swap(RegisterHealthCheckRequest &a, RegisterHealthCheckRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-RegisterHealthCheckRequest::RegisterHealthCheckRequest(const RegisterHealthCheckRequest& other232) {
-  token = other232.token;
-  endpoint = other232.endpoint;
-  __isset = other232.__isset;
+RegisterHealthCheckRequest::RegisterHealthCheckRequest(const RegisterHealthCheckRequest& other242) {
+  token = other242.token;
+  endpoint = other242.endpoint;
+  __isset = other242.__isset;
 }
-RegisterHealthCheckRequest& RegisterHealthCheckRequest::operator=(const RegisterHealthCheckRequest& other233) {
-  token = other233.token;
-  endpoint = other233.endpoint;
-  __isset = other233.__isset;
+RegisterHealthCheckRequest& RegisterHealthCheckRequest::operator=(const RegisterHealthCheckRequest& other243) {
+  token = other243.token;
+  endpoint = other243.endpoint;
+  __isset = other243.__isset;
   return *this;
 }
 void RegisterHealthCheckRequest::printTo(std::ostream& out) const {
@@ -7125,15 +7385,15 @@ void swap(RegisterHealthCheckResponse &a, RegisterHealthCheckResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-RegisterHealthCheckResponse::RegisterHealthCheckResponse(const RegisterHealthCheckResponse& other234) {
-  message = other234.message;
-  healthCheckToken = other234.healthCheckToken;
-  __isset = other234.__isset;
+RegisterHealthCheckResponse::RegisterHealthCheckResponse(const RegisterHealthCheckResponse& other244) {
+  message = other244.message;
+  healthCheckToken = other244.healthCheckToken;
+  __isset = other244.__isset;
 }
-RegisterHealthCheckResponse& RegisterHealthCheckResponse::operator=(const RegisterHealthCheckResponse& other235) {
-  message = other235.message;
-  healthCheckToken = other235.healthCheckToken;
-  __isset = other235.__isset;
+RegisterHealthCheckResponse& RegisterHealthCheckResponse::operator=(const RegisterHealthCheckResponse& other245) {
+  message = other245.message;
+  healthCheckToken = other245.healthCheckToken;
+  __isset = other245.__isset;
   return *this;
 }
 void RegisterHealthCheckResponse::printTo(std::ostream& out) const {
@@ -7214,13 +7474,13 @@ void swap(GetServiceAnnouncementsRequest &a, GetServiceAnnouncementsRequest &b) 
   swap(a.__isset, b.__isset);
 }
 
-GetServiceAnnouncementsRequest::GetServiceAnnouncementsRequest(const GetServiceAnnouncementsRequest& other236) {
-  token = other236.token;
-  __isset = other236.__isset;
+GetServiceAnnouncementsRequest::GetServiceAnnouncementsRequest(const GetServiceAnnouncementsRequest& other246) {
+  token = other246.token;
+  __isset = other246.__isset;
 }
-GetServiceAnnouncementsRequest& GetServiceAnnouncementsRequest::operator=(const GetServiceAnnouncementsRequest& other237) {
-  token = other237.token;
-  __isset = other237.__isset;
+GetServiceAnnouncementsRequest& GetServiceAnnouncementsRequest::operator=(const GetServiceAnnouncementsRequest& other247) {
+  token = other247.token;
+  __isset = other247.__isset;
   return *this;
 }
 void GetServiceAnnouncementsRequest::printTo(std::ostream& out) const {
@@ -7265,14 +7525,14 @@ uint32_t GetServiceAnnouncementsResponse::read(::apache::thrift::protocol::TProt
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->serviceAnnouncements.clear();
-            uint32_t _size238;
-            ::apache::thrift::protocol::TType _etype241;
-            xfer += iprot->readListBegin(_etype241, _size238);
-            this->serviceAnnouncements.resize(_size238);
-            uint32_t _i242;
-            for (_i242 = 0; _i242 < _size238; ++_i242)
+            uint32_t _size248;
+            ::apache::thrift::protocol::TType _etype251;
+            xfer += iprot->readListBegin(_etype251, _size248);
+            this->serviceAnnouncements.resize(_size248);
+            uint32_t _i252;
+            for (_i252 = 0; _i252 < _size248; ++_i252)
             {
-              xfer += this->serviceAnnouncements[_i242].read(iprot);
+              xfer += this->serviceAnnouncements[_i252].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -7302,10 +7562,10 @@ uint32_t GetServiceAnnouncementsResponse::write(::apache::thrift::protocol::TPro
     xfer += oprot->writeFieldBegin("serviceAnnouncements", ::apache::thrift::protocol::T_LIST, 1);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->serviceAnnouncements.size()));
-      std::vector< ::tech::aroma::thrift::ServiceAnnouncement> ::const_iterator _iter243;
-      for (_iter243 = this->serviceAnnouncements.begin(); _iter243 != this->serviceAnnouncements.end(); ++_iter243)
+      std::vector< ::tech::aroma::thrift::ServiceAnnouncement> ::const_iterator _iter253;
+      for (_iter253 = this->serviceAnnouncements.begin(); _iter253 != this->serviceAnnouncements.end(); ++_iter253)
       {
-        xfer += (*_iter243).write(oprot);
+        xfer += (*_iter253).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
@@ -7322,13 +7582,13 @@ void swap(GetServiceAnnouncementsResponse &a, GetServiceAnnouncementsResponse &b
   swap(a.__isset, b.__isset);
 }
 
-GetServiceAnnouncementsResponse::GetServiceAnnouncementsResponse(const GetServiceAnnouncementsResponse& other244) {
-  serviceAnnouncements = other244.serviceAnnouncements;
-  __isset = other244.__isset;
+GetServiceAnnouncementsResponse::GetServiceAnnouncementsResponse(const GetServiceAnnouncementsResponse& other254) {
+  serviceAnnouncements = other254.serviceAnnouncements;
+  __isset = other254.__isset;
 }
-GetServiceAnnouncementsResponse& GetServiceAnnouncementsResponse::operator=(const GetServiceAnnouncementsResponse& other245) {
-  serviceAnnouncements = other245.serviceAnnouncements;
-  __isset = other245.__isset;
+GetServiceAnnouncementsResponse& GetServiceAnnouncementsResponse::operator=(const GetServiceAnnouncementsResponse& other255) {
+  serviceAnnouncements = other255.serviceAnnouncements;
+  __isset = other255.__isset;
   return *this;
 }
 void GetServiceAnnouncementsResponse::printTo(std::ostream& out) const {
