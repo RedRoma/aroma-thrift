@@ -4810,34 +4810,6 @@ SearchForApplicationsResponse.prototype.write = function(output) {
   return;
 };
 
-RegisterDeviceRequest = module.exports.RegisterDeviceRequest = function(args) {
-};
-RegisterDeviceRequest.prototype = {};
-RegisterDeviceRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    input.skip(ftype);
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RegisterDeviceRequest.prototype.write = function(output) {
-  output.writeStructBegin('RegisterDeviceRequest');
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 ttypes.SERVICE_PORT = 7010;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'aroma-srv.aroma.tech','port' : 7010});

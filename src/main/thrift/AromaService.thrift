@@ -615,10 +615,6 @@ struct SearchForApplicationsResponse
 // DEVICE OPERATIONS
 //==========================================================
 
-struct RegisterDeviceRequest
-{
-    
-}
 
 
 /**

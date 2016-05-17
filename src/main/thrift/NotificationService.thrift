@@ -63,7 +63,7 @@ struct SendNotificationRequest
     1: AuthenticationToken token;
     2: Event event;
     /**
-     * This Channel <-> User relationship is used to make the message sent more personalized.
+     * This [Channel : User] relationship is used to make the message sent more personalized.
      * 
      * Each channel should be unique, so it is the key in the Map.
      * 

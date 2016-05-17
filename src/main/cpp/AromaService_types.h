@@ -202,8 +202,6 @@ class SearchForApplicationsRequest;
 
 class SearchForApplicationsResponse;
 
-class RegisterDeviceRequest;
-
 typedef struct _CheckExistsRequest__isset {
   _CheckExistsRequest__isset() : emailAddress(false) {}
   bool emailAddress :1;
@@ -3520,41 +3518,6 @@ class SearchForApplicationsResponse {
 void swap(SearchForApplicationsResponse &a, SearchForApplicationsResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const SearchForApplicationsResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-
-class RegisterDeviceRequest {
- public:
-
-  RegisterDeviceRequest(const RegisterDeviceRequest&);
-  RegisterDeviceRequest& operator=(const RegisterDeviceRequest&);
-  RegisterDeviceRequest() {
-  }
-
-  virtual ~RegisterDeviceRequest() throw();
-
-  bool operator == (const RegisterDeviceRequest & /* rhs */) const
-  {
-    return true;
-  }
-  bool operator != (const RegisterDeviceRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RegisterDeviceRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RegisterDeviceRequest &a, RegisterDeviceRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RegisterDeviceRequest& obj)
 {
   obj.printTo(out);
   return out;

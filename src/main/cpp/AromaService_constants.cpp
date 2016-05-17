@@ -14,34 +14,34 @@ AromaServiceConstants::AromaServiceConstants() {
   SERVICE_PORT = 7010;
 
   PRODUCTION_ENDPOINT.hostname = "aroma-srv.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp240;
-  tmp240 = 7010;
+   ::aroma::thrift::endpoint::int tmp238;
+  tmp238 = 7010;
 
-  PRODUCTION_ENDPOINT.port = tmp240;
+  PRODUCTION_ENDPOINT.port = tmp238;
 
   BETA_ENDPOINT.hostname = "aroma-srv.beta.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp241;
-  tmp241 = 7010;
+   ::aroma::thrift::endpoint::int tmp239;
+  tmp239 = 7010;
 
-  BETA_ENDPOINT.port = tmp241;
+  BETA_ENDPOINT.port = tmp239;
+
+   ::tech::aroma::thrift::int tmp240;
+  tmp240 = 1024;
+
+  MAX_APPLICATION_ICON_DIMENSION.width = tmp240;
+   ::tech::aroma::thrift::int tmp241;
+  tmp241 = 1024;
+
+  MAX_APPLICATION_ICON_DIMENSION.height = tmp241;
 
    ::tech::aroma::thrift::int tmp242;
   tmp242 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.width = tmp242;
+  MAX_PROFILE_IMAGE_DIMENSION.width = tmp242;
    ::tech::aroma::thrift::int tmp243;
   tmp243 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.height = tmp243;
-
-   ::tech::aroma::thrift::int tmp244;
-  tmp244 = 1024;
-
-  MAX_PROFILE_IMAGE_DIMENSION.width = tmp244;
-   ::tech::aroma::thrift::int tmp245;
-  tmp245 = 1024;
-
-  MAX_PROFILE_IMAGE_DIMENSION.height = tmp245;
+  MAX_PROFILE_IMAGE_DIMENSION.height = tmp243;
 
   MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 
@@ -49,16 +49,16 @@ AromaServiceConstants::AromaServiceConstants() {
 
   MAX_MESSAGE_LENGTH = 5000;
 
-   ::tech::aroma::thrift::long tmp246;
-  tmp246 = 3LL;
+   ::tech::aroma::thrift::long tmp244;
+  tmp244 = 3LL;
 
-  DEFAULT_INBOX_LIFETIME.value = tmp246;
+  DEFAULT_INBOX_LIFETIME.value = tmp244;
   DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
-   ::tech::aroma::thrift::long tmp247;
-  tmp247 = 4LL;
+   ::tech::aroma::thrift::long tmp245;
+  tmp245 = 4LL;
 
-  DEFAULT_ACTIVITY_LIFETIME.value = tmp247;
+  DEFAULT_ACTIVITY_LIFETIME.value = tmp245;
   DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
   APPLICATION_NAME_MAX_LENGTH = 20;

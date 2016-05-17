@@ -4798,34 +4798,6 @@ SearchForApplicationsResponse.prototype.write = function(output) {
   return;
 };
 
-RegisterDeviceRequest = function(args) {
-};
-RegisterDeviceRequest.prototype = {};
-RegisterDeviceRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    input.skip(ftype);
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RegisterDeviceRequest.prototype.write = function(output) {
-  output.writeStructBegin('RegisterDeviceRequest');
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 SERVICE_PORT = 7010;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'aroma-srv.aroma.tech','port' : 7010});
