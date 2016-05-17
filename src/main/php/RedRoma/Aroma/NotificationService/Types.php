@@ -29,6 +29,12 @@ class SendNotificationRequest {
    */
   public $event = null;
   /**
+   * This Channel <-> User relationship is used to make the message sent more personalized.
+   * 
+   * Each channel should be unique, so it is the key in the Map.
+   * 
+   * Furthermore, a user may have multiple channels registered.
+   * 
    * @var array
    */
   public $channels = null;

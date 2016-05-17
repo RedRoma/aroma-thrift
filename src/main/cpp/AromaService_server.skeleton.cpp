@@ -82,16 +82,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   }
 
   /**
-   * Removes a previously saved channel.
-   * 
-   * @param request
-   */
-  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
-    // Your implementation goes here
-    printf("removeSavedChannel\n");
-  }
-
-  /**
    * Renew an Application Token that is close to being expired.
    * Only an "owner" can perform this operation.
    * 
@@ -102,16 +92,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) {
     // Your implementation goes here
     printf("renewApplicationToken\n");
-  }
-
-  /**
-   * Saves a user's channel for future reference.
-   * 
-   * @param request
-   */
-  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
-    // Your implementation goes here
-    printf("saveChannel\n");
   }
 
   /**
@@ -134,16 +114,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   void signUp(SignUpResponse& _return, const SignUpRequest& request) {
     // Your implementation goes here
     printf("signUp\n");
-  }
-
-  /**
-   * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
-   * 
-   * @param request
-   */
-  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
-    // Your implementation goes here
-    printf("snoozeChannel\n");
   }
 
   /**
@@ -261,11 +231,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) {
     // Your implementation goes here
     printf("getApplicationsFollowedBy\n");
-  }
-
-  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
-    // Your implementation goes here
-    printf("getMySavedChannels\n");
   }
 
   void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {

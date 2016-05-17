@@ -57,13 +57,6 @@ class AromaServiceIf {
   virtual void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) = 0;
 
   /**
-   * Removes a previously saved channel.
-   * 
-   * @param request
-   */
-  virtual void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) = 0;
-
-  /**
    * Renew an Application Token that is close to being expired.
    * Only an "owner" can perform this operation.
    * 
@@ -72,13 +65,6 @@ class AromaServiceIf {
    * @param request
    */
   virtual void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) = 0;
-
-  /**
-   * Saves a user's channel for future reference.
-   * 
-   * @param request
-   */
-  virtual void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) = 0;
 
   /**
    * Sign in to the App and get a User Token in return.
@@ -95,13 +81,6 @@ class AromaServiceIf {
    * @param request
    */
   virtual void signUp(SignUpResponse& _return, const SignUpRequest& request) = 0;
-
-  /**
-   * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
-   * 
-   * @param request
-   */
-  virtual void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) = 0;
 
   /**
    * Subscribe to an existing application to get notifications.
@@ -171,7 +150,6 @@ class AromaServiceIf {
   virtual void getMedia(GetMediaResponse& _return, const GetMediaRequest& request) = 0;
   virtual void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) = 0;
   virtual void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) = 0;
-  virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
   virtual void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) = 0;
   virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
 
@@ -234,22 +212,13 @@ class AromaServiceNull : virtual public AromaServiceIf {
   void registerHealthCheck(RegisterHealthCheckResponse& /* _return */, const RegisterHealthCheckRequest& /* request */) {
     return;
   }
-  void removeSavedChannel(RemoveSavedChannelResponse& /* _return */, const RemoveSavedChannelRequest& /* request */) {
-    return;
-  }
   void renewApplicationToken(RenewApplicationTokenResponse& /* _return */, const RenewApplicationTokenRequest& /* request */) {
-    return;
-  }
-  void saveChannel(SaveChannelResponse& /* _return */, const SaveChannelRequest& /* request */) {
     return;
   }
   void signIn(SignInResponse& /* _return */, const SignInRequest& /* request */) {
     return;
   }
   void signUp(SignUpResponse& /* _return */, const SignUpRequest& /* request */) {
-    return;
-  }
-  void snoozeChannel(SnoozeChannelResponse& /* _return */, const SnoozeChannelRequest& /* request */) {
     return;
   }
   void followApplication(FollowApplicationResponse& /* _return */, const FollowApplicationRequest& /* request */) {
@@ -292,9 +261,6 @@ class AromaServiceNull : virtual public AromaServiceIf {
     return;
   }
   void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& /* _return */, const GetApplicationsFollowedByRequest& /* request */) {
-    return;
-  }
-  void getMySavedChannels(GetMySavedChannelsResponse& /* _return */, const GetMySavedChannelsRequest& /* request */) {
     return;
   }
   void getReactions(GetReactionsResponse& /* _return */, const GetReactionsRequest& /* request */) {
@@ -1264,150 +1230,6 @@ class AromaService_registerHealthCheck_presult {
 
 };
 
-typedef struct _AromaService_removeSavedChannel_args__isset {
-  _AromaService_removeSavedChannel_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_removeSavedChannel_args__isset;
-
-class AromaService_removeSavedChannel_args {
- public:
-
-  AromaService_removeSavedChannel_args(const AromaService_removeSavedChannel_args&);
-  AromaService_removeSavedChannel_args& operator=(const AromaService_removeSavedChannel_args&);
-  AromaService_removeSavedChannel_args() {
-  }
-
-  virtual ~AromaService_removeSavedChannel_args() throw();
-  RemoveSavedChannelRequest request;
-
-  _AromaService_removeSavedChannel_args__isset __isset;
-
-  void __set_request(const RemoveSavedChannelRequest& val);
-
-  bool operator == (const AromaService_removeSavedChannel_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_removeSavedChannel_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_removeSavedChannel_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_removeSavedChannel_pargs {
- public:
-
-
-  virtual ~AromaService_removeSavedChannel_pargs() throw();
-  const RemoveSavedChannelRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_removeSavedChannel_result__isset {
-  _AromaService_removeSavedChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_removeSavedChannel_result__isset;
-
-class AromaService_removeSavedChannel_result {
- public:
-
-  AromaService_removeSavedChannel_result(const AromaService_removeSavedChannel_result&);
-  AromaService_removeSavedChannel_result& operator=(const AromaService_removeSavedChannel_result&);
-  AromaService_removeSavedChannel_result() {
-  }
-
-  virtual ~AromaService_removeSavedChannel_result() throw();
-  RemoveSavedChannelResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  UnauthorizedException ex4;
-  ChannelDoesNotExistException ex5;
-
-  _AromaService_removeSavedChannel_result__isset __isset;
-
-  void __set_success(const RemoveSavedChannelResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const UnauthorizedException& val);
-
-  void __set_ex5(const ChannelDoesNotExistException& val);
-
-  bool operator == (const AromaService_removeSavedChannel_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_removeSavedChannel_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_removeSavedChannel_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_removeSavedChannel_presult__isset {
-  _AromaService_removeSavedChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_removeSavedChannel_presult__isset;
-
-class AromaService_removeSavedChannel_presult {
- public:
-
-
-  virtual ~AromaService_removeSavedChannel_presult() throw();
-  RemoveSavedChannelResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  UnauthorizedException* ex4;
-  ChannelDoesNotExistException* ex5;
-
-  _AromaService_removeSavedChannel_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
 typedef struct _AromaService_renewApplicationToken_args__isset {
   _AromaService_renewApplicationToken_args__isset() : request(false) {}
   bool request :1;
@@ -1547,142 +1369,6 @@ class AromaService_renewApplicationToken_presult {
   UnauthorizedException* ex5;
 
   _AromaService_renewApplicationToken_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_saveChannel_args__isset {
-  _AromaService_saveChannel_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_saveChannel_args__isset;
-
-class AromaService_saveChannel_args {
- public:
-
-  AromaService_saveChannel_args(const AromaService_saveChannel_args&);
-  AromaService_saveChannel_args& operator=(const AromaService_saveChannel_args&);
-  AromaService_saveChannel_args() {
-  }
-
-  virtual ~AromaService_saveChannel_args() throw();
-  SaveChannelRequest request;
-
-  _AromaService_saveChannel_args__isset __isset;
-
-  void __set_request(const SaveChannelRequest& val);
-
-  bool operator == (const AromaService_saveChannel_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_saveChannel_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_saveChannel_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_saveChannel_pargs {
- public:
-
-
-  virtual ~AromaService_saveChannel_pargs() throw();
-  const SaveChannelRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_saveChannel_result__isset {
-  _AromaService_saveChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-} _AromaService_saveChannel_result__isset;
-
-class AromaService_saveChannel_result {
- public:
-
-  AromaService_saveChannel_result(const AromaService_saveChannel_result&);
-  AromaService_saveChannel_result& operator=(const AromaService_saveChannel_result&);
-  AromaService_saveChannel_result() {
-  }
-
-  virtual ~AromaService_saveChannel_result() throw();
-  SaveChannelResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  UnauthorizedException ex4;
-
-  _AromaService_saveChannel_result__isset __isset;
-
-  void __set_success(const SaveChannelResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const UnauthorizedException& val);
-
-  bool operator == (const AromaService_saveChannel_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_saveChannel_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_saveChannel_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_saveChannel_presult__isset {
-  _AromaService_saveChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-} _AromaService_saveChannel_presult__isset;
-
-class AromaService_saveChannel_presult {
- public:
-
-
-  virtual ~AromaService_saveChannel_presult() throw();
-  SaveChannelResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  UnauthorizedException* ex4;
-
-  _AromaService_saveChannel_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -1955,150 +1641,6 @@ class AromaService_signUp_presult {
   AccountAlreadyExistsException* ex4;
 
   _AromaService_signUp_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
-typedef struct _AromaService_snoozeChannel_args__isset {
-  _AromaService_snoozeChannel_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_snoozeChannel_args__isset;
-
-class AromaService_snoozeChannel_args {
- public:
-
-  AromaService_snoozeChannel_args(const AromaService_snoozeChannel_args&);
-  AromaService_snoozeChannel_args& operator=(const AromaService_snoozeChannel_args&);
-  AromaService_snoozeChannel_args() {
-  }
-
-  virtual ~AromaService_snoozeChannel_args() throw();
-  SnoozeChannelRequest request;
-
-  _AromaService_snoozeChannel_args__isset __isset;
-
-  void __set_request(const SnoozeChannelRequest& val);
-
-  bool operator == (const AromaService_snoozeChannel_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_snoozeChannel_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_snoozeChannel_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_snoozeChannel_pargs {
- public:
-
-
-  virtual ~AromaService_snoozeChannel_pargs() throw();
-  const SnoozeChannelRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_snoozeChannel_result__isset {
-  _AromaService_snoozeChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_snoozeChannel_result__isset;
-
-class AromaService_snoozeChannel_result {
- public:
-
-  AromaService_snoozeChannel_result(const AromaService_snoozeChannel_result&);
-  AromaService_snoozeChannel_result& operator=(const AromaService_snoozeChannel_result&);
-  AromaService_snoozeChannel_result() {
-  }
-
-  virtual ~AromaService_snoozeChannel_result() throw();
-  SnoozeChannelResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-  UnauthorizedException ex4;
-  ChannelDoesNotExistException ex5;
-
-  _AromaService_snoozeChannel_result__isset __isset;
-
-  void __set_success(const SnoozeChannelResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  void __set_ex4(const UnauthorizedException& val);
-
-  void __set_ex5(const ChannelDoesNotExistException& val);
-
-  bool operator == (const AromaService_snoozeChannel_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_snoozeChannel_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_snoozeChannel_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_snoozeChannel_presult__isset {
-  _AromaService_snoozeChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
-} _AromaService_snoozeChannel_presult__isset;
-
-class AromaService_snoozeChannel_presult {
- public:
-
-
-  virtual ~AromaService_snoozeChannel_presult() throw();
-  SnoozeChannelResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-  UnauthorizedException* ex4;
-  ChannelDoesNotExistException* ex5;
-
-  _AromaService_snoozeChannel_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -4024,134 +3566,6 @@ class AromaService_getApplicationsFollowedBy_presult {
 
 };
 
-typedef struct _AromaService_getMySavedChannels_args__isset {
-  _AromaService_getMySavedChannels_args__isset() : request(false) {}
-  bool request :1;
-} _AromaService_getMySavedChannels_args__isset;
-
-class AromaService_getMySavedChannels_args {
- public:
-
-  AromaService_getMySavedChannels_args(const AromaService_getMySavedChannels_args&);
-  AromaService_getMySavedChannels_args& operator=(const AromaService_getMySavedChannels_args&);
-  AromaService_getMySavedChannels_args() {
-  }
-
-  virtual ~AromaService_getMySavedChannels_args() throw();
-  GetMySavedChannelsRequest request;
-
-  _AromaService_getMySavedChannels_args__isset __isset;
-
-  void __set_request(const GetMySavedChannelsRequest& val);
-
-  bool operator == (const AromaService_getMySavedChannels_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getMySavedChannels_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getMySavedChannels_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class AromaService_getMySavedChannels_pargs {
- public:
-
-
-  virtual ~AromaService_getMySavedChannels_pargs() throw();
-  const GetMySavedChannelsRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getMySavedChannels_result__isset {
-  _AromaService_getMySavedChannels_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getMySavedChannels_result__isset;
-
-class AromaService_getMySavedChannels_result {
- public:
-
-  AromaService_getMySavedChannels_result(const AromaService_getMySavedChannels_result&);
-  AromaService_getMySavedChannels_result& operator=(const AromaService_getMySavedChannels_result&);
-  AromaService_getMySavedChannels_result() {
-  }
-
-  virtual ~AromaService_getMySavedChannels_result() throw();
-  GetMySavedChannelsResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidTokenException ex3;
-
-  _AromaService_getMySavedChannels_result__isset __isset;
-
-  void __set_success(const GetMySavedChannelsResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidTokenException& val);
-
-  bool operator == (const AromaService_getMySavedChannels_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    return true;
-  }
-  bool operator != (const AromaService_getMySavedChannels_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AromaService_getMySavedChannels_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _AromaService_getMySavedChannels_presult__isset {
-  _AromaService_getMySavedChannels_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-} _AromaService_getMySavedChannels_presult__isset;
-
-class AromaService_getMySavedChannels_presult {
- public:
-
-
-  virtual ~AromaService_getMySavedChannels_presult() throw();
-  GetMySavedChannelsResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidTokenException* ex3;
-
-  _AromaService_getMySavedChannels_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
 typedef struct _AromaService_getReactions_args__isset {
   _AromaService_getReactions_args__isset() : request(false) {}
   bool request :1;
@@ -4622,24 +4036,15 @@ class AromaServiceClient : virtual public AromaServiceIf {
   void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request);
   void send_registerHealthCheck(const RegisterHealthCheckRequest& request);
   void recv_registerHealthCheck(RegisterHealthCheckResponse& _return);
-  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request);
-  void send_removeSavedChannel(const RemoveSavedChannelRequest& request);
-  void recv_removeSavedChannel(RemoveSavedChannelResponse& _return);
   void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request);
   void send_renewApplicationToken(const RenewApplicationTokenRequest& request);
   void recv_renewApplicationToken(RenewApplicationTokenResponse& _return);
-  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request);
-  void send_saveChannel(const SaveChannelRequest& request);
-  void recv_saveChannel(SaveChannelResponse& _return);
   void signIn(SignInResponse& _return, const SignInRequest& request);
   void send_signIn(const SignInRequest& request);
   void recv_signIn(SignInResponse& _return);
   void signUp(SignUpResponse& _return, const SignUpRequest& request);
   void send_signUp(const SignUpRequest& request);
   void recv_signUp(SignUpResponse& _return);
-  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
-  void send_snoozeChannel(const SnoozeChannelRequest& request);
-  void recv_snoozeChannel(SnoozeChannelResponse& _return);
   void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request);
   void send_followApplication(const FollowApplicationRequest& request);
   void recv_followApplication(FollowApplicationResponse& _return);
@@ -4682,9 +4087,6 @@ class AromaServiceClient : virtual public AromaServiceIf {
   void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request);
   void send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request);
   void recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return);
-  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
-  void send_getMySavedChannels(const GetMySavedChannelsRequest& request);
-  void recv_getMySavedChannels(GetMySavedChannelsResponse& _return);
   void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request);
   void send_getReactions(const GetReactionsRequest& request);
   void recv_getReactions(GetReactionsResponse& _return);
@@ -4716,12 +4118,9 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_removeSavedChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_renewApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_saveChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_unfollowApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_updateApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -4736,7 +4135,6 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getMedia(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationsFollowedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -4750,12 +4148,9 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["provisionApplication"] = &AromaServiceProcessor::process_provisionApplication;
     processMap_["regenerateToken"] = &AromaServiceProcessor::process_regenerateToken;
     processMap_["registerHealthCheck"] = &AromaServiceProcessor::process_registerHealthCheck;
-    processMap_["removeSavedChannel"] = &AromaServiceProcessor::process_removeSavedChannel;
     processMap_["renewApplicationToken"] = &AromaServiceProcessor::process_renewApplicationToken;
-    processMap_["saveChannel"] = &AromaServiceProcessor::process_saveChannel;
     processMap_["signIn"] = &AromaServiceProcessor::process_signIn;
     processMap_["signUp"] = &AromaServiceProcessor::process_signUp;
-    processMap_["snoozeChannel"] = &AromaServiceProcessor::process_snoozeChannel;
     processMap_["followApplication"] = &AromaServiceProcessor::process_followApplication;
     processMap_["unfollowApplication"] = &AromaServiceProcessor::process_unfollowApplication;
     processMap_["updateApplication"] = &AromaServiceProcessor::process_updateApplication;
@@ -4770,7 +4165,6 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getMedia"] = &AromaServiceProcessor::process_getMedia;
     processMap_["getApplicationsOwnedBy"] = &AromaServiceProcessor::process_getApplicationsOwnedBy;
     processMap_["getApplicationsFollowedBy"] = &AromaServiceProcessor::process_getApplicationsFollowedBy;
-    processMap_["getMySavedChannels"] = &AromaServiceProcessor::process_getMySavedChannels;
     processMap_["getReactions"] = &AromaServiceProcessor::process_getReactions;
     processMap_["getUserInfo"] = &AromaServiceProcessor::process_getUserInfo;
     processMap_["searchForApplications"] = &AromaServiceProcessor::process_searchForApplications;
@@ -4871,16 +4265,6 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
-  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->removeSavedChannel(_return, request);
-    }
-    ifaces_[i]->removeSavedChannel(_return, request);
-    return;
-  }
-
   void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -4888,16 +4272,6 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
       ifaces_[i]->renewApplicationToken(_return, request);
     }
     ifaces_[i]->renewApplicationToken(_return, request);
-    return;
-  }
-
-  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->saveChannel(_return, request);
-    }
-    ifaces_[i]->saveChannel(_return, request);
     return;
   }
 
@@ -4918,16 +4292,6 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
       ifaces_[i]->signUp(_return, request);
     }
     ifaces_[i]->signUp(_return, request);
-    return;
-  }
-
-  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->snoozeChannel(_return, request);
-    }
-    ifaces_[i]->snoozeChannel(_return, request);
     return;
   }
 
@@ -5071,16 +4435,6 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
-  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getMySavedChannels(_return, request);
-    }
-    ifaces_[i]->getMySavedChannels(_return, request);
-    return;
-  }
-
   void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -5162,24 +4516,15 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request);
   int32_t send_registerHealthCheck(const RegisterHealthCheckRequest& request);
   void recv_registerHealthCheck(RegisterHealthCheckResponse& _return, const int32_t seqid);
-  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request);
-  int32_t send_removeSavedChannel(const RemoveSavedChannelRequest& request);
-  void recv_removeSavedChannel(RemoveSavedChannelResponse& _return, const int32_t seqid);
   void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request);
   int32_t send_renewApplicationToken(const RenewApplicationTokenRequest& request);
   void recv_renewApplicationToken(RenewApplicationTokenResponse& _return, const int32_t seqid);
-  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request);
-  int32_t send_saveChannel(const SaveChannelRequest& request);
-  void recv_saveChannel(SaveChannelResponse& _return, const int32_t seqid);
   void signIn(SignInResponse& _return, const SignInRequest& request);
   int32_t send_signIn(const SignInRequest& request);
   void recv_signIn(SignInResponse& _return, const int32_t seqid);
   void signUp(SignUpResponse& _return, const SignUpRequest& request);
   int32_t send_signUp(const SignUpRequest& request);
   void recv_signUp(SignUpResponse& _return, const int32_t seqid);
-  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
-  int32_t send_snoozeChannel(const SnoozeChannelRequest& request);
-  void recv_snoozeChannel(SnoozeChannelResponse& _return, const int32_t seqid);
   void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request);
   int32_t send_followApplication(const FollowApplicationRequest& request);
   void recv_followApplication(FollowApplicationResponse& _return, const int32_t seqid);
@@ -5222,9 +4567,6 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request);
   int32_t send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request);
   void recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const int32_t seqid);
-  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
-  int32_t send_getMySavedChannels(const GetMySavedChannelsRequest& request);
-  void recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid);
   void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request);
   int32_t send_getReactions(const GetReactionsRequest& request);
   void recv_getReactions(GetReactionsResponse& _return, const int32_t seqid);

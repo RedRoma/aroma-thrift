@@ -27,6 +27,11 @@ class NotificationServiceHandler : virtual public NotificationServiceIf {
     printf("getApiVersion\n");
   }
 
+  /**
+   * Send Notification of an Event to a Set of Users.
+   * 
+   * @param request
+   */
   void sendNotification(SendNotificationResponse& _return, const SendNotificationRequest& request) {
     // Your implementation goes here
     printf("sendNotification\n");

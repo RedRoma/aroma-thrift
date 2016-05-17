@@ -298,20 +298,6 @@ struct RenewApplicationTokenResponse
     1: ApplicationToken serviceToken;
 }
 
-/**
- * Save a User's Personal Contact Channel for future reference.
- */
-struct SaveChannelRequest
-{
-    1: UserToken token;
-    2: AromaChannel channel;
-}
-
-struct SaveChannelResponse
-{
-    1: string message;
-    2: optional AromaChannel channel;
-}
 
 /**
  * Sign In to Aroma, and get a User Token.
@@ -355,25 +341,6 @@ struct SignUpResponse
     1: UserToken userToken;
     2: Authentication.AromaAccount account;
     3: uuid userId;
-}
-
-/**
- * A Snoozed Channel will not receive Notifications
- * for a set time period.
- */
-struct SnoozeChannelRequest
-{
-    1: UserToken token;
-    2: AromaChannel channel;
-    /** Optionally choose to snooze a specific Application. */
-    3: optional uuid applicationId;
-    /** Defines how long to snooze the Channel for. */
-    4: optional Aroma.LengthOfTime lengthOfTime = { "value": 4, "unit" : Aroma.TimeUnit.HOURS };
-}
-
-struct SnoozeChannelResponse
-{
-    1: string message;
 }
 
 /**
@@ -456,8 +423,6 @@ struct GetApplicationInfoRequest
 struct GetApplicationInfoResponse
 {
     1: Application applicationInfo;
-    /** The Channels registered to this Application. */
-    2: list<AromaChannel> registeredChannels;
 }
 
 /**
@@ -575,16 +540,6 @@ struct GetApplicationsOwnedByResponse
     1: list<Application> applications = [];
 }
 
-struct GetMySavedChannelsRequest
-{
-    1: UserToken token;
-}
-
-struct GetMySavedChannelsResponse
-{
-    1: list<AromaChannel> channels;
-}
-
 /**
  * Request to get a User's Activity Stream.
  * An Activity is an event that resulted from a person's
@@ -654,6 +609,15 @@ struct SearchForApplicationsRequest
 struct SearchForApplicationsResponse
 {
     1: list<Application> applications = []
+}
+
+//==========================================================
+// DEVICE OPERATIONS
+//==========================================================
+
+struct RegisterDeviceRequest
+{
+    
 }
 
 
@@ -733,15 +697,6 @@ service AromaService
                                                                                                    5 : UnauthorizedException ex5);
 
 
-    /**
-     * Removes a previously saved channel.
-     */
-    RemoveSavedChannelResponse removeSavedChannel(1 : RemoveSavedChannelRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidTokenException ex3,
-                                                                                                4 : UnauthorizedException ex4,
-                                                                                                5 : ChannelDoesNotExistException ex5);
-
 
 
     /**
@@ -757,14 +712,6 @@ service AromaService
                                                                                                          5 : UnauthorizedException ex5);
 
 
-
-    /**
-     * Saves a user's channel for future reference.
-     */
-    SaveChannelResponse saveChannel(1 : SaveChannelRequest request) throws(1 : OperationFailedException ex1,
-                                                                           2 : InvalidArgumentException ex2,
-                                                                           3 : InvalidTokenException ex3,
-                                                                           4 : UnauthorizedException ex4);
 
 
 
@@ -788,16 +735,6 @@ service AromaService
                                                             3 : InvalidCredentialsException ex3,
                                                             4 : AccountAlreadyExistsException ex4);
 
-
-
-    /**
-     * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
-     */
-    SnoozeChannelResponse snoozeChannel(1 : SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
-                                                                                 2 : InvalidArgumentException ex2,
-                                                                                 3 : InvalidTokenException ex3,
-                                                                                 4 : UnauthorizedException ex4,
-                                                                                 5 : ChannelDoesNotExistException ex5);
 
 
 
@@ -923,12 +860,6 @@ service AromaService
     GetApplicationsFollowedByResponse getApplicationsFollowedBy(1 : GetApplicationsFollowedByRequest request) throws(1 : OperationFailedException ex1,
                                                                                                                      2 : InvalidArgumentException ex2,
                                                                                                                      3 : InvalidTokenException ex3);
-
-
-
-    GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidTokenException ex3);
 
 
     GetReactionsResponse getReactions(1 : GetReactionsRequest request) throws(1 : OperationFailedException ex1,

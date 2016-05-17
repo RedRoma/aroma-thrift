@@ -26,6 +26,8 @@ interface NotificationServiceIf {
    */
   public function getApiVersion();
   /**
+   * Send Notification of an Event to a Set of Users.
+   * 
    * @param \RedRoma\Aroma\NotificationService\SendNotificationRequest $request
    * @return \RedRoma\Aroma\NotificationService\SendNotificationResponse
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException

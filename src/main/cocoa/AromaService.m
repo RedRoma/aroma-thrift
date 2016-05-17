@@ -4809,430 +4809,6 @@
 
 @end
 
-@implementation AromaService_SaveChannelRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SaveChannelRequest class]]) {
-    return NO;
-  }
-  AromaService_SaveChannelRequest *other = (AromaService_SaveChannelRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaAuthentication_UserToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (AromaAuthentication_UserToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (AromaChannels_AromaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (AromaChannels_AromaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SaveChannelRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SaveChannelRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_SaveChannelResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message channel: (AromaService_AromaChannel) channel
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SaveChannelResponse class]]) {
-    return NO;
-  }
-  AromaService_SaveChannelResponse *other = (AromaService_SaveChannelResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (AromaChannels_AromaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (AromaChannels_AromaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SaveChannelResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SaveChannelResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @implementation AromaService_SignInRequest
 
 - (id) init
@@ -6651,493 +6227,6 @@
   [ms appendFormat: @"%@", __account];
   [ms appendString: @",userId:"];
   [ms appendFormat: @"\"%@\"", __userId];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_SnoozeChannelRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.lengthOfTime = [[[Aroma_LengthOfTime alloc] init] autorelease_stub];
-  [self.lengthOfTime setValue:4];
-  [self.lengthOfTime setUnit:4];
-
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel applicationId: (AromaService_uuid) applicationId lengthOfTime: (Aroma_LengthOfTime *) lengthOfTime
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __lengthOfTime = [lengthOfTime retain_stub];
-  __lengthOfTime_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"lengthOfTime"])
-  {
-    __lengthOfTime = [[decoder decodeObjectForKey: @"lengthOfTime"] retain_stub];
-    __lengthOfTime_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__lengthOfTime_isset)
-  {
-    [encoder encodeObject: __lengthOfTime forKey: @"lengthOfTime"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __lengthOfTime_isset ? 2654435761 : 0;
-  if (__lengthOfTime_isset)
-  {
-    hash = (hash * 31) ^ [__lengthOfTime hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SnoozeChannelRequest class]]) {
-    return NO;
-  }
-  AromaService_SnoozeChannelRequest *other = (AromaService_SnoozeChannelRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__lengthOfTime_isset != other->__lengthOfTime_isset) ||
-      (__lengthOfTime_isset && ((__lengthOfTime || other->__lengthOfTime) && ![__lengthOfTime isEqual:other->__lengthOfTime]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [__channel release_stub];
-  [__applicationId release_stub];
-  [__lengthOfTime release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaAuthentication_UserToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (AromaAuthentication_UserToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (AromaChannels_AromaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (AromaChannels_AromaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (Aroma_LengthOfTime *) lengthOfTime {
-  return [[__lengthOfTime retain_stub] autorelease_stub];
-}
-
-- (void) setLengthOfTime: (Aroma_LengthOfTime *) lengthOfTime {
-  [lengthOfTime retain_stub];
-  [__lengthOfTime release_stub];
-  __lengthOfTime = lengthOfTime;
-  __lengthOfTime_isset = YES;
-}
-
-- (BOOL) lengthOfTimeIsSet {
-  return __lengthOfTime_isset;
-}
-
-- (void) unsetLengthOfTime {
-  [__lengthOfTime release_stub];
-  __lengthOfTime = nil;
-  __lengthOfTime_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          Aroma_LengthOfTime *fieldValue = [[Aroma_LengthOfTime alloc] init];
-          [fieldValue read: inProtocol];
-          [self setLengthOfTime: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SnoozeChannelRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__lengthOfTime_isset) {
-    if (__lengthOfTime != nil) {
-      [outProtocol writeFieldBeginWithName: @"lengthOfTime" type: TType_STRUCT fieldID: 4];
-      [__lengthOfTime write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SnoozeChannelRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",lengthOfTime:"];
-  [ms appendFormat: @"%@", __lengthOfTime];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_SnoozeChannelResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SnoozeChannelResponse class]]) {
-    return NO;
-  }
-  AromaService_SnoozeChannelResponse *other = (AromaService_SnoozeChannelResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SnoozeChannelResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SnoozeChannelResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -9092,13 +8181,11 @@
   return self;
 }
 
-- (id) initWithApplicationInfo: (AromaService_Application) applicationInfo registeredChannels: (NSMutableArray *) registeredChannels
+- (id) initWithApplicationInfo: (AromaService_Application) applicationInfo
 {
   self = [super init];
   __applicationInfo = [applicationInfo retain_stub];
   __applicationInfo_isset = YES;
-  __registeredChannels = [registeredChannels retain_stub];
-  __registeredChannels_isset = YES;
   return self;
 }
 
@@ -9110,11 +8197,6 @@
     __applicationInfo = [[decoder decodeObjectForKey: @"applicationInfo"] retain_stub];
     __applicationInfo_isset = YES;
   }
-  if ([decoder containsValueForKey: @"registeredChannels"])
-  {
-    __registeredChannels = [[decoder decodeObjectForKey: @"registeredChannels"] retain_stub];
-    __registeredChannels_isset = YES;
-  }
   return self;
 }
 
@@ -9123,10 +8205,6 @@
   if (__applicationInfo_isset)
   {
     [encoder encodeObject: __applicationInfo forKey: @"applicationInfo"];
-  }
-  if (__registeredChannels_isset)
-  {
-    [encoder encodeObject: __registeredChannels forKey: @"registeredChannels"];
   }
 }
 
@@ -9137,11 +8215,6 @@
   if (__applicationInfo_isset)
   {
     hash = (hash * 31) ^ [__applicationInfo hash];
-  }
-  hash = (hash * 31) ^ __registeredChannels_isset ? 2654435761 : 0;
-  if (__registeredChannels_isset)
-  {
-    hash = (hash * 31) ^ [__registeredChannels hash];
   }
   return hash;
 }
@@ -9159,17 +8232,12 @@
       (__applicationInfo_isset && ((__applicationInfo || other->__applicationInfo) && ![__applicationInfo isEqual:other->__applicationInfo]))) {
     return NO;
   }
-  if ((__registeredChannels_isset != other->__registeredChannels_isset) ||
-      (__registeredChannels_isset && ((__registeredChannels || other->__registeredChannels) && ![__registeredChannels isEqual:other->__registeredChannels]))) {
-    return NO;
-  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__applicationInfo release_stub];
-  [__registeredChannels release_stub];
   [super dealloc_stub];
 }
 
@@ -9192,27 +8260,6 @@
   [__applicationInfo release_stub];
   __applicationInfo = nil;
   __applicationInfo_isset = NO;
-}
-
-- (NSMutableArray *) registeredChannels {
-  return [[__registeredChannels retain_stub] autorelease_stub];
-}
-
-- (void) setRegisteredChannels: (NSMutableArray *) registeredChannels {
-  [registeredChannels retain_stub];
-  [__registeredChannels release_stub];
-  __registeredChannels = registeredChannels;
-  __registeredChannels_isset = YES;
-}
-
-- (BOOL) registeredChannelsIsSet {
-  return __registeredChannels_isset;
-}
-
-- (void) unsetRegisteredChannels {
-  [__registeredChannels release_stub];
-  __registeredChannels = nil;
-  __registeredChannels_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -9240,26 +8287,6 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 2:
-        if (fieldType == TType_LIST) {
-          int _size30;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
-          int _i31;
-          for (_i31 = 0; _i31 < _size30; ++_i31)
-          {
-            AromaChannels_AromaChannel *_elem32 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem32 read: inProtocol];
-            [fieldValue addObject: _elem32];
-            [_elem32 release_stub];
-          }
-          [inProtocol readListEnd];
-          [self setRegisteredChannels: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -9278,21 +8305,6 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__registeredChannels_isset) {
-    if (__registeredChannels != nil) {
-      [outProtocol writeFieldBeginWithName: @"registeredChannels" type: TType_LIST fieldID: 2];
-      {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__registeredChannels count]];
-        int idx34;
-        for (idx34 = 0; idx34 < [__registeredChannels count]; idx34++)
-        {
-          [[__registeredChannels objectAtIndex: idx34] write: outProtocol];
-        }
-        [outProtocol writeListEnd];
-      }
-      [outProtocol writeFieldEnd];
-    }
-  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -9305,8 +8317,6 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationInfoResponse("];
   [ms appendString: @"applicationInfo:"];
   [ms appendFormat: @"%@", __applicationInfo];
-  [ms appendString: @",registeredChannels:"];
-  [ms appendFormat: @"%@", __registeredChannels];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -9707,16 +8717,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size35;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
-          int _i36;
-          for (_i36 = 0; _i36 < _size35; ++_i36)
+          int _size30;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
+          int _i31;
+          for (_i31 = 0; _i31 < _size30; ++_i31)
           {
-            Aroma_User *_elem37 = [[Aroma_User alloc] init];
-            [_elem37 read: inProtocol];
-            [fieldValue addObject: _elem37];
-            [_elem37 release_stub];
+            Aroma_User *_elem32 = [[Aroma_User alloc] init];
+            [_elem32 read: inProtocol];
+            [fieldValue addObject: _elem32];
+            [_elem32 release_stub];
           }
           [inProtocol readListEnd];
           [self setFreshUsers: fieldValue];
@@ -9727,16 +8737,16 @@
         break;
       case 2:
         if (fieldType == TType_LIST) {
-          int _size38;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size38];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size38];
-          int _i39;
-          for (_i39 = 0; _i39 < _size38; ++_i39)
+          int _size33;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size33];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size33];
+          int _i34;
+          for (_i34 = 0; _i34 < _size33; ++_i34)
           {
-            Aroma_Application *_elem40 = [[Aroma_Application alloc] init];
-            [_elem40 read: inProtocol];
-            [fieldValue addObject: _elem40];
-            [_elem40 release_stub];
+            Aroma_Application *_elem35 = [[Aroma_Application alloc] init];
+            [_elem35 read: inProtocol];
+            [fieldValue addObject: _elem35];
+            [_elem35 release_stub];
           }
           [inProtocol readListEnd];
           [self setFreshApplications: fieldValue];
@@ -9747,16 +8757,16 @@
         break;
       case 3:
         if (fieldType == TType_LIST) {
-          int _size41;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size41];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size41];
-          int _i42;
-          for (_i42 = 0; _i42 < _size41; ++_i42)
+          int _size36;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size36];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size36];
+          int _i37;
+          for (_i37 = 0; _i37 < _size36; ++_i37)
           {
-            AromaEvents_HealthCheckFailed *_elem43 = [[AromaEvents_HealthCheckFailed alloc] init];
-            [_elem43 read: inProtocol];
-            [fieldValue addObject: _elem43];
-            [_elem43 release_stub];
+            AromaEvents_HealthCheckFailed *_elem38 = [[AromaEvents_HealthCheckFailed alloc] init];
+            [_elem38 read: inProtocol];
+            [fieldValue addObject: _elem38];
+            [_elem38 release_stub];
           }
           [inProtocol readListEnd];
           [self setFailedHealthChecks: fieldValue];
@@ -9767,16 +8777,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size44;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size44];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size44];
-          int _i45;
-          for (_i45 = 0; _i45 < _size44; ++_i45)
+          int _size39;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size39];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size39];
+          int _i40;
+          for (_i40 = 0; _i40 < _size39; ++_i40)
           {
-            AromaEvents_Event *_elem46 = [[AromaEvents_Event alloc] init];
-            [_elem46 read: inProtocol];
-            [fieldValue addObject: _elem46];
-            [_elem46 release_stub];
+            AromaEvents_Event *_elem41 = [[AromaEvents_Event alloc] init];
+            [_elem41 read: inProtocol];
+            [fieldValue addObject: _elem41];
+            [_elem41 release_stub];
           }
           [inProtocol readListEnd];
           [self setGeneralEvents: fieldValue];
@@ -9801,10 +8811,10 @@
       [outProtocol writeFieldBeginWithName: @"freshUsers" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshUsers count]];
-        int idx48;
-        for (idx48 = 0; idx48 < [__freshUsers count]; idx48++)
+        int idx43;
+        for (idx43 = 0; idx43 < [__freshUsers count]; idx43++)
         {
-          [[__freshUsers objectAtIndex: idx48] write: outProtocol];
+          [[__freshUsers objectAtIndex: idx43] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9816,10 +8826,10 @@
       [outProtocol writeFieldBeginWithName: @"freshApplications" type: TType_LIST fieldID: 2];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshApplications count]];
-        int idx50;
-        for (idx50 = 0; idx50 < [__freshApplications count]; idx50++)
+        int idx45;
+        for (idx45 = 0; idx45 < [__freshApplications count]; idx45++)
         {
-          [[__freshApplications objectAtIndex: idx50] write: outProtocol];
+          [[__freshApplications objectAtIndex: idx45] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9831,10 +8841,10 @@
       [outProtocol writeFieldBeginWithName: @"failedHealthChecks" type: TType_LIST fieldID: 3];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__failedHealthChecks count]];
-        int idx52;
-        for (idx52 = 0; idx52 < [__failedHealthChecks count]; idx52++)
+        int idx47;
+        for (idx47 = 0; idx47 < [__failedHealthChecks count]; idx47++)
         {
-          [[__failedHealthChecks objectAtIndex: idx52] write: outProtocol];
+          [[__failedHealthChecks objectAtIndex: idx47] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9846,10 +8856,10 @@
       [outProtocol writeFieldBeginWithName: @"generalEvents" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__generalEvents count]];
-        int idx54;
-        for (idx54 = 0; idx54 < [__generalEvents count]; idx54++)
+        int idx49;
+        for (idx49 = 0; idx49 < [__generalEvents count]; idx49++)
         {
-          [[__generalEvents objectAtIndex: idx54] write: outProtocol];
+          [[__generalEvents objectAtIndex: idx49] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10400,16 +9410,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size55;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
-          int _i56;
-          for (_i56 = 0; _i56 < _size55; ++_i56)
+          int _size50;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
+          int _i51;
+          for (_i51 = 0; _i51 < _size50; ++_i51)
           {
-            Aroma_Message *_elem57 = [[Aroma_Message alloc] init];
-            [_elem57 read: inProtocol];
-            [fieldValue addObject: _elem57];
-            [_elem57 release_stub];
+            Aroma_Message *_elem52 = [[Aroma_Message alloc] init];
+            [_elem52 read: inProtocol];
+            [fieldValue addObject: _elem52];
+            [_elem52 release_stub];
           }
           [inProtocol readListEnd];
           [self setRecentMessages: fieldValue];
@@ -10473,10 +9483,10 @@
       [outProtocol writeFieldBeginWithName: @"recentMessages" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__recentMessages count]];
-        int idx59;
-        for (idx59 = 0; idx59 < [__recentMessages count]; idx59++)
+        int idx54;
+        for (idx54 = 0; idx54 < [__recentMessages count]; idx54++)
         {
-          [[__recentMessages objectAtIndex: idx59] write: outProtocol];
+          [[__recentMessages objectAtIndex: idx54] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10844,16 +9854,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size60;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
-          int _i61;
-          for (_i61 = 0; _i61 < _size60; ++_i61)
+          int _size55;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
+          int _i56;
+          for (_i56 = 0; _i56 < _size55; ++_i56)
           {
-            Aroma_Message *_elem62 = [[Aroma_Message alloc] init];
-            [_elem62 read: inProtocol];
-            [fieldValue addObject: _elem62];
-            [_elem62 release_stub];
+            Aroma_Message *_elem57 = [[Aroma_Message alloc] init];
+            [_elem57 read: inProtocol];
+            [fieldValue addObject: _elem57];
+            [_elem57 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -10878,10 +9888,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx64;
-        for (idx64 = 0; idx64 < [__messages count]; idx64++)
+        int idx59;
+        for (idx59 = 0; idx59 < [__messages count]; idx59++)
         {
-          [[__messages objectAtIndex: idx64] write: outProtocol];
+          [[__messages objectAtIndex: idx59] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -11320,16 +10330,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size65;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
-          int _i66;
-          for (_i66 = 0; _i66 < _size65; ++_i66)
+          int _size60;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
+          int _i61;
+          for (_i61 = 0; _i61 < _size60; ++_i61)
           {
-            Aroma_Message *_elem67 = [[Aroma_Message alloc] init];
-            [_elem67 read: inProtocol];
-            [fieldValue addObject: _elem67];
-            [_elem67 release_stub];
+            Aroma_Message *_elem62 = [[Aroma_Message alloc] init];
+            [_elem62 read: inProtocol];
+            [fieldValue addObject: _elem62];
+            [_elem62 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -11362,10 +10372,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx69;
-        for (idx69 = 0; idx69 < [__messages count]; idx69++)
+        int idx64;
+        for (idx64 = 0; idx64 < [__messages count]; idx64++)
         {
-          [[__messages objectAtIndex: idx69] write: outProtocol];
+          [[__messages objectAtIndex: idx64] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12564,16 +11574,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size70;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size70];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size70];
-          int _i71;
-          for (_i71 = 0; _i71 < _size70; ++_i71)
+          int _size65;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
+          int _i66;
+          for (_i66 = 0; _i66 < _size65; ++_i66)
           {
-            Aroma_Application *_elem72 = [[Aroma_Application alloc] init];
-            [_elem72 read: inProtocol];
-            [fieldValue addObject: _elem72];
-            [_elem72 release_stub];
+            Aroma_Application *_elem67 = [[Aroma_Application alloc] init];
+            [_elem67 read: inProtocol];
+            [fieldValue addObject: _elem67];
+            [_elem67 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -12598,10 +11608,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx74;
-        for (idx74 = 0; idx74 < [__applications count]; idx74++)
+        int idx69;
+        for (idx69 = 0; idx69 < [__applications count]; idx69++)
         {
-          [[__applications objectAtIndex: idx74] write: outProtocol];
+          [[__applications objectAtIndex: idx69] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12947,16 +11957,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size75;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size75];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size75];
-          int _i76;
-          for (_i76 = 0; _i76 < _size75; ++_i76)
+          int _size70;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size70];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size70];
+          int _i71;
+          for (_i71 = 0; _i71 < _size70; ++_i71)
           {
-            Aroma_Application *_elem77 = [[Aroma_Application alloc] init];
-            [_elem77 read: inProtocol];
-            [fieldValue addObject: _elem77];
-            [_elem77 release_stub];
+            Aroma_Application *_elem72 = [[Aroma_Application alloc] init];
+            [_elem72 read: inProtocol];
+            [fieldValue addObject: _elem72];
+            [_elem72 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -12981,10 +11991,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx79;
-        for (idx79 = 0; idx79 < [__applications count]; idx79++)
+        int idx74;
+        for (idx74 = 0; idx74 < [__applications count]; idx74++)
         {
-          [[__applications objectAtIndex: idx79] write: outProtocol];
+          [[__applications objectAtIndex: idx74] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -13003,328 +12013,6 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationsOwnedByResponse("];
   [ms appendString: @"applications:"];
   [ms appendFormat: @"%@", __applications];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_GetMySavedChannelsRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AromaService_UserToken) token
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_GetMySavedChannelsRequest class]]) {
-    return NO;
-  }
-  AromaService_GetMySavedChannelsRequest *other = (AromaService_GetMySavedChannelsRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaAuthentication_UserToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (AromaAuthentication_UserToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_UserToken *fieldValue = [[AromaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMySavedChannelsRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMySavedChannelsRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AromaService_GetMySavedChannelsResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithChannels: (NSMutableArray *) channels
-{
-  self = [super init];
-  __channels = [channels retain_stub];
-  __channels_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"channels"])
-  {
-    __channels = [[decoder decodeObjectForKey: @"channels"] retain_stub];
-    __channels_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__channels_isset)
-  {
-    [encoder encodeObject: __channels forKey: @"channels"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __channels_isset ? 2654435761 : 0;
-  if (__channels_isset)
-  {
-    hash = (hash * 31) ^ [__channels hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_GetMySavedChannelsResponse class]]) {
-    return NO;
-  }
-  AromaService_GetMySavedChannelsResponse *other = (AromaService_GetMySavedChannelsResponse *)anObject;
-  if ((__channels_isset != other->__channels_isset) ||
-      (__channels_isset && ((__channels || other->__channels) && ![__channels isEqual:other->__channels]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__channels release_stub];
-  [super dealloc_stub];
-}
-
-- (NSMutableArray *) channels {
-  return [[__channels retain_stub] autorelease_stub];
-}
-
-- (void) setChannels: (NSMutableArray *) channels {
-  [channels retain_stub];
-  [__channels release_stub];
-  __channels = channels;
-  __channels_isset = YES;
-}
-
-- (BOOL) channelsIsSet {
-  return __channels_isset;
-}
-
-- (void) unsetChannels {
-  [__channels release_stub];
-  __channels = nil;
-  __channels_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_LIST) {
-          int _size80;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size80];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size80];
-          int _i81;
-          for (_i81 = 0; _i81 < _size80; ++_i81)
-          {
-            AromaChannels_AromaChannel *_elem82 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem82 read: inProtocol];
-            [fieldValue addObject: _elem82];
-            [_elem82 release_stub];
-          }
-          [inProtocol readListEnd];
-          [self setChannels: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMySavedChannelsResponse"];
-  if (__channels_isset) {
-    if (__channels != nil) {
-      [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
-      {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx84;
-        for (idx84 = 0; idx84 < [__channels count]; idx84++)
-        {
-          [[__channels objectAtIndex: idx84] write: outProtocol];
-        }
-        [outProtocol writeListEnd];
-      }
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMySavedChannelsResponse("];
-  [ms appendString: @"channels:"];
-  [ms appendFormat: @"%@", __channels];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -13647,16 +12335,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size85;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size85];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size85];
-          int _i86;
-          for (_i86 = 0; _i86 < _size85; ++_i86)
+          int _size75;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size75];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size75];
+          int _i76;
+          for (_i76 = 0; _i76 < _size75; ++_i76)
           {
-            AromaEvents_Event *_elem87 = [[AromaEvents_Event alloc] init];
-            [_elem87 read: inProtocol];
-            [fieldValue addObject: _elem87];
-            [_elem87 release_stub];
+            AromaEvents_Event *_elem77 = [[AromaEvents_Event alloc] init];
+            [_elem77 read: inProtocol];
+            [fieldValue addObject: _elem77];
+            [_elem77 release_stub];
           }
           [inProtocol readListEnd];
           [self setEvents: fieldValue];
@@ -13681,10 +12369,10 @@
       [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
-        int idx89;
-        for (idx89 = 0; idx89 < [__events count]; idx89++)
+        int idx79;
+        for (idx79 = 0; idx79 < [__events count]; idx79++)
         {
-          [[__events objectAtIndex: idx89] write: outProtocol];
+          [[__events objectAtIndex: idx79] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -14030,16 +12718,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size90;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size90];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size90];
-          int _i91;
-          for (_i91 = 0; _i91 < _size90; ++_i91)
+          int _size80;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size80];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size80];
+          int _i81;
+          for (_i81 = 0; _i81 < _size80; ++_i81)
           {
-            AromaReactions_Reaction *_elem92 = [[AromaReactions_Reaction alloc] init];
-            [_elem92 read: inProtocol];
-            [fieldValue addObject: _elem92];
-            [_elem92 release_stub];
+            AromaReactions_Reaction *_elem82 = [[AromaReactions_Reaction alloc] init];
+            [_elem82 read: inProtocol];
+            [fieldValue addObject: _elem82];
+            [_elem82 release_stub];
           }
           [inProtocol readListEnd];
           [self setReactions: fieldValue];
@@ -14064,10 +12752,10 @@
       [outProtocol writeFieldBeginWithName: @"reactions" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__reactions count]];
-        int idx94;
-        for (idx94 = 0; idx94 < [__reactions count]; idx94++)
+        int idx84;
+        for (idx84 = 0; idx84 < [__reactions count]; idx84++)
         {
-          [[__reactions objectAtIndex: idx94] write: outProtocol];
+          [[__reactions objectAtIndex: idx84] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -14354,16 +13042,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size95;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size95];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size95];
-          int _i96;
-          for (_i96 = 0; _i96 < _size95; ++_i96)
+          int _size85;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size85];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size85];
+          int _i86;
+          for (_i86 = 0; _i86 < _size85; ++_i86)
           {
-            Aroma_ServiceAnnouncement *_elem97 = [[Aroma_ServiceAnnouncement alloc] init];
-            [_elem97 read: inProtocol];
-            [fieldValue addObject: _elem97];
-            [_elem97 release_stub];
+            Aroma_ServiceAnnouncement *_elem87 = [[Aroma_ServiceAnnouncement alloc] init];
+            [_elem87 read: inProtocol];
+            [fieldValue addObject: _elem87];
+            [_elem87 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -14388,10 +13076,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx99;
-        for (idx99 = 0; idx99 < [__serviceAnnouncements count]; idx99++)
+        int idx89;
+        for (idx89 = 0; idx89 < [__serviceAnnouncements count]; idx89++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx99] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx89] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -15218,16 +13906,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size100;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size100];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size100];
-          int _i101;
-          for (_i101 = 0; _i101 < _size100; ++_i101)
+          int _size90;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size90];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size90];
+          int _i91;
+          for (_i91 = 0; _i91 < _size90; ++_i91)
           {
-            Aroma_Application *_elem102 = [[Aroma_Application alloc] init];
-            [_elem102 read: inProtocol];
-            [fieldValue addObject: _elem102];
-            [_elem102 release_stub];
+            Aroma_Application *_elem92 = [[Aroma_Application alloc] init];
+            [_elem92 read: inProtocol];
+            [fieldValue addObject: _elem92];
+            [_elem92 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -15252,10 +13940,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx104;
-        for (idx104 = 0; idx104 < [__applications count]; idx104++)
+        int idx94;
+        for (idx94 = 0; idx94 < [__applications count]; idx94++)
         {
-          [[__applications objectAtIndex: idx104] write: outProtocol];
+          [[__applications objectAtIndex: idx94] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -15274,6 +13962,84 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SearchForApplicationsResponse("];
   [ms appendString: @"applications:"];
   [ms appendFormat: @"%@", __applications];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaService_RegisterDeviceRequest
+
+- (id) init
+{
+  self = [super init];
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_RegisterDeviceRequest class]]) {
+    return NO;
+  }
+  AromaService_RegisterDeviceRequest *other = (AromaService_RegisterDeviceRequest *)anObject;
+  return YES;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RegisterDeviceRequest"];
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegisterDeviceRequest("];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -19836,708 +18602,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface AromaService_removeSavedChannel_args : NSObject <TBase, NSCoding> {
-  AromaService_RemoveSavedChannelRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_RemoveSavedChannelRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (AromaService_RemoveSavedChannelRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_RemoveSavedChannelRequest *) request;
-- (void) setRequest: (AromaService_RemoveSavedChannelRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation AromaService_removeSavedChannel_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (AromaService_RemoveSavedChannelRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_removeSavedChannel_args class]]) {
-    return NO;
-  }
-  AromaService_removeSavedChannel_args *other = (AromaService_removeSavedChannel_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaService_RemoveSavedChannelRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (AromaService_RemoveSavedChannelRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaService_RemoveSavedChannelRequest *fieldValue = [[AromaService_RemoveSavedChannelRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"removeSavedChannel_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_removeSavedChannel_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AromaService_RemoveSavedChannel_result : NSObject <TBase, NSCoding> {
-  AromaService_RemoveSavedChannelResponse * __success;
-  AromaService_OperationFailedException __ex1;
-  AromaService_InvalidArgumentException __ex2;
-  AromaService_InvalidTokenException __ex3;
-  AromaService_UnauthorizedException __ex4;
-  AromaService_ChannelDoesNotExistException __ex5;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-  BOOL __ex5_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_RemoveSavedChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_ChannelDoesNotExistException ex5;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (AromaService_RemoveSavedChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ChannelDoesNotExistException) ex5;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_RemoveSavedChannelResponse *) success;
-- (void) setSuccess: (AromaService_RemoveSavedChannelResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_OperationFailedException) ex1;
-- (void) setEx1: (AromaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_InvalidArgumentException) ex2;
-- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_InvalidTokenException) ex3;
-- (void) setEx3: (AromaService_InvalidTokenException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UnauthorizedException) ex4;
-- (void) setEx4: (AromaService_UnauthorizedException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_ChannelDoesNotExistException) ex5;
-- (void) setEx5: (AromaService_ChannelDoesNotExistException) ex5;
-#endif
-- (BOOL) ex5IsSet;
-
-@end
-
-@implementation AromaService_RemoveSavedChannel_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (AromaService_RemoveSavedChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ChannelDoesNotExistException) ex5
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  __ex5 = [ex5 retain_stub];
-  __ex5_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex5"])
-  {
-    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
-    __ex5_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-  if (__ex5_isset)
-  {
-    [encoder encodeObject: __ex5 forKey: @"ex5"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
-  if (__ex5_isset)
-  {
-    hash = (hash * 31) ^ [__ex5 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_RemoveSavedChannel_result class]]) {
-    return NO;
-  }
-  AromaService_RemoveSavedChannel_result *other = (AromaService_RemoveSavedChannel_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  if ((__ex5_isset != other->__ex5_isset) ||
-      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [__ex5 release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaService_RemoveSavedChannelResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (AromaService_RemoveSavedChannelResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (AromaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (AromaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (AromaException_InvalidTokenException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (AromaException_UnauthorizedException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (AromaException_ChannelDoesNotExistException *) ex5 {
-  return [[__ex5 retain_stub] autorelease_stub];
-}
-
-- (void) setEx5: (AromaException_ChannelDoesNotExistException *) ex5 {
-  [ex5 retain_stub];
-  [__ex5 release_stub];
-  __ex5 = ex5;
-  __ex5_isset = YES;
-}
-
-- (BOOL) ex5IsSet {
-  return __ex5_isset;
-}
-
-- (void) unsetEx5 {
-  [__ex5 release_stub];
-  __ex5 = nil;
-  __ex5_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          AromaService_RemoveSavedChannelResponse *fieldValue = [[AromaService_RemoveSavedChannelResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          AromaException_ChannelDoesNotExistException *fieldValue = [[AromaException_ChannelDoesNotExistException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx5: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RemoveSavedChannel_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex5_isset) {
-    if (__ex5 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
-      [__ex5 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RemoveSavedChannel_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @",ex5:"];
-  [ms appendFormat: @"%@", __ex5];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @interface AromaService_renewApplicationToken_args : NSObject <TBase, NSCoding> {
   AromaService_RenewApplicationTokenRequest * __request;
 
@@ -21234,639 +19298,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [ms appendFormat: @"%@", __ex4];
   [ms appendString: @",ex5:"];
   [ms appendFormat: @"%@", __ex5];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AromaService_saveChannel_args : NSObject <TBase, NSCoding> {
-  AromaService_SaveChannelRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_SaveChannelRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (AromaService_SaveChannelRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_SaveChannelRequest *) request;
-- (void) setRequest: (AromaService_SaveChannelRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation AromaService_saveChannel_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (AromaService_SaveChannelRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_saveChannel_args class]]) {
-    return NO;
-  }
-  AromaService_saveChannel_args *other = (AromaService_saveChannel_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaService_SaveChannelRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (AromaService_SaveChannelRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaService_SaveChannelRequest *fieldValue = [[AromaService_SaveChannelRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"saveChannel_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_saveChannel_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AromaService_SaveChannel_result : NSObject <TBase, NSCoding> {
-  AromaService_SaveChannelResponse * __success;
-  AromaService_OperationFailedException __ex1;
-  AromaService_InvalidArgumentException __ex2;
-  AromaService_InvalidTokenException __ex3;
-  AromaService_UnauthorizedException __ex4;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_SaveChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (AromaService_SaveChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_SaveChannelResponse *) success;
-- (void) setSuccess: (AromaService_SaveChannelResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_OperationFailedException) ex1;
-- (void) setEx1: (AromaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_InvalidArgumentException) ex2;
-- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_InvalidTokenException) ex3;
-- (void) setEx3: (AromaService_InvalidTokenException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UnauthorizedException) ex4;
-- (void) setEx4: (AromaService_UnauthorizedException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-@end
-
-@implementation AromaService_SaveChannel_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (AromaService_SaveChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SaveChannel_result class]]) {
-    return NO;
-  }
-  AromaService_SaveChannel_result *other = (AromaService_SaveChannel_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaService_SaveChannelResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (AromaService_SaveChannelResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (AromaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (AromaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (AromaException_InvalidTokenException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (AromaException_UnauthorizedException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          AromaService_SaveChannelResponse *fieldValue = [[AromaService_SaveChannelResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SaveChannel_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SaveChannel_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -23133,708 +20564,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [ms appendFormat: @"%@", __ex3];
   [ms appendString: @",ex4:"];
   [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AromaService_snoozeChannel_args : NSObject <TBase, NSCoding> {
-  AromaService_SnoozeChannelRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_SnoozeChannelRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (AromaService_SnoozeChannelRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_SnoozeChannelRequest *) request;
-- (void) setRequest: (AromaService_SnoozeChannelRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation AromaService_snoozeChannel_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (AromaService_SnoozeChannelRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_snoozeChannel_args class]]) {
-    return NO;
-  }
-  AromaService_snoozeChannel_args *other = (AromaService_snoozeChannel_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaService_SnoozeChannelRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (AromaService_SnoozeChannelRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaService_SnoozeChannelRequest *fieldValue = [[AromaService_SnoozeChannelRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"snoozeChannel_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_snoozeChannel_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AromaService_SnoozeChannel_result : NSObject <TBase, NSCoding> {
-  AromaService_SnoozeChannelResponse * __success;
-  AromaService_OperationFailedException __ex1;
-  AromaService_InvalidArgumentException __ex2;
-  AromaService_InvalidTokenException __ex3;
-  AromaService_UnauthorizedException __ex4;
-  AromaService_ChannelDoesNotExistException __ex5;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-  BOOL __ex5_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_SnoozeChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_ChannelDoesNotExistException ex5;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (AromaService_SnoozeChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ChannelDoesNotExistException) ex5;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_SnoozeChannelResponse *) success;
-- (void) setSuccess: (AromaService_SnoozeChannelResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_OperationFailedException) ex1;
-- (void) setEx1: (AromaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_InvalidArgumentException) ex2;
-- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_InvalidTokenException) ex3;
-- (void) setEx3: (AromaService_InvalidTokenException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_UnauthorizedException) ex4;
-- (void) setEx4: (AromaService_UnauthorizedException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_ChannelDoesNotExistException) ex5;
-- (void) setEx5: (AromaService_ChannelDoesNotExistException) ex5;
-#endif
-- (BOOL) ex5IsSet;
-
-@end
-
-@implementation AromaService_SnoozeChannel_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (AromaService_SnoozeChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ChannelDoesNotExistException) ex5
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  __ex5 = [ex5 retain_stub];
-  __ex5_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex5"])
-  {
-    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
-    __ex5_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-  if (__ex5_isset)
-  {
-    [encoder encodeObject: __ex5 forKey: @"ex5"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
-  if (__ex5_isset)
-  {
-    hash = (hash * 31) ^ [__ex5 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_SnoozeChannel_result class]]) {
-    return NO;
-  }
-  AromaService_SnoozeChannel_result *other = (AromaService_SnoozeChannel_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  if ((__ex5_isset != other->__ex5_isset) ||
-      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [__ex5 release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaService_SnoozeChannelResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (AromaService_SnoozeChannelResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (AromaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (AromaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (AromaException_InvalidTokenException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (AromaException_UnauthorizedException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (AromaException_ChannelDoesNotExistException *) ex5 {
-  return [[__ex5 retain_stub] autorelease_stub];
-}
-
-- (void) setEx5: (AromaException_ChannelDoesNotExistException *) ex5 {
-  [ex5 retain_stub];
-  [__ex5 release_stub];
-  __ex5 = ex5;
-  __ex5_isset = YES;
-}
-
-- (BOOL) ex5IsSet {
-  return __ex5_isset;
-}
-
-- (void) unsetEx5 {
-  [__ex5 release_stub];
-  __ex5 = nil;
-  __ex5_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          AromaService_SnoozeChannelResponse *fieldValue = [[AromaService_SnoozeChannelResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          AromaException_ChannelDoesNotExistException *fieldValue = [[AromaException_ChannelDoesNotExistException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx5: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SnoozeChannel_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex5_isset) {
-    if (__ex5 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
-      [__ex5 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SnoozeChannel_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @",ex5:"];
-  [ms appendFormat: @"%@", __ex5];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -32841,570 +29570,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface AromaService_getMySavedChannels_args : NSObject <TBase, NSCoding> {
-  AromaService_GetMySavedChannelsRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetMySavedChannelsRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (AromaService_GetMySavedChannelsRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_GetMySavedChannelsRequest *) request;
-- (void) setRequest: (AromaService_GetMySavedChannelsRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation AromaService_getMySavedChannels_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (AromaService_GetMySavedChannelsRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_getMySavedChannels_args class]]) {
-    return NO;
-  }
-  AromaService_getMySavedChannels_args *other = (AromaService_getMySavedChannels_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaService_GetMySavedChannelsRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (AromaService_GetMySavedChannelsRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaService_GetMySavedChannelsRequest *fieldValue = [[AromaService_GetMySavedChannelsRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"getMySavedChannels_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getMySavedChannels_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AromaService_GetMySavedChannels_result : NSObject <TBase, NSCoding> {
-  AromaService_GetMySavedChannelsResponse * __success;
-  AromaService_OperationFailedException __ex1;
-  AromaService_InvalidArgumentException __ex2;
-  AromaService_InvalidTokenException __ex3;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetMySavedChannelsResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (AromaService_GetMySavedChannelsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaService_GetMySavedChannelsResponse *) success;
-- (void) setSuccess: (AromaService_GetMySavedChannelsResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_OperationFailedException) ex1;
-- (void) setEx1: (AromaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_InvalidArgumentException) ex2;
-- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaService_InvalidTokenException) ex3;
-- (void) setEx3: (AromaService_InvalidTokenException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-@end
-
-@implementation AromaService_GetMySavedChannels_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (AromaService_GetMySavedChannelsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AromaService_GetMySavedChannels_result class]]) {
-    return NO;
-  }
-  AromaService_GetMySavedChannels_result *other = (AromaService_GetMySavedChannels_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [super dealloc_stub];
-}
-
-- (AromaService_GetMySavedChannelsResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (AromaService_GetMySavedChannelsResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (AromaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (AromaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (AromaException_InvalidTokenException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          AromaService_GetMySavedChannelsResponse *fieldValue = [[AromaService_GetMySavedChannelsResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMySavedChannels_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMySavedChannels_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @interface AromaService_getReactions_args : NSObject <TBase, NSCoding> {
   AromaService_GetReactionsRequest * __request;
 
@@ -35800,58 +31965,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   return [self recv_registerHealthCheck];
 }
 
-- (void) send_removeSavedChannel: (AromaService_RemoveSavedChannelRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"removeSavedChannel" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"removeSavedChannel_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (AromaService_RemoveSavedChannelResponse *) recv_removeSavedChannel
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  AromaService_RemoveSavedChannel_result * result = [[[AromaService_RemoveSavedChannel_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  if ([result ex5IsSet]) {
-    @throw [result ex5];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"removeSavedChannel failed: unknown result"];
-}
-
-- (AromaService_RemoveSavedChannelResponse *) removeSavedChannel: (AromaService_RemoveSavedChannelRequest *) request
-{
-  [self send_removeSavedChannel : request];
-  [[outProtocol transport] flush];
-  return [self recv_removeSavedChannel];
-}
-
 - (void) send_renewApplicationToken: (AromaService_RenewApplicationTokenRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"renewApplicationToken" type: TMessageType_CALL sequenceID: 0];
@@ -35902,55 +32015,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [self send_renewApplicationToken : request];
   [[outProtocol transport] flush];
   return [self recv_renewApplicationToken];
-}
-
-- (void) send_saveChannel: (AromaService_SaveChannelRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"saveChannel" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"saveChannel_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (AromaService_SaveChannelResponse *) recv_saveChannel
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  AromaService_SaveChannel_result * result = [[[AromaService_SaveChannel_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"saveChannel failed: unknown result"];
-}
-
-- (AromaService_SaveChannelResponse *) saveChannel: (AromaService_SaveChannelRequest *) request
-{
-  [self send_saveChannel : request];
-  [[outProtocol transport] flush];
-  return [self recv_saveChannel];
 }
 
 - (void) send_signIn: (AromaService_SignInRequest *) request
@@ -36049,58 +32113,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [self send_signUp : request];
   [[outProtocol transport] flush];
   return [self recv_signUp];
-}
-
-- (void) send_snoozeChannel: (AromaService_SnoozeChannelRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"snoozeChannel" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"snoozeChannel_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (AromaService_SnoozeChannelResponse *) recv_snoozeChannel
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  AromaService_SnoozeChannel_result * result = [[[AromaService_SnoozeChannel_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  if ([result ex5IsSet]) {
-    @throw [result ex5];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"snoozeChannel failed: unknown result"];
-}
-
-- (AromaService_SnoozeChannelResponse *) snoozeChannel: (AromaService_SnoozeChannelRequest *) request
-{
-  [self send_snoozeChannel : request];
-  [[outProtocol transport] flush];
-  return [self recv_snoozeChannel];
 }
 
 - (void) send_followApplication: (AromaService_FollowApplicationRequest *) request
@@ -36795,52 +32807,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   return [self recv_getApplicationsFollowedBy];
 }
 
-- (void) send_getMySavedChannels: (AromaService_GetMySavedChannelsRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"getMySavedChannels" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"getMySavedChannels_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (AromaService_GetMySavedChannelsResponse *) recv_getMySavedChannels
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  AromaService_GetMySavedChannels_result * result = [[[AromaService_GetMySavedChannels_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"getMySavedChannels failed: unknown result"];
-}
-
-- (AromaService_GetMySavedChannelsResponse *) getMySavedChannels: (AromaService_GetMySavedChannelsRequest *) request
-{
-  [self send_getMySavedChannels : request];
-  [[outProtocol transport] flush];
-  return [self recv_getMySavedChannels];
-}
-
 - (void) send_getReactions: (AromaService_GetReactionsRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getReactions" type: TMessageType_CALL sequenceID: 0];
@@ -37063,28 +33029,12 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"registerHealthCheck"];
 }
 {
-  SEL s = @selector(process_removeSavedChannel_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"removeSavedChannel"];
-}
-{
   SEL s = @selector(process_renewApplicationToken_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
   [mMethodMap setValue: invocation forKey: @"renewApplicationToken"];
-}
-{
-  SEL s = @selector(process_saveChannel_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"saveChannel"];
 }
 {
   SEL s = @selector(process_signIn_withSequenceID:inProtocol:outProtocol:);
@@ -37101,14 +33051,6 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [invocation setSelector: s];
   [invocation retainArguments];
   [mMethodMap setValue: invocation forKey: @"signUp"];
-}
-{
-  SEL s = @selector(process_snoozeChannel_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"snoozeChannel"];
 }
 {
   SEL s = @selector(process_followApplication_withSequenceID:inProtocol:outProtocol:);
@@ -37221,14 +33163,6 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [invocation setSelector: s];
   [invocation retainArguments];
   [mMethodMap setValue: invocation forKey: @"getApplicationsFollowedBy"];
-}
-{
-  SEL s = @selector(process_getMySavedChannels_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"getMySavedChannels"];
 }
 {
   SEL s = @selector(process_getReactions_withSequenceID:inProtocol:outProtocol:);
@@ -37414,23 +33348,6 @@ AromaService_RegisterHealthCheck_result * result = [[AromaService_RegisterHealth
 [args release_stub];
 }
 
-- (void) process_removeSavedChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-AromaService_removeSavedChannel_args * args = [[AromaService_removeSavedChannel_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-AromaService_RemoveSavedChannel_result * result = [[AromaService_RemoveSavedChannel_result alloc] init];
-[result setSuccess: [mService removeSavedChannel: [args request]]];
-[outProtocol writeMessageBeginWithName: @"removeSavedChannel"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
 - (void) process_renewApplicationToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
 AromaService_renewApplicationToken_args * args = [[AromaService_renewApplicationToken_args alloc] init];
@@ -37439,23 +33356,6 @@ AromaService_renewApplicationToken_args * args = [[AromaService_renewApplication
 AromaService_RenewApplicationToken_result * result = [[AromaService_RenewApplicationToken_result alloc] init];
 [result setSuccess: [mService renewApplicationToken: [args request]]];
 [outProtocol writeMessageBeginWithName: @"renewApplicationToken"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_saveChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-AromaService_saveChannel_args * args = [[AromaService_saveChannel_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-AromaService_SaveChannel_result * result = [[AromaService_SaveChannel_result alloc] init];
-[result setSuccess: [mService saveChannel: [args request]]];
-[outProtocol writeMessageBeginWithName: @"saveChannel"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
@@ -37490,23 +33390,6 @@ AromaService_signUp_args * args = [[AromaService_signUp_args alloc] init];
 AromaService_SignUp_result * result = [[AromaService_SignUp_result alloc] init];
 [result setSuccess: [mService signUp: [args request]]];
 [outProtocol writeMessageBeginWithName: @"signUp"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_snoozeChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-AromaService_snoozeChannel_args * args = [[AromaService_snoozeChannel_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-AromaService_SnoozeChannel_result * result = [[AromaService_SnoozeChannel_result alloc] init];
-[result setSuccess: [mService snoozeChannel: [args request]]];
-[outProtocol writeMessageBeginWithName: @"snoozeChannel"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
@@ -37745,23 +33628,6 @@ AromaService_getApplicationsFollowedBy_args * args = [[AromaService_getApplicati
 AromaService_GetApplicationsFollowedBy_result * result = [[AromaService_GetApplicationsFollowedBy_result alloc] init];
 [result setSuccess: [mService getApplicationsFollowedBy: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getApplicationsFollowedBy"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_getMySavedChannels_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-AromaService_getMySavedChannels_args * args = [[AromaService_getMySavedChannels_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-AromaService_GetMySavedChannels_result * result = [[AromaService_GetMySavedChannels_result alloc] init];
-[result setSuccess: [mService getMySavedChannels: [args request]]];
-[outProtocol writeMessageBeginWithName: @"getMySavedChannels"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
