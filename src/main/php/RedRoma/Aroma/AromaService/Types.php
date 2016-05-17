@@ -7295,15 +7295,15 @@ final class Constant extends \Thrift\Type\TConstant {
   static protected $SERVICE_PORT;
   static protected $PRODUCTION_ENDPOINT;
   static protected $BETA_ENDPOINT;
-  static protected $MAX_APPLICATION_ICON_DIMENSION;
   static protected $MAX_PROFILE_IMAGE_DIMENSION;
-  static protected $MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
   static protected $MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
+  static protected $MAX_APPLICATION_ICON_DIMENSION;
+  static protected $MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
+  static protected $APPLICATION_NAME_MAX_LENGTH;
+  static protected $APPLICATION_MAX_OWNERS;
   static protected $MAX_MESSAGE_LENGTH;
   static protected $DEFAULT_INBOX_LIFETIME;
   static protected $DEFAULT_ACTIVITY_LIFETIME;
-  static protected $APPLICATION_NAME_MAX_LENGTH;
-  static protected $APPLICATION_MAX_OWNERS;
 
   static protected function init_SERVICE_PORT() {
     return 7010;
@@ -7329,9 +7329,9 @@ new \RedRoma\Aroma\Endpoint\TcpEndpoint(array(
     ));
   }
 
-  static protected function init_MAX_APPLICATION_ICON_DIMENSION() {
+  static protected function init_MAX_PROFILE_IMAGE_DIMENSION() {
     return     /**
-     * The Maximum Dimensions for an Icon submitted with an Application.
+     * The Maximum Dimension for a Profile Picture submitted.
      */
 new \RedRoma\Aroma\Dimension(array(
       "width" => 1024,
@@ -7339,9 +7339,16 @@ new \RedRoma\Aroma\Dimension(array(
     ));
   }
 
-  static protected function init_MAX_PROFILE_IMAGE_DIMENSION() {
+  static protected function init_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES() {
     return     /**
-     * The Maximum Dimension for a Profile Picture submitted.
+     * The Maximum Filesize for a Profile Picture submitted.
+     */
+100;
+  }
+
+  static protected function init_MAX_APPLICATION_ICON_DIMENSION() {
+    return     /**
+     * The Maximum Dimensions for an Icon submitted with an Application.
      */
 new \RedRoma\Aroma\Dimension(array(
       "width" => 1024,
@@ -7356,11 +7363,18 @@ new \RedRoma\Aroma\Dimension(array(
 100;
   }
 
-  static protected function init_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES() {
+  static protected function init_APPLICATION_NAME_MAX_LENGTH() {
     return     /**
-     * The Maximum Filesize for a Profile Picture submitted.
+     * The Maximum number of characters that can be in the Application Name.
      */
-100;
+20;
+  }
+
+  static protected function init_APPLICATION_MAX_OWNERS() {
+    return     /**
+     * The Maximum number of owners that an Application can have.
+     */
+10;
   }
 
   static protected function init_MAX_MESSAGE_LENGTH() {
@@ -7390,20 +7404,6 @@ new \RedRoma\Aroma\LengthOfTime(array(
       "value" => 4,
       "unit" =>       5,
     ));
-  }
-
-  static protected function init_APPLICATION_NAME_MAX_LENGTH() {
-    return     /**
-     * The Maximum number of characters that can be in the Application Name.
-     */
-20;
-  }
-
-  static protected function init_APPLICATION_MAX_OWNERS() {
-    return     /**
-     * The Maximum number of owners that an Application can have.
-     */
-10;
   }
 }
 

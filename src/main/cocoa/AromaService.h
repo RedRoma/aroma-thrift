@@ -2384,13 +2384,13 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 + (AromaService_int) SERVICE_PORT;
 + (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
-+ (Aroma_Dimension *) MAX_APPLICATION_ICON_DIMENSION;
 + (Aroma_Dimension *) MAX_PROFILE_IMAGE_DIMENSION;
-+ (AromaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
 + (AromaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
++ (Aroma_Dimension *) MAX_APPLICATION_ICON_DIMENSION;
++ (AromaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
++ (AromaService_int) APPLICATION_NAME_MAX_LENGTH;
++ (AromaService_int) APPLICATION_MAX_OWNERS;
 + (AromaService_int) MAX_MESSAGE_LENGTH;
 + (Aroma_LengthOfTime *) DEFAULT_INBOX_LIFETIME;
 + (Aroma_LengthOfTime *) DEFAULT_ACTIVITY_LIFETIME;
-+ (AromaService_int) APPLICATION_NAME_MAX_LENGTH;
-+ (AromaService_int) APPLICATION_MAX_OWNERS;
 @end

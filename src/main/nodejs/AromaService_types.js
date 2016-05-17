@@ -4848,16 +4848,16 @@ ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'aroma-srv.aroma.tech','port' : 7010});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'aroma-srv.beta.aroma.tech','port' : 7010});
-ttypes.MAX_APPLICATION_ICON_DIMENSION = new Aroma_ttypes.Dimension({
-'width' : 1024,'height' : 1024});
 ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Aroma_ttypes.Dimension({
 'width' : 1024,'height' : 1024});
-ttypes.MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
+ttypes.MAX_APPLICATION_ICON_DIMENSION = new Aroma_ttypes.Dimension({
+'width' : 1024,'height' : 1024});
+ttypes.MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+ttypes.APPLICATION_NAME_MAX_LENGTH = 20;
+ttypes.APPLICATION_MAX_OWNERS = 10;
 ttypes.MAX_MESSAGE_LENGTH = 5000;
 ttypes.DEFAULT_INBOX_LIFETIME = new Aroma_ttypes.LengthOfTime({
 'value' : 3,'unit' : 5});
 ttypes.DEFAULT_ACTIVITY_LIFETIME = new Aroma_ttypes.LengthOfTime({
 'value' : 4,'unit' : 5});
-ttypes.APPLICATION_NAME_MAX_LENGTH = 20;
-ttypes.APPLICATION_MAX_OWNERS = 10;

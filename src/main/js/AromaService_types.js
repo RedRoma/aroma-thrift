@@ -4836,16 +4836,16 @@ PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'aroma-srv.aroma.tech','port' : 7010});
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'aroma-srv.beta.aroma.tech','port' : 7010});
-MAX_APPLICATION_ICON_DIMENSION = new Dimension({
-'width' : 1024,'height' : 1024});
 MAX_PROFILE_IMAGE_DIMENSION = new Dimension({
 'width' : 1024,'height' : 1024});
-MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
+MAX_APPLICATION_ICON_DIMENSION = new Dimension({
+'width' : 1024,'height' : 1024});
+MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+APPLICATION_NAME_MAX_LENGTH = 20;
+APPLICATION_MAX_OWNERS = 10;
 MAX_MESSAGE_LENGTH = 5000;
 DEFAULT_INBOX_LIFETIME = new LengthOfTime({
 'value' : 3,'unit' : 5});
 DEFAULT_ACTIVITY_LIFETIME = new LengthOfTime({
 'value' : 4,'unit' : 5});
-APPLICATION_NAME_MAX_LENGTH = 20;
-APPLICATION_MAX_OWNERS = 10;

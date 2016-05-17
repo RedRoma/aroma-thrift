@@ -81,36 +81,18 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "aroma-srv.aroma
  */
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "aroma-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
-/** The Maximum Dimensions for an Icon submitted with an Application. */
-const Aroma.Dimension MAX_APPLICATION_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
-
-/** The Maximum Dimension for a Profile Picture submitted. */
-const Aroma.Dimension MAX_PROFILE_IMAGE_DIMENSION = { "width" : 1024, "height" : 1024 };
-
-
-/** The Maximum Filesize for an Icon submitted with an Application. */
-const int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
-
-/** The Maximum Filesize for a Profile Picture submitted. */
-const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
-
-/**
- * The Maximum number of messages included in a Message Object.
- * If truncated, the full message can be loaded using the
- * getFullMessage() operation.
- */
-const int MAX_MESSAGE_LENGTH = 5000;
-
-/** The default amount of time to save messages in a User's Inbox. */
-const Aroma.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Aroma.TimeUnit.DAYS };
-
-/** The default amount of time to save events in a User's Activity Feed. */
-const Aroma.LengthOfTime DEFAULT_ACTIVITY_LIFETIME = { "value" : 4, "unit" : Aroma.TimeUnit.DAYS };
 
 
 //==========================================================
 // AUTHENTICATION OPERATIONS
 //==========================================================
+
+
+/** The Maximum Dimension for a Profile Picture submitted. */
+const Aroma.Dimension MAX_PROFILE_IMAGE_DIMENSION = { "width" : 1024, "height" : 1024 };
+
+/** The Maximum Filesize for a Profile Picture submitted. */
+const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
 /**
  * Sign In to Aroma, and get a User Token.
@@ -188,6 +170,14 @@ struct GetUserInfoResponse
 //==========================================================
 // APPLICATION OPERATIONS
 //==========================================================
+
+
+/** The Maximum Dimensions for an Icon submitted with an Application. */
+const Aroma.Dimension MAX_APPLICATION_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
+
+/** The Maximum Filesize for an Icon submitted with an Application. */
+const int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+
 
 struct GetApplicationInfoRequest
 {
@@ -373,6 +363,15 @@ struct UnfollowApplicationResponse
 
 
 /**
+ * The Maximum number of messages included in a Message Object.
+ * If truncated, the full message can be loaded using the
+ * getFullMessage() operation.
+ */
+const int MAX_MESSAGE_LENGTH = 5000;
+
+
+
+/**
  * Query to get a User's messages, either across all Services,
  * or by a specific Application.
  */
@@ -471,6 +470,10 @@ struct DismissMessageResponse
 //==========================================================
 
 
+/** The default amount of time to save messages in a User's Inbox. */
+const Aroma.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Aroma.TimeUnit.DAYS };
+
+
 struct GetInboxRequest
 {
     1: UserToken token;
@@ -486,6 +489,11 @@ struct GetInboxResponse
 //==========================================================
 // ACTIVITY OPERATIONS
 //==========================================================
+
+
+/** The default amount of time to save events in a User's Activity Feed. */
+const Aroma.LengthOfTime DEFAULT_ACTIVITY_LIFETIME = { "value" : 4, "unit" : Aroma.TimeUnit.DAYS };
+
 
 
 /**

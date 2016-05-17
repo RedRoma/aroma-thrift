@@ -14015,15 +14015,15 @@
 static AromaService_int AromaService_SERVICE_PORT = 7010;
 static AromaEndpoint_TcpEndpoint * AromaService_PRODUCTION_ENDPOINT;
 static AromaEndpoint_TcpEndpoint * AromaService_BETA_ENDPOINT;
-static Aroma_Dimension * AromaService_MAX_APPLICATION_ICON_DIMENSION;
 static Aroma_Dimension * AromaService_MAX_PROFILE_IMAGE_DIMENSION;
-static AromaService_int AromaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 static AromaService_int AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
+static Aroma_Dimension * AromaService_MAX_APPLICATION_ICON_DIMENSION;
+static AromaService_int AromaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+static AromaService_int AromaService_APPLICATION_NAME_MAX_LENGTH = 20;
+static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 static AromaService_int AromaService_MAX_MESSAGE_LENGTH = 5000;
 static Aroma_LengthOfTime * AromaService_DEFAULT_INBOX_LIFETIME;
 static Aroma_LengthOfTime * AromaService_DEFAULT_ACTIVITY_LIFETIME;
-static AromaService_int AromaService_APPLICATION_NAME_MAX_LENGTH = 20;
-static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
 @implementation AromaService_AromaServiceConstants
 + (void) initialize {
@@ -14037,14 +14037,14 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [AromaService_BETA_ENDPOINT setPort:7010];
 
 ;
-  AromaService_MAX_APPLICATION_ICON_DIMENSION = [[Aroma_Dimension alloc] init];
-  [AromaService_MAX_APPLICATION_ICON_DIMENSION setWidth:1024];
-  [AromaService_MAX_APPLICATION_ICON_DIMENSION setHeight:1024];
-
-;
   AromaService_MAX_PROFILE_IMAGE_DIMENSION = [[Aroma_Dimension alloc] init];
   [AromaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
   [AromaService_MAX_PROFILE_IMAGE_DIMENSION setHeight:1024];
+
+;
+  AromaService_MAX_APPLICATION_ICON_DIMENSION = [[Aroma_Dimension alloc] init];
+  [AromaService_MAX_APPLICATION_ICON_DIMENSION setWidth:1024];
+  [AromaService_MAX_APPLICATION_ICON_DIMENSION setHeight:1024];
 
 ;
   AromaService_DEFAULT_INBOX_LIFETIME = [[Aroma_LengthOfTime alloc] init];
@@ -14067,17 +14067,23 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 + (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return AromaService_BETA_ENDPOINT;
 }
-+ (Aroma_Dimension *) MAX_APPLICATION_ICON_DIMENSION{
-  return AromaService_MAX_APPLICATION_ICON_DIMENSION;
-}
 + (Aroma_Dimension *) MAX_PROFILE_IMAGE_DIMENSION{
   return AromaService_MAX_PROFILE_IMAGE_DIMENSION;
+}
++ (AromaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES{
+  return AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
+}
++ (Aroma_Dimension *) MAX_APPLICATION_ICON_DIMENSION{
+  return AromaService_MAX_APPLICATION_ICON_DIMENSION;
 }
 + (AromaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES{
   return AromaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
 }
-+ (AromaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES{
-  return AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
++ (AromaService_int) APPLICATION_NAME_MAX_LENGTH{
+  return AromaService_APPLICATION_NAME_MAX_LENGTH;
+}
++ (AromaService_int) APPLICATION_MAX_OWNERS{
+  return AromaService_APPLICATION_MAX_OWNERS;
 }
 + (AromaService_int) MAX_MESSAGE_LENGTH{
   return AromaService_MAX_MESSAGE_LENGTH;
@@ -14087,12 +14093,6 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 }
 + (Aroma_LengthOfTime *) DEFAULT_ACTIVITY_LIFETIME{
   return AromaService_DEFAULT_ACTIVITY_LIFETIME;
-}
-+ (AromaService_int) APPLICATION_NAME_MAX_LENGTH{
-  return AromaService_APPLICATION_NAME_MAX_LENGTH;
-}
-+ (AromaService_int) APPLICATION_MAX_OWNERS{
-  return AromaService_APPLICATION_MAX_OWNERS;
 }
 @end
 
