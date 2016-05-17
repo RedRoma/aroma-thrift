@@ -525,6 +525,45 @@ an Application with Aroma.
 </table><br/></div><div class="definition"><h3 id="Struct_UpdateApplicationResponse">Struct: UpdateApplicationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>application</td><td><code><a href="#Typedef_Application">Application</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsRequest">Struct: SearchForApplicationsRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationName</td><td><code>string</code></td><td>Performs a search based on the Application name.
+</td><td>default</td><td></td></tr>
+<tr><td>3</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>Search for Applications that match the given search terms.
+<br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsResponse">Struct: SearchForApplicationsResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RegenerateApplicationTokenRequest">Struct: RegenerateApplicationTokenRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Regenerates an Application's Token. This is usually done because the original token was:
+1: Lost or Misplaced
+2: Compromised (someone else has accessed it)
+3: Just for security reasons.
+
+NOTE: This will invalidate any existing Tokens for this Application.
+NOTE: Only an owner can perform this operation.
+
+#owner
+<br/></div><div class="definition"><h3 id="Struct_RegenerateApplicationTokenResponse">Struct: RegenerateApplicationTokenResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RenewApplicationTokenRequest">Struct: RenewApplicationTokenRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td>The Token to renew
+</td><td>default</td><td></td></tr>
+<tr><td>3</td><td>newLifetime</td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td>Defines for how long to extend a Token.
+</td><td>default</td><td></td></tr>
+<tr><td>4</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Renews an Application Token, effectively extending it's lifetime.
+Additional Charges may apply.
+<br/></div><div class="definition"><h3 id="Struct_RenewApplicationTokenResponse">Struct: RenewApplicationTokenResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationsFollowedByRequest">Struct: GetApplicationsFollowedByRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -550,25 +589,35 @@ an Application with Aroma.
 </table><br/></div><div class="definition"><h3 id="Struct_UnfollowApplicationResponse">Struct: UnfollowApplicationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Success"</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DeleteActivityRequest">Struct: DeleteActivityRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationMessagesRequest">Struct: GetApplicationMessagesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>eventId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>deleteAll</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
-<tr><td>4</td><td>multipleEventIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DeleteActivityResponse">Struct: DeleteActivityResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>totalEventsDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsRequest">Struct: SearchForApplicationsRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationName</td><td><code>string</code></td><td>Performs a search based on the Application name.
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The Application's Messages to retrieve.
 </td><td>default</td><td></td></tr>
-<tr><td>3</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
-</table><br/>Search for Applications that match the given search terms.
-<br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsResponse">Struct: SearchForApplicationsResponse</h3>
+<tr><td>3</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
+</td><td>optional</td><td><code>0</code></td></tr>
+</table><br/>Query to get a User's messages, either across all Services,
+or by a specific Application.
+<br/></div><div class="definition"><h3 id="Struct_GetApplicationMessagesResponse">Struct: GetApplicationMessagesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageRequest">Struct: GetFullMessageRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>messageId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageResponse">Struct: GetFullMessageResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>fullMessage</td><td><code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetMediaRequest">Struct: GetMediaRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>mediaId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>desiredThumbnailSize</td><td><code><a href="Aroma.html#Struct_Dimension">Aroma.Dimension</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetMediaResponse">Struct: GetMediaResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>image</td><td><code><a href="Aroma.html#Struct_Image">Aroma.Image</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_DeleteMessageRequest">Struct: DeleteMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -602,45 +651,41 @@ still be visible to other subscribers.
 <br/></div><div class="definition"><h3 id="Struct_DismissMessageResponse">Struct: DismissMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_RegenerateApplicationTokenRequest">Struct: RegenerateApplicationTokenRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_GetInboxRequest">Struct: GetInboxRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Regenerates an Application's Token. This is usually done because the original token was:
-1: Lost or Misplaced
-2: Compromised (someone else has accessed it)
-3: Just for security reasons.
-
-NOTE: This will invalidate any existing Tokens for this Application.
-NOTE: Only an owner can perform this operation.
-
-#owner
-<br/></div><div class="definition"><h3 id="Struct_RegenerateApplicationTokenResponse">Struct: RegenerateApplicationTokenResponse</h3>
+<tr><td>2</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
+</td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetInboxResponse">Struct: GetInboxResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
+<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetActivityRequest">Struct: GetActivityRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>endpoint</td><td><code><a href="#Typedef_Endpoint">Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Registers an Application Endpoint to use
-for Health Checks.
-<br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckResponse">Struct: RegisterHealthCheckResponse</h3>
+<tr><td>2</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
+</table><br/>Request to get a User's Activity Stream.
+An Activity is an event that resulted from a person's
+action, and not an application or machine.
+<br/></div><div class="definition"><h3 id="Struct_GetActivityResponse">Struct: GetActivityResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>2</td><td>healthCheckToken</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_RenewApplicationTokenRequest">Struct: RenewApplicationTokenRequest</h3>
+<tr><td>1</td><td>events</td><td><code>list&lt;<code><a href="Events.html#Struct_Event">Events.Event</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteActivityRequest">Struct: DeleteActivityRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td>The Token to renew
-</td><td>default</td><td></td></tr>
-<tr><td>3</td><td>newLifetime</td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td>Defines for how long to extend a Token.
-</td><td>default</td><td></td></tr>
-<tr><td>4</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Renews an Application Token, effectively extending it's lifetime.
-Additional Charges may apply.
-<br/></div><div class="definition"><h3 id="Struct_RenewApplicationTokenResponse">Struct: RenewApplicationTokenResponse</h3>
+<tr><td>2</td><td>eventId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>deleteAll</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
+<tr><td>4</td><td>multipleEventIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteActivityResponse">Struct: DeleteActivityResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>totalEventsDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetReactionsRequest">Struct: GetReactionsRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>forAppId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>Get the reactions saved for either the calling user's Inbox, or an Application.
+<br/></div><div class="definition"><h3 id="Struct_GetReactionsResponse">Struct: GetReactionsResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>reactions</td><td><code>list&lt;<code><a href="#Typedef_Reaction">Reaction</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_UpdateReactionsRequest">Struct: UpdateReactionsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -682,69 +727,6 @@ Aroma.
 <tr><td>5</td><td>numberOfLowUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>6</td><td>numberOfMediumUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>7</td><td>numberOfHighUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetInboxRequest">Struct: GetInboxRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
-</td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetInboxResponse">Struct: GetInboxResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationMessagesRequest">Struct: GetApplicationMessagesRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The Application's Messages to retrieve.
-</td><td>default</td><td></td></tr>
-<tr><td>3</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
-</td><td>optional</td><td><code>0</code></td></tr>
-</table><br/>Query to get a User's messages, either across all Services,
-or by a specific Application.
-<br/></div><div class="definition"><h3 id="Struct_GetApplicationMessagesResponse">Struct: GetApplicationMessagesResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
-<tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageRequest">Struct: GetFullMessageRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>messageId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageResponse">Struct: GetFullMessageResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>fullMessage</td><td><code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetMediaRequest">Struct: GetMediaRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>mediaId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>desiredThumbnailSize</td><td><code><a href="Aroma.html#Struct_Dimension">Aroma.Dimension</a></code></td><td></td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetMediaResponse">Struct: GetMediaResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>image</td><td><code><a href="Aroma.html#Struct_Image">Aroma.Image</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetActivityRequest">Struct: GetActivityRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/>Request to get a User's Activity Stream.
-An Activity is an event that resulted from a person's
-action, and not an application or machine.
-<br/></div><div class="definition"><h3 id="Struct_GetActivityResponse">Struct: GetActivityResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>events</td><td><code>list&lt;<code><a href="Events.html#Struct_Event">Events.Event</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetReactionsRequest">Struct: GetReactionsRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>forAppId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
-</table><br/>Get the reactions saved for either the calling user's Inbox, or an Application.
-<br/></div><div class="definition"><h3 id="Struct_GetReactionsResponse">Struct: GetReactionsResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>reactions</td><td><code>list&lt;<code><a href="#Typedef_Reaction">Reaction</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsRequest">Struct: GetServiceAnnouncementsRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Request to get any upcoming Service Announcements
-from the Team @ Aroma Tech.
-<br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsResponse">Struct: GetServiceAnnouncementsResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Aroma.html#Struct_ServiceAnnouncement">Aroma.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetRegisteredDevicesRequest">Struct: GetRegisteredDevicesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_GetRegisteredDevicesResponse">Struct: GetRegisteredDevicesResponse</h3>
@@ -757,6 +739,24 @@ from the Team @ Aroma Tech.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_UnregisterDeviceResponse">Struct: UnregisterDeviceResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>endpoint</td><td><code><a href="#Typedef_Endpoint">Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Registers an Application Endpoint to use
+for Health Checks.
+<br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckResponse">Struct: RegisterHealthCheckResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>healthCheckToken</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsRequest">Struct: GetServiceAnnouncementsRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Request to get any upcoming Service Announcements
+from the Team @ Aroma Tech.
+<br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsResponse">Struct: GetServiceAnnouncementsResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Aroma.html#Struct_ServiceAnnouncement">Aroma.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_AromaService">Service: AromaService</h3>
 The Aroma Service is designed to be used by People, and not Applications.

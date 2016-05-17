@@ -264,6 +264,66 @@ struct UpdateApplicationResponse
     1: Application application;
 }
 
+/**
+ * Search for Applications that match the given search terms.
+ */
+struct SearchForApplicationsRequest
+{
+    1: UserToken token;
+    /** Performs a search based on the Application name. */
+    2: string applicationName;
+    3: optional uuid organizationId;
+}
+
+struct SearchForApplicationsResponse
+{
+    1: list<Application> applications = []
+}
+
+
+/**
+ * Regenerates an Application's Token. This is usually done because the original token was:
+ * 1: Lost or Misplaced
+ * 2: Compromised (someone else has accessed it)
+ * 3: Just for security reasons.
+ *
+ * NOTE: This will invalidate any existing Tokens for this Application.
+ * NOTE: Only an owner can perform this operation.
+ *
+ * #owner
+ */
+struct RegenerateApplicationTokenRequest
+{
+    1: UserToken token;
+    2: uuid applicationId;
+}
+
+struct RegenerateApplicationTokenResponse
+{
+    1: ApplicationToken applicationToken;
+}
+
+
+/**
+ * Renews an Application Token, effectively extending it's lifetime.
+ * Additional Charges may apply.
+ */
+struct RenewApplicationTokenRequest
+{
+    1: UserToken token;
+    /** The Token to renew */
+    2: ApplicationToken applicationToken;
+    /** Defines for how long to extend a Token. */
+    3: Aroma.LengthOfTime newLifetime;
+    4: uuid applicationId;
+}
+
+struct RenewApplicationTokenResponse
+{
+    1: ApplicationToken serviceToken;
+}
+
+
 //==========================================================
 // FOLLOW APP OPERATIONS
 //==========================================================
@@ -307,38 +367,54 @@ struct UnfollowApplicationResponse
     1: optional string message = "Success"
 }
 
+//==========================================================
+// MESSAGE OPERATIONS
+//==========================================================
 
-
-
-struct DeleteActivityRequest
-{
-    1: UserToken token;
-    2: uuid eventId;
-    3: optional bool deleteAll = false;
-    4: optional list<uuid> multipleEventIds;
-}
-
-struct DeleteActivityResponse
-{
-    1: optional int totalEventsDeleted = 0;
-}
 
 /**
- * Search for Applications that match the given search terms.
+ * Query to get a User's messages, either across all Services,
+ * or by a specific Application.
  */
-struct SearchForApplicationsRequest
+struct GetApplicationMessagesRequest
 {
     1: UserToken token;
-    /** Performs a search based on the Application name. */
-    2: string applicationName;
-    3: optional uuid organizationId;
+    /** The Application's Messages to retrieve. */
+    2: uuid applicationId;
+    /** Suggests that the Service limits the results of the query.*/
+    3: optional int limit = 0;
 }
 
-struct SearchForApplicationsResponse
+struct GetApplicationMessagesResponse
 {
-    1: list<Application> applications = []
+    1: list<Aroma.Message> messages = [];
+    2: optional int totalMessagesMatching = 0;
 }
 
+struct GetFullMessageRequest
+{
+    1: UserToken token;
+    2: uuid messageId;
+    3: uuid applicationId;
+}
+
+struct GetFullMessageResponse
+{
+    1: Aroma.Message fullMessage;
+}
+
+struct GetMediaRequest
+{
+    1: UserToken token;
+    2: uuid mediaId;
+    3: optional Aroma.Dimension desiredThumbnailSize;
+}
+
+struct GetMediaResponse
+{
+    //For now only Images are supported
+    1: Aroma.Image image;
+}
 
 /**
  * Deletes a Message.
@@ -390,64 +466,73 @@ struct DismissMessageResponse
 }
 
 
+//==========================================================
+// INBOX OPERATIONS
+//==========================================================
 
-/**
- * Regenerates an Application's Token. This is usually done because the original token was:
- * 1: Lost or Misplaced
- * 2: Compromised (someone else has accessed it)
- * 3: Just for security reasons.
- *
- * NOTE: This will invalidate any existing Tokens for this Application.
- * NOTE: Only an owner can perform this operation.
- *
- * #owner
- */
-struct RegenerateApplicationTokenRequest
+
+struct GetInboxRequest
 {
     1: UserToken token;
-    2: uuid applicationId;
+    /** Suggests that the Service limits the results of the query.*/
+    2: optional int limit = 0;
 }
 
-struct RegenerateApplicationTokenResponse
+struct GetInboxResponse
 {
-    1: ApplicationToken applicationToken;
+    1: list<Aroma.Message> messages = [];
 }
+
+//==========================================================
+// ACTIVITY OPERATIONS
+//==========================================================
+
 
 /**
- * Registers an Application Endpoint to use
- * for Health Checks.
+ * Request to get a User's Activity Stream.
+ * An Activity is an event that resulted from a person's
+ * action, and not an application or machine.
  */
-struct RegisterHealthCheckRequest
+struct GetActivityRequest
 {
     1: UserToken token;
-    2: Endpoint endpoint;
+    2: optional int limit = 0;
 }
 
-struct RegisterHealthCheckResponse
+struct GetActivityResponse
 {
-    1: optional string message;
-    2: optional string healthCheckToken;
+    1: list<Events.Event> events = [];
 }
 
-/**
- * Renews an Application Token, effectively extending it's lifetime.
- * Additional Charges may apply.
- */
-struct RenewApplicationTokenRequest
+struct DeleteActivityRequest
 {
     1: UserToken token;
-    /** The Token to renew */
-    2: ApplicationToken applicationToken;
-    /** Defines for how long to extend a Token. */
-    3: Aroma.LengthOfTime newLifetime;
-    4: uuid applicationId;
+    2: uuid eventId;
+    3: optional bool deleteAll = false;
+    4: optional list<uuid> multipleEventIds;
 }
 
-struct RenewApplicationTokenResponse
+struct DeleteActivityResponse
 {
-    1: ApplicationToken serviceToken;
+    1: optional int totalEventsDeleted = 0;
 }
 
+//==========================================================
+// REACTION OPERATIONS
+//==========================================================
+
+
+/** Get the reactions saved for either the calling user's Inbox, or an Application.  */
+struct GetReactionsRequest
+{
+    1: UserToken token;
+    2: optional uuid forAppId;
+}
+
+struct GetReactionsResponse
+{
+    1: list<Reaction> reactions = [];
+}
 
 /**
  * Sets the Reactions for either the calling user's Inbox, or an Application owned
@@ -476,6 +561,11 @@ struct UpdateReactionsResponse
     1: optional list<Reaction> reactions = [];
 }
 
+//==========================================================
+// BUZZ OPERATIONS
+//==========================================================
+
+
 /**
  * Buzz is like the latest news happening around
  * Aroma.
@@ -494,6 +584,11 @@ struct GetBuzzResponse
     4: list<Events.Event> generalEvents = [];
 }
 
+
+//==========================================================
+// DASHBOARD OPERATIONS
+//==========================================================
+
 struct GetDashboardRequest
 {
     1: UserToken token;
@@ -509,108 +604,6 @@ struct GetDashboardResponse
     6: int numberOfMediumUrgencyMessages = 0;
     7: int numberOfHighUrgencyMessages = 0;
 }
-
-
-struct GetInboxRequest
-{
-    1: UserToken token;
-    /** Suggests that the Service limits the results of the query.*/
-    2: optional int limit = 0;
-}
-
-struct GetInboxResponse
-{
-    1: list<Aroma.Message> messages = [];
-}
-
-/**
- * Query to get a User's messages, either across all Services,
- * or by a specific Application.
- */
-struct GetApplicationMessagesRequest
-{
-    1: UserToken token;
-    /** The Application's Messages to retrieve. */
-    2: uuid applicationId;
-    /** Suggests that the Service limits the results of the query.*/
-    3: optional int limit = 0;
-}
-
-struct GetApplicationMessagesResponse
-{
-    1: list<Aroma.Message> messages = [];
-    2: optional int totalMessagesMatching = 0;
-}
-
-struct GetFullMessageRequest
-{
-    1: UserToken token;
-    2: uuid messageId;
-    3: uuid applicationId;
-}
-
-struct GetFullMessageResponse
-{
-    1: Aroma.Message fullMessage;
-}
-
-struct GetMediaRequest
-{
-    1: UserToken token;
-    2: uuid mediaId;
-    3: optional Aroma.Dimension desiredThumbnailSize;
-}
-
-struct GetMediaResponse
-{
-    //For now only Images are supported
-    1: Aroma.Image image;
-}
-
-
-/**
- * Request to get a User's Activity Stream.
- * An Activity is an event that resulted from a person's
- * action, and not an application or machine.
- */
-struct GetActivityRequest
-{
-    1: UserToken token;
-    2: optional int limit = 0;
-}
-
-struct GetActivityResponse
-{
-    1: list<Events.Event> events = [];
-}
-
-/** Get the reactions saved for either the calling user's Inbox, or an Application.  */
-struct GetReactionsRequest
-{
-    1: UserToken token;
-    2: optional uuid forAppId;
-}
-
-struct GetReactionsResponse
-{
-    1: list<Reaction> reactions = [];
-}
-
-/**
- * Request to get any upcoming Service Announcements
- * from the Team @ Aroma Tech.
- */
-struct GetServiceAnnouncementsRequest
-{
-    1: UserToken token;
-}
-
-struct GetServiceAnnouncementsResponse
-{
-    1: optional list<Aroma.ServiceAnnouncement> serviceAnnouncements = []
-}
-
-
 
 //==========================================================
 // DEVICE REGISTRATION OPERATIONS
@@ -646,6 +639,46 @@ struct UnregisterDeviceResponse
     
 }
 
+
+//==========================================================
+// OTHER OPERATIONS
+//==========================================================
+
+/**
+ * Registers an Application Endpoint to use
+ * for Health Checks.
+ */
+struct RegisterHealthCheckRequest
+{
+    1: UserToken token;
+    2: Endpoint endpoint;
+}
+
+struct RegisterHealthCheckResponse
+{
+    1: optional string message;
+    2: optional string healthCheckToken;
+}
+
+
+/**
+ * Request to get any upcoming Service Announcements
+ * from the Team @ Aroma Tech.
+ */
+struct GetServiceAnnouncementsRequest
+{
+    1: UserToken token;
+}
+
+struct GetServiceAnnouncementsResponse
+{
+    1: optional list<Aroma.ServiceAnnouncement> serviceAnnouncements = []
+}
+
+
+//==========================================================
+// AROMA SERVICE DEFINITION
+//==========================================================
 
 /**
  * The Aroma Service is designed to be used by People, and not Applications.
