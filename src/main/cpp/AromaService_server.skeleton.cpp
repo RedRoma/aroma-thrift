@@ -227,6 +227,11 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("getRegisteredDevices\n");
   }
 
+  void registerDevice(RegisterDeviceResponse& _return, const RegisterDeviceRequest& request) {
+    // Your implementation goes here
+    printf("registerDevice\n");
+  }
+
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     // Your implementation goes here
     printf("getDashboard\n");

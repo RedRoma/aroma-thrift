@@ -965,6 +965,11 @@ service AromaService
                                                                                                       3 : InvalidTokenException ex3,
                                                                                                       4 : UnauthorizedException ex5);
     
+    RegisterDeviceResponse registerDevice(1 : RegisterDeviceRequest request) throws(1 : OperationFailedException ex1,
+                                                                                    2 : InvalidArgumentException ex2,
+                                                                                    3 : InvalidTokenException ex3,
+                                                                                    4 : UnauthorizedException ex5);
+    
     //==========================================================
     // DASHBOARD OPERATIONS
     //==========================================================

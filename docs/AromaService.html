@@ -217,6 +217,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_getUserInfo">getUserInfo</a></li>
 <li><a href="#Fn_AromaService_provisionApplication">provisionApplication</a></li>
 <li><a href="#Fn_AromaService_regenerateToken">regenerateToken</a></li>
+<li><a href="#Fn_AromaService_registerDevice">registerDevice</a></li>
 <li><a href="#Fn_AromaService_registerHealthCheck">registerHealthCheck</a></li>
 <li><a href="#Fn_AromaService_renewApplicationToken">renewApplicationToken</a></li>
 <li><a href="#Fn_AromaService_searchForApplications">searchForApplications</a></li>
@@ -891,6 +892,9 @@ to load the full message.
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getRegisteredDevices">Function: AromaService.getRegisteredDevices</h4>
 <pre><code><a href="#Struct_GetRegisteredDevicesResponse">GetRegisteredDevicesResponse</a></code> getRegisteredDevices(<code><a href="#Struct_GetRegisteredDevicesRequest">GetRegisteredDevicesRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_registerDevice">Function: AromaService.registerDevice</h4>
+<pre><code><a href="#Struct_RegisterDeviceResponse">RegisterDeviceResponse</a></code> registerDevice(<code><a href="#Struct_RegisterDeviceRequest">RegisterDeviceRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getDashboard">Function: AromaService.getDashboard</h4>
 <pre><code><a href="#Struct_GetDashboardResponse">GetDashboardResponse</a></code> getDashboard(<code><a href="#Struct_GetDashboardRequest">GetDashboardRequest</a></code> request)
