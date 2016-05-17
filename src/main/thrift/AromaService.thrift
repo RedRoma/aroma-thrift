@@ -202,6 +202,17 @@ struct GetApplicationInfoResponse
     1: Application applicationInfo;
 }
 
+struct GetApplicationsOwnedByRequest
+{
+    1: UserToken token;
+    /** If not present, will assume the userID of the Caller. */
+    2: optional uuid userId;
+}
+
+struct GetApplicationsOwnedByResponse
+{
+    1: list<Application> applications = [];
+}
 
 /**
  * Defines the required information to provision
@@ -252,6 +263,52 @@ struct UpdateApplicationResponse
 {
     1: Application application;
 }
+
+//==========================================================
+// FOLLOW APP OPERATIONS
+//==========================================================
+
+struct GetApplicationsFollowedByRequest
+{
+    1: UserToken token;
+    /** If not present, will assume the userId of the Caller. */
+    2: optional uuid userId;
+}
+
+struct GetApplicationsFollowedByResponse
+{
+    1: list<Application> applications = [];
+}
+
+/**
+ * Follow an Application to receive notifications from it.
+ */
+struct FollowApplicationRequest
+{
+    1: UserToken token;
+    2: uuid applicationId;
+    3: optional uuid organizationId;
+}
+
+struct FollowApplicationResponse
+{
+    1: optional string message = "Success";
+}
+
+struct UnfollowApplicationRequest
+{
+    1: UserToken token;
+    2: uuid applicationId;
+    3: optional uuid organizationId;
+}
+
+struct UnfollowApplicationResponse
+{
+    1: optional string message = "Success"
+}
+
+
+
 
 struct DeleteActivityRequest
 {
@@ -393,34 +450,6 @@ struct RenewApplicationTokenResponse
 
 
 /**
- * Follow an Application to receive notifications from it.
- */
-struct FollowApplicationRequest
-{
-    1: UserToken token;
-    2: uuid applicationId;
-    3: optional uuid organizationId;
-}
-
-struct FollowApplicationResponse
-{
-    1: optional string message = "Success";
-}
-
-struct UnfollowApplicationRequest
-{
-    1: UserToken token;
-    2: uuid applicationId;
-    3: optional uuid organizationId;
-}
-
-struct UnfollowApplicationResponse
-{
-    1: optional string message = "Success"
-}
-
-
-/**
  * Sets the Reactions for either the calling user's Inbox, or an Application owned
  * by the calling user.
  */
@@ -446,10 +475,6 @@ struct UpdateReactionsResponse
      */
     1: optional list<Reaction> reactions = [];
 }
-
-//==========================================================
-// Query Operations
-//==========================================================
 
 /**
  * Buzz is like the latest news happening around
@@ -542,29 +567,6 @@ struct GetMediaResponse
     1: Aroma.Image image;
 }
 
-struct GetApplicationsFollowedByRequest
-{
-    1: UserToken token;
-    /** If not present, will assume the userId of the Caller. */
-    2: optional uuid userId;
-}
-
-struct GetApplicationsFollowedByResponse
-{
-    1: list<Application> applications = [];
-}
-
-struct GetApplicationsOwnedByRequest
-{
-    1: UserToken token;
-    /** If not present, will assume the userID of the Caller. */
-    2: optional uuid userId;
-}
-
-struct GetApplicationsOwnedByResponse
-{
-    1: list<Application> applications = [];
-}
 
 /**
  * Request to get a User's Activity Stream.

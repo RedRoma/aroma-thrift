@@ -831,6 +831,149 @@ GetApplicationInfoResponse.prototype.write = function(output) {
   return;
 };
 
+GetApplicationsOwnedByRequest = function(args) {
+  this.token = null;
+  this.userId = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new UserToken(args.token);
+    }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
+    }
+  }
+};
+GetApplicationsOwnedByRequest.prototype = {};
+GetApplicationsOwnedByRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.userId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetApplicationsOwnedByRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetApplicationsOwnedByRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
+    output.writeString(this.userId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetApplicationsOwnedByResponse = function(args) {
+  this.applications = [];
+  if (args) {
+    if (args.applications !== undefined && args.applications !== null) {
+      this.applications = Thrift.copyList(args.applications, [null]);
+    }
+  }
+};
+GetApplicationsOwnedByResponse.prototype = {};
+GetApplicationsOwnedByResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.applications = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = new Application();
+          elem6.read(input);
+          this.applications.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetApplicationsOwnedByResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetApplicationsOwnedByResponse');
+  if (this.applications !== null && this.applications !== undefined) {
+    output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
+    for (var iter7 in this.applications)
+    {
+      if (this.applications.hasOwnProperty(iter7))
+      {
+        iter7 = this.applications[iter7];
+        iter7.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 ProvisionApplicationRequest = function(args) {
   this.token = null;
   this.applicationName = null;
@@ -920,18 +1063,18 @@ ProvisionApplicationRequest.prototype.read = function(input) {
       break;
       case 6:
       if (ftype == Thrift.Type.SET) {
-        var _size0 = 0;
-        var _rtmp34;
+        var _size8 = 0;
+        var _rtmp312;
         this.owners = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readSetBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        var _etype11 = 0;
+        _rtmp312 = input.readSetBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
         {
-          var elem6 = null;
-          elem6 = input.readString().value;
-          this.owners.push(elem6);
+          var elem14 = null;
+          elem14 = input.readString().value;
+          this.owners.push(elem14);
         }
         input.readSetEnd();
       } else {
@@ -991,12 +1134,12 @@ ProvisionApplicationRequest.prototype.write = function(output) {
   if (this.owners !== null && this.owners !== undefined) {
     output.writeFieldBegin('owners', Thrift.Type.SET, 6);
     output.writeSetBegin(Thrift.Type.STRING, this.owners.length);
-    for (var iter7 in this.owners)
+    for (var iter15 in this.owners)
     {
-      if (this.owners.hasOwnProperty(iter7))
+      if (this.owners.hasOwnProperty(iter15))
       {
-        iter7 = this.owners[iter7];
-        output.writeString(iter7);
+        iter15 = this.owners[iter15];
+        output.writeString(iter15);
       }
     }
     output.writeSetEnd();
@@ -1327,6 +1470,421 @@ UpdateApplicationResponse.prototype.write = function(output) {
   return;
 };
 
+GetApplicationsFollowedByRequest = function(args) {
+  this.token = null;
+  this.userId = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new UserToken(args.token);
+    }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
+    }
+  }
+};
+GetApplicationsFollowedByRequest.prototype = {};
+GetApplicationsFollowedByRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.userId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetApplicationsFollowedByRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetApplicationsFollowedByRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
+    output.writeString(this.userId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetApplicationsFollowedByResponse = function(args) {
+  this.applications = [];
+  if (args) {
+    if (args.applications !== undefined && args.applications !== null) {
+      this.applications = Thrift.copyList(args.applications, [null]);
+    }
+  }
+};
+GetApplicationsFollowedByResponse.prototype = {};
+GetApplicationsFollowedByResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size16 = 0;
+        var _rtmp320;
+        this.applications = [];
+        var _etype19 = 0;
+        _rtmp320 = input.readListBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
+        {
+          var elem22 = null;
+          elem22 = new Application();
+          elem22.read(input);
+          this.applications.push(elem22);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetApplicationsFollowedByResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetApplicationsFollowedByResponse');
+  if (this.applications !== null && this.applications !== undefined) {
+    output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
+    for (var iter23 in this.applications)
+    {
+      if (this.applications.hasOwnProperty(iter23))
+      {
+        iter23 = this.applications[iter23];
+        iter23.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+FollowApplicationRequest = function(args) {
+  this.token = null;
+  this.applicationId = null;
+  this.organizationId = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new UserToken(args.token);
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+  }
+};
+FollowApplicationRequest.prototype = {};
+FollowApplicationRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+FollowApplicationRequest.prototype.write = function(output) {
+  output.writeStructBegin('FollowApplicationRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 3);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+FollowApplicationResponse = function(args) {
+  this.message = 'Success';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+FollowApplicationResponse.prototype = {};
+FollowApplicationResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+FollowApplicationResponse.prototype.write = function(output) {
+  output.writeStructBegin('FollowApplicationResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+UnfollowApplicationRequest = function(args) {
+  this.token = null;
+  this.applicationId = null;
+  this.organizationId = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new UserToken(args.token);
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+  }
+};
+UnfollowApplicationRequest.prototype = {};
+UnfollowApplicationRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+UnfollowApplicationRequest.prototype.write = function(output) {
+  output.writeStructBegin('UnfollowApplicationRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 3);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+UnfollowApplicationResponse = function(args) {
+  this.message = 'Success';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+UnfollowApplicationResponse.prototype = {};
+UnfollowApplicationResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+UnfollowApplicationResponse.prototype.write = function(output) {
+  output.writeStructBegin('UnfollowApplicationResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 DeleteActivityRequest = function(args) {
   this.token = null;
   this.eventId = null;
@@ -1385,18 +1943,18 @@ DeleteActivityRequest.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.LIST) {
-        var _size8 = 0;
-        var _rtmp312;
+        var _size24 = 0;
+        var _rtmp328;
         this.multipleEventIds = [];
-        var _etype11 = 0;
-        _rtmp312 = input.readListBegin();
-        _etype11 = _rtmp312.etype;
-        _size8 = _rtmp312.size;
-        for (var _i13 = 0; _i13 < _size8; ++_i13)
+        var _etype27 = 0;
+        _rtmp328 = input.readListBegin();
+        _etype27 = _rtmp328.etype;
+        _size24 = _rtmp328.size;
+        for (var _i29 = 0; _i29 < _size24; ++_i29)
         {
-          var elem14 = null;
-          elem14 = input.readString().value;
-          this.multipleEventIds.push(elem14);
+          var elem30 = null;
+          elem30 = input.readString().value;
+          this.multipleEventIds.push(elem30);
         }
         input.readListEnd();
       } else {
@@ -1432,12 +1990,12 @@ DeleteActivityRequest.prototype.write = function(output) {
   if (this.multipleEventIds !== null && this.multipleEventIds !== undefined) {
     output.writeFieldBegin('multipleEventIds', Thrift.Type.LIST, 4);
     output.writeListBegin(Thrift.Type.STRING, this.multipleEventIds.length);
-    for (var iter15 in this.multipleEventIds)
+    for (var iter31 in this.multipleEventIds)
     {
-      if (this.multipleEventIds.hasOwnProperty(iter15))
+      if (this.multipleEventIds.hasOwnProperty(iter31))
       {
-        iter15 = this.multipleEventIds[iter15];
-        output.writeString(iter15);
+        iter31 = this.multipleEventIds[iter31];
+        output.writeString(iter31);
       }
     }
     output.writeListEnd();
@@ -1608,19 +2166,19 @@ SearchForApplicationsResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size16 = 0;
-        var _rtmp320;
+        var _size32 = 0;
+        var _rtmp336;
         this.applications = [];
-        var _etype19 = 0;
-        _rtmp320 = input.readListBegin();
-        _etype19 = _rtmp320.etype;
-        _size16 = _rtmp320.size;
-        for (var _i21 = 0; _i21 < _size16; ++_i21)
+        var _etype35 = 0;
+        _rtmp336 = input.readListBegin();
+        _etype35 = _rtmp336.etype;
+        _size32 = _rtmp336.size;
+        for (var _i37 = 0; _i37 < _size32; ++_i37)
         {
-          var elem22 = null;
-          elem22 = new Application();
-          elem22.read(input);
-          this.applications.push(elem22);
+          var elem38 = null;
+          elem38 = new Application();
+          elem38.read(input);
+          this.applications.push(elem38);
         }
         input.readListEnd();
       } else {
@@ -1644,12 +2202,12 @@ SearchForApplicationsResponse.prototype.write = function(output) {
   if (this.applications !== null && this.applications !== undefined) {
     output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
-    for (var iter23 in this.applications)
+    for (var iter39 in this.applications)
     {
-      if (this.applications.hasOwnProperty(iter23))
+      if (this.applications.hasOwnProperty(iter39))
       {
-        iter23 = this.applications[iter23];
-        iter23.write(output);
+        iter39 = this.applications[iter39];
+        iter39.write(output);
       }
     }
     output.writeListEnd();
@@ -1722,18 +2280,18 @@ DeleteMessageRequest.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.LIST) {
-        var _size24 = 0;
-        var _rtmp328;
+        var _size40 = 0;
+        var _rtmp344;
         this.messageIds = [];
-        var _etype27 = 0;
-        _rtmp328 = input.readListBegin();
-        _etype27 = _rtmp328.etype;
-        _size24 = _rtmp328.size;
-        for (var _i29 = 0; _i29 < _size24; ++_i29)
+        var _etype43 = 0;
+        _rtmp344 = input.readListBegin();
+        _etype43 = _rtmp344.etype;
+        _size40 = _rtmp344.size;
+        for (var _i45 = 0; _i45 < _size40; ++_i45)
         {
-          var elem30 = null;
-          elem30 = input.readString().value;
-          this.messageIds.push(elem30);
+          var elem46 = null;
+          elem46 = input.readString().value;
+          this.messageIds.push(elem46);
         }
         input.readListEnd();
       } else {
@@ -1776,12 +2334,12 @@ DeleteMessageRequest.prototype.write = function(output) {
   if (this.messageIds !== null && this.messageIds !== undefined) {
     output.writeFieldBegin('messageIds', Thrift.Type.LIST, 4);
     output.writeListBegin(Thrift.Type.STRING, this.messageIds.length);
-    for (var iter31 in this.messageIds)
+    for (var iter47 in this.messageIds)
     {
-      if (this.messageIds.hasOwnProperty(iter31))
+      if (this.messageIds.hasOwnProperty(iter47))
       {
-        iter31 = this.messageIds[iter31];
-        output.writeString(iter31);
+        iter47 = this.messageIds[iter47];
+        output.writeString(iter47);
       }
     }
     output.writeListEnd();
@@ -1912,18 +2470,18 @@ DismissMessageRequest.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.LIST) {
-        var _size32 = 0;
-        var _rtmp336;
+        var _size48 = 0;
+        var _rtmp352;
         this.messageIds = [];
-        var _etype35 = 0;
-        _rtmp336 = input.readListBegin();
-        _etype35 = _rtmp336.etype;
-        _size32 = _rtmp336.size;
-        for (var _i37 = 0; _i37 < _size32; ++_i37)
+        var _etype51 = 0;
+        _rtmp352 = input.readListBegin();
+        _etype51 = _rtmp352.etype;
+        _size48 = _rtmp352.size;
+        for (var _i53 = 0; _i53 < _size48; ++_i53)
         {
-          var elem38 = null;
-          elem38 = input.readString().value;
-          this.messageIds.push(elem38);
+          var elem54 = null;
+          elem54 = input.readString().value;
+          this.messageIds.push(elem54);
         }
         input.readListEnd();
       } else {
@@ -1966,12 +2524,12 @@ DismissMessageRequest.prototype.write = function(output) {
   if (this.messageIds !== null && this.messageIds !== undefined) {
     output.writeFieldBegin('messageIds', Thrift.Type.LIST, 4);
     output.writeListBegin(Thrift.Type.STRING, this.messageIds.length);
-    for (var iter39 in this.messageIds)
+    for (var iter55 in this.messageIds)
     {
-      if (this.messageIds.hasOwnProperty(iter39))
+      if (this.messageIds.hasOwnProperty(iter55))
       {
-        iter39 = this.messageIds[iter39];
-        output.writeString(iter39);
+        iter55 = this.messageIds[iter55];
+        output.writeString(iter55);
       }
     }
     output.writeListEnd();
@@ -2450,278 +3008,6 @@ RenewApplicationTokenResponse.prototype.write = function(output) {
   return;
 };
 
-FollowApplicationRequest = function(args) {
-  this.token = null;
-  this.applicationId = null;
-  this.organizationId = null;
-  if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = new UserToken(args.token);
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.organizationId !== undefined && args.organizationId !== null) {
-      this.organizationId = args.organizationId;
-    }
-  }
-};
-FollowApplicationRequest.prototype = {};
-FollowApplicationRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.token = new UserToken();
-        this.token.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.organizationId = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-FollowApplicationRequest.prototype.write = function(output) {
-  output.writeStructBegin('FollowApplicationRequest');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
-    this.token.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.organizationId !== null && this.organizationId !== undefined) {
-    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 3);
-    output.writeString(this.organizationId);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-FollowApplicationResponse = function(args) {
-  this.message = 'Success';
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-  }
-};
-FollowApplicationResponse.prototype = {};
-FollowApplicationResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-FollowApplicationResponse.prototype.write = function(output) {
-  output.writeStructBegin('FollowApplicationResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-UnfollowApplicationRequest = function(args) {
-  this.token = null;
-  this.applicationId = null;
-  this.organizationId = null;
-  if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = new UserToken(args.token);
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.organizationId !== undefined && args.organizationId !== null) {
-      this.organizationId = args.organizationId;
-    }
-  }
-};
-UnfollowApplicationRequest.prototype = {};
-UnfollowApplicationRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.token = new UserToken();
-        this.token.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.organizationId = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-UnfollowApplicationRequest.prototype.write = function(output) {
-  output.writeStructBegin('UnfollowApplicationRequest');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
-    this.token.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.organizationId !== null && this.organizationId !== undefined) {
-    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 3);
-    output.writeString(this.organizationId);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-UnfollowApplicationResponse = function(args) {
-  this.message = 'Success';
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-  }
-};
-UnfollowApplicationResponse.prototype = {};
-UnfollowApplicationResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-UnfollowApplicationResponse.prototype.write = function(output) {
-  output.writeStructBegin('UnfollowApplicationResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 UpdateReactionsRequest = function(args) {
   this.token = null;
   this.forAppId = null;
@@ -2769,19 +3055,19 @@ UpdateReactionsRequest.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.LIST) {
-        var _size40 = 0;
-        var _rtmp344;
+        var _size56 = 0;
+        var _rtmp360;
         this.reactions = [];
-        var _etype43 = 0;
-        _rtmp344 = input.readListBegin();
-        _etype43 = _rtmp344.etype;
-        _size40 = _rtmp344.size;
-        for (var _i45 = 0; _i45 < _size40; ++_i45)
+        var _etype59 = 0;
+        _rtmp360 = input.readListBegin();
+        _etype59 = _rtmp360.etype;
+        _size56 = _rtmp360.size;
+        for (var _i61 = 0; _i61 < _size56; ++_i61)
         {
-          var elem46 = null;
-          elem46 = new Reaction();
-          elem46.read(input);
-          this.reactions.push(elem46);
+          var elem62 = null;
+          elem62 = new Reaction();
+          elem62.read(input);
+          this.reactions.push(elem62);
         }
         input.readListEnd();
       } else {
@@ -2812,12 +3098,12 @@ UpdateReactionsRequest.prototype.write = function(output) {
   if (this.reactions !== null && this.reactions !== undefined) {
     output.writeFieldBegin('reactions', Thrift.Type.LIST, 3);
     output.writeListBegin(Thrift.Type.STRUCT, this.reactions.length);
-    for (var iter47 in this.reactions)
+    for (var iter63 in this.reactions)
     {
-      if (this.reactions.hasOwnProperty(iter47))
+      if (this.reactions.hasOwnProperty(iter63))
       {
-        iter47 = this.reactions[iter47];
-        iter47.write(output);
+        iter63 = this.reactions[iter63];
+        iter63.write(output);
       }
     }
     output.writeListEnd();
@@ -2852,19 +3138,19 @@ UpdateReactionsResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size48 = 0;
-        var _rtmp352;
+        var _size64 = 0;
+        var _rtmp368;
         this.reactions = [];
-        var _etype51 = 0;
-        _rtmp352 = input.readListBegin();
-        _etype51 = _rtmp352.etype;
-        _size48 = _rtmp352.size;
-        for (var _i53 = 0; _i53 < _size48; ++_i53)
+        var _etype67 = 0;
+        _rtmp368 = input.readListBegin();
+        _etype67 = _rtmp368.etype;
+        _size64 = _rtmp368.size;
+        for (var _i69 = 0; _i69 < _size64; ++_i69)
         {
-          var elem54 = null;
-          elem54 = new Reaction();
-          elem54.read(input);
-          this.reactions.push(elem54);
+          var elem70 = null;
+          elem70 = new Reaction();
+          elem70.read(input);
+          this.reactions.push(elem70);
         }
         input.readListEnd();
       } else {
@@ -2888,12 +3174,12 @@ UpdateReactionsResponse.prototype.write = function(output) {
   if (this.reactions !== null && this.reactions !== undefined) {
     output.writeFieldBegin('reactions', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.reactions.length);
-    for (var iter55 in this.reactions)
+    for (var iter71 in this.reactions)
     {
-      if (this.reactions.hasOwnProperty(iter55))
+      if (this.reactions.hasOwnProperty(iter71))
       {
-        iter55 = this.reactions[iter55];
-        iter55.write(output);
+        iter71 = this.reactions[iter71];
+        iter71.write(output);
       }
     }
     output.writeListEnd();
@@ -2994,19 +3280,19 @@ GetBuzzResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size56 = 0;
-        var _rtmp360;
+        var _size72 = 0;
+        var _rtmp376;
         this.freshUsers = [];
-        var _etype59 = 0;
-        _rtmp360 = input.readListBegin();
-        _etype59 = _rtmp360.etype;
-        _size56 = _rtmp360.size;
-        for (var _i61 = 0; _i61 < _size56; ++_i61)
+        var _etype75 = 0;
+        _rtmp376 = input.readListBegin();
+        _etype75 = _rtmp376.etype;
+        _size72 = _rtmp376.size;
+        for (var _i77 = 0; _i77 < _size72; ++_i77)
         {
-          var elem62 = null;
-          elem62 = new User();
-          elem62.read(input);
-          this.freshUsers.push(elem62);
+          var elem78 = null;
+          elem78 = new User();
+          elem78.read(input);
+          this.freshUsers.push(elem78);
         }
         input.readListEnd();
       } else {
@@ -3015,19 +3301,19 @@ GetBuzzResponse.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.LIST) {
-        var _size63 = 0;
-        var _rtmp367;
+        var _size79 = 0;
+        var _rtmp383;
         this.freshApplications = [];
-        var _etype66 = 0;
-        _rtmp367 = input.readListBegin();
-        _etype66 = _rtmp367.etype;
-        _size63 = _rtmp367.size;
-        for (var _i68 = 0; _i68 < _size63; ++_i68)
+        var _etype82 = 0;
+        _rtmp383 = input.readListBegin();
+        _etype82 = _rtmp383.etype;
+        _size79 = _rtmp383.size;
+        for (var _i84 = 0; _i84 < _size79; ++_i84)
         {
-          var elem69 = null;
-          elem69 = new Application();
-          elem69.read(input);
-          this.freshApplications.push(elem69);
+          var elem85 = null;
+          elem85 = new Application();
+          elem85.read(input);
+          this.freshApplications.push(elem85);
         }
         input.readListEnd();
       } else {
@@ -3036,19 +3322,19 @@ GetBuzzResponse.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.LIST) {
-        var _size70 = 0;
-        var _rtmp374;
+        var _size86 = 0;
+        var _rtmp390;
         this.failedHealthChecks = [];
-        var _etype73 = 0;
-        _rtmp374 = input.readListBegin();
-        _etype73 = _rtmp374.etype;
-        _size70 = _rtmp374.size;
-        for (var _i75 = 0; _i75 < _size70; ++_i75)
+        var _etype89 = 0;
+        _rtmp390 = input.readListBegin();
+        _etype89 = _rtmp390.etype;
+        _size86 = _rtmp390.size;
+        for (var _i91 = 0; _i91 < _size86; ++_i91)
         {
-          var elem76 = null;
-          elem76 = new HealthCheckFailed();
-          elem76.read(input);
-          this.failedHealthChecks.push(elem76);
+          var elem92 = null;
+          elem92 = new HealthCheckFailed();
+          elem92.read(input);
+          this.failedHealthChecks.push(elem92);
         }
         input.readListEnd();
       } else {
@@ -3057,19 +3343,19 @@ GetBuzzResponse.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.LIST) {
-        var _size77 = 0;
-        var _rtmp381;
+        var _size93 = 0;
+        var _rtmp397;
         this.generalEvents = [];
-        var _etype80 = 0;
-        _rtmp381 = input.readListBegin();
-        _etype80 = _rtmp381.etype;
-        _size77 = _rtmp381.size;
-        for (var _i82 = 0; _i82 < _size77; ++_i82)
+        var _etype96 = 0;
+        _rtmp397 = input.readListBegin();
+        _etype96 = _rtmp397.etype;
+        _size93 = _rtmp397.size;
+        for (var _i98 = 0; _i98 < _size93; ++_i98)
         {
-          var elem83 = null;
-          elem83 = new Event();
-          elem83.read(input);
-          this.generalEvents.push(elem83);
+          var elem99 = null;
+          elem99 = new Event();
+          elem99.read(input);
+          this.generalEvents.push(elem99);
         }
         input.readListEnd();
       } else {
@@ -3090,12 +3376,12 @@ GetBuzzResponse.prototype.write = function(output) {
   if (this.freshUsers !== null && this.freshUsers !== undefined) {
     output.writeFieldBegin('freshUsers', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.freshUsers.length);
-    for (var iter84 in this.freshUsers)
+    for (var iter100 in this.freshUsers)
     {
-      if (this.freshUsers.hasOwnProperty(iter84))
+      if (this.freshUsers.hasOwnProperty(iter100))
       {
-        iter84 = this.freshUsers[iter84];
-        iter84.write(output);
+        iter100 = this.freshUsers[iter100];
+        iter100.write(output);
       }
     }
     output.writeListEnd();
@@ -3104,12 +3390,12 @@ GetBuzzResponse.prototype.write = function(output) {
   if (this.freshApplications !== null && this.freshApplications !== undefined) {
     output.writeFieldBegin('freshApplications', Thrift.Type.LIST, 2);
     output.writeListBegin(Thrift.Type.STRUCT, this.freshApplications.length);
-    for (var iter85 in this.freshApplications)
+    for (var iter101 in this.freshApplications)
     {
-      if (this.freshApplications.hasOwnProperty(iter85))
+      if (this.freshApplications.hasOwnProperty(iter101))
       {
-        iter85 = this.freshApplications[iter85];
-        iter85.write(output);
+        iter101 = this.freshApplications[iter101];
+        iter101.write(output);
       }
     }
     output.writeListEnd();
@@ -3118,12 +3404,12 @@ GetBuzzResponse.prototype.write = function(output) {
   if (this.failedHealthChecks !== null && this.failedHealthChecks !== undefined) {
     output.writeFieldBegin('failedHealthChecks', Thrift.Type.LIST, 3);
     output.writeListBegin(Thrift.Type.STRUCT, this.failedHealthChecks.length);
-    for (var iter86 in this.failedHealthChecks)
+    for (var iter102 in this.failedHealthChecks)
     {
-      if (this.failedHealthChecks.hasOwnProperty(iter86))
+      if (this.failedHealthChecks.hasOwnProperty(iter102))
       {
-        iter86 = this.failedHealthChecks[iter86];
-        iter86.write(output);
+        iter102 = this.failedHealthChecks[iter102];
+        iter102.write(output);
       }
     }
     output.writeListEnd();
@@ -3132,12 +3418,12 @@ GetBuzzResponse.prototype.write = function(output) {
   if (this.generalEvents !== null && this.generalEvents !== undefined) {
     output.writeFieldBegin('generalEvents', Thrift.Type.LIST, 4);
     output.writeListBegin(Thrift.Type.STRUCT, this.generalEvents.length);
-    for (var iter87 in this.generalEvents)
+    for (var iter103 in this.generalEvents)
     {
-      if (this.generalEvents.hasOwnProperty(iter87))
+      if (this.generalEvents.hasOwnProperty(iter103))
       {
-        iter87 = this.generalEvents[iter87];
-        iter87.write(output);
+        iter103 = this.generalEvents[iter103];
+        iter103.write(output);
       }
     }
     output.writeListEnd();
@@ -3271,19 +3557,19 @@ GetDashboardResponse.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.LIST) {
-        var _size88 = 0;
-        var _rtmp392;
+        var _size104 = 0;
+        var _rtmp3108;
         this.recentMessages = [];
-        var _etype91 = 0;
-        _rtmp392 = input.readListBegin();
-        _etype91 = _rtmp392.etype;
-        _size88 = _rtmp392.size;
-        for (var _i93 = 0; _i93 < _size88; ++_i93)
+        var _etype107 = 0;
+        _rtmp3108 = input.readListBegin();
+        _etype107 = _rtmp3108.etype;
+        _size104 = _rtmp3108.size;
+        for (var _i109 = 0; _i109 < _size104; ++_i109)
         {
-          var elem94 = null;
-          elem94 = new Message();
-          elem94.read(input);
-          this.recentMessages.push(elem94);
+          var elem110 = null;
+          elem110 = new Message();
+          elem110.read(input);
+          this.recentMessages.push(elem110);
         }
         input.readListEnd();
       } else {
@@ -3340,12 +3626,12 @@ GetDashboardResponse.prototype.write = function(output) {
   if (this.recentMessages !== null && this.recentMessages !== undefined) {
     output.writeFieldBegin('recentMessages', Thrift.Type.LIST, 4);
     output.writeListBegin(Thrift.Type.STRUCT, this.recentMessages.length);
-    for (var iter95 in this.recentMessages)
+    for (var iter111 in this.recentMessages)
     {
-      if (this.recentMessages.hasOwnProperty(iter95))
+      if (this.recentMessages.hasOwnProperty(iter111))
       {
-        iter95 = this.recentMessages[iter95];
-        iter95.write(output);
+        iter111 = this.recentMessages[iter111];
+        iter111.write(output);
       }
     }
     output.writeListEnd();
@@ -3462,19 +3748,19 @@ GetInboxResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size96 = 0;
-        var _rtmp3100;
+        var _size112 = 0;
+        var _rtmp3116;
         this.messages = [];
-        var _etype99 = 0;
-        _rtmp3100 = input.readListBegin();
-        _etype99 = _rtmp3100.etype;
-        _size96 = _rtmp3100.size;
-        for (var _i101 = 0; _i101 < _size96; ++_i101)
+        var _etype115 = 0;
+        _rtmp3116 = input.readListBegin();
+        _etype115 = _rtmp3116.etype;
+        _size112 = _rtmp3116.size;
+        for (var _i117 = 0; _i117 < _size112; ++_i117)
         {
-          var elem102 = null;
-          elem102 = new Message();
-          elem102.read(input);
-          this.messages.push(elem102);
+          var elem118 = null;
+          elem118 = new Message();
+          elem118.read(input);
+          this.messages.push(elem118);
         }
         input.readListEnd();
       } else {
@@ -3498,12 +3784,12 @@ GetInboxResponse.prototype.write = function(output) {
   if (this.messages !== null && this.messages !== undefined) {
     output.writeFieldBegin('messages', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.messages.length);
-    for (var iter103 in this.messages)
+    for (var iter119 in this.messages)
     {
-      if (this.messages.hasOwnProperty(iter103))
+      if (this.messages.hasOwnProperty(iter119))
       {
-        iter103 = this.messages[iter103];
-        iter103.write(output);
+        iter119 = this.messages[iter119];
+        iter119.write(output);
       }
     }
     output.writeListEnd();
@@ -3625,19 +3911,19 @@ GetApplicationMessagesResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size104 = 0;
-        var _rtmp3108;
+        var _size120 = 0;
+        var _rtmp3124;
         this.messages = [];
-        var _etype107 = 0;
-        _rtmp3108 = input.readListBegin();
-        _etype107 = _rtmp3108.etype;
-        _size104 = _rtmp3108.size;
-        for (var _i109 = 0; _i109 < _size104; ++_i109)
+        var _etype123 = 0;
+        _rtmp3124 = input.readListBegin();
+        _etype123 = _rtmp3124.etype;
+        _size120 = _rtmp3124.size;
+        for (var _i125 = 0; _i125 < _size120; ++_i125)
         {
-          var elem110 = null;
-          elem110 = new Message();
-          elem110.read(input);
-          this.messages.push(elem110);
+          var elem126 = null;
+          elem126 = new Message();
+          elem126.read(input);
+          this.messages.push(elem126);
         }
         input.readListEnd();
       } else {
@@ -3665,12 +3951,12 @@ GetApplicationMessagesResponse.prototype.write = function(output) {
   if (this.messages !== null && this.messages !== undefined) {
     output.writeFieldBegin('messages', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.messages.length);
-    for (var iter111 in this.messages)
+    for (var iter127 in this.messages)
     {
-      if (this.messages.hasOwnProperty(iter111))
+      if (this.messages.hasOwnProperty(iter127))
       {
-        iter111 = this.messages[iter111];
-        iter111.write(output);
+        iter127 = this.messages[iter127];
+        iter127.write(output);
       }
     }
     output.writeListEnd();
@@ -3954,292 +4240,6 @@ GetMediaResponse.prototype.write = function(output) {
   if (this.image !== null && this.image !== undefined) {
     output.writeFieldBegin('image', Thrift.Type.STRUCT, 1);
     this.image.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetApplicationsFollowedByRequest = function(args) {
-  this.token = null;
-  this.userId = null;
-  if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = new UserToken(args.token);
-    }
-    if (args.userId !== undefined && args.userId !== null) {
-      this.userId = args.userId;
-    }
-  }
-};
-GetApplicationsFollowedByRequest.prototype = {};
-GetApplicationsFollowedByRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.token = new UserToken();
-        this.token.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.userId = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetApplicationsFollowedByRequest.prototype.write = function(output) {
-  output.writeStructBegin('GetApplicationsFollowedByRequest');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
-    this.token.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.userId !== null && this.userId !== undefined) {
-    output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
-    output.writeString(this.userId);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetApplicationsFollowedByResponse = function(args) {
-  this.applications = [];
-  if (args) {
-    if (args.applications !== undefined && args.applications !== null) {
-      this.applications = Thrift.copyList(args.applications, [null]);
-    }
-  }
-};
-GetApplicationsFollowedByResponse.prototype = {};
-GetApplicationsFollowedByResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.LIST) {
-        var _size112 = 0;
-        var _rtmp3116;
-        this.applications = [];
-        var _etype115 = 0;
-        _rtmp3116 = input.readListBegin();
-        _etype115 = _rtmp3116.etype;
-        _size112 = _rtmp3116.size;
-        for (var _i117 = 0; _i117 < _size112; ++_i117)
-        {
-          var elem118 = null;
-          elem118 = new Application();
-          elem118.read(input);
-          this.applications.push(elem118);
-        }
-        input.readListEnd();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetApplicationsFollowedByResponse.prototype.write = function(output) {
-  output.writeStructBegin('GetApplicationsFollowedByResponse');
-  if (this.applications !== null && this.applications !== undefined) {
-    output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
-    for (var iter119 in this.applications)
-    {
-      if (this.applications.hasOwnProperty(iter119))
-      {
-        iter119 = this.applications[iter119];
-        iter119.write(output);
-      }
-    }
-    output.writeListEnd();
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetApplicationsOwnedByRequest = function(args) {
-  this.token = null;
-  this.userId = null;
-  if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = new UserToken(args.token);
-    }
-    if (args.userId !== undefined && args.userId !== null) {
-      this.userId = args.userId;
-    }
-  }
-};
-GetApplicationsOwnedByRequest.prototype = {};
-GetApplicationsOwnedByRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.token = new UserToken();
-        this.token.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.userId = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetApplicationsOwnedByRequest.prototype.write = function(output) {
-  output.writeStructBegin('GetApplicationsOwnedByRequest');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
-    this.token.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.userId !== null && this.userId !== undefined) {
-    output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
-    output.writeString(this.userId);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetApplicationsOwnedByResponse = function(args) {
-  this.applications = [];
-  if (args) {
-    if (args.applications !== undefined && args.applications !== null) {
-      this.applications = Thrift.copyList(args.applications, [null]);
-    }
-  }
-};
-GetApplicationsOwnedByResponse.prototype = {};
-GetApplicationsOwnedByResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.LIST) {
-        var _size120 = 0;
-        var _rtmp3124;
-        this.applications = [];
-        var _etype123 = 0;
-        _rtmp3124 = input.readListBegin();
-        _etype123 = _rtmp3124.etype;
-        _size120 = _rtmp3124.size;
-        for (var _i125 = 0; _i125 < _size120; ++_i125)
-        {
-          var elem126 = null;
-          elem126 = new Application();
-          elem126.read(input);
-          this.applications.push(elem126);
-        }
-        input.readListEnd();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetApplicationsOwnedByResponse.prototype.write = function(output) {
-  output.writeStructBegin('GetApplicationsOwnedByResponse');
-  if (this.applications !== null && this.applications !== undefined) {
-    output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
-    for (var iter127 in this.applications)
-    {
-      if (this.applications.hasOwnProperty(iter127))
-      {
-        iter127 = this.applications[iter127];
-        iter127.write(output);
-      }
-    }
-    output.writeListEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();
