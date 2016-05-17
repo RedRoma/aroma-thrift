@@ -6063,6 +6063,540 @@ uint32_t AromaService_unfollowApplication_presult::read(::apache::thrift::protoc
 }
 
 
+AromaService_checkIfDeviceIsRegistered_args::~AromaService_checkIfDeviceIsRegistered_args() throw() {
+}
+
+
+uint32_t AromaService_checkIfDeviceIsRegistered_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_checkIfDeviceIsRegistered_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_checkIfDeviceIsRegistered_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_checkIfDeviceIsRegistered_pargs::~AromaService_checkIfDeviceIsRegistered_pargs() throw() {
+}
+
+
+uint32_t AromaService_checkIfDeviceIsRegistered_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_checkIfDeviceIsRegistered_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_checkIfDeviceIsRegistered_result::~AromaService_checkIfDeviceIsRegistered_result() throw() {
+}
+
+
+uint32_t AromaService_checkIfDeviceIsRegistered_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex5.read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_checkIfDeviceIsRegistered_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_checkIfDeviceIsRegistered_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex5) {
+    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex5.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_checkIfDeviceIsRegistered_presult::~AromaService_checkIfDeviceIsRegistered_presult() throw() {
+}
+
+
+uint32_t AromaService_checkIfDeviceIsRegistered_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex5)).read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getRegisteredDevices_args::~AromaService_getRegisteredDevices_args() throw() {
+}
+
+
+uint32_t AromaService_getRegisteredDevices_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getRegisteredDevices_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getRegisteredDevices_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getRegisteredDevices_pargs::~AromaService_getRegisteredDevices_pargs() throw() {
+}
+
+
+uint32_t AromaService_getRegisteredDevices_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getRegisteredDevices_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getRegisteredDevices_result::~AromaService_getRegisteredDevices_result() throw() {
+}
+
+
+uint32_t AromaService_getRegisteredDevices_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex5.read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getRegisteredDevices_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_getRegisteredDevices_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex5) {
+    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex5.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getRegisteredDevices_presult::~AromaService_getRegisteredDevices_presult() throw() {
+}
+
+
+uint32_t AromaService_getRegisteredDevices_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex5)).read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
 AromaService_getDashboard_args::~AromaService_getDashboard_args() throw() {
 }
 
@@ -8903,6 +9437,146 @@ void AromaServiceClient::recv_unfollowApplication(UnfollowApplicationResponse& _
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "unfollowApplication failed: unknown result");
 }
 
+void AromaServiceClient::checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request)
+{
+  send_checkIfDeviceIsRegistered(request);
+  recv_checkIfDeviceIsRegistered(_return);
+}
+
+void AromaServiceClient::send_checkIfDeviceIsRegistered(const CheckIfDeviceIsRegisteredRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("checkIfDeviceIsRegistered", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_checkIfDeviceIsRegistered_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("checkIfDeviceIsRegistered") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_checkIfDeviceIsRegistered_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex5) {
+    throw result.ex5;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "checkIfDeviceIsRegistered failed: unknown result");
+}
+
+void AromaServiceClient::getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request)
+{
+  send_getRegisteredDevices(request);
+  recv_getRegisteredDevices(_return);
+}
+
+void AromaServiceClient::send_getRegisteredDevices(const GetRegisteredDevicesRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getRegisteredDevices", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getRegisteredDevices_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getRegisteredDevices(GetRegisteredDevicesResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getRegisteredDevices") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getRegisteredDevices_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex5) {
+    throw result.ex5;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getRegisteredDevices failed: unknown result");
+}
+
 void AromaServiceClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
 {
   send_getDashboard(request);
@@ -10741,6 +11415,138 @@ void AromaServiceProcessor::process_unfollowApplication(int32_t seqid, ::apache:
 
   if (this->eventHandler_.get() != NULL) {
     this->eventHandler_->postWrite(ctx, "AromaService.unfollowApplication", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_checkIfDeviceIsRegistered(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.checkIfDeviceIsRegistered", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.checkIfDeviceIsRegistered");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.checkIfDeviceIsRegistered");
+  }
+
+  AromaService_checkIfDeviceIsRegistered_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.checkIfDeviceIsRegistered", bytes);
+  }
+
+  AromaService_checkIfDeviceIsRegistered_result result;
+  try {
+    iface_->checkIfDeviceIsRegistered(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (UnauthorizedException &ex5) {
+    result.ex5 = ex5;
+    result.__isset.ex5 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.checkIfDeviceIsRegistered");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("checkIfDeviceIsRegistered", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.checkIfDeviceIsRegistered");
+  }
+
+  oprot->writeMessageBegin("checkIfDeviceIsRegistered", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.checkIfDeviceIsRegistered", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getRegisteredDevices(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getRegisteredDevices", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getRegisteredDevices");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getRegisteredDevices");
+  }
+
+  AromaService_getRegisteredDevices_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getRegisteredDevices", bytes);
+  }
+
+  AromaService_getRegisteredDevices_result result;
+  try {
+    iface_->getRegisteredDevices(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (UnauthorizedException &ex5) {
+    result.ex5 = ex5;
+    result.__isset.ex5 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getRegisteredDevices");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getRegisteredDevices", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getRegisteredDevices");
+  }
+
+  oprot->writeMessageBegin("getRegisteredDevices", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getRegisteredDevices", bytes);
   }
 }
 
@@ -13302,6 +14108,206 @@ void AromaServiceConcurrentClient::recv_unfollowApplication(UnfollowApplicationR
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "unfollowApplication failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request)
+{
+  int32_t seqid = send_checkIfDeviceIsRegistered(request);
+  recv_checkIfDeviceIsRegistered(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_checkIfDeviceIsRegistered(const CheckIfDeviceIsRegisteredRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("checkIfDeviceIsRegistered", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_checkIfDeviceIsRegistered_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("checkIfDeviceIsRegistered") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_checkIfDeviceIsRegistered_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex5) {
+        sentry.commit();
+        throw result.ex5;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "checkIfDeviceIsRegistered failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request)
+{
+  int32_t seqid = send_getRegisteredDevices(request);
+  recv_getRegisteredDevices(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getRegisteredDevices(const GetRegisteredDevicesRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getRegisteredDevices", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getRegisteredDevices_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getRegisteredDevices(GetRegisteredDevicesResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getRegisteredDevices") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getRegisteredDevices_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex5) {
+        sentry.commit();
+        throw result.ex5;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getRegisteredDevices failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);

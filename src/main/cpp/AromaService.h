@@ -141,6 +141,8 @@ class AromaServiceIf {
    */
   virtual void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request) = 0;
   virtual void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request) = 0;
+  virtual void checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request) = 0;
+  virtual void getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request) = 0;
   virtual void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) = 0;
   virtual void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) = 0;
   virtual double getApiVersion() = 0;
@@ -254,6 +256,12 @@ class AromaServiceNull : virtual public AromaServiceIf {
     return;
   }
   void unfollowApplication(UnfollowApplicationResponse& /* _return */, const UnfollowApplicationRequest& /* request */) {
+    return;
+  }
+  void checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& /* _return */, const CheckIfDeviceIsRegisteredRequest& /* request */) {
+    return;
+  }
+  void getRegisteredDevices(GetRegisteredDevicesResponse& /* _return */, const GetRegisteredDevicesRequest& /* request */) {
     return;
   }
   void getDashboard(GetDashboardResponse& /* _return */, const GetDashboardRequest& /* request */) {
@@ -3338,6 +3346,278 @@ class AromaService_unfollowApplication_presult {
 
 };
 
+typedef struct _AromaService_checkIfDeviceIsRegistered_args__isset {
+  _AromaService_checkIfDeviceIsRegistered_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_checkIfDeviceIsRegistered_args__isset;
+
+class AromaService_checkIfDeviceIsRegistered_args {
+ public:
+
+  AromaService_checkIfDeviceIsRegistered_args(const AromaService_checkIfDeviceIsRegistered_args&);
+  AromaService_checkIfDeviceIsRegistered_args& operator=(const AromaService_checkIfDeviceIsRegistered_args&);
+  AromaService_checkIfDeviceIsRegistered_args() {
+  }
+
+  virtual ~AromaService_checkIfDeviceIsRegistered_args() throw();
+  CheckIfDeviceIsRegisteredRequest request;
+
+  _AromaService_checkIfDeviceIsRegistered_args__isset __isset;
+
+  void __set_request(const CheckIfDeviceIsRegisteredRequest& val);
+
+  bool operator == (const AromaService_checkIfDeviceIsRegistered_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_checkIfDeviceIsRegistered_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_checkIfDeviceIsRegistered_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_checkIfDeviceIsRegistered_pargs {
+ public:
+
+
+  virtual ~AromaService_checkIfDeviceIsRegistered_pargs() throw();
+  const CheckIfDeviceIsRegisteredRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_checkIfDeviceIsRegistered_result__isset {
+  _AromaService_checkIfDeviceIsRegistered_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex5 :1;
+} _AromaService_checkIfDeviceIsRegistered_result__isset;
+
+class AromaService_checkIfDeviceIsRegistered_result {
+ public:
+
+  AromaService_checkIfDeviceIsRegistered_result(const AromaService_checkIfDeviceIsRegistered_result&);
+  AromaService_checkIfDeviceIsRegistered_result& operator=(const AromaService_checkIfDeviceIsRegistered_result&);
+  AromaService_checkIfDeviceIsRegistered_result() {
+  }
+
+  virtual ~AromaService_checkIfDeviceIsRegistered_result() throw();
+  CheckIfDeviceIsRegisteredResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  UnauthorizedException ex5;
+
+  _AromaService_checkIfDeviceIsRegistered_result__isset __isset;
+
+  void __set_success(const CheckIfDeviceIsRegisteredResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_checkIfDeviceIsRegistered_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_checkIfDeviceIsRegistered_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_checkIfDeviceIsRegistered_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_checkIfDeviceIsRegistered_presult__isset {
+  _AromaService_checkIfDeviceIsRegistered_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex5 :1;
+} _AromaService_checkIfDeviceIsRegistered_presult__isset;
+
+class AromaService_checkIfDeviceIsRegistered_presult {
+ public:
+
+
+  virtual ~AromaService_checkIfDeviceIsRegistered_presult() throw();
+  CheckIfDeviceIsRegisteredResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  UnauthorizedException* ex5;
+
+  _AromaService_checkIfDeviceIsRegistered_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_getRegisteredDevices_args__isset {
+  _AromaService_getRegisteredDevices_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_getRegisteredDevices_args__isset;
+
+class AromaService_getRegisteredDevices_args {
+ public:
+
+  AromaService_getRegisteredDevices_args(const AromaService_getRegisteredDevices_args&);
+  AromaService_getRegisteredDevices_args& operator=(const AromaService_getRegisteredDevices_args&);
+  AromaService_getRegisteredDevices_args() {
+  }
+
+  virtual ~AromaService_getRegisteredDevices_args() throw();
+  GetRegisteredDevicesRequest request;
+
+  _AromaService_getRegisteredDevices_args__isset __isset;
+
+  void __set_request(const GetRegisteredDevicesRequest& val);
+
+  bool operator == (const AromaService_getRegisteredDevices_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getRegisteredDevices_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getRegisteredDevices_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_getRegisteredDevices_pargs {
+ public:
+
+
+  virtual ~AromaService_getRegisteredDevices_pargs() throw();
+  const GetRegisteredDevicesRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getRegisteredDevices_result__isset {
+  _AromaService_getRegisteredDevices_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex5 :1;
+} _AromaService_getRegisteredDevices_result__isset;
+
+class AromaService_getRegisteredDevices_result {
+ public:
+
+  AromaService_getRegisteredDevices_result(const AromaService_getRegisteredDevices_result&);
+  AromaService_getRegisteredDevices_result& operator=(const AromaService_getRegisteredDevices_result&);
+  AromaService_getRegisteredDevices_result() {
+  }
+
+  virtual ~AromaService_getRegisteredDevices_result() throw();
+  GetRegisteredDevicesResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  UnauthorizedException ex5;
+
+  _AromaService_getRegisteredDevices_result__isset __isset;
+
+  void __set_success(const GetRegisteredDevicesResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_getRegisteredDevices_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_getRegisteredDevices_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_getRegisteredDevices_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_getRegisteredDevices_presult__isset {
+  _AromaService_getRegisteredDevices_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex5 :1;
+} _AromaService_getRegisteredDevices_presult__isset;
+
+class AromaService_getRegisteredDevices_presult {
+ public:
+
+
+  virtual ~AromaService_getRegisteredDevices_presult() throw();
+  GetRegisteredDevicesResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  UnauthorizedException* ex5;
+
+  _AromaService_getRegisteredDevices_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _AromaService_getDashboard_args__isset {
   _AromaService_getDashboard_args__isset() : request(false) {}
   bool request :1;
@@ -4081,6 +4361,12 @@ class AromaServiceClient : virtual public AromaServiceIf {
   void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request);
   void send_unfollowApplication(const UnfollowApplicationRequest& request);
   void recv_unfollowApplication(UnfollowApplicationResponse& _return);
+  void checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request);
+  void send_checkIfDeviceIsRegistered(const CheckIfDeviceIsRegisteredRequest& request);
+  void recv_checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return);
+  void getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request);
+  void send_getRegisteredDevices(const GetRegisteredDevicesRequest& request);
+  void recv_getRegisteredDevices(GetRegisteredDevicesResponse& _return);
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   void send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return);
@@ -4133,6 +4419,8 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getApplicationsFollowedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_unfollowApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_checkIfDeviceIsRegistered(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getRegisteredDevices(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -4163,6 +4451,8 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getApplicationsFollowedBy"] = &AromaServiceProcessor::process_getApplicationsFollowedBy;
     processMap_["followApplication"] = &AromaServiceProcessor::process_followApplication;
     processMap_["unfollowApplication"] = &AromaServiceProcessor::process_unfollowApplication;
+    processMap_["checkIfDeviceIsRegistered"] = &AromaServiceProcessor::process_checkIfDeviceIsRegistered;
+    processMap_["getRegisteredDevices"] = &AromaServiceProcessor::process_getRegisteredDevices;
     processMap_["getDashboard"] = &AromaServiceProcessor::process_getDashboard;
     processMap_["getBuzz"] = &AromaServiceProcessor::process_getBuzz;
     processMap_["getApiVersion"] = &AromaServiceProcessor::process_getApiVersion;
@@ -4416,6 +4706,26 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
+  void checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->checkIfDeviceIsRegistered(_return, request);
+    }
+    ifaces_[i]->checkIfDeviceIsRegistered(_return, request);
+    return;
+  }
+
+  void getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getRegisteredDevices(_return, request);
+    }
+    ifaces_[i]->getRegisteredDevices(_return, request);
+    return;
+  }
+
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -4561,6 +4871,12 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request);
   int32_t send_unfollowApplication(const UnfollowApplicationRequest& request);
   void recv_unfollowApplication(UnfollowApplicationResponse& _return, const int32_t seqid);
+  void checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request);
+  int32_t send_checkIfDeviceIsRegistered(const CheckIfDeviceIsRegisteredRequest& request);
+  void recv_checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const int32_t seqid);
+  void getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request);
+  int32_t send_getRegisteredDevices(const GetRegisteredDevicesRequest& request);
+  void recv_getRegisteredDevices(GetRegisteredDevicesResponse& _return, const int32_t seqid);
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   int32_t send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid);

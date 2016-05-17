@@ -196,6 +196,7 @@ code { line-height: 20px; }
 <tr>
 <td>AromaService</td><td><a href="#Svc_AromaService">AromaService</a><br/>
 <ul>
+<li><a href="#Fn_AromaService_checkIfDeviceIsRegistered">checkIfDeviceIsRegistered</a></li>
 <li><a href="#Fn_AromaService_deleteApplication">deleteApplication</a></li>
 <li><a href="#Fn_AromaService_deleteMessage">deleteMessage</a></li>
 <li><a href="#Fn_AromaService_dismissMessage">dismissMessage</a></li>
@@ -212,6 +213,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_getInbox">getInbox</a></li>
 <li><a href="#Fn_AromaService_getMedia">getMedia</a></li>
 <li><a href="#Fn_AromaService_getReactions">getReactions</a></li>
+<li><a href="#Fn_AromaService_getRegisteredDevices">getRegisteredDevices</a></li>
 <li><a href="#Fn_AromaService_getUserInfo">getUserInfo</a></li>
 <li><a href="#Fn_AromaService_provisionApplication">provisionApplication</a></li>
 <li><a href="#Fn_AromaService_regenerateToken">regenerateToken</a></li>
@@ -884,6 +886,12 @@ to load the full message.
 <br/></div><div class="definition"><h4 id="Fn_AromaService_unfollowApplication">Function: AromaService.unfollowApplication</h4>
 <pre><code><a href="#Struct_UnfollowApplicationResponse">UnfollowApplicationResponse</a></code> unfollowApplication(<code><a href="#Struct_UnfollowApplicationRequest">UnfollowApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_checkIfDeviceIsRegistered">Function: AromaService.checkIfDeviceIsRegistered</h4>
+<pre><code><a href="#Struct_CheckIfDeviceIsRegisteredResponse">CheckIfDeviceIsRegisteredResponse</a></code> checkIfDeviceIsRegistered(<code><a href="#Struct_CheckIfDeviceIsRegisteredRequest">CheckIfDeviceIsRegisteredRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getRegisteredDevices">Function: AromaService.getRegisteredDevices</h4>
+<pre><code><a href="#Struct_GetRegisteredDevicesResponse">GetRegisteredDevicesResponse</a></code> getRegisteredDevices(<code><a href="#Struct_GetRegisteredDevicesRequest">GetRegisteredDevicesRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getDashboard">Function: AromaService.getDashboard</h4>
 <pre><code><a href="#Struct_GetDashboardResponse">GetDashboardResponse</a></code> getDashboard(<code><a href="#Struct_GetDashboardRequest">GetDashboardRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
