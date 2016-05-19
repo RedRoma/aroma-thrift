@@ -360,6 +360,107 @@ class MobileDevice {
 }
 
 /**
+ * This is the Payload sent with Push Notifications. It is serialized as JSON. *
+ */
+class PushNotificationPayload {
+  static $_TSPEC;
+
+  /**
+   * @var string
+   */
+  public $messageId = null;
+  /**
+   * @var string
+   */
+  public $applicationId = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'messageId',
+          'type' => TType::STRING,
+          ),
+        2 => array(
+          'var' => 'applicationId',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['messageId'])) {
+        $this->messageId = $vals['messageId'];
+      }
+      if (isset($vals['applicationId'])) {
+        $this->applicationId = $vals['applicationId'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'PushNotificationPayload';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->messageId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->applicationId);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('PushNotificationPayload');
+    if ($this->messageId !== null) {
+      $xfer += $output->writeFieldBegin('messageId', TType::STRING, 1);
+      $xfer += $output->writeString($this->messageId);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->applicationId !== null) {
+      $xfer += $output->writeFieldBegin('applicationId', TType::STRING, 2);
+      $xfer += $output->writeString($this->applicationId);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+/**
  * It's a bit confusing, but "Channel" here refers to
  * a specific "Slack Channel" in a Team Slack Account,
  * for example, #operations, #development.
@@ -1258,13 +1359,13 @@ class ReceiveMessageRequest {
 }
 
 final class Constant extends \Thrift\Type\TConstant {
-  static protected $PUSH_NOTIFICATION_KEY_FOR_MESSAGE;
+  static protected $PUSH_NOTIFICATION_KEY_FOR_PAYLOAD;
 
-  static protected function init_PUSH_NOTIFICATION_KEY_FOR_MESSAGE() {
+  static protected function init_PUSH_NOTIFICATION_KEY_FOR_PAYLOAD() {
     return     /**
-     * The key used to store the serialized Message Object. *
+     * The key used to store the Message ID. *
      */
-"aroma.message";
+"aroma.notification.payload";
   }
 }
 

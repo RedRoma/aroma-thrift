@@ -224,6 +224,72 @@ MobileDevice.prototype.write = function(output) {
   return;
 };
 
+PushNotificationPayload = function(args) {
+  this.messageId = null;
+  this.applicationId = null;
+  if (args) {
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+  }
+};
+PushNotificationPayload.prototype = {};
+PushNotificationPayload.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.messageId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+PushNotificationPayload.prototype.write = function(output) {
+  output.writeStructBegin('PushNotificationPayload');
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
+    output.writeString(this.messageId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 SlackChannel = function(args) {
   this.domainName = null;
   this.channelName = null;
@@ -798,4 +864,4 @@ ReceiveMessageRequest.prototype.write = function(output) {
   return;
 };
 
-PUSH_NOTIFICATION_KEY_FOR_MESSAGE = 'aroma.message';
+PUSH_NOTIFICATION_KEY_FOR_PAYLOAD = 'aroma.notification.payload';

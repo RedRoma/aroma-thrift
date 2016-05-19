@@ -374,6 +374,112 @@ void MobileDevice::printTo(std::ostream& out) const {
 }
 
 
+PushNotificationPayload::~PushNotificationPayload() throw() {
+}
+
+
+void PushNotificationPayload::__set_messageId(const uuid& val) {
+  this->messageId = val;
+}
+
+void PushNotificationPayload::__set_applicationId(const uuid& val) {
+  this->applicationId = val;
+}
+
+uint32_t PushNotificationPayload::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->messageId);
+          this->__isset.messageId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t PushNotificationPayload::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("PushNotificationPayload");
+
+  xfer += oprot->writeFieldBegin("messageId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->messageId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->applicationId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(PushNotificationPayload &a, PushNotificationPayload &b) {
+  using ::std::swap;
+  swap(a.messageId, b.messageId);
+  swap(a.applicationId, b.applicationId);
+  swap(a.__isset, b.__isset);
+}
+
+PushNotificationPayload::PushNotificationPayload(const PushNotificationPayload& other8) {
+  messageId = other8.messageId;
+  applicationId = other8.applicationId;
+  __isset = other8.__isset;
+}
+PushNotificationPayload& PushNotificationPayload::operator=(const PushNotificationPayload& other9) {
+  messageId = other9.messageId;
+  applicationId = other9.applicationId;
+  __isset = other9.__isset;
+  return *this;
+}
+void PushNotificationPayload::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "PushNotificationPayload(";
+  out << "messageId=" << to_string(messageId);
+  out << ", " << "applicationId=" << to_string(applicationId);
+  out << ")";
+}
+
+
 SlackChannel::~SlackChannel() throw() {
 }
 
@@ -477,17 +583,17 @@ void swap(SlackChannel &a, SlackChannel &b) {
   swap(a.__isset, b.__isset);
 }
 
-SlackChannel::SlackChannel(const SlackChannel& other8) {
-  domainName = other8.domainName;
-  channelName = other8.channelName;
-  slackToken = other8.slackToken;
-  __isset = other8.__isset;
+SlackChannel::SlackChannel(const SlackChannel& other10) {
+  domainName = other10.domainName;
+  channelName = other10.channelName;
+  slackToken = other10.slackToken;
+  __isset = other10.__isset;
 }
-SlackChannel& SlackChannel::operator=(const SlackChannel& other9) {
-  domainName = other9.domainName;
-  channelName = other9.channelName;
-  slackToken = other9.slackToken;
-  __isset = other9.__isset;
+SlackChannel& SlackChannel::operator=(const SlackChannel& other11) {
+  domainName = other11.domainName;
+  channelName = other11.channelName;
+  slackToken = other11.slackToken;
+  __isset = other11.__isset;
   return *this;
 }
 void SlackChannel::printTo(std::ostream& out) const {
@@ -603,17 +709,17 @@ void swap(SlackUsername &a, SlackUsername &b) {
   swap(a.__isset, b.__isset);
 }
 
-SlackUsername::SlackUsername(const SlackUsername& other10) {
-  domainName = other10.domainName;
-  username = other10.username;
-  slackToken = other10.slackToken;
-  __isset = other10.__isset;
+SlackUsername::SlackUsername(const SlackUsername& other12) {
+  domainName = other12.domainName;
+  username = other12.username;
+  slackToken = other12.slackToken;
+  __isset = other12.__isset;
 }
-SlackUsername& SlackUsername::operator=(const SlackUsername& other11) {
-  domainName = other11.domainName;
-  username = other11.username;
-  slackToken = other11.slackToken;
-  __isset = other11.__isset;
+SlackUsername& SlackUsername::operator=(const SlackUsername& other13) {
+  domainName = other13.domainName;
+  username = other13.username;
+  slackToken = other13.slackToken;
+  __isset = other13.__isset;
   return *this;
 }
 void SlackUsername::printTo(std::ostream& out) const {
@@ -714,15 +820,15 @@ void swap(Email &a, Email &b) {
   swap(a.__isset, b.__isset);
 }
 
-Email::Email(const Email& other12) {
-  emailAddress = other12.emailAddress;
-  subject = other12.subject;
-  __isset = other12.__isset;
+Email::Email(const Email& other14) {
+  emailAddress = other14.emailAddress;
+  subject = other14.subject;
+  __isset = other14.__isset;
 }
-Email& Email::operator=(const Email& other13) {
-  emailAddress = other13.emailAddress;
-  subject = other13.subject;
-  __isset = other13.__isset;
+Email& Email::operator=(const Email& other15) {
+  emailAddress = other15.emailAddress;
+  subject = other15.subject;
+  __isset = other15.__isset;
   return *this;
 }
 void Email::printTo(std::ostream& out) const {
@@ -803,13 +909,13 @@ void swap(CustomChannel &a, CustomChannel &b) {
   swap(a.__isset, b.__isset);
 }
 
-CustomChannel::CustomChannel(const CustomChannel& other14) {
-  endpoint = other14.endpoint;
-  __isset = other14.__isset;
+CustomChannel::CustomChannel(const CustomChannel& other16) {
+  endpoint = other16.endpoint;
+  __isset = other16.__isset;
 }
-CustomChannel& CustomChannel::operator=(const CustomChannel& other15) {
-  endpoint = other15.endpoint;
-  __isset = other15.__isset;
+CustomChannel& CustomChannel::operator=(const CustomChannel& other17) {
+  endpoint = other17.endpoint;
+  __isset = other17.__isset;
   return *this;
 }
 void CustomChannel::printTo(std::ostream& out) const {
@@ -991,25 +1097,25 @@ void swap(AromaChannel &a, AromaChannel &b) {
   swap(a.__isset, b.__isset);
 }
 
-AromaChannel::AromaChannel(const AromaChannel& other16) {
-  slackChannel = other16.slackChannel;
-  slackUsername = other16.slackUsername;
-  email = other16.email;
-  customChannel = other16.customChannel;
-  iosDevice = other16.iosDevice;
-  androidDevice = other16.androidDevice;
-  windowsPhoneDevice = other16.windowsPhoneDevice;
-  __isset = other16.__isset;
+AromaChannel::AromaChannel(const AromaChannel& other18) {
+  slackChannel = other18.slackChannel;
+  slackUsername = other18.slackUsername;
+  email = other18.email;
+  customChannel = other18.customChannel;
+  iosDevice = other18.iosDevice;
+  androidDevice = other18.androidDevice;
+  windowsPhoneDevice = other18.windowsPhoneDevice;
+  __isset = other18.__isset;
 }
-AromaChannel& AromaChannel::operator=(const AromaChannel& other17) {
-  slackChannel = other17.slackChannel;
-  slackUsername = other17.slackUsername;
-  email = other17.email;
-  customChannel = other17.customChannel;
-  iosDevice = other17.iosDevice;
-  androidDevice = other17.androidDevice;
-  windowsPhoneDevice = other17.windowsPhoneDevice;
-  __isset = other17.__isset;
+AromaChannel& AromaChannel::operator=(const AromaChannel& other19) {
+  slackChannel = other19.slackChannel;
+  slackUsername = other19.slackUsername;
+  email = other19.email;
+  customChannel = other19.customChannel;
+  iosDevice = other19.iosDevice;
+  androidDevice = other19.androidDevice;
+  windowsPhoneDevice = other19.windowsPhoneDevice;
+  __isset = other19.__isset;
   return *this;
 }
 void AromaChannel::printTo(std::ostream& out) const {
@@ -1131,17 +1237,17 @@ void swap(ChannelInfo &a, ChannelInfo &b) {
   swap(a.__isset, b.__isset);
 }
 
-ChannelInfo::ChannelInfo(const ChannelInfo& other18) {
-  channel = other18.channel;
-  timeRegistered = other18.timeRegistered;
-  channelId = other18.channelId;
-  __isset = other18.__isset;
+ChannelInfo::ChannelInfo(const ChannelInfo& other20) {
+  channel = other20.channel;
+  timeRegistered = other20.timeRegistered;
+  channelId = other20.channelId;
+  __isset = other20.__isset;
 }
-ChannelInfo& ChannelInfo::operator=(const ChannelInfo& other19) {
-  channel = other19.channel;
-  timeRegistered = other19.timeRegistered;
-  channelId = other19.channelId;
-  __isset = other19.__isset;
+ChannelInfo& ChannelInfo::operator=(const ChannelInfo& other21) {
+  channel = other21.channel;
+  timeRegistered = other21.timeRegistered;
+  channelId = other21.channelId;
+  __isset = other21.__isset;
   return *this;
 }
 void ChannelInfo::printTo(std::ostream& out) const {
@@ -1223,13 +1329,13 @@ void swap(ReceiveMessageRequest &a, ReceiveMessageRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-ReceiveMessageRequest::ReceiveMessageRequest(const ReceiveMessageRequest& other20) {
-  message = other20.message;
-  __isset = other20.__isset;
+ReceiveMessageRequest::ReceiveMessageRequest(const ReceiveMessageRequest& other22) {
+  message = other22.message;
+  __isset = other22.__isset;
 }
-ReceiveMessageRequest& ReceiveMessageRequest::operator=(const ReceiveMessageRequest& other21) {
-  message = other21.message;
-  __isset = other21.__isset;
+ReceiveMessageRequest& ReceiveMessageRequest::operator=(const ReceiveMessageRequest& other23) {
+  message = other23.message;
+  __isset = other23.__isset;
   return *this;
 }
 void ReceiveMessageRequest::printTo(std::ostream& out) const {

@@ -29,9 +29,6 @@ struct IOSDevice
     1: string deviceToken;
 }
 
-/** The key used to store the serialized Message Object. **/
-const string PUSH_NOTIFICATION_KEY_FOR_MESSAGE = 'aroma.message';
-
 struct AndroidDevice
 {
     1: string registrationId;
@@ -52,6 +49,17 @@ union MobileDevice
     2: AndroidDevice androidDevice;
     3: WindowsPhoneDevice windowsPhoneDevice;
 }
+
+/** This is the Payload sent with Push Notifications. It is serialized as JSON. **/
+struct PushNotificationPayload
+{
+    1: uuid messageId;
+    2: uuid applicationId;
+}
+
+/** The key used to store the Message ID. **/
+const string PUSH_NOTIFICATION_KEY_FOR_PAYLOAD = 'aroma.notification.payload';
+
 
 /**
  * It's a bit confusing, but "Channel" here refers to

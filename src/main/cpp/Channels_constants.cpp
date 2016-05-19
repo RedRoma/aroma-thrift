@@ -11,7 +11,7 @@ namespace aroma { namespace thrift { namespace channels {
 const ChannelsConstants g_Channels_constants;
 
 ChannelsConstants::ChannelsConstants() {
-  PUSH_NOTIFICATION_KEY_FOR_MESSAGE = "aroma.message";
+  PUSH_NOTIFICATION_KEY_FOR_PAYLOAD = "aroma.notification.payload";
 
 }
 

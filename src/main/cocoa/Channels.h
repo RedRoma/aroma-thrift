@@ -138,6 +138,41 @@ typedef Aroma_uuid AromaChannels_uuid;
 
 @end
 
+@interface AromaChannels_PushNotificationPayload : NSObject <TBase, NSCoding> {
+  AromaChannels_uuid __messageId;
+  AromaChannels_uuid __applicationId;
+
+  BOOL __messageId_isset;
+  BOOL __applicationId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) AromaChannels_uuid messageId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaChannels_uuid applicationId;
+#endif
+
+- (id) init;
+- (id) initWithMessageId: (AromaChannels_uuid) messageId applicationId: (AromaChannels_uuid) applicationId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaChannels_uuid) messageId;
+- (void) setMessageId: (AromaChannels_uuid) messageId;
+#endif
+- (BOOL) messageIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaChannels_uuid) applicationId;
+- (void) setApplicationId: (AromaChannels_uuid) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+@end
+
 @interface AromaChannels_SlackChannel : NSObject <TBase, NSCoding> {
   NSString * __domainName;
   NSString * __channelName;
@@ -456,5 +491,5 @@ typedef Aroma_uuid AromaChannels_uuid;
 
 @interface AromaChannels_ChannelsConstants : NSObject {
 }
-+ (NSString *) PUSH_NOTIFICATION_KEY_FOR_MESSAGE;
++ (NSString *) PUSH_NOTIFICATION_KEY_FOR_PAYLOAD;
 @end

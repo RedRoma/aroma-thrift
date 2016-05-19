@@ -38,6 +38,8 @@ class WindowsPhoneDevice;
 
 class MobileDevice;
 
+class PushNotificationPayload;
+
 class SlackChannel;
 
 class SlackUsername;
@@ -232,6 +234,58 @@ class MobileDevice {
 void swap(MobileDevice &a, MobileDevice &b);
 
 inline std::ostream& operator<<(std::ostream& out, const MobileDevice& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _PushNotificationPayload__isset {
+  _PushNotificationPayload__isset() : messageId(false), applicationId(false) {}
+  bool messageId :1;
+  bool applicationId :1;
+} _PushNotificationPayload__isset;
+
+class PushNotificationPayload {
+ public:
+
+  PushNotificationPayload(const PushNotificationPayload&);
+  PushNotificationPayload& operator=(const PushNotificationPayload&);
+  PushNotificationPayload() : messageId(), applicationId() {
+  }
+
+  virtual ~PushNotificationPayload() throw();
+  uuid messageId;
+  uuid applicationId;
+
+  _PushNotificationPayload__isset __isset;
+
+  void __set_messageId(const uuid& val);
+
+  void __set_applicationId(const uuid& val);
+
+  bool operator == (const PushNotificationPayload & rhs) const
+  {
+    if (!(messageId == rhs.messageId))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    return true;
+  }
+  bool operator != (const PushNotificationPayload &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const PushNotificationPayload & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(PushNotificationPayload &a, PushNotificationPayload &b);
+
+inline std::ostream& operator<<(std::ostream& out, const PushNotificationPayload& obj)
 {
   obj.printTo(out);
   return out;
