@@ -5173,7 +5173,7 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
 
 ttypes.SERVICE_PORT = 7010;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'aroma-srv.aroma.tech','port' : 7010});
+'hostname' : 'aroma-srv.aroma.tech','port' : 80});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'aroma-srv.beta.aroma.tech','port' : 7010});
 ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Aroma_ttypes.Dimension({

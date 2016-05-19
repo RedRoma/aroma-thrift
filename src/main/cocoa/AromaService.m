@@ -14976,7 +14976,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 + (void) initialize {
   AromaService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
   [AromaService_PRODUCTION_ENDPOINT setHostname:@"aroma-srv.aroma.tech"];
-  [AromaService_PRODUCTION_ENDPOINT setPort:7010];
+  [AromaService_PRODUCTION_ENDPOINT setPort:80];
 
 ;
   AromaService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];

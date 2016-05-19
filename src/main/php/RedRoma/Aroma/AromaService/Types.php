@@ -7757,7 +7757,7 @@ final class Constant extends \Thrift\Type\TConstant {
      */
 new \RedRoma\Aroma\Endpoint\TcpEndpoint(array(
       "hostname" => "aroma-srv.aroma.tech",
-      "port" => 7010,
+      "port" => 80,
     ));
   }
 

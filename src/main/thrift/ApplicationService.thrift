@@ -41,14 +41,14 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 
 const int SERVICE_PORT = 7002;
 
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.aroma.tech", "port" : 80 };
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
 
 /**
  * The maximum number of characters allowed in a Message.
- * 
+ *
  * Anything Longer will be Truncated.
  */
 const int MAX_TITLE_LENGTH = 40;

@@ -74,7 +74,7 @@ const int SERVICE_PORT = 7010;
 /**
  * This is Aroma Production Endpoint
  */
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "aroma-srv.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "aroma-srv.aroma.tech", "port" : 80 };
 
 /**
  * This is Aroma Beta Endpoint
@@ -793,7 +793,7 @@ service AromaService
 
     /**
      * Permanently Deletes an Application. Only an owner can perform this Operations.
-     * 
+     *
      * #owners
      */
     DeleteApplicationResponse deleteApplication(1 : DeleteApplicationRequest request) throws(1 : OperationFailedException ex1,
@@ -861,7 +861,7 @@ service AromaService
 
     /**
      * Delete Messages stored for the Application. Only an owner can perform this operation.
-     * 
+     *
      * #owner
      */
     DeleteMessageResponse deleteMessage(1 : DeleteMessageRequest request) throws(1 : OperationFailedException ex1,
@@ -917,7 +917,7 @@ service AromaService
 
     /**
      * Update an Application's Reactions.
-     * 
+     *
      * #owner
      */
     UpdateReactionsResponse updateReactions(1 : UpdateReactionsRequest request) throws(1 : OperationFailedException ex1,

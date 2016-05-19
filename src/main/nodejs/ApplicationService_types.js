@@ -264,7 +264,7 @@ SendMessageResponse.prototype.write = function(output) {
 
 ttypes.SERVICE_PORT = 7002;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'application-srv.aroma.tech','port' : 7002});
+'hostname' : 'application-srv.aroma.tech','port' : 80});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'application-srv.beta.aroma.tech','port' : 7002});
 ttypes.MAX_TITLE_LENGTH = 40;

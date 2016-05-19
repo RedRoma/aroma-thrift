@@ -15,7 +15,7 @@ AromaServiceConstants::AromaServiceConstants() {
 
   PRODUCTION_ENDPOINT.hostname = "aroma-srv.aroma.tech";
    ::aroma::thrift::endpoint::int tmp256;
-  tmp256 = 7010;
+  tmp256 = 80;
 
   PRODUCTION_ENDPOINT.port = tmp256;
 

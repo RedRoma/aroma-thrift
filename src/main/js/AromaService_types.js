@@ -5161,7 +5161,7 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
 
 SERVICE_PORT = 7010;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'aroma-srv.aroma.tech','port' : 7010});
+'hostname' : 'aroma-srv.aroma.tech','port' : 80});
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'aroma-srv.beta.aroma.tech','port' : 7010});
 MAX_PROFILE_IMAGE_DIMENSION = new Dimension({

@@ -15,7 +15,7 @@ ApplicationServiceConstants::ApplicationServiceConstants() {
 
   PRODUCTION_ENDPOINT.hostname = "application-srv.aroma.tech";
    ::aroma::thrift::endpoint::int tmp5;
-  tmp5 = 7002;
+  tmp5 = 80;
 
   PRODUCTION_ENDPOINT.port = tmp5;
 

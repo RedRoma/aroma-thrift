@@ -856,7 +856,7 @@ static ApplicationService_int ApplicationService_MAX_CHARACTERS_IN_BODY = 15000;
 + (void) initialize {
   ApplicationService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
   [ApplicationService_PRODUCTION_ENDPOINT setHostname:@"application-srv.aroma.tech"];
-  [ApplicationService_PRODUCTION_ENDPOINT setPort:7002];
+  [ApplicationService_PRODUCTION_ENDPOINT setPort:80];
 
 ;
   ApplicationService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
