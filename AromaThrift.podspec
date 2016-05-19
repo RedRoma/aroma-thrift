@@ -1,7 +1,7 @@
 Pod::Spec.new do |aroma|
   aroma.name             = "AromaThrift"
   aroma.module_name      = 'AromaThrift'
-  aroma.version          = "1.9"
+  aroma.version          = "1.10"
   aroma.summary          = "The Cocoa Bindings for Aroma."
   aroma.homepage         = "https://github.com/RedRoma/aroma-thrift"
   aroma.license          = "Code is Licensed under Apache 2.0"
