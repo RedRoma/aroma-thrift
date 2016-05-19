@@ -24,8 +24,6 @@ interface AromaServiceIf {
   /**
    * Sign in to the App and get a User Token in return.
    * 
-   * #user
-   * 
    * @param \RedRoma\Aroma\AromaService\SignInRequest $request
    * @return \RedRoma\Aroma\AromaService\SignInResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -59,8 +57,6 @@ interface AromaServiceIf {
   /**
    * Get details about an Application from it's unique ID
    * 
-   * #user
-   * 
    * @param \RedRoma\Aroma\AromaService\GetApplicationInfoRequest $request
    * @return \RedRoma\Aroma\AromaService\GetApplicationInfoResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -80,8 +76,6 @@ interface AromaServiceIf {
   public function getApplicationsOwnedBy(\RedRoma\Aroma\AromaService\GetApplicationsOwnedByRequest $request);
   /**
    * Provision a New Application to keep tabs on.
-   * 
-   * #user
    * 
    * @param \RedRoma\Aroma\AromaService\ProvisionApplicationRequest $request
    * @return \RedRoma\Aroma\AromaService\ProvisionApplicationResponse
@@ -109,6 +103,10 @@ interface AromaServiceIf {
    */
   public function regenerateToken(\RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest $request);
   /**
+   * Permanently Deletes an Application. Only an owner can perform this Operations.
+   * 
+   * #owners
+   * 
    * @param \RedRoma\Aroma\AromaService\DeleteApplicationRequest $request
    * @return \RedRoma\Aroma\AromaService\DeleteApplicationResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -148,8 +146,6 @@ interface AromaServiceIf {
   /**
    * Perform a Search on all the applications registered to Aroma by searching for its title.
    * 
-   * #user
-   * 
    * @param \RedRoma\Aroma\AromaService\SearchForApplicationsRequest $request
    * @return \RedRoma\Aroma\AromaService\SearchForApplicationsResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -182,6 +178,10 @@ interface AromaServiceIf {
    */
   public function getFullMessage(\RedRoma\Aroma\AromaService\GetFullMessageRequest $request);
   /**
+   * Delete Messages stored for the Application. Only an owner can perform this operation.
+   * 
+   * #owner
+   * 
    * @param \RedRoma\Aroma\AromaService\DeleteMessageRequest $request
    * @return \RedRoma\Aroma\AromaService\DeleteMessageResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -214,8 +214,6 @@ interface AromaServiceIf {
   /**
    * Get all of the User-Related activities that have happened recently.
    * 
-   * #user
-   * 
    * @param \RedRoma\Aroma\AromaService\GetActivityRequest $request
    * @return \RedRoma\Aroma\AromaService\GetActivityResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -224,6 +222,8 @@ interface AromaServiceIf {
    */
   public function getActivity(\RedRoma\Aroma\AromaService\GetActivityRequest $request);
   /**
+   * #owner
+   * 
    * @param \RedRoma\Aroma\AromaService\GetReactionsRequest $request
    * @return \RedRoma\Aroma\AromaService\GetReactionsResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -234,6 +234,10 @@ interface AromaServiceIf {
    */
   public function getReactions(\RedRoma\Aroma\AromaService\GetReactionsRequest $request);
   /**
+   * Update an Application's Reactions.
+   * 
+   * #owner
+   * 
    * @param \RedRoma\Aroma\AromaService\UpdateReactionsRequest $request
    * @return \RedRoma\Aroma\AromaService\UpdateReactionsResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
@@ -253,8 +257,6 @@ interface AromaServiceIf {
   public function getApplicationsFollowedBy(\RedRoma\Aroma\AromaService\GetApplicationsFollowedByRequest $request);
   /**
    * Subscribe to an existing application to get notifications.
-   * 
-   * #user
    * 
    * @param \RedRoma\Aroma\AromaService\FollowApplicationRequest $request
    * @return \RedRoma\Aroma\AromaService\FollowApplicationResponse

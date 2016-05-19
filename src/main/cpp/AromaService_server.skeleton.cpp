@@ -25,8 +25,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   /**
    * Sign in to the App and get a User Token in return.
    * 
-   * #user
-   * 
    * @param request
    */
   void signIn(SignInResponse& _return, const SignInRequest& request) {
@@ -52,8 +50,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   /**
    * Get details about an Application from it's unique ID
    * 
-   * #user
-   * 
    * @param request
    */
   void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) {
@@ -68,8 +64,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
 
   /**
    * Provision a New Application to keep tabs on.
-   * 
-   * #user
    * 
    * @param request
    */
@@ -92,6 +86,13 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("regenerateToken\n");
   }
 
+  /**
+   * Permanently Deletes an Application. Only an owner can perform this Operations.
+   * 
+   * #owners
+   * 
+   * @param request
+   */
   void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) {
     // Your implementation goes here
     printf("deleteApplication\n");
@@ -123,8 +124,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   /**
    * Perform a Search on all the applications registered to Aroma by searching for its title.
    * 
-   * #user
-   * 
    * @param request
    */
   void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
@@ -153,6 +152,13 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("getFullMessage\n");
   }
 
+  /**
+   * Delete Messages stored for the Application. Only an owner can perform this operation.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
   void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
     // Your implementation goes here
     printf("deleteMessage\n");
@@ -176,8 +182,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   /**
    * Get all of the User-Related activities that have happened recently.
    * 
-   * #user
-   * 
    * @param request
    */
   void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
@@ -185,11 +189,23 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("getActivity\n");
   }
 
+  /**
+   * #owner
+   * 
+   * @param request
+   */
   void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) {
     // Your implementation goes here
     printf("getReactions\n");
   }
 
+  /**
+   * Update an Application's Reactions.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
   void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) {
     // Your implementation goes here
     printf("updateReactions\n");
@@ -202,8 +218,6 @@ class AromaServiceHandler : virtual public AromaServiceIf {
 
   /**
    * Subscribe to an existing application to get notifications.
-   * 
-   * #user
    * 
    * @param request
    */

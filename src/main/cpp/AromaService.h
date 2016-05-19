@@ -25,8 +25,6 @@ class AromaServiceIf {
   /**
    * Sign in to the App and get a User Token in return.
    * 
-   * #user
-   * 
    * @param request
    */
   virtual void signIn(SignInResponse& _return, const SignInRequest& request) = 0;
@@ -42,8 +40,6 @@ class AromaServiceIf {
   /**
    * Get details about an Application from it's unique ID
    * 
-   * #user
-   * 
    * @param request
    */
   virtual void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) = 0;
@@ -51,8 +47,6 @@ class AromaServiceIf {
 
   /**
    * Provision a New Application to keep tabs on.
-   * 
-   * #user
    * 
    * @param request
    */
@@ -68,6 +62,14 @@ class AromaServiceIf {
    * @param request
    */
   virtual void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) = 0;
+
+  /**
+   * Permanently Deletes an Application. Only an owner can perform this Operations.
+   * 
+   * #owners
+   * 
+   * @param request
+   */
   virtual void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) = 0;
 
   /**
@@ -90,8 +92,6 @@ class AromaServiceIf {
   /**
    * Perform a Search on all the applications registered to Aroma by searching for its title.
    * 
-   * #user
-   * 
    * @param request
    */
   virtual void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) = 0;
@@ -110,6 +110,14 @@ class AromaServiceIf {
    * @param request
    */
   virtual void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) = 0;
+
+  /**
+   * Delete Messages stored for the Application. Only an owner can perform this operation.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
   virtual void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) = 0;
   virtual void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) = 0;
 
@@ -123,19 +131,29 @@ class AromaServiceIf {
   /**
    * Get all of the User-Related activities that have happened recently.
    * 
-   * #user
-   * 
    * @param request
    */
   virtual void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) = 0;
+
+  /**
+   * #owner
+   * 
+   * @param request
+   */
   virtual void getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request) = 0;
+
+  /**
+   * Update an Application's Reactions.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
   virtual void updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request) = 0;
   virtual void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) = 0;
 
   /**
    * Subscribe to an existing application to get notifications.
-   * 
-   * #user
    * 
    * @param request
    */

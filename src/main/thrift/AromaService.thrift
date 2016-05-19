@@ -32,7 +32,6 @@ include "Reactions.thrift"
  *
  * Tag definitions:
  *
- * #user   - Signifies an Operation designed to be used by any person.
  * #owner   - Signifies an Operation that can only be performed by an "Owner".
  */
 
@@ -718,12 +717,10 @@ service AromaService
     //==========================================================
     // AUTHENTICATION OPERATIONS
     //==========================================================
-    
+
 
     /**
      * Sign in to the App and get a User Token in return.
-     *
-     * #user
      */
     SignInResponse signIn(1 : SignInRequest request) throws(1 : OperationFailedException ex1,
                                                             2 : InvalidArgumentException ex2,
@@ -744,21 +741,19 @@ service AromaService
     // USER PROFILE OPERATIONS
     //==========================================================
 
-    
+
     GetUserInfoResponse getUserInfo(1 : GetUserInfoRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
                                                                            3 : InvalidTokenException ex3,
                                                                            4 : UnauthorizedException ex4,
                                                                            5 : UserDoesNotExistException ex5);
-    
+
     //==========================================================
     // APPLICATION OPERATIONS
     //==========================================================
 
     /**
      * Get details about an Application from it's unique ID
-     *
-     * #user
      */
     GetApplicationInfoResponse getApplicationInfo(1 : GetApplicationInfoRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
@@ -769,12 +764,10 @@ service AromaService
     GetApplicationsOwnedByResponse getApplicationsOwnedBy(1 : GetApplicationsOwnedByRequest request) throws(1 : OperationFailedException ex1,
                                                                                                             2 : InvalidArgumentException ex2,
                                                                                                             3 : InvalidTokenException ex3);
-    
-    
+
+
     /**
      * Provision a New Application to keep tabs on.
-     *
-     * #user
      */
     ProvisionApplicationResponse provisionApplication(1 : ProvisionApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                       2 : InvalidArgumentException ex2,
@@ -795,15 +788,20 @@ service AromaService
                                                                                                              2 : InvalidArgumentException ex2,
                                                                                                              3 : InvalidTokenException ex3,
                                                                                                              4 : ApplicationDoesNotExistException ex4,
-                                                                                                             5 : UnauthorizedException ex5);  
-    
-    
+                                                                                                             5 : UnauthorizedException ex5);
+
+
+    /**
+     * Permanently Deletes an Application. Only an owner can perform this Operations.
+     * 
+     * #owners
+     */
     DeleteApplicationResponse deleteApplication(1 : DeleteApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                              2 : InvalidArgumentException ex2,
                                                                                              3 : InvalidTokenException ex3,
                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                              5 : UnauthorizedException ex5);
-    
+
 
     /**
      * Renew an Application Token that is close to being expired.
@@ -827,23 +825,21 @@ service AromaService
                                                                                              3 : InvalidTokenException ex3,
                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                              5 : UnauthorizedException ex5);
-    
-    
+
+
     /**
      * Perform a Search on all the applications registered to Aroma by searching for its title.
-     *
-     * #user
      */
     SearchForApplicationsResponse searchForApplications(1 : SearchForApplicationsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                          2 : InvalidArgumentException ex2,
                                                                                                          3 : InvalidTokenException ex3,
                                                                                                          4 : UnauthorizedException ex4);
-    
+
     //==========================================================
     // MESSAGE OPERATIONS
     //==========================================================
-    
-    
+
+
     /**
      * Get an Application's Messages.
      */
@@ -852,7 +848,7 @@ service AromaService
                                                                                                             3 : InvalidTokenException ex3,
                                                                                                             4 : UnauthorizedException ex4,
                                                                                                             5: ApplicationDoesNotExistException ex5);
-     
+
 
     /**
      * In case the Message body has been truncated, use this operation
@@ -862,7 +858,12 @@ service AromaService
                                                                                     2 : InvalidArgumentException ex2,
                                                                                     3 : InvalidTokenException ex3);
 
-    
+
+    /**
+     * Delete Messages stored for the Application. Only an owner can perform this operation.
+     * 
+     * #owner
+     */
     DeleteMessageResponse deleteMessage(1 : DeleteMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                  2 : InvalidArgumentException ex2,
                                                                                  3 : InvalidTokenException ex3,
@@ -876,11 +877,11 @@ service AromaService
                                                                                     3 : InvalidTokenException ex3,
                                                                                     4 : MessageDoesNotExistException ex4,
                                                                                     5 : UnauthorizedException ex5);
-    
+
     //==========================================================
     // INBOX OPERATIONS
     //==========================================================
-    
+
 
     /**
      * Get Messages in a User's Inbox
@@ -888,34 +889,37 @@ service AromaService
     GetInboxResponse getInbox(1 : GetInboxRequest request)throws(1 : OperationFailedException ex1,
                                                                  2 : InvalidArgumentException ex2,
                                                                  3 : InvalidTokenException ex3);
-    
+
     //==========================================================
     // ACTIVITY OPERATIONS
     //==========================================================
 
     /**
      * Get all of the User-Related activities that have happened recently.
-     *
-     * #user
      */
     GetActivityResponse getActivity(1 : GetActivityRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
                                                                            3 : InvalidTokenException ex3);
-    
+
     //==========================================================
     // REACTION OPERATIONS
     //==========================================================
-    
-    
 
+
+    /**
+     * #owner
+     */
     GetReactionsResponse getReactions(1 : GetReactionsRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
                                                                               3 : InvalidTokenException ex3,
                                                                               4 : ApplicationDoesNotExistException ex4,
                                                                               5 : UnauthorizedException ex5);
-    
-    
 
+    /**
+     * Update an Application's Reactions.
+     * 
+     * #owner
+     */
     UpdateReactionsResponse updateReactions(1 : UpdateReactionsRequest request) throws(1 : OperationFailedException ex1,
                                                                                        2 : InvalidArgumentException ex2,
                                                                                        3 : InvalidTokenException ex3,
@@ -925,17 +929,15 @@ service AromaService
     //==========================================================
     // FOLLOW APP OPERATIONS
     //==========================================================
-    
+
 
     GetApplicationsFollowedByResponse getApplicationsFollowedBy(1 : GetApplicationsFollowedByRequest request) throws(1 : OperationFailedException ex1,
                                                                                                                      2 : InvalidArgumentException ex2,
                                                                                                                      3 : InvalidTokenException ex3);
 
-    
+
     /**
      * Subscribe to an existing application to get notifications.
-     *
-     * #user
      */
     FollowApplicationResponse followApplication(1 : FollowApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                              2 : InvalidArgumentException ex2,
@@ -950,16 +952,16 @@ service AromaService
                                                                                                    3 : InvalidTokenException ex3,
                                                                                                    4 : ApplicationDoesNotExistException ex4,
                                                                                                    5 : UnauthorizedException ex5);
-    
+
     //==========================================================
     // DEVICE REGISTRATION OPERATIONS
     //==========================================================
-    
+
     CheckIfDeviceIsRegisteredResponse checkIfDeviceIsRegistered(1 : CheckIfDeviceIsRegisteredRequest request) throws(1 : OperationFailedException ex1,
                                                                                                                      2 : InvalidArgumentException ex2,
                                                                                                                      3 : InvalidTokenException ex3,
                                                                                                                      4 : UnauthorizedException ex4);
-    
+
     /**
      * Get a list of all the devices currently registered to a user account.
      */
@@ -967,7 +969,7 @@ service AromaService
                                                                                                       2 : InvalidArgumentException ex2,
                                                                                                       3 : InvalidTokenException ex3,
                                                                                                       4 : UnauthorizedException ex4);
-    
+
     /**
      * Register a Device and associate it with the account of the User calling.
      */
@@ -975,7 +977,7 @@ service AromaService
                                                                                     2 : InvalidArgumentException ex2,
                                                                                     3 : InvalidTokenException ex3,
                                                                                     4 : UnauthorizedException ex4);
-    
+
     /**
      * Unregisters a Device from a User Account, if it is found. Causes no harm if the device does not exist.
      */
@@ -983,7 +985,7 @@ service AromaService
                                                                                           2 : InvalidArgumentException ex2,
                                                                                           3 : InvalidTokenException ex3,
                                                                                           4 : UnauthorizedException ex4);
-    
+
     //==========================================================
     // DASHBOARD OPERATIONS
     //==========================================================
@@ -991,25 +993,25 @@ service AromaService
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
                                                                               3 : InvalidTokenException ex3);
-    
-    
+
+
     //==========================================================
     // BUZZ OPERATIONS
     //==========================================================
 
-    
+
     GetBuzzResponse getBuzz(1 : GetBuzzRequest request) throws(1 : OperationFailedException ex1,
                                                                2 : InvalidArgumentException ex2,
                                                                3 : InvalidTokenException ex3,
                                                                4 : ApplicationDoesNotExistException ex4,
                                                                5 : UnauthorizedException ex5);
-    
+
     //==========================================================
     // OTHER OPERATIONS
     //==========================================================
 
     double getApiVersion()
-    
+
     /**
      * Register an existing Application for Health Pokes. The Aroma Service
      * will then periodically poke the Application for health status.
