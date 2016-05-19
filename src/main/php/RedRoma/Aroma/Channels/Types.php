@@ -21,7 +21,7 @@ class IOSDevice {
   static $_TSPEC;
 
   /**
-   * Device Token may be stored and serialized as a Base64 encoded String.
+   * Device Token is serialized and stored as a Base64 encoded String of the original binary token.
    * 
    * @var string
    */

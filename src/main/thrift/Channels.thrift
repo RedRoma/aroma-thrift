@@ -25,7 +25,7 @@ typedef Aroma.uuid uuid
 
 struct IOSDevice
 {
-    /** Device Token may be stored and serialized as a Base64 encoded String. */
+    /** Device Token is serialized and stored as a Base64 encoded String of the original binary token. */
     1: string deviceToken;
 }
 
