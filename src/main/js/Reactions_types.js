@@ -1528,6 +1528,62 @@ ActionForwardToUsers.prototype.write = function(output) {
   return;
 };
 
+ActionSendPushNotification = function(args) {
+};
+ActionSendPushNotification.prototype = {};
+ActionSendPushNotification.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionSendPushNotification.prototype.write = function(output) {
+  output.writeStructBegin('ActionSendPushNotification');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ActionDontSendPushNotification = function(args) {
+};
+ActionDontSendPushNotification.prototype = {};
+ActionDontSendPushNotification.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionDontSendPushNotification.prototype.write = function(output) {
+  output.writeStructBegin('ActionDontSendPushNotification');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 AromaAction = function(args) {
   this.forwardToSlackChannel = null;
   this.forwardToSlackUser = null;
@@ -1537,6 +1593,8 @@ AromaAction = function(args) {
   this.dontStoreMessage = null;
   this.responseWithMessage = null;
   this.forwardToUsers = null;
+  this.sendPushNotification = null;
+  this.dontSendPushNotification = null;
   if (args) {
     if (args.forwardToSlackChannel !== undefined && args.forwardToSlackChannel !== null) {
       this.forwardToSlackChannel = new ActionForwardToSlackChannel(args.forwardToSlackChannel);
@@ -1561,6 +1619,12 @@ AromaAction = function(args) {
     }
     if (args.forwardToUsers !== undefined && args.forwardToUsers !== null) {
       this.forwardToUsers = new ActionForwardToUsers(args.forwardToUsers);
+    }
+    if (args.sendPushNotification !== undefined && args.sendPushNotification !== null) {
+      this.sendPushNotification = new ActionSendPushNotification(args.sendPushNotification);
+    }
+    if (args.dontSendPushNotification !== undefined && args.dontSendPushNotification !== null) {
+      this.dontSendPushNotification = new ActionDontSendPushNotification(args.dontSendPushNotification);
     }
   }
 };
@@ -1642,6 +1706,22 @@ AromaAction.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 9:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.sendPushNotification = new ActionSendPushNotification();
+        this.sendPushNotification.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.dontSendPushNotification = new ActionDontSendPushNotification();
+        this.dontSendPushNotification.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1691,6 +1771,16 @@ AromaAction.prototype.write = function(output) {
   if (this.forwardToUsers !== null && this.forwardToUsers !== undefined) {
     output.writeFieldBegin('forwardToUsers', Thrift.Type.STRUCT, 7);
     this.forwardToUsers.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.sendPushNotification !== null && this.sendPushNotification !== undefined) {
+    output.writeFieldBegin('sendPushNotification', Thrift.Type.STRUCT, 9);
+    this.sendPushNotification.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.dontSendPushNotification !== null && this.dontSendPushNotification !== undefined) {
+    output.writeFieldBegin('dontSendPushNotification', Thrift.Type.STRUCT, 10);
+    this.dontSendPushNotification.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -1826,4 +1916,3 @@ Reaction.prototype.write = function(output) {
   return;
 };
 
-MAXIMUM_REACTIONS = 100;

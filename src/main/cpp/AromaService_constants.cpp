@@ -14,56 +14,58 @@ AromaServiceConstants::AromaServiceConstants() {
   SERVICE_PORT = 7010;
 
   PRODUCTION_ENDPOINT.hostname = "aroma-srv.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp263;
-  tmp263 = 7010;
+   ::aroma::thrift::endpoint::int tmp256;
+  tmp256 = 7010;
 
-  PRODUCTION_ENDPOINT.port = tmp263;
+  PRODUCTION_ENDPOINT.port = tmp256;
 
   BETA_ENDPOINT.hostname = "aroma-srv.beta.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp264;
-  tmp264 = 7010;
+   ::aroma::thrift::endpoint::int tmp257;
+  tmp257 = 7010;
 
-  BETA_ENDPOINT.port = tmp264;
+  BETA_ENDPOINT.port = tmp257;
 
-   ::tech::aroma::thrift::int tmp265;
-  tmp265 = 1024;
+   ::tech::aroma::thrift::int tmp258;
+  tmp258 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.width = tmp265;
-   ::tech::aroma::thrift::int tmp266;
-  tmp266 = 1024;
+  MAX_PROFILE_IMAGE_DIMENSION.width = tmp258;
+   ::tech::aroma::thrift::int tmp259;
+  tmp259 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.height = tmp266;
-
-   ::tech::aroma::thrift::int tmp267;
-  tmp267 = 1024;
-
-  MAX_PROFILE_IMAGE_DIMENSION.width = tmp267;
-   ::tech::aroma::thrift::int tmp268;
-  tmp268 = 1024;
-
-  MAX_PROFILE_IMAGE_DIMENSION.height = tmp268;
-
-  MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+  MAX_PROFILE_IMAGE_DIMENSION.height = tmp259;
 
   MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
-  MAX_MESSAGE_LENGTH = 5000;
+   ::tech::aroma::thrift::int tmp260;
+  tmp260 = 1024;
 
-   ::tech::aroma::thrift::long tmp269;
-  tmp269 = 3LL;
+  MAX_APPLICATION_ICON_DIMENSION.width = tmp260;
+   ::tech::aroma::thrift::int tmp261;
+  tmp261 = 1024;
 
-  DEFAULT_INBOX_LIFETIME.value = tmp269;
-  DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
+  MAX_APPLICATION_ICON_DIMENSION.height = tmp261;
 
-   ::tech::aroma::thrift::long tmp270;
-  tmp270 = 4LL;
-
-  DEFAULT_ACTIVITY_LIFETIME.value = tmp270;
-  DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
+  MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 
   APPLICATION_NAME_MAX_LENGTH = 20;
 
   APPLICATION_MAX_OWNERS = 10;
+
+  MAX_MESSAGE_LENGTH = 5000;
+
+   ::tech::aroma::thrift::long tmp262;
+  tmp262 = 3LL;
+
+  DEFAULT_INBOX_LIFETIME.value = tmp262;
+  DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
+
+   ::tech::aroma::thrift::long tmp263;
+  tmp263 = 4LL;
+
+  DEFAULT_ACTIVITY_LIFETIME.value = tmp263;
+  DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
+
+  MAXIMUM_REACTIONS = 100;
 
 }
 

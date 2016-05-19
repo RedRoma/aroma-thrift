@@ -195,13 +195,15 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Reactions</td><td></td>
-<td><a href="#Struct_ActionDontStoreMessage">ActionDontStoreMessage</a><br/>
+<td><a href="#Struct_ActionDontSendPushNotification">ActionDontSendPushNotification</a><br/>
+<a href="#Struct_ActionDontStoreMessage">ActionDontStoreMessage</a><br/>
 <a href="#Struct_ActionForwardToGitter">ActionForwardToGitter</a><br/>
 <a href="#Struct_ActionForwardToSlackChannel">ActionForwardToSlackChannel</a><br/>
 <a href="#Struct_ActionForwardToSlackUser">ActionForwardToSlackUser</a><br/>
 <a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a><br/>
 <a href="#Struct_ActionRespondWithMessage">ActionRespondWithMessage</a><br/>
 <a href="#Struct_ActionSendEmail">ActionSendEmail</a><br/>
+<a href="#Struct_ActionSendPushNotification">ActionSendPushNotification</a><br/>
 <a href="#Struct_ActionSkipInbox">ActionSkipInbox</a><br/>
 <a href="#Struct_AromaAction">AromaAction</a><br/>
 <a href="#Struct_AromaMatcher">AromaMatcher</a><br/>
@@ -225,13 +227,9 @@ code { line-height: 20px; }
 <a href="#Typedef_timestamp">timestamp</a><br/>
 <a href="#Typedef_uuid">uuid</a><br/>
 </td>
-<td><code><a href="#Const_MAXIMUM_REACTIONS">MAXIMUM_REACTIONS</a></code><br/>
-</code></td>
+<td></code></td>
 </tr></table>
-<hr/><h2 id="Constants">Constants</h2>
-<table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_MAXIMUM_REACTIONS"><td><code>MAXIMUM_REACTIONS</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>100</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Number of Reactions that can be saved for a User or and App.
-<br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
+<hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_int">Aroma.int</a></code></p>
 </div>
@@ -333,6 +331,10 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_ActionForwardToUsers">Struct: ActionForwardToUsers</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>userIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionSendPushNotification">Struct: ActionSendPushNotification</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionDontSendPushNotification">Struct: ActionDontSendPushNotification</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_AromaAction">Union: AromaAction</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>forwardToSlackChannel</td><td><code><a href="#Struct_ActionForwardToSlackChannel">ActionForwardToSlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
@@ -343,6 +345,8 @@ code { line-height: 20px; }
 <tr><td>5</td><td>dontStoreMessage</td><td><code><a href="#Struct_ActionDontStoreMessage">ActionDontStoreMessage</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>6</td><td>responseWithMessage</td><td><code><a href="#Struct_ActionRespondWithMessage">ActionRespondWithMessage</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>7</td><td>forwardToUsers</td><td><code><a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>9</td><td>sendPushNotification</td><td><code><a href="#Struct_ActionSendPushNotification">ActionSendPushNotification</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>10</td><td>dontSendPushNotification</td><td><code><a href="#Struct_ActionDontSendPushNotification">ActionDontSendPushNotification</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Reaction">Struct: Reaction</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>matchers</td><td><code>list&lt;<code><a href="#Struct_AromaMatcher">AromaMatcher</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>

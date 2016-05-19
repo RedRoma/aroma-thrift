@@ -773,6 +773,30 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
+@interface AromaReactions_ActionSendPushNotification : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface AromaReactions_ActionDontSendPushNotification : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
 @interface AromaReactions_AromaAction : NSObject <TBase, NSCoding> {
   AromaReactions_ActionForwardToSlackChannel * __forwardToSlackChannel;
   AromaReactions_ActionForwardToSlackUser * __forwardToSlackUser;
@@ -782,6 +806,8 @@ typedef Aroma_uuid AromaReactions_uuid;
   AromaReactions_ActionDontStoreMessage * __dontStoreMessage;
   AromaReactions_ActionRespondWithMessage * __responseWithMessage;
   AromaReactions_ActionForwardToUsers * __forwardToUsers;
+  AromaReactions_ActionSendPushNotification * __sendPushNotification;
+  AromaReactions_ActionDontSendPushNotification * __dontSendPushNotification;
 
   BOOL __forwardToSlackChannel_isset;
   BOOL __forwardToSlackUser_isset;
@@ -791,6 +817,8 @@ typedef Aroma_uuid AromaReactions_uuid;
   BOOL __dontStoreMessage_isset;
   BOOL __responseWithMessage_isset;
   BOOL __forwardToUsers_isset;
+  BOOL __sendPushNotification_isset;
+  BOOL __dontSendPushNotification_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -802,10 +830,12 @@ typedef Aroma_uuid AromaReactions_uuid;
 @property (nonatomic, retain, getter=dontStoreMessage, setter=setDontStoreMessage:) AromaReactions_ActionDontStoreMessage * dontStoreMessage;
 @property (nonatomic, retain, getter=responseWithMessage, setter=setResponseWithMessage:) AromaReactions_ActionRespondWithMessage * responseWithMessage;
 @property (nonatomic, retain, getter=forwardToUsers, setter=setForwardToUsers:) AromaReactions_ActionForwardToUsers * forwardToUsers;
+@property (nonatomic, retain, getter=sendPushNotification, setter=setSendPushNotification:) AromaReactions_ActionSendPushNotification * sendPushNotification;
+@property (nonatomic, retain, getter=dontSendPushNotification, setter=setDontSendPushNotification:) AromaReactions_ActionDontSendPushNotification * dontSendPushNotification;
 #endif
 
 - (id) init;
-- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser forwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
+- (id) initWithForwardToSlackChannel: (AromaReactions_ActionForwardToSlackChannel *) forwardToSlackChannel forwardToSlackUser: (AromaReactions_ActionForwardToSlackUser *) forwardToSlackUser forwardToGitter: (AromaReactions_ActionForwardToGitter *) forwardToGitter sendEmail: (AromaReactions_ActionSendEmail *) sendEmail skipInbox: (AromaReactions_ActionSkipInbox *) skipInbox dontStoreMessage: (AromaReactions_ActionDontStoreMessage *) dontStoreMessage responseWithMessage: (AromaReactions_ActionRespondWithMessage *) responseWithMessage forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers sendPushNotification: (AromaReactions_ActionSendPushNotification *) sendPushNotification dontSendPushNotification: (AromaReactions_ActionDontSendPushNotification *) dontSendPushNotification;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -860,6 +890,18 @@ typedef Aroma_uuid AromaReactions_uuid;
 #endif
 - (BOOL) forwardToUsersIsSet;
 
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionSendPushNotification *) sendPushNotification;
+- (void) setSendPushNotification: (AromaReactions_ActionSendPushNotification *) sendPushNotification;
+#endif
+- (BOOL) sendPushNotificationIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionDontSendPushNotification *) dontSendPushNotification;
+- (void) setDontSendPushNotification: (AromaReactions_ActionDontSendPushNotification *) dontSendPushNotification;
+#endif
+- (BOOL) dontSendPushNotificationIsSet;
+
 @end
 
 @interface AromaReactions_Reaction : NSObject <TBase, NSCoding> {
@@ -908,5 +950,4 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @interface AromaReactions_ReactionsConstants : NSObject {
 }
-+ (AromaReactions_int) MAXIMUM_REACTIONS;
 @end

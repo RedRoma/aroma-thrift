@@ -15,6 +15,7 @@ class ChannelsConstants {
  public:
   ChannelsConstants();
 
+  std::string PUSH_NOTIFICATION_KEY_FOR_MESSAGE;
 };
 
 extern const ChannelsConstants g_Channels_constants;

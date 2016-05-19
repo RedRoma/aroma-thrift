@@ -2395,6 +2395,130 @@ void ActionForwardToUsers::printTo(std::ostream& out) const {
 }
 
 
+ActionSendPushNotification::~ActionSendPushNotification() throw() {
+}
+
+
+uint32_t ActionSendPushNotification::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionSendPushNotification::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionSendPushNotification");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionSendPushNotification &a, ActionSendPushNotification &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+ActionSendPushNotification::ActionSendPushNotification(const ActionSendPushNotification& other60) {
+  (void) other60;
+}
+ActionSendPushNotification& ActionSendPushNotification::operator=(const ActionSendPushNotification& other61) {
+  (void) other61;
+  return *this;
+}
+void ActionSendPushNotification::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionSendPushNotification(";
+  out << ")";
+}
+
+
+ActionDontSendPushNotification::~ActionDontSendPushNotification() throw() {
+}
+
+
+uint32_t ActionDontSendPushNotification::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionDontSendPushNotification::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionDontSendPushNotification");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionDontSendPushNotification &a, ActionDontSendPushNotification &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+ActionDontSendPushNotification::ActionDontSendPushNotification(const ActionDontSendPushNotification& other62) {
+  (void) other62;
+}
+ActionDontSendPushNotification& ActionDontSendPushNotification::operator=(const ActionDontSendPushNotification& other63) {
+  (void) other63;
+  return *this;
+}
+void ActionDontSendPushNotification::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionDontSendPushNotification(";
+  out << ")";
+}
+
+
 AromaAction::~AromaAction() throw() {
 }
 
@@ -2429,6 +2553,14 @@ void AromaAction::__set_responseWithMessage(const ActionRespondWithMessage& val)
 
 void AromaAction::__set_forwardToUsers(const ActionForwardToUsers& val) {
   this->forwardToUsers = val;
+}
+
+void AromaAction::__set_sendPushNotification(const ActionSendPushNotification& val) {
+  this->sendPushNotification = val;
+}
+
+void AromaAction::__set_dontSendPushNotification(const ActionDontSendPushNotification& val) {
+  this->dontSendPushNotification = val;
 }
 
 uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -2516,6 +2648,22 @@ uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 9:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->sendPushNotification.read(iprot);
+          this->__isset.sendPushNotification = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 10:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->dontSendPushNotification.read(iprot);
+          this->__isset.dontSendPushNotification = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -2565,6 +2713,14 @@ uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += this->forwardToGitter.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("sendPushNotification", ::apache::thrift::protocol::T_STRUCT, 9);
+  xfer += this->sendPushNotification.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("dontSendPushNotification", ::apache::thrift::protocol::T_STRUCT, 10);
+  xfer += this->dontSendPushNotification.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -2580,30 +2736,36 @@ void swap(AromaAction &a, AromaAction &b) {
   swap(a.dontStoreMessage, b.dontStoreMessage);
   swap(a.responseWithMessage, b.responseWithMessage);
   swap(a.forwardToUsers, b.forwardToUsers);
+  swap(a.sendPushNotification, b.sendPushNotification);
+  swap(a.dontSendPushNotification, b.dontSendPushNotification);
   swap(a.__isset, b.__isset);
 }
 
-AromaAction::AromaAction(const AromaAction& other60) {
-  forwardToSlackChannel = other60.forwardToSlackChannel;
-  forwardToSlackUser = other60.forwardToSlackUser;
-  forwardToGitter = other60.forwardToGitter;
-  sendEmail = other60.sendEmail;
-  skipInbox = other60.skipInbox;
-  dontStoreMessage = other60.dontStoreMessage;
-  responseWithMessage = other60.responseWithMessage;
-  forwardToUsers = other60.forwardToUsers;
-  __isset = other60.__isset;
+AromaAction::AromaAction(const AromaAction& other64) {
+  forwardToSlackChannel = other64.forwardToSlackChannel;
+  forwardToSlackUser = other64.forwardToSlackUser;
+  forwardToGitter = other64.forwardToGitter;
+  sendEmail = other64.sendEmail;
+  skipInbox = other64.skipInbox;
+  dontStoreMessage = other64.dontStoreMessage;
+  responseWithMessage = other64.responseWithMessage;
+  forwardToUsers = other64.forwardToUsers;
+  sendPushNotification = other64.sendPushNotification;
+  dontSendPushNotification = other64.dontSendPushNotification;
+  __isset = other64.__isset;
 }
-AromaAction& AromaAction::operator=(const AromaAction& other61) {
-  forwardToSlackChannel = other61.forwardToSlackChannel;
-  forwardToSlackUser = other61.forwardToSlackUser;
-  forwardToGitter = other61.forwardToGitter;
-  sendEmail = other61.sendEmail;
-  skipInbox = other61.skipInbox;
-  dontStoreMessage = other61.dontStoreMessage;
-  responseWithMessage = other61.responseWithMessage;
-  forwardToUsers = other61.forwardToUsers;
-  __isset = other61.__isset;
+AromaAction& AromaAction::operator=(const AromaAction& other65) {
+  forwardToSlackChannel = other65.forwardToSlackChannel;
+  forwardToSlackUser = other65.forwardToSlackUser;
+  forwardToGitter = other65.forwardToGitter;
+  sendEmail = other65.sendEmail;
+  skipInbox = other65.skipInbox;
+  dontStoreMessage = other65.dontStoreMessage;
+  responseWithMessage = other65.responseWithMessage;
+  forwardToUsers = other65.forwardToUsers;
+  sendPushNotification = other65.sendPushNotification;
+  dontSendPushNotification = other65.dontSendPushNotification;
+  __isset = other65.__isset;
   return *this;
 }
 void AromaAction::printTo(std::ostream& out) const {
@@ -2617,6 +2779,8 @@ void AromaAction::printTo(std::ostream& out) const {
   out << ", " << "dontStoreMessage=" << to_string(dontStoreMessage);
   out << ", " << "responseWithMessage=" << to_string(responseWithMessage);
   out << ", " << "forwardToUsers=" << to_string(forwardToUsers);
+  out << ", " << "sendPushNotification=" << to_string(sendPushNotification);
+  out << ", " << "dontSendPushNotification=" << to_string(dontSendPushNotification);
   out << ")";
 }
 
@@ -2662,14 +2826,14 @@ uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->matchers.clear();
-            uint32_t _size62;
-            ::apache::thrift::protocol::TType _etype65;
-            xfer += iprot->readListBegin(_etype65, _size62);
-            this->matchers.resize(_size62);
-            uint32_t _i66;
-            for (_i66 = 0; _i66 < _size62; ++_i66)
+            uint32_t _size66;
+            ::apache::thrift::protocol::TType _etype69;
+            xfer += iprot->readListBegin(_etype69, _size66);
+            this->matchers.resize(_size66);
+            uint32_t _i70;
+            for (_i70 = 0; _i70 < _size66; ++_i70)
             {
-              xfer += this->matchers[_i66].read(iprot);
+              xfer += this->matchers[_i70].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2682,14 +2846,14 @@ uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->actions.clear();
-            uint32_t _size67;
-            ::apache::thrift::protocol::TType _etype70;
-            xfer += iprot->readListBegin(_etype70, _size67);
-            this->actions.resize(_size67);
-            uint32_t _i71;
-            for (_i71 = 0; _i71 < _size67; ++_i71)
+            uint32_t _size71;
+            ::apache::thrift::protocol::TType _etype74;
+            xfer += iprot->readListBegin(_etype74, _size71);
+            this->actions.resize(_size71);
+            uint32_t _i75;
+            for (_i75 = 0; _i75 < _size71; ++_i75)
             {
-              xfer += this->actions[_i71].read(iprot);
+              xfer += this->actions[_i75].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2726,10 +2890,10 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeFieldBegin("matchers", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->matchers.size()));
-    std::vector<AromaMatcher> ::const_iterator _iter72;
-    for (_iter72 = this->matchers.begin(); _iter72 != this->matchers.end(); ++_iter72)
+    std::vector<AromaMatcher> ::const_iterator _iter76;
+    for (_iter76 = this->matchers.begin(); _iter76 != this->matchers.end(); ++_iter76)
     {
-      xfer += (*_iter72).write(oprot);
+      xfer += (*_iter76).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2738,10 +2902,10 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeFieldBegin("actions", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->actions.size()));
-    std::vector<AromaAction> ::const_iterator _iter73;
-    for (_iter73 = this->actions.begin(); _iter73 != this->actions.end(); ++_iter73)
+    std::vector<AromaAction> ::const_iterator _iter77;
+    for (_iter77 = this->actions.begin(); _iter77 != this->actions.end(); ++_iter77)
     {
-      xfer += (*_iter73).write(oprot);
+      xfer += (*_iter77).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2764,17 +2928,17 @@ void swap(Reaction &a, Reaction &b) {
   swap(a.__isset, b.__isset);
 }
 
-Reaction::Reaction(const Reaction& other74) {
-  matchers = other74.matchers;
-  actions = other74.actions;
-  name = other74.name;
-  __isset = other74.__isset;
+Reaction::Reaction(const Reaction& other78) {
+  matchers = other78.matchers;
+  actions = other78.actions;
+  name = other78.name;
+  __isset = other78.__isset;
 }
-Reaction& Reaction::operator=(const Reaction& other75) {
-  matchers = other75.matchers;
-  actions = other75.actions;
-  name = other75.name;
-  __isset = other75.__isset;
+Reaction& Reaction::operator=(const Reaction& other79) {
+  matchers = other79.matchers;
+  actions = other79.actions;
+  name = other79.name;
+  __isset = other79.__isset;
   return *this;
 }
 void Reaction::printTo(std::ostream& out) const {

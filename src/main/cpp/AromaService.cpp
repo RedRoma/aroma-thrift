@@ -9,177 +9,11 @@
 namespace aroma { namespace thrift { namespace service {
 
 
-AromaService_getApiVersion_args::~AromaService_getApiVersion_args() throw() {
+AromaService_signIn_args::~AromaService_signIn_args() throw() {
 }
 
 
-uint32_t AromaService_getApiVersion_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    xfer += iprot->skip(ftype);
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getApiVersion_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApiVersion_args");
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApiVersion_pargs::~AromaService_getApiVersion_pargs() throw() {
-}
-
-
-uint32_t AromaService_getApiVersion_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApiVersion_pargs");
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApiVersion_result::~AromaService_getApiVersion_result() throw() {
-}
-
-
-uint32_t AromaService_getApiVersion_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
-          xfer += iprot->readDouble(this->success);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getApiVersion_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getApiVersion_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_DOUBLE, 0);
-    xfer += oprot->writeDouble(this->success);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApiVersion_presult::~AromaService_getApiVersion_presult() throw() {
-}
-
-
-uint32_t AromaService_getApiVersion_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
-          xfer += iprot->readDouble((*(this->success)));
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_deleteApplication_args::~AromaService_deleteApplication_args() throw() {
-}
-
-
-uint32_t AromaService_deleteApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_signIn_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -220,10 +54,10 @@ uint32_t AromaService_deleteApplication_args::read(::apache::thrift::protocol::T
   return xfer;
 }
 
-uint32_t AromaService_deleteApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_signIn_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_deleteApplication_args");
+  xfer += oprot->writeStructBegin("AromaService_signIn_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -235,14 +69,14 @@ uint32_t AromaService_deleteApplication_args::write(::apache::thrift::protocol::
 }
 
 
-AromaService_deleteApplication_pargs::~AromaService_deleteApplication_pargs() throw() {
+AromaService_signIn_pargs::~AromaService_signIn_pargs() throw() {
 }
 
 
-uint32_t AromaService_deleteApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_signIn_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_deleteApplication_pargs");
+  xfer += oprot->writeStructBegin("AromaService_signIn_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -254,11 +88,545 @@ uint32_t AromaService_deleteApplication_pargs::write(::apache::thrift::protocol:
 }
 
 
-AromaService_deleteApplication_result::~AromaService_deleteApplication_result() throw() {
+AromaService_signIn_result::~AromaService_signIn_result() throw() {
 }
 
 
-uint32_t AromaService_deleteApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_signIn_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_signIn_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_signIn_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_signIn_presult::~AromaService_signIn_presult() throw() {
+}
+
+
+uint32_t AromaService_signIn_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_signUp_args::~AromaService_signUp_args() throw() {
+}
+
+
+uint32_t AromaService_signUp_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_signUp_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_signUp_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_signUp_pargs::~AromaService_signUp_pargs() throw() {
+}
+
+
+uint32_t AromaService_signUp_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_signUp_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_signUp_result::~AromaService_signUp_result() throw() {
+}
+
+
+uint32_t AromaService_signUp_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_signUp_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_signUp_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_signUp_presult::~AromaService_signUp_presult() throw() {
+}
+
+
+uint32_t AromaService_signUp_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getUserInfo_args::~AromaService_getUserInfo_args() throw() {
+}
+
+
+uint32_t AromaService_getUserInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getUserInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getUserInfo_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getUserInfo_pargs::~AromaService_getUserInfo_pargs() throw() {
+}
+
+
+uint32_t AromaService_getUserInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getUserInfo_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getUserInfo_result::~AromaService_getUserInfo_result() throw() {
+}
+
+
+uint32_t AromaService_getUserInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -339,11 +707,11 @@ uint32_t AromaService_deleteApplication_result::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t AromaService_deleteApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getUserInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_deleteApplication_result");
+  xfer += oprot->writeStructBegin("AromaService_getUserInfo_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -376,11 +744,11 @@ uint32_t AromaService_deleteApplication_result::write(::apache::thrift::protocol
 }
 
 
-AromaService_deleteApplication_presult::~AromaService_deleteApplication_presult() throw() {
+AromaService_getUserInfo_presult::~AromaService_getUserInfo_presult() throw() {
 }
 
 
-uint32_t AromaService_deleteApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getUserInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -462,11 +830,11 @@ uint32_t AromaService_deleteApplication_presult::read(::apache::thrift::protocol
 }
 
 
-AromaService_deleteMessage_args::~AromaService_deleteMessage_args() throw() {
+AromaService_getApplicationInfo_args::~AromaService_getApplicationInfo_args() throw() {
 }
 
 
-uint32_t AromaService_deleteMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -507,10 +875,10 @@ uint32_t AromaService_deleteMessage_args::read(::apache::thrift::protocol::TProt
   return xfer;
 }
 
-uint32_t AromaService_deleteMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_deleteMessage_args");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -522,14 +890,14 @@ uint32_t AromaService_deleteMessage_args::write(::apache::thrift::protocol::TPro
 }
 
 
-AromaService_deleteMessage_pargs::~AromaService_deleteMessage_pargs() throw() {
+AromaService_getApplicationInfo_pargs::~AromaService_getApplicationInfo_pargs() throw() {
 }
 
 
-uint32_t AromaService_deleteMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_deleteMessage_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -541,11 +909,11 @@ uint32_t AromaService_deleteMessage_pargs::write(::apache::thrift::protocol::TPr
 }
 
 
-AromaService_deleteMessage_result::~AromaService_deleteMessage_result() throw() {
+AromaService_getApplicationInfo_result::~AromaService_getApplicationInfo_result() throw() {
 }
 
 
-uint32_t AromaService_deleteMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -626,11 +994,11 @@ uint32_t AromaService_deleteMessage_result::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t AromaService_deleteMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_deleteMessage_result");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -663,11 +1031,11 @@ uint32_t AromaService_deleteMessage_result::write(::apache::thrift::protocol::TP
 }
 
 
-AromaService_deleteMessage_presult::~AromaService_deleteMessage_presult() throw() {
+AromaService_getApplicationInfo_presult::~AromaService_getApplicationInfo_presult() throw() {
 }
 
 
-uint32_t AromaService_deleteMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -749,11 +1117,11 @@ uint32_t AromaService_deleteMessage_presult::read(::apache::thrift::protocol::TP
 }
 
 
-AromaService_dismissMessage_args::~AromaService_dismissMessage_args() throw() {
+AromaService_getApplicationsOwnedBy_args::~AromaService_getApplicationsOwnedBy_args() throw() {
 }
 
 
-uint32_t AromaService_dismissMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationsOwnedBy_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -794,10 +1162,10 @@ uint32_t AromaService_dismissMessage_args::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t AromaService_dismissMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationsOwnedBy_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_dismissMessage_args");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -809,14 +1177,14 @@ uint32_t AromaService_dismissMessage_args::write(::apache::thrift::protocol::TPr
 }
 
 
-AromaService_dismissMessage_pargs::~AromaService_dismissMessage_pargs() throw() {
+AromaService_getApplicationsOwnedBy_pargs::~AromaService_getApplicationsOwnedBy_pargs() throw() {
 }
 
 
-uint32_t AromaService_dismissMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationsOwnedBy_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_dismissMessage_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -828,11 +1196,11 @@ uint32_t AromaService_dismissMessage_pargs::write(::apache::thrift::protocol::TP
 }
 
 
-AromaService_dismissMessage_result::~AromaService_dismissMessage_result() throw() {
+AromaService_getApplicationsOwnedBy_result::~AromaService_getApplicationsOwnedBy_result() throw() {
 }
 
 
-uint32_t AromaService_dismissMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationsOwnedBy_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -885,22 +1253,6 @@ uint32_t AromaService_dismissMessage_result::read(::apache::thrift::protocol::TP
           xfer += iprot->skip(ftype);
         }
         break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex4.read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex5.read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -913,11 +1265,11 @@ uint32_t AromaService_dismissMessage_result::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-uint32_t AromaService_dismissMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationsOwnedBy_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_dismissMessage_result");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -935,14 +1287,6 @@ uint32_t AromaService_dismissMessage_result::write(::apache::thrift::protocol::T
     xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
     xfer += this->ex3.write(oprot);
     xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex5) {
-    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
-    xfer += this->ex5.write(oprot);
-    xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -950,11 +1294,11 @@ uint32_t AromaService_dismissMessage_result::write(::apache::thrift::protocol::T
 }
 
 
-AromaService_dismissMessage_presult::~AromaService_dismissMessage_presult() throw() {
+AromaService_getApplicationsOwnedBy_presult::~AromaService_getApplicationsOwnedBy_presult() throw() {
 }
 
 
-uint32_t AromaService_dismissMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationsOwnedBy_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1003,22 +1347,6 @@ uint32_t AromaService_dismissMessage_presult::read(::apache::thrift::protocol::T
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex3)).read(iprot);
           this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex4)).read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex5)).read(iprot);
-          this->__isset.ex5 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1610,11 +1938,11 @@ uint32_t AromaService_regenerateToken_presult::read(::apache::thrift::protocol::
 }
 
 
-AromaService_registerHealthCheck_args::~AromaService_registerHealthCheck_args() throw() {
+AromaService_deleteApplication_args::~AromaService_deleteApplication_args() throw() {
 }
 
 
-uint32_t AromaService_registerHealthCheck_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_deleteApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1655,10 +1983,10 @@ uint32_t AromaService_registerHealthCheck_args::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t AromaService_registerHealthCheck_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_deleteApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_args");
+  xfer += oprot->writeStructBegin("AromaService_deleteApplication_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -1670,14 +1998,14 @@ uint32_t AromaService_registerHealthCheck_args::write(::apache::thrift::protocol
 }
 
 
-AromaService_registerHealthCheck_pargs::~AromaService_registerHealthCheck_pargs() throw() {
+AromaService_deleteApplication_pargs::~AromaService_deleteApplication_pargs() throw() {
 }
 
 
-uint32_t AromaService_registerHealthCheck_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_deleteApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_pargs");
+  xfer += oprot->writeStructBegin("AromaService_deleteApplication_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -1689,11 +2017,11 @@ uint32_t AromaService_registerHealthCheck_pargs::write(::apache::thrift::protoco
 }
 
 
-AromaService_registerHealthCheck_result::~AromaService_registerHealthCheck_result() throw() {
+AromaService_deleteApplication_result::~AromaService_deleteApplication_result() throw() {
 }
 
 
-uint32_t AromaService_registerHealthCheck_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_deleteApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1774,11 +2102,11 @@ uint32_t AromaService_registerHealthCheck_result::read(::apache::thrift::protoco
   return xfer;
 }
 
-uint32_t AromaService_registerHealthCheck_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_deleteApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_result");
+  xfer += oprot->writeStructBegin("AromaService_deleteApplication_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -1811,298 +2139,11 @@ uint32_t AromaService_registerHealthCheck_result::write(::apache::thrift::protoc
 }
 
 
-AromaService_registerHealthCheck_presult::~AromaService_registerHealthCheck_presult() throw() {
+AromaService_deleteApplication_presult::~AromaService_deleteApplication_presult() throw() {
 }
 
 
-uint32_t AromaService_registerHealthCheck_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex4)).read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex5)).read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_removeSavedChannel_args::~AromaService_removeSavedChannel_args() throw() {
-}
-
-
-uint32_t AromaService_removeSavedChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_removeSavedChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_removeSavedChannel_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_removeSavedChannel_pargs::~AromaService_removeSavedChannel_pargs() throw() {
-}
-
-
-uint32_t AromaService_removeSavedChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_removeSavedChannel_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_removeSavedChannel_result::~AromaService_removeSavedChannel_result() throw() {
-}
-
-
-uint32_t AromaService_removeSavedChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex4.read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex5.read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_removeSavedChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_removeSavedChannel_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex5) {
-    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
-    xfer += this->ex5.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_removeSavedChannel_presult::~AromaService_removeSavedChannel_presult() throw() {
-}
-
-
-uint32_t AromaService_removeSavedChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_deleteApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2471,11 +2512,11 @@ uint32_t AromaService_renewApplicationToken_presult::read(::apache::thrift::prot
 }
 
 
-AromaService_saveChannel_args::~AromaService_saveChannel_args() throw() {
+AromaService_updateApplication_args::~AromaService_updateApplication_args() throw() {
 }
 
 
-uint32_t AromaService_saveChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_updateApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2516,10 +2557,10 @@ uint32_t AromaService_saveChannel_args::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t AromaService_saveChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_updateApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_saveChannel_args");
+  xfer += oprot->writeStructBegin("AromaService_updateApplication_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -2531,14 +2572,14 @@ uint32_t AromaService_saveChannel_args::write(::apache::thrift::protocol::TProto
 }
 
 
-AromaService_saveChannel_pargs::~AromaService_saveChannel_pargs() throw() {
+AromaService_updateApplication_pargs::~AromaService_updateApplication_pargs() throw() {
 }
 
 
-uint32_t AromaService_saveChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_updateApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_saveChannel_pargs");
+  xfer += oprot->writeStructBegin("AromaService_updateApplication_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -2550,812 +2591,11 @@ uint32_t AromaService_saveChannel_pargs::write(::apache::thrift::protocol::TProt
 }
 
 
-AromaService_saveChannel_result::~AromaService_saveChannel_result() throw() {
+AromaService_updateApplication_result::~AromaService_updateApplication_result() throw() {
 }
 
 
-uint32_t AromaService_saveChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex4.read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_saveChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_saveChannel_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_saveChannel_presult::~AromaService_saveChannel_presult() throw() {
-}
-
-
-uint32_t AromaService_saveChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex4)).read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_signIn_args::~AromaService_signIn_args() throw() {
-}
-
-
-uint32_t AromaService_signIn_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_signIn_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_signIn_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_signIn_pargs::~AromaService_signIn_pargs() throw() {
-}
-
-
-uint32_t AromaService_signIn_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_signIn_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_signIn_result::~AromaService_signIn_result() throw() {
-}
-
-
-uint32_t AromaService_signIn_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex4.read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_signIn_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_signIn_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_signIn_presult::~AromaService_signIn_presult() throw() {
-}
-
-
-uint32_t AromaService_signIn_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex4)).read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_signUp_args::~AromaService_signUp_args() throw() {
-}
-
-
-uint32_t AromaService_signUp_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_signUp_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_signUp_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_signUp_pargs::~AromaService_signUp_pargs() throw() {
-}
-
-
-uint32_t AromaService_signUp_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_signUp_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_signUp_result::~AromaService_signUp_result() throw() {
-}
-
-
-uint32_t AromaService_signUp_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex4.read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_signUp_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_signUp_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_signUp_presult::~AromaService_signUp_presult() throw() {
-}
-
-
-uint32_t AromaService_signUp_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex4)).read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_snoozeChannel_args::~AromaService_snoozeChannel_args() throw() {
-}
-
-
-uint32_t AromaService_snoozeChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_snoozeChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_snoozeChannel_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_snoozeChannel_pargs::~AromaService_snoozeChannel_pargs() throw() {
-}
-
-
-uint32_t AromaService_snoozeChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_snoozeChannel_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_snoozeChannel_result::~AromaService_snoozeChannel_result() throw() {
-}
-
-
-uint32_t AromaService_snoozeChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_updateApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3436,11 +2676,11 @@ uint32_t AromaService_snoozeChannel_result::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t AromaService_snoozeChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_updateApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_snoozeChannel_result");
+  xfer += oprot->writeStructBegin("AromaService_updateApplication_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -3473,11 +2713,11 @@ uint32_t AromaService_snoozeChannel_result::write(::apache::thrift::protocol::TP
 }
 
 
-AromaService_snoozeChannel_presult::~AromaService_snoozeChannel_presult() throw() {
+AromaService_updateApplication_presult::~AromaService_updateApplication_presult() throw() {
 }
 
 
-uint32_t AromaService_snoozeChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_updateApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3542,6 +2782,2696 @@ uint32_t AromaService_snoozeChannel_presult::read(::apache::thrift::protocol::TP
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex5)).read(iprot);
           this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_searchForApplications_args::~AromaService_searchForApplications_args() throw() {
+}
+
+
+uint32_t AromaService_searchForApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_searchForApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_searchForApplications_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_searchForApplications_pargs::~AromaService_searchForApplications_pargs() throw() {
+}
+
+
+uint32_t AromaService_searchForApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_searchForApplications_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_searchForApplications_result::~AromaService_searchForApplications_result() throw() {
+}
+
+
+uint32_t AromaService_searchForApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_searchForApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_searchForApplications_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_searchForApplications_presult::~AromaService_searchForApplications_presult() throw() {
+}
+
+
+uint32_t AromaService_searchForApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getApplicationMessages_args::~AromaService_getApplicationMessages_args() throw() {
+}
+
+
+uint32_t AromaService_getApplicationMessages_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getApplicationMessages_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getApplicationMessages_pargs::~AromaService_getApplicationMessages_pargs() throw() {
+}
+
+
+uint32_t AromaService_getApplicationMessages_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getApplicationMessages_result::~AromaService_getApplicationMessages_result() throw() {
+}
+
+
+uint32_t AromaService_getApplicationMessages_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex5.read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getApplicationMessages_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex5) {
+    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->ex5.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getApplicationMessages_presult::~AromaService_getApplicationMessages_presult() throw() {
+}
+
+
+uint32_t AromaService_getApplicationMessages_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex5)).read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getFullMessage_args::~AromaService_getFullMessage_args() throw() {
+}
+
+
+uint32_t AromaService_getFullMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getFullMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getFullMessage_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getFullMessage_pargs::~AromaService_getFullMessage_pargs() throw() {
+}
+
+
+uint32_t AromaService_getFullMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getFullMessage_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getFullMessage_result::~AromaService_getFullMessage_result() throw() {
+}
+
+
+uint32_t AromaService_getFullMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getFullMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_getFullMessage_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getFullMessage_presult::~AromaService_getFullMessage_presult() throw() {
+}
+
+
+uint32_t AromaService_getFullMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_deleteMessage_args::~AromaService_deleteMessage_args() throw() {
+}
+
+
+uint32_t AromaService_deleteMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_deleteMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_deleteMessage_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_deleteMessage_pargs::~AromaService_deleteMessage_pargs() throw() {
+}
+
+
+uint32_t AromaService_deleteMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_deleteMessage_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_deleteMessage_result::~AromaService_deleteMessage_result() throw() {
+}
+
+
+uint32_t AromaService_deleteMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex5.read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_deleteMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_deleteMessage_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex5) {
+    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->ex5.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_deleteMessage_presult::~AromaService_deleteMessage_presult() throw() {
+}
+
+
+uint32_t AromaService_deleteMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex5)).read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_dismissMessage_args::~AromaService_dismissMessage_args() throw() {
+}
+
+
+uint32_t AromaService_dismissMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_dismissMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_dismissMessage_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_dismissMessage_pargs::~AromaService_dismissMessage_pargs() throw() {
+}
+
+
+uint32_t AromaService_dismissMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_dismissMessage_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_dismissMessage_result::~AromaService_dismissMessage_result() throw() {
+}
+
+
+uint32_t AromaService_dismissMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex5.read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_dismissMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_dismissMessage_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex5) {
+    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->ex5.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_dismissMessage_presult::~AromaService_dismissMessage_presult() throw() {
+}
+
+
+uint32_t AromaService_dismissMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex5)).read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getInbox_args::~AromaService_getInbox_args() throw() {
+}
+
+
+uint32_t AromaService_getInbox_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getInbox_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getInbox_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getInbox_pargs::~AromaService_getInbox_pargs() throw() {
+}
+
+
+uint32_t AromaService_getInbox_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getInbox_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getInbox_result::~AromaService_getInbox_result() throw() {
+}
+
+
+uint32_t AromaService_getInbox_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getInbox_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_getInbox_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getInbox_presult::~AromaService_getInbox_presult() throw() {
+}
+
+
+uint32_t AromaService_getInbox_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getActivity_args::~AromaService_getActivity_args() throw() {
+}
+
+
+uint32_t AromaService_getActivity_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getActivity_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getActivity_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getActivity_pargs::~AromaService_getActivity_pargs() throw() {
+}
+
+
+uint32_t AromaService_getActivity_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getActivity_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getActivity_result::~AromaService_getActivity_result() throw() {
+}
+
+
+uint32_t AromaService_getActivity_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getActivity_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_getActivity_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getActivity_presult::~AromaService_getActivity_presult() throw() {
+}
+
+
+uint32_t AromaService_getActivity_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getReactions_args::~AromaService_getReactions_args() throw() {
+}
+
+
+uint32_t AromaService_getReactions_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getReactions_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getReactions_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getReactions_pargs::~AromaService_getReactions_pargs() throw() {
+}
+
+
+uint32_t AromaService_getReactions_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getReactions_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getReactions_result::~AromaService_getReactions_result() throw() {
+}
+
+
+uint32_t AromaService_getReactions_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex5.read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getReactions_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_getReactions_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex5) {
+    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->ex5.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getReactions_presult::~AromaService_getReactions_presult() throw() {
+}
+
+
+uint32_t AromaService_getReactions_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex5)).read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_updateReactions_args::~AromaService_updateReactions_args() throw() {
+}
+
+
+uint32_t AromaService_updateReactions_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_updateReactions_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_updateReactions_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_updateReactions_pargs::~AromaService_updateReactions_pargs() throw() {
+}
+
+
+uint32_t AromaService_updateReactions_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_updateReactions_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_updateReactions_result::~AromaService_updateReactions_result() throw() {
+}
+
+
+uint32_t AromaService_updateReactions_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex5.read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_updateReactions_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_updateReactions_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex5) {
+    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->ex5.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_updateReactions_presult::~AromaService_updateReactions_presult() throw() {
+}
+
+
+uint32_t AromaService_updateReactions_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex5)).read(iprot);
+          this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getApplicationsFollowedBy_args::~AromaService_getApplicationsFollowedBy_args() throw() {
+}
+
+
+uint32_t AromaService_getApplicationsFollowedBy_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getApplicationsFollowedBy_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsFollowedBy_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getApplicationsFollowedBy_pargs::~AromaService_getApplicationsFollowedBy_pargs() throw() {
+}
+
+
+uint32_t AromaService_getApplicationsFollowedBy_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsFollowedBy_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getApplicationsFollowedBy_result::~AromaService_getApplicationsFollowedBy_result() throw() {
+}
+
+
+uint32_t AromaService_getApplicationsFollowedBy_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getApplicationsFollowedBy_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsFollowedBy_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getApplicationsFollowedBy_presult::~AromaService_getApplicationsFollowedBy_presult() throw() {
+}
+
+
+uint32_t AromaService_getApplicationsFollowedBy_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -4133,11 +6063,11 @@ uint32_t AromaService_unfollowApplication_presult::read(::apache::thrift::protoc
 }
 
 
-AromaService_updateApplication_args::~AromaService_updateApplication_args() throw() {
+AromaService_checkIfDeviceIsRegistered_args::~AromaService_checkIfDeviceIsRegistered_args() throw() {
 }
 
 
-uint32_t AromaService_updateApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_checkIfDeviceIsRegistered_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4178,10 +6108,10 @@ uint32_t AromaService_updateApplication_args::read(::apache::thrift::protocol::T
   return xfer;
 }
 
-uint32_t AromaService_updateApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_checkIfDeviceIsRegistered_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_updateApplication_args");
+  xfer += oprot->writeStructBegin("AromaService_checkIfDeviceIsRegistered_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -4193,14 +6123,14 @@ uint32_t AromaService_updateApplication_args::write(::apache::thrift::protocol::
 }
 
 
-AromaService_updateApplication_pargs::~AromaService_updateApplication_pargs() throw() {
+AromaService_checkIfDeviceIsRegistered_pargs::~AromaService_checkIfDeviceIsRegistered_pargs() throw() {
 }
 
 
-uint32_t AromaService_updateApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_checkIfDeviceIsRegistered_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_updateApplication_pargs");
+  xfer += oprot->writeStructBegin("AromaService_checkIfDeviceIsRegistered_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -4212,11 +6142,11 @@ uint32_t AromaService_updateApplication_pargs::write(::apache::thrift::protocol:
 }
 
 
-AromaService_updateApplication_result::~AromaService_updateApplication_result() throw() {
+AromaService_checkIfDeviceIsRegistered_result::~AromaService_checkIfDeviceIsRegistered_result() throw() {
 }
 
 
-uint32_t AromaService_updateApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_checkIfDeviceIsRegistered_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4277,14 +6207,6 @@ uint32_t AromaService_updateApplication_result::read(::apache::thrift::protocol:
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex5.read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -4297,11 +6219,11 @@ uint32_t AromaService_updateApplication_result::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t AromaService_updateApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_checkIfDeviceIsRegistered_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_updateApplication_result");
+  xfer += oprot->writeStructBegin("AromaService_checkIfDeviceIsRegistered_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -4323,10 +6245,6 @@ uint32_t AromaService_updateApplication_result::write(::apache::thrift::protocol
     xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
     xfer += this->ex4.write(oprot);
     xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex5) {
-    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
-    xfer += this->ex5.write(oprot);
-    xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -4334,11 +6252,11 @@ uint32_t AromaService_updateApplication_result::write(::apache::thrift::protocol
 }
 
 
-AromaService_updateApplication_presult::~AromaService_updateApplication_presult() throw() {
+AromaService_checkIfDeviceIsRegistered_presult::~AromaService_checkIfDeviceIsRegistered_presult() throw() {
 }
 
 
-uint32_t AromaService_updateApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_checkIfDeviceIsRegistered_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4399,14 +6317,6 @@ uint32_t AromaService_updateApplication_presult::read(::apache::thrift::protocol
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex5)).read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -4420,11 +6330,11 @@ uint32_t AromaService_updateApplication_presult::read(::apache::thrift::protocol
 }
 
 
-AromaService_updateReactions_args::~AromaService_updateReactions_args() throw() {
+AromaService_getRegisteredDevices_args::~AromaService_getRegisteredDevices_args() throw() {
 }
 
 
-uint32_t AromaService_updateReactions_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getRegisteredDevices_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4465,10 +6375,10 @@ uint32_t AromaService_updateReactions_args::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t AromaService_updateReactions_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getRegisteredDevices_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_updateReactions_args");
+  xfer += oprot->writeStructBegin("AromaService_getRegisteredDevices_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -4480,14 +6390,14 @@ uint32_t AromaService_updateReactions_args::write(::apache::thrift::protocol::TP
 }
 
 
-AromaService_updateReactions_pargs::~AromaService_updateReactions_pargs() throw() {
+AromaService_getRegisteredDevices_pargs::~AromaService_getRegisteredDevices_pargs() throw() {
 }
 
 
-uint32_t AromaService_updateReactions_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getRegisteredDevices_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_updateReactions_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getRegisteredDevices_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -4499,11 +6409,11 @@ uint32_t AromaService_updateReactions_pargs::write(::apache::thrift::protocol::T
 }
 
 
-AromaService_updateReactions_result::~AromaService_updateReactions_result() throw() {
+AromaService_getRegisteredDevices_result::~AromaService_getRegisteredDevices_result() throw() {
 }
 
 
-uint32_t AromaService_updateReactions_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getRegisteredDevices_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4564,14 +6474,6 @@ uint32_t AromaService_updateReactions_result::read(::apache::thrift::protocol::T
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex5.read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -4584,11 +6486,11 @@ uint32_t AromaService_updateReactions_result::read(::apache::thrift::protocol::T
   return xfer;
 }
 
-uint32_t AromaService_updateReactions_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getRegisteredDevices_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_updateReactions_result");
+  xfer += oprot->writeStructBegin("AromaService_getRegisteredDevices_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -4610,10 +6512,6 @@ uint32_t AromaService_updateReactions_result::write(::apache::thrift::protocol::
     xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
     xfer += this->ex4.write(oprot);
     xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex5) {
-    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
-    xfer += this->ex5.write(oprot);
-    xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -4621,11 +6519,11 @@ uint32_t AromaService_updateReactions_result::write(::apache::thrift::protocol::
 }
 
 
-AromaService_updateReactions_presult::~AromaService_updateReactions_presult() throw() {
+AromaService_getRegisteredDevices_presult::~AromaService_getRegisteredDevices_presult() throw() {
 }
 
 
-uint32_t AromaService_updateReactions_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getRegisteredDevices_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4686,14 +6584,6 @@ uint32_t AromaService_updateReactions_presult::read(::apache::thrift::protocol::
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex5)).read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -4707,11 +6597,11 @@ uint32_t AromaService_updateReactions_presult::read(::apache::thrift::protocol::
 }
 
 
-AromaService_getActivity_args::~AromaService_getActivity_args() throw() {
+AromaService_registerDevice_args::~AromaService_registerDevice_args() throw() {
 }
 
 
-uint32_t AromaService_getActivity_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerDevice_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4752,10 +6642,10 @@ uint32_t AromaService_getActivity_args::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t AromaService_getActivity_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerDevice_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getActivity_args");
+  xfer += oprot->writeStructBegin("AromaService_registerDevice_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -4767,14 +6657,14 @@ uint32_t AromaService_getActivity_args::write(::apache::thrift::protocol::TProto
 }
 
 
-AromaService_getActivity_pargs::~AromaService_getActivity_pargs() throw() {
+AromaService_registerDevice_pargs::~AromaService_registerDevice_pargs() throw() {
 }
 
 
-uint32_t AromaService_getActivity_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerDevice_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getActivity_pargs");
+  xfer += oprot->writeStructBegin("AromaService_registerDevice_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -4786,258 +6676,11 @@ uint32_t AromaService_getActivity_pargs::write(::apache::thrift::protocol::TProt
 }
 
 
-AromaService_getActivity_result::~AromaService_getActivity_result() throw() {
+AromaService_registerDevice_result::~AromaService_registerDevice_result() throw() {
 }
 
 
-uint32_t AromaService_getActivity_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getActivity_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getActivity_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getActivity_presult::~AromaService_getActivity_presult() throw() {
-}
-
-
-uint32_t AromaService_getActivity_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_getApplicationInfo_args::~AromaService_getApplicationInfo_args() throw() {
-}
-
-
-uint32_t AromaService_getApplicationInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getApplicationInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApplicationInfo_pargs::~AromaService_getApplicationInfo_pargs() throw() {
-}
-
-
-uint32_t AromaService_getApplicationInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApplicationInfo_result::~AromaService_getApplicationInfo_result() throw() {
-}
-
-
-uint32_t AromaService_getApplicationInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerDevice_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5098,14 +6741,6 @@ uint32_t AromaService_getApplicationInfo_result::read(::apache::thrift::protocol
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex5.read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -5118,11 +6753,11 @@ uint32_t AromaService_getApplicationInfo_result::read(::apache::thrift::protocol
   return xfer;
 }
 
-uint32_t AromaService_getApplicationInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerDevice_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_result");
+  xfer += oprot->writeStructBegin("AromaService_registerDevice_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -5144,10 +6779,6 @@ uint32_t AromaService_getApplicationInfo_result::write(::apache::thrift::protoco
     xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
     xfer += this->ex4.write(oprot);
     xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex5) {
-    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
-    xfer += this->ex5.write(oprot);
-    xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -5155,11 +6786,11 @@ uint32_t AromaService_getApplicationInfo_result::write(::apache::thrift::protoco
 }
 
 
-AromaService_getApplicationInfo_presult::~AromaService_getApplicationInfo_presult() throw() {
+AromaService_registerDevice_presult::~AromaService_registerDevice_presult() throw() {
 }
 
 
-uint32_t AromaService_getApplicationInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerDevice_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5220,10 +6851,516 @@ uint32_t AromaService_getApplicationInfo_presult::read(::apache::thrift::protoco
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_unregisterDevice_args::~AromaService_unregisterDevice_args() throw() {
+}
+
+
+uint32_t AromaService_unregisterDevice_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex5)).read(iprot);
-          this->__isset.ex5 = true;
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_unregisterDevice_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_unregisterDevice_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_unregisterDevice_pargs::~AromaService_unregisterDevice_pargs() throw() {
+}
+
+
+uint32_t AromaService_unregisterDevice_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_unregisterDevice_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_unregisterDevice_result::~AromaService_unregisterDevice_result() throw() {
+}
+
+
+uint32_t AromaService_unregisterDevice_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_unregisterDevice_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_unregisterDevice_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_unregisterDevice_presult::~AromaService_unregisterDevice_presult() throw() {
+}
+
+
+uint32_t AromaService_unregisterDevice_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AromaService_getDashboard_args::~AromaService_getDashboard_args() throw() {
+}
+
+
+uint32_t AromaService_getDashboard_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getDashboard_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getDashboard_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getDashboard_pargs::~AromaService_getDashboard_pargs() throw() {
+}
+
+
+uint32_t AromaService_getDashboard_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaService_getDashboard_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getDashboard_result::~AromaService_getDashboard_result() throw() {
+}
+
+
+uint32_t AromaService_getDashboard_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaService_getDashboard_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AromaService_getDashboard_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AromaService_getDashboard_presult::~AromaService_getDashboard_presult() throw() {
+}
+
+
+uint32_t AromaService_getDashboard_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -5528,11 +7665,11 @@ uint32_t AromaService_getBuzz_presult::read(::apache::thrift::protocol::TProtoco
 }
 
 
-AromaService_getDashboard_args::~AromaService_getDashboard_args() throw() {
+AromaService_getApiVersion_args::~AromaService_getApiVersion_args() throw() {
 }
 
 
-uint32_t AromaService_getDashboard_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApiVersion_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5551,20 +7688,7 @@ uint32_t AromaService_getDashboard_args::read(::apache::thrift::protocol::TProto
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
+    xfer += iprot->skip(ftype);
     xfer += iprot->readFieldEnd();
   }
 
@@ -5573,14 +7697,10 @@ uint32_t AromaService_getDashboard_args::read(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-uint32_t AromaService_getDashboard_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApiVersion_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getDashboard_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
+  xfer += oprot->writeStructBegin("AromaService_getApiVersion_args");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -5588,18 +7708,14 @@ uint32_t AromaService_getDashboard_args::write(::apache::thrift::protocol::TProt
 }
 
 
-AromaService_getDashboard_pargs::~AromaService_getDashboard_pargs() throw() {
+AromaService_getApiVersion_pargs::~AromaService_getApiVersion_pargs() throw() {
 }
 
 
-uint32_t AromaService_getDashboard_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApiVersion_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getDashboard_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
+  xfer += oprot->writeStructBegin("AromaService_getApiVersion_pargs");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -5607,11 +7723,11 @@ uint32_t AromaService_getDashboard_pargs::write(::apache::thrift::protocol::TPro
 }
 
 
-AromaService_getDashboard_result::~AromaService_getDashboard_result() throw() {
+AromaService_getApiVersion_result::~AromaService_getApiVersion_result() throw() {
 }
 
 
-uint32_t AromaService_getDashboard_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApiVersion_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5633,33 +7749,9 @@ uint32_t AromaService_getDashboard_result::read(::apache::thrift::protocol::TPro
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->success);
           this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -5676,27 +7768,15 @@ uint32_t AromaService_getDashboard_result::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t AromaService_getDashboard_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApiVersion_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_getDashboard_result");
+  xfer += oprot->writeStructBegin("AromaService_getApiVersion_result");
 
   if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_DOUBLE, 0);
+    xfer += oprot->writeDouble(this->success);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -5705,11 +7785,11 @@ uint32_t AromaService_getDashboard_result::write(::apache::thrift::protocol::TPr
 }
 
 
-AromaService_getDashboard_presult::~AromaService_getDashboard_presult() throw() {
+AromaService_getApiVersion_presult::~AromaService_getApiVersion_presult() throw() {
 }
 
 
-uint32_t AromaService_getDashboard_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApiVersion_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5731,33 +7811,9 @@ uint32_t AromaService_getDashboard_presult::read(::apache::thrift::protocol::TPr
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble((*(this->success)));
           this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -5775,11 +7831,11 @@ uint32_t AromaService_getDashboard_presult::read(::apache::thrift::protocol::TPr
 }
 
 
-AromaService_getApplicationMessages_args::~AromaService_getApplicationMessages_args() throw() {
+AromaService_registerHealthCheck_args::~AromaService_registerHealthCheck_args() throw() {
 }
 
 
-uint32_t AromaService_getApplicationMessages_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerHealthCheck_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5820,10 +7876,10 @@ uint32_t AromaService_getApplicationMessages_args::read(::apache::thrift::protoc
   return xfer;
 }
 
-uint32_t AromaService_getApplicationMessages_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerHealthCheck_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_args");
+  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -5835,14 +7891,14 @@ uint32_t AromaService_getApplicationMessages_args::write(::apache::thrift::proto
 }
 
 
-AromaService_getApplicationMessages_pargs::~AromaService_getApplicationMessages_pargs() throw() {
+AromaService_registerHealthCheck_pargs::~AromaService_registerHealthCheck_pargs() throw() {
 }
 
 
-uint32_t AromaService_getApplicationMessages_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerHealthCheck_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_pargs");
+  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -5854,11 +7910,11 @@ uint32_t AromaService_getApplicationMessages_pargs::write(::apache::thrift::prot
 }
 
 
-AromaService_getApplicationMessages_result::~AromaService_getApplicationMessages_result() throw() {
+AromaService_registerHealthCheck_result::~AromaService_registerHealthCheck_result() throw() {
 }
 
 
-uint32_t AromaService_getApplicationMessages_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerHealthCheck_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5939,11 +7995,11 @@ uint32_t AromaService_getApplicationMessages_result::read(::apache::thrift::prot
   return xfer;
 }
 
-uint32_t AromaService_getApplicationMessages_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerHealthCheck_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_result");
+  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -5976,11 +8032,11 @@ uint32_t AromaService_getApplicationMessages_result::write(::apache::thrift::pro
 }
 
 
-AromaService_getApplicationMessages_presult::~AromaService_getApplicationMessages_presult() throw() {
+AromaService_registerHealthCheck_presult::~AromaService_registerHealthCheck_presult() throw() {
 }
 
 
-uint32_t AromaService_getApplicationMessages_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerHealthCheck_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6045,500 +8101,6 @@ uint32_t AromaService_getApplicationMessages_presult::read(::apache::thrift::pro
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex5)).read(iprot);
           this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_getInbox_args::~AromaService_getInbox_args() throw() {
-}
-
-
-uint32_t AromaService_getInbox_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getInbox_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getInbox_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getInbox_pargs::~AromaService_getInbox_pargs() throw() {
-}
-
-
-uint32_t AromaService_getInbox_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getInbox_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getInbox_result::~AromaService_getInbox_result() throw() {
-}
-
-
-uint32_t AromaService_getInbox_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getInbox_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getInbox_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getInbox_presult::~AromaService_getInbox_presult() throw() {
-}
-
-
-uint32_t AromaService_getInbox_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_getFullMessage_args::~AromaService_getFullMessage_args() throw() {
-}
-
-
-uint32_t AromaService_getFullMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getFullMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getFullMessage_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getFullMessage_pargs::~AromaService_getFullMessage_pargs() throw() {
-}
-
-
-uint32_t AromaService_getFullMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getFullMessage_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getFullMessage_result::~AromaService_getFullMessage_result() throw() {
-}
-
-
-uint32_t AromaService_getFullMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getFullMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getFullMessage_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getFullMessage_presult::~AromaService_getFullMessage_presult() throw() {
-}
-
-
-uint32_t AromaService_getFullMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -6842,1657 +8404,18 @@ uint32_t AromaService_getMedia_presult::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-
-AromaService_getApplicationsOwnedBy_args::~AromaService_getApplicationsOwnedBy_args() throw() {
-}
-
-
-uint32_t AromaService_getApplicationsOwnedBy_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getApplicationsOwnedBy_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApplicationsOwnedBy_pargs::~AromaService_getApplicationsOwnedBy_pargs() throw() {
-}
-
-
-uint32_t AromaService_getApplicationsOwnedBy_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApplicationsOwnedBy_result::~AromaService_getApplicationsOwnedBy_result() throw() {
-}
-
-
-uint32_t AromaService_getApplicationsOwnedBy_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getApplicationsOwnedBy_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApplicationsOwnedBy_presult::~AromaService_getApplicationsOwnedBy_presult() throw() {
-}
-
-
-uint32_t AromaService_getApplicationsOwnedBy_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_getApplicationsFollowedBy_args::~AromaService_getApplicationsFollowedBy_args() throw() {
-}
-
-
-uint32_t AromaService_getApplicationsFollowedBy_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getApplicationsFollowedBy_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApplicationsFollowedBy_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApplicationsFollowedBy_pargs::~AromaService_getApplicationsFollowedBy_pargs() throw() {
-}
-
-
-uint32_t AromaService_getApplicationsFollowedBy_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getApplicationsFollowedBy_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApplicationsFollowedBy_result::~AromaService_getApplicationsFollowedBy_result() throw() {
-}
-
-
-uint32_t AromaService_getApplicationsFollowedBy_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getApplicationsFollowedBy_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getApplicationsFollowedBy_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getApplicationsFollowedBy_presult::~AromaService_getApplicationsFollowedBy_presult() throw() {
-}
-
-
-uint32_t AromaService_getApplicationsFollowedBy_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_getMySavedChannels_args::~AromaService_getMySavedChannels_args() throw() {
-}
-
-
-uint32_t AromaService_getMySavedChannels_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getMySavedChannels_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getMySavedChannels_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getMySavedChannels_pargs::~AromaService_getMySavedChannels_pargs() throw() {
-}
-
-
-uint32_t AromaService_getMySavedChannels_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getMySavedChannels_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getMySavedChannels_result::~AromaService_getMySavedChannels_result() throw() {
-}
-
-
-uint32_t AromaService_getMySavedChannels_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getMySavedChannels_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getMySavedChannels_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getMySavedChannels_presult::~AromaService_getMySavedChannels_presult() throw() {
-}
-
-
-uint32_t AromaService_getMySavedChannels_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_getReactions_args::~AromaService_getReactions_args() throw() {
-}
-
-
-uint32_t AromaService_getReactions_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getReactions_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getReactions_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getReactions_pargs::~AromaService_getReactions_pargs() throw() {
-}
-
-
-uint32_t AromaService_getReactions_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getReactions_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getReactions_result::~AromaService_getReactions_result() throw() {
-}
-
-
-uint32_t AromaService_getReactions_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex4.read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex5.read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getReactions_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getReactions_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex5) {
-    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
-    xfer += this->ex5.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getReactions_presult::~AromaService_getReactions_presult() throw() {
-}
-
-
-uint32_t AromaService_getReactions_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex4)).read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex5)).read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_getUserInfo_args::~AromaService_getUserInfo_args() throw() {
-}
-
-
-uint32_t AromaService_getUserInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getUserInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getUserInfo_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getUserInfo_pargs::~AromaService_getUserInfo_pargs() throw() {
-}
-
-
-uint32_t AromaService_getUserInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getUserInfo_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getUserInfo_result::~AromaService_getUserInfo_result() throw() {
-}
-
-
-uint32_t AromaService_getUserInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex4.read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex5.read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_getUserInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_getUserInfo_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex5) {
-    xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
-    xfer += this->ex5.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_getUserInfo_presult::~AromaService_getUserInfo_presult() throw() {
-}
-
-
-uint32_t AromaService_getUserInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex4)).read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 5:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex5)).read(iprot);
-          this->__isset.ex5 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-
-AromaService_searchForApplications_args::~AromaService_searchForApplications_args() throw() {
-}
-
-
-uint32_t AromaService_searchForApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->request.read(iprot);
-          this->__isset.request = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_searchForApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_searchForApplications_args");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->request.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_searchForApplications_pargs::~AromaService_searchForApplications_pargs() throw() {
-}
-
-
-uint32_t AromaService_searchForApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_searchForApplications_pargs");
-
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->request)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_searchForApplications_result::~AromaService_searchForApplications_result() throw() {
-}
-
-
-uint32_t AromaService_searchForApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->success.read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex1.read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex2.read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex3.read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex4.read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AromaService_searchForApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
-
-  uint32_t xfer = 0;
-
-  xfer += oprot->writeStructBegin("AromaService_searchForApplications_result");
-
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
-    xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-
-AromaService_searchForApplications_presult::~AromaService_searchForApplications_presult() throw() {
-}
-
-
-uint32_t AromaService_searchForApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->success)).read(iprot);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex1)).read(iprot);
-          this->__isset.ex1 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex2)).read(iprot);
-          this->__isset.ex2 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex3)).read(iprot);
-          this->__isset.ex3 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex4)).read(iprot);
-          this->__isset.ex4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-double AromaServiceClient::getApiVersion()
+void AromaServiceClient::signIn(SignInResponse& _return, const SignInRequest& request)
 {
-  send_getApiVersion();
-  return recv_getApiVersion();
+  send_signIn(request);
+  recv_signIn(_return);
 }
 
-void AromaServiceClient::send_getApiVersion()
+void AromaServiceClient::send_signIn(const SignInRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("signIn", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getApiVersion_pargs args;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-double AromaServiceClient::recv_getApiVersion()
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getApiVersion") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  double _return;
-  AromaService_getApiVersion_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    return _return;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApiVersion failed: unknown result");
-}
-
-void AromaServiceClient::deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request)
-{
-  send_deleteApplication(request);
-  recv_deleteApplication(_return);
-}
-
-void AromaServiceClient::send_deleteApplication(const DeleteApplicationRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("deleteApplication", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_deleteApplication_pargs args;
+  AromaService_signIn_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8501,7 +8424,7 @@ void AromaServiceClient::send_deleteApplication(const DeleteApplicationRequest& 
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_deleteApplication(DeleteApplicationResponse& _return)
+void AromaServiceClient::recv_signIn(SignInResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8521,12 +8444,152 @@ void AromaServiceClient::recv_deleteApplication(DeleteApplicationResponse& _retu
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("deleteApplication") != 0) {
+  if (fname.compare("signIn") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_deleteApplication_presult result;
+  AromaService_signIn_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signIn failed: unknown result");
+}
+
+void AromaServiceClient::signUp(SignUpResponse& _return, const SignUpRequest& request)
+{
+  send_signUp(request);
+  recv_signUp(_return);
+}
+
+void AromaServiceClient::send_signUp(const SignUpRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("signUp", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_signUp_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_signUp(SignUpResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("signUp") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_signUp_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signUp failed: unknown result");
+}
+
+void AromaServiceClient::getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request)
+{
+  send_getUserInfo(request);
+  recv_getUserInfo(_return);
+}
+
+void AromaServiceClient::send_getUserInfo(const GetUserInfoRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getUserInfo_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getUserInfo(GetUserInfoResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getUserInfo") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getUserInfo_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8551,21 +8614,21 @@ void AromaServiceClient::recv_deleteApplication(DeleteApplicationResponse& _retu
   if (result.__isset.ex5) {
     throw result.ex5;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteApplication failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getUserInfo failed: unknown result");
 }
 
-void AromaServiceClient::deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request)
+void AromaServiceClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
 {
-  send_deleteMessage(request);
-  recv_deleteMessage(_return);
+  send_getApplicationInfo(request);
+  recv_getApplicationInfo(_return);
 }
 
-void AromaServiceClient::send_deleteMessage(const DeleteMessageRequest& request)
+void AromaServiceClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_deleteMessage_pargs args;
+  AromaService_getApplicationInfo_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8574,7 +8637,7 @@ void AromaServiceClient::send_deleteMessage(const DeleteMessageRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_deleteMessage(DeleteMessageResponse& _return)
+void AromaServiceClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8594,12 +8657,12 @@ void AromaServiceClient::recv_deleteMessage(DeleteMessageResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("deleteMessage") != 0) {
+  if (fname.compare("getApplicationInfo") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_deleteMessage_presult result;
+  AromaService_getApplicationInfo_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8624,21 +8687,21 @@ void AromaServiceClient::recv_deleteMessage(DeleteMessageResponse& _return)
   if (result.__isset.ex5) {
     throw result.ex5;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteMessage failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationInfo failed: unknown result");
 }
 
-void AromaServiceClient::dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request)
+void AromaServiceClient::getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request)
 {
-  send_dismissMessage(request);
-  recv_dismissMessage(_return);
+  send_getApplicationsOwnedBy(request);
+  recv_getApplicationsOwnedBy(_return);
 }
 
-void AromaServiceClient::send_dismissMessage(const DismissMessageRequest& request)
+void AromaServiceClient::send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_dismissMessage_pargs args;
+  AromaService_getApplicationsOwnedBy_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8647,7 +8710,7 @@ void AromaServiceClient::send_dismissMessage(const DismissMessageRequest& reques
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_dismissMessage(DismissMessageResponse& _return)
+void AromaServiceClient::recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8667,12 +8730,12 @@ void AromaServiceClient::recv_dismissMessage(DismissMessageResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("dismissMessage") != 0) {
+  if (fname.compare("getApplicationsOwnedBy") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_dismissMessage_presult result;
+  AromaService_getApplicationsOwnedBy_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8691,13 +8754,7 @@ void AromaServiceClient::recv_dismissMessage(DismissMessageResponse& _return)
   if (result.__isset.ex3) {
     throw result.ex3;
   }
-  if (result.__isset.ex4) {
-    throw result.ex4;
-  }
-  if (result.__isset.ex5) {
-    throw result.ex5;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "dismissMessage failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsOwnedBy failed: unknown result");
 }
 
 void AromaServiceClient::provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request)
@@ -8846,18 +8903,18 @@ void AromaServiceClient::recv_regenerateToken(RegenerateApplicationTokenResponse
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "regenerateToken failed: unknown result");
 }
 
-void AromaServiceClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
+void AromaServiceClient::deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request)
 {
-  send_registerHealthCheck(request);
-  recv_registerHealthCheck(_return);
+  send_deleteApplication(request);
+  recv_deleteApplication(_return);
 }
 
-void AromaServiceClient::send_registerHealthCheck(const RegisterHealthCheckRequest& request)
+void AromaServiceClient::send_deleteApplication(const DeleteApplicationRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("deleteApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_registerHealthCheck_pargs args;
+  AromaService_deleteApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8866,7 +8923,7 @@ void AromaServiceClient::send_registerHealthCheck(const RegisterHealthCheckReque
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _return)
+void AromaServiceClient::recv_deleteApplication(DeleteApplicationResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8886,12 +8943,12 @@ void AromaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("registerHealthCheck") != 0) {
+  if (fname.compare("deleteApplication") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_registerHealthCheck_presult result;
+  AromaService_deleteApplication_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8916,80 +8973,7 @@ void AromaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _
   if (result.__isset.ex5) {
     throw result.ex5;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "registerHealthCheck failed: unknown result");
-}
-
-void AromaServiceClient::removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request)
-{
-  send_removeSavedChannel(request);
-  recv_removeSavedChannel(_return);
-}
-
-void AromaServiceClient::send_removeSavedChannel(const RemoveSavedChannelRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("removeSavedChannel", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_removeSavedChannel_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_removeSavedChannel(RemoveSavedChannelResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("removeSavedChannel") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_removeSavedChannel_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  if (result.__isset.ex4) {
-    throw result.ex4;
-  }
-  if (result.__isset.ex5) {
-    throw result.ex5;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "removeSavedChannel failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteApplication failed: unknown result");
 }
 
 void AromaServiceClient::renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request)
@@ -9065,18 +9049,18 @@ void AromaServiceClient::recv_renewApplicationToken(RenewApplicationTokenRespons
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "renewApplicationToken failed: unknown result");
 }
 
-void AromaServiceClient::saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request)
+void AromaServiceClient::updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request)
 {
-  send_saveChannel(request);
-  recv_saveChannel(_return);
+  send_updateApplication(request);
+  recv_updateApplication(_return);
 }
 
-void AromaServiceClient::send_saveChannel(const SaveChannelRequest& request)
+void AromaServiceClient::send_updateApplication(const UpdateApplicationRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("saveChannel", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("updateApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_saveChannel_pargs args;
+  AromaService_updateApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -9085,7 +9069,7 @@ void AromaServiceClient::send_saveChannel(const SaveChannelRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_saveChannel(SaveChannelResponse& _return)
+void AromaServiceClient::recv_updateApplication(UpdateApplicationResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -9105,222 +9089,12 @@ void AromaServiceClient::recv_saveChannel(SaveChannelResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("saveChannel") != 0) {
+  if (fname.compare("updateApplication") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_saveChannel_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  if (result.__isset.ex4) {
-    throw result.ex4;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "saveChannel failed: unknown result");
-}
-
-void AromaServiceClient::signIn(SignInResponse& _return, const SignInRequest& request)
-{
-  send_signIn(request);
-  recv_signIn(_return);
-}
-
-void AromaServiceClient::send_signIn(const SignInRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("signIn", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_signIn_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_signIn(SignInResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("signIn") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_signIn_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  if (result.__isset.ex4) {
-    throw result.ex4;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signIn failed: unknown result");
-}
-
-void AromaServiceClient::signUp(SignUpResponse& _return, const SignUpRequest& request)
-{
-  send_signUp(request);
-  recv_signUp(_return);
-}
-
-void AromaServiceClient::send_signUp(const SignUpRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("signUp", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_signUp_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_signUp(SignUpResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("signUp") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_signUp_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  if (result.__isset.ex4) {
-    throw result.ex4;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signUp failed: unknown result");
-}
-
-void AromaServiceClient::snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request)
-{
-  send_snoozeChannel(request);
-  recv_snoozeChannel(_return);
-}
-
-void AromaServiceClient::send_snoozeChannel(const SnoozeChannelRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("snoozeChannel", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_snoozeChannel_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_snoozeChannel(SnoozeChannelResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("snoozeChannel") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_snoozeChannel_presult result;
+  AromaService_updateApplication_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -9345,7 +9119,710 @@ void AromaServiceClient::recv_snoozeChannel(SnoozeChannelResponse& _return)
   if (result.__isset.ex5) {
     throw result.ex5;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "snoozeChannel failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "updateApplication failed: unknown result");
+}
+
+void AromaServiceClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
+{
+  send_searchForApplications(request);
+  recv_searchForApplications(_return);
+}
+
+void AromaServiceClient::send_searchForApplications(const SearchForApplicationsRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_searchForApplications_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_searchForApplications(SearchForApplicationsResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("searchForApplications") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_searchForApplications_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForApplications failed: unknown result");
+}
+
+void AromaServiceClient::getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request)
+{
+  send_getApplicationMessages(request);
+  recv_getApplicationMessages(_return);
+}
+
+void AromaServiceClient::send_getApplicationMessages(const GetApplicationMessagesRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getApplicationMessages_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getApplicationMessages(GetApplicationMessagesResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getApplicationMessages") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getApplicationMessages_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  if (result.__isset.ex5) {
+    throw result.ex5;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationMessages failed: unknown result");
+}
+
+void AromaServiceClient::getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request)
+{
+  send_getFullMessage(request);
+  recv_getFullMessage(_return);
+}
+
+void AromaServiceClient::send_getFullMessage(const GetFullMessageRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getFullMessage_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getFullMessage(GetFullMessageResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getFullMessage") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getFullMessage_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getFullMessage failed: unknown result");
+}
+
+void AromaServiceClient::deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request)
+{
+  send_deleteMessage(request);
+  recv_deleteMessage(_return);
+}
+
+void AromaServiceClient::send_deleteMessage(const DeleteMessageRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_deleteMessage_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_deleteMessage(DeleteMessageResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("deleteMessage") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_deleteMessage_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  if (result.__isset.ex5) {
+    throw result.ex5;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteMessage failed: unknown result");
+}
+
+void AromaServiceClient::dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request)
+{
+  send_dismissMessage(request);
+  recv_dismissMessage(_return);
+}
+
+void AromaServiceClient::send_dismissMessage(const DismissMessageRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_dismissMessage_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_dismissMessage(DismissMessageResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("dismissMessage") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_dismissMessage_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  if (result.__isset.ex5) {
+    throw result.ex5;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "dismissMessage failed: unknown result");
+}
+
+void AromaServiceClient::getInbox(GetInboxResponse& _return, const GetInboxRequest& request)
+{
+  send_getInbox(request);
+  recv_getInbox(_return);
+}
+
+void AromaServiceClient::send_getInbox(const GetInboxRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getInbox_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getInbox(GetInboxResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getInbox") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getInbox_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getInbox failed: unknown result");
+}
+
+void AromaServiceClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
+{
+  send_getActivity(request);
+  recv_getActivity(_return);
+}
+
+void AromaServiceClient::send_getActivity(const GetActivityRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getActivity_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getActivity(GetActivityResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getActivity") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getActivity_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getActivity failed: unknown result");
+}
+
+void AromaServiceClient::getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request)
+{
+  send_getReactions(request);
+  recv_getReactions(_return);
+}
+
+void AromaServiceClient::send_getReactions(const GetReactionsRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getReactions", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getReactions_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getReactions(GetReactionsResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getReactions") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getReactions_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  if (result.__isset.ex5) {
+    throw result.ex5;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getReactions failed: unknown result");
+}
+
+void AromaServiceClient::updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request)
+{
+  send_updateReactions(request);
+  recv_updateReactions(_return);
+}
+
+void AromaServiceClient::send_updateReactions(const UpdateReactionsRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("updateReactions", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_updateReactions_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_updateReactions(UpdateReactionsResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("updateReactions") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_updateReactions_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  if (result.__isset.ex5) {
+    throw result.ex5;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "updateReactions failed: unknown result");
+}
+
+void AromaServiceClient::getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request)
+{
+  send_getApplicationsFollowedBy(request);
+  recv_getApplicationsFollowedBy(_return);
+}
+
+void AromaServiceClient::send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getApplicationsFollowedBy", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getApplicationsFollowedBy_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getApplicationsFollowedBy") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getApplicationsFollowedBy_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsFollowedBy failed: unknown result");
 }
 
 void AromaServiceClient::followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request)
@@ -9494,18 +9971,18 @@ void AromaServiceClient::recv_unfollowApplication(UnfollowApplicationResponse& _
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "unfollowApplication failed: unknown result");
 }
 
-void AromaServiceClient::updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request)
+void AromaServiceClient::checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request)
 {
-  send_updateApplication(request);
-  recv_updateApplication(_return);
+  send_checkIfDeviceIsRegistered(request);
+  recv_checkIfDeviceIsRegistered(_return);
 }
 
-void AromaServiceClient::send_updateApplication(const UpdateApplicationRequest& request)
+void AromaServiceClient::send_checkIfDeviceIsRegistered(const CheckIfDeviceIsRegisteredRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("updateApplication", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("checkIfDeviceIsRegistered", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_updateApplication_pargs args;
+  AromaService_checkIfDeviceIsRegistered_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -9514,7 +9991,7 @@ void AromaServiceClient::send_updateApplication(const UpdateApplicationRequest& 
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_updateApplication(UpdateApplicationResponse& _return)
+void AromaServiceClient::recv_checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -9534,12 +10011,12 @@ void AromaServiceClient::recv_updateApplication(UpdateApplicationResponse& _retu
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("updateApplication") != 0) {
+  if (fname.compare("checkIfDeviceIsRegistered") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_updateApplication_presult result;
+  AromaService_checkIfDeviceIsRegistered_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -9561,24 +10038,21 @@ void AromaServiceClient::recv_updateApplication(UpdateApplicationResponse& _retu
   if (result.__isset.ex4) {
     throw result.ex4;
   }
-  if (result.__isset.ex5) {
-    throw result.ex5;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "updateApplication failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "checkIfDeviceIsRegistered failed: unknown result");
 }
 
-void AromaServiceClient::updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request)
+void AromaServiceClient::getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request)
 {
-  send_updateReactions(request);
-  recv_updateReactions(_return);
+  send_getRegisteredDevices(request);
+  recv_getRegisteredDevices(_return);
 }
 
-void AromaServiceClient::send_updateReactions(const UpdateReactionsRequest& request)
+void AromaServiceClient::send_getRegisteredDevices(const GetRegisteredDevicesRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("updateReactions", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getRegisteredDevices", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_updateReactions_pargs args;
+  AromaService_getRegisteredDevices_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -9587,7 +10061,7 @@ void AromaServiceClient::send_updateReactions(const UpdateReactionsRequest& requ
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_updateReactions(UpdateReactionsResponse& _return)
+void AromaServiceClient::recv_getRegisteredDevices(GetRegisteredDevicesResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -9607,12 +10081,12 @@ void AromaServiceClient::recv_updateReactions(UpdateReactionsResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("updateReactions") != 0) {
+  if (fname.compare("getRegisteredDevices") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_updateReactions_presult result;
+  AromaService_getRegisteredDevices_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -9634,24 +10108,21 @@ void AromaServiceClient::recv_updateReactions(UpdateReactionsResponse& _return)
   if (result.__isset.ex4) {
     throw result.ex4;
   }
-  if (result.__isset.ex5) {
-    throw result.ex5;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "updateReactions failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getRegisteredDevices failed: unknown result");
 }
 
-void AromaServiceClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
+void AromaServiceClient::registerDevice(RegisterDeviceResponse& _return, const RegisterDeviceRequest& request)
 {
-  send_getActivity(request);
-  recv_getActivity(_return);
+  send_registerDevice(request);
+  recv_registerDevice(_return);
 }
 
-void AromaServiceClient::send_getActivity(const GetActivityRequest& request)
+void AromaServiceClient::send_registerDevice(const RegisterDeviceRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("registerDevice", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getActivity_pargs args;
+  AromaService_registerDevice_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -9660,7 +10131,7 @@ void AromaServiceClient::send_getActivity(const GetActivityRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_getActivity(GetActivityResponse& _return)
+void AromaServiceClient::recv_registerDevice(RegisterDeviceResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -9680,79 +10151,12 @@ void AromaServiceClient::recv_getActivity(GetActivityResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("getActivity") != 0) {
+  if (fname.compare("registerDevice") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_getActivity_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getActivity failed: unknown result");
-}
-
-void AromaServiceClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
-{
-  send_getApplicationInfo(request);
-  recv_getApplicationInfo(_return);
-}
-
-void AromaServiceClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getApplicationInfo_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getApplicationInfo") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_getApplicationInfo_presult result;
+  AromaService_registerDevice_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -9774,10 +10178,144 @@ void AromaServiceClient::recv_getApplicationInfo(GetApplicationInfoResponse& _re
   if (result.__isset.ex4) {
     throw result.ex4;
   }
-  if (result.__isset.ex5) {
-    throw result.ex5;
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "registerDevice failed: unknown result");
+}
+
+void AromaServiceClient::unregisterDevice(UnregisterDeviceResponse& _return, const UnregisterDeviceRequest& request)
+{
+  send_unregisterDevice(request);
+  recv_unregisterDevice(_return);
+}
+
+void AromaServiceClient::send_unregisterDevice(const UnregisterDeviceRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("unregisterDevice", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_unregisterDevice_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_unregisterDevice(UnregisterDeviceResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationInfo failed: unknown result");
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("unregisterDevice") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_unregisterDevice_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "unregisterDevice failed: unknown result");
+}
+
+void AromaServiceClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
+{
+  send_getDashboard(request);
+  recv_getDashboard(_return);
+}
+
+void AromaServiceClient::send_getDashboard(const GetDashboardRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getDashboard_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AromaServiceClient::recv_getDashboard(GetDashboardResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getDashboard") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AromaService_getDashboard_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getDashboard failed: unknown result");
 }
 
 void AromaServiceClient::getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request)
@@ -9853,19 +10391,18 @@ void AromaServiceClient::recv_getBuzz(GetBuzzResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getBuzz failed: unknown result");
 }
 
-void AromaServiceClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
+double AromaServiceClient::getApiVersion()
 {
-  send_getDashboard(request);
-  recv_getDashboard(_return);
+  send_getApiVersion();
+  return recv_getApiVersion();
 }
 
-void AromaServiceClient::send_getDashboard(const GetDashboardRequest& request)
+void AromaServiceClient::send_getApiVersion()
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getDashboard_pargs args;
-  args.request = &request;
+  AromaService_getApiVersion_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -9873,7 +10410,7 @@ void AromaServiceClient::send_getDashboard(const GetDashboardRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_getDashboard(GetDashboardResponse& _return)
+double AromaServiceClient::recv_getApiVersion()
 {
 
   int32_t rseqid = 0;
@@ -9893,45 +10430,36 @@ void AromaServiceClient::recv_getDashboard(GetDashboardResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("getDashboard") != 0) {
+  if (fname.compare("getApiVersion") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_getDashboard_presult result;
+  double _return;
+  AromaService_getApiVersion_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
   iprot_->getTransport()->readEnd();
 
   if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
+    return _return;
   }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getDashboard failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApiVersion failed: unknown result");
 }
 
-void AromaServiceClient::getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request)
+void AromaServiceClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
 {
-  send_getApplicationMessages(request);
-  recv_getApplicationMessages(_return);
+  send_registerHealthCheck(request);
+  recv_registerHealthCheck(_return);
 }
 
-void AromaServiceClient::send_getApplicationMessages(const GetApplicationMessagesRequest& request)
+void AromaServiceClient::send_registerHealthCheck(const RegisterHealthCheckRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getApplicationMessages_pargs args;
+  AromaService_registerHealthCheck_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -9940,7 +10468,7 @@ void AromaServiceClient::send_getApplicationMessages(const GetApplicationMessage
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_getApplicationMessages(GetApplicationMessagesResponse& _return)
+void AromaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -9960,12 +10488,12 @@ void AromaServiceClient::recv_getApplicationMessages(GetApplicationMessagesRespo
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("getApplicationMessages") != 0) {
+  if (fname.compare("registerHealthCheck") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_getApplicationMessages_presult result;
+  AromaService_registerHealthCheck_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -9990,141 +10518,7 @@ void AromaServiceClient::recv_getApplicationMessages(GetApplicationMessagesRespo
   if (result.__isset.ex5) {
     throw result.ex5;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationMessages failed: unknown result");
-}
-
-void AromaServiceClient::getInbox(GetInboxResponse& _return, const GetInboxRequest& request)
-{
-  send_getInbox(request);
-  recv_getInbox(_return);
-}
-
-void AromaServiceClient::send_getInbox(const GetInboxRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getInbox_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_getInbox(GetInboxResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getInbox") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_getInbox_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getInbox failed: unknown result");
-}
-
-void AromaServiceClient::getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request)
-{
-  send_getFullMessage(request);
-  recv_getFullMessage(_return);
-}
-
-void AromaServiceClient::send_getFullMessage(const GetFullMessageRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getFullMessage_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_getFullMessage(GetFullMessageResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getFullMessage") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_getFullMessage_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getFullMessage failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "registerHealthCheck failed: unknown result");
 }
 
 void AromaServiceClient::getMedia(GetMediaResponse& _return, const GetMediaRequest& request)
@@ -10200,423 +10594,6 @@ void AromaServiceClient::recv_getMedia(GetMediaResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMedia failed: unknown result");
 }
 
-void AromaServiceClient::getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request)
-{
-  send_getApplicationsOwnedBy(request);
-  recv_getApplicationsOwnedBy(_return);
-}
-
-void AromaServiceClient::send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getApplicationsOwnedBy_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getApplicationsOwnedBy") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_getApplicationsOwnedBy_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsOwnedBy failed: unknown result");
-}
-
-void AromaServiceClient::getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request)
-{
-  send_getApplicationsFollowedBy(request);
-  recv_getApplicationsFollowedBy(_return);
-}
-
-void AromaServiceClient::send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getApplicationsFollowedBy", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getApplicationsFollowedBy_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getApplicationsFollowedBy") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_getApplicationsFollowedBy_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsFollowedBy failed: unknown result");
-}
-
-void AromaServiceClient::getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request)
-{
-  send_getMySavedChannels(request);
-  recv_getMySavedChannels(_return);
-}
-
-void AromaServiceClient::send_getMySavedChannels(const GetMySavedChannelsRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getMySavedChannels", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getMySavedChannels_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getMySavedChannels") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_getMySavedChannels_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMySavedChannels failed: unknown result");
-}
-
-void AromaServiceClient::getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request)
-{
-  send_getReactions(request);
-  recv_getReactions(_return);
-}
-
-void AromaServiceClient::send_getReactions(const GetReactionsRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getReactions", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getReactions_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_getReactions(GetReactionsResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getReactions") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_getReactions_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  if (result.__isset.ex4) {
-    throw result.ex4;
-  }
-  if (result.__isset.ex5) {
-    throw result.ex5;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getReactions failed: unknown result");
-}
-
-void AromaServiceClient::getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request)
-{
-  send_getUserInfo(request);
-  recv_getUserInfo(_return);
-}
-
-void AromaServiceClient::send_getUserInfo(const GetUserInfoRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getUserInfo_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_getUserInfo(GetUserInfoResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("getUserInfo") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_getUserInfo_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  if (result.__isset.ex4) {
-    throw result.ex4;
-  }
-  if (result.__isset.ex5) {
-    throw result.ex5;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getUserInfo failed: unknown result");
-}
-
-void AromaServiceClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
-{
-  send_searchForApplications(request);
-  recv_searchForApplications(_return);
-}
-
-void AromaServiceClient::send_searchForApplications(const SearchForApplicationsRequest& request)
-{
-  int32_t cseqid = 0;
-  oprot_->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_searchForApplications_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-}
-
-void AromaServiceClient::recv_searchForApplications(SearchForApplicationsResponse& _return)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  iprot_->readMessageBegin(fname, mtype, rseqid);
-  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-    ::apache::thrift::TApplicationException x;
-    x.read(iprot_);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-    throw x;
-  }
-  if (mtype != ::apache::thrift::protocol::T_REPLY) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  if (fname.compare("searchForApplications") != 0) {
-    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-    iprot_->readMessageEnd();
-    iprot_->getTransport()->readEnd();
-  }
-  AromaService_searchForApplications_presult result;
-  result.success = &_return;
-  result.read(iprot_);
-  iprot_->readMessageEnd();
-  iprot_->getTransport()->readEnd();
-
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  if (result.__isset.ex1) {
-    throw result.ex1;
-  }
-  if (result.__isset.ex2) {
-    throw result.ex2;
-  }
-  if (result.__isset.ex3) {
-    throw result.ex3;
-  }
-  if (result.__isset.ex4) {
-    throw result.ex4;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForApplications failed: unknown result");
-}
-
 bool AromaServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
@@ -10636,38 +10613,50 @@ bool AromaServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* 
   return true;
 }
 
-void AromaServiceProcessor::process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getApiVersion", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.signIn", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApiVersion");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.signIn");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getApiVersion");
+    this->eventHandler_->preRead(ctx, "AromaService.signIn");
   }
 
-  AromaService_getApiVersion_args args;
+  AromaService_signIn_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getApiVersion", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.signIn", bytes);
   }
 
-  AromaService_getApiVersion_result result;
+  AromaService_signIn_result result;
   try {
-    result.success = iface_->getApiVersion();
+    iface_->signIn(result.success, args.request);
     result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidCredentialsException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (UserDoesNotExistException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getApiVersion");
+      this->eventHandler_->handlerError(ctx, "AromaService.signIn");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("signIn", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -10676,44 +10665,179 @@ void AromaServiceProcessor::process_getApiVersion(int32_t seqid, ::apache::thrif
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getApiVersion");
+    this->eventHandler_->preWrite(ctx, "AromaService.signIn");
   }
 
-  oprot->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("signIn", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getApiVersion", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.signIn", bytes);
   }
 }
 
-void AromaServiceProcessor::process_deleteApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.deleteApplication", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.signUp", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.deleteApplication");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.signUp");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.deleteApplication");
+    this->eventHandler_->preRead(ctx, "AromaService.signUp");
   }
 
-  AromaService_deleteApplication_args args;
+  AromaService_signUp_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.deleteApplication", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.signUp", bytes);
   }
 
-  AromaService_deleteApplication_result result;
+  AromaService_signUp_result result;
   try {
-    iface_->deleteApplication(result.success, args.request);
+    iface_->signUp(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidCredentialsException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (AccountAlreadyExistsException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.signUp");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("signUp", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.signUp");
+  }
+
+  oprot->writeMessageBegin("signUp", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.signUp", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getUserInfo", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getUserInfo");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getUserInfo");
+  }
+
+  AromaService_getUserInfo_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getUserInfo", bytes);
+  }
+
+  AromaService_getUserInfo_result result;
+  try {
+    iface_->getUserInfo(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (UnauthorizedException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
+  } catch (UserDoesNotExistException &ex5) {
+    result.ex5 = ex5;
+    result.__isset.ex5 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getUserInfo");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getUserInfo");
+  }
+
+  oprot->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getUserInfo", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getApplicationInfo", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationInfo");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getApplicationInfo");
+  }
+
+  AromaService_getApplicationInfo_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getApplicationInfo", bytes);
+  }
+
+  AromaService_getApplicationInfo_result result;
+  try {
+    iface_->getApplicationInfo(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -10732,11 +10856,11 @@ void AromaServiceProcessor::process_deleteApplication(int32_t seqid, ::apache::t
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.deleteApplication");
+      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationInfo");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("deleteApplication", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -10745,44 +10869,44 @@ void AromaServiceProcessor::process_deleteApplication(int32_t seqid, ::apache::t
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.deleteApplication");
+    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationInfo");
   }
 
-  oprot->writeMessageBegin("deleteApplication", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.deleteApplication", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationInfo", bytes);
   }
 }
 
-void AromaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.deleteMessage", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getApplicationsOwnedBy", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.deleteMessage");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationsOwnedBy");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.deleteMessage");
+    this->eventHandler_->preRead(ctx, "AromaService.getApplicationsOwnedBy");
   }
 
-  AromaService_deleteMessage_args args;
+  AromaService_getApplicationsOwnedBy_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.deleteMessage", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getApplicationsOwnedBy", bytes);
   }
 
-  AromaService_deleteMessage_result result;
+  AromaService_getApplicationsOwnedBy_result result;
   try {
-    iface_->deleteMessage(result.success, args.request);
+    iface_->getApplicationsOwnedBy(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -10793,19 +10917,13 @@ void AromaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thrif
   } catch (InvalidTokenException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (MessageDoesNotExistException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (UnauthorizedException &ex5) {
-    result.ex5 = ex5;
-    result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.deleteMessage");
+      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationsOwnedBy");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -10814,86 +10932,17 @@ void AromaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thrif
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.deleteMessage");
+    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationsOwnedBy");
   }
 
-  oprot->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.deleteMessage", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_dismissMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.dismissMessage", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.dismissMessage");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.dismissMessage");
-  }
-
-  AromaService_dismissMessage_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.dismissMessage", bytes);
-  }
-
-  AromaService_dismissMessage_result result;
-  try {
-    iface_->dismissMessage(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (MessageDoesNotExistException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (UnauthorizedException &ex5) {
-    result.ex5 = ex5;
-    result.__isset.ex5 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.dismissMessage");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.dismissMessage");
-  }
-
-  oprot->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.dismissMessage", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationsOwnedBy", bytes);
   }
 }
 
@@ -11035,30 +11084,30 @@ void AromaServiceProcessor::process_regenerateToken(int32_t seqid, ::apache::thr
   }
 }
 
-void AromaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_deleteApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.registerHealthCheck", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.deleteApplication", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.registerHealthCheck");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.deleteApplication");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.registerHealthCheck");
+    this->eventHandler_->preRead(ctx, "AromaService.deleteApplication");
   }
 
-  AromaService_registerHealthCheck_args args;
+  AromaService_deleteApplication_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.registerHealthCheck", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.deleteApplication", bytes);
   }
 
-  AromaService_registerHealthCheck_result result;
+  AromaService_deleteApplication_result result;
   try {
-    iface_->registerHealthCheck(result.success, args.request);
+    iface_->deleteApplication(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -11077,11 +11126,11 @@ void AromaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache:
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.registerHealthCheck");
+      this->eventHandler_->handlerError(ctx, "AromaService.deleteApplication");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("deleteApplication", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -11090,86 +11139,17 @@ void AromaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.registerHealthCheck");
+    this->eventHandler_->preWrite(ctx, "AromaService.deleteApplication");
   }
 
-  oprot->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("deleteApplication", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.registerHealthCheck", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_removeSavedChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.removeSavedChannel", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.removeSavedChannel");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.removeSavedChannel");
-  }
-
-  AromaService_removeSavedChannel_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.removeSavedChannel", bytes);
-  }
-
-  AromaService_removeSavedChannel_result result;
-  try {
-    iface_->removeSavedChannel(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (UnauthorizedException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (ChannelDoesNotExistException &ex5) {
-    result.ex5 = ex5;
-    result.__isset.ex5 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.removeSavedChannel");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("removeSavedChannel", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.removeSavedChannel");
-  }
-
-  oprot->writeMessageBegin("removeSavedChannel", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.removeSavedChannel", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.deleteApplication", bytes);
   }
 }
 
@@ -11242,30 +11222,30 @@ void AromaServiceProcessor::process_renewApplicationToken(int32_t seqid, ::apach
   }
 }
 
-void AromaServiceProcessor::process_saveChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_updateApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.saveChannel", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.updateApplication", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.saveChannel");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.updateApplication");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.saveChannel");
+    this->eventHandler_->preRead(ctx, "AromaService.updateApplication");
   }
 
-  AromaService_saveChannel_args args;
+  AromaService_updateApplication_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.saveChannel", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.updateApplication", bytes);
   }
 
-  AromaService_saveChannel_result result;
+  AromaService_updateApplication_result result;
   try {
-    iface_->saveChannel(result.success, args.request);
+    iface_->updateApplication(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -11276,217 +11256,19 @@ void AromaServiceProcessor::process_saveChannel(int32_t seqid, ::apache::thrift:
   } catch (InvalidTokenException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (UnauthorizedException &ex4) {
+  } catch (ApplicationDoesNotExistException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.saveChannel");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("saveChannel", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.saveChannel");
-  }
-
-  oprot->writeMessageBegin("saveChannel", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.saveChannel", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.signIn", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.signIn");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.signIn");
-  }
-
-  AromaService_signIn_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.signIn", bytes);
-  }
-
-  AromaService_signIn_result result;
-  try {
-    iface_->signIn(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidCredentialsException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (UserDoesNotExistException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.signIn");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("signIn", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.signIn");
-  }
-
-  oprot->writeMessageBegin("signIn", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.signIn", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.signUp", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.signUp");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.signUp");
-  }
-
-  AromaService_signUp_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.signUp", bytes);
-  }
-
-  AromaService_signUp_result result;
-  try {
-    iface_->signUp(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidCredentialsException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (AccountAlreadyExistsException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.signUp");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("signUp", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.signUp");
-  }
-
-  oprot->writeMessageBegin("signUp", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.signUp", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.snoozeChannel", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.snoozeChannel");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.snoozeChannel");
-  }
-
-  AromaService_snoozeChannel_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.snoozeChannel", bytes);
-  }
-
-  AromaService_snoozeChannel_result result;
-  try {
-    iface_->snoozeChannel(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (UnauthorizedException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (ChannelDoesNotExistException &ex5) {
+  } catch (UnauthorizedException &ex5) {
     result.ex5 = ex5;
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.snoozeChannel");
+      this->eventHandler_->handlerError(ctx, "AromaService.updateApplication");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("snoozeChannel", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("updateApplication", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -11495,17 +11277,680 @@ void AromaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thrif
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.snoozeChannel");
+    this->eventHandler_->preWrite(ctx, "AromaService.updateApplication");
   }
 
-  oprot->writeMessageBegin("snoozeChannel", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("updateApplication", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.snoozeChannel", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.updateApplication", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.searchForApplications", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.searchForApplications");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.searchForApplications");
+  }
+
+  AromaService_searchForApplications_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.searchForApplications", bytes);
+  }
+
+  AromaService_searchForApplications_result result;
+  try {
+    iface_->searchForApplications(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (UnauthorizedException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.searchForApplications");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.searchForApplications");
+  }
+
+  oprot->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.searchForApplications", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getApplicationMessages", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationMessages");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getApplicationMessages");
+  }
+
+  AromaService_getApplicationMessages_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getApplicationMessages", bytes);
+  }
+
+  AromaService_getApplicationMessages_result result;
+  try {
+    iface_->getApplicationMessages(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (UnauthorizedException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
+  } catch (ApplicationDoesNotExistException &ex5) {
+    result.ex5 = ex5;
+    result.__isset.ex5 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationMessages");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationMessages");
+  }
+
+  oprot->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationMessages", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getFullMessage", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getFullMessage");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getFullMessage");
+  }
+
+  AromaService_getFullMessage_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getFullMessage", bytes);
+  }
+
+  AromaService_getFullMessage_result result;
+  try {
+    iface_->getFullMessage(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getFullMessage");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getFullMessage");
+  }
+
+  oprot->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getFullMessage", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.deleteMessage", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.deleteMessage");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.deleteMessage");
+  }
+
+  AromaService_deleteMessage_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.deleteMessage", bytes);
+  }
+
+  AromaService_deleteMessage_result result;
+  try {
+    iface_->deleteMessage(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (MessageDoesNotExistException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
+  } catch (UnauthorizedException &ex5) {
+    result.ex5 = ex5;
+    result.__isset.ex5 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.deleteMessage");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.deleteMessage");
+  }
+
+  oprot->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.deleteMessage", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_dismissMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.dismissMessage", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.dismissMessage");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.dismissMessage");
+  }
+
+  AromaService_dismissMessage_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.dismissMessage", bytes);
+  }
+
+  AromaService_dismissMessage_result result;
+  try {
+    iface_->dismissMessage(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (MessageDoesNotExistException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
+  } catch (UnauthorizedException &ex5) {
+    result.ex5 = ex5;
+    result.__isset.ex5 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.dismissMessage");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.dismissMessage");
+  }
+
+  oprot->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.dismissMessage", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getInbox", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getInbox");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getInbox");
+  }
+
+  AromaService_getInbox_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getInbox", bytes);
+  }
+
+  AromaService_getInbox_result result;
+  try {
+    iface_->getInbox(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getInbox");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getInbox");
+  }
+
+  oprot->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getInbox", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getActivity", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getActivity");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getActivity");
+  }
+
+  AromaService_getActivity_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getActivity", bytes);
+  }
+
+  AromaService_getActivity_result result;
+  try {
+    iface_->getActivity(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getActivity");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getActivity");
+  }
+
+  oprot->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getActivity", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getReactions", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getReactions");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getReactions");
+  }
+
+  AromaService_getReactions_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getReactions", bytes);
+  }
+
+  AromaService_getReactions_result result;
+  try {
+    iface_->getReactions(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (ApplicationDoesNotExistException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
+  } catch (UnauthorizedException &ex5) {
+    result.ex5 = ex5;
+    result.__isset.ex5 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getReactions");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getReactions", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getReactions");
+  }
+
+  oprot->writeMessageBegin("getReactions", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getReactions", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_updateReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.updateReactions", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.updateReactions");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.updateReactions");
+  }
+
+  AromaService_updateReactions_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.updateReactions", bytes);
+  }
+
+  AromaService_updateReactions_result result;
+  try {
+    iface_->updateReactions(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (ApplicationDoesNotExistException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
+  } catch (UnauthorizedException &ex5) {
+    result.ex5 = ex5;
+    result.__isset.ex5 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.updateReactions");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("updateReactions", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.updateReactions");
+  }
+
+  oprot->writeMessageBegin("updateReactions", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.updateReactions", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getApplicationsFollowedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getApplicationsFollowedBy", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationsFollowedBy");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getApplicationsFollowedBy");
+  }
+
+  AromaService_getApplicationsFollowedBy_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getApplicationsFollowedBy", bytes);
+  }
+
+  AromaService_getApplicationsFollowedBy_result result;
+  try {
+    iface_->getApplicationsFollowedBy(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationsFollowedBy");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getApplicationsFollowedBy", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationsFollowedBy");
+  }
+
+  oprot->writeMessageBegin("getApplicationsFollowedBy", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationsFollowedBy", bytes);
   }
 }
 
@@ -11647,30 +12092,30 @@ void AromaServiceProcessor::process_unfollowApplication(int32_t seqid, ::apache:
   }
 }
 
-void AromaServiceProcessor::process_updateApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_checkIfDeviceIsRegistered(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.updateApplication", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.checkIfDeviceIsRegistered", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.updateApplication");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.checkIfDeviceIsRegistered");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.updateApplication");
+    this->eventHandler_->preRead(ctx, "AromaService.checkIfDeviceIsRegistered");
   }
 
-  AromaService_updateApplication_args args;
+  AromaService_checkIfDeviceIsRegistered_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.updateApplication", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.checkIfDeviceIsRegistered", bytes);
   }
 
-  AromaService_updateApplication_result result;
+  AromaService_checkIfDeviceIsRegistered_result result;
   try {
-    iface_->updateApplication(result.success, args.request);
+    iface_->checkIfDeviceIsRegistered(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -11681,19 +12126,16 @@ void AromaServiceProcessor::process_updateApplication(int32_t seqid, ::apache::t
   } catch (InvalidTokenException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ApplicationDoesNotExistException &ex4) {
+  } catch (UnauthorizedException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
-  } catch (UnauthorizedException &ex5) {
-    result.ex5 = ex5;
-    result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.updateApplication");
+      this->eventHandler_->handlerError(ctx, "AromaService.checkIfDeviceIsRegistered");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("updateApplication", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("checkIfDeviceIsRegistered", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -11702,44 +12144,44 @@ void AromaServiceProcessor::process_updateApplication(int32_t seqid, ::apache::t
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.updateApplication");
+    this->eventHandler_->preWrite(ctx, "AromaService.checkIfDeviceIsRegistered");
   }
 
-  oprot->writeMessageBegin("updateApplication", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("checkIfDeviceIsRegistered", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.updateApplication", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.checkIfDeviceIsRegistered", bytes);
   }
 }
 
-void AromaServiceProcessor::process_updateReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getRegisteredDevices(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.updateReactions", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getRegisteredDevices", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.updateReactions");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getRegisteredDevices");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.updateReactions");
+    this->eventHandler_->preRead(ctx, "AromaService.getRegisteredDevices");
   }
 
-  AromaService_updateReactions_args args;
+  AromaService_getRegisteredDevices_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.updateReactions", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getRegisteredDevices", bytes);
   }
 
-  AromaService_updateReactions_result result;
+  AromaService_getRegisteredDevices_result result;
   try {
-    iface_->updateReactions(result.success, args.request);
+    iface_->getRegisteredDevices(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -11750,19 +12192,16 @@ void AromaServiceProcessor::process_updateReactions(int32_t seqid, ::apache::thr
   } catch (InvalidTokenException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ApplicationDoesNotExistException &ex4) {
+  } catch (UnauthorizedException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
-  } catch (UnauthorizedException &ex5) {
-    result.ex5 = ex5;
-    result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.updateReactions");
+      this->eventHandler_->handlerError(ctx, "AromaService.getRegisteredDevices");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("updateReactions", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getRegisteredDevices", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -11771,44 +12210,44 @@ void AromaServiceProcessor::process_updateReactions(int32_t seqid, ::apache::thr
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.updateReactions");
+    this->eventHandler_->preWrite(ctx, "AromaService.getRegisteredDevices");
   }
 
-  oprot->writeMessageBegin("updateReactions", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getRegisteredDevices", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.updateReactions", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getRegisteredDevices", bytes);
   }
 }
 
-void AromaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_registerDevice(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getActivity", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.registerDevice", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getActivity");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.registerDevice");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getActivity");
+    this->eventHandler_->preRead(ctx, "AromaService.registerDevice");
   }
 
-  AromaService_getActivity_args args;
+  AromaService_registerDevice_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getActivity", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.registerDevice", bytes);
   }
 
-  AromaService_getActivity_result result;
+  AromaService_registerDevice_result result;
   try {
-    iface_->getActivity(result.success, args.request);
+    iface_->registerDevice(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -11819,13 +12258,16 @@ void AromaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift:
   } catch (InvalidTokenException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
+  } catch (UnauthorizedException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getActivity");
+      this->eventHandler_->handlerError(ctx, "AromaService.registerDevice");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("registerDevice", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -11834,44 +12276,44 @@ void AromaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getActivity");
+    this->eventHandler_->preWrite(ctx, "AromaService.registerDevice");
   }
 
-  oprot->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("registerDevice", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getActivity", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.registerDevice", bytes);
   }
 }
 
-void AromaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_unregisterDevice(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getApplicationInfo", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.unregisterDevice", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationInfo");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.unregisterDevice");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getApplicationInfo");
+    this->eventHandler_->preRead(ctx, "AromaService.unregisterDevice");
   }
 
-  AromaService_getApplicationInfo_args args;
+  AromaService_unregisterDevice_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getApplicationInfo", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.unregisterDevice", bytes);
   }
 
-  AromaService_getApplicationInfo_result result;
+  AromaService_unregisterDevice_result result;
   try {
-    iface_->getApplicationInfo(result.success, args.request);
+    iface_->unregisterDevice(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -11882,19 +12324,16 @@ void AromaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache::
   } catch (InvalidTokenException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ApplicationDoesNotExistException &ex4) {
+  } catch (UnauthorizedException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
-  } catch (UnauthorizedException &ex5) {
-    result.ex5 = ex5;
-    result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationInfo");
+      this->eventHandler_->handlerError(ctx, "AromaService.unregisterDevice");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("unregisterDevice", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -11903,17 +12342,80 @@ void AromaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache::
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationInfo");
+    this->eventHandler_->preWrite(ctx, "AromaService.unregisterDevice");
   }
 
-  oprot->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("unregisterDevice", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationInfo", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.unregisterDevice", bytes);
+  }
+}
+
+void AromaServiceProcessor::process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AromaService.getDashboard", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getDashboard");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AromaService.getDashboard");
+  }
+
+  AromaService_getDashboard_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AromaService.getDashboard", bytes);
+  }
+
+  AromaService_getDashboard_result result;
+  try {
+    iface_->getDashboard(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (InvalidTokenException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AromaService.getDashboard");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AromaService.getDashboard");
+  }
+
+  oprot->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AromaService.getDashboard", bytes);
   }
 }
 
@@ -11986,47 +12488,38 @@ void AromaServiceProcessor::process_getBuzz(int32_t seqid, ::apache::thrift::pro
   }
 }
 
-void AromaServiceProcessor::process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getDashboard", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getApiVersion", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getDashboard");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApiVersion");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getDashboard");
+    this->eventHandler_->preRead(ctx, "AromaService.getApiVersion");
   }
 
-  AromaService_getDashboard_args args;
+  AromaService_getApiVersion_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getDashboard", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getApiVersion", bytes);
   }
 
-  AromaService_getDashboard_result result;
+  AromaService_getApiVersion_result result;
   try {
-    iface_->getDashboard(result.success, args.request);
+    result.success = iface_->getApiVersion();
     result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getDashboard");
+      this->eventHandler_->handlerError(ctx, "AromaService.getApiVersion");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -12035,44 +12528,44 @@ void AromaServiceProcessor::process_getDashboard(int32_t seqid, ::apache::thrift
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getDashboard");
+    this->eventHandler_->preWrite(ctx, "AromaService.getApiVersion");
   }
 
-  oprot->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getDashboard", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getApiVersion", bytes);
   }
 }
 
-void AromaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getApplicationMessages", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.registerHealthCheck", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationMessages");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.registerHealthCheck");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getApplicationMessages");
+    this->eventHandler_->preRead(ctx, "AromaService.registerHealthCheck");
   }
 
-  AromaService_getApplicationMessages_args args;
+  AromaService_registerHealthCheck_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getApplicationMessages", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.registerHealthCheck", bytes);
   }
 
-  AromaService_getApplicationMessages_result result;
+  AromaService_registerHealthCheck_result result;
   try {
-    iface_->getApplicationMessages(result.success, args.request);
+    iface_->registerHealthCheck(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -12083,19 +12576,19 @@ void AromaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apac
   } catch (InvalidTokenException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (UnauthorizedException &ex4) {
+  } catch (ApplicationDoesNotExistException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
-  } catch (ApplicationDoesNotExistException &ex5) {
+  } catch (UnauthorizedException &ex5) {
     result.ex5 = ex5;
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationMessages");
+      this->eventHandler_->handlerError(ctx, "AromaService.registerHealthCheck");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -12104,143 +12597,17 @@ void AromaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apac
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationMessages");
+    this->eventHandler_->preWrite(ctx, "AromaService.registerHealthCheck");
   }
 
-  oprot->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationMessages", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getInbox", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getInbox");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getInbox");
-  }
-
-  AromaService_getInbox_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getInbox", bytes);
-  }
-
-  AromaService_getInbox_result result;
-  try {
-    iface_->getInbox(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getInbox");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getInbox");
-  }
-
-  oprot->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getInbox", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getFullMessage", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getFullMessage");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getFullMessage");
-  }
-
-  AromaService_getFullMessage_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getFullMessage", bytes);
-  }
-
-  AromaService_getFullMessage_result result;
-  try {
-    iface_->getFullMessage(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getFullMessage");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getFullMessage");
-  }
-
-  oprot->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getFullMessage", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.registerHealthCheck", bytes);
   }
 }
 
@@ -12313,399 +12680,6 @@ void AromaServiceProcessor::process_getMedia(int32_t seqid, ::apache::thrift::pr
   }
 }
 
-void AromaServiceProcessor::process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getApplicationsOwnedBy", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationsOwnedBy");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getApplicationsOwnedBy");
-  }
-
-  AromaService_getApplicationsOwnedBy_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getApplicationsOwnedBy", bytes);
-  }
-
-  AromaService_getApplicationsOwnedBy_result result;
-  try {
-    iface_->getApplicationsOwnedBy(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationsOwnedBy");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationsOwnedBy");
-  }
-
-  oprot->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationsOwnedBy", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_getApplicationsFollowedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getApplicationsFollowedBy", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationsFollowedBy");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getApplicationsFollowedBy");
-  }
-
-  AromaService_getApplicationsFollowedBy_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getApplicationsFollowedBy", bytes);
-  }
-
-  AromaService_getApplicationsFollowedBy_result result;
-  try {
-    iface_->getApplicationsFollowedBy(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationsFollowedBy");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getApplicationsFollowedBy", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationsFollowedBy");
-  }
-
-  oprot->writeMessageBegin("getApplicationsFollowedBy", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationsFollowedBy", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getMySavedChannels", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getMySavedChannels");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getMySavedChannels");
-  }
-
-  AromaService_getMySavedChannels_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getMySavedChannels", bytes);
-  }
-
-  AromaService_getMySavedChannels_result result;
-  try {
-    iface_->getMySavedChannels(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getMySavedChannels");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getMySavedChannels", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getMySavedChannels");
-  }
-
-  oprot->writeMessageBegin("getMySavedChannels", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getMySavedChannels", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_getReactions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getReactions", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getReactions");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getReactions");
-  }
-
-  AromaService_getReactions_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getReactions", bytes);
-  }
-
-  AromaService_getReactions_result result;
-  try {
-    iface_->getReactions(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (ApplicationDoesNotExistException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (UnauthorizedException &ex5) {
-    result.ex5 = ex5;
-    result.__isset.ex5 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getReactions");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getReactions", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getReactions");
-  }
-
-  oprot->writeMessageBegin("getReactions", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getReactions", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getUserInfo", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getUserInfo");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getUserInfo");
-  }
-
-  AromaService_getUserInfo_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getUserInfo", bytes);
-  }
-
-  AromaService_getUserInfo_result result;
-  try {
-    iface_->getUserInfo(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (UnauthorizedException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (UserDoesNotExistException &ex5) {
-    result.ex5 = ex5;
-    result.__isset.ex5 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getUserInfo");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getUserInfo");
-  }
-
-  oprot->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getUserInfo", bytes);
-  }
-}
-
-void AromaServiceProcessor::process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
-{
-  void* ctx = NULL;
-  if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.searchForApplications", callContext);
-  }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.searchForApplications");
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.searchForApplications");
-  }
-
-  AromaService_searchForApplications_args args;
-  args.read(iprot);
-  iprot->readMessageEnd();
-  uint32_t bytes = iprot->getTransport()->readEnd();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.searchForApplications", bytes);
-  }
-
-  AromaService_searchForApplications_result result;
-  try {
-    iface_->searchForApplications(result.success, args.request);
-    result.__isset.success = true;
-  } catch (OperationFailedException &ex1) {
-    result.ex1 = ex1;
-    result.__isset.ex1 = true;
-  } catch (InvalidArgumentException &ex2) {
-    result.ex2 = ex2;
-    result.__isset.ex2 = true;
-  } catch (InvalidTokenException &ex3) {
-    result.ex3 = ex3;
-    result.__isset.ex3 = true;
-  } catch (UnauthorizedException &ex4) {
-    result.ex4 = ex4;
-    result.__isset.ex4 = true;
-  } catch (const std::exception& e) {
-    if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.searchForApplications");
-    }
-
-    ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_EXCEPTION, seqid);
-    x.write(oprot);
-    oprot->writeMessageEnd();
-    oprot->getTransport()->writeEnd();
-    oprot->getTransport()->flush();
-    return;
-  }
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.searchForApplications");
-  }
-
-  oprot->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_REPLY, seqid);
-  result.write(oprot);
-  oprot->writeMessageEnd();
-  bytes = oprot->getTransport()->writeEnd();
-  oprot->getTransport()->flush();
-
-  if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.searchForApplications", bytes);
-  }
-}
-
 ::boost::shared_ptr< ::apache::thrift::TProcessor > AromaServiceProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
   ::apache::thrift::ReleaseHandler< AromaServiceIfFactory > cleanup(handlerFactory_);
   ::boost::shared_ptr< AromaServiceIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
@@ -12713,102 +12687,19 @@ void AromaServiceProcessor::process_searchForApplications(int32_t seqid, ::apach
   return processor;
 }
 
-double AromaServiceConcurrentClient::getApiVersion()
+void AromaServiceConcurrentClient::signIn(SignInResponse& _return, const SignInRequest& request)
 {
-  int32_t seqid = send_getApiVersion();
-  return recv_getApiVersion(seqid);
+  int32_t seqid = send_signIn(request);
+  recv_signIn(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_getApiVersion()
+int32_t AromaServiceConcurrentClient::send_signIn(const SignInRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("signIn", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getApiVersion_pargs args;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-double AromaServiceConcurrentClient::recv_getApiVersion(const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getApiVersion") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      double _return;
-      AromaService_getApiVersion_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        sentry.commit();
-        return _return;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApiVersion failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request)
-{
-  int32_t seqid = send_deleteApplication(request);
-  recv_deleteApplication(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_deleteApplication(const DeleteApplicationRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("deleteApplication", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_deleteApplication_pargs args;
+  AromaService_signIn_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12820,7 +12711,7 @@ int32_t AromaServiceConcurrentClient::send_deleteApplication(const DeleteApplica
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_deleteApplication(DeleteApplicationResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_signIn(SignInResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12849,7 +12740,7 @@ void AromaServiceConcurrentClient::recv_deleteApplication(DeleteApplicationRespo
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("deleteApplication") != 0) {
+      if (fname.compare("signIn") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -12858,7 +12749,207 @@ void AromaServiceConcurrentClient::recv_deleteApplication(DeleteApplicationRespo
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_deleteApplication_presult result;
+      AromaService_signIn_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signIn failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::signUp(SignUpResponse& _return, const SignUpRequest& request)
+{
+  int32_t seqid = send_signUp(request);
+  recv_signUp(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_signUp(const SignUpRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("signUp", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_signUp_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_signUp(SignUpResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("signUp") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_signUp_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signUp failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request)
+{
+  int32_t seqid = send_getUserInfo(request);
+  recv_getUserInfo(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getUserInfo(const GetUserInfoRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getUserInfo_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getUserInfo") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getUserInfo_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12890,7 +12981,7 @@ void AromaServiceConcurrentClient::recv_deleteApplication(DeleteApplicationRespo
         throw result.ex5;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteApplication failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getUserInfo failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -12900,19 +12991,19 @@ void AromaServiceConcurrentClient::recv_deleteApplication(DeleteApplicationRespo
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request)
+void AromaServiceConcurrentClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
 {
-  int32_t seqid = send_deleteMessage(request);
-  recv_deleteMessage(_return, seqid);
+  int32_t seqid = send_getApplicationInfo(request);
+  recv_getApplicationInfo(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_deleteMessage(const DeleteMessageRequest& request)
+int32_t AromaServiceConcurrentClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_deleteMessage_pargs args;
+  AromaService_getApplicationInfo_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12924,7 +13015,7 @@ int32_t AromaServiceConcurrentClient::send_deleteMessage(const DeleteMessageRequ
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12953,7 +13044,7 @@ void AromaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _re
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("deleteMessage") != 0) {
+      if (fname.compare("getApplicationInfo") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -12962,7 +13053,7 @@ void AromaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _re
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_deleteMessage_presult result;
+      AromaService_getApplicationInfo_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12994,7 +13085,7 @@ void AromaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _re
         throw result.ex5;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteMessage failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationInfo failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -13004,19 +13095,19 @@ void AromaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _re
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request)
+void AromaServiceConcurrentClient::getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request)
 {
-  int32_t seqid = send_dismissMessage(request);
-  recv_dismissMessage(_return, seqid);
+  int32_t seqid = send_getApplicationsOwnedBy(request);
+  recv_getApplicationsOwnedBy(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_dismissMessage(const DismissMessageRequest& request)
+int32_t AromaServiceConcurrentClient::send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_dismissMessage_pargs args;
+  AromaService_getApplicationsOwnedBy_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -13028,7 +13119,7 @@ int32_t AromaServiceConcurrentClient::send_dismissMessage(const DismissMessageRe
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -13057,7 +13148,7 @@ void AromaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& _
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("dismissMessage") != 0) {
+      if (fname.compare("getApplicationsOwnedBy") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -13066,7 +13157,7 @@ void AromaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& _
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_dismissMessage_presult result;
+      AromaService_getApplicationsOwnedBy_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -13089,16 +13180,8 @@ void AromaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& _
         sentry.commit();
         throw result.ex3;
       }
-      if (result.__isset.ex4) {
-        sentry.commit();
-        throw result.ex4;
-      }
-      if (result.__isset.ex5) {
-        sentry.commit();
-        throw result.ex5;
-      }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "dismissMessage failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsOwnedBy failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -13316,19 +13399,19 @@ void AromaServiceConcurrentClient::recv_regenerateToken(RegenerateApplicationTok
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
+void AromaServiceConcurrentClient::deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request)
 {
-  int32_t seqid = send_registerHealthCheck(request);
-  recv_registerHealthCheck(_return, seqid);
+  int32_t seqid = send_deleteApplication(request);
+  recv_deleteApplication(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_registerHealthCheck(const RegisterHealthCheckRequest& request)
+int32_t AromaServiceConcurrentClient::send_deleteApplication(const DeleteApplicationRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("deleteApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_registerHealthCheck_pargs args;
+  AromaService_deleteApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -13340,7 +13423,7 @@ int32_t AromaServiceConcurrentClient::send_registerHealthCheck(const RegisterHea
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_deleteApplication(DeleteApplicationResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -13369,7 +13452,7 @@ void AromaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheckR
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("registerHealthCheck") != 0) {
+      if (fname.compare("deleteApplication") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -13378,7 +13461,7 @@ void AromaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheckR
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_registerHealthCheck_presult result;
+      AromaService_deleteApplication_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -13410,111 +13493,7 @@ void AromaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheckR
         throw result.ex5;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "registerHealthCheck failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request)
-{
-  int32_t seqid = send_removeSavedChannel(request);
-  recv_removeSavedChannel(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_removeSavedChannel(const RemoveSavedChannelRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("removeSavedChannel", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_removeSavedChannel_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_removeSavedChannel(RemoveSavedChannelResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("removeSavedChannel") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_removeSavedChannel_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      if (result.__isset.ex4) {
-        sentry.commit();
-        throw result.ex4;
-      }
-      if (result.__isset.ex5) {
-        sentry.commit();
-        throw result.ex5;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "removeSavedChannel failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteApplication failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -13628,19 +13607,19 @@ void AromaServiceConcurrentClient::recv_renewApplicationToken(RenewApplicationTo
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request)
+void AromaServiceConcurrentClient::updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request)
 {
-  int32_t seqid = send_saveChannel(request);
-  recv_saveChannel(_return, seqid);
+  int32_t seqid = send_updateApplication(request);
+  recv_updateApplication(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_saveChannel(const SaveChannelRequest& request)
+int32_t AromaServiceConcurrentClient::send_updateApplication(const UpdateApplicationRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("saveChannel", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("updateApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_saveChannel_pargs args;
+  AromaService_updateApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -13652,7 +13631,7 @@ int32_t AromaServiceConcurrentClient::send_saveChannel(const SaveChannelRequest&
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_saveChannel(SaveChannelResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_updateApplication(UpdateApplicationResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -13681,7 +13660,7 @@ void AromaServiceConcurrentClient::recv_saveChannel(SaveChannelResponse& _return
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("saveChannel") != 0) {
+      if (fname.compare("updateApplication") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -13690,307 +13669,7 @@ void AromaServiceConcurrentClient::recv_saveChannel(SaveChannelResponse& _return
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_saveChannel_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      if (result.__isset.ex4) {
-        sentry.commit();
-        throw result.ex4;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "saveChannel failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::signIn(SignInResponse& _return, const SignInRequest& request)
-{
-  int32_t seqid = send_signIn(request);
-  recv_signIn(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_signIn(const SignInRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("signIn", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_signIn_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_signIn(SignInResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("signIn") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_signIn_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      if (result.__isset.ex4) {
-        sentry.commit();
-        throw result.ex4;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signIn failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::signUp(SignUpResponse& _return, const SignUpRequest& request)
-{
-  int32_t seqid = send_signUp(request);
-  recv_signUp(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_signUp(const SignUpRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("signUp", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_signUp_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_signUp(SignUpResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("signUp") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_signUp_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      if (result.__isset.ex4) {
-        sentry.commit();
-        throw result.ex4;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signUp failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request)
-{
-  int32_t seqid = send_snoozeChannel(request);
-  recv_snoozeChannel(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_snoozeChannel(const SnoozeChannelRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("snoozeChannel", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_snoozeChannel_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_snoozeChannel(SnoozeChannelResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("snoozeChannel") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_snoozeChannel_presult result;
+      AromaService_updateApplication_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -14022,7 +13701,1011 @@ void AromaServiceConcurrentClient::recv_snoozeChannel(SnoozeChannelResponse& _re
         throw result.ex5;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "snoozeChannel failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "updateApplication failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
+{
+  int32_t seqid = send_searchForApplications(request);
+  recv_searchForApplications(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_searchForApplications(const SearchForApplicationsRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_searchForApplications_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("searchForApplications") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_searchForApplications_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForApplications failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request)
+{
+  int32_t seqid = send_getApplicationMessages(request);
+  recv_getApplicationMessages(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getApplicationMessages(const GetApplicationMessagesRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getApplicationMessages_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMessagesResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getApplicationMessages") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getApplicationMessages_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
+      }
+      if (result.__isset.ex5) {
+        sentry.commit();
+        throw result.ex5;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationMessages failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request)
+{
+  int32_t seqid = send_getFullMessage(request);
+  recv_getFullMessage(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getFullMessage(const GetFullMessageRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getFullMessage_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getFullMessage") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getFullMessage_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getFullMessage failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request)
+{
+  int32_t seqid = send_deleteMessage(request);
+  recv_deleteMessage(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_deleteMessage(const DeleteMessageRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_deleteMessage_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("deleteMessage") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_deleteMessage_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
+      }
+      if (result.__isset.ex5) {
+        sentry.commit();
+        throw result.ex5;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteMessage failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request)
+{
+  int32_t seqid = send_dismissMessage(request);
+  recv_dismissMessage(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_dismissMessage(const DismissMessageRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_dismissMessage_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("dismissMessage") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_dismissMessage_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
+      }
+      if (result.__isset.ex5) {
+        sentry.commit();
+        throw result.ex5;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "dismissMessage failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getInbox(GetInboxResponse& _return, const GetInboxRequest& request)
+{
+  int32_t seqid = send_getInbox(request);
+  recv_getInbox(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getInbox(const GetInboxRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getInbox_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getInbox(GetInboxResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getInbox") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getInbox_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getInbox failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
+{
+  int32_t seqid = send_getActivity(request);
+  recv_getActivity(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getActivity(const GetActivityRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getActivity_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getActivity(GetActivityResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getActivity") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getActivity_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getActivity failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request)
+{
+  int32_t seqid = send_getReactions(request);
+  recv_getReactions(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getReactions(const GetReactionsRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getReactions", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getReactions_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getReactions(GetReactionsResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getReactions") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getReactions_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
+      }
+      if (result.__isset.ex5) {
+        sentry.commit();
+        throw result.ex5;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getReactions failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request)
+{
+  int32_t seqid = send_updateReactions(request);
+  recv_updateReactions(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_updateReactions(const UpdateReactionsRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("updateReactions", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_updateReactions_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_updateReactions(UpdateReactionsResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("updateReactions") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_updateReactions_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
+      }
+      if (result.__isset.ex5) {
+        sentry.commit();
+        throw result.ex5;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "updateReactions failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request)
+{
+  int32_t seqid = send_getApplicationsFollowedBy(request);
+  recv_getApplicationsFollowedBy(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getApplicationsFollowedBy", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getApplicationsFollowedBy_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getApplicationsFollowedBy") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getApplicationsFollowedBy_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsFollowedBy failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -14240,19 +14923,19 @@ void AromaServiceConcurrentClient::recv_unfollowApplication(UnfollowApplicationR
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request)
+void AromaServiceConcurrentClient::checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const CheckIfDeviceIsRegisteredRequest& request)
 {
-  int32_t seqid = send_updateApplication(request);
-  recv_updateApplication(_return, seqid);
+  int32_t seqid = send_checkIfDeviceIsRegistered(request);
+  recv_checkIfDeviceIsRegistered(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_updateApplication(const UpdateApplicationRequest& request)
+int32_t AromaServiceConcurrentClient::send_checkIfDeviceIsRegistered(const CheckIfDeviceIsRegisteredRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("updateApplication", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("checkIfDeviceIsRegistered", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_updateApplication_pargs args;
+  AromaService_checkIfDeviceIsRegistered_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -14264,7 +14947,7 @@ int32_t AromaServiceConcurrentClient::send_updateApplication(const UpdateApplica
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_updateApplication(UpdateApplicationResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_checkIfDeviceIsRegistered(CheckIfDeviceIsRegisteredResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -14293,7 +14976,7 @@ void AromaServiceConcurrentClient::recv_updateApplication(UpdateApplicationRespo
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("updateApplication") != 0) {
+      if (fname.compare("checkIfDeviceIsRegistered") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -14302,7 +14985,7 @@ void AromaServiceConcurrentClient::recv_updateApplication(UpdateApplicationRespo
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_updateApplication_presult result;
+      AromaService_checkIfDeviceIsRegistered_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -14329,12 +15012,8 @@ void AromaServiceConcurrentClient::recv_updateApplication(UpdateApplicationRespo
         sentry.commit();
         throw result.ex4;
       }
-      if (result.__isset.ex5) {
-        sentry.commit();
-        throw result.ex5;
-      }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "updateApplication failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "checkIfDeviceIsRegistered failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -14344,19 +15023,19 @@ void AromaServiceConcurrentClient::recv_updateApplication(UpdateApplicationRespo
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::updateReactions(UpdateReactionsResponse& _return, const UpdateReactionsRequest& request)
+void AromaServiceConcurrentClient::getRegisteredDevices(GetRegisteredDevicesResponse& _return, const GetRegisteredDevicesRequest& request)
 {
-  int32_t seqid = send_updateReactions(request);
-  recv_updateReactions(_return, seqid);
+  int32_t seqid = send_getRegisteredDevices(request);
+  recv_getRegisteredDevices(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_updateReactions(const UpdateReactionsRequest& request)
+int32_t AromaServiceConcurrentClient::send_getRegisteredDevices(const GetRegisteredDevicesRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("updateReactions", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getRegisteredDevices", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_updateReactions_pargs args;
+  AromaService_getRegisteredDevices_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -14368,7 +15047,7 @@ int32_t AromaServiceConcurrentClient::send_updateReactions(const UpdateReactions
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_updateReactions(UpdateReactionsResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getRegisteredDevices(GetRegisteredDevicesResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -14397,7 +15076,7 @@ void AromaServiceConcurrentClient::recv_updateReactions(UpdateReactionsResponse&
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("updateReactions") != 0) {
+      if (fname.compare("getRegisteredDevices") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -14406,7 +15085,7 @@ void AromaServiceConcurrentClient::recv_updateReactions(UpdateReactionsResponse&
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_updateReactions_presult result;
+      AromaService_getRegisteredDevices_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -14433,12 +15112,8 @@ void AromaServiceConcurrentClient::recv_updateReactions(UpdateReactionsResponse&
         sentry.commit();
         throw result.ex4;
       }
-      if (result.__isset.ex5) {
-        sentry.commit();
-        throw result.ex5;
-      }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "updateReactions failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getRegisteredDevices failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -14448,19 +15123,19 @@ void AromaServiceConcurrentClient::recv_updateReactions(UpdateReactionsResponse&
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
+void AromaServiceConcurrentClient::registerDevice(RegisterDeviceResponse& _return, const RegisterDeviceRequest& request)
 {
-  int32_t seqid = send_getActivity(request);
-  recv_getActivity(_return, seqid);
+  int32_t seqid = send_registerDevice(request);
+  recv_registerDevice(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_getActivity(const GetActivityRequest& request)
+int32_t AromaServiceConcurrentClient::send_registerDevice(const RegisterDeviceRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("registerDevice", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getActivity_pargs args;
+  AromaService_registerDevice_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -14472,7 +15147,7 @@ int32_t AromaServiceConcurrentClient::send_getActivity(const GetActivityRequest&
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_getActivity(GetActivityResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_registerDevice(RegisterDeviceResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -14501,7 +15176,7 @@ void AromaServiceConcurrentClient::recv_getActivity(GetActivityResponse& _return
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("getActivity") != 0) {
+      if (fname.compare("registerDevice") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -14510,103 +15185,7 @@ void AromaServiceConcurrentClient::recv_getActivity(GetActivityResponse& _return
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_getActivity_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getActivity failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
-{
-  int32_t seqid = send_getApplicationInfo(request);
-  recv_getApplicationInfo(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getApplicationInfo_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getApplicationInfo") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_getApplicationInfo_presult result;
+      AromaService_registerDevice_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -14633,12 +15212,204 @@ void AromaServiceConcurrentClient::recv_getApplicationInfo(GetApplicationInfoRes
         sentry.commit();
         throw result.ex4;
       }
-      if (result.__isset.ex5) {
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "registerDevice failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::unregisterDevice(UnregisterDeviceResponse& _return, const UnregisterDeviceRequest& request)
+{
+  int32_t seqid = send_unregisterDevice(request);
+  recv_unregisterDevice(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_unregisterDevice(const UnregisterDeviceRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("unregisterDevice", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_unregisterDevice_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_unregisterDevice(UnregisterDeviceResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
         sentry.commit();
-        throw result.ex5;
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("unregisterDevice") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_unregisterDevice_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationInfo failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "unregisterDevice failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AromaServiceConcurrentClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
+{
+  int32_t seqid = send_getDashboard(request);
+  recv_getDashboard(_return, seqid);
+}
+
+int32_t AromaServiceConcurrentClient::send_getDashboard(const GetDashboardRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AromaService_getDashboard_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AromaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getDashboard") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AromaService_getDashboard_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getDashboard failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -14752,20 +15523,19 @@ void AromaServiceConcurrentClient::recv_getBuzz(GetBuzzResponse& _return, const 
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
+double AromaServiceConcurrentClient::getApiVersion()
 {
-  int32_t seqid = send_getDashboard(request);
-  recv_getDashboard(_return, seqid);
+  int32_t seqid = send_getApiVersion();
+  return recv_getApiVersion(seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_getDashboard(const GetDashboardRequest& request)
+int32_t AromaServiceConcurrentClient::send_getApiVersion()
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getDashboard_pargs args;
-  args.request = &request;
+  AromaService_getApiVersion_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -14776,7 +15546,7 @@ int32_t AromaServiceConcurrentClient::send_getDashboard(const GetDashboardReques
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid)
+double AromaServiceConcurrentClient::recv_getApiVersion(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -14805,7 +15575,7 @@ void AromaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _retu
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("getDashboard") != 0) {
+      if (fname.compare("getApiVersion") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -14814,31 +15584,19 @@ void AromaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _retu
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_getDashboard_presult result;
+      double _return;
+      AromaService_getApiVersion_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
       iprot_->getTransport()->readEnd();
 
       if (result.__isset.success) {
-        // _return pointer has now been filled
         sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
+        return _return;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getDashboard failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApiVersion failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -14848,19 +15606,19 @@ void AromaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _retu
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request)
+void AromaServiceConcurrentClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
 {
-  int32_t seqid = send_getApplicationMessages(request);
-  recv_getApplicationMessages(_return, seqid);
+  int32_t seqid = send_registerHealthCheck(request);
+  recv_registerHealthCheck(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_getApplicationMessages(const GetApplicationMessagesRequest& request)
+int32_t AromaServiceConcurrentClient::send_registerHealthCheck(const RegisterHealthCheckRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getApplicationMessages_pargs args;
+  AromaService_registerHealthCheck_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -14872,7 +15630,7 @@ int32_t AromaServiceConcurrentClient::send_getApplicationMessages(const GetAppli
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMessagesResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -14901,7 +15659,7 @@ void AromaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMes
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("getApplicationMessages") != 0) {
+      if (fname.compare("registerHealthCheck") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -14910,7 +15668,7 @@ void AromaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMes
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_getApplicationMessages_presult result;
+      AromaService_registerHealthCheck_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -14942,199 +15700,7 @@ void AromaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMes
         throw result.ex5;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationMessages failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::getInbox(GetInboxResponse& _return, const GetInboxRequest& request)
-{
-  int32_t seqid = send_getInbox(request);
-  recv_getInbox(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_getInbox(const GetInboxRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getInbox_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_getInbox(GetInboxResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getInbox") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_getInbox_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getInbox failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request)
-{
-  int32_t seqid = send_getFullMessage(request);
-  recv_getFullMessage(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_getFullMessage(const GetFullMessageRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getFullMessage_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getFullMessage") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_getFullMessage_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getFullMessage failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "registerHealthCheck failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -15239,602 +15805,6 @@ void AromaServiceConcurrentClient::recv_getMedia(GetMediaResponse& _return, cons
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMedia failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request)
-{
-  int32_t seqid = send_getApplicationsOwnedBy(request);
-  recv_getApplicationsOwnedBy(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getApplicationsOwnedBy_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getApplicationsOwnedBy") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_getApplicationsOwnedBy_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsOwnedBy failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request)
-{
-  int32_t seqid = send_getApplicationsFollowedBy(request);
-  recv_getApplicationsFollowedBy(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_getApplicationsFollowedBy(const GetApplicationsFollowedByRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getApplicationsFollowedBy", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getApplicationsFollowedBy_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getApplicationsFollowedBy") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_getApplicationsFollowedBy_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsFollowedBy failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request)
-{
-  int32_t seqid = send_getMySavedChannels(request);
-  recv_getMySavedChannels(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_getMySavedChannels(const GetMySavedChannelsRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getMySavedChannels", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getMySavedChannels_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getMySavedChannels") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_getMySavedChannels_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMySavedChannels failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::getReactions(GetReactionsResponse& _return, const GetReactionsRequest& request)
-{
-  int32_t seqid = send_getReactions(request);
-  recv_getReactions(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_getReactions(const GetReactionsRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getReactions", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getReactions_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_getReactions(GetReactionsResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getReactions") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_getReactions_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      if (result.__isset.ex4) {
-        sentry.commit();
-        throw result.ex4;
-      }
-      if (result.__isset.ex5) {
-        sentry.commit();
-        throw result.ex5;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getReactions failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request)
-{
-  int32_t seqid = send_getUserInfo(request);
-  recv_getUserInfo(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_getUserInfo(const GetUserInfoRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_getUserInfo_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("getUserInfo") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_getUserInfo_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      if (result.__isset.ex4) {
-        sentry.commit();
-        throw result.ex4;
-      }
-      if (result.__isset.ex5) {
-        sentry.commit();
-        throw result.ex5;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getUserInfo failed: unknown result");
-    }
-    // seqid != rseqid
-    this->sync_.updatePending(fname, mtype, rseqid);
-
-    // this will temporarily unlock the readMutex, and let other clients get work done
-    this->sync_.waitForWork(seqid);
-  } // end while(true)
-}
-
-void AromaServiceConcurrentClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
-{
-  int32_t seqid = send_searchForApplications(request);
-  recv_searchForApplications(_return, seqid);
-}
-
-int32_t AromaServiceConcurrentClient::send_searchForApplications(const SearchForApplicationsRequest& request)
-{
-  int32_t cseqid = this->sync_.generateSeqId();
-  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_CALL, cseqid);
-
-  AromaService_searchForApplications_pargs args;
-  args.request = &request;
-  args.write(oprot_);
-
-  oprot_->writeMessageEnd();
-  oprot_->getTransport()->writeEnd();
-  oprot_->getTransport()->flush();
-
-  sentry.commit();
-  return cseqid;
-}
-
-void AromaServiceConcurrentClient::recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid)
-{
-
-  int32_t rseqid = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TMessageType mtype;
-
-  // the read mutex gets dropped and reacquired as part of waitForWork()
-  // The destructor of this sentry wakes up other clients
-  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
-
-  while(true) {
-    if(!this->sync_.getPending(fname, mtype, rseqid)) {
-      iprot_->readMessageBegin(fname, mtype, rseqid);
-    }
-    if(seqid == rseqid) {
-      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
-        ::apache::thrift::TApplicationException x;
-        x.read(iprot_);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-        sentry.commit();
-        throw x;
-      }
-      if (mtype != ::apache::thrift::protocol::T_REPLY) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-      }
-      if (fname.compare("searchForApplications") != 0) {
-        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
-        iprot_->readMessageEnd();
-        iprot_->getTransport()->readEnd();
-
-        // in a bad state, don't commit
-        using ::apache::thrift::protocol::TProtocolException;
-        throw TProtocolException(TProtocolException::INVALID_DATA);
-      }
-      AromaService_searchForApplications_presult result;
-      result.success = &_return;
-      result.read(iprot_);
-      iprot_->readMessageEnd();
-      iprot_->getTransport()->readEnd();
-
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      if (result.__isset.ex1) {
-        sentry.commit();
-        throw result.ex1;
-      }
-      if (result.__isset.ex2) {
-        sentry.commit();
-        throw result.ex2;
-      }
-      if (result.__isset.ex3) {
-        sentry.commit();
-        throw result.ex3;
-      }
-      if (result.__isset.ex4) {
-        sentry.commit();
-        throw result.ex4;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForApplications failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);

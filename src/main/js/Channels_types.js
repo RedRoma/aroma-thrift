@@ -5,6 +5,225 @@
 //
 
 
+IOSDevice = function(args) {
+  this.deviceToken = null;
+  if (args) {
+    if (args.deviceToken !== undefined && args.deviceToken !== null) {
+      this.deviceToken = args.deviceToken;
+    }
+  }
+};
+IOSDevice.prototype = {};
+IOSDevice.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.deviceToken = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+IOSDevice.prototype.write = function(output) {
+  output.writeStructBegin('IOSDevice');
+  if (this.deviceToken !== null && this.deviceToken !== undefined) {
+    output.writeFieldBegin('deviceToken', Thrift.Type.STRING, 1);
+    output.writeString(this.deviceToken);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+AndroidDevice = function(args) {
+  this.registrationId = null;
+  if (args) {
+    if (args.registrationId !== undefined && args.registrationId !== null) {
+      this.registrationId = args.registrationId;
+    }
+  }
+};
+AndroidDevice.prototype = {};
+AndroidDevice.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.registrationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+AndroidDevice.prototype.write = function(output) {
+  output.writeStructBegin('AndroidDevice');
+  if (this.registrationId !== null && this.registrationId !== undefined) {
+    output.writeFieldBegin('registrationId', Thrift.Type.STRING, 1);
+    output.writeString(this.registrationId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+WindowsPhoneDevice = function(args) {
+};
+WindowsPhoneDevice.prototype = {};
+WindowsPhoneDevice.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+WindowsPhoneDevice.prototype.write = function(output) {
+  output.writeStructBegin('WindowsPhoneDevice');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MobileDevice = function(args) {
+  this.iosDevice = null;
+  this.androidDevice = null;
+  this.windowsPhoneDevice = null;
+  if (args) {
+    if (args.iosDevice !== undefined && args.iosDevice !== null) {
+      this.iosDevice = new IOSDevice(args.iosDevice);
+    }
+    if (args.androidDevice !== undefined && args.androidDevice !== null) {
+      this.androidDevice = new AndroidDevice(args.androidDevice);
+    }
+    if (args.windowsPhoneDevice !== undefined && args.windowsPhoneDevice !== null) {
+      this.windowsPhoneDevice = new WindowsPhoneDevice(args.windowsPhoneDevice);
+    }
+  }
+};
+MobileDevice.prototype = {};
+MobileDevice.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.iosDevice = new IOSDevice();
+        this.iosDevice.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.androidDevice = new AndroidDevice();
+        this.androidDevice.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.windowsPhoneDevice = new WindowsPhoneDevice();
+        this.windowsPhoneDevice.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MobileDevice.prototype.write = function(output) {
+  output.writeStructBegin('MobileDevice');
+  if (this.iosDevice !== null && this.iosDevice !== undefined) {
+    output.writeFieldBegin('iosDevice', Thrift.Type.STRUCT, 1);
+    this.iosDevice.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.androidDevice !== null && this.androidDevice !== undefined) {
+    output.writeFieldBegin('androidDevice', Thrift.Type.STRUCT, 2);
+    this.androidDevice.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.windowsPhoneDevice !== null && this.windowsPhoneDevice !== undefined) {
+    output.writeFieldBegin('windowsPhoneDevice', Thrift.Type.STRUCT, 3);
+    this.windowsPhoneDevice.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 SlackChannel = function(args) {
   this.domainName = null;
   this.channelName = null;
@@ -289,112 +508,6 @@ CustomChannel.prototype.write = function(output) {
   return;
 };
 
-IOSDevice = function(args) {
-  this.deviceToken = null;
-  if (args) {
-    if (args.deviceToken !== undefined && args.deviceToken !== null) {
-      this.deviceToken = args.deviceToken;
-    }
-  }
-};
-IOSDevice.prototype = {};
-IOSDevice.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.deviceToken = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-IOSDevice.prototype.write = function(output) {
-  output.writeStructBegin('IOSDevice');
-  if (this.deviceToken !== null && this.deviceToken !== undefined) {
-    output.writeFieldBegin('deviceToken', Thrift.Type.STRING, 1);
-    output.writeString(this.deviceToken);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-AndroidDevice = function(args) {
-  this.deviceId = null;
-  if (args) {
-    if (args.deviceId !== undefined && args.deviceId !== null) {
-      this.deviceId = args.deviceId;
-    }
-  }
-};
-AndroidDevice.prototype = {};
-AndroidDevice.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.deviceId = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-AndroidDevice.prototype.write = function(output) {
-  output.writeStructBegin('AndroidDevice');
-  if (this.deviceId !== null && this.deviceId !== undefined) {
-    output.writeFieldBegin('deviceId', Thrift.Type.STRING, 1);
-    output.writeString(this.deviceId);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 AromaChannel = function(args) {
   this.slackChannel = null;
   this.slackUsername = null;
@@ -402,6 +515,7 @@ AromaChannel = function(args) {
   this.customChannel = null;
   this.iosDevice = null;
   this.androidDevice = null;
+  this.windowsPhoneDevice = null;
   if (args) {
     if (args.slackChannel !== undefined && args.slackChannel !== null) {
       this.slackChannel = new SlackChannel(args.slackChannel);
@@ -420,6 +534,9 @@ AromaChannel = function(args) {
     }
     if (args.androidDevice !== undefined && args.androidDevice !== null) {
       this.androidDevice = new AndroidDevice(args.androidDevice);
+    }
+    if (args.windowsPhoneDevice !== undefined && args.windowsPhoneDevice !== null) {
+      this.windowsPhoneDevice = new WindowsPhoneDevice(args.windowsPhoneDevice);
     }
   }
 };
@@ -485,6 +602,14 @@ AromaChannel.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 7:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.windowsPhoneDevice = new WindowsPhoneDevice();
+        this.windowsPhoneDevice.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -524,6 +649,11 @@ AromaChannel.prototype.write = function(output) {
   if (this.androidDevice !== null && this.androidDevice !== undefined) {
     output.writeFieldBegin('androidDevice', Thrift.Type.STRUCT, 6);
     this.androidDevice.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.windowsPhoneDevice !== null && this.windowsPhoneDevice !== undefined) {
+    output.writeFieldBegin('windowsPhoneDevice', Thrift.Type.STRUCT, 7);
+    this.windowsPhoneDevice.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -668,3 +798,4 @@ ReceiveMessageRequest.prototype.write = function(output) {
   return;
 };
 
+PUSH_NOTIFICATION_KEY_FOR_MESSAGE = 'aroma.message';

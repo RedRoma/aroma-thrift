@@ -7,7 +7,8 @@ namespace php   RedRoma.Aroma.Channels
  * Defined in this File are the various Channels that
  * Aroma can send Messages to.
  *
- * Essentially a channel is a way to contact a person.
+ * A Channel represents a Medium where information can be transmitted and delivered to,
+ * such as a Push Notification to an iOS or Android Device.
  *
  * A Person can register various channels where he/she can
  * be reached.
@@ -21,6 +22,36 @@ typedef Aroma.int int
 typedef Aroma.long long
 typedef Aroma.timestamp timestamp
 typedef Aroma.uuid uuid
+
+struct IOSDevice
+{
+    /** Device Token may be stored and serialized as a Base64 encoded String. */
+    1: string deviceToken;
+}
+
+/** The key used to store the serialized Message Object. **/
+const string PUSH_NOTIFICATION_KEY_FOR_MESSAGE = 'aroma.message';
+
+struct AndroidDevice
+{
+    1: string registrationId;
+}
+
+// Not in use for now, so it is empty.
+struct WindowsPhoneDevice
+{
+}
+
+/**
+ * A Mobile Device is capable of receiving Push Notifications
+ * using one of the Established platforms.
+ */
+union MobileDevice
+{
+    1: IOSDevice iosDevice;
+    2: AndroidDevice androidDevice;
+    3: WindowsPhoneDevice windowsPhoneDevice;
+}
 
 /**
  * It's a bit confusing, but "Channel" here refers to
@@ -63,15 +94,6 @@ struct CustomChannel
     1: Endpoint.Endpoint endpoint;
 }
 
-struct IOSDevice
-{
-    1: string deviceToken;
-}
-
-struct AndroidDevice
-{
-    1: string deviceId;
-}
 
 /**
  * This Union represents the Abstract concept of an AromaChannel
@@ -84,6 +106,7 @@ union AromaChannel
     4: CustomChannel customChannel;
     5: IOSDevice iosDevice;
     6: AndroidDevice androidDevice;
+    7: WindowsPhoneDevice windowsPhoneDevice;
 }
 
 struct ChannelInfo

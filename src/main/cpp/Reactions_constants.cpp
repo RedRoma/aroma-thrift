@@ -11,8 +11,6 @@ namespace tech { namespace aroma { namespace thrift { namespace reactions {
 const ReactionsConstants g_Reactions_constants;
 
 ReactionsConstants::ReactionsConstants() {
-  MAXIMUM_REACTIONS = 100;
-
 }
 
 }}}} // namespace
