@@ -45,7 +45,7 @@ uint32_t IOSDevice::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->deviceToken);
+          xfer += iprot->readBinary(this->deviceToken);
           this->__isset.deviceToken = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -69,7 +69,7 @@ uint32_t IOSDevice::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeStructBegin("IOSDevice");
 
   xfer += oprot->writeFieldBegin("deviceToken", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->deviceToken);
+  xfer += oprot->writeBinary(this->deviceToken);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();

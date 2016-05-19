@@ -29,7 +29,7 @@ IOSDevice.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.deviceToken = input.readString().value;
+        this.deviceToken = input.readBinary().value;
       } else {
         input.skip(ftype);
       }
@@ -50,7 +50,7 @@ IOSDevice.prototype.write = function(output) {
   output.writeStructBegin('IOSDevice');
   if (this.deviceToken !== null && this.deviceToken !== undefined) {
     output.writeFieldBegin('deviceToken', Thrift.Type.STRING, 1);
-    output.writeString(this.deviceToken);
+    output.writeBinary(this.deviceToken);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

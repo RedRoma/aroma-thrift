@@ -34,7 +34,7 @@
   return self;
 }
 
-- (id) initWithDeviceToken: (NSString *) deviceToken
+- (id) initWithDeviceToken: (NSData *) deviceToken
 {
   self = [super init];
   __deviceToken = [deviceToken retain_stub];
@@ -94,11 +94,11 @@
   [super dealloc_stub];
 }
 
-- (NSString *) deviceToken {
+- (NSData *) deviceToken {
   return [[__deviceToken retain_stub] autorelease_stub];
 }
 
-- (void) setDeviceToken: (NSString *) deviceToken {
+- (void) setDeviceToken: (NSData *) deviceToken {
   [deviceToken retain_stub];
   [__deviceToken release_stub];
   __deviceToken = deviceToken;
@@ -132,7 +132,7 @@
     {
       case 1:
         if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
+          NSData * fieldValue = [inProtocol readBinary];
           [self setDeviceToken: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -152,7 +152,7 @@
   if (__deviceToken_isset) {
     if (__deviceToken != nil) {
       [outProtocol writeFieldBeginWithName: @"deviceToken" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __deviceToken];
+      [outProtocol writeBinary: __deviceToken];
       [outProtocol writeFieldEnd];
     }
   }

@@ -31,17 +31,17 @@ typedef Aroma_timestamp AromaChannels_timestamp;
 typedef Aroma_uuid AromaChannels_uuid;
 
 @interface AromaChannels_IOSDevice : NSObject <TBase, NSCoding> {
-  NSString * __deviceToken;
+  NSData * __deviceToken;
 
   BOOL __deviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=deviceToken, setter=setDeviceToken:) NSString * deviceToken;
+@property (nonatomic, retain, getter=deviceToken, setter=setDeviceToken:) NSData * deviceToken;
 #endif
 
 - (id) init;
-- (id) initWithDeviceToken: (NSString *) deviceToken;
+- (id) initWithDeviceToken: (NSData *) deviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -49,8 +49,8 @@ typedef Aroma_uuid AromaChannels_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) deviceToken;
-- (void) setDeviceToken: (NSString *) deviceToken;
+- (NSData *) deviceToken;
+- (void) setDeviceToken: (NSData *) deviceToken;
 #endif
 - (BOOL) deviceTokenIsSet;
 
