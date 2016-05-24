@@ -44,6 +44,7 @@ import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
 import static tech.sirwellington.alchemy.generator.StringGenerators.alphabeticString;
 import static tech.sirwellington.alchemy.generator.StringGenerators.strings;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
+import static tech.sirwellington.alchemy.test.junit.runners.GenerateString.Type.UUID;
 
 /**
  *
@@ -66,11 +67,12 @@ public class AromaAssertionsTest
     @GeneratePojo
     private AuthenticationToken authenticationToken;
 
-    @GenerateString
+    @GenerateString(UUID)
     private String tokenId;
     
-    @GenerateString
+    @GenerateString(UUID)
     private String ownerId;
+    
     private VerifyTokenRequest expectedRequest;
     
     @Before

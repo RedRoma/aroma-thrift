@@ -36,6 +36,7 @@ import tech.sirwellington.alchemy.arguments.FailedAssertionException;
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
 import static tech.sirwellington.alchemy.arguments.assertions.StringAssertions.nonEmptyString;
+import static tech.sirwellington.alchemy.arguments.assertions.StringAssertions.validUUID;
 
 /**
  * This class contains common Assertions made on Aroma Service requests and other data structures.
@@ -81,12 +82,16 @@ public final class AromaAssertions
             checkThat(t.tokenId)
                 .usingMessage("token missing tokenId")
                 .is(nonEmptyString());
-            
-//            checkThat(t.ownerId)
-//                .usingMessage("token missing ownerId")
-//                .is(nonEmptyString())
-//                .usingMessage("token ownerId must be a UUID")
-//                .is(validUUID());
+
+            if (t.isSetOwnerId())
+            {
+                checkThat(t.ownerId)
+                    .usingMessage("token missing ownerId")
+                    .is(nonEmptyString())
+                    .usingMessage("token ownerId must be a UUID")
+                    .is(validUUID());
+            }
+
         };
     }
     
