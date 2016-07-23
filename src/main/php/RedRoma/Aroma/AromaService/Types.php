@@ -2681,7 +2681,7 @@ class RenewApplicationTokenRequest {
    */
   public $applicationToken = null;
   /**
-   * Defines for how long to extend a Token.
+   * Defines for how long to extend a Token's life.
    * 
    * @var \RedRoma\Aroma\LengthOfTime
    */

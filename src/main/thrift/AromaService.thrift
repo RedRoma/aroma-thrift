@@ -303,7 +303,7 @@ struct RenewApplicationTokenRequest
     1: UserToken token;
     /** The Token to renew */
     2: ApplicationToken applicationToken;
-    /** Defines for how long to extend a Token. */
+    /** Defines for how long to extend a Token's life. */
     3: Aroma.LengthOfTime newLifetime;
     4: uuid applicationId;
 }
