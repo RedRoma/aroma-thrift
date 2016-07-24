@@ -40,7 +40,7 @@ struct UserToken
     4: optional bool isOauthToken = false;
     5: optional string oauthProvider;
     6: uuid userId;
-    7: optional TokenStatus TokenStatus;
+    7: optional TokenStatus status;
 }
 
 struct GithubToken
@@ -105,5 +105,5 @@ struct AuthenticationToken
     6: uuid organizationId;
     7: string ownerName;
     8: string organizationName;
-    9: optional TokenStatus TokenStatusisExpired;
+    9: optional TokenStatus status;
 }

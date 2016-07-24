@@ -465,7 +465,7 @@
   return self;
 }
 
-- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (AromaAuthentication_uuid) userId TokenStatus: (int) TokenStatus
+- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (AromaAuthentication_uuid) userId status: (int) status
 {
   self = [super init];
   __tokenId = [tokenId retain_stub];
@@ -480,8 +480,8 @@
   __oauthProvider_isset = YES;
   __userId = [userId retain_stub];
   __userId_isset = YES;
-  __TokenStatus = TokenStatus;
-  __TokenStatus_isset = YES;
+  __status = status;
+  __status_isset = YES;
   return self;
 }
 
@@ -518,10 +518,10 @@
     __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
     __userId_isset = YES;
   }
-  if ([decoder containsValueForKey: @"TokenStatus"])
+  if ([decoder containsValueForKey: @"status"])
   {
-    __TokenStatus = [decoder decodeIntForKey: @"TokenStatus"];
-    __TokenStatus_isset = YES;
+    __status = [decoder decodeIntForKey: @"status"];
+    __status_isset = YES;
   }
   return self;
 }
@@ -552,9 +552,9 @@
   {
     [encoder encodeObject: __userId forKey: @"userId"];
   }
-  if (__TokenStatus_isset)
+  if (__status_isset)
   {
-    [encoder encodeInt: __TokenStatus forKey: @"TokenStatus"];
+    [encoder encodeInt: __status forKey: @"status"];
   }
 }
 
@@ -591,10 +591,10 @@
   {
     hash = (hash * 31) ^ [__userId hash];
   }
-  hash = (hash * 31) ^ __TokenStatus_isset ? 2654435761 : 0;
-  if (__TokenStatus_isset)
+  hash = (hash * 31) ^ __status_isset ? 2654435761 : 0;
+  if (__status_isset)
   {
-    hash = (hash * 31) ^ [@(__TokenStatus) hash];
+    hash = (hash * 31) ^ [@(__status) hash];
   }
   return hash;
 }
@@ -632,8 +632,8 @@
       (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
     return NO;
   }
-  if ((__TokenStatus_isset != other->__TokenStatus_isset) ||
-      (__TokenStatus_isset && (__TokenStatus != other->__TokenStatus))) {
+  if ((__status_isset != other->__status_isset) ||
+      (__status_isset && (__status != other->__status))) {
     return NO;
   }
   return YES;
@@ -766,21 +766,21 @@
   __userId_isset = NO;
 }
 
-- (int) TokenStatus {
-  return __TokenStatus;
+- (int) status {
+  return __status;
 }
 
-- (void) setTokenStatus: (int) TokenStatus {
-  __TokenStatus = TokenStatus;
-  __TokenStatus_isset = YES;
+- (void) setStatus: (int) status {
+  __status = status;
+  __status_isset = YES;
 }
 
-- (BOOL) TokenStatusIsSet {
-  return __TokenStatus_isset;
+- (BOOL) statusIsSet {
+  return __status_isset;
 }
 
-- (void) unsetTokenStatus {
-  __TokenStatus_isset = NO;
+- (void) unsetStatus {
+  __status_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -849,7 +849,7 @@
       case 7:
         if (fieldType == TType_I32) {
           int fieldValue = [inProtocol readI32];
-          [self setTokenStatus: fieldValue];
+          [self setStatus: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -903,9 +903,9 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__TokenStatus_isset) {
-    [outProtocol writeFieldBeginWithName: @"TokenStatus" type: TType_I32 fieldID: 7];
-    [outProtocol writeI32: __TokenStatus];
+  if (__status_isset) {
+    [outProtocol writeFieldBeginWithName: @"status" type: TType_I32 fieldID: 7];
+    [outProtocol writeI32: __status];
     [outProtocol writeFieldEnd];
   }
   [outProtocol writeFieldStop];
@@ -930,8 +930,8 @@
   [ms appendFormat: @"\"%@\"", __oauthProvider];
   [ms appendString: @",userId:"];
   [ms appendFormat: @"\"%@\"", __userId];
-  [ms appendString: @",TokenStatus:"];
-  [ms appendFormat: @"%i", __TokenStatus];
+  [ms appendString: @",status:"];
+  [ms appendFormat: @"%i", __status];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1966,7 +1966,7 @@
   return self;
 }
 
-- (id) initWithTokenId: (NSString *) tokenId ownerId: (AromaAuthentication_uuid) ownerId timeOfCreation: (AromaAuthentication_timestamp) timeOfCreation timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (AromaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName TokenStatusisExpired: (int) TokenStatusisExpired
+- (id) initWithTokenId: (NSString *) tokenId ownerId: (AromaAuthentication_uuid) ownerId timeOfCreation: (AromaAuthentication_timestamp) timeOfCreation timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (AromaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName status: (int) status
 {
   self = [super init];
   __tokenId = [tokenId retain_stub];
@@ -1985,8 +1985,8 @@
   __ownerName_isset = YES;
   __organizationName = [organizationName retain_stub];
   __organizationName_isset = YES;
-  __TokenStatusisExpired = TokenStatusisExpired;
-  __TokenStatusisExpired_isset = YES;
+  __status = status;
+  __status_isset = YES;
   return self;
 }
 
@@ -2033,10 +2033,10 @@
     __organizationName = [[decoder decodeObjectForKey: @"organizationName"] retain_stub];
     __organizationName_isset = YES;
   }
-  if ([decoder containsValueForKey: @"TokenStatusisExpired"])
+  if ([decoder containsValueForKey: @"status"])
   {
-    __TokenStatusisExpired = [decoder decodeIntForKey: @"TokenStatusisExpired"];
-    __TokenStatusisExpired_isset = YES;
+    __status = [decoder decodeIntForKey: @"status"];
+    __status_isset = YES;
   }
   return self;
 }
@@ -2075,9 +2075,9 @@
   {
     [encoder encodeObject: __organizationName forKey: @"organizationName"];
   }
-  if (__TokenStatusisExpired_isset)
+  if (__status_isset)
   {
-    [encoder encodeInt: __TokenStatusisExpired forKey: @"TokenStatusisExpired"];
+    [encoder encodeInt: __status forKey: @"status"];
   }
 }
 
@@ -2124,10 +2124,10 @@
   {
     hash = (hash * 31) ^ [__organizationName hash];
   }
-  hash = (hash * 31) ^ __TokenStatusisExpired_isset ? 2654435761 : 0;
-  if (__TokenStatusisExpired_isset)
+  hash = (hash * 31) ^ __status_isset ? 2654435761 : 0;
+  if (__status_isset)
   {
-    hash = (hash * 31) ^ [@(__TokenStatusisExpired) hash];
+    hash = (hash * 31) ^ [@(__status) hash];
   }
   return hash;
 }
@@ -2173,8 +2173,8 @@
       (__organizationName_isset && ((__organizationName || other->__organizationName) && ![__organizationName isEqual:other->__organizationName]))) {
     return NO;
   }
-  if ((__TokenStatusisExpired_isset != other->__TokenStatusisExpired_isset) ||
-      (__TokenStatusisExpired_isset && (__TokenStatusisExpired != other->__TokenStatusisExpired))) {
+  if ((__status_isset != other->__status_isset) ||
+      (__status_isset && (__status != other->__status))) {
     return NO;
   }
   return YES;
@@ -2346,21 +2346,21 @@
   __organizationName_isset = NO;
 }
 
-- (int) TokenStatusisExpired {
-  return __TokenStatusisExpired;
+- (int) status {
+  return __status;
 }
 
-- (void) setTokenStatusisExpired: (int) TokenStatusisExpired {
-  __TokenStatusisExpired = TokenStatusisExpired;
-  __TokenStatusisExpired_isset = YES;
+- (void) setStatus: (int) status {
+  __status = status;
+  __status_isset = YES;
 }
 
-- (BOOL) TokenStatusisExpiredIsSet {
-  return __TokenStatusisExpired_isset;
+- (BOOL) statusIsSet {
+  return __status_isset;
 }
 
-- (void) unsetTokenStatusisExpired {
-  __TokenStatusisExpired_isset = NO;
+- (void) unsetStatus {
+  __status_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -2445,7 +2445,7 @@
       case 9:
         if (fieldType == TType_I32) {
           int fieldValue = [inProtocol readI32];
-          [self setTokenStatusisExpired: fieldValue];
+          [self setStatus: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -2511,9 +2511,9 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__TokenStatusisExpired_isset) {
-    [outProtocol writeFieldBeginWithName: @"TokenStatusisExpired" type: TType_I32 fieldID: 9];
-    [outProtocol writeI32: __TokenStatusisExpired];
+  if (__status_isset) {
+    [outProtocol writeFieldBeginWithName: @"status" type: TType_I32 fieldID: 9];
+    [outProtocol writeI32: __status];
     [outProtocol writeFieldEnd];
   }
   [outProtocol writeFieldStop];
@@ -2542,8 +2542,8 @@
   [ms appendFormat: @"\"%@\"", __ownerName];
   [ms appendString: @",organizationName:"];
   [ms appendFormat: @"\"%@\"", __organizationName];
-  [ms appendString: @",TokenStatusisExpired:"];
-  [ms appendFormat: @"%i", __TokenStatusisExpired];
+  [ms appendString: @",status:"];
+  [ms appendFormat: @"%i", __status];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

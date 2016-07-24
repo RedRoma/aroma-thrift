@@ -261,9 +261,9 @@ void UserToken::__set_userId(const uuid& val) {
   this->userId = val;
 }
 
-void UserToken::__set_TokenStatus(const TokenStatus::type val) {
-  this->TokenStatus = val;
-__isset.TokenStatus = true;
+void UserToken::__set_status(const TokenStatus::type val) {
+  this->status = val;
+__isset.status = true;
 }
 
 uint32_t UserToken::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -339,8 +339,8 @@ uint32_t UserToken::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast3;
           xfer += iprot->readI32(ecast3);
-          this->TokenStatus = (TokenStatus::type)ecast3;
-          this->__isset.TokenStatus = true;
+          this->status = (TokenStatus::type)ecast3;
+          this->__isset.status = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -389,9 +389,9 @@ uint32_t UserToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->userId);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.TokenStatus) {
-    xfer += oprot->writeFieldBegin("TokenStatus", ::apache::thrift::protocol::T_I32, 7);
-    xfer += oprot->writeI32((int32_t)this->TokenStatus);
+  if (this->__isset.status) {
+    xfer += oprot->writeFieldBegin("status", ::apache::thrift::protocol::T_I32, 7);
+    xfer += oprot->writeI32((int32_t)this->status);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -407,7 +407,7 @@ void swap(UserToken &a, UserToken &b) {
   swap(a.isOauthToken, b.isOauthToken);
   swap(a.oauthProvider, b.oauthProvider);
   swap(a.userId, b.userId);
-  swap(a.TokenStatus, b.TokenStatus);
+  swap(a.status, b.status);
   swap(a.__isset, b.__isset);
 }
 
@@ -418,7 +418,7 @@ UserToken::UserToken(const UserToken& other4) {
   isOauthToken = other4.isOauthToken;
   oauthProvider = other4.oauthProvider;
   userId = other4.userId;
-  TokenStatus = other4.TokenStatus;
+  status = other4.status;
   __isset = other4.__isset;
 }
 UserToken& UserToken::operator=(const UserToken& other5) {
@@ -428,7 +428,7 @@ UserToken& UserToken::operator=(const UserToken& other5) {
   isOauthToken = other5.isOauthToken;
   oauthProvider = other5.oauthProvider;
   userId = other5.userId;
-  TokenStatus = other5.TokenStatus;
+  status = other5.status;
   __isset = other5.__isset;
   return *this;
 }
@@ -441,7 +441,7 @@ void UserToken::printTo(std::ostream& out) const {
   out << ", " << "isOauthToken="; (__isset.isOauthToken ? (out << to_string(isOauthToken)) : (out << "<null>"));
   out << ", " << "oauthProvider="; (__isset.oauthProvider ? (out << to_string(oauthProvider)) : (out << "<null>"));
   out << ", " << "userId=" << to_string(userId);
-  out << ", " << "TokenStatus="; (__isset.TokenStatus ? (out << to_string(TokenStatus)) : (out << "<null>"));
+  out << ", " << "status="; (__isset.status ? (out << to_string(status)) : (out << "<null>"));
   out << ")";
 }
 
@@ -973,9 +973,9 @@ void AuthenticationToken::__set_organizationName(const std::string& val) {
   this->organizationName = val;
 }
 
-void AuthenticationToken::__set_TokenStatusisExpired(const TokenStatus::type val) {
-  this->TokenStatusisExpired = val;
-__isset.TokenStatusisExpired = true;
+void AuthenticationToken::__set_status(const TokenStatus::type val) {
+  this->status = val;
+__isset.status = true;
 }
 
 uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1069,8 +1069,8 @@ uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot)
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast16;
           xfer += iprot->readI32(ecast16);
-          this->TokenStatusisExpired = (TokenStatus::type)ecast16;
-          this->__isset.TokenStatusisExpired = true;
+          this->status = (TokenStatus::type)ecast16;
+          this->__isset.status = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1124,9 +1124,9 @@ uint32_t AuthenticationToken::write(::apache::thrift::protocol::TProtocol* oprot
   xfer += oprot->writeString(this->organizationName);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.TokenStatusisExpired) {
-    xfer += oprot->writeFieldBegin("TokenStatusisExpired", ::apache::thrift::protocol::T_I32, 9);
-    xfer += oprot->writeI32((int32_t)this->TokenStatusisExpired);
+  if (this->__isset.status) {
+    xfer += oprot->writeFieldBegin("status", ::apache::thrift::protocol::T_I32, 9);
+    xfer += oprot->writeI32((int32_t)this->status);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -1144,7 +1144,7 @@ void swap(AuthenticationToken &a, AuthenticationToken &b) {
   swap(a.organizationId, b.organizationId);
   swap(a.ownerName, b.ownerName);
   swap(a.organizationName, b.organizationName);
-  swap(a.TokenStatusisExpired, b.TokenStatusisExpired);
+  swap(a.status, b.status);
   swap(a.__isset, b.__isset);
 }
 
@@ -1157,7 +1157,7 @@ AuthenticationToken::AuthenticationToken(const AuthenticationToken& other17) {
   organizationId = other17.organizationId;
   ownerName = other17.ownerName;
   organizationName = other17.organizationName;
-  TokenStatusisExpired = other17.TokenStatusisExpired;
+  status = other17.status;
   __isset = other17.__isset;
 }
 AuthenticationToken& AuthenticationToken::operator=(const AuthenticationToken& other18) {
@@ -1169,7 +1169,7 @@ AuthenticationToken& AuthenticationToken::operator=(const AuthenticationToken& o
   organizationId = other18.organizationId;
   ownerName = other18.ownerName;
   organizationName = other18.organizationName;
-  TokenStatusisExpired = other18.TokenStatusisExpired;
+  status = other18.status;
   __isset = other18.__isset;
   return *this;
 }
@@ -1184,7 +1184,7 @@ void AuthenticationToken::printTo(std::ostream& out) const {
   out << ", " << "organizationId=" << to_string(organizationId);
   out << ", " << "ownerName=" << to_string(ownerName);
   out << ", " << "organizationName=" << to_string(organizationName);
-  out << ", " << "TokenStatusisExpired="; (__isset.TokenStatusisExpired ? (out << to_string(TokenStatusisExpired)) : (out << "<null>"));
+  out << ", " << "status="; (__isset.status ? (out << to_string(status)) : (out << "<null>"));
   out << ")";
 }
 
