@@ -2664,8 +2664,8 @@ class RecreateApplicationTokenResponse {
 }
 
 /**
- * Renews an Application Token, effectively extending it's lifetime.
- * Additional Charges may apply.
+ * Renews an Application Token, extending it's lifetime.
+ * Additional charges may apply.
  */
 class RenewApplicationTokenRequest {
   static $_TSPEC;

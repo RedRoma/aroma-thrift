@@ -270,6 +270,10 @@ struct SearchForApplicationsResponse
     1: list<Application> applications = []
 }
 
+//==========================================================
+// APP TOKEN OPERATIONS
+//==========================================================
+
 
 /**
  * Recreates an Application's Token. This is usually done because the original token was:
@@ -295,8 +299,8 @@ struct RecreateApplicationTokenResponse
 
 
 /**
- * Renews an Application Token, effectively extending it's lifetime.
- * Additional Charges may apply.
+ * Renews an Application Token, extending it's lifetime.
+ * Additional charges may apply.
  */
 struct RenewApplicationTokenRequest
 {
