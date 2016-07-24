@@ -4985,7 +4985,7 @@
 
 @end
 
-@implementation AromaService_RegenerateApplicationTokenRequest
+@implementation AromaService_RecreateApplicationTokenRequest
 
 - (id) init
 {
@@ -5054,10 +5054,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaService_RegenerateApplicationTokenRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_RecreateApplicationTokenRequest class]]) {
     return NO;
   }
-  AromaService_RegenerateApplicationTokenRequest *other = (AromaService_RegenerateApplicationTokenRequest *)anObject;
+  AromaService_RecreateApplicationTokenRequest *other = (AromaService_RecreateApplicationTokenRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -5161,7 +5161,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegenerateApplicationTokenRequest"];
+  [outProtocol writeStructBeginWithName: @"RecreateApplicationTokenRequest"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
@@ -5185,7 +5185,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegenerateApplicationTokenRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RecreateApplicationTokenRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationId:"];
@@ -5196,7 +5196,7 @@
 
 @end
 
-@implementation AromaService_RegenerateApplicationTokenResponse
+@implementation AromaService_RecreateApplicationTokenResponse
 
 - (id) init
 {
@@ -5249,10 +5249,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaService_RegenerateApplicationTokenResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_RecreateApplicationTokenResponse class]]) {
     return NO;
   }
-  AromaService_RegenerateApplicationTokenResponse *other = (AromaService_RegenerateApplicationTokenResponse *)anObject;
+  AromaService_RecreateApplicationTokenResponse *other = (AromaService_RecreateApplicationTokenResponse *)anObject;
   if ((__applicationToken_isset != other->__applicationToken_isset) ||
       (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
     return NO;
@@ -5322,7 +5322,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegenerateApplicationTokenResponse"];
+  [outProtocol writeStructBeginWithName: @"RecreateApplicationTokenResponse"];
   if (__applicationToken_isset) {
     if (__applicationToken != nil) {
       [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 1];
@@ -5339,7 +5339,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegenerateApplicationTokenResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RecreateApplicationTokenResponse("];
   [ms appendString: @"applicationToken:"];
   [ms appendFormat: @"%@", __applicationToken];
   [ms appendString: @")"];
@@ -18921,18 +18921,18 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 
 @end
 
-@interface AromaService_regenerateToken_args : NSObject <TBase, NSCoding> {
-  AromaService_RegenerateApplicationTokenRequest * __request;
+@interface AromaService_recreateToken_args : NSObject <TBase, NSCoding> {
+  AromaService_RecreateApplicationTokenRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_RegenerateApplicationTokenRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_RecreateApplicationTokenRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (AromaService_RegenerateApplicationTokenRequest *) request;
+- (id) initWithRequest: (AromaService_RecreateApplicationTokenRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -18940,14 +18940,14 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaService_RegenerateApplicationTokenRequest *) request;
-- (void) setRequest: (AromaService_RegenerateApplicationTokenRequest *) request;
+- (AromaService_RecreateApplicationTokenRequest *) request;
+- (void) setRequest: (AromaService_RecreateApplicationTokenRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation AromaService_regenerateToken_args
+@implementation AromaService_recreateToken_args
 
 - (id) init
 {
@@ -18957,7 +18957,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   return self;
 }
 
-- (id) initWithRequest: (AromaService_RegenerateApplicationTokenRequest *) request
+- (id) initWithRequest: (AromaService_RecreateApplicationTokenRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -19000,10 +19000,10 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaService_regenerateToken_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_recreateToken_args class]]) {
     return NO;
   }
-  AromaService_regenerateToken_args *other = (AromaService_regenerateToken_args *)anObject;
+  AromaService_recreateToken_args *other = (AromaService_recreateToken_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -19017,11 +19017,11 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   [super dealloc_stub];
 }
 
-- (AromaService_RegenerateApplicationTokenRequest *) request {
+- (AromaService_RecreateApplicationTokenRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (AromaService_RegenerateApplicationTokenRequest *) request {
+- (void) setRequest: (AromaService_RecreateApplicationTokenRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -19055,7 +19055,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AromaService_RegenerateApplicationTokenRequest *fieldValue = [[AromaService_RegenerateApplicationTokenRequest alloc] init];
+          AromaService_RecreateApplicationTokenRequest *fieldValue = [[AromaService_RecreateApplicationTokenRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -19073,7 +19073,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"regenerateToken_args"];
+  [outProtocol writeStructBeginWithName: @"recreateToken_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -19090,7 +19090,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_regenerateToken_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_recreateToken_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -19099,8 +19099,8 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 
 @end
 
-@interface AromaService_RegenerateToken_result : NSObject <TBase, NSCoding> {
-  AromaService_RegenerateApplicationTokenResponse * __success;
+@interface AromaService_RecreateToken_result : NSObject <TBase, NSCoding> {
+  AromaService_RecreateApplicationTokenResponse * __success;
   AromaService_OperationFailedException __ex1;
   AromaService_InvalidArgumentException __ex2;
   AromaService_InvalidTokenException __ex3;
@@ -19116,7 +19116,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_RegenerateApplicationTokenResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_RecreateApplicationTokenResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
@@ -19125,7 +19125,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AromaService_RegenerateApplicationTokenResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_RecreateApplicationTokenResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -19133,8 +19133,8 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaService_RegenerateApplicationTokenResponse *) success;
-- (void) setSuccess: (AromaService_RegenerateApplicationTokenResponse *) success;
+- (AromaService_RecreateApplicationTokenResponse *) success;
+- (void) setSuccess: (AromaService_RecreateApplicationTokenResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -19170,7 +19170,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 
 @end
 
-@implementation AromaService_RegenerateToken_result
+@implementation AromaService_RecreateToken_result
 
 - (id) init
 {
@@ -19180,7 +19180,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   return self;
 }
 
-- (id) initWithSuccess: (AromaService_RegenerateApplicationTokenResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_RecreateApplicationTokenResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -19303,10 +19303,10 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaService_RegenerateToken_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_RecreateToken_result class]]) {
     return NO;
   }
-  AromaService_RegenerateToken_result *other = (AromaService_RegenerateToken_result *)anObject;
+  AromaService_RecreateToken_result *other = (AromaService_RecreateToken_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -19345,11 +19345,11 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   [super dealloc_stub];
 }
 
-- (AromaService_RegenerateApplicationTokenResponse *) success {
+- (AromaService_RecreateApplicationTokenResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (AromaService_RegenerateApplicationTokenResponse *) success {
+- (void) setSuccess: (AromaService_RecreateApplicationTokenResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -19488,7 +19488,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          AromaService_RegenerateApplicationTokenResponse *fieldValue = [[AromaService_RegenerateApplicationTokenResponse alloc] init];
+          AromaService_RecreateApplicationTokenResponse *fieldValue = [[AromaService_RecreateApplicationTokenResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -19556,7 +19556,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegenerateToken_result"];
+  [outProtocol writeStructBeginWithName: @"RecreateToken_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -19604,7 +19604,7 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegenerateToken_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RecreateToken_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -35308,10 +35308,10 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   return [self recv_provisionApplication];
 }
 
-- (void) send_regenerateToken: (AromaService_RegenerateApplicationTokenRequest *) request
+- (void) send_recreateToken: (AromaService_RecreateApplicationTokenRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"regenerateToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"regenerateToken_args"];
+  [outProtocol writeMessageBeginWithName: @"recreateToken" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"recreateToken_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -35322,13 +35322,13 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   [outProtocol writeMessageEnd];
 }
 
-- (AromaService_RegenerateApplicationTokenResponse *) recv_regenerateToken
+- (AromaService_RecreateApplicationTokenResponse *) recv_recreateToken
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  AromaService_RegenerateToken_result * result = [[[AromaService_RegenerateToken_result alloc] init] autorelease_stub];
+  AromaService_RecreateToken_result * result = [[[AromaService_RecreateToken_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -35350,14 +35350,14 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
     @throw [result ex5];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"regenerateToken failed: unknown result"];
+                                           reason: @"recreateToken failed: unknown result"];
 }
 
-- (AromaService_RegenerateApplicationTokenResponse *) regenerateToken: (AromaService_RegenerateApplicationTokenRequest *) request
+- (AromaService_RecreateApplicationTokenResponse *) recreateToken: (AromaService_RecreateApplicationTokenRequest *) request
 {
-  [self send_regenerateToken : request];
+  [self send_recreateToken : request];
   [[outProtocol transport] flush];
-  return [self recv_regenerateToken];
+  return [self recv_recreateToken];
 }
 
 - (void) send_deleteApplication: (AromaService_DeleteApplicationRequest *) request
@@ -36604,12 +36604,12 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"provisionApplication"];
 }
 {
-  SEL s = @selector(process_regenerateToken_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_recreateToken_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"regenerateToken"];
+  [mMethodMap setValue: invocation forKey: @"recreateToken"];
 }
 {
   SEL s = @selector(process_deleteApplication_withSequenceID:inProtocol:outProtocol:);
@@ -36946,14 +36946,14 @@ AromaService_ProvisionApplication_result * result = [[AromaService_ProvisionAppl
 [args release_stub];
 }
 
-- (void) process_regenerateToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_recreateToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-AromaService_regenerateToken_args * args = [[AromaService_regenerateToken_args alloc] init];
+AromaService_recreateToken_args * args = [[AromaService_recreateToken_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-AromaService_RegenerateToken_result * result = [[AromaService_RegenerateToken_result alloc] init];
-[result setSuccess: [mService regenerateToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"regenerateToken"
+AromaService_RecreateToken_result * result = [[AromaService_RecreateToken_result alloc] init];
+[result setSuccess: [mService recreateToken: [args request]]];
+[outProtocol writeMessageBeginWithName: @"recreateToken"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];

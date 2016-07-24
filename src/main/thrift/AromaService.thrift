@@ -272,8 +272,8 @@ struct SearchForApplicationsResponse
 
 
 /**
- * Regenerates an Application's Token. This is usually done because the original token was:
- * 1: Lost or Misplaced
+ * Recreates an Application's Token. This is usually done because the original token was:
+ * 1: Forgotten or Misplaced
  * 2: Compromised (someone else has accessed it)
  * 3: Just for security reasons.
  *
@@ -282,13 +282,13 @@ struct SearchForApplicationsResponse
  *
  * #owner
  */
-struct RegenerateApplicationTokenRequest
+struct RecreateApplicationTokenRequest
 {
     1: UserToken token;
     2: uuid applicationId;
 }
 
-struct RegenerateApplicationTokenResponse
+struct RecreateApplicationTokenResponse
 {
     1: ApplicationToken applicationToken;
 }
@@ -776,17 +776,17 @@ service AromaService
 
 
     /**
-     * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+     * Recreate an Application Token in case the existing one is lost, forgotten, or compromised.
      * Keep in mind that this will invalidate any prior existing Application Tokens.
      * Only an "owner" can perform this operation.
      *
      * #owner
      */
-    RegenerateApplicationTokenResponse regenerateToken(1 : RegenerateApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                             2 : InvalidArgumentException ex2,
-                                                                                                             3 : InvalidTokenException ex3,
-                                                                                                             4 : ApplicationDoesNotExistException ex4,
-                                                                                                             5 : UnauthorizedException ex5);
+    RecreateApplicationTokenResponse recreateToken(1 : RecreateApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                       2 : InvalidArgumentException ex2,
+                                                                                                       3 : InvalidTokenException ex3,
+                                                                                                       4 : ApplicationDoesNotExistException ex4,
+                                                                                                       5 : UnauthorizedException ex5);
 
 
     /**

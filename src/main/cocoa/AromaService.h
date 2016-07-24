@@ -892,7 +892,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
-@interface AromaService_RegenerateApplicationTokenRequest : NSObject <TBase, NSCoding> {
+@interface AromaService_RecreateApplicationTokenRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
   AromaService_uuid __applicationId;
 
@@ -927,7 +927,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
-@interface AromaService_RegenerateApplicationTokenResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_RecreateApplicationTokenResponse : NSObject <TBase, NSCoding> {
   AromaService_ApplicationToken __applicationToken;
 
   BOOL __applicationToken_isset;
@@ -2500,7 +2500,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (AromaService_GetApplicationInfoResponse *) getApplicationInfo: (AromaService_GetApplicationInfoRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_GetApplicationsOwnedByResponse *) getApplicationsOwnedBy: (AromaService_GetApplicationsOwnedByRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
 - (AromaService_ProvisionApplicationResponse *) provisionApplication: (AromaService_ProvisionApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
-- (AromaService_RegenerateApplicationTokenResponse *) regenerateToken: (AromaService_RegenerateApplicationTokenRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_RecreateApplicationTokenResponse *) recreateToken: (AromaService_RecreateApplicationTokenRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_DeleteApplicationResponse *) deleteApplication: (AromaService_DeleteApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_RenewApplicationTokenResponse *) renewApplicationToken: (AromaService_RenewApplicationTokenRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_UpdateApplicationResponse *) updateApplication: (AromaService_UpdateApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException

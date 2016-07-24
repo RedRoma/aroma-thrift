@@ -1629,7 +1629,7 @@ SearchForApplicationsResponse.prototype.write = function(output) {
   return;
 };
 
-RegenerateApplicationTokenRequest = function(args) {
+RecreateApplicationTokenRequest = function(args) {
   this.token = null;
   this.applicationId = null;
   if (args) {
@@ -1641,8 +1641,8 @@ RegenerateApplicationTokenRequest = function(args) {
     }
   }
 };
-RegenerateApplicationTokenRequest.prototype = {};
-RegenerateApplicationTokenRequest.prototype.read = function(input) {
+RecreateApplicationTokenRequest.prototype = {};
+RecreateApplicationTokenRequest.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -1679,8 +1679,8 @@ RegenerateApplicationTokenRequest.prototype.read = function(input) {
   return;
 };
 
-RegenerateApplicationTokenRequest.prototype.write = function(output) {
-  output.writeStructBegin('RegenerateApplicationTokenRequest');
+RecreateApplicationTokenRequest.prototype.write = function(output) {
+  output.writeStructBegin('RecreateApplicationTokenRequest');
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);
@@ -1696,7 +1696,7 @@ RegenerateApplicationTokenRequest.prototype.write = function(output) {
   return;
 };
 
-RegenerateApplicationTokenResponse = function(args) {
+RecreateApplicationTokenResponse = function(args) {
   this.applicationToken = null;
   if (args) {
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
@@ -1704,8 +1704,8 @@ RegenerateApplicationTokenResponse = function(args) {
     }
   }
 };
-RegenerateApplicationTokenResponse.prototype = {};
-RegenerateApplicationTokenResponse.prototype.read = function(input) {
+RecreateApplicationTokenResponse.prototype = {};
+RecreateApplicationTokenResponse.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -1738,8 +1738,8 @@ RegenerateApplicationTokenResponse.prototype.read = function(input) {
   return;
 };
 
-RegenerateApplicationTokenResponse.prototype.write = function(output) {
-  output.writeStructBegin('RegenerateApplicationTokenResponse');
+RecreateApplicationTokenResponse.prototype.write = function(output) {
+  output.writeStructBegin('RecreateApplicationTokenResponse');
   if (this.applicationToken !== null && this.applicationToken !== undefined) {
     output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
     this.applicationToken.write(output);

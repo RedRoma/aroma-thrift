@@ -2469,19 +2469,19 @@ void SearchForApplicationsResponse::printTo(std::ostream& out) const {
 }
 
 
-RegenerateApplicationTokenRequest::~RegenerateApplicationTokenRequest() throw() {
+RecreateApplicationTokenRequest::~RecreateApplicationTokenRequest() throw() {
 }
 
 
-void RegenerateApplicationTokenRequest::__set_token(const UserToken& val) {
+void RecreateApplicationTokenRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void RegenerateApplicationTokenRequest::__set_applicationId(const uuid& val) {
+void RecreateApplicationTokenRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
-uint32_t RegenerateApplicationTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t RecreateApplicationTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2530,10 +2530,10 @@ uint32_t RegenerateApplicationTokenRequest::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t RegenerateApplicationTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t RecreateApplicationTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("RegenerateApplicationTokenRequest");
+  xfer += oprot->writeStructBegin("RecreateApplicationTokenRequest");
 
   xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->token.write(oprot);
@@ -2548,42 +2548,42 @@ uint32_t RegenerateApplicationTokenRequest::write(::apache::thrift::protocol::TP
   return xfer;
 }
 
-void swap(RegenerateApplicationTokenRequest &a, RegenerateApplicationTokenRequest &b) {
+void swap(RecreateApplicationTokenRequest &a, RecreateApplicationTokenRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.applicationId, b.applicationId);
   swap(a.__isset, b.__isset);
 }
 
-RegenerateApplicationTokenRequest::RegenerateApplicationTokenRequest(const RegenerateApplicationTokenRequest& other62) {
+RecreateApplicationTokenRequest::RecreateApplicationTokenRequest(const RecreateApplicationTokenRequest& other62) {
   token = other62.token;
   applicationId = other62.applicationId;
   __isset = other62.__isset;
 }
-RegenerateApplicationTokenRequest& RegenerateApplicationTokenRequest::operator=(const RegenerateApplicationTokenRequest& other63) {
+RecreateApplicationTokenRequest& RecreateApplicationTokenRequest::operator=(const RecreateApplicationTokenRequest& other63) {
   token = other63.token;
   applicationId = other63.applicationId;
   __isset = other63.__isset;
   return *this;
 }
-void RegenerateApplicationTokenRequest::printTo(std::ostream& out) const {
+void RecreateApplicationTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "RegenerateApplicationTokenRequest(";
+  out << "RecreateApplicationTokenRequest(";
   out << "token=" << to_string(token);
   out << ", " << "applicationId=" << to_string(applicationId);
   out << ")";
 }
 
 
-RegenerateApplicationTokenResponse::~RegenerateApplicationTokenResponse() throw() {
+RecreateApplicationTokenResponse::~RecreateApplicationTokenResponse() throw() {
 }
 
 
-void RegenerateApplicationTokenResponse::__set_applicationToken(const ApplicationToken& val) {
+void RecreateApplicationTokenResponse::__set_applicationToken(const ApplicationToken& val) {
   this->applicationToken = val;
 }
 
-uint32_t RegenerateApplicationTokenResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t RecreateApplicationTokenResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2624,10 +2624,10 @@ uint32_t RegenerateApplicationTokenResponse::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-uint32_t RegenerateApplicationTokenResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t RecreateApplicationTokenResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("RegenerateApplicationTokenResponse");
+  xfer += oprot->writeStructBegin("RecreateApplicationTokenResponse");
 
   xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->applicationToken.write(oprot);
@@ -2638,24 +2638,24 @@ uint32_t RegenerateApplicationTokenResponse::write(::apache::thrift::protocol::T
   return xfer;
 }
 
-void swap(RegenerateApplicationTokenResponse &a, RegenerateApplicationTokenResponse &b) {
+void swap(RecreateApplicationTokenResponse &a, RecreateApplicationTokenResponse &b) {
   using ::std::swap;
   swap(a.applicationToken, b.applicationToken);
   swap(a.__isset, b.__isset);
 }
 
-RegenerateApplicationTokenResponse::RegenerateApplicationTokenResponse(const RegenerateApplicationTokenResponse& other64) {
+RecreateApplicationTokenResponse::RecreateApplicationTokenResponse(const RecreateApplicationTokenResponse& other64) {
   applicationToken = other64.applicationToken;
   __isset = other64.__isset;
 }
-RegenerateApplicationTokenResponse& RegenerateApplicationTokenResponse::operator=(const RegenerateApplicationTokenResponse& other65) {
+RecreateApplicationTokenResponse& RecreateApplicationTokenResponse::operator=(const RecreateApplicationTokenResponse& other65) {
   applicationToken = other65.applicationToken;
   __isset = other65.__isset;
   return *this;
 }
-void RegenerateApplicationTokenResponse::printTo(std::ostream& out) const {
+void RecreateApplicationTokenResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "RegenerateApplicationTokenResponse(";
+  out << "RecreateApplicationTokenResponse(";
   out << "applicationToken=" << to_string(applicationToken);
   out << ")";
 }

@@ -87,21 +87,21 @@ interface AromaServiceIf {
    */
   public function provisionApplication(\RedRoma\Aroma\AromaService\ProvisionApplicationRequest $request);
   /**
-   * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+   * Recreate an Application Token in case the existing one is lost, forgotten, or compromised.
    * Keep in mind that this will invalidate any prior existing Application Tokens.
    * Only an "owner" can perform this operation.
    * 
    * #owner
    * 
-   * @param \RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest $request
-   * @return \RedRoma\Aroma\AromaService\RegenerateApplicationTokenResponse
+   * @param \RedRoma\Aroma\AromaService\RecreateApplicationTokenRequest $request
+   * @return \RedRoma\Aroma\AromaService\RecreateApplicationTokenResponse
    * @throws \RedRoma\Aroma\Exceptions\OperationFailedException
    * @throws \RedRoma\Aroma\Exceptions\InvalidArgumentException
    * @throws \RedRoma\Aroma\Exceptions\InvalidTokenException
    * @throws \RedRoma\Aroma\Exceptions\ApplicationDoesNotExistException
    * @throws \RedRoma\Aroma\Exceptions\UnauthorizedException
    */
-  public function regenerateToken(\RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest $request);
+  public function recreateToken(\RedRoma\Aroma\AromaService\RecreateApplicationTokenRequest $request);
   /**
    * Permanently Deletes an Application. Only an owner can perform this Operations.
    * 
@@ -765,34 +765,34 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     throw new \Exception("provisionApplication failed: unknown result");
   }
 
-  public function regenerateToken(\RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest $request)
+  public function recreateToken(\RedRoma\Aroma\AromaService\RecreateApplicationTokenRequest $request)
   {
-    $this->send_regenerateToken($request);
-    return $this->recv_regenerateToken();
+    $this->send_recreateToken($request);
+    return $this->recv_recreateToken();
   }
 
-  public function send_regenerateToken(\RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest $request)
+  public function send_recreateToken(\RedRoma\Aroma\AromaService\RecreateApplicationTokenRequest $request)
   {
-    $args = new \RedRoma\Aroma\AromaService\AromaService_regenerateToken_args();
+    $args = new \RedRoma\Aroma\AromaService\AromaService_recreateToken_args();
     $args->request = $request;
     $bin_accel = ($this->output_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'regenerateToken', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      thrift_protocol_write_binary($this->output_, 'recreateToken', TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
-      $this->output_->writeMessageBegin('regenerateToken', TMessageType::CALL, $this->seqid_);
+      $this->output_->writeMessageBegin('recreateToken', TMessageType::CALL, $this->seqid_);
       $args->write($this->output_);
       $this->output_->writeMessageEnd();
       $this->output_->getTransport()->flush();
     }
   }
 
-  public function recv_regenerateToken()
+  public function recv_recreateToken()
   {
     $bin_accel = ($this->input_ instanceof TBinaryProtocolAccelerated) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_regenerateToken_result', $this->input_->isStrictRead());
+    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\RedRoma\Aroma\AromaService\AromaService_recreateToken_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -806,7 +806,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
         $this->input_->readMessageEnd();
         throw $x;
       }
-      $result = new \RedRoma\Aroma\AromaService\AromaService_regenerateToken_result();
+      $result = new \RedRoma\Aroma\AromaService\AromaService_recreateToken_result();
       $result->read($this->input_);
       $this->input_->readMessageEnd();
     }
@@ -828,7 +828,7 @@ class AromaServiceClient implements \RedRoma\Aroma\AromaService\AromaServiceIf {
     if ($result->ex5 !== null) {
       throw $result->ex5;
     }
-    throw new \Exception("regenerateToken failed: unknown result");
+    throw new \Exception("recreateToken failed: unknown result");
   }
 
   public function deleteApplication(\RedRoma\Aroma\AromaService\DeleteApplicationRequest $request)
@@ -3968,11 +3968,11 @@ class AromaService_provisionApplication_result {
 
 }
 
-class AromaService_regenerateToken_args {
+class AromaService_recreateToken_args {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest
+   * @var \RedRoma\Aroma\AromaService\RecreateApplicationTokenRequest
    */
   public $request = null;
 
@@ -3982,7 +3982,7 @@ class AromaService_regenerateToken_args {
         1 => array(
           'var' => 'request',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest',
+          'class' => '\RedRoma\Aroma\AromaService\RecreateApplicationTokenRequest',
           ),
         );
     }
@@ -3994,7 +3994,7 @@ class AromaService_regenerateToken_args {
   }
 
   public function getName() {
-    return 'AromaService_regenerateToken_args';
+    return 'AromaService_recreateToken_args';
   }
 
   public function read($input)
@@ -4014,7 +4014,7 @@ class AromaService_regenerateToken_args {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->request = new \RedRoma\Aroma\AromaService\RegenerateApplicationTokenRequest();
+            $this->request = new \RedRoma\Aroma\AromaService\RecreateApplicationTokenRequest();
             $xfer += $this->request->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4032,7 +4032,7 @@ class AromaService_regenerateToken_args {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_regenerateToken_args');
+    $xfer += $output->writeStructBegin('AromaService_recreateToken_args');
     if ($this->request !== null) {
       if (!is_object($this->request)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -4048,11 +4048,11 @@ class AromaService_regenerateToken_args {
 
 }
 
-class AromaService_regenerateToken_result {
+class AromaService_recreateToken_result {
   static $_TSPEC;
 
   /**
-   * @var \RedRoma\Aroma\AromaService\RegenerateApplicationTokenResponse
+   * @var \RedRoma\Aroma\AromaService\RecreateApplicationTokenResponse
    */
   public $success = null;
   /**
@@ -4082,7 +4082,7 @@ class AromaService_regenerateToken_result {
         0 => array(
           'var' => 'success',
           'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\AromaService\RegenerateApplicationTokenResponse',
+          'class' => '\RedRoma\Aroma\AromaService\RecreateApplicationTokenResponse',
           ),
         1 => array(
           'var' => 'ex1',
@@ -4134,7 +4134,7 @@ class AromaService_regenerateToken_result {
   }
 
   public function getName() {
-    return 'AromaService_regenerateToken_result';
+    return 'AromaService_recreateToken_result';
   }
 
   public function read($input)
@@ -4154,7 +4154,7 @@ class AromaService_regenerateToken_result {
       {
         case 0:
           if ($ftype == TType::STRUCT) {
-            $this->success = new \RedRoma\Aroma\AromaService\RegenerateApplicationTokenResponse();
+            $this->success = new \RedRoma\Aroma\AromaService\RecreateApplicationTokenResponse();
             $xfer += $this->success->read($input);
           } else {
             $xfer += $input->skip($ftype);
@@ -4212,7 +4212,7 @@ class AromaService_regenerateToken_result {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('AromaService_regenerateToken_result');
+    $xfer += $output->writeStructBegin('AromaService_recreateToken_result');
     if ($this->success !== null) {
       if (!is_object($this->success)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);

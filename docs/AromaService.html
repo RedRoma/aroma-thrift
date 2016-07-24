@@ -216,7 +216,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_getRegisteredDevices">getRegisteredDevices</a></li>
 <li><a href="#Fn_AromaService_getUserInfo">getUserInfo</a></li>
 <li><a href="#Fn_AromaService_provisionApplication">provisionApplication</a></li>
-<li><a href="#Fn_AromaService_regenerateToken">regenerateToken</a></li>
+<li><a href="#Fn_AromaService_recreateToken">recreateToken</a></li>
 <li><a href="#Fn_AromaService_registerDevice">registerDevice</a></li>
 <li><a href="#Fn_AromaService_registerHealthCheck">registerHealthCheck</a></li>
 <li><a href="#Fn_AromaService_renewApplicationToken">renewApplicationToken</a></li>
@@ -293,8 +293,8 @@ code { line-height: 20px; }
 <a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a><br/>
 <a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a><br/>
 <a href="#Typedef_Reaction">Reaction</a><br/>
-<a href="#Struct_RegenerateApplicationTokenRequest">RegenerateApplicationTokenRequest</a><br/>
-<a href="#Struct_RegenerateApplicationTokenResponse">RegenerateApplicationTokenResponse</a><br/>
+<a href="#Struct_RecreateApplicationTokenRequest">RecreateApplicationTokenRequest</a><br/>
+<a href="#Struct_RecreateApplicationTokenResponse">RecreateApplicationTokenResponse</a><br/>
 <a href="#Struct_RegisterDeviceRequest">RegisterDeviceRequest</a><br/>
 <a href="#Struct_RegisterDeviceResponse">RegisterDeviceResponse</a><br/>
 <a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
@@ -547,12 +547,12 @@ an Application with Aroma.
 <br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsResponse">Struct: SearchForApplicationsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_RegenerateApplicationTokenRequest">Struct: RegenerateApplicationTokenRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_RecreateApplicationTokenRequest">Struct: RecreateApplicationTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Regenerates an Application's Token. This is usually done because the original token was:
-1: Lost or Misplaced
+</table><br/>Recreates an Application's Token. This is usually done because the original token was:
+1: Forgotten or Misplaced
 2: Compromised (someone else has accessed it)
 3: Just for security reasons.
 
@@ -560,7 +560,7 @@ NOTE: This will invalidate any existing Tokens for this Application.
 NOTE: Only an owner can perform this operation.
 
 #owner
-<br/></div><div class="definition"><h3 id="Struct_RegenerateApplicationTokenResponse">Struct: RegenerateApplicationTokenResponse</h3>
+<br/></div><div class="definition"><h3 id="Struct_RecreateApplicationTokenResponse">Struct: RecreateApplicationTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RenewApplicationTokenRequest">Struct: RenewApplicationTokenRequest</h3>
@@ -809,10 +809,10 @@ They provide query interfaces and Authentication/Authorization over Data.
 <pre><code><a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a></code> provisionApplication(<code><a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Provision a New Application to keep tabs on.
-<br/></div><div class="definition"><h4 id="Fn_AromaService_regenerateToken">Function: AromaService.regenerateToken</h4>
-<pre><code><a href="#Struct_RegenerateApplicationTokenResponse">RegenerateApplicationTokenResponse</a></code> regenerateToken(<code><a href="#Struct_RegenerateApplicationTokenRequest">RegenerateApplicationTokenRequest</a></code> request)
+<br/></div><div class="definition"><h4 id="Fn_AromaService_recreateToken">Function: AromaService.recreateToken</h4>
+<pre><code><a href="#Struct_RecreateApplicationTokenResponse">RecreateApplicationTokenResponse</a></code> recreateToken(<code><a href="#Struct_RecreateApplicationTokenRequest">RecreateApplicationTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre>Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+</pre>Recreate an Application Token in case the existing one is lost, forgotten, or compromised.
 Keep in mind that this will invalidate any prior existing Application Tokens.
 Only an "owner" can perform this operation.
 

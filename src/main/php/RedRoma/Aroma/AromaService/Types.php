@@ -2470,8 +2470,8 @@ class SearchForApplicationsResponse {
 }
 
 /**
- * Regenerates an Application's Token. This is usually done because the original token was:
- * 1: Lost or Misplaced
+ * Recreates an Application's Token. This is usually done because the original token was:
+ * 1: Forgotten or Misplaced
  * 2: Compromised (someone else has accessed it)
  * 3: Just for security reasons.
  * 
@@ -2480,7 +2480,7 @@ class SearchForApplicationsResponse {
  * 
  * #owner
  */
-class RegenerateApplicationTokenRequest {
+class RecreateApplicationTokenRequest {
   static $_TSPEC;
 
   /**
@@ -2517,7 +2517,7 @@ class RegenerateApplicationTokenRequest {
   }
 
   public function getName() {
-    return 'RegenerateApplicationTokenRequest';
+    return 'RecreateApplicationTokenRequest';
   }
 
   public function read($input)
@@ -2562,7 +2562,7 @@ class RegenerateApplicationTokenRequest {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('RegenerateApplicationTokenRequest');
+    $xfer += $output->writeStructBegin('RecreateApplicationTokenRequest');
     if ($this->token !== null) {
       if (!is_object($this->token)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
@@ -2583,7 +2583,7 @@ class RegenerateApplicationTokenRequest {
 
 }
 
-class RegenerateApplicationTokenResponse {
+class RecreateApplicationTokenResponse {
   static $_TSPEC;
 
   /**
@@ -2609,7 +2609,7 @@ class RegenerateApplicationTokenResponse {
   }
 
   public function getName() {
-    return 'RegenerateApplicationTokenResponse';
+    return 'RecreateApplicationTokenResponse';
   }
 
   public function read($input)
@@ -2647,7 +2647,7 @@ class RegenerateApplicationTokenResponse {
 
   public function write($output) {
     $xfer = 0;
-    $xfer += $output->writeStructBegin('RegenerateApplicationTokenResponse');
+    $xfer += $output->writeStructBegin('RecreateApplicationTokenResponse');
     if ($this->applicationToken !== null) {
       if (!is_object($this->applicationToken)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);

@@ -1183,16 +1183,16 @@ AromaService_provisionApplication_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_regenerateToken_args = function(args) {
+AromaService_recreateToken_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new RegenerateApplicationTokenRequest(args.request);
+                                          this.request = new RecreateApplicationTokenRequest(args.request);
                             }
               }
 };
-AromaService_regenerateToken_args.prototype = {};
-AromaService_regenerateToken_args.prototype.read = function(input) {
+AromaService_recreateToken_args.prototype = {};
+AromaService_recreateToken_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -1207,7 +1207,7 @@ AromaService_regenerateToken_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new RegenerateApplicationTokenRequest();
+                    this.request = new RecreateApplicationTokenRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -1225,8 +1225,8 @@ AromaService_regenerateToken_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_regenerateToken_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_regenerateToken_args');
+AromaService_recreateToken_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_recreateToken_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -1237,7 +1237,7 @@ AromaService_regenerateToken_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_regenerateToken_result = function(args) {
+AromaService_recreateToken_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
@@ -1266,7 +1266,7 @@ AromaService_regenerateToken_result = function(args) {
               }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new RegenerateApplicationTokenResponse(args.success);
+                                          this.success = new RecreateApplicationTokenResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -1285,8 +1285,8 @@ AromaService_regenerateToken_result = function(args) {
                             }
               }
 };
-AromaService_regenerateToken_result.prototype = {};
-AromaService_regenerateToken_result.prototype.read = function(input) {
+AromaService_recreateToken_result.prototype = {};
+AromaService_recreateToken_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -1301,7 +1301,7 @@ AromaService_regenerateToken_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new RegenerateApplicationTokenResponse();
+                    this.success = new RecreateApplicationTokenResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -1356,8 +1356,8 @@ AromaService_regenerateToken_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_regenerateToken_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_regenerateToken_result');
+AromaService_recreateToken_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_recreateToken_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -6367,16 +6367,16 @@ AromaServiceClient.prototype.recv_provisionApplication = function() {
               }
               throw 'provisionApplication failed: unknown result';
 };
-AromaServiceClient.prototype.regenerateToken = function(request, callback) {
-              this.send_regenerateToken(request, callback); 
+AromaServiceClient.prototype.recreateToken = function(request, callback) {
+              this.send_recreateToken(request, callback); 
               if (!callback) {
-                return this.recv_regenerateToken();
+                return this.recv_recreateToken();
               }
 };
 
-AromaServiceClient.prototype.send_regenerateToken = function(request, callback) {
-              this.output.writeMessageBegin('regenerateToken', Thrift.MessageType.CALL, this.seqid);
-              var args = new AromaService_regenerateToken_args();
+AromaServiceClient.prototype.send_recreateToken = function(request, callback) {
+              this.output.writeMessageBegin('recreateToken', Thrift.MessageType.CALL, this.seqid);
+              var args = new AromaService_recreateToken_args();
               args.request = request;
               args.write(this.output);
               this.output.writeMessageEnd();
@@ -6385,7 +6385,7 @@ AromaServiceClient.prototype.send_regenerateToken = function(request, callback) 
                 this.output.getTransport().flush(true, function() {
                   var result = null;
                   try {
-                    result = self.recv_regenerateToken();
+                    result = self.recv_recreateToken();
                   } catch (e) {
                     result = e;
                   }
@@ -6396,7 +6396,7 @@ AromaServiceClient.prototype.send_regenerateToken = function(request, callback) 
               }
 };
 
-AromaServiceClient.prototype.recv_regenerateToken = function() {
+AromaServiceClient.prototype.recv_recreateToken = function() {
               var ret = this.input.readMessageBegin();
               var fname = ret.fname;
               var mtype = ret.mtype;
@@ -6407,7 +6407,7 @@ AromaServiceClient.prototype.recv_regenerateToken = function() {
                 this.input.readMessageEnd();
                 throw x;
               }
-              var result = new AromaService_regenerateToken_result();
+              var result = new AromaService_recreateToken_result();
               result.read(this.input);
               this.input.readMessageEnd();
 
@@ -6429,7 +6429,7 @@ AromaServiceClient.prototype.recv_regenerateToken = function() {
               if (null !== result.success) {
                 return result.success;
               }
-              throw 'regenerateToken failed: unknown result';
+              throw 'recreateToken failed: unknown result';
 };
 AromaServiceClient.prototype.deleteApplication = function(request, callback) {
               this.send_deleteApplication(request, callback); 

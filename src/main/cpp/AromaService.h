@@ -53,7 +53,7 @@ class AromaServiceIf {
   virtual void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request) = 0;
 
   /**
-   * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+   * Recreate an Application Token in case the existing one is lost, forgotten, or compromised.
    * Keep in mind that this will invalidate any prior existing Application Tokens.
    * Only an "owner" can perform this operation.
    * 
@@ -61,7 +61,7 @@ class AromaServiceIf {
    * 
    * @param request
    */
-  virtual void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) = 0;
+  virtual void recreateToken(RecreateApplicationTokenResponse& _return, const RecreateApplicationTokenRequest& request) = 0;
 
   /**
    * Permanently Deletes an Application. Only an owner can perform this Operations.
@@ -248,7 +248,7 @@ class AromaServiceNull : virtual public AromaServiceIf {
   void provisionApplication(ProvisionApplicationResponse& /* _return */, const ProvisionApplicationRequest& /* request */) {
     return;
   }
-  void regenerateToken(RegenerateApplicationTokenResponse& /* _return */, const RegenerateApplicationTokenRequest& /* request */) {
+  void recreateToken(RecreateApplicationTokenResponse& /* _return */, const RecreateApplicationTokenRequest& /* request */) {
     return;
   }
   void deleteApplication(DeleteApplicationResponse& /* _return */, const DeleteApplicationRequest& /* request */) {
@@ -1158,37 +1158,37 @@ class AromaService_provisionApplication_presult {
 
 };
 
-typedef struct _AromaService_regenerateToken_args__isset {
-  _AromaService_regenerateToken_args__isset() : request(false) {}
+typedef struct _AromaService_recreateToken_args__isset {
+  _AromaService_recreateToken_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_regenerateToken_args__isset;
+} _AromaService_recreateToken_args__isset;
 
-class AromaService_regenerateToken_args {
+class AromaService_recreateToken_args {
  public:
 
-  AromaService_regenerateToken_args(const AromaService_regenerateToken_args&);
-  AromaService_regenerateToken_args& operator=(const AromaService_regenerateToken_args&);
-  AromaService_regenerateToken_args() {
+  AromaService_recreateToken_args(const AromaService_recreateToken_args&);
+  AromaService_recreateToken_args& operator=(const AromaService_recreateToken_args&);
+  AromaService_recreateToken_args() {
   }
 
-  virtual ~AromaService_regenerateToken_args() throw();
-  RegenerateApplicationTokenRequest request;
+  virtual ~AromaService_recreateToken_args() throw();
+  RecreateApplicationTokenRequest request;
 
-  _AromaService_regenerateToken_args__isset __isset;
+  _AromaService_recreateToken_args__isset __isset;
 
-  void __set_request(const RegenerateApplicationTokenRequest& val);
+  void __set_request(const RecreateApplicationTokenRequest& val);
 
-  bool operator == (const AromaService_regenerateToken_args & rhs) const
+  bool operator == (const AromaService_recreateToken_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_regenerateToken_args &rhs) const {
+  bool operator != (const AromaService_recreateToken_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_regenerateToken_args & ) const;
+  bool operator < (const AromaService_recreateToken_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1196,46 +1196,46 @@ class AromaService_regenerateToken_args {
 };
 
 
-class AromaService_regenerateToken_pargs {
+class AromaService_recreateToken_pargs {
  public:
 
 
-  virtual ~AromaService_regenerateToken_pargs() throw();
-  const RegenerateApplicationTokenRequest* request;
+  virtual ~AromaService_recreateToken_pargs() throw();
+  const RecreateApplicationTokenRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_regenerateToken_result__isset {
-  _AromaService_regenerateToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_recreateToken_result__isset {
+  _AromaService_recreateToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _AromaService_regenerateToken_result__isset;
+} _AromaService_recreateToken_result__isset;
 
-class AromaService_regenerateToken_result {
+class AromaService_recreateToken_result {
  public:
 
-  AromaService_regenerateToken_result(const AromaService_regenerateToken_result&);
-  AromaService_regenerateToken_result& operator=(const AromaService_regenerateToken_result&);
-  AromaService_regenerateToken_result() {
+  AromaService_recreateToken_result(const AromaService_recreateToken_result&);
+  AromaService_recreateToken_result& operator=(const AromaService_recreateToken_result&);
+  AromaService_recreateToken_result() {
   }
 
-  virtual ~AromaService_regenerateToken_result() throw();
-  RegenerateApplicationTokenResponse success;
+  virtual ~AromaService_recreateToken_result() throw();
+  RecreateApplicationTokenResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _AromaService_regenerateToken_result__isset __isset;
+  _AromaService_recreateToken_result__isset __isset;
 
-  void __set_success(const RegenerateApplicationTokenResponse& val);
+  void __set_success(const RecreateApplicationTokenResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -1247,7 +1247,7 @@ class AromaService_regenerateToken_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const AromaService_regenerateToken_result & rhs) const
+  bool operator == (const AromaService_recreateToken_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1263,40 +1263,40 @@ class AromaService_regenerateToken_result {
       return false;
     return true;
   }
-  bool operator != (const AromaService_regenerateToken_result &rhs) const {
+  bool operator != (const AromaService_recreateToken_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_regenerateToken_result & ) const;
+  bool operator < (const AromaService_recreateToken_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_regenerateToken_presult__isset {
-  _AromaService_regenerateToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_recreateToken_presult__isset {
+  _AromaService_recreateToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _AromaService_regenerateToken_presult__isset;
+} _AromaService_recreateToken_presult__isset;
 
-class AromaService_regenerateToken_presult {
+class AromaService_recreateToken_presult {
  public:
 
 
-  virtual ~AromaService_regenerateToken_presult() throw();
-  RegenerateApplicationTokenResponse* success;
+  virtual ~AromaService_recreateToken_presult() throw();
+  RecreateApplicationTokenResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _AromaService_regenerateToken_presult__isset __isset;
+  _AromaService_recreateToken_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -4629,9 +4629,9 @@ class AromaServiceClient : virtual public AromaServiceIf {
   void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request);
   void send_provisionApplication(const ProvisionApplicationRequest& request);
   void recv_provisionApplication(ProvisionApplicationResponse& _return);
-  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request);
-  void send_regenerateToken(const RegenerateApplicationTokenRequest& request);
-  void recv_regenerateToken(RegenerateApplicationTokenResponse& _return);
+  void recreateToken(RecreateApplicationTokenResponse& _return, const RecreateApplicationTokenRequest& request);
+  void send_recreateToken(const RecreateApplicationTokenRequest& request);
+  void recv_recreateToken(RecreateApplicationTokenResponse& _return);
   void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request);
   void send_deleteApplication(const DeleteApplicationRequest& request);
   void recv_deleteApplication(DeleteApplicationResponse& _return);
@@ -4725,7 +4725,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_recreateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_deleteApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_renewApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_updateApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -4759,7 +4759,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getApplicationInfo"] = &AromaServiceProcessor::process_getApplicationInfo;
     processMap_["getApplicationsOwnedBy"] = &AromaServiceProcessor::process_getApplicationsOwnedBy;
     processMap_["provisionApplication"] = &AromaServiceProcessor::process_provisionApplication;
-    processMap_["regenerateToken"] = &AromaServiceProcessor::process_regenerateToken;
+    processMap_["recreateToken"] = &AromaServiceProcessor::process_recreateToken;
     processMap_["deleteApplication"] = &AromaServiceProcessor::process_deleteApplication;
     processMap_["renewApplicationToken"] = &AromaServiceProcessor::process_renewApplicationToken;
     processMap_["updateApplication"] = &AromaServiceProcessor::process_updateApplication;
@@ -4872,13 +4872,13 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
-  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) {
+  void recreateToken(RecreateApplicationTokenResponse& _return, const RecreateApplicationTokenRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->regenerateToken(_return, request);
+      ifaces_[i]->recreateToken(_return, request);
     }
-    ifaces_[i]->regenerateToken(_return, request);
+    ifaces_[i]->recreateToken(_return, request);
     return;
   }
 
@@ -5169,9 +5169,9 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request);
   int32_t send_provisionApplication(const ProvisionApplicationRequest& request);
   void recv_provisionApplication(ProvisionApplicationResponse& _return, const int32_t seqid);
-  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request);
-  int32_t send_regenerateToken(const RegenerateApplicationTokenRequest& request);
-  void recv_regenerateToken(RegenerateApplicationTokenResponse& _return, const int32_t seqid);
+  void recreateToken(RecreateApplicationTokenResponse& _return, const RecreateApplicationTokenRequest& request);
+  int32_t send_recreateToken(const RecreateApplicationTokenRequest& request);
+  void recv_recreateToken(RecreateApplicationTokenResponse& _return, const int32_t seqid);
   void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request);
   int32_t send_deleteApplication(const DeleteApplicationRequest& request);
   void recv_deleteApplication(DeleteApplicationResponse& _return, const int32_t seqid);

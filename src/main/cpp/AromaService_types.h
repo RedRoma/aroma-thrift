@@ -124,9 +124,9 @@ class SearchForApplicationsRequest;
 
 class SearchForApplicationsResponse;
 
-class RegenerateApplicationTokenRequest;
+class RecreateApplicationTokenRequest;
 
-class RegenerateApplicationTokenResponse;
+class RecreateApplicationTokenResponse;
 
 class RenewApplicationTokenRequest;
 
@@ -1360,31 +1360,31 @@ inline std::ostream& operator<<(std::ostream& out, const SearchForApplicationsRe
   return out;
 }
 
-typedef struct _RegenerateApplicationTokenRequest__isset {
-  _RegenerateApplicationTokenRequest__isset() : token(false), applicationId(false) {}
+typedef struct _RecreateApplicationTokenRequest__isset {
+  _RecreateApplicationTokenRequest__isset() : token(false), applicationId(false) {}
   bool token :1;
   bool applicationId :1;
-} _RegenerateApplicationTokenRequest__isset;
+} _RecreateApplicationTokenRequest__isset;
 
-class RegenerateApplicationTokenRequest {
+class RecreateApplicationTokenRequest {
  public:
 
-  RegenerateApplicationTokenRequest(const RegenerateApplicationTokenRequest&);
-  RegenerateApplicationTokenRequest& operator=(const RegenerateApplicationTokenRequest&);
-  RegenerateApplicationTokenRequest() : applicationId() {
+  RecreateApplicationTokenRequest(const RecreateApplicationTokenRequest&);
+  RecreateApplicationTokenRequest& operator=(const RecreateApplicationTokenRequest&);
+  RecreateApplicationTokenRequest() : applicationId() {
   }
 
-  virtual ~RegenerateApplicationTokenRequest() throw();
+  virtual ~RecreateApplicationTokenRequest() throw();
   UserToken token;
   uuid applicationId;
 
-  _RegenerateApplicationTokenRequest__isset __isset;
+  _RecreateApplicationTokenRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
   void __set_applicationId(const uuid& val);
 
-  bool operator == (const RegenerateApplicationTokenRequest & rhs) const
+  bool operator == (const RecreateApplicationTokenRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
@@ -1392,11 +1392,11 @@ class RegenerateApplicationTokenRequest {
       return false;
     return true;
   }
-  bool operator != (const RegenerateApplicationTokenRequest &rhs) const {
+  bool operator != (const RecreateApplicationTokenRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const RegenerateApplicationTokenRequest & ) const;
+  bool operator < (const RecreateApplicationTokenRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1404,45 +1404,45 @@ class RegenerateApplicationTokenRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(RegenerateApplicationTokenRequest &a, RegenerateApplicationTokenRequest &b);
+void swap(RecreateApplicationTokenRequest &a, RecreateApplicationTokenRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTokenRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const RecreateApplicationTokenRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _RegenerateApplicationTokenResponse__isset {
-  _RegenerateApplicationTokenResponse__isset() : applicationToken(false) {}
+typedef struct _RecreateApplicationTokenResponse__isset {
+  _RecreateApplicationTokenResponse__isset() : applicationToken(false) {}
   bool applicationToken :1;
-} _RegenerateApplicationTokenResponse__isset;
+} _RecreateApplicationTokenResponse__isset;
 
-class RegenerateApplicationTokenResponse {
+class RecreateApplicationTokenResponse {
  public:
 
-  RegenerateApplicationTokenResponse(const RegenerateApplicationTokenResponse&);
-  RegenerateApplicationTokenResponse& operator=(const RegenerateApplicationTokenResponse&);
-  RegenerateApplicationTokenResponse() {
+  RecreateApplicationTokenResponse(const RecreateApplicationTokenResponse&);
+  RecreateApplicationTokenResponse& operator=(const RecreateApplicationTokenResponse&);
+  RecreateApplicationTokenResponse() {
   }
 
-  virtual ~RegenerateApplicationTokenResponse() throw();
+  virtual ~RecreateApplicationTokenResponse() throw();
   ApplicationToken applicationToken;
 
-  _RegenerateApplicationTokenResponse__isset __isset;
+  _RecreateApplicationTokenResponse__isset __isset;
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  bool operator == (const RegenerateApplicationTokenResponse & rhs) const
+  bool operator == (const RecreateApplicationTokenResponse & rhs) const
   {
     if (!(applicationToken == rhs.applicationToken))
       return false;
     return true;
   }
-  bool operator != (const RegenerateApplicationTokenResponse &rhs) const {
+  bool operator != (const RecreateApplicationTokenResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const RegenerateApplicationTokenResponse & ) const;
+  bool operator < (const RecreateApplicationTokenResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1450,9 +1450,9 @@ class RegenerateApplicationTokenResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(RegenerateApplicationTokenResponse &a, RegenerateApplicationTokenResponse &b);
+void swap(RecreateApplicationTokenResponse &a, RecreateApplicationTokenResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTokenResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const RecreateApplicationTokenResponse& obj)
 {
   obj.printTo(out);
   return out;

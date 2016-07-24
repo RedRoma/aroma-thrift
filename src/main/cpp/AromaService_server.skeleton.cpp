@@ -73,7 +73,7 @@ class AromaServiceHandler : virtual public AromaServiceIf {
   }
 
   /**
-   * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+   * Recreate an Application Token in case the existing one is lost, forgotten, or compromised.
    * Keep in mind that this will invalidate any prior existing Application Tokens.
    * Only an "owner" can perform this operation.
    * 
@@ -81,9 +81,9 @@ class AromaServiceHandler : virtual public AromaServiceIf {
    * 
    * @param request
    */
-  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) {
+  void recreateToken(RecreateApplicationTokenResponse& _return, const RecreateApplicationTokenRequest& request) {
     // Your implementation goes here
-    printf("regenerateToken\n");
+    printf("recreateToken\n");
   }
 
   /**
