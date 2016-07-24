@@ -5,6 +5,10 @@
 //
 
 
+TokenStatus = {
+  'ACTIVE' : 1,
+  'EXPIRED' : 2
+};
 TokenType = {
   'APPLICATION' : 1,
   'USER' : 2
@@ -15,6 +19,7 @@ ApplicationToken = function(args) {
   this.timeOfExpiration = null;
   this.applicationId = null;
   this.applicationName = null;
+  this.status = null;
   if (args) {
     if (args.tokenId !== undefined && args.tokenId !== null) {
       this.tokenId = args.tokenId;
@@ -30,6 +35,9 @@ ApplicationToken = function(args) {
     }
     if (args.applicationName !== undefined && args.applicationName !== null) {
       this.applicationName = args.applicationName;
+    }
+    if (args.status !== undefined && args.status !== null) {
+      this.status = args.status;
     }
   }
 };
@@ -82,6 +90,13 @@ ApplicationToken.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 6:
+      if (ftype == Thrift.Type.I32) {
+        this.status = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -118,6 +133,11 @@ ApplicationToken.prototype.write = function(output) {
     output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
+  if (this.status !== null && this.status !== undefined) {
+    output.writeFieldBegin('status', Thrift.Type.I32, 6);
+    output.writeI32(this.status);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -130,6 +150,7 @@ UserToken = function(args) {
   this.isOauthToken = false;
   this.oauthProvider = null;
   this.userId = null;
+  this.TokenStatus = null;
   if (args) {
     if (args.tokenId !== undefined && args.tokenId !== null) {
       this.tokenId = args.tokenId;
@@ -148,6 +169,9 @@ UserToken = function(args) {
     }
     if (args.userId !== undefined && args.userId !== null) {
       this.userId = args.userId;
+    }
+    if (args.TokenStatus !== undefined && args.TokenStatus !== null) {
+      this.TokenStatus = args.TokenStatus;
     }
   }
 };
@@ -207,6 +231,13 @@ UserToken.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 7:
+      if (ftype == Thrift.Type.I32) {
+        this.TokenStatus = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -246,6 +277,11 @@ UserToken.prototype.write = function(output) {
   if (this.userId !== null && this.userId !== undefined) {
     output.writeFieldBegin('userId', Thrift.Type.STRING, 6);
     output.writeString(this.userId);
+    output.writeFieldEnd();
+  }
+  if (this.TokenStatus !== null && this.TokenStatus !== undefined) {
+    output.writeFieldBegin('TokenStatus', Thrift.Type.I32, 7);
+    output.writeI32(this.TokenStatus);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -583,6 +619,7 @@ AuthenticationToken = function(args) {
   this.organizationId = null;
   this.ownerName = null;
   this.organizationName = null;
+  this.TokenStatusisExpired = null;
   if (args) {
     if (args.tokenId !== undefined && args.tokenId !== null) {
       this.tokenId = args.tokenId;
@@ -607,6 +644,9 @@ AuthenticationToken = function(args) {
     }
     if (args.organizationName !== undefined && args.organizationName !== null) {
       this.organizationName = args.organizationName;
+    }
+    if (args.TokenStatusisExpired !== undefined && args.TokenStatusisExpired !== null) {
+      this.TokenStatusisExpired = args.TokenStatusisExpired;
     }
   }
 };
@@ -680,6 +720,13 @@ AuthenticationToken.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 9:
+      if (ftype == Thrift.Type.I32) {
+        this.TokenStatusisExpired = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -729,6 +776,11 @@ AuthenticationToken.prototype.write = function(output) {
   if (this.organizationName !== null && this.organizationName !== undefined) {
     output.writeFieldBegin('organizationName', Thrift.Type.STRING, 8);
     output.writeString(this.organizationName);
+    output.writeFieldEnd();
+  }
+  if (this.TokenStatusisExpired !== null && this.TokenStatusisExpired !== undefined) {
+    output.writeFieldBegin('TokenStatusisExpired', Thrift.Type.I32, 9);
+    output.writeI32(this.TokenStatusisExpired);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

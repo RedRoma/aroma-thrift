@@ -13,6 +13,16 @@
 
 namespace aroma { namespace thrift { namespace authentication {
 
+int _kTokenStatusValues[] = {
+  TokenStatus::ACTIVE,
+  TokenStatus::EXPIRED
+};
+const char* _kTokenStatusNames[] = {
+  "ACTIVE",
+  "EXPIRED"
+};
+const std::map<int, const char*> _TokenStatus_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kTokenStatusValues, _kTokenStatusNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
 int _kTokenTypeValues[] = {
   TokenType::APPLICATION,
   TokenType::USER
@@ -49,6 +59,11 @@ __isset.applicationId = true;
 void ApplicationToken::__set_applicationName(const std::string& val) {
   this->applicationName = val;
 __isset.applicationName = true;
+}
+
+void ApplicationToken::__set_status(const TokenStatus::type val) {
+  this->status = val;
+__isset.status = true;
 }
 
 uint32_t ApplicationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -112,6 +127,16 @@ uint32_t ApplicationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast0;
+          xfer += iprot->readI32(ecast0);
+          this->status = (TokenStatus::type)ecast0;
+          this->__isset.status = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -152,6 +177,11 @@ uint32_t ApplicationToken::write(::apache::thrift::protocol::TProtocol* oprot) c
     xfer += oprot->writeString(this->applicationName);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.status) {
+    xfer += oprot->writeFieldBegin("status", ::apache::thrift::protocol::T_I32, 6);
+    xfer += oprot->writeI32((int32_t)this->status);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -164,24 +194,27 @@ void swap(ApplicationToken &a, ApplicationToken &b) {
   swap(a.timeOfExpiration, b.timeOfExpiration);
   swap(a.applicationId, b.applicationId);
   swap(a.applicationName, b.applicationName);
+  swap(a.status, b.status);
   swap(a.__isset, b.__isset);
 }
 
-ApplicationToken::ApplicationToken(const ApplicationToken& other0) {
-  tokenId = other0.tokenId;
-  organization = other0.organization;
-  timeOfExpiration = other0.timeOfExpiration;
-  applicationId = other0.applicationId;
-  applicationName = other0.applicationName;
-  __isset = other0.__isset;
-}
-ApplicationToken& ApplicationToken::operator=(const ApplicationToken& other1) {
+ApplicationToken::ApplicationToken(const ApplicationToken& other1) {
   tokenId = other1.tokenId;
   organization = other1.organization;
   timeOfExpiration = other1.timeOfExpiration;
   applicationId = other1.applicationId;
   applicationName = other1.applicationName;
+  status = other1.status;
   __isset = other1.__isset;
+}
+ApplicationToken& ApplicationToken::operator=(const ApplicationToken& other2) {
+  tokenId = other2.tokenId;
+  organization = other2.organization;
+  timeOfExpiration = other2.timeOfExpiration;
+  applicationId = other2.applicationId;
+  applicationName = other2.applicationName;
+  status = other2.status;
+  __isset = other2.__isset;
   return *this;
 }
 void ApplicationToken::printTo(std::ostream& out) const {
@@ -192,6 +225,7 @@ void ApplicationToken::printTo(std::ostream& out) const {
   out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
   out << ", " << "applicationId="; (__isset.applicationId ? (out << to_string(applicationId)) : (out << "<null>"));
   out << ", " << "applicationName="; (__isset.applicationName ? (out << to_string(applicationName)) : (out << "<null>"));
+  out << ", " << "status="; (__isset.status ? (out << to_string(status)) : (out << "<null>"));
   out << ")";
 }
 
@@ -225,6 +259,11 @@ __isset.oauthProvider = true;
 
 void UserToken::__set_userId(const uuid& val) {
   this->userId = val;
+}
+
+void UserToken::__set_TokenStatus(const TokenStatus::type val) {
+  this->TokenStatus = val;
+__isset.TokenStatus = true;
 }
 
 uint32_t UserToken::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -296,6 +335,16 @@ uint32_t UserToken::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast3;
+          xfer += iprot->readI32(ecast3);
+          this->TokenStatus = (TokenStatus::type)ecast3;
+          this->__isset.TokenStatus = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -340,6 +389,11 @@ uint32_t UserToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->userId);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.TokenStatus) {
+    xfer += oprot->writeFieldBegin("TokenStatus", ::apache::thrift::protocol::T_I32, 7);
+    xfer += oprot->writeI32((int32_t)this->TokenStatus);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -353,26 +407,29 @@ void swap(UserToken &a, UserToken &b) {
   swap(a.isOauthToken, b.isOauthToken);
   swap(a.oauthProvider, b.oauthProvider);
   swap(a.userId, b.userId);
+  swap(a.TokenStatus, b.TokenStatus);
   swap(a.__isset, b.__isset);
 }
 
-UserToken::UserToken(const UserToken& other2) {
-  tokenId = other2.tokenId;
-  timeOfExpiration = other2.timeOfExpiration;
-  organization = other2.organization;
-  isOauthToken = other2.isOauthToken;
-  oauthProvider = other2.oauthProvider;
-  userId = other2.userId;
-  __isset = other2.__isset;
+UserToken::UserToken(const UserToken& other4) {
+  tokenId = other4.tokenId;
+  timeOfExpiration = other4.timeOfExpiration;
+  organization = other4.organization;
+  isOauthToken = other4.isOauthToken;
+  oauthProvider = other4.oauthProvider;
+  userId = other4.userId;
+  TokenStatus = other4.TokenStatus;
+  __isset = other4.__isset;
 }
-UserToken& UserToken::operator=(const UserToken& other3) {
-  tokenId = other3.tokenId;
-  timeOfExpiration = other3.timeOfExpiration;
-  organization = other3.organization;
-  isOauthToken = other3.isOauthToken;
-  oauthProvider = other3.oauthProvider;
-  userId = other3.userId;
-  __isset = other3.__isset;
+UserToken& UserToken::operator=(const UserToken& other5) {
+  tokenId = other5.tokenId;
+  timeOfExpiration = other5.timeOfExpiration;
+  organization = other5.organization;
+  isOauthToken = other5.isOauthToken;
+  oauthProvider = other5.oauthProvider;
+  userId = other5.userId;
+  TokenStatus = other5.TokenStatus;
+  __isset = other5.__isset;
   return *this;
 }
 void UserToken::printTo(std::ostream& out) const {
@@ -384,6 +441,7 @@ void UserToken::printTo(std::ostream& out) const {
   out << ", " << "isOauthToken="; (__isset.isOauthToken ? (out << to_string(isOauthToken)) : (out << "<null>"));
   out << ", " << "oauthProvider="; (__isset.oauthProvider ? (out << to_string(oauthProvider)) : (out << "<null>"));
   out << ", " << "userId=" << to_string(userId);
+  out << ", " << "TokenStatus="; (__isset.TokenStatus ? (out << to_string(TokenStatus)) : (out << "<null>"));
   out << ")";
 }
 
@@ -494,17 +552,17 @@ void swap(GithubToken &a, GithubToken &b) {
   swap(a.__isset, b.__isset);
 }
 
-GithubToken::GithubToken(const GithubToken& other4) {
-  username = other4.username;
-  email = other4.email;
-  oauthToken = other4.oauthToken;
-  __isset = other4.__isset;
+GithubToken::GithubToken(const GithubToken& other6) {
+  username = other6.username;
+  email = other6.email;
+  oauthToken = other6.oauthToken;
+  __isset = other6.__isset;
 }
-GithubToken& GithubToken::operator=(const GithubToken& other5) {
-  username = other5.username;
-  email = other5.email;
-  oauthToken = other5.oauthToken;
-  __isset = other5.__isset;
+GithubToken& GithubToken::operator=(const GithubToken& other7) {
+  username = other7.username;
+  email = other7.email;
+  oauthToken = other7.oauthToken;
+  __isset = other7.__isset;
   return *this;
 }
 void GithubToken::printTo(std::ostream& out) const {
@@ -586,13 +644,13 @@ void swap(Password &a, Password &b) {
   swap(a.__isset, b.__isset);
 }
 
-Password::Password(const Password& other6) {
-  encryptedPassword = other6.encryptedPassword;
-  __isset = other6.__isset;
+Password::Password(const Password& other8) {
+  encryptedPassword = other8.encryptedPassword;
+  __isset = other8.__isset;
 }
-Password& Password::operator=(const Password& other7) {
-  encryptedPassword = other7.encryptedPassword;
-  __isset = other7.__isset;
+Password& Password::operator=(const Password& other9) {
+  encryptedPassword = other9.encryptedPassword;
+  __isset = other9.__isset;
   return *this;
 }
 void Password::printTo(std::ostream& out) const {
@@ -683,9 +741,9 @@ uint32_t AromaAccount::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 5:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast8;
-          xfer += iprot->readI32(ecast8);
-          this->role = ( ::tech::aroma::thrift::Role::type)ecast8;
+          int32_t ecast10;
+          xfer += iprot->readI32(ecast10);
+          this->role = ( ::tech::aroma::thrift::Role::type)ecast10;
           this->__isset.role = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -744,21 +802,21 @@ void swap(AromaAccount &a, AromaAccount &b) {
   swap(a.__isset, b.__isset);
 }
 
-AromaAccount::AromaAccount(const AromaAccount& other9) {
-  email = other9.email;
-  password = other9.password;
-  name = other9.name;
-  profileImage = other9.profileImage;
-  role = other9.role;
-  __isset = other9.__isset;
+AromaAccount::AromaAccount(const AromaAccount& other11) {
+  email = other11.email;
+  password = other11.password;
+  name = other11.name;
+  profileImage = other11.profileImage;
+  role = other11.role;
+  __isset = other11.__isset;
 }
-AromaAccount& AromaAccount::operator=(const AromaAccount& other10) {
-  email = other10.email;
-  password = other10.password;
-  name = other10.name;
-  profileImage = other10.profileImage;
-  role = other10.role;
-  __isset = other10.__isset;
+AromaAccount& AromaAccount::operator=(const AromaAccount& other12) {
+  email = other12.email;
+  password = other12.password;
+  name = other12.name;
+  profileImage = other12.profileImage;
+  role = other12.role;
+  __isset = other12.__isset;
   return *this;
 }
 void AromaAccount::printTo(std::ostream& out) const {
@@ -859,15 +917,15 @@ void swap(Credentials &a, Credentials &b) {
   swap(a.__isset, b.__isset);
 }
 
-Credentials::Credentials(const Credentials& other11) {
-  githubToken = other11.githubToken;
-  aromaPassword = other11.aromaPassword;
-  __isset = other11.__isset;
+Credentials::Credentials(const Credentials& other13) {
+  githubToken = other13.githubToken;
+  aromaPassword = other13.aromaPassword;
+  __isset = other13.__isset;
 }
-Credentials& Credentials::operator=(const Credentials& other12) {
-  githubToken = other12.githubToken;
-  aromaPassword = other12.aromaPassword;
-  __isset = other12.__isset;
+Credentials& Credentials::operator=(const Credentials& other14) {
+  githubToken = other14.githubToken;
+  aromaPassword = other14.aromaPassword;
+  __isset = other14.__isset;
   return *this;
 }
 void Credentials::printTo(std::ostream& out) const {
@@ -913,6 +971,11 @@ void AuthenticationToken::__set_ownerName(const std::string& val) {
 
 void AuthenticationToken::__set_organizationName(const std::string& val) {
   this->organizationName = val;
+}
+
+void AuthenticationToken::__set_TokenStatusisExpired(const TokenStatus::type val) {
+  this->TokenStatusisExpired = val;
+__isset.TokenStatusisExpired = true;
 }
 
 uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -970,9 +1033,9 @@ uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot)
         break;
       case 5:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast13;
-          xfer += iprot->readI32(ecast13);
-          this->tokenType = (TokenType::type)ecast13;
+          int32_t ecast15;
+          xfer += iprot->readI32(ecast15);
+          this->tokenType = (TokenType::type)ecast15;
           this->__isset.tokenType = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -998,6 +1061,16 @@ uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot)
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->organizationName);
           this->__isset.organizationName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 9:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast16;
+          xfer += iprot->readI32(ecast16);
+          this->TokenStatusisExpired = (TokenStatus::type)ecast16;
+          this->__isset.TokenStatusisExpired = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1051,6 +1124,11 @@ uint32_t AuthenticationToken::write(::apache::thrift::protocol::TProtocol* oprot
   xfer += oprot->writeString(this->organizationName);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.TokenStatusisExpired) {
+    xfer += oprot->writeFieldBegin("TokenStatusisExpired", ::apache::thrift::protocol::T_I32, 9);
+    xfer += oprot->writeI32((int32_t)this->TokenStatusisExpired);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1066,30 +1144,33 @@ void swap(AuthenticationToken &a, AuthenticationToken &b) {
   swap(a.organizationId, b.organizationId);
   swap(a.ownerName, b.ownerName);
   swap(a.organizationName, b.organizationName);
+  swap(a.TokenStatusisExpired, b.TokenStatusisExpired);
   swap(a.__isset, b.__isset);
 }
 
-AuthenticationToken::AuthenticationToken(const AuthenticationToken& other14) {
-  tokenId = other14.tokenId;
-  ownerId = other14.ownerId;
-  timeOfCreation = other14.timeOfCreation;
-  timeOfExpiration = other14.timeOfExpiration;
-  tokenType = other14.tokenType;
-  organizationId = other14.organizationId;
-  ownerName = other14.ownerName;
-  organizationName = other14.organizationName;
-  __isset = other14.__isset;
+AuthenticationToken::AuthenticationToken(const AuthenticationToken& other17) {
+  tokenId = other17.tokenId;
+  ownerId = other17.ownerId;
+  timeOfCreation = other17.timeOfCreation;
+  timeOfExpiration = other17.timeOfExpiration;
+  tokenType = other17.tokenType;
+  organizationId = other17.organizationId;
+  ownerName = other17.ownerName;
+  organizationName = other17.organizationName;
+  TokenStatusisExpired = other17.TokenStatusisExpired;
+  __isset = other17.__isset;
 }
-AuthenticationToken& AuthenticationToken::operator=(const AuthenticationToken& other15) {
-  tokenId = other15.tokenId;
-  ownerId = other15.ownerId;
-  timeOfCreation = other15.timeOfCreation;
-  timeOfExpiration = other15.timeOfExpiration;
-  tokenType = other15.tokenType;
-  organizationId = other15.organizationId;
-  ownerName = other15.ownerName;
-  organizationName = other15.organizationName;
-  __isset = other15.__isset;
+AuthenticationToken& AuthenticationToken::operator=(const AuthenticationToken& other18) {
+  tokenId = other18.tokenId;
+  ownerId = other18.ownerId;
+  timeOfCreation = other18.timeOfCreation;
+  timeOfExpiration = other18.timeOfExpiration;
+  tokenType = other18.tokenType;
+  organizationId = other18.organizationId;
+  ownerName = other18.ownerName;
+  organizationName = other18.organizationName;
+  TokenStatusisExpired = other18.TokenStatusisExpired;
+  __isset = other18.__isset;
   return *this;
 }
 void AuthenticationToken::printTo(std::ostream& out) const {
@@ -1103,6 +1184,7 @@ void AuthenticationToken::printTo(std::ostream& out) const {
   out << ", " << "organizationId=" << to_string(organizationId);
   out << ", " << "ownerName=" << to_string(ownerName);
   out << ", " << "organizationName=" << to_string(organizationName);
+  out << ", " << "TokenStatusisExpired="; (__isset.TokenStatusisExpired ? (out << to_string(TokenStatusisExpired)) : (out << "<null>"));
   out << ")";
 }
 

@@ -20,6 +20,15 @@
 
 namespace aroma { namespace thrift { namespace authentication {
 
+struct TokenStatus {
+  enum type {
+    ACTIVE = 1,
+    EXPIRED = 2
+  };
+};
+
+extern const std::map<int, const char*> _TokenStatus_VALUES_TO_NAMES;
+
 struct TokenType {
   enum type {
     APPLICATION = 1,
@@ -52,12 +61,13 @@ class Credentials;
 class AuthenticationToken;
 
 typedef struct _ApplicationToken__isset {
-  _ApplicationToken__isset() : tokenId(false), organization(false), timeOfExpiration(false), applicationId(false), applicationName(false) {}
+  _ApplicationToken__isset() : tokenId(false), organization(false), timeOfExpiration(false), applicationId(false), applicationName(false), status(false) {}
   bool tokenId :1;
   bool organization :1;
   bool timeOfExpiration :1;
   bool applicationId :1;
   bool applicationName :1;
+  bool status :1;
 } _ApplicationToken__isset;
 
 class ApplicationToken {
@@ -65,7 +75,7 @@ class ApplicationToken {
 
   ApplicationToken(const ApplicationToken&);
   ApplicationToken& operator=(const ApplicationToken&);
-  ApplicationToken() : tokenId(), organization(), timeOfExpiration(0), applicationId(), applicationName() {
+  ApplicationToken() : tokenId(), organization(), timeOfExpiration(0), applicationId(), applicationName(), status((TokenStatus::type)0) {
   }
 
   virtual ~ApplicationToken() throw();
@@ -74,6 +84,7 @@ class ApplicationToken {
   timestamp timeOfExpiration;
   uuid applicationId;
   std::string applicationName;
+  TokenStatus::type status;
 
   _ApplicationToken__isset __isset;
 
@@ -86,6 +97,8 @@ class ApplicationToken {
   void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
+
+  void __set_status(const TokenStatus::type val);
 
   bool operator == (const ApplicationToken & rhs) const
   {
@@ -104,6 +117,10 @@ class ApplicationToken {
     if (__isset.applicationName != rhs.__isset.applicationName)
       return false;
     else if (__isset.applicationName && !(applicationName == rhs.applicationName))
+      return false;
+    if (__isset.status != rhs.__isset.status)
+      return false;
+    else if (__isset.status && !(status == rhs.status))
       return false;
     return true;
   }
@@ -128,13 +145,14 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationToken& obj)
 }
 
 typedef struct _UserToken__isset {
-  _UserToken__isset() : tokenId(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false), userId(false) {}
+  _UserToken__isset() : tokenId(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false), userId(false), TokenStatus(false) {}
   bool tokenId :1;
   bool timeOfExpiration :1;
   bool organization :1;
   bool isOauthToken :1;
   bool oauthProvider :1;
   bool userId :1;
+  bool TokenStatus :1;
 } _UserToken__isset;
 
 class UserToken {
@@ -142,7 +160,7 @@ class UserToken {
 
   UserToken(const UserToken&);
   UserToken& operator=(const UserToken&);
-  UserToken() : tokenId(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider(), userId() {
+  UserToken() : tokenId(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider(), userId(), TokenStatus((TokenStatus::type)0) {
   }
 
   virtual ~UserToken() throw();
@@ -152,6 +170,7 @@ class UserToken {
   bool isOauthToken;
   std::string oauthProvider;
   uuid userId;
+  TokenStatus::type TokenStatus;
 
   _UserToken__isset __isset;
 
@@ -166,6 +185,8 @@ class UserToken {
   void __set_oauthProvider(const std::string& val);
 
   void __set_userId(const uuid& val);
+
+  void __set_TokenStatus(const TokenStatus::type val);
 
   bool operator == (const UserToken & rhs) const
   {
@@ -186,6 +207,10 @@ class UserToken {
     else if (__isset.oauthProvider && !(oauthProvider == rhs.oauthProvider))
       return false;
     if (!(userId == rhs.userId))
+      return false;
+    if (__isset.TokenStatus != rhs.__isset.TokenStatus)
+      return false;
+    else if (__isset.TokenStatus && !(TokenStatus == rhs.TokenStatus))
       return false;
     return true;
   }
@@ -437,7 +462,7 @@ inline std::ostream& operator<<(std::ostream& out, const Credentials& obj)
 }
 
 typedef struct _AuthenticationToken__isset {
-  _AuthenticationToken__isset() : tokenId(false), ownerId(false), timeOfCreation(false), timeOfExpiration(false), tokenType(false), organizationId(false), ownerName(false), organizationName(false) {}
+  _AuthenticationToken__isset() : tokenId(false), ownerId(false), timeOfCreation(false), timeOfExpiration(false), tokenType(false), organizationId(false), ownerName(false), organizationName(false), TokenStatusisExpired(false) {}
   bool tokenId :1;
   bool ownerId :1;
   bool timeOfCreation :1;
@@ -446,6 +471,7 @@ typedef struct _AuthenticationToken__isset {
   bool organizationId :1;
   bool ownerName :1;
   bool organizationName :1;
+  bool TokenStatusisExpired :1;
 } _AuthenticationToken__isset;
 
 class AuthenticationToken {
@@ -453,7 +479,7 @@ class AuthenticationToken {
 
   AuthenticationToken(const AuthenticationToken&);
   AuthenticationToken& operator=(const AuthenticationToken&);
-  AuthenticationToken() : tokenId(), ownerId(), timeOfCreation(0), timeOfExpiration(0), tokenType((TokenType::type)0), organizationId(), ownerName(), organizationName() {
+  AuthenticationToken() : tokenId(), ownerId(), timeOfCreation(0), timeOfExpiration(0), tokenType((TokenType::type)0), organizationId(), ownerName(), organizationName(), TokenStatusisExpired((TokenStatus::type)0) {
   }
 
   virtual ~AuthenticationToken() throw();
@@ -465,6 +491,7 @@ class AuthenticationToken {
   uuid organizationId;
   std::string ownerName;
   std::string organizationName;
+  TokenStatus::type TokenStatusisExpired;
 
   _AuthenticationToken__isset __isset;
 
@@ -484,6 +511,8 @@ class AuthenticationToken {
 
   void __set_organizationName(const std::string& val);
 
+  void __set_TokenStatusisExpired(const TokenStatus::type val);
+
   bool operator == (const AuthenticationToken & rhs) const
   {
     if (!(tokenId == rhs.tokenId))
@@ -501,6 +530,10 @@ class AuthenticationToken {
     if (!(ownerName == rhs.ownerName))
       return false;
     if (!(organizationName == rhs.organizationName))
+      return false;
+    if (__isset.TokenStatusisExpired != rhs.__isset.TokenStatusisExpired)
+      return false;
+    else if (__isset.TokenStatusisExpired && !(TokenStatusisExpired == rhs.TokenStatusisExpired))
       return false;
     return true;
   }

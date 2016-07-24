@@ -20,6 +20,11 @@
 
 #import "Aroma.h"
 
+enum AromaAuthentication_TokenStatus {
+  TokenStatus_ACTIVE = 1,
+  TokenStatus_EXPIRED = 2
+};
+
 enum AromaAuthentication_TokenType {
   TokenType_APPLICATION = 1,
   TokenType_USER = 2
@@ -39,12 +44,14 @@ typedef Aroma_uuid AromaAuthentication_uuid;
   AromaAuthentication_timestamp __timeOfExpiration;
   AromaAuthentication_uuid __applicationId;
   NSString * __applicationName;
+  int __status;
 
   BOOL __tokenId_isset;
   BOOL __organization_isset;
   BOOL __timeOfExpiration_isset;
   BOOL __applicationId_isset;
   BOOL __applicationName_isset;
+  BOOL __status_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -53,10 +60,11 @@ typedef Aroma_uuid AromaAuthentication_uuid;
 @property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) AromaAuthentication_timestamp timeOfExpiration;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaAuthentication_uuid applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, getter=status, setter=setStatus:) int status;
 #endif
 
 - (id) init;
-- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration applicationId: (AromaAuthentication_uuid) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration applicationId: (AromaAuthentication_uuid) applicationId applicationName: (NSString *) applicationName status: (int) status;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -93,6 +101,12 @@ typedef Aroma_uuid AromaAuthentication_uuid;
 #endif
 - (BOOL) applicationNameIsSet;
 
+#if !__has_feature(objc_arc)
+- (int) status;
+- (void) setStatus: (int) status;
+#endif
+- (BOOL) statusIsSet;
+
 @end
 
 @interface AromaAuthentication_UserToken : NSObject <TBase, NSCoding> {
@@ -102,6 +116,7 @@ typedef Aroma_uuid AromaAuthentication_uuid;
   BOOL __isOauthToken;
   NSString * __oauthProvider;
   AromaAuthentication_uuid __userId;
+  int __TokenStatus;
 
   BOOL __tokenId_isset;
   BOOL __timeOfExpiration_isset;
@@ -109,6 +124,7 @@ typedef Aroma_uuid AromaAuthentication_uuid;
   BOOL __isOauthToken_isset;
   BOOL __oauthProvider_isset;
   BOOL __userId_isset;
+  BOOL __TokenStatus_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -118,10 +134,11 @@ typedef Aroma_uuid AromaAuthentication_uuid;
 @property (nonatomic, getter=isOauthToken, setter=setIsOauthToken:) BOOL isOauthToken;
 @property (nonatomic, retain, getter=oauthProvider, setter=setOauthProvider:) NSString * oauthProvider;
 @property (nonatomic, retain, getter=userId, setter=setUserId:) AromaAuthentication_uuid userId;
+@property (nonatomic, getter=tokenStatus, setter=setTokenStatus:) int TokenStatus;
 #endif
 
 - (id) init;
-- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (AromaAuthentication_uuid) userId;
+- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (AromaAuthentication_uuid) userId TokenStatus: (int) TokenStatus;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -163,6 +180,12 @@ typedef Aroma_uuid AromaAuthentication_uuid;
 - (void) setUserId: (AromaAuthentication_uuid) userId;
 #endif
 - (BOOL) userIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) tokenStatus;
+- (void) setTokenStatus: (int) TokenStatus;
+#endif
+- (BOOL) TokenStatusIsSet;
 
 @end
 
@@ -342,6 +365,7 @@ typedef Aroma_uuid AromaAuthentication_uuid;
   AromaAuthentication_uuid __organizationId;
   NSString * __ownerName;
   NSString * __organizationName;
+  int __TokenStatusisExpired;
 
   BOOL __tokenId_isset;
   BOOL __ownerId_isset;
@@ -351,6 +375,7 @@ typedef Aroma_uuid AromaAuthentication_uuid;
   BOOL __organizationId_isset;
   BOOL __ownerName_isset;
   BOOL __organizationName_isset;
+  BOOL __TokenStatusisExpired_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -362,10 +387,11 @@ typedef Aroma_uuid AromaAuthentication_uuid;
 @property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaAuthentication_uuid organizationId;
 @property (nonatomic, retain, getter=ownerName, setter=setOwnerName:) NSString * ownerName;
 @property (nonatomic, retain, getter=organizationName, setter=setOrganizationName:) NSString * organizationName;
+@property (nonatomic, getter=tokenStatusisExpired, setter=setTokenStatusisExpired:) int TokenStatusisExpired;
 #endif
 
 - (id) init;
-- (id) initWithTokenId: (NSString *) tokenId ownerId: (AromaAuthentication_uuid) ownerId timeOfCreation: (AromaAuthentication_timestamp) timeOfCreation timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (AromaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName;
+- (id) initWithTokenId: (NSString *) tokenId ownerId: (AromaAuthentication_uuid) ownerId timeOfCreation: (AromaAuthentication_timestamp) timeOfCreation timeOfExpiration: (AromaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (AromaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName TokenStatusisExpired: (int) TokenStatusisExpired;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -419,6 +445,12 @@ typedef Aroma_uuid AromaAuthentication_uuid;
 - (void) setOrganizationName: (NSString *) organizationName;
 #endif
 - (BOOL) organizationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) tokenStatusisExpired;
+- (void) setTokenStatusisExpired: (int) TokenStatusisExpired;
+#endif
+- (BOOL) TokenStatusisExpiredIsSet;
 
 @end
 

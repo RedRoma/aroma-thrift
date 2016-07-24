@@ -17,6 +17,15 @@ use Thrift\Protocol\TBinaryProtocolAccelerated;
 use Thrift\Exception\TApplicationException;
 
 
+final class TokenStatus {
+  const ACTIVE = 1;
+  const EXPIRED = 2;
+  static public $__names = array(
+    1 => 'ACTIVE',
+    2 => 'EXPIRED',
+  );
+}
+
 final class TokenType {
   const APPLICATION = 1;
   const USER = 2;
@@ -49,6 +58,10 @@ class ApplicationToken {
    * @var string
    */
   public $applicationName = null;
+  /**
+   * @var int
+   */
+  public $status = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -73,6 +86,10 @@ class ApplicationToken {
           'var' => 'applicationName',
           'type' => TType::STRING,
           ),
+        6 => array(
+          'var' => 'status',
+          'type' => TType::I32,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -90,6 +107,9 @@ class ApplicationToken {
       }
       if (isset($vals['applicationName'])) {
         $this->applicationName = $vals['applicationName'];
+      }
+      if (isset($vals['status'])) {
+        $this->status = $vals['status'];
       }
     }
   }
@@ -148,6 +168,13 @@ class ApplicationToken {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 6:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->status);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -186,6 +213,11 @@ class ApplicationToken {
       $xfer += $output->writeString($this->applicationName);
       $xfer += $output->writeFieldEnd();
     }
+    if ($this->status !== null) {
+      $xfer += $output->writeFieldBegin('status', TType::I32, 6);
+      $xfer += $output->writeI32($this->status);
+      $xfer += $output->writeFieldEnd();
+    }
     $xfer += $output->writeFieldStop();
     $xfer += $output->writeStructEnd();
     return $xfer;
@@ -220,6 +252,10 @@ class UserToken {
    * @var string
    */
   public $userId = null;
+  /**
+   * @var int
+   */
+  public $TokenStatus = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -248,6 +284,10 @@ class UserToken {
           'var' => 'userId',
           'type' => TType::STRING,
           ),
+        7 => array(
+          'var' => 'TokenStatus',
+          'type' => TType::I32,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -268,6 +308,9 @@ class UserToken {
       }
       if (isset($vals['userId'])) {
         $this->userId = $vals['userId'];
+      }
+      if (isset($vals['TokenStatus'])) {
+        $this->TokenStatus = $vals['TokenStatus'];
       }
     }
   }
@@ -333,6 +376,13 @@ class UserToken {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 7:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->TokenStatus);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -374,6 +424,11 @@ class UserToken {
     if ($this->userId !== null) {
       $xfer += $output->writeFieldBegin('userId', TType::STRING, 6);
       $xfer += $output->writeString($this->userId);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->TokenStatus !== null) {
+      $xfer += $output->writeFieldBegin('TokenStatus', TType::I32, 7);
+      $xfer += $output->writeI32($this->TokenStatus);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -910,6 +965,10 @@ class AuthenticationToken {
    * @var string
    */
   public $organizationName = null;
+  /**
+   * @var int
+   */
+  public $TokenStatusisExpired = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -946,6 +1005,10 @@ class AuthenticationToken {
           'var' => 'organizationName',
           'type' => TType::STRING,
           ),
+        9 => array(
+          'var' => 'TokenStatusisExpired',
+          'type' => TType::I32,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -972,6 +1035,9 @@ class AuthenticationToken {
       }
       if (isset($vals['organizationName'])) {
         $this->organizationName = $vals['organizationName'];
+      }
+      if (isset($vals['TokenStatusisExpired'])) {
+        $this->TokenStatusisExpired = $vals['TokenStatusisExpired'];
       }
     }
   }
@@ -1051,6 +1117,13 @@ class AuthenticationToken {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 9:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->TokenStatusisExpired);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -1102,6 +1175,11 @@ class AuthenticationToken {
     if ($this->organizationName !== null) {
       $xfer += $output->writeFieldBegin('organizationName', TType::STRING, 8);
       $xfer += $output->writeString($this->organizationName);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->TokenStatusisExpired !== null) {
+      $xfer += $output->writeFieldBegin('TokenStatusisExpired', TType::I32, 9);
+      $xfer += $output->writeI32($this->TokenStatusisExpired);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

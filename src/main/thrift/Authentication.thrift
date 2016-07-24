@@ -15,6 +15,13 @@ typedef Aroma.long long;
 typedef Aroma.timestamp timestamp;
 typedef Aroma.uuid uuid;
 
+enum TokenStatus
+{
+    ACTIVE = 1,
+    EXPIRED = 2
+}
+
+
 struct ApplicationToken
 {
     1: string tokenId;
@@ -22,6 +29,7 @@ struct ApplicationToken
     3: timestamp timeOfExpiration;
     4: optional uuid applicationId;
     5: optional string applicationName;
+    6: optional TokenStatus status;
 }
 
 struct UserToken
@@ -32,6 +40,7 @@ struct UserToken
     4: optional bool isOauthToken = false;
     5: optional string oauthProvider;
     6: uuid userId;
+    7: optional TokenStatus TokenStatus;
 }
 
 struct GithubToken
@@ -81,6 +90,7 @@ enum TokenType
     USER = 2
 }
 
+
 /** 
  * Represents an Authentication Token that is used
  * and accepted by the Authentication Service.
@@ -95,4 +105,5 @@ struct AuthenticationToken
     6: uuid organizationId;
     7: string ownerName;
     8: string organizationName;
+    9: optional TokenStatus TokenStatusisExpired;
 }
