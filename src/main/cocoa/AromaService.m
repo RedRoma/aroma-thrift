@@ -5630,40 +5630,40 @@
   return self;
 }
 
-- (id) initWithServiceToken: (AromaService_ApplicationToken) serviceToken
+- (id) initWithApplicationToken: (AromaService_ApplicationToken) applicationToken
 {
   self = [super init];
-  __serviceToken = [serviceToken retain_stub];
-  __serviceToken_isset = YES;
+  __applicationToken = [applicationToken retain_stub];
+  __applicationToken_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"serviceToken"])
+  if ([decoder containsValueForKey: @"applicationToken"])
   {
-    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
-    __serviceToken_isset = YES;
+    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
+    __applicationToken_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__serviceToken_isset)
+  if (__applicationToken_isset)
   {
-    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
+    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
-  if (__serviceToken_isset)
+  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
+  if (__applicationToken_isset)
   {
-    hash = (hash * 31) ^ [__serviceToken hash];
+    hash = (hash * 31) ^ [__applicationToken hash];
   }
   return hash;
 }
@@ -5677,8 +5677,8 @@
     return NO;
   }
   AromaService_RenewApplicationTokenResponse *other = (AromaService_RenewApplicationTokenResponse *)anObject;
-  if ((__serviceToken_isset != other->__serviceToken_isset) ||
-      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
+  if ((__applicationToken_isset != other->__applicationToken_isset) ||
+      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
     return NO;
   }
   return YES;
@@ -5686,29 +5686,29 @@
 
 - (void) dealloc
 {
-  [__serviceToken release_stub];
+  [__applicationToken release_stub];
   [super dealloc_stub];
 }
 
-- (AromaAuthentication_ApplicationToken *) serviceToken {
-  return [[__serviceToken retain_stub] autorelease_stub];
+- (AromaAuthentication_ApplicationToken *) applicationToken {
+  return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setServiceToken: (AromaAuthentication_ApplicationToken *) serviceToken {
-  [serviceToken retain_stub];
-  [__serviceToken release_stub];
-  __serviceToken = serviceToken;
-  __serviceToken_isset = YES;
+- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
+  [applicationToken retain_stub];
+  [__applicationToken release_stub];
+  __applicationToken = applicationToken;
+  __applicationToken_isset = YES;
 }
 
-- (BOOL) serviceTokenIsSet {
-  return __serviceToken_isset;
+- (BOOL) applicationTokenIsSet {
+  return __applicationToken_isset;
 }
 
-- (void) unsetServiceToken {
-  [__serviceToken release_stub];
-  __serviceToken = nil;
-  __serviceToken_isset = NO;
+- (void) unsetApplicationToken {
+  [__applicationToken release_stub];
+  __applicationToken = nil;
+  __applicationToken_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -5730,7 +5730,7 @@
         if (fieldType == TType_STRUCT) {
           AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setServiceToken: fieldValue];
+          [self setApplicationToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -5747,10 +5747,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"RenewApplicationTokenResponse"];
-  if (__serviceToken_isset) {
-    if (__serviceToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 1];
-      [__serviceToken write: outProtocol];
+  if (__applicationToken_isset) {
+    if (__applicationToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 1];
+      [__applicationToken write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -5764,8 +5764,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RenewApplicationTokenResponse("];
-  [ms appendString: @"serviceToken:"];
-  [ms appendFormat: @"%@", __serviceToken];
+  [ms appendString: @"applicationToken:"];
+  [ms appendFormat: @"%@", __applicationToken];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

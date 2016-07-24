@@ -1835,10 +1835,10 @@ RenewApplicationTokenRequest.prototype.write = function(output) {
 };
 
 RenewApplicationTokenResponse = function(args) {
-  this.serviceToken = null;
+  this.applicationToken = null;
   if (args) {
-    if (args.serviceToken !== undefined && args.serviceToken !== null) {
-      this.serviceToken = new ApplicationToken(args.serviceToken);
+    if (args.applicationToken !== undefined && args.applicationToken !== null) {
+      this.applicationToken = new ApplicationToken(args.applicationToken);
     }
   }
 };
@@ -1858,8 +1858,8 @@ RenewApplicationTokenResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.serviceToken = new ApplicationToken();
-        this.serviceToken.read(input);
+        this.applicationToken = new ApplicationToken();
+        this.applicationToken.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1878,9 +1878,9 @@ RenewApplicationTokenResponse.prototype.read = function(input) {
 
 RenewApplicationTokenResponse.prototype.write = function(output) {
   output.writeStructBegin('RenewApplicationTokenResponse');
-  if (this.serviceToken !== null && this.serviceToken !== undefined) {
-    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
-    this.serviceToken.write(output);
+  if (this.applicationToken !== null && this.applicationToken !== undefined) {
+    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
+    this.applicationToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -2806,21 +2806,21 @@ class RenewApplicationTokenResponse {
   /**
    * @var \RedRoma\Aroma\Authentication\ApplicationToken
    */
-  public $serviceToken = null;
+  public $applicationToken = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
       self::$_TSPEC = array(
         1 => array(
-          'var' => 'serviceToken',
+          'var' => 'applicationToken',
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Authentication\ApplicationToken',
           ),
         );
     }
     if (is_array($vals)) {
-      if (isset($vals['serviceToken'])) {
-        $this->serviceToken = $vals['serviceToken'];
+      if (isset($vals['applicationToken'])) {
+        $this->applicationToken = $vals['applicationToken'];
       }
     }
   }
@@ -2846,8 +2846,8 @@ class RenewApplicationTokenResponse {
       {
         case 1:
           if ($ftype == TType::STRUCT) {
-            $this->serviceToken = new \RedRoma\Aroma\Authentication\ApplicationToken();
-            $xfer += $this->serviceToken->read($input);
+            $this->applicationToken = new \RedRoma\Aroma\Authentication\ApplicationToken();
+            $xfer += $this->applicationToken->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -2865,12 +2865,12 @@ class RenewApplicationTokenResponse {
   public function write($output) {
     $xfer = 0;
     $xfer += $output->writeStructBegin('RenewApplicationTokenResponse');
-    if ($this->serviceToken !== null) {
-      if (!is_object($this->serviceToken)) {
+    if ($this->applicationToken !== null) {
+      if (!is_object($this->applicationToken)) {
         throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
       }
-      $xfer += $output->writeFieldBegin('serviceToken', TType::STRUCT, 1);
-      $xfer += $this->serviceToken->write($output);
+      $xfer += $output->writeFieldBegin('applicationToken', TType::STRUCT, 1);
+      $xfer += $this->applicationToken->write($output);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

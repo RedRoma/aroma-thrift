@@ -312,7 +312,7 @@ struct RenewApplicationTokenRequest
 
 struct RenewApplicationTokenResponse
 {
-    1: ApplicationToken serviceToken;
+    1: ApplicationToken applicationToken;
 }
 
 

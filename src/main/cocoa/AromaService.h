@@ -998,17 +998,17 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 @end
 
 @interface AromaService_RenewApplicationTokenResponse : NSObject <TBase, NSCoding> {
-  AromaService_ApplicationToken __serviceToken;
+  AromaService_ApplicationToken __applicationToken;
 
-  BOOL __serviceToken_isset;
+  BOOL __applicationToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) AromaService_ApplicationToken serviceToken;
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AromaService_ApplicationToken applicationToken;
 #endif
 
 - (id) init;
-- (id) initWithServiceToken: (AromaService_ApplicationToken) serviceToken;
+- (id) initWithApplicationToken: (AromaService_ApplicationToken) applicationToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1016,10 +1016,10 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaService_ApplicationToken) serviceToken;
-- (void) setServiceToken: (AromaService_ApplicationToken) serviceToken;
+- (AromaService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (AromaService_ApplicationToken) applicationToken;
 #endif
-- (BOOL) serviceTokenIsSet;
+- (BOOL) applicationTokenIsSet;
 
 @end
 
