@@ -2669,12 +2669,9 @@ void RenewApplicationTokenRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void RenewApplicationTokenRequest::__set_applicationToken(const ApplicationToken& val) {
-  this->applicationToken = val;
-}
-
 void RenewApplicationTokenRequest::__set_newLifetime(const  ::tech::aroma::thrift::LengthOfTime& val) {
   this->newLifetime = val;
+__isset.newLifetime = true;
 }
 
 void RenewApplicationTokenRequest::__set_applicationId(const uuid& val) {
@@ -2706,14 +2703,6 @@ uint32_t RenewApplicationTokenRequest::read(::apache::thrift::protocol::TProtoco
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->token.read(iprot);
           this->__isset.token = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->applicationToken.read(iprot);
-          this->__isset.applicationToken = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2755,14 +2744,11 @@ uint32_t RenewApplicationTokenRequest::write(::apache::thrift::protocol::TProtoc
   xfer += this->token.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->applicationToken.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("newLifetime", ::apache::thrift::protocol::T_STRUCT, 3);
-  xfer += this->newLifetime.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
+  if (this->__isset.newLifetime) {
+    xfer += oprot->writeFieldBegin("newLifetime", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->newLifetime.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 4);
   xfer += oprot->writeString(this->applicationId);
   xfer += oprot->writeFieldEnd();
@@ -2775,7 +2761,6 @@ uint32_t RenewApplicationTokenRequest::write(::apache::thrift::protocol::TProtoc
 void swap(RenewApplicationTokenRequest &a, RenewApplicationTokenRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
-  swap(a.applicationToken, b.applicationToken);
   swap(a.newLifetime, b.newLifetime);
   swap(a.applicationId, b.applicationId);
   swap(a.__isset, b.__isset);
@@ -2783,14 +2768,12 @@ void swap(RenewApplicationTokenRequest &a, RenewApplicationTokenRequest &b) {
 
 RenewApplicationTokenRequest::RenewApplicationTokenRequest(const RenewApplicationTokenRequest& other66) {
   token = other66.token;
-  applicationToken = other66.applicationToken;
   newLifetime = other66.newLifetime;
   applicationId = other66.applicationId;
   __isset = other66.__isset;
 }
 RenewApplicationTokenRequest& RenewApplicationTokenRequest::operator=(const RenewApplicationTokenRequest& other67) {
   token = other67.token;
-  applicationToken = other67.applicationToken;
   newLifetime = other67.newLifetime;
   applicationId = other67.applicationId;
   __isset = other67.__isset;
@@ -2800,8 +2783,7 @@ void RenewApplicationTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "RenewApplicationTokenRequest(";
   out << "token=" << to_string(token);
-  out << ", " << "applicationToken=" << to_string(applicationToken);
-  out << ", " << "newLifetime=" << to_string(newLifetime);
+  out << ", " << "newLifetime="; (__isset.newLifetime ? (out << to_string(newLifetime)) : (out << "<null>"));
   out << ", " << "applicationId=" << to_string(applicationId);
   out << ")";
 }

@@ -2675,12 +2675,6 @@ class RenewApplicationTokenRequest {
    */
   public $token = null;
   /**
-   * The Token to renew
-   * 
-   * @var \RedRoma\Aroma\Authentication\ApplicationToken
-   */
-  public $applicationToken = null;
-  /**
    * Defines for how long to extend a Token's life.
    * 
    * @var \RedRoma\Aroma\LengthOfTime
@@ -2699,11 +2693,6 @@ class RenewApplicationTokenRequest {
           'type' => TType::STRUCT,
           'class' => '\RedRoma\Aroma\Authentication\UserToken',
           ),
-        2 => array(
-          'var' => 'applicationToken',
-          'type' => TType::STRUCT,
-          'class' => '\RedRoma\Aroma\Authentication\ApplicationToken',
-          ),
         3 => array(
           'var' => 'newLifetime',
           'type' => TType::STRUCT,
@@ -2718,9 +2707,6 @@ class RenewApplicationTokenRequest {
     if (is_array($vals)) {
       if (isset($vals['token'])) {
         $this->token = $vals['token'];
-      }
-      if (isset($vals['applicationToken'])) {
-        $this->applicationToken = $vals['applicationToken'];
       }
       if (isset($vals['newLifetime'])) {
         $this->newLifetime = $vals['newLifetime'];
@@ -2754,14 +2740,6 @@ class RenewApplicationTokenRequest {
           if ($ftype == TType::STRUCT) {
             $this->token = new \RedRoma\Aroma\Authentication\UserToken();
             $xfer += $this->token->read($input);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::STRUCT) {
-            $this->applicationToken = new \RedRoma\Aroma\Authentication\ApplicationToken();
-            $xfer += $this->applicationToken->read($input);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -2800,14 +2778,6 @@ class RenewApplicationTokenRequest {
       }
       $xfer += $output->writeFieldBegin('token', TType::STRUCT, 1);
       $xfer += $this->token->write($output);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->applicationToken !== null) {
-      if (!is_object($this->applicationToken)) {
-        throw new TProtocolException('Bad type in structure.', TProtocolException::INVALID_DATA);
-      }
-      $xfer += $output->writeFieldBegin('applicationToken', TType::STRUCT, 2);
-      $xfer += $this->applicationToken->write($output);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->newLifetime !== null) {

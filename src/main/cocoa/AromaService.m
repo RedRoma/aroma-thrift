@@ -5358,13 +5358,11 @@
   return self;
 }
 
-- (id) initWithToken: (AromaService_UserToken) token applicationToken: (AromaService_ApplicationToken) applicationToken newLifetime: (Aroma_LengthOfTime *) newLifetime applicationId: (AromaService_uuid) applicationId
+- (id) initWithToken: (AromaService_UserToken) token newLifetime: (Aroma_LengthOfTime *) newLifetime applicationId: (AromaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
-  __applicationToken = [applicationToken retain_stub];
-  __applicationToken_isset = YES;
   __newLifetime = [newLifetime retain_stub];
   __newLifetime_isset = YES;
   __applicationId = [applicationId retain_stub];
@@ -5379,11 +5377,6 @@
   {
     __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
     __token_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationToken"])
-  {
-    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
-    __applicationToken_isset = YES;
   }
   if ([decoder containsValueForKey: @"newLifetime"])
   {
@@ -5404,10 +5397,6 @@
   {
     [encoder encodeObject: __token forKey: @"token"];
   }
-  if (__applicationToken_isset)
-  {
-    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
-  }
   if (__newLifetime_isset)
   {
     [encoder encodeObject: __newLifetime forKey: @"newLifetime"];
@@ -5425,11 +5414,6 @@
   if (__token_isset)
   {
     hash = (hash * 31) ^ [__token hash];
-  }
-  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
-  if (__applicationToken_isset)
-  {
-    hash = (hash * 31) ^ [__applicationToken hash];
   }
   hash = (hash * 31) ^ __newLifetime_isset ? 2654435761 : 0;
   if (__newLifetime_isset)
@@ -5457,10 +5441,6 @@
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
-  if ((__applicationToken_isset != other->__applicationToken_isset) ||
-      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
-    return NO;
-  }
   if ((__newLifetime_isset != other->__newLifetime_isset) ||
       (__newLifetime_isset && ((__newLifetime || other->__newLifetime) && ![__newLifetime isEqual:other->__newLifetime]))) {
     return NO;
@@ -5475,7 +5455,6 @@
 - (void) dealloc
 {
   [__token release_stub];
-  [__applicationToken release_stub];
   [__newLifetime release_stub];
   [__applicationId release_stub];
   [super dealloc_stub];
@@ -5500,27 +5479,6 @@
   [__token release_stub];
   __token = nil;
   __token_isset = NO;
-}
-
-- (AromaAuthentication_ApplicationToken *) applicationToken {
-  return [[__applicationToken retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationToken: (AromaAuthentication_ApplicationToken *) applicationToken {
-  [applicationToken retain_stub];
-  [__applicationToken release_stub];
-  __applicationToken = applicationToken;
-  __applicationToken_isset = YES;
-}
-
-- (BOOL) applicationTokenIsSet {
-  return __applicationToken_isset;
-}
-
-- (void) unsetApplicationToken {
-  [__applicationToken release_stub];
-  __applicationToken = nil;
-  __applicationToken_isset = NO;
 }
 
 - (Aroma_LengthOfTime *) newLifetime {
@@ -5590,16 +5548,6 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaAuthentication_ApplicationToken *fieldValue = [[AromaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setApplicationToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
       case 3:
         if (fieldType == TType_STRUCT) {
           Aroma_LengthOfTime *fieldValue = [[Aroma_LengthOfTime alloc] init];
@@ -5636,13 +5584,6 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__applicationToken_isset) {
-    if (__applicationToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 2];
-      [__applicationToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
   if (__newLifetime_isset) {
     if (__newLifetime != nil) {
       [outProtocol writeFieldBeginWithName: @"newLifetime" type: TType_STRUCT fieldID: 3];
@@ -5669,8 +5610,6 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RenewApplicationTokenRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
-  [ms appendString: @",applicationToken:"];
-  [ms appendFormat: @"%@", __applicationToken];
   [ms appendString: @",newLifetime:"];
   [ms appendFormat: @"%@", __newLifetime];
   [ms appendString: @",applicationId:"];

@@ -1459,9 +1459,8 @@ inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTo
 }
 
 typedef struct _RenewApplicationTokenRequest__isset {
-  _RenewApplicationTokenRequest__isset() : token(false), applicationToken(false), newLifetime(false), applicationId(false) {}
+  _RenewApplicationTokenRequest__isset() : token(false), newLifetime(false), applicationId(false) {}
   bool token :1;
-  bool applicationToken :1;
   bool newLifetime :1;
   bool applicationId :1;
 } _RenewApplicationTokenRequest__isset;
@@ -1476,15 +1475,12 @@ class RenewApplicationTokenRequest {
 
   virtual ~RenewApplicationTokenRequest() throw();
   UserToken token;
-  ApplicationToken applicationToken;
    ::tech::aroma::thrift::LengthOfTime newLifetime;
   uuid applicationId;
 
   _RenewApplicationTokenRequest__isset __isset;
 
   void __set_token(const UserToken& val);
-
-  void __set_applicationToken(const ApplicationToken& val);
 
   void __set_newLifetime(const  ::tech::aroma::thrift::LengthOfTime& val);
 
@@ -1494,9 +1490,9 @@ class RenewApplicationTokenRequest {
   {
     if (!(token == rhs.token))
       return false;
-    if (!(applicationToken == rhs.applicationToken))
+    if (__isset.newLifetime != rhs.__isset.newLifetime)
       return false;
-    if (!(newLifetime == rhs.newLifetime))
+    else if (__isset.newLifetime && !(newLifetime == rhs.newLifetime))
       return false;
     if (!(applicationId == rhs.applicationId))
       return false;

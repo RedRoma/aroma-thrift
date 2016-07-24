@@ -1752,15 +1752,11 @@ RegenerateApplicationTokenResponse.prototype.write = function(output) {
 
 RenewApplicationTokenRequest = function(args) {
   this.token = null;
-  this.applicationToken = null;
   this.newLifetime = null;
   this.applicationId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new UserToken(args.token);
-    }
-    if (args.applicationToken !== undefined && args.applicationToken !== null) {
-      this.applicationToken = new ApplicationToken(args.applicationToken);
     }
     if (args.newLifetime !== undefined && args.newLifetime !== null) {
       this.newLifetime = new LengthOfTime(args.newLifetime);
@@ -1788,14 +1784,6 @@ RenewApplicationTokenRequest.prototype.read = function(input) {
       if (ftype == Thrift.Type.STRUCT) {
         this.token = new UserToken();
         this.token.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.applicationToken = new ApplicationToken();
-        this.applicationToken.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1829,11 +1817,6 @@ RenewApplicationTokenRequest.prototype.write = function(output) {
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 2);
-    this.applicationToken.write(output);
     output.writeFieldEnd();
   }
   if (this.newLifetime !== null && this.newLifetime !== undefined) {
