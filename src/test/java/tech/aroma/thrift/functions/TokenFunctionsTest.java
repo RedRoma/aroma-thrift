@@ -192,6 +192,7 @@ public class TokenFunctionsTest
         assertThat(auth.organizationId, is(app.organization));
         assertThat(auth.timeOfExpiration, is(app.timeOfExpiration));
         assertThat(auth.ownerName, is(app.applicationName));
+        assertThat(auth.status, is(app.status));
     }
 
     private void assertUserTokenMatch(AuthenticationToken auth, UserToken user)
@@ -203,6 +204,7 @@ public class TokenFunctionsTest
         assertThat(auth.ownerId, is(user.userId));
         assertThat(auth.organizationId, is(user.organization));
         assertThat(auth.timeOfExpiration, is(user.timeOfExpiration));
+        assertThat(auth.status, is(user.status));
     }
 
 }

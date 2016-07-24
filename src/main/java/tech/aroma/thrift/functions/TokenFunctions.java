@@ -53,7 +53,8 @@ public final class TokenFunctions
                     .setApplicationId(authToken.ownerId)
                     .setOrganization(authToken.organizationId)
                     .setApplicationName(authToken.ownerName)
-                    .setTimeOfExpiration(authToken.timeOfExpiration);
+                    .setTimeOfExpiration(authToken.timeOfExpiration)
+                    .setStatus(authToken.status);
             }
             
             return appToken;
@@ -74,7 +75,9 @@ public final class TokenFunctions
                     .setOwnerName(appToken.applicationName)
                     .setTimeOfExpiration(appToken.timeOfExpiration)
                     .setTokenType(TokenType.APPLICATION)
-                    .setOrganizationId(appToken.organization);
+                    .setOrganizationId(appToken.organization)
+                    .setStatus(appToken.status);
+
             }
             
             return authToken;
@@ -93,7 +96,8 @@ public final class TokenFunctions
                     .setTokenId(token.tokenId)
                     .setUserId(token.ownerId)
                     .setOrganization(token.organizationId)
-                    .setTimeOfExpiration(token.timeOfExpiration);
+                    .setTimeOfExpiration(token.timeOfExpiration)
+                    .setStatus(token.status);
             }
             
             return userToken;
@@ -113,7 +117,8 @@ public final class TokenFunctions
                     .setOwnerId(token.userId)
                     .setOrganizationId(token.organization)
                     .setTimeOfExpiration(token.timeOfExpiration)
-                    .setTokenType(TokenType.USER);
+                    .setTokenType(TokenType.USER)
+                    .setStatus(token.status);
             }
             
             return authToken;
