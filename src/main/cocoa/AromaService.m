@@ -14902,6 +14902,7 @@ static AromaEndpoint_TcpEndpoint * AromaService_PRODUCTION_ENDPOINT;
 static AromaEndpoint_TcpEndpoint * AromaService_BETA_ENDPOINT;
 static Aroma_Dimension * AromaService_MAX_PROFILE_IMAGE_DIMENSION;
 static AromaService_int AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
+static Aroma_LengthOfTime * AromaService_DEFAULT_APP_TOKEN_LIFETIME;
 static Aroma_Dimension * AromaService_MAX_APPLICATION_ICON_DIMENSION;
 static AromaService_int AromaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 static AromaService_int AromaService_APPLICATION_NAME_MAX_LENGTH = 20;
@@ -14926,6 +14927,11 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
   AromaService_MAX_PROFILE_IMAGE_DIMENSION = [[Aroma_Dimension alloc] init];
   [AromaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
   [AromaService_MAX_PROFILE_IMAGE_DIMENSION setHeight:1024];
+
+;
+  AromaService_DEFAULT_APP_TOKEN_LIFETIME = [[Aroma_LengthOfTime alloc] init];
+  [AromaService_DEFAULT_APP_TOKEN_LIFETIME setValue:180];
+  [AromaService_DEFAULT_APP_TOKEN_LIFETIME setUnit:5];
 
 ;
   AromaService_MAX_APPLICATION_ICON_DIMENSION = [[Aroma_Dimension alloc] init];
@@ -14958,6 +14964,9 @@ static AromaService_int AromaService_MAXIMUM_REACTIONS = 100;
 }
 + (AromaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES{
   return AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
+}
++ (Aroma_LengthOfTime *) DEFAULT_APP_TOKEN_LIFETIME{
+  return AromaService_DEFAULT_APP_TOKEN_LIFETIME;
 }
 + (Aroma_Dimension *) MAX_APPLICATION_ICON_DIMENSION{
   return AromaService_MAX_APPLICATION_ICON_DIMENSION;

@@ -47,7 +47,7 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
 /** The Default lifetime of a Token created by the Authentication Service. */
-const Aroma.LengthOfTime DEFAULT_TOKEN_LIFETIME = { "value" : 60, "unit" : Aroma.TimeUnit.DAYS };
+const Aroma.LengthOfTime DEFAULT_TOKEN_LIFETIME = { "value" : 90, "unit" : Aroma.TimeUnit.DAYS };
 
 struct CreateTokenRequest
 {

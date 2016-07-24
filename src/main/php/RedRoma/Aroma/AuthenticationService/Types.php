@@ -917,7 +917,7 @@ final class Constant extends \Thrift\Type\TConstant {
      * The Default lifetime of a Token created by the Authentication Service.
      */
 new \RedRoma\Aroma\LengthOfTime(array(
-      "value" => 60,
+      "value" => 90,
       "unit" =>       5,
     ));
   }

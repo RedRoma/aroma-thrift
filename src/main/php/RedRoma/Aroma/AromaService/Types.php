@@ -7708,6 +7708,7 @@ final class Constant extends \Thrift\Type\TConstant {
   static protected $BETA_ENDPOINT;
   static protected $MAX_PROFILE_IMAGE_DIMENSION;
   static protected $MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
+  static protected $DEFAULT_APP_TOKEN_LIFETIME;
   static protected $MAX_APPLICATION_ICON_DIMENSION;
   static protected $MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
   static protected $APPLICATION_NAME_MAX_LENGTH;
@@ -7756,6 +7757,16 @@ new \RedRoma\Aroma\Dimension(array(
      * The Maximum Filesize for a Profile Picture submitted.
      */
 100;
+  }
+
+  static protected function init_DEFAULT_APP_TOKEN_LIFETIME() {
+    return     /**
+     * The default lifetime used for all newly created application tokens.
+     */
+new \RedRoma\Aroma\LengthOfTime(array(
+      "value" => 180,
+      "unit" =>       5,
+    ));
   }
 
   static protected function init_MAX_APPLICATION_ICON_DIMENSION() {

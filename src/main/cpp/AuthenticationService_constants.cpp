@@ -26,7 +26,7 @@ AuthenticationServiceConstants::AuthenticationServiceConstants() {
   BETA_ENDPOINT.port = tmp25;
 
    ::tech::aroma::thrift::long tmp26;
-  tmp26 = 60LL;
+  tmp26 = 90LL;
 
   DEFAULT_TOKEN_LIFETIME.value = tmp26;
   DEFAULT_TOKEN_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;

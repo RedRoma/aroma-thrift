@@ -94,6 +94,10 @@ const Aroma.Dimension MAX_PROFILE_IMAGE_DIMENSION = { "width" : 1024, "height" :
 /** The Maximum Filesize for a Profile Picture submitted. */
 const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
+/** The default lifetime used for all newly created application tokens. */
+const Aroma.LengthOfTime DEFAULT_APP_TOKEN_LIFETIME =  { "value" : 180, "unit" : Aroma.TimeUnit.DAYS };
+
+
 /**
  * Sign In to Aroma, and get a User Token.
  */

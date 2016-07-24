@@ -20,6 +20,7 @@ class AromaServiceConstants {
    ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
    ::tech::aroma::thrift::Dimension MAX_PROFILE_IMAGE_DIMENSION;
   int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
+   ::tech::aroma::thrift::LengthOfTime DEFAULT_APP_TOKEN_LIFETIME;
    ::tech::aroma::thrift::Dimension MAX_APPLICATION_ICON_DIMENSION;
   int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
   int APPLICATION_NAME_MAX_LENGTH;

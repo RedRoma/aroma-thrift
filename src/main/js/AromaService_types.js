@@ -5150,6 +5150,8 @@ BETA_ENDPOINT = new TcpEndpoint({
 MAX_PROFILE_IMAGE_DIMENSION = new Dimension({
 'width' : 1024,'height' : 1024});
 MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
+DEFAULT_APP_TOKEN_LIFETIME = new LengthOfTime({
+'value' : 180,'unit' : 5});
 MAX_APPLICATION_ICON_DIMENSION = new Dimension({
 'width' : 1024,'height' : 1024});
 MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;

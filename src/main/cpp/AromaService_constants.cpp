@@ -36,14 +36,20 @@ AromaServiceConstants::AromaServiceConstants() {
 
   MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
-   ::tech::aroma::thrift::int tmp260;
-  tmp260 = 1024;
+   ::tech::aroma::thrift::long tmp260;
+  tmp260 = 180LL;
 
-  MAX_APPLICATION_ICON_DIMENSION.width = tmp260;
+  DEFAULT_APP_TOKEN_LIFETIME.value = tmp260;
+  DEFAULT_APP_TOKEN_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
+
    ::tech::aroma::thrift::int tmp261;
   tmp261 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.height = tmp261;
+  MAX_APPLICATION_ICON_DIMENSION.width = tmp261;
+   ::tech::aroma::thrift::int tmp262;
+  tmp262 = 1024;
+
+  MAX_APPLICATION_ICON_DIMENSION.height = tmp262;
 
   MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 
@@ -53,16 +59,16 @@ AromaServiceConstants::AromaServiceConstants() {
 
   MAX_MESSAGE_LENGTH = 5000;
 
-   ::tech::aroma::thrift::long tmp262;
-  tmp262 = 3LL;
+   ::tech::aroma::thrift::long tmp263;
+  tmp263 = 3LL;
 
-  DEFAULT_INBOX_LIFETIME.value = tmp262;
+  DEFAULT_INBOX_LIFETIME.value = tmp263;
   DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
-   ::tech::aroma::thrift::long tmp263;
-  tmp263 = 4LL;
+   ::tech::aroma::thrift::long tmp264;
+  tmp264 = 4LL;
 
-  DEFAULT_ACTIVITY_LIFETIME.value = tmp263;
+  DEFAULT_ACTIVITY_LIFETIME.value = tmp264;
   DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
   MAXIMUM_REACTIONS = 100;
