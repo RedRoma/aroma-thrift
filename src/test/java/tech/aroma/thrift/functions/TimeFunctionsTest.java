@@ -17,6 +17,7 @@
 package tech.aroma.thrift.functions;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +38,9 @@ import static tech.aroma.thrift.TimeUnit.MINUTES;
 import static tech.aroma.thrift.TimeUnit.SECONDS;
 import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
 import static tech.sirwellington.alchemy.generator.NumberGenerators.integers;
+import static tech.sirwellington.alchemy.generator.TimeGenerators.anytime;
+import static tech.sirwellington.alchemy.generator.TimeGenerators.futureInstants;
+import static tech.sirwellington.alchemy.generator.TimeGenerators.pastInstants;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
 
 /**
@@ -53,6 +57,10 @@ public class TimeFunctionsTest
     private LengthOfTime lengthOfTime;
     private long expectedInSeconds;
     
+    private long anyTimestamp;
+    private long pastTimestamp;
+    private long futureTimestamp;
+    
     @Before
     public void setUp()
     {
@@ -64,6 +72,10 @@ public class TimeFunctionsTest
         
         Duration duration = TimeFunctions.lengthOfTimeToDuration().apply(lengthOfTime);
         expectedInSeconds = duration.getSeconds();
+        
+        anyTimestamp = one(anytime()).toEpochMilli();
+        pastTimestamp = one(pastInstants()).toEpochMilli();
+        futureTimestamp = one(futureInstants()).toEpochMilli();
     }
     
     @DontRepeat
@@ -126,6 +138,28 @@ public class TimeFunctionsTest
             default:
                 throw new UnsupportedOperationException("Unexpected Time Unit Type: " + timeUnit);
         }
+    }
+
+    @Test
+    public void testToInstant()
+    {
+        Instant result = TimeFunctions.toInstant(anyTimestamp);
+        assertThat(result, is(Instant.ofEpochMilli(anyTimestamp)));
+        assertThat(result.toEpochMilli(), is(anyTimestamp));
+    }
+
+    @Test
+    public void testIsInThePast()
+    {
+        assertThat(TimeFunctions.isInThePast(pastTimestamp), is(true));
+        assertThat(TimeFunctions.isInThePast(futureTimestamp), is(false));
+    }
+
+    @Test
+    public void testIsInTheFuture()
+    {
+        assertThat(TimeFunctions.isInTheFuture(futureTimestamp), is(true));
+        assertThat(TimeFunctions.isInTheFuture(pastTimestamp), is(false));
     }
     
 }

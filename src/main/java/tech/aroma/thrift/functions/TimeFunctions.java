@@ -19,6 +19,7 @@ package tech.aroma.thrift.functions;
 
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.function.Function;
 import org.slf4j.Logger;
@@ -28,6 +29,7 @@ import tech.aroma.thrift.TimeUnit;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 import tech.sirwellington.alchemy.annotations.arguments.Required;
 
+import static java.time.Instant.now;
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
 import static tech.sirwellington.alchemy.arguments.assertions.NumberAssertions.greaterThanOrEqualTo;
@@ -107,4 +109,45 @@ public final class TimeFunctions
         return duration.getSeconds();
     }
 
+    
+    /**
+     * Converts an Aroma Timestamp to an appropriate instance.
+     * @param timestamp The Aroma Timestamp, stored as milliseconds-since-epoch.
+     * @return An {@ling Instant} representation.
+     * 
+     * @see #isInThePast(long) 
+     * @see #isInTheFuture(long) 
+     */
+    public static Instant toInstant(long timestamp)
+    {
+        return Instant.ofEpochMilli(timestamp);
+    }
+    
+    /**
+     * Checks if an epoch is in the past using {@link Instant}
+     * 
+     * @param timestamp
+     * @return 
+     * 
+     * @see #toInstant(long) 
+     * @see #isInTheFuture(long) 
+     */
+    public static boolean isInThePast(long timestamp)
+    {
+        return toInstant(timestamp).isBefore(now());
+    }
+    
+    /**
+     * Checks if an epoch timestamp is in the future using {@link Instant}.
+     * 
+     * @param timestamp
+     * @return 
+     * 
+     * @see #isInThePast(long) 
+     * @see #toInstant(long) 
+     */
+    public static boolean isInTheFuture(long timestamp)
+    {
+        return toInstant(timestamp).isAfter(now());
+    }
 }
