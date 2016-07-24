@@ -113,7 +113,7 @@ public final class TimeFunctions
     /**
      * Converts an Aroma Timestamp to an appropriate instance.
      * @param timestamp The Aroma Timestamp, stored as milliseconds-since-epoch.
-     * @return An {@ling Instant} representation.
+     * @return An {@link Instant} representation.
      * 
      * @see #isInThePast(long) 
      * @see #isInTheFuture(long) 
