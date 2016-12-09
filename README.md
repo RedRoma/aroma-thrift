@@ -5,6 +5,7 @@ Aroma Thrift
 
 
 [![Build Status](http://jenkins.redroma.tech/job/Aroma%20Thrift/badge/icon)](http://jenkins.redroma.tech/job/Aroma%20Thrift/)
+![Maven Central Version](http://img.shields.io/maven-central/v/tech.aroma/aroma-thrift.svg)
 
 The Model and Service Definitions for Aroma defined in Thrift
 
