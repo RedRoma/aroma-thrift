@@ -696,7 +696,7 @@ struct RegisterHealthCheckResponse
 
 /**
  * Request to get any upcoming Service Announcements
- * from the Team @ Aroma Tech.
+ * from the Team @ RedRoma.
  */
 struct GetServiceAnnouncementsRequest
 {

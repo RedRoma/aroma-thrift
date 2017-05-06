@@ -7516,7 +7516,7 @@ class RegisterHealthCheckResponse {
 
 /**
  * Request to get any upcoming Service Announcements
- * from the Team @ Aroma Tech.
+ * from the Team @ RedRoma.
  */
 class GetServiceAnnouncementsRequest {
   static $_TSPEC;

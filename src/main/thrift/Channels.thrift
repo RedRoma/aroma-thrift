@@ -85,7 +85,7 @@ struct SlackUsername
 }
 
 /**
- * Email will be sent from the Aroma Tech domain, "aroma.tech".
+ * Email will be sent from the RedRoma domain, "aroma.tech".
  */
 struct Email
 {
