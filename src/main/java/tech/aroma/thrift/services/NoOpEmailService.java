@@ -20,12 +20,8 @@ import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tech.aroma.thrift.AromaConstants;
-import tech.aroma.thrift.email.service.EmailService;
-import tech.aroma.thrift.email.service.SendEmailRequest;
-import tech.aroma.thrift.email.service.SendEmailResponse;
-import tech.aroma.thrift.exceptions.InvalidArgumentException;
-import tech.aroma.thrift.exceptions.InvalidTokenException;
-import tech.aroma.thrift.exceptions.OperationFailedException;
+import tech.aroma.thrift.email.service.*;
+import tech.aroma.thrift.exceptions.*;
 
 /**
  *
