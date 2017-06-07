@@ -16,31 +16,18 @@
 
 package tech.aroma.thrift.services;
 
-import java.util.function.Supplier;
+import java.util.concurrent.Callable;
+
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransport;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import tech.aroma.thrift.authentication.service.AuthenticationService;
-import tech.aroma.thrift.authentication.service.CreateTokenRequest;
-import tech.aroma.thrift.authentication.service.CreateTokenResponse;
-import tech.aroma.thrift.authentication.service.GetTokenInfoRequest;
-import tech.aroma.thrift.authentication.service.GetTokenInfoResponse;
-import tech.aroma.thrift.authentication.service.InvalidateTokenRequest;
-import tech.aroma.thrift.authentication.service.InvalidateTokenResponse;
-import tech.aroma.thrift.authentication.service.VerifyTokenRequest;
-import tech.aroma.thrift.authentication.service.VerifyTokenResponse;
-import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
-import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
-import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
-import tech.sirwellington.alchemy.test.junit.runners.Repeat;
+import tech.aroma.thrift.authentication.service.*;
+import tech.sirwellington.alchemy.test.junit.runners.*;
 
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
+import static org.mockito.Mockito.*;
 
 /**
  *
@@ -55,7 +42,7 @@ public class PerRequestAuthenticationServiceTest
     private AuthenticationService.Client delegate;
 
     @Mock
-    private Supplier<AuthenticationService.Iface> clientProvider;
+    private Callable<AuthenticationService.Iface> clientProvider;
 
     @Mock
     private TProtocol protocol;
@@ -87,7 +74,7 @@ public class PerRequestAuthenticationServiceTest
 
     private void setupMocks() throws Exception
     {
-        when(clientProvider.get()).thenReturn(delegate);
+        when(clientProvider.call()).thenReturn(delegate);
 
         when(delegate.getInputProtocol()).thenReturn(protocol);
         when(delegate.getOutputProtocol()).thenReturn(protocol);
@@ -96,11 +83,26 @@ public class PerRequestAuthenticationServiceTest
     }
 
     @DontRepeat
-    @Test
-    public void testConstructor() throws Exception
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructor1() throws Exception
     {
-        assertThrows(() -> new PerRequestAuthenticationService(null));
-        assertThrows(() -> new PerRequestAuthenticationService(() -> null));
+        new PerRequestAuthenticationService(null);
+    }
+
+    @DontRepeat
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructor2() throws Exception
+    {
+        Callable<AuthenticationService.Iface> supplier = new Callable<AuthenticationService.Iface>()
+        {
+            @Override
+            public AuthenticationService.Iface call()
+            {
+                return null;
+            }
+        };
+
+        new PerRequestAuthenticationService(supplier);
     }
 
     @Test

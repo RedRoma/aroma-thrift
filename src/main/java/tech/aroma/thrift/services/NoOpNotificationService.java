@@ -20,15 +20,13 @@ import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tech.aroma.thrift.AromaConstants;
-import tech.aroma.thrift.exceptions.InvalidArgumentException;
-import tech.aroma.thrift.exceptions.InvalidTokenException;
-import tech.aroma.thrift.exceptions.OperationFailedException;
-import tech.aroma.thrift.notification.service.NotificationService;
-import tech.aroma.thrift.notification.service.SendNotificationRequest;
-import tech.aroma.thrift.notification.service.SendNotificationResponse;
+import tech.aroma.thrift.exceptions.*;
+import tech.aroma.thrift.notification.service.*;
+import tech.sirwellington.alchemy.arguments.assertions.Assertions;
 
-import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
-import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
+import static tech.sirwellington.alchemy.arguments.Arguments.*;
+import static tech.sirwellington.alchemy.arguments.assertions.Assertions.nonNullReference;
+
 
 /**
  *
@@ -46,14 +44,11 @@ public final class NoOpNotificationService implements NotificationService.Iface
     }
 
     @Override
-    public SendNotificationResponse sendNotification(SendNotificationRequest request) throws InvalidArgumentException,
-                                                                                             OperationFailedException,
-                                                                                             InvalidTokenException,
-                                                                                             TException
+    public SendNotificationResponse sendNotification(SendNotificationRequest request) throws TException
     {
         checkThat(request)
             .throwing(InvalidArgumentException.class)
-            .is(notNull());
+            .is(Assertions.<SendNotificationRequest>notNull());
 
         return new SendNotificationResponse();
     }

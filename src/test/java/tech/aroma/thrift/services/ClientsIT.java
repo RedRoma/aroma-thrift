@@ -24,11 +24,10 @@ import tech.aroma.thrift.notification.service.NotificationService;
 import tech.aroma.thrift.service.AromaService;
 import tech.sirwellington.alchemy.annotations.testing.IntegrationTest;
 import tech.sirwellington.alchemy.annotations.testing.NetworkSensitive;
-import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
-import tech.sirwellington.alchemy.test.junit.runners.Repeat;
+import tech.sirwellington.alchemy.test.junit.runners.*;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  *
@@ -44,6 +43,13 @@ public class ClientsIT
     @Before
     public void setUp()
     {
+    }
+
+    @DontRepeat
+    @Test(expected = IllegalAccessException.class)
+    public void testConstructor() throws Exception
+    {
+        Clients.class.newInstance();
     }
 
     @Test

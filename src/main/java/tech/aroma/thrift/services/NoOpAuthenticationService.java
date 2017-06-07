@@ -22,15 +22,7 @@ import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tech.aroma.thrift.AromaConstants;
-import tech.aroma.thrift.authentication.service.AuthenticationService;
-import tech.aroma.thrift.authentication.service.CreateTokenRequest;
-import tech.aroma.thrift.authentication.service.CreateTokenResponse;
-import tech.aroma.thrift.authentication.service.GetTokenInfoRequest;
-import tech.aroma.thrift.authentication.service.GetTokenInfoResponse;
-import tech.aroma.thrift.authentication.service.InvalidateTokenRequest;
-import tech.aroma.thrift.authentication.service.InvalidateTokenResponse;
-import tech.aroma.thrift.authentication.service.VerifyTokenRequest;
-import tech.aroma.thrift.authentication.service.VerifyTokenResponse;
+import tech.aroma.thrift.authentication.service.*;
 import tech.aroma.thrift.exceptions.InvalidTokenException;
 import tech.aroma.thrift.exceptions.OperationFailedException;
 

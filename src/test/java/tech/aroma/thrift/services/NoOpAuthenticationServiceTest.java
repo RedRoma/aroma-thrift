@@ -19,18 +19,11 @@ package tech.aroma.thrift.services;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import tech.aroma.thrift.authentication.service.CreateTokenRequest;
-import tech.aroma.thrift.authentication.service.CreateTokenResponse;
-import tech.aroma.thrift.authentication.service.GetTokenInfoRequest;
-import tech.aroma.thrift.authentication.service.GetTokenInfoResponse;
-import tech.aroma.thrift.authentication.service.InvalidateTokenRequest;
-import tech.aroma.thrift.authentication.service.InvalidateTokenResponse;
-import tech.aroma.thrift.authentication.service.VerifyTokenRequest;
-import tech.aroma.thrift.authentication.service.VerifyTokenResponse;
+import tech.aroma.thrift.authentication.service.*;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  *

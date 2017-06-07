@@ -5,7 +5,7 @@
     <parent>
         <groupId>tech.aroma</groupId>
         <artifactId>aroma</artifactId>
-        <version>1.7</version>
+        <version>2.1</version>
     </parent>
 
     <artifactId>aroma-thrift</artifactId>
@@ -40,6 +40,9 @@
     <!-- END OF POM METADATA -->
 
     <properties>
+
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
 
         <!--Thrift Compiler Properties-->
         <thrift.compiler>thrift</thrift.compiler>
@@ -79,6 +82,16 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.nhaarman</groupId>
+            <artifactId>mockito-kotlin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.natpryce</groupId>
+            <artifactId>hamkrest</artifactId>
+        </dependency>
+
 
         <!--=======================-->
         <!--ALCHEMY-->
@@ -91,6 +104,7 @@
         <dependency>
             <groupId>tech.sirwellington.alchemy</groupId>
             <artifactId>alchemy-arguments</artifactId>
+            <version>2.1.1</version>
         </dependency>
 
         <dependency>
@@ -111,6 +125,7 @@
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
+            <version>0.9.3</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.httpcomponents</groupId>
@@ -127,6 +142,20 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.4.6</version>
+        </dependency>
+
+        <!--=======================-->
+        <!--KOTLIN-->
+        <!--=======================-->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jre7</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -228,6 +257,43 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
+                </executions>
+            </plugin>
+
+            <!--KOTLIN-->
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <configuration>
+                    <jvmTarget>1.6</jvmTarget>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+
                 </executions>
             </plugin>
 
