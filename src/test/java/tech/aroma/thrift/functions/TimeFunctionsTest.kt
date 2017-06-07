@@ -16,7 +16,7 @@
 
 package tech.aroma.thrift.functions
 
-import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.equalTo
 import org.hamcrest.Matchers.notNullValue
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -36,7 +36,6 @@ import tech.sirwellington.alchemy.generator.NumberGenerators.Companion.integers
 import tech.sirwellington.alchemy.generator.TimeGenerators.Companion.anytime
 import tech.sirwellington.alchemy.generator.TimeGenerators.Companion.futureInstants
 import tech.sirwellington.alchemy.generator.TimeGenerators.Companion.pastInstants
-import tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner
 import tech.sirwellington.alchemy.test.junit.runners.DontRepeat
 import tech.sirwellington.alchemy.test.junit.runners.Repeat
@@ -94,7 +93,7 @@ class TimeFunctionsTest
         val expected = toChronoUnit(timeUnit)
         val chronoUnit = TimeFunctions.TIME_UNIT_TO_CHRONO_UNIT.apply(timeUnit)
         assertThat(chronoUnit, notNullValue())
-        assertThat(chronoUnit, `is`(expected))
+        assertThat(chronoUnit, equalTo(expected))
     }
 
     @Test
@@ -103,7 +102,7 @@ class TimeFunctionsTest
         val chronoUnit = toChronoUnit(timeUnit)
         val duration = TimeFunctions.LENGTH_OF_TIME_TO_DURATION.apply(lengthOfTime)
         val expectedDuration = chronoUnit.duration.multipliedBy(timeValue)
-        assertThat(duration, `is`(expectedDuration))
+        assertThat(duration, equalTo(expectedDuration))
     }
 
 
@@ -111,7 +110,7 @@ class TimeFunctionsTest
     fun testToSeconds()
     {
         val seconds = TimeFunctions.toSeconds(lengthOfTime!!)
-        assertThat(seconds, `is`(expectedInSeconds))
+        assertThat(seconds, equalTo(expectedInSeconds))
     }
 
     private fun toChronoUnit(timeUnit: TimeUnit): ChronoUnit
@@ -132,22 +131,22 @@ class TimeFunctionsTest
     fun testToInstant()
     {
         val result = TimeFunctions.toInstant(anyTimestamp)
-        assertThat(result, `is`(Instant.ofEpochMilli(anyTimestamp)))
-        assertThat(result.toEpochMilli(), `is`(anyTimestamp))
+        assertThat(result, equalTo(Instant.ofEpochMilli(anyTimestamp)))
+        assertThat(result.toEpochMilli(), equalTo(anyTimestamp))
     }
 
     @Test
     fun testIsInThePast()
     {
-        assertThat(TimeFunctions.isInThePast(pastTimestamp), `is`(true))
-        assertThat(TimeFunctions.isInThePast(futureTimestamp), `is`(false))
+        assertThat(TimeFunctions.isInThePast(pastTimestamp), equalTo(true))
+        assertThat(TimeFunctions.isInThePast(futureTimestamp), equalTo(false))
     }
 
     @Test
     fun testIsInTheFuture()
     {
-        assertThat(TimeFunctions.isInTheFuture(futureTimestamp), `is`(true))
-        assertThat(TimeFunctions.isInTheFuture(pastTimestamp), `is`(false))
+        assertThat(TimeFunctions.isInTheFuture(futureTimestamp), equalTo(true))
+        assertThat(TimeFunctions.isInTheFuture(pastTimestamp), equalTo(false))
     }
 
 

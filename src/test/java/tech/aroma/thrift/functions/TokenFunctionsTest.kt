@@ -16,7 +16,7 @@
 
 package tech.aroma.thrift.functions
 
-import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.equalTo
 import org.hamcrest.Matchers.notNullValue
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -106,7 +106,7 @@ class TokenFunctionsTest
 
         val result = function.apply(applicationToken)
         assertAppTokenMatch(result, applicationToken)
-        assertThat(result.tokenType, `is`(TokenType.APPLICATION))
+        assertThat(result.tokenType, equalTo(TokenType.APPLICATION))
     }
 
     @DontRepeat
@@ -158,7 +158,7 @@ class TokenFunctionsTest
 
         val result = function.apply(userToken)
         assertUserTokenMatch(result, userToken)
-        assertThat(result.tokenType, `is`(TokenType.USER))
+        assertThat(result.tokenType, equalTo(TokenType.USER))
 
     }
 
@@ -182,12 +182,12 @@ class TokenFunctionsTest
         assertThat(auth, notNullValue())
         assertThat(app, notNullValue())
 
-        assertThat(auth.tokenId, `is`(app.tokenId))
-        assertThat(auth.ownerId, `is`(app.applicationId))
-        assertThat(auth.organizationId, `is`(app.organization))
-        assertThat(auth.timeOfExpiration, `is`(app.timeOfExpiration))
-        assertThat(auth.ownerName, `is`(app.applicationName))
-        assertThat(auth.status, `is`(app.status))
+        assertThat(auth.tokenId, equalTo(app.tokenId))
+        assertThat(auth.ownerId, equalTo(app.applicationId))
+        assertThat(auth.organizationId, equalTo(app.organization))
+        assertThat(auth.timeOfExpiration, equalTo(app.timeOfExpiration))
+        assertThat(auth.ownerName, equalTo(app.applicationName))
+        assertThat(auth.status, equalTo(app.status))
     }
 
     private fun assertUserTokenMatch(auth: AuthenticationToken, user: UserToken)
@@ -195,11 +195,11 @@ class TokenFunctionsTest
         assertThat(auth, notNullValue())
         assertThat(user, notNullValue())
 
-        assertThat(auth.tokenId, `is`(user.tokenId))
-        assertThat(auth.ownerId, `is`(user.userId))
-        assertThat(auth.organizationId, `is`(user.organization))
-        assertThat(auth.timeOfExpiration, `is`(user.timeOfExpiration))
-        assertThat(auth.status, `is`(user.status))
+        assertThat(auth.tokenId, equalTo(user.tokenId))
+        assertThat(auth.ownerId, equalTo(user.userId))
+        assertThat(auth.organizationId, equalTo(user.organization))
+        assertThat(auth.timeOfExpiration, equalTo(user.timeOfExpiration))
+        assertThat(auth.status, equalTo(user.status))
     }
 
 }

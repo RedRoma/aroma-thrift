@@ -24,7 +24,6 @@ import tech.aroma.thrift.notification.service.NotificationService;
 import tech.aroma.thrift.service.AromaService;
 import tech.sirwellington.alchemy.annotations.testing.IntegrationTest;
 import tech.sirwellington.alchemy.annotations.testing.NetworkSensitive;
-import tech.sirwellington.alchemy.test.junit.ThrowableAssertion;
 import tech.sirwellington.alchemy.test.junit.runners.*;
 
 import static org.hamcrest.Matchers.notNullValue;
