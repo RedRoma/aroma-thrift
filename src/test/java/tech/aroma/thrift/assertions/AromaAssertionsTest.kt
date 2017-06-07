@@ -16,6 +16,7 @@
 
 package tech.aroma.thrift.assertions
 
+import com.nhaarman.mockito_kotlin.whenever
 import org.apache.thrift.TException
 import org.hamcrest.Matchers
 import org.hamcrest.Matchers.notNullValue
@@ -24,7 +25,6 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
 import tech.aroma.thrift.authentication.ApplicationToken
 import tech.aroma.thrift.authentication.AuthenticationToken
 import tech.aroma.thrift.authentication.UserToken
@@ -171,7 +171,7 @@ class AromaAssertionsTest
 
         //When Token is bad
 
-        `when`(authenticationService.verifyToken(expectedRequest))
+        whenever(authenticationService.verifyToken(expectedRequest))
                 .thenThrow(InvalidTokenException())
 
         assertThrows { assertion.check(authenticationToken) }
@@ -190,7 +190,7 @@ class AromaAssertionsTest
         assertion.check(authenticationToken)
 
         //When Token is bad
-        `when`(authenticationService.verifyToken(expectedRequest))
+        whenever(authenticationService.verifyToken(expectedRequest))
                 .thenThrow(InvalidTokenException())
 
         assertThrows { assertion.check(authenticationToken) }
@@ -208,7 +208,7 @@ class AromaAssertionsTest
         assertion.check(applicationToken)
 
         //When Token is bad
-        `when`(authenticationService.verifyToken(expectedRequest))
+        whenever(authenticationService.verifyToken(expectedRequest))
                 .thenThrow(InvalidTokenException())
 
         assertThrows { assertion.check(applicationToken) }
@@ -226,7 +226,7 @@ class AromaAssertionsTest
         assertion.check(userToken)
 
         //When Token is bad
-        `when`(authenticationService.verifyToken(expectedRequest))
+        whenever(authenticationService.verifyToken(expectedRequest))
                 .thenThrow(InvalidTokenException::class.java)
 
         assertThrows { assertion.check(userToken) }
