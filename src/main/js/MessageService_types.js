@@ -7,7 +7,7 @@
 
 SERVICE_PORT = 7011;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'message-srv.aroma.tech','port' : 7011});
+'port' : 7011,'hostname' : 'message-srv.aroma.tech'});
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'message-srv.beta.aroma.tech','port' : 7011});
 DEFAULT_MESSAGE_LIFETIME = new LengthOfTime({

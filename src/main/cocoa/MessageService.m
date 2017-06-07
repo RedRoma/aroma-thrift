@@ -37,8 +37,8 @@ static Aroma_LengthOfTime * MessageService_DEFAULT_MESSAGE_LIFETIME;
 @implementation MessageService_MessageServiceConstants
 + (void) initialize {
   MessageService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
-  [MessageService_PRODUCTION_ENDPOINT setHostname:@"message-srv.aroma.tech"];
   [MessageService_PRODUCTION_ENDPOINT setPort:7011];
+  [MessageService_PRODUCTION_ENDPOINT setHostname:@"message-srv.aroma.tech"];
 
 ;
   MessageService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
