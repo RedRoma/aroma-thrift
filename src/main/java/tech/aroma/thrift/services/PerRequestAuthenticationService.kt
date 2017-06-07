@@ -79,7 +79,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Calla
     }
 
     @Throws(OperationFailedException::class, InvalidArgumentException::class, TException::class)
-    override fun createToken(request: CreateTokenRequest): CreateTokenResponse
+    override fun createToken(request: CreateTokenRequest): CreateTokenResponse?
     {
         val client = clientProvider.call()
 
@@ -94,7 +94,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Calla
     }
 
     @Throws(OperationFailedException::class, InvalidTokenException::class, InvalidArgumentException::class, TException::class)
-    override fun getTokenInfo(request: GetTokenInfoRequest): GetTokenInfoResponse
+    override fun getTokenInfo(request: GetTokenInfoRequest): GetTokenInfoResponse?
     {
         val client = clientProvider.call()
 
@@ -109,7 +109,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Calla
     }
 
     @Throws(OperationFailedException::class, InvalidTokenException::class, InvalidArgumentException::class, TException::class)
-    override fun invalidateToken(request: InvalidateTokenRequest): InvalidateTokenResponse
+    override fun invalidateToken(request: InvalidateTokenRequest): InvalidateTokenResponse?
     {
         val client = clientProvider.call()
 
@@ -124,7 +124,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Calla
     }
 
     @Throws(OperationFailedException::class, InvalidTokenException::class, InvalidArgumentException::class, TException::class)
-    override fun verifyToken(request: VerifyTokenRequest): VerifyTokenResponse
+    override fun verifyToken(request: VerifyTokenRequest): VerifyTokenResponse?
     {
         val client = clientProvider.call()
 

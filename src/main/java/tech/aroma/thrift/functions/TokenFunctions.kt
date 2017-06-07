@@ -32,12 +32,12 @@ import java.util.function.Function
 object TokenFunctions
 {
 
-    private val LOG = LoggerFactory.getLogger(TokenFunctions::class.qualifiedName)
+    private val LOG = LoggerFactory.getLogger(TokenFunctions::class.java)
 
     @JvmStatic
     fun authTokenToAppTokenFunction(): Function<AuthenticationToken, ApplicationToken>
     {
-        return Function<AuthenticationToken, ApplicationToken> { authToken ->
+        return Function { authToken ->
 
             val appToken = ApplicationToken()
 
@@ -104,19 +104,19 @@ object TokenFunctions
     @JvmStatic
     fun userTokenToAuthTokenFunction(): Function<UserToken, AuthenticationToken>
     {
-        return Function<UserToken, AuthenticationToken> { token ->
+        return Function { token ->
 
             val authToken = AuthenticationToken()
 
             if (token != null)
             {
                 authToken
-                        .setTokenId(token!!.tokenId)
-                        .setOwnerId(token!!.userId)
-                        .setOrganizationId(token!!.organization)
-                        .setTimeOfExpiration(token!!.timeOfExpiration)
+                        .setTokenId(token.tokenId)
+                        .setOwnerId(token.userId)
+                        .setOrganizationId(token.organization)
+                        .setTimeOfExpiration(token.timeOfExpiration)
                         .setTokenType(TokenType.USER)
-                        .setStatus(token!!.status)
+                        .setStatus(token.status)
             }
 
             authToken

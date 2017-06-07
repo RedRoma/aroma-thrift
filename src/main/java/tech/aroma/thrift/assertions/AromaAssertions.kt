@@ -68,19 +68,19 @@ object AromaAssertions
 
             checkThat(t)
                     .usingMessage("token is null")
-                    .isA(nonNullReference<AuthenticationToken>())
+                    .isA(nonNullReference())
 
             checkThat(t.tokenId)
                     .usingMessage("token missing tokenId")
-                    .`is`(nonEmptyString())
+                    .isA(nonEmptyString())
 
             if (t.isSetOwnerId)
             {
-                checkThat<String>(t.ownerId)
+                checkThat(t.ownerId)
                         .usingMessage("token missing ownerId")
-                        .`is`(nonEmptyString())
+                        .isA(nonEmptyString())
                         .usingMessage("token ownerId must be a UUID")
-                        .`is`(validUUID())
+                        .isA(validUUID())
             }
 
         }
@@ -91,16 +91,17 @@ object AromaAssertions
     {
         checkThat(authenticationService)
                 .usingMessage("authentication service is null")
-                .`is`(notNull())
+                .isA(notNull())
 
         return AlchemyAssertion { token ->
-            checkThat<ApplicationToken>(token)
-                    .usingMessage("token is null")
-                    .`is`(notNull())
 
-            checkThat<String>(token.tokenId)
+            checkThat(token)
+                    .usingMessage("token is null")
+                    .isA(notNull())
+
+            checkThat(token.tokenId)
                     .usingMessage("token is missing tokenId")
-                    .`is`(nonEmptyString())
+                    .isA(nonEmptyString())
 
             val authToken = AuthenticationToken()
                     .setTokenId(token.tokenId)
@@ -108,7 +109,7 @@ object AromaAssertions
                     .setOwnerName(token.applicationName)
 
             checkThat(authToken)
-                    .`is`(validTokenIn(authenticationService))
+                    .isA(validTokenIn(authenticationService))
         }
 
     }
@@ -118,17 +119,17 @@ object AromaAssertions
     {
         checkThat(authenticationService)
                 .usingMessage("authentication service is null")
-                .`is`(notNull())
+                .isA(notNull())
 
         return AlchemyAssertion { token ->
 
             checkThat(token)
                     .usingMessage("token is null")
-                    .`is`(notNull())
+                    .isA(notNull())
 
             checkThat(token.tokenId)
                     .usingMessage("token is missing tokenId")
-                    .`is`(nonEmptyString())
+                    .isA(nonEmptyString())
 
             val authToken = AuthenticationToken()
                     .setTokenId(token.tokenId)
@@ -136,7 +137,7 @@ object AromaAssertions
                     .setOrganizationId(token.organization)
 
             checkThat(authToken)
-                    .`is`(validTokenIn(authenticationService))
+                    .isA(validTokenIn(authenticationService))
         }
     }
 
@@ -145,22 +146,22 @@ object AromaAssertions
     {
         checkThat(authenticationService)
                 .usingMessage("authentication service is null")
-                .`is`(notNull())
+                .isA(notNull())
 
         return AlchemyAssertion { token ->
-            checkThat<AuthenticationToken>(token)
-                    .`is`(legalToken())
+            checkThat(token)
+                    .isA(legalToken())
 
             val tokenId = token.getTokenId()
 
-            checkThat<String>(tokenId)
+            checkThat(tokenId)
                     .usingMessage("tokenId is missing")
-                    .`is`(nonEmptyString())
+                    .isA(nonEmptyString())
 
             val request = VerifyTokenRequest()
                     .setTokenId(tokenId)
 
-            if (token.isSetOwnerId())
+            if (token.isSetOwnerId)
             {
                 request.setOwnerId(token.ownerId)
             }

@@ -149,7 +149,7 @@ class AromaAssertionsTest
     fun testLegalToken()
     {
         val instance = AromaAssertions.legalToken()
-        assertThat<AlchemyAssertion<AuthenticationToken>>(instance, notNullValue())
+        assertThat(instance, notNullValue())
 
         assertThrows { instance.check(null) }
                 .isInstanceOf(FailedAssertionException::class.java)
