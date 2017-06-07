@@ -18,7 +18,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma</groupId>
 	<artifactId>aroma-thrift</artifactId>
-	<version>1.9</version>
+	<version>2.0</version>
 </dependency>
 ```
 
@@ -36,7 +36,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma</groupId>
 	<artifactId>aroma-thrift</artifactId>
-	<version>1.10-SNAPSHOT</version>
+	<version>2.1-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -44,7 +44,7 @@ To use, simply add the following maven dependency.
 
 # Requirements
 
-+ Java 8
++ Java 7
 + Maven
 + Thrift 0.9.3 Compiler
 
