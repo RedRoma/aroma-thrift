@@ -16,7 +16,6 @@
 
 package tech.aroma.thrift.assertions
 
-import com.sun.javaws.exceptions.InvalidArgumentException
 import org.apache.thrift.TException
 import org.hamcrest.Matchers
 import org.hamcrest.Matchers.notNullValue
@@ -31,6 +30,7 @@ import tech.aroma.thrift.authentication.AuthenticationToken
 import tech.aroma.thrift.authentication.UserToken
 import tech.aroma.thrift.authentication.service.AuthenticationService
 import tech.aroma.thrift.authentication.service.VerifyTokenRequest
+import tech.aroma.thrift.exceptions.InvalidArgumentException
 import tech.aroma.thrift.exceptions.InvalidTokenException
 import tech.sirwellington.alchemy.arguments.AlchemyAssertion
 import tech.sirwellington.alchemy.arguments.FailedAssertionException
@@ -135,8 +135,15 @@ class AromaAssertionsTest
 
         val ex = result.apply(null)
         assertThat(ex, notNullValue())
-        assertThat(ex.message, Matchers.equalTo(message))
+        assertThat(ex._message, Matchers.equalTo(message))
     }
+
+    private val InvalidArgumentException._message: String
+        get()
+        {
+            val field = tech.aroma.thrift.exceptions.InvalidArgumentException._Fields.MESSAGE
+            return this.getFieldValue(field) as String
+        }
 
     @Test
     fun testLegalToken()
@@ -163,7 +170,6 @@ class AromaAssertionsTest
         assertion.check(authenticationToken)
 
         //When Token is bad
-
 
         `when`(authenticationService.verifyToken(expectedRequest))
                 .thenThrow(InvalidTokenException())

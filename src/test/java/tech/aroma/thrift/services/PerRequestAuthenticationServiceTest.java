@@ -16,7 +16,7 @@
 
 package tech.aroma.thrift.services;
 
-import java.util.function.Supplier;
+import java.util.concurrent.Callable;
 
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransport;
@@ -28,7 +28,6 @@ import tech.aroma.thrift.authentication.service.*;
 import tech.sirwellington.alchemy.test.junit.runners.*;
 
 import static org.mockito.Mockito.*;
-import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.*;
 
 /**
  *
@@ -43,7 +42,7 @@ public class PerRequestAuthenticationServiceTest
     private AuthenticationService.Client delegate;
 
     @Mock
-    private Supplier<AuthenticationService.Iface> clientProvider;
+    private Callable<AuthenticationService.Iface> clientProvider;
 
     @Mock
     private TProtocol protocol;
@@ -75,7 +74,7 @@ public class PerRequestAuthenticationServiceTest
 
     private void setupMocks() throws Exception
     {
-        when(clientProvider.get()).thenReturn(delegate);
+        when(clientProvider.call()).thenReturn(delegate);
 
         when(delegate.getInputProtocol()).thenReturn(protocol);
         when(delegate.getOutputProtocol()).thenReturn(protocol);
@@ -94,10 +93,10 @@ public class PerRequestAuthenticationServiceTest
     @Test(expected = IllegalArgumentException.class)
     public void testConstructor2() throws Exception
     {
-        Supplier<AuthenticationService.Iface> supplier = new Supplier<AuthenticationService.Iface>()
+        Callable<AuthenticationService.Iface> supplier = new Callable<AuthenticationService.Iface>()
         {
             @Override
-            public AuthenticationService.Iface get()
+            public AuthenticationService.Iface call()
             {
                 return null;
             }

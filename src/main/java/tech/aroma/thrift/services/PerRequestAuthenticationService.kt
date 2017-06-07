@@ -19,6 +19,7 @@ package tech.aroma.thrift.services
 import org.apache.thrift.TException
 import org.slf4j.LoggerFactory
 import tech.aroma.thrift.authentication.service.AuthenticationService
+import tech.aroma.thrift.authentication.service.AuthenticationService.Iface
 import tech.aroma.thrift.authentication.service.CreateTokenRequest
 import tech.aroma.thrift.authentication.service.CreateTokenResponse
 import tech.aroma.thrift.authentication.service.GetTokenInfoRequest
@@ -37,6 +38,7 @@ import tech.sirwellington.alchemy.annotations.designs.patterns.DecoratorPattern.
 import tech.sirwellington.alchemy.arguments.assertions.*
 import tech.sirwellington.alchemy.arguments.checkThat
 import tech.sirwellington.alchemy.thrift.clients.Clients.attemptClose
+import java.util.concurrent.Callable
 import java.util.function.Supplier
 
 /**
@@ -48,7 +50,7 @@ import java.util.function.Supplier
 @Internal
 @ThreadSafe
 @DecoratorPattern(role = DECORATOR)
-internal class PerRequestAuthenticationService(private val clientProvider: Supplier<AuthenticationService.Iface>) : AuthenticationService.Iface
+internal class PerRequestAuthenticationService(private val clientProvider: Callable<Iface>) : AuthenticationService.Iface
 {
 
     init
@@ -56,7 +58,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Suppl
         checkThat(clientProvider)
                 .isA(nonNullReference())
 
-        checkThat(clientProvider.get())
+        checkThat(clientProvider.call())
                 .usingMessage("clientProvider returned null")
                 .isA(nonNullReference())
     }
@@ -64,7 +66,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Suppl
     @Throws(TException::class)
     override fun getApiVersion(): Double
     {
-        val client = clientProvider.get()
+        val client = clientProvider.call()
 
         try
         {
@@ -79,7 +81,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Suppl
     @Throws(OperationFailedException::class, InvalidArgumentException::class, TException::class)
     override fun createToken(request: CreateTokenRequest): CreateTokenResponse
     {
-        val client = clientProvider.get()
+        val client = clientProvider.call()
 
         try
         {
@@ -94,7 +96,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Suppl
     @Throws(OperationFailedException::class, InvalidTokenException::class, InvalidArgumentException::class, TException::class)
     override fun getTokenInfo(request: GetTokenInfoRequest): GetTokenInfoResponse
     {
-        val client = clientProvider.get()
+        val client = clientProvider.call()
 
         try
         {
@@ -109,7 +111,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Suppl
     @Throws(OperationFailedException::class, InvalidTokenException::class, InvalidArgumentException::class, TException::class)
     override fun invalidateToken(request: InvalidateTokenRequest): InvalidateTokenResponse
     {
-        val client = clientProvider.get()
+        val client = clientProvider.call()
 
         try
         {
@@ -124,7 +126,7 @@ internal class PerRequestAuthenticationService(private val clientProvider: Suppl
     @Throws(OperationFailedException::class, InvalidTokenException::class, InvalidArgumentException::class, TException::class)
     override fun verifyToken(request: VerifyTokenRequest): VerifyTokenResponse
     {
-        val client = clientProvider.get()
+        val client = clientProvider.call()
 
         try
         {

@@ -22,6 +22,7 @@ import org.apache.thrift.transport.TSocket
 import org.apache.thrift.transport.TTransportException
 import org.slf4j.LoggerFactory
 import tech.aroma.thrift.authentication.service.AuthenticationService
+import tech.aroma.thrift.authentication.service.AuthenticationService.Iface
 import tech.aroma.thrift.authentication.service.AuthenticationServiceConstants
 import tech.aroma.thrift.endpoint.TcpEndpoint
 import tech.aroma.thrift.notification.service.NotificationService
@@ -29,6 +30,7 @@ import tech.aroma.thrift.notification.service.NotificationServiceConstants
 import tech.aroma.thrift.service.AromaService
 import tech.aroma.thrift.service.AromaServiceConstants
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable
+import java.util.concurrent.Callable
 import java.util.concurrent.TimeUnit
 import java.util.function.Supplier
 
@@ -57,7 +59,8 @@ object Clients
     @JvmStatic
     fun newPerRequestAuthenticationServiceClient(): AuthenticationService.Iface
     {
-        val clientProvider = Supplier<AuthenticationService.Iface> {
+        val clientProvider = Callable<Iface> {
+
             try
             {
                 newAuthenticationServiceClient()
