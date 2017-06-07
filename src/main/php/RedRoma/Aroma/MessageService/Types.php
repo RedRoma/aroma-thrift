@@ -29,8 +29,8 @@ final class Constant extends \Thrift\Type\TConstant {
 
   static protected function init_PRODUCTION_ENDPOINT() {
     return new \RedRoma\Aroma\Endpoint\TcpEndpoint(array(
-      "port" => 7011,
       "hostname" => "message-srv.aroma.tech",
+      "port" => 7011,
     ));
   }
 

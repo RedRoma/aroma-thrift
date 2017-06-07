@@ -13,11 +13,11 @@ const MessageServiceConstants g_MessageService_constants;
 MessageServiceConstants::MessageServiceConstants() {
   SERVICE_PORT = 7011;
 
+  PRODUCTION_ENDPOINT.hostname = "message-srv.aroma.tech";
    ::aroma::thrift::endpoint::int tmp0;
   tmp0 = 7011;
 
   PRODUCTION_ENDPOINT.port = tmp0;
-  PRODUCTION_ENDPOINT.hostname = "message-srv.aroma.tech";
 
   BETA_ENDPOINT.hostname = "message-srv.beta.aroma.tech";
    ::aroma::thrift::endpoint::int tmp1;

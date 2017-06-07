@@ -24,8 +24,8 @@ import tech.aroma.thrift.notification.service.NotificationService;
 import tech.aroma.thrift.service.AromaService;
 import tech.sirwellington.alchemy.annotations.testing.IntegrationTest;
 import tech.sirwellington.alchemy.annotations.testing.NetworkSensitive;
-import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
-import tech.sirwellington.alchemy.test.junit.runners.Repeat;
+import tech.sirwellington.alchemy.test.junit.ThrowableAssertion;
+import tech.sirwellington.alchemy.test.junit.runners.*;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -46,10 +46,17 @@ public class ClientsIT
     {
     }
 
+    @DontRepeat
+    @Test(expected = IllegalAccessException.class)
+    public void testConstructor() throws Exception
+    {
+        Clients.class.newInstance();
+    }
+
     @Test
     public void testNewAuthenticationServiceClient() throws Exception
     {
-        AuthenticationService.Client client = Clients.INSTANCE.newAuthenticationServiceClient();
+        AuthenticationService.Client client = Clients.newAuthenticationServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();
@@ -58,7 +65,7 @@ public class ClientsIT
     @Test
     public void testNewNotificationServiceClient() throws Exception
     {
-        NotificationService.Client client = Clients.INSTANCE.newNotificationServiceClient();
+        NotificationService.Client client = Clients.newNotificationServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();
@@ -67,7 +74,7 @@ public class ClientsIT
     @Test
     public void testNewAromaServiceClient() throws Exception
     {
-        AromaService.Client client = Clients.INSTANCE.newAromaServiceClient();
+        AromaService.Client client = Clients.newAromaServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();
@@ -76,7 +83,7 @@ public class ClientsIT
     @Test
     public void testNewPerRequestAuthenticationServiceClient() throws Exception
     {
-        AuthenticationService.Iface client = Clients.INSTANCE.newPerRequestAuthenticationServiceClient();
+        AuthenticationService.Iface client = Clients.newPerRequestAuthenticationServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();

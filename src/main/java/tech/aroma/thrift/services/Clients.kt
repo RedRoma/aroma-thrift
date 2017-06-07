@@ -32,7 +32,6 @@ import tech.aroma.thrift.service.AromaServiceConstants
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable
 import java.util.concurrent.Callable
 import java.util.concurrent.TimeUnit
-import java.util.function.Supplier
 
 /**
  * Provides clients for the Aroma Services.
@@ -40,80 +39,90 @@ import java.util.function.Supplier
  * @author SirWellington
  */
 @NonInstantiable
-object Clients
+class Clients
+private constructor()
 {
 
-    private val LOG = LoggerFactory.getLogger(Clients::class.java)
-
-    @Throws(TTransportException::class)
-    @JvmStatic
-    fun newAuthenticationServiceClient(): AuthenticationService.Client
+    init
     {
-        val endpoint = AuthenticationServiceConstants.BETA_ENDPOINT
-
-        val protocol = tryCreateProtocolAt(endpoint, "Authentication Service")
-        return AuthenticationService.Client(protocol)
+        throw IllegalAccessException("cannot instantiate")
     }
 
-    @Throws(TTransportException::class)
-    @JvmStatic
-    fun newPerRequestAuthenticationServiceClient(): AuthenticationService.Iface
+    companion object
     {
-        val clientProvider = Callable<Iface> {
+        private val LOG = LoggerFactory.getLogger(Clients::class.java)
 
+        @Throws(TTransportException::class)
+        @JvmStatic
+        fun newAuthenticationServiceClient(): AuthenticationService.Client
+        {
+            val endpoint = AuthenticationServiceConstants.BETA_ENDPOINT
+
+            val protocol = tryCreateProtocolAt(endpoint, "Authentication Service")
+            return AuthenticationService.Client(protocol)
+        }
+
+        @Throws(TTransportException::class)
+        @JvmStatic
+        fun newPerRequestAuthenticationServiceClient(): AuthenticationService.Iface
+        {
+            val clientProvider = Callable<Iface> {
+
+                try
+                {
+                    newAuthenticationServiceClient()
+                }
+                catch (ex: TTransportException)
+                {
+                    LOG.error("Failed to created new Authentication Service client.", ex)
+                    throw RuntimeException("Could not create Authentication Service client", ex)
+                }
+            }
+
+            val decorator = PerRequestAuthenticationService(clientProvider)
+
+            return decorator
+        }
+
+        @Throws(TTransportException::class)
+        @JvmStatic
+        fun newAromaServiceClient(): AromaService.Client
+        {
+            val endpoint = AromaServiceConstants.BETA_ENDPOINT
+
+            val protocol = tryCreateProtocolAt(endpoint, "Aroma Service")
+            return AromaService.Client(protocol)
+        }
+
+        @Throws(TTransportException::class)
+        @JvmStatic
+        fun newNotificationServiceClient(): NotificationService.Client
+        {
+            val endpoint = NotificationServiceConstants.BETA_ENDPOINT
+            val protocol = tryCreateProtocolAt(endpoint, "Notification Service")
+
+            return NotificationService.Client(protocol)
+        }
+
+        @Throws(TTransportException::class)
+        @JvmStatic
+        private fun tryCreateProtocolAt(endpoint: TcpEndpoint, serviceName: String): TProtocol
+        {
+            val timeout = TimeUnit.SECONDS.toMillis(45)
+            val transport = TSocket(endpoint.hostname, endpoint.port, timeout.toInt())
             try
             {
-                newAuthenticationServiceClient()
+                transport.open()
             }
             catch (ex: TTransportException)
             {
-                LOG.error("Failed to created new Authentication Service client.", ex)
-                throw RuntimeException("Could not create Authentication Service client", ex)
+                LOG.error("Failed to connect to {} at {}", serviceName, endpoint, ex)
+                throw ex
             }
+
+            val protocol = TBinaryProtocol(transport)
+            return protocol
         }
-
-        val decorator = PerRequestAuthenticationService(clientProvider)
-
-        return decorator
-    }
-
-    @Throws(TTransportException::class)
-    @JvmStatic
-    fun newAromaServiceClient(): AromaService.Client
-    {
-        val endpoint = AromaServiceConstants.BETA_ENDPOINT
-
-        val protocol = tryCreateProtocolAt(endpoint, "Aroma Service")
-        return AromaService.Client(protocol)
-    }
-
-    @Throws(TTransportException::class)
-    @JvmStatic
-    fun newNotificationServiceClient(): NotificationService.Client
-    {
-        val endpoint = NotificationServiceConstants.BETA_ENDPOINT
-        val protocol = tryCreateProtocolAt(endpoint, "Notification Service")
-
-        return NotificationService.Client(protocol)
-    }
-
-    @Throws(TTransportException::class)
-    @JvmStatic
-    private fun tryCreateProtocolAt(endpoint: TcpEndpoint, serviceName: String): TProtocol
-    {
-        val timeout = TimeUnit.SECONDS.toMillis(45)
-        val transport = TSocket(endpoint.hostname, endpoint.port, timeout.toInt())
-        try
-        {
-            transport.open()
-        }
-        catch (ex: TTransportException)
-        {
-            LOG.error("Failed to connect to {} at {}", serviceName, endpoint, ex)
-            throw ex
-        }
-
-        val protocol = TBinaryProtocol(transport)
-        return protocol
     }
 }
+
