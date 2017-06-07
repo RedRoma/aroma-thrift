@@ -31,7 +31,7 @@ import java.time.temporal.ChronoUnit
 import java.util.function.Function
 
 /**
-
+ *
  * @author SirWellington
  */
 @NonInstantiable
@@ -92,12 +92,12 @@ object TimeFunctions
     /**
      * Converts an Aroma Timestamp to an appropriate instance.
      * @param timestamp The Aroma Timestamp, stored as milliseconds-since-epoch.
-     * *
+     *
      * @return An [Instant] representation.
-     * *
-     * *
-     * @see .isInThePast
-     * @see .isInTheFuture
+     *
+     *
+     * @see isInThePast
+     * @see isInTheFuture
      */
     fun toInstant(timestamp: Long): Instant
     {
@@ -106,14 +106,14 @@ object TimeFunctions
 
     /**
      * Checks if an epoch is in the past using [Instant]
-
+     *
      * @param timestamp
-     * *
+     *
      * @return
-     * *
-     * *
-     * @see .toInstant
-     * @see .isInTheFuture
+     *
+     *
+     * @see toInstant
+     * @see isInTheFuture
      */
     fun isInThePast(timestamp: Long): Boolean
     {
@@ -122,14 +122,14 @@ object TimeFunctions
 
     /**
      * Checks if an epoch timestamp is in the future using [Instant].
-
+     *
      * @param timestamp
-     * *
+     *
      * @return
-     * *
-     * *
-     * @see .isInThePast
-     * @see .toInstant
+     *
+     *
+     * @see isInThePast
+     * @see toInstant
      */
     fun isInTheFuture(timestamp: Long): Boolean
     {
