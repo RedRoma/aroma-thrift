@@ -10,7 +10,7 @@ namespace php   RedRoma.Aroma
 
 
 /** Defines the Version of Aroma API of this specification. */
-const double API_VERSION = 1.10;
+const double API_VERSION = 2.1;
 
 typedef i32 int
 typedef i64 long

@@ -4372,7 +4372,7 @@
 
 @end
 
-static double Aroma_API_VERSION = 1.1;
+static double Aroma_API_VERSION = 2.1;
 
 @implementation Aroma_AromaConstants
 + (void) initialize {
