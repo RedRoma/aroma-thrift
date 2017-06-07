@@ -17,23 +17,16 @@
 package tech.aroma.thrift.functions;
 
 import java.util.function.Function;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import tech.aroma.thrift.authentication.ApplicationToken;
-import tech.aroma.thrift.authentication.AuthenticationToken;
-import tech.aroma.thrift.authentication.TokenType;
-import tech.aroma.thrift.authentication.UserToken;
-import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
-import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
-import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
-import tech.sirwellington.alchemy.test.junit.runners.GenerateString;
-import tech.sirwellington.alchemy.test.junit.runners.Repeat;
+import tech.aroma.thrift.authentication.*;
+import tech.sirwellington.alchemy.test.junit.runners.*;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
 import static tech.sirwellington.alchemy.test.junit.runners.GenerateString.Type.HEXADECIMAL;
 import static tech.sirwellington.alchemy.test.junit.runners.GenerateString.Type.UUID;
 
@@ -67,11 +60,10 @@ public class TokenFunctionsTest
 
     }
 
-    @Test
-    public void testConstructor()
+    @Test(expected = IllegalAccessException.class)
+    public void testConstructor() throws IllegalAccessException, InstantiationException
     {
-        assertThrows(() -> TokenFunctions.class.newInstance())
-            .isInstanceOf(IllegalAccessException.class);
+        TokenFunctions.class.newInstance();
     }
 
     @Test

@@ -27,8 +27,8 @@ import tech.sirwellington.alchemy.annotations.testing.NetworkSensitive;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  *
@@ -49,7 +49,7 @@ public class ClientsIT
     @Test
     public void testNewAuthenticationServiceClient() throws Exception
     {
-        AuthenticationService.Client client = Clients.newAuthenticationServiceClient();
+        AuthenticationService.Client client = Clients.INSTANCE.newAuthenticationServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();
@@ -58,7 +58,7 @@ public class ClientsIT
     @Test
     public void testNewNotificationServiceClient() throws Exception
     {
-        NotificationService.Client client = Clients.newNotificationServiceClient();
+        NotificationService.Client client = Clients.INSTANCE.newNotificationServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();
@@ -67,7 +67,7 @@ public class ClientsIT
     @Test
     public void testNewAromaServiceClient() throws Exception
     {
-        AromaService.Client client = Clients.newAromaServiceClient();
+        AromaService.Client client = Clients.INSTANCE.newAromaServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();
@@ -76,7 +76,7 @@ public class ClientsIT
     @Test
     public void testNewPerRequestAuthenticationServiceClient() throws Exception
     {
-        AuthenticationService.Iface client = Clients.newPerRequestAuthenticationServiceClient();
+        AuthenticationService.Iface client = Clients.INSTANCE.newPerRequestAuthenticationServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();

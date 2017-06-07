@@ -25,48 +25,45 @@ import tech.aroma.thrift.events.Event;
 import tech.aroma.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.thrift.notification.service.SendNotificationRequest;
 import tech.aroma.thrift.notification.service.SendNotificationResponse;
-import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
-import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
-import tech.sirwellington.alchemy.test.junit.runners.Repeat;
+import tech.sirwellington.alchemy.test.junit.runners.*;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
-import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
- *
  * @author SirWellington
  */
 @Repeat(10)
 @RunWith(AlchemyTestRunner.class)
-public class NoOpNotificationServiceTest 
+public class NoOpNotificationServiceTest
 {
-    
+
     @GeneratePojo
     private AuthenticationToken token;
-    
+
     @GeneratePojo
     private Event event;
-    
+
     private SendNotificationRequest request;
-    
+
     private NoOpNotificationService instance;
-    
+
     @Before
     public void setUp()
     {
         instance = new NoOpNotificationService();
-        
+
         setupData();
     }
 
     private void setupData()
     {
         request = new SendNotificationRequest()
-            .setToken(token)
-            .setEvent(event);
+                .setToken(token)
+                .setEvent(event);
     }
-    
+
     @Test
     public void testGetApiVersion() throws Exception
     {
@@ -80,12 +77,11 @@ public class NoOpNotificationServiceTest
         SendNotificationResponse response = instance.sendNotification(request);
         assertThat(response, notNullValue());
     }
-    
-    @Test
+
+    @Test(expected = InvalidArgumentException.class)
     public void testSendNotificationWithBadArgs() throws Exception
     {
-        assertThrows(() -> instance.sendNotification(null))
-            .isInstanceOf(InvalidArgumentException.class);
+        instance.sendNotification(null);
     }
 
 }
