@@ -2225,7 +2225,7 @@ final class Constant extends \Thrift\Type\TConstant {
     return     /**
      * Defines the Version of Aroma API of this specification.
      */
-2.1;
+2.01;
   }
 }
 

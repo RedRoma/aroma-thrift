@@ -1430,4 +1430,4 @@ ServiceAnnouncement.prototype.write = function(output) {
   return;
 };
 
-ttypes.API_VERSION = 2.1;
+ttypes.API_VERSION = 2.01;

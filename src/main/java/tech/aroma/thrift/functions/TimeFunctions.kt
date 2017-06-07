@@ -54,11 +54,13 @@ object TimeFunctions
 
     }
 
+    @JvmStatic
     fun timeUnitToChronoUnit(): Function<TimeUnit, ChronoUnit>
     {
         return TIME_UNIT_TO_CHRONO_UNIT
     }
 
+    @JvmStatic
     val LENGTH_OF_TIME_TO_DURATION = Function<LengthOfTime, Duration> { t ->
 
         checkThat(t).isA(nonNullReference())
@@ -75,11 +77,13 @@ object TimeFunctions
         chronoUnit.duration.multipliedBy(t.value)
     }
 
+    @JvmStatic
     fun lengthOfTimeToDuration(): Function<LengthOfTime, Duration>
     {
         return LENGTH_OF_TIME_TO_DURATION
     }
 
+    @JvmStatic
     fun toSeconds(@Required lengthOfTime: LengthOfTime): Long
     {
         checkThat(lengthOfTime).isA(nonNullReference())
@@ -99,6 +103,7 @@ object TimeFunctions
      * @see isInThePast
      * @see isInTheFuture
      */
+    @JvmStatic
     fun toInstant(timestamp: Long): Instant
     {
         return Instant.ofEpochMilli(timestamp)
@@ -115,6 +120,7 @@ object TimeFunctions
      * @see toInstant
      * @see isInTheFuture
      */
+    @JvmStatic
     fun isInThePast(timestamp: Long): Boolean
     {
         return toInstant(timestamp).isBefore(now())
@@ -131,6 +137,7 @@ object TimeFunctions
      * @see isInThePast
      * @see toInstant
      */
+    @JvmStatic
     fun isInTheFuture(timestamp: Long): Boolean
     {
         return toInstant(timestamp).isAfter(now())
