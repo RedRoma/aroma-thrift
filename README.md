@@ -18,7 +18,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma</groupId>
 	<artifactId>aroma-thrift</artifactId>
-	<version>2.0.1</version>
+	<version>2.0.2</version>
 </dependency>
 ```
 
