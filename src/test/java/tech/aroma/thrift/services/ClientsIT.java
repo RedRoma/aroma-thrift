@@ -16,8 +16,7 @@
 
 package tech.aroma.thrift.services;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import tech.aroma.thrift.authentication.service.AuthenticationService;
 import tech.aroma.thrift.notification.service.NotificationService;
@@ -52,6 +51,7 @@ public class ClientsIT
         Clients.class.newInstance();
     }
 
+    @Ignore
     @Test
     public void testNewAuthenticationServiceClient() throws Exception
     {
@@ -61,6 +61,7 @@ public class ClientsIT
         client.getApiVersion();
     }
 
+    @Ignore
     @Test
     public void testNewNotificationServiceClient() throws Exception
     {
