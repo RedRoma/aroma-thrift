@@ -71,6 +71,7 @@ public class ClientsIT
         client.getApiVersion();
     }
 
+    @Ignore
     @Test
     public void testNewAromaServiceClient() throws Exception
     {
