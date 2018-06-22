@@ -36,7 +36,7 @@ import static org.junit.Assert.assertThat;
 @IntegrationTest
 @Repeat(5)
 @RunWith(AlchemyTestRunner.class)
-public class ClientsIT 
+public class ClientsIT
 {
 
     @Before
@@ -57,7 +57,7 @@ public class ClientsIT
     {
         AuthenticationService.Client client = Clients.newAuthenticationServiceClient();
         assertThat(client, notNullValue());
-        
+
         client.getApiVersion();
     }
 
@@ -67,7 +67,7 @@ public class ClientsIT
     {
         NotificationService.Client client = Clients.newNotificationServiceClient();
         assertThat(client, notNullValue());
-        
+
         client.getApiVersion();
     }
 
@@ -77,16 +77,17 @@ public class ClientsIT
     {
         AromaService.Client client = Clients.newAromaServiceClient();
         assertThat(client, notNullValue());
-        
+
         client.getApiVersion();
     }
 
+    @Ignore
     @Test
     public void testNewPerRequestAuthenticationServiceClient() throws Exception
     {
         AuthenticationService.Iface client = Clients.newPerRequestAuthenticationServiceClient();
         assertThat(client, notNullValue());
-        
+
         client.getApiVersion();
     }
 
