@@ -12,8 +12,6 @@ using namespace ::apache::thrift::protocol;
 using namespace ::apache::thrift::transport;
 using namespace ::apache::thrift::server;
 
-using boost::shared_ptr;
-
 using namespace  ::aroma::thrift::channels;
 
 class CustomAromaChannelHandler : virtual public CustomAromaChannelIf {
@@ -46,11 +44,11 @@ class CustomAromaChannelHandler : virtual public CustomAromaChannelIf {
 
 int main(int argc, char **argv) {
   int port = 9090;
-  shared_ptr<CustomAromaChannelHandler> handler(new CustomAromaChannelHandler());
-  shared_ptr<TProcessor> processor(new CustomAromaChannelProcessor(handler));
-  shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
-  shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
-  shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
+  ::apache::thrift::stdcxx::shared_ptr<CustomAromaChannelHandler> handler(new CustomAromaChannelHandler());
+  ::apache::thrift::stdcxx::shared_ptr<TProcessor> processor(new CustomAromaChannelProcessor(handler));
+  ::apache::thrift::stdcxx::shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
+  ::apache::thrift::stdcxx::shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
+  ::apache::thrift::stdcxx::shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
 
   TSimpleServer server(processor, serverTransport, transportFactory, protocolFactory);
   server.serve();

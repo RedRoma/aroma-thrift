@@ -5,7 +5,7 @@
     <parent>
         <groupId>tech.aroma</groupId>
         <artifactId>aroma</artifactId>
-        <version>2.2</version>
+        <version>3.1</version>
     </parent>
 
     <artifactId>aroma-thrift</artifactId>
@@ -125,7 +125,7 @@
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
-            <version>0.9.3</version>
+            <version>0.11.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.httpcomponents</groupId>
@@ -204,7 +204,7 @@
                                     <arg value="--gen"/>
                                     <arg value="html:standalone"/>
                                     <arg value="--gen"/>
-                                    <arg value="java:hashcode"/>
+                                    <arg value="java"/>
                                     <arg value="--gen"/>
                                     <arg value="js"/>
                                     <arg value="--gen"/>

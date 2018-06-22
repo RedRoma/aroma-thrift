@@ -231,22 +231,22 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_int">Aroma.int</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_int">Aroma.int</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_long">Typedef: long</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_long">Aroma.long</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_long">Aroma.long</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_timestamp">Aroma.timestamp</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_timestamp">Aroma.timestamp</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_uuid">Aroma.uuid</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_uuid">Aroma.uuid</a></code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_MatcherAll">Struct: MatcherAll</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-</table><br/>Matches All Messages.
-<br/></div><div class="definition"><h3 id="Struct_MatcherTitleIs">Struct: MatcherTitleIs</h3>
+</table><br/><pre>Matches All Messages.
+</pre><br/></div><div class="definition"><h3 id="Struct_MatcherTitleIs">Struct: MatcherTitleIs</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>expectedTitle</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_MatcherTitleIsNot">Struct: MatcherTitleIsNot</h3>
@@ -281,26 +281,26 @@ code { line-height: 20px; }
 <tr><td>1</td><td>substring</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_MatcherApplicationIs">Struct: MatcherApplicationIs</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>appId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>appId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_MatcherApplicationIsNot">Struct: MatcherApplicationIsNot</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>appId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>appId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_AromaMatcher">Union: AromaMatcher</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>all</td><td><code><a href="#Struct_MatcherAll">MatcherAll</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>titleIs</td><td><code><a href="#Struct_MatcherTitleIs">MatcherTitleIs</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>titleIsNot</td><td><code><a href="#Struct_MatcherTitleIsNot">MatcherTitleIsNot</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>titleContains</td><td><code><a href="#Struct_MatcherTitleContains">MatcherTitleContains</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>5</td><td>titleDoesNotContain</td><td><code><a href="#Struct_MatcherTitleDoesNotContain">MatcherTitleDoesNotContain</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>6</td><td>bodyIs</td><td><code><a href="#Struct_MatcherBodyIs">MatcherBodyIs</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>7</td><td>bodyContains</td><td><code><a href="#Struct_MatcherBodyContains">MatcherBodyContains</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>8</td><td>bodyDoesNotContain</td><td><code><a href="#Struct_MatcherBodyDoesNotContain">MatcherBodyDoesNotContain</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>9</td><td>urgencyEquals</td><td><code><a href="#Struct_MatcherUrgencyIs">MatcherUrgencyIs</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>10</td><td>hostnameIs</td><td><code><a href="#Struct_MatcherHostnameIs">MatcherHostnameIs</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>11</td><td>hostnameContains</td><td><code><a href="#Struct_MatcherHostnameContains">MatcherHostnameContains</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>12</td><td>hostnameDoesNotContain</td><td><code><a href="#Struct_MatcherHostnameDoesNotContain">MatcherHostnameDoesNotContain</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>13</td><td>applicationIs</td><td><code><a href="#Struct_MatcherApplicationIs">MatcherApplicationIs</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>14</td><td>applicationIsNot</td><td><code><a href="#Struct_MatcherApplicationIsNot">MatcherApplicationIsNot</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>all</td><td><code><a href="#Struct_MatcherAll">MatcherAll</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>titleIs</td><td><code><a href="#Struct_MatcherTitleIs">MatcherTitleIs</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>titleIsNot</td><td><code><a href="#Struct_MatcherTitleIsNot">MatcherTitleIsNot</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>titleContains</td><td><code><a href="#Struct_MatcherTitleContains">MatcherTitleContains</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>titleDoesNotContain</td><td><code><a href="#Struct_MatcherTitleDoesNotContain">MatcherTitleDoesNotContain</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>bodyIs</td><td><code><a href="#Struct_MatcherBodyIs">MatcherBodyIs</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>7</td><td>bodyContains</td><td><code><a href="#Struct_MatcherBodyContains">MatcherBodyContains</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>8</td><td>bodyDoesNotContain</td><td><code><a href="#Struct_MatcherBodyDoesNotContain">MatcherBodyDoesNotContain</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>9</td><td>urgencyEquals</td><td><code><a href="#Struct_MatcherUrgencyIs">MatcherUrgencyIs</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>10</td><td>hostnameIs</td><td><code><a href="#Struct_MatcherHostnameIs">MatcherHostnameIs</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>11</td><td>hostnameContains</td><td><code><a href="#Struct_MatcherHostnameContains">MatcherHostnameContains</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>12</td><td>hostnameDoesNotContain</td><td><code><a href="#Struct_MatcherHostnameDoesNotContain">MatcherHostnameDoesNotContain</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>13</td><td>applicationIs</td><td><code><a href="#Struct_MatcherApplicationIs">MatcherApplicationIs</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>14</td><td>applicationIsNot</td><td><code><a href="#Struct_MatcherApplicationIsNot">MatcherApplicationIsNot</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ActionForwardToSlackChannel">Struct: ActionForwardToSlackChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>slackChannel</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -330,23 +330,23 @@ code { line-height: 20px; }
 <tr><td>1</td><td>messageToRespondWith</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ActionForwardToUsers">Struct: ActionForwardToUsers</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>userIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>1</td><td>userIds</td><td><code>list&lt;<code><a href="#Struct_uuid">uuid</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ActionSendPushNotification">Struct: ActionSendPushNotification</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_ActionDontSendPushNotification">Struct: ActionDontSendPushNotification</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_AromaAction">Union: AromaAction</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>forwardToSlackChannel</td><td><code><a href="#Struct_ActionForwardToSlackChannel">ActionForwardToSlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>forwardToSlackUser</td><td><code><a href="#Struct_ActionForwardToSlackUser">ActionForwardToSlackUser</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>8</td><td>forwardToGitter</td><td><code><a href="#Struct_ActionForwardToGitter">ActionForwardToGitter</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>sendEmail</td><td><code><a href="#Struct_ActionSendEmail">ActionSendEmail</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>skipInbox</td><td><code><a href="#Struct_ActionSkipInbox">ActionSkipInbox</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>5</td><td>dontStoreMessage</td><td><code><a href="#Struct_ActionDontStoreMessage">ActionDontStoreMessage</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>6</td><td>responseWithMessage</td><td><code><a href="#Struct_ActionRespondWithMessage">ActionRespondWithMessage</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>7</td><td>forwardToUsers</td><td><code><a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>9</td><td>sendPushNotification</td><td><code><a href="#Struct_ActionSendPushNotification">ActionSendPushNotification</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>10</td><td>dontSendPushNotification</td><td><code><a href="#Struct_ActionDontSendPushNotification">ActionDontSendPushNotification</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>forwardToSlackChannel</td><td><code><a href="#Struct_ActionForwardToSlackChannel">ActionForwardToSlackChannel</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>forwardToSlackUser</td><td><code><a href="#Struct_ActionForwardToSlackUser">ActionForwardToSlackUser</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>8</td><td>forwardToGitter</td><td><code><a href="#Struct_ActionForwardToGitter">ActionForwardToGitter</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>sendEmail</td><td><code><a href="#Struct_ActionSendEmail">ActionSendEmail</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>skipInbox</td><td><code><a href="#Struct_ActionSkipInbox">ActionSkipInbox</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>dontStoreMessage</td><td><code><a href="#Struct_ActionDontStoreMessage">ActionDontStoreMessage</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>responseWithMessage</td><td><code><a href="#Struct_ActionRespondWithMessage">ActionRespondWithMessage</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>7</td><td>forwardToUsers</td><td><code><a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>9</td><td>sendPushNotification</td><td><code><a href="#Struct_ActionSendPushNotification">ActionSendPushNotification</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>10</td><td>dontSendPushNotification</td><td><code><a href="#Struct_ActionDontSendPushNotification">ActionDontSendPushNotification</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Reaction">Struct: Reaction</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>matchers</td><td><code>list&lt;<code><a href="#Struct_AromaMatcher">AromaMatcher</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>

@@ -235,22 +235,22 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7026</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "authentication-srv.aroma.tech", port = 7026 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "authentication-srv.beta.aroma.tech", port = 7026 }</code></td></tr><tr id="Const_DEFAULT_TOKEN_LIFETIME"><td><code>DEFAULT_TOKEN_LIFETIME</code></td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td><code>{ value = 90, unit = <code><a href="#Const_Aroma.TimeUnit.DAYS">Aroma.TimeUnit.DAYS</a></code> }</code></td></tr><tr><td colspan="3"><blockquote>The Default lifetime of a Token created by the Authentication Service.
-<br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
+<tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Struct_int">int</a></code></td><td><code>7026</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "authentication-srv.aroma.tech", port = 7026 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "authentication-srv.beta.aroma.tech", port = 7026 }</code></td></tr><tr id="Const_DEFAULT_TOKEN_LIFETIME"><td><code>DEFAULT_TOKEN_LIFETIME</code></td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td><code>{ value = 90, unit = <code><a href="#Const_Aroma.TimeUnit.DAYS">Aroma.TimeUnit.DAYS</a></code> }</code></td></tr><tr><td colspan="3"><blockquote><pre>The Default lifetime of a Token created by the Authentication Service.
+</pre><br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_int">Aroma.int</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_int">Aroma.int</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_long">Typedef: long</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_long">Aroma.long</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_long">Aroma.long</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_timestamp">Aroma.timestamp</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_timestamp">Aroma.timestamp</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_LengthOfTime">Typedef: LengthOfTime</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_uuid">Aroma.uuid</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_uuid">Aroma.uuid</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
@@ -285,34 +285,34 @@ code { line-height: 20px; }
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_CreateTokenRequest">Struct: CreateTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>ownerId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The ID of the entity that will own the token.
+<tr><td>1</td><td>ownerId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td>The ID of the entity that will own the token.
 For Application tokens, this is the Application ID.
 For User Tokens, this is the userId.
 </td><td>default</td><td></td></tr>
-<tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_LengthOfTime">LengthOfTime</a></code></td><td>The desired length of time to keep the Token alive and valid.
+<tr><td>2</td><td>lifetime</td><td><code><a href="#Struct_LengthOfTime">LengthOfTime</a></code></td><td>The desired length of time to keep the Token alive and valid.
 If not present, will be set to DEFAULT_TOKEN_LIFETIME.
 </td><td>optional</td><td></td></tr>
-<tr><td>3</td><td>desiredTokenType</td><td><code><a href="#Typedef_TokenType">TokenType</a></code></td><td>This is required, and determines the kind of Token created.
+<tr><td>3</td><td>desiredTokenType</td><td><code><a href="#Struct_TokenType">TokenType</a></code></td><td>This is required, and determines the kind of Token created.
 </td><td>default</td><td></td></tr>
 <tr><td>4</td><td>ownerName</td><td><code>string</code></td><td>Optional stores the name of the entity owning the token, for instance App name or user's email.
 </td><td>optional</td><td></td></tr>
-<tr><td>5</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>organizationId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>6</td><td>organizationName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_CreateTokenResponse">Struct: CreateTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Struct_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetTokenInfoRequest">Struct: GetTokenInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tokenId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>tokenType</td><td><code><a href="#Typedef_TokenType">TokenType</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>tokenType</td><td><code><a href="#Struct_TokenType">TokenType</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetTokenInfoResponse">Struct: GetTokenInfoResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Struct_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_InvalidateTokenRequest">Struct: InvalidateTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>multipleTokens</td><td><code>list&lt;<code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
-<tr><td>3</td><td>belongingTo</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Deletes all Tokens belonging to this ownerId.
+<tr><td>1</td><td>token</td><td><code><a href="#Struct_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>multipleTokens</td><td><code>list&lt;<code><a href="#Struct_AuthenticationToken">AuthenticationToken</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
+<tr><td>3</td><td>belongingTo</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td>Deletes all Tokens belonging to this ownerId.
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_InvalidateTokenResponse">Struct: InvalidateTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -327,28 +327,28 @@ If not present, will be set to DEFAULT_TOKEN_LIFETIME.
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_AuthenticationService">Service: AuthenticationService</h3>
-The Authentication Service is responsible for creating and verifying the validity of Tokens.
+<pre>The Authentication Service is responsible for creating and verifying the validity of Tokens.
 This Includes Application Tokens as well as User Tokens.
 
 NOTE: This Service is for internal use only. It is designed to be called only by
 Aroma and it's supporting services.
-<br/><div class="definition"><h4 id="Fn_AuthenticationService_getApiVersion">Function: AuthenticationService.getApiVersion</h4>
+</pre><br/><div class="definition"><h4 id="Fn_AuthenticationService_getApiVersion">Function: AuthenticationService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
 </pre></div><div class="definition"><h4 id="Fn_AuthenticationService_createToken">Function: AuthenticationService.createToken</h4>
 <pre><code><a href="#Struct_CreateTokenResponse">CreateTokenResponse</a></code> createToken(<code><a href="#Struct_CreateTokenRequest">CreateTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>
-</pre>Create a Token, used to represent a User or an Application.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_getTokenInfo">Function: AuthenticationService.getTokenInfo</h4>
+    throws <code><a href="#Struct_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Struct_InvalidArgumentException">InvalidArgumentException</a></code>
+</pre><pre>Create a Token, used to represent a User or an Application.
+</pre><br/></div><div class="definition"><h4 id="Fn_AuthenticationService_getTokenInfo">Function: AuthenticationService.getTokenInfo</h4>
 <pre><code><a href="#Struct_GetTokenInfoResponse">GetTokenInfoResponse</a></code> getTokenInfo(<code><a href="#Struct_GetTokenInfoRequest">GetTokenInfoRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>
-</pre>Get information about a Token.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_invalidateToken">Function: AuthenticationService.invalidateToken</h4>
+    throws <code><a href="#Struct_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Struct_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Struct_InvalidArgumentException">InvalidArgumentException</a></code>
+</pre><pre>Get information about a Token.
+</pre><br/></div><div class="definition"><h4 id="Fn_AuthenticationService_invalidateToken">Function: AuthenticationService.invalidateToken</h4>
 <pre><code><a href="#Struct_InvalidateTokenResponse">InvalidateTokenResponse</a></code> invalidateToken(<code><a href="#Struct_InvalidateTokenRequest">InvalidateTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>
-</pre>Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
+    throws <code><a href="#Struct_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Struct_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Struct_InvalidArgumentException">InvalidArgumentException</a></code>
+</pre><pre>Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
 an InvalidTokenException.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_verifyToken">Function: AuthenticationService.verifyToken</h4>
+</pre><br/></div><div class="definition"><h4 id="Fn_AuthenticationService_verifyToken">Function: AuthenticationService.verifyToken</h4>
 <pre><code><a href="#Struct_VerifyTokenResponse">VerifyTokenResponse</a></code> verifyToken(<code><a href="#Struct_VerifyTokenRequest">VerifyTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>
-</pre>Verify that a Token is valid, and optionally, that it belongs to the specified pwner.
-<br/></div></div></body></html>
+    throws <code><a href="#Struct_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Struct_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Struct_InvalidArgumentException">InvalidArgumentException</a></code>
+</pre><pre>Verify that a Token is valid, and optionally, that it belongs to the specified pwner.
+</pre><br/></div></div></body></html>

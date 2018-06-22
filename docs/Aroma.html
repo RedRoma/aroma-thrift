@@ -220,8 +220,8 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>2.01</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of Aroma API of this specification.
-<br/></blockquote></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
+<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>2.01</code></td></tr><tr><td colspan="3"><blockquote><pre>Defines the Version of Aroma API of this specification.
+</pre><br/></blockquote></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
 <div class="definition"><h3 id="Enum_ImageType">Enumeration: ImageType</h3>
 <br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>JPEG</code></td><td><code>1</code></td><td>
@@ -260,8 +260,8 @@ code { line-height: 20px; }
 </td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_TimeUnit">Enumeration: TimeUnit</h3>
-Defines the basic Units of Time Measurement.
-<br/><br/><table class="table-bordered table-striped table-condensed">
+<pre>Defines the basic Units of Time Measurement.
+</pre><br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>MILLIS</code></td><td><code>1</code></td><td>
 </td></tr>
 <tr><td><code>SECONDS</code></td><td><code>2</code></td><td>
@@ -276,8 +276,8 @@ Defines the basic Units of Time Measurement.
 </td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_ProgrammingLanguage">Enumeration: ProgrammingLanguage</h3>
-Applications are usually written in one main language.
-<br/><br/><table class="table-bordered table-striped table-condensed">
+<pre>Applications are usually written in one main language.
+</pre><br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>JAVA</code></td><td><code>1</code></td><td>
 </td></tr>
 <tr><td><code>CPP</code></td><td><code>2</code></td><td>
@@ -308,9 +308,9 @@ Applications are usually written in one main language.
 </td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_Role">Enumeration: Role</h3>
-Defines the Role(s) that a human in this system
+<pre>Defines the Role(s) that a human in this system
 can be.
-<br/><br/><table class="table-bordered table-striped table-condensed">
+</pre><br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>DEVELOPER</code></td><td><code>1</code></td><td>
 </td></tr>
 <tr><td><code>OPERATIONS</code></td><td><code>2</code></td><td>
@@ -325,17 +325,17 @@ can be.
 </td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_Urgency">Enumeration: Urgency</h3>
-Determines how Important or Severe a Message is.
-<br/><br/><table class="table-bordered table-striped table-condensed">
+<pre>Determines how Important or Severe a Message is.
+</pre><br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>LOW</code></td><td><code>1</code></td><td>
-Lowest level of urgency.
-<br/></td></tr>
+<pre>Lowest level of urgency.
+</pre><br/></td></tr>
 <tr><td><code>MEDIUM</code></td><td><code>2</code></td><td>
-Middle level of urgency.
-<br/></td></tr>
+<pre>Middle level of urgency.
+</pre><br/></td></tr>
 <tr><td><code>HIGH</code></td><td><code>3</code></td><td>
-Highest level of urgency.
-<br/></td></tr>
+<pre>Highest level of urgency.
+</pre><br/></td></tr>
 </table></div>
 <hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
@@ -346,43 +346,43 @@ Highest level of urgency.
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code>i64</code></p>
-A Timestamp is defined as Unix Time, otherwise known as
+<pre>A Timestamp is defined as Unix Time, otherwise known as
 Milliseconds since epoch.
-<br/></div>
+</pre><br/></div>
 <div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
 <p><strong>Base type:</strong>&nbsp;<code>string</code></p>
-Defines a particular kind of string, as a Type-4 UUID.
+<pre>Defines a particular kind of string, as a Type-4 UUID.
 These are commonly used for ID types.
-<br/></div>
+</pre><br/></div>
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_LengthOfTime">Struct: LengthOfTime</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>unit</td><td><code><a href="#Enum_TimeUnit">TimeUnit</a></code></td><td></td><td>required</td><td></td></tr>
-<tr><td>2</td><td>value</td><td><code><a href="#Typedef_long">long</a></code></td><td>The Value must be non-negative
+<tr><td>2</td><td>value</td><td><code><a href="#Struct_long">long</a></code></td><td>The Value must be non-negative
 </td><td>required</td><td></td></tr>
-</table><br/>Defines a Period of Time, or a Length of Time.
-<br/></div><div class="definition"><h3 id="Struct_Dimension">Struct: Dimension</h3>
+</table><br/><pre>Defines a Period of Time, or a Length of Time.
+</pre><br/></div><div class="definition"><h3 id="Struct_Dimension">Struct: Dimension</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>width</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>required</td><td></td></tr>
-<tr><td>2</td><td>height</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>required</td><td></td></tr>
-</table><br/>2 Dimensional Image Size.
-<br/></div><div class="definition"><h3 id="Struct_Image">Struct: Image</h3>
+<tr><td>1</td><td>width</td><td><code><a href="#Struct_int">int</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>height</td><td><code><a href="#Struct_int">int</a></code></td><td></td><td>required</td><td></td></tr>
+</table><br/><pre>2 Dimensional Image Size.
+</pre><br/></div><div class="definition"><h3 id="Struct_Image">Struct: Image</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>imageType</td><td><code><a href="#Enum_ImageType">ImageType</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>data</td><td><code>binary</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>dimension</td><td><code><a href="#Struct_Dimension">Dimension</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Message">Struct: Message</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messageId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Each message has a unique ID
+<tr><td>1</td><td>messageId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td>Each message has a unique ID
 </td><td>default</td><td></td></tr>
 <tr><td>2</td><td>body</td><td><code>string</code></td><td>The body represents the Message's Payload, i.e. the actual message.
 If the Message Body is too long, it may be truncated. The complete
 body can then be loaded in a separate request.
 </td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>urgency</td><td><code><a href="#Enum_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code><code><a href="#Const_Urgency.LOW">Urgency.LOW</a></code></code></td></tr>
-<tr><td>4</td><td>timeOfCreation</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>The time the message was created on the Application side
+<tr><td>4</td><td>timeOfCreation</td><td><code><a href="#Struct_timestamp">timestamp</a></code></td><td>The time the message was created on the Application side
 </td><td>default</td><td></td></tr>
-<tr><td>5</td><td>timeMessageReceived</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>The time the message was received on the Server side
+<tr><td>5</td><td>timeMessageReceived</td><td><code><a href="#Struct_timestamp">timestamp</a></code></td><td>The time the message was received on the Server side
 </td><td>default</td><td></td></tr>
 <tr><td>6</td><td>applicationName</td><td><code>string</code></td><td>Name of the Application that sent the message.
 </td><td>default</td><td></td></tr>
@@ -391,12 +391,12 @@ body can then be loaded in a separate request.
 <tr><td>8</td><td>macAddress</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>9</td><td>isTruncated</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
 <tr><td>10</td><td>title</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>11</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The ID of the Application the Message was sent from.
+<tr><td>11</td><td>applicationId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td>The ID of the Application the Message was sent from.
 </td><td>default</td><td></td></tr>
 <tr><td>12</td><td>deviceName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Organization">Struct: Organization</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>organizationId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>organizationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>website</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>logo</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
@@ -410,61 +410,61 @@ body can then be loaded in a separate request.
 <tr><td>12</td><td>organizationDescription</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>13</td><td>githubProfile</td><td><code>string</code></td><td>A Link to the Org's GitHub Page, if available.
 </td><td>optional</td><td></td></tr>
-</table><br/>An Organization can represent a Company or group of People.
-<br/></div><div class="definition"><h3 id="Struct_User">Struct: User</h3>
+</table><br/><pre>An Organization can represent a Company or group of People.
+</pre><br/></div><div class="definition"><h3 id="Struct_User">Struct: User</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>email</td><td><code>string</code></td><td>A person's email address is also considered their identifying trait.
 </td><td>default</td><td></td></tr>
-<tr><td>2</td><td>userId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>userId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>roles</td><td><code>set&lt;<code><a href="#Enum_Role">Role</a></code>&gt;</code></td><td>A Person can be more than one thing at once. By default, we assume a developer.
 </td><td>default</td><td><code>{ <code><a href="#Const_Role.DEVELOPER">Role.DEVELOPER</a></code> }</code></td></tr>
 <tr><td>5</td><td>profileImage</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>6</td><td>profileImageLink</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>profileImageLink</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>7</td><td>githubProfile</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>8</td><td>firstName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>9</td><td>middleName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>10</td><td>lastName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>11</td><td>birthdate</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>12</td><td>timeUserJoined</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>optional</td><td></td></tr>
-</table><br/>A User represents a Human who is a uses the Service.
-<br/></div><div class="definition"><h3 id="Struct_Application">Struct: Application</h3>
+<tr><td>11</td><td>birthdate</td><td><code><a href="#Struct_timestamp">timestamp</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>12</td><td>timeUserJoined</td><td><code><a href="#Struct_timestamp">timestamp</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/><pre>A User represents a Human who is a uses the Service.
+</pre><br/></div><div class="definition"><h3 id="Struct_Application">Struct: Application</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>owners</td><td><code>set&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td>Owners can perform administrative actions on a service.
+<tr><td>1</td><td>owners</td><td><code>set&lt;<code><a href="#Struct_uuid">uuid</a></code>&gt;</code></td><td>Owners can perform administrative actions on a service.
 </td><td>default</td><td></td></tr>
-<tr><td>2</td><td>timeOfProvisioning</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>When the application was first provisioned.
+<tr><td>2</td><td>timeOfProvisioning</td><td><code><a href="#Struct_timestamp">timestamp</a></code></td><td>When the application was first provisioned.
 </td><td>default</td><td></td></tr>
 <tr><td>3</td><td>name</td><td><code>string</code></td><td>The name of the application.
 </td><td>default</td><td></td></tr>
-<tr><td>4</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The Automatically generated ID for the Application.
+<tr><td>4</td><td>applicationId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td>The Automatically generated ID for the Application.
 </td><td>default</td><td></td></tr>
-<tr><td>5</td><td>totalMessagesSent</td><td><code><a href="#Typedef_long">long</a></code></td><td>The total amount of messages that
+<tr><td>5</td><td>totalMessagesSent</td><td><code><a href="#Struct_long">long</a></code></td><td>The total amount of messages that
 have been counted so far for the Application
 </td><td>default</td><td></td></tr>
 <tr><td>6</td><td>icon</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>7</td><td>programmingLanguage</td><td><code><a href="#Enum_ProgrammingLanguage">ProgrammingLanguage</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>8</td><td>followers</td><td><code>set&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td>Defines the userIds of the people who are following this Application.
+<tr><td>8</td><td>followers</td><td><code>set&lt;<code><a href="#Struct_uuid">uuid</a></code>&gt;</code></td><td>Defines the userIds of the people who are following this Application.
 </td><td>optional</td><td><code>{  }</code></td></tr>
 <tr><td>9</td><td>applicationDescription</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>10</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>10</td><td>organizationId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>11</td><td>tier</td><td><code><a href="#Enum_Tier">Tier</a></code></td><td></td><td>optional</td><td><code><code><a href="#Const_Tier.FREE">Tier.FREE</a></code></code></td></tr>
-<tr><td>12</td><td>timeOfTokenExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>The time the App's token will expire.
+<tr><td>12</td><td>timeOfTokenExpiration</td><td><code><a href="#Struct_timestamp">timestamp</a></code></td><td>The time the App's token will expire.
 </td><td>default</td><td></td></tr>
-<tr><td>13</td><td>applicationIconMediaId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>13</td><td>applicationIconMediaId</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>14</td><td>isFollowing</td><td><code>bool</code></td><td>Set to true if the calling user follows this Application.
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ServiceAnnouncement">Struct: ServiceAnnouncement</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>importance</td><td><code><a href="#Enum_Urgency">Urgency</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>id</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Each announcement has an ID so that it can be dismissed by users.
+<tr><td>3</td><td>id</td><td><code><a href="#Struct_uuid">uuid</a></code></td><td>Each announcement has an ID so that it can be dismissed by users.
 </td><td>default</td><td></td></tr>
-<tr><td>4</td><td>timeOfExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>An announcement is irrelevant after this time.
+<tr><td>4</td><td>timeOfExpiration</td><td><code><a href="#Struct_timestamp">timestamp</a></code></td><td>An announcement is irrelevant after this time.
 </td><td>default</td><td></td></tr>
-</table><br/>Defines an Aroma announcement.
+</table><br/><pre>Defines an Aroma announcement.
 Examples include:
 + Going down for system maintenance
 + Looking for feedback
 + New Update available
 + Other news
-<br/></div></div></body></html>
+</pre><br/></div></div></body></html>

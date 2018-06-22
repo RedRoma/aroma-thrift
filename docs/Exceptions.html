@@ -218,73 +218,73 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Struct_InvalidArgumentException">Exception: InvalidArgumentException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"Invalid Argument Received"</code></td></tr>
-</table><br/>Thrown when the Service receives a Bad or Invalid Argument.
-<br/></div><div class="definition"><h3 id="Struct_InvalidCredentialsException">Exception: InvalidCredentialsException</h3>
+</table><br/><pre>Thrown when the Service receives a Bad or Invalid Argument.
+</pre><br/></div><div class="definition"><h3 id="Struct_InvalidCredentialsException">Exception: InvalidCredentialsException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"Failed to Verify and Authenticate Credentials"</code></td></tr>
-</table><br/>Thrown when a User's credentials did not match up when attempting
+</table><br/><pre>Thrown when a User's credentials did not match up when attempting
 to Sign In.
-<br/></div><div class="definition"><h3 id="Struct_InvalidTokenException">Exception: InvalidTokenException</h3>
+</pre><br/></div><div class="definition"><h3 id="Struct_InvalidTokenException">Exception: InvalidTokenException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The specified token is invalid"</code></td></tr>
-</table><br/>Thrown when referencing or using an Invalid Token (Application or User).
-<br/></div><div class="definition"><h3 id="Struct_AccountAlreadyExistsException">Exception: AccountAlreadyExistsException</h3>
+</table><br/><pre>Thrown when referencing or using an Invalid Token (Application or User).
+</pre><br/></div><div class="definition"><h3 id="Struct_AccountAlreadyExistsException">Exception: AccountAlreadyExistsException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"This email has already been registered. Reset your password if you forgot it."</code></td></tr>
-</table><br/>Thrown when trying to create an account that is already registered.
-<br/></div><div class="definition"><h3 id="Struct_InvalidCodeException">Exception: InvalidCodeException</h3>
+</table><br/><pre>Thrown when trying to create an account that is already registered.
+</pre><br/></div><div class="definition"><h3 id="Struct_InvalidCodeException">Exception: InvalidCodeException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Reset Password is invalid"</code></td></tr>
-</table><br/>Thrown when trying to reset an Account, but the Reset Code provided is invalid.
-<br/></div><div class="definition"><h3 id="Struct_UnauthorizedException">Exception: UnauthorizedException</h3>
+</table><br/><pre>Thrown when trying to reset an Account, but the Reset Code provided is invalid.
+</pre><br/></div><div class="definition"><h3 id="Struct_UnauthorizedException">Exception: UnauthorizedException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"Only an Owner can do that"</code></td></tr>
-</table><br/>Thrown when a Human tries to perform an Operation
+</table><br/><pre>Thrown when a Human tries to perform an Operation
 that only an "Owner" can do.
-<br/></div><div class="definition"><h3 id="Struct_DoesNotExistException">Exception: DoesNotExistException</h3>
+</pre><br/></div><div class="definition"><h3 id="Struct_DoesNotExistException">Exception: DoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The requested resource does not exist"</code></td></tr>
-</table><br/>Thrown when referring to something that does not exist.
+</table><br/><pre>Thrown when referring to something that does not exist.
 This is the generic version, and is to be used with things
 not covered by AppDoesNotExist, UserDoesNotExist, etc.
-<br/></div><div class="definition"><h3 id="Struct_ApplicationDoesNotExistException">Exception: ApplicationDoesNotExistException</h3>
+</pre><br/></div><div class="definition"><h3 id="Struct_ApplicationDoesNotExistException">Exception: ApplicationDoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Specified Application does not exist."</code></td></tr>
-</table><br/>Thrown when referring to a service that does not exist.
-<br/></div><div class="definition"><h3 id="Struct_ApplicationAlreadyRegisteredException">Exception: ApplicationAlreadyRegisteredException</h3>
+</table><br/><pre>Thrown when referring to a service that does not exist.
+</pre><br/></div><div class="definition"><h3 id="Struct_ApplicationAlreadyRegisteredException">Exception: ApplicationAlreadyRegisteredException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"This Channel has already been registered for this Application."</code></td></tr>
-</table><br/>Thrown when trying to register a Channel for an Application that
+</table><br/><pre>Thrown when trying to register a Channel for an Application that
 has already been registered before, either by the current Person
 or by someone else.
-<br/></div><div class="definition"><h3 id="Struct_UserDoesNotExistException">Exception: UserDoesNotExistException</h3>
+</pre><br/></div><div class="definition"><h3 id="Struct_UserDoesNotExistException">Exception: UserDoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The User you&apos;re referring to does not exist."</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ThroughoutExceededException">Exception: ThroughoutExceededException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"You have exceeded your allocated throughput. Buy more or slow down."</code></td></tr>
-</table><br/>Thrown when an Application sends too many messages in a short period of time.
+</table><br/><pre>Thrown when an Application sends too many messages in a short period of time.
 This helps combat DoS attacks.
-<br/></div><div class="definition"><h3 id="Struct_CustomChannelUnreachableException">Exception: CustomChannelUnreachableException</h3>
+</pre><br/></div><div class="definition"><h3 id="Struct_CustomChannelUnreachableException">Exception: CustomChannelUnreachableException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Custom Channel you&apos;ve supplied could not be reached. Please ensure the Application is reachable and operational."</code></td></tr>
-</table><br/>Thrown when trying to register a Custom AromaChannel, but the Endpoint cannot
+</table><br/><pre>Thrown when trying to register a Custom AromaChannel, but the Endpoint cannot
 be reached by Aroma.
-<br/></div><div class="definition"><h3 id="Struct_ChannelDoesNotExistException">Exception: ChannelDoesNotExistException</h3>
+</pre><br/></div><div class="definition"><h3 id="Struct_ChannelDoesNotExistException">Exception: ChannelDoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Channel specified does not exist in the System."</code></td></tr>
-</table><br/>Thrown when referencing a Developer's saved Channel that does not exist.
-<br/></div><div class="definition"><h3 id="Struct_MessageDoesNotExistException">Exception: MessageDoesNotExistException</h3>
+</table><br/><pre>Thrown when referencing a Developer's saved Channel that does not exist.
+</pre><br/></div><div class="definition"><h3 id="Struct_MessageDoesNotExistException">Exception: MessageDoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Message specified does not exist."</code></td></tr>
-</table><br/>Thrown when referencing a Message that does not exist.
-<br/></div><div class="definition"><h3 id="Struct_OrganizationDoesNotExistException">Exception: OrganizationDoesNotExistException</h3>
+</table><br/><pre>Thrown when referencing a Message that does not exist.
+</pre><br/></div><div class="definition"><h3 id="Struct_OrganizationDoesNotExistException">Exception: OrganizationDoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Organization specified does not exist."</code></td></tr>
-</table><br/>Thrown when referencing an Organization that does not exist.
-<br/></div><div class="definition"><h3 id="Struct_OperationFailedException">Exception: OperationFailedException</h3>
+</table><br/><pre>Thrown when referencing an Organization that does not exist.
+</pre><br/></div><div class="definition"><h3 id="Struct_OperationFailedException">Exception: OperationFailedException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Operation could not be completed"</code></td></tr>
-</table><br/>Thrown when an Operation could not be completed for any reason.
+</table><br/><pre>Thrown when an Operation could not be completed for any reason.
 This is like a catch-all exception
-<br/></div></div></body></html>
+</pre><br/></div></div></body></html>

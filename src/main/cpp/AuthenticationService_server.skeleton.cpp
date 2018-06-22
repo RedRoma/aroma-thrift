@@ -12,8 +12,6 @@ using namespace ::apache::thrift::protocol;
 using namespace ::apache::thrift::transport;
 using namespace ::apache::thrift::server;
 
-using boost::shared_ptr;
-
 using namespace  ::aroma::thrift::authentication::service;
 
 class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
@@ -72,11 +70,11 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
 
 int main(int argc, char **argv) {
   int port = 9090;
-  shared_ptr<AuthenticationServiceHandler> handler(new AuthenticationServiceHandler());
-  shared_ptr<TProcessor> processor(new AuthenticationServiceProcessor(handler));
-  shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
-  shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
-  shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
+  ::apache::thrift::stdcxx::shared_ptr<AuthenticationServiceHandler> handler(new AuthenticationServiceHandler());
+  ::apache::thrift::stdcxx::shared_ptr<TProcessor> processor(new AuthenticationServiceProcessor(handler));
+  ::apache::thrift::stdcxx::shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
+  ::apache::thrift::stdcxx::shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
+  ::apache::thrift::stdcxx::shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
 
   TSimpleServer server(processor, serverTransport, transportFactory, protocolFactory);
   server.serve();

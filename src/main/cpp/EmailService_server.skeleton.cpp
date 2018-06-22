@@ -12,8 +12,6 @@ using namespace ::apache::thrift::protocol;
 using namespace ::apache::thrift::transport;
 using namespace ::apache::thrift::server;
 
-using boost::shared_ptr;
-
 using namespace  ::aroma::thrift::email::service;
 
 class EmailServiceHandler : virtual public EmailServiceIf {
@@ -36,11 +34,11 @@ class EmailServiceHandler : virtual public EmailServiceIf {
 
 int main(int argc, char **argv) {
   int port = 9090;
-  shared_ptr<EmailServiceHandler> handler(new EmailServiceHandler());
-  shared_ptr<TProcessor> processor(new EmailServiceProcessor(handler));
-  shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
-  shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
-  shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
+  ::apache::thrift::stdcxx::shared_ptr<EmailServiceHandler> handler(new EmailServiceHandler());
+  ::apache::thrift::stdcxx::shared_ptr<TProcessor> processor(new EmailServiceProcessor(handler));
+  ::apache::thrift::stdcxx::shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
+  ::apache::thrift::stdcxx::shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
+  ::apache::thrift::stdcxx::shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
 
   TSimpleServer server(processor, serverTransport, transportFactory, protocolFactory);
   server.serve();
