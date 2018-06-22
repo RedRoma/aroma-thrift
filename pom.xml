@@ -50,7 +50,7 @@
         <src.thrift.dir>${src.main}/thrift</src.thrift.dir>
         <thrift.dest.dir> ${project.build.directory}/generated-sources/thrift</thrift.dest.dir>
         <thrift.dest.dir.java>${project.build.directory}/generated-sources/java</thrift.dest.dir.java>
-        <thrift.dest.dir.doc>${project.basedir}/docs</thrift.dest.dir.doc>
+        <thrift.dest.dir.doc>${project.basedir}/src/main/docs</thrift.dest.dir.doc>
         <thrift.dest.dir.js>${project.basedir}/src/main/js</thrift.dest.dir.js>
         <thrift.dest.dir.node>${project.basedir}/src/main/nodejs</thrift.dest.dir.node>
         <thrift.dest.dir.cpp>${project.basedir}/src/main/cpp</thrift.dest.dir.cpp>
