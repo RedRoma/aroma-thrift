@@ -21,6 +21,8 @@ before_install:
   - sudo apt-get install -qq erlang-base erlang-eunit erlang-dev
  # Csharp
   - sudo apt-get install -qq mono-gmcs mono-devel libmono-system-web2.0-cil nunit nunit-console
+  # Node
+  - sudo apt-get install nodejs npm
 
  #DOWNLOAD THRIFT
   - wget http://www.us.apache.org/dist/thrift/0.11.0/thrift-0.11.0.tar.gz
